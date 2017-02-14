@@ -25,4 +25,14 @@ class HomeController extends Controller
     {
         return view('home');
     }
+
+    /**
+     * Show the application dashboard api view.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function api()
+    {
+        return view('api');
+    }
 }

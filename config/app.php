@@ -92,6 +92,17 @@ return [
 
     'fallback_locale' => 'en',
 
+	/*
+    |--------------------------------------------------------------------------
+    | Application Possible Locales
+    |--------------------------------------------------------------------------
+    |
+    | List of session possible locales
+    |
+    */
+
+	'locales' => explode(',', env('APP_LOCALES', 'en')),
+
     /*
     |--------------------------------------------------------------------------
     | Encryption Key
@@ -182,6 +193,9 @@ return [
 
 	    // Passport
 	    Laravel\Passport\PassportServiceProvider::class,
+
+	    // Dingo API
+	    Dingo\Api\Provider\LaravelServiceProvider::class,
 
     ],
 
