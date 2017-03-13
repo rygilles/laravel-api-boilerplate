@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="<?php echo(App::getLocale()); ?>">
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -10,14 +10,30 @@
 
     <title>{{ config('app.name', 'Laravel') }}</title>
 
+
+    <link href='https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.5.0/css/font-awesome.min.css' rel='stylesheet' type='text/css'>
+
     <!-- Styles -->
+    <link rel="shortcut icon" href="img/favicon.jpg">
     <link href="/css/app.css" rel="stylesheet">
 
     <!-- Scripts -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.17.1/moment.min.js"></script>
+
     <script>
         window.Laravel = {!! json_encode([
             'csrfToken' => csrf_token(),
         ]) !!};
+        window.trans = <?php
+        // copy all translations from /resources/lang/CURRENT_LOCALE/* to global JS variable
+        $lang_files = File::files(resource_path() . '/lang/' . App::getLocale());
+        $trans = [];
+        foreach ($lang_files as $f) {
+            $filename = pathinfo($f)['filename'];
+            $trans[$filename] = trans($filename);
+        }
+        echo json_encode($trans);
+        ?>;
     </script>
 </head>
 <body>
@@ -36,7 +52,7 @@
 
                     <!-- Branding Image -->
                     <a class="navbar-brand" href="{{ route('home') }}">
-                        {{ config('app.name') }}
+                        <img src="/img/nav-logo.png" style="height: 32px;" alt="{{ config('app.name') }}">
                     </a>
                 </div>
 
@@ -46,7 +62,7 @@
                         @if (Auth::guest())
                             &nbsp;
                         @else
-                            <li><a href="{{ route('api') }}">Api</a></li>
+                            <li><a href="{{ route('user-projects') }}">@lang('projects.projects')</a></li>
                         @endif
                     </ul>
 
@@ -63,11 +79,36 @@
                                 </a>
 
                                 <ul class="dropdown-menu" role="menu">
+                                    <!-- Settings -->
+                                    <li class="dropdown-header">Settings</li>
+
+                                    <!-- Your Settings -->
+                                    <li>
+                                        <a href="/settings">
+                                            <i class="fa fa-fw fa-btn fa-cog"></i>Your Settings
+                                        </a>
+                                    </li>
+
+                                    <li class="divider"></li>
+
+                                    <!-- Tools -->
+                                    <li class="dropdown-header">Tools</li>
+
+                                    <!-- API -->
+                                    <li>
+                                        <a href="{{ route('api') }}">
+                                            <i class="fa fa-fw fa-btn fa-cubes"></i>Api
+                                        </a>
+                                    </li>
+
+                                    <li class="divider"></li>
+
+                                    <!-- Logout -->
                                     <li>
                                         <a href="{{ route('logout') }}"
                                             onclick="event.preventDefault();
                                                      document.getElementById('logout-form').submit();">
-                                            @lang('auth.logout')
+                                            <i class="fa fa-fw fa-btn fa-sign-out"></i>@lang('auth.logout')
                                         </a>
 
                                         <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">

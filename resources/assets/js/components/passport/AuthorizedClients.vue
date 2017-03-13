@@ -12,15 +12,15 @@
     <div>
         <div v-if="tokens.length > 0">
             <div class="panel panel-default">
-                <div class="panel-heading">Authorized Applications</div>
+                <div class="panel-heading">{{ $t('auth.authorized_applications.title') }}</div>
 
                 <div class="panel-body">
                     <!-- Authorized Tokens -->
                     <table class="table table-borderless m-b-none">
                         <thead>
                             <tr>
-                                <th>Name</th>
-                                <th>Scopes</th>
+                                <th>{{ $t('auth.authorized_applications.name') }}</th>
+                                <th>{{ $t('auth.authorized_applications.scopes') }}</th>
                                 <th></th>
                             </tr>
                         </thead>
@@ -28,21 +28,21 @@
                         <tbody>
                             <tr v-for="token in tokens">
                                 <!-- Client Name -->
-                                <td style="vertical-align: middle;">
+                                <td class="col-md-3" style="vertical-align: middle;">
                                     {{ token.client.name }}
                                 </td>
 
                                 <!-- Scopes -->
-                                <td style="vertical-align: middle;">
+                                <td class="col-md-4 text-center" style="vertical-align: middle;">
                                     <span v-if="token.scopes.length > 0">
                                         {{ token.scopes.join(', ') }}
                                     </span>
                                 </td>
 
                                 <!-- Revoke Button -->
-                                <td style="vertical-align: middle;">
+                                <td class="col-md-1 text-right" style="vertical-align: middle;">
                                     <a class="action-link text-danger" @click="revoke(token)">
-                                        Revoke
+                                        {{ $t('auth.authorized_applications.revoke') }}
                                     </a>
                                 </td>
                             </tr>
@@ -91,7 +91,7 @@
              * Get all of the authorized tokens for the user.
              */
             getTokens() {
-                axios.get('/oauth/tokens')
+                oauthAxios.get('/oauth/tokens')
                         .then(response => {
                             this.tokens = response.data;
                         });
@@ -101,7 +101,7 @@
              * Revoke the given token.
              */
             revoke(token) {
-                axios.delete('/oauth/tokens/' + token.id)
+                oauthAxios.delete('/oauth/tokens/' + token.id)
                         .then(response => {
                             this.getTokens();
                         });

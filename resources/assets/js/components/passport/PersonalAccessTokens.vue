@@ -15,11 +15,11 @@
                 <div class="panel-heading">
                     <div style="display: flex; justify-content: space-between; align-items: center;">
                         <span>
-                            Personal Access Tokens
+                            {{ $t('auth.personal_access_tokens.title') }}
                         </span>
 
                         <a class="action-link" @click="showCreateTokenForm">
-                            Create New Token
+							{{ $t('auth.personal_access_tokens.create_new_token') }}
                         </a>
                     </div>
                 </div>
@@ -27,14 +27,14 @@
                 <div class="panel-body">
                     <!-- No Tokens Notice -->
                     <p class="m-b-none" v-if="tokens.length === 0">
-                        You have not created any personal access tokens.
+						{{ $t('auth.personal_access_tokens.no_token_yet') }}
                     </p>
 
                     <!-- Personal Access Tokens -->
                     <table class="table table-borderless m-b-none" v-if="tokens.length > 0">
                         <thead>
                             <tr>
-                                <th>Name</th>
+                                <th>{{ $t('auth.personal_access_tokens.name') }}</th>
                                 <th></th>
                             </tr>
                         </thead>
@@ -47,9 +47,9 @@
                                 </td>
 
                                 <!-- Delete Button -->
-                                <td style="vertical-align: middle;">
+                                <td class="col-md-1 text-right"  style="vertical-align: middle;">
                                     <a class="action-link text-danger" @click="revoke(token)">
-                                        Delete
+										{{ $t('auth.personal_access_tokens.delete') }}
                                     </a>
                                 </td>
                             </tr>
@@ -67,7 +67,7 @@
                         <button type="button " class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
 
                         <h4 class="modal-title">
-                            Create Token
+                            {{ $t('auth.personal_access_tokens_create_modal.title') }}
                         </h4>
                     </div>
 
@@ -87,7 +87,7 @@
                         <form class="form-horizontal" role="form" @submit.prevent="store">
                             <!-- Name -->
                             <div class="form-group">
-                                <label class="col-md-4 control-label">Name</label>
+                                <label class="col-md-4 control-label">{{ $t('auth.personal_access_tokens_create_modal.name') }}</label>
 
                                 <div class="col-md-6">
                                     <input id="create-token-name" type="text" class="form-control" name="name" v-model="form.name">
@@ -96,7 +96,7 @@
 
                             <!-- Scopes -->
                             <div class="form-group" v-if="scopes.length > 0">
-                                <label class="col-md-4 control-label">Scopes</label>
+                                <label class="col-md-4 control-label">{{ $t('auth.personal_access_tokens_create_modal.scopes') }}</label>
 
                                 <div class="col-md-6">
                                     <div v-for="scope in scopes">
@@ -117,10 +117,10 @@
 
                     <!-- Modal Actions -->
                     <div class="modal-footer">
-                        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                        <button type="button" class="btn btn-default" data-dismiss="modal">{{ $t('auth.personal_access_tokens_create_modal.close_btn') }}</button>
 
                         <button type="button" class="btn btn-primary" @click="store">
-                            Create
+                            {{ $t('auth.personal_access_tokens_create_modal.create_btn') }}
                         </button>
                     </div>
                 </div>
@@ -135,14 +135,13 @@
                         <button type="button " class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
 
                         <h4 class="modal-title">
-                            Personal Access Token
+                            {{ $t('auth.personal_access_tokens_access_modal.title') }}
                         </h4>
                     </div>
 
                     <div class="modal-body">
                         <p>
-                            Here is your new personal access token. This is the only time it will be shown so don't lose it!
-                            You may now use this token to make API requests.
+                            {{ $t('auth.personal_access_tokens_access_modal.description') }}
                         </p>
 
                         <pre><code>{{ accessToken }}</code></pre>
@@ -150,7 +149,7 @@
 
                     <!-- Modal Actions -->
                     <div class="modal-footer">
-                        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                        <button type="button" class="btn btn-default" data-dismiss="modal">{{ $t('auth.personal_access_tokens_access_modal.close_btn') }}</button>
                     </div>
                 </div>
             </div>
@@ -209,7 +208,7 @@
              * Get all of the personal access tokens for the user.
              */
             getTokens() {
-                axios.get('/oauth/personal-access-tokens')
+                oauthAxios.get('/oauth/personal-access-tokens')
                         .then(response => {
                             this.tokens = response.data;
                         });
@@ -219,7 +218,7 @@
              * Get all of the available scopes.
              */
             getScopes() {
-                axios.get('/oauth/scopes')
+                oauthAxios.get('/oauth/scopes')
                         .then(response => {
                             this.scopes = response.data;
                         });
@@ -240,7 +239,7 @@
 
                 this.form.errors = [];
 
-                axios.post('/oauth/personal-access-tokens', this.form)
+                oauthAxios.post('/oauth/personal-access-tokens', this.form)
                         .then(response => {
                             this.form.name = '';
                             this.form.scopes = [];
@@ -292,7 +291,7 @@
              * Revoke the given token.
              */
             revoke(token) {
-                axios.delete('/oauth/personal-access-tokens/' + token.id)
+                oauthAxios.delete('/oauth/personal-access-tokens/' + token.id)
                         .then(response => {
                             this.getTokens();
                         });

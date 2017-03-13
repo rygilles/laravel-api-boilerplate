@@ -4,9 +4,9 @@
 # {{ $greeting }}
 @else
 @if ($level == 'error')
-# Whoops!
+# @lang('email.error')
 @else
-# Hello!
+# @lang('email.hello')
 @endif
 @endif
 
@@ -45,14 +45,13 @@
 @if (! empty($salutation))
 {{ $salutation }}
 @else
-Regards,<br>{{ config('app.name') }}
+@lang('email.regards'),<br>{{ config('app.name') }}
 @endif
 
 <!-- Subcopy -->
 @if (isset($actionText))
 @component('mail::subcopy')
-If you’re having trouble clicking the "{{ $actionText }}" button, copy and paste the URL below
-into your web browser: [{{ $actionUrl }}]({{ $actionUrl }})
+@lang('email.action_subtext', ['actionText' => $actionText, 'actionUrl' => $actionUrl])
 @endcomponent
 @endif
 @endcomponent

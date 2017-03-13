@@ -5,7 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <title>{{ config('app.name') }} - Authorization</title>
+    <title>{{ config('app.name') }} - @lang('auth.authorization_request.authorization')</title>
 
     <!-- Styles -->
     <link href="/css/app.css" rel="stylesheet">
@@ -43,16 +43,16 @@
             <div class="col-md-6 col-md-offset-3">
                 <div class="panel panel-default">
                     <div class="panel-heading">
-                        Authorization Request
+                        @lang('auth.authorization_request.authorization_request')
                     </div>
                     <div class="panel-body">
                         <!-- Introduction -->
-                        <p><strong>{{ $client->name }}</strong> is requesting permission to access your account.</p>
+                        <p>@lang('auth.authorization_request.client_requesting_permission', ['name' => $client->name])</p>
 
                         <!-- Scope List -->
                         @if (count($scopes) > 0)
                             <div class="scopes">
-                                    <p><strong>This application will be able to:</strong></p>
+                                    <p><strong>@lang('auth.authorization_request.this_application_will_be_able_to')</strong></p>
 
                                     <ul>
                                         @foreach ($scopes as $scope)
@@ -69,7 +69,7 @@
 
                                 <input type="hidden" name="state" value="{{ $request->state }}">
                                 <input type="hidden" name="client_id" value="{{ $client->id }}">
-                                <button type="submit" class="btn btn-success btn-approve">Authorize</button>
+                                <button type="submit" class="btn btn-success btn-approve">@lang('auth.authorization_request.authorize_btn')</button>
                             </form>
 
                             <!-- Cancel Button -->
@@ -79,7 +79,7 @@
 
                                 <input type="hidden" name="state" value="{{ $request->state }}">
                                 <input type="hidden" name="client_id" value="{{ $client->id }}">
-                                <button class="btn btn-danger">Cancel</button>
+                                <button class="btn btn-danger">@lang('auth.authorization_request.cancel_btn')</button>
                             </form>
                         </div>
                     </div>

@@ -12,7 +12,7 @@ return [
     | any other location as required by the application or its packages.
     */
 
-    'name' => 'emsearch',
+    'name' => env('APP_NAME', 'emsearch'),
 
     /*
     |--------------------------------------------------------------------------
@@ -196,6 +196,12 @@ return [
 
 	    // Dingo API
 	    Dingo\Api\Provider\LaravelServiceProvider::class,
+
+	    // CORS
+	    Barryvdh\Cors\ServiceProvider::class,
+
+	    // Exceptions
+	    App\Providers\ExceptionsServiceProvider::class
 
     ],
 

@@ -5,9 +5,10 @@
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1">
 
-        <title>emsearch</title>
+        <title>{{ config('app.name') }}</title>
 
         <!-- Fonts -->
+        <link rel="shortcut icon" href="img/favicon.jpg">
         <link href="https://fonts.googleapis.com/css?family=Raleway:100,600" rel="stylesheet" type="text/css">
 
         <!-- Styles -->
@@ -69,7 +70,7 @@
             @if (Route::has('login'))
                 <div class="top-right links">
                     @if (Auth::check())
-                        <a href="{{ url('/home') }}">@lang('home.dashboard')</a>
+                        <a href="{{ url('/dashboard') }}">@lang('home.dashboard')</a>
                     @else
                         <a href="{{ url('/login') }}">@lang('auth.login')</a>
                         <a href="{{ url('/register') }}">@lang('auth.register')</a>
@@ -79,13 +80,13 @@
 
             <div class="content">
                 <div class="title m-b-md">
-                    emsearch
+                    <img src="/img/logo.png" style="height: 100px;" alt="{{ config('app.name') }}">
                 </div>
 
                 <div class="links">
                     @if (Route::has('login'))
                         @if (Auth::check())
-                            <a href="{{ url('/home') }}">@lang('home.dashboard')</a>
+                            <a href="{{ url('/dashboard') }}">@lang('home.dashboard')</a>
                         @else
                             <a href="{{ url('/login') }}">@lang('auth.login')</a>
                             <a href="{{ url('/register') }}">@lang('auth.register')</a>
