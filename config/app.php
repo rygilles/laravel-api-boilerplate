@@ -201,7 +201,10 @@ return [
 	    Barryvdh\Cors\ServiceProvider::class,
 
 	    // Exceptions
-	    App\Providers\ExceptionsServiceProvider::class
+	    App\Providers\ExceptionsServiceProvider::class,
+
+	    // Documentaion generator
+	    Mpociot\ApiDoc\ApiDocGeneratorServiceProvider::class,
 
     ],
 
