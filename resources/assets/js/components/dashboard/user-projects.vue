@@ -45,7 +45,7 @@
 						<tr v-for="project in owner_projects">
 							<!-- Name -->
 							<td class="col-md-2" style="vertical-align: middle;">
-								{{ project.name }}
+								<router-link :to="{ name: 'user-project', params: { projectId: project.id }}">{{ project.name }}</router-link>
 							</td>
 
 							<!-- Created At -->

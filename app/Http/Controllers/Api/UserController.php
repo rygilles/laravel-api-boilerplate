@@ -126,4 +126,34 @@ class UserController extends ApiController
 
 		return $this->response->errorBadRequest();
 	}
+
+	/**
+	 * Check if this user can access to a specified project
+	 *
+	 * @param string $projectId Project ID
+	 * @param string[] $authorizedUserRolesIds An array of user user_role_id that are granted
+	 * @param string[] $ignoreUserGroupsIds An array of user user_group_id that are granted
+	 */
+	public function checkProjectAccess($projectId, $authorizedUserRolesIds = ['Owner', 'Administrator'], $ignoreUserGroupsIds = ['Developer', 'Support'])
+	{
+		// Ignore access check for those user groups ids
+		if (in_array($this->user_group_id, $ignoreUserGroupsIds))
+			return;
+
+		// Check user_has_project rights
+		$userHasProjects = UserHasProject::where('user_id', $this->id)->where('project_id', $projectId)->get();
+		$authorized = false;
+
+		foreach ($userHasProjects as $userHasProject)
+		{
+			if (in_array($userHasProject->user_role_id, $authorizedUserRolesIds))
+			{
+				$authorized = true;
+				break;
+			}
+		}
+
+		if (!$authorized)
+			$this->response->errorForbidden();
+	}
 }

@@ -16,7 +16,7 @@
 				<div class="main">
 					<div class="col-md-8 col-md-offset-2">
 						<div class="alert alert-danger">
-							{{ trans('common.axio_error') }} : {{ error }}
+							{{ $t('common.axio_error') }} : {{ error }}
 						</div>
 					</div>
 				</div>
@@ -44,6 +44,7 @@
 		 */
 		data() {
 			return {
+				csrfToken : window.Laravel.csrfToken,
 				ready : false,
 				loading: false,
 				fetched: false,
@@ -75,11 +76,12 @@
 			getMe() {
 				apiAxios.get('/me')
 						.then(response => {
-					this.me = response.data.user;
-
-					this.loadingComplete();
-					this.ready = true;
-				});
+							this.me = response.data.data;
+							this.loadingComplete();
+							this.ready = true;
+						}).catch(error => {
+								this.axiosError(error);
+						});
 			},
 
 			resetLoading() {

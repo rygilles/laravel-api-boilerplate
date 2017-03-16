@@ -11,5 +11,7 @@ export default {
     'admin_projects': 'Projets administrés',
 
     'edit_btn': 'Modifier',
-    'delete_btn': 'Supprimer'
+    'delete_btn': 'Supprimer',
+
+    'named_project' : 'Projet <strong>{name}</strong>'
 };

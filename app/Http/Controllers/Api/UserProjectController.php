@@ -10,7 +10,7 @@ use Dingo\Api\Http\Request;
 use Illuminate\Support\Facades\Validator;
 
 /**
- * User
+ * UserProject
  *
  * @package App\Http\Controllers\Api
  */
@@ -21,7 +21,7 @@ class UserProjectController extends ApiController
 	 *
 	 * @param $userId string User UUID
 	 * @return \Dingo\Api\Http\Response
-	 * @Get(uri="/user/{userId}/{?page,limit}")
+	 * @Get(uri="/user/{userId}/project{?user_role_id,page,limit}")
 	 * @Parameters({
 	 *      @Parameter("userId", type="string", required=true, description="User UUID"),
 	 *      @Parameter("user_role_id", description="Filter projects user role", default=)

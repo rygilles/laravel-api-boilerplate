@@ -51,7 +51,7 @@
                     </button>
 
                     <!-- Branding Image -->
-                    <a class="navbar-brand" href="{{ route('home') }}">
+                    <a class="navbar-brand" href="{{ route('welcome') }}">
                         <img src="/img/nav-logo.png" style="height: 32px;" alt="{{ config('app.name') }}">
                     </a>
                 </div>
@@ -79,30 +79,6 @@
                                 </a>
 
                                 <ul class="dropdown-menu" role="menu">
-                                    <!-- Settings -->
-                                    <li class="dropdown-header">Settings</li>
-
-                                    <!-- Your Settings -->
-                                    <li>
-                                        <a href="/settings">
-                                            <i class="fa fa-fw fa-btn fa-cog"></i>Your Settings
-                                        </a>
-                                    </li>
-
-                                    <li class="divider"></li>
-
-                                    <!-- Tools -->
-                                    <li class="dropdown-header">Tools</li>
-
-                                    <!-- API -->
-                                    <li>
-                                        <a href="{{ route('api') }}">
-                                            <i class="fa fa-fw fa-btn fa-cubes"></i>Api
-                                        </a>
-                                    </li>
-
-                                    <li class="divider"></li>
-
                                     <!-- Logout -->
                                     <li>
                                         <a href="{{ route('logout') }}"

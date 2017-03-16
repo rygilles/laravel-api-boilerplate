@@ -1,6 +1,5 @@
 <?php
 
-use Illuminate\Http\Request;
 use Dingo\Api\Routing\Router;
 
 /*
@@ -17,10 +16,12 @@ use Dingo\Api\Routing\Router;
 $api = app('Dingo\Api\Routing\Router');
 
 $api->version('v1', ['middleware' => ['cors', 'auth:api']], function (Router $api) {
-	$api->get('/me', function (Request $request) {
-		return $request->user();
-	});
+	$api->get('/me', 'App\Http\Controllers\Api\MeController@index');
 
 	$api->resource('/user', 'App\Http\Controllers\Api\UserController', ['only' => ['index', 'show', 'store']]);
-	$api->resource('/user/{userId}/project', 'App\Http\Controllers\Api\UserProjectController', ['only' => ['index', 'show']]);
+
+	$api->get('/user/{userId}/project',             'App\Http\Controllers\Api\UserProjectController@index');
+	$api->get('/user/{userId}/project/{projectId}', 'App\Http\Controllers\Api\UserProjectController@show');
+
+	$api->resource('/project', 'App\Http\Controllers\Api\ProjectController', ['only' => ['index', 'store', 'show', 'update']]);
 });

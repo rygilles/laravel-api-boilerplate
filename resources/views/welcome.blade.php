@@ -70,10 +70,10 @@
             @if (Route::has('login'))
                 <div class="top-right links">
                     @if (Auth::check())
-                        <a href="{{ url('/dashboard') }}">@lang('home.dashboard')</a>
+                        <a href="{{ route('dashboard') }}">@lang('home.dashboard')</a>
                     @else
-                        <a href="{{ url('/login') }}">@lang('auth.login')</a>
-                        <a href="{{ url('/register') }}">@lang('auth.register')</a>
+                        <a href="{{ route('login') }}">@lang('auth.login')</a>
+                        <a href="{{ route('register') }}">@lang('auth.register')</a>
                     @endif
                 </div>
             @endif
@@ -86,10 +86,10 @@
                 <div class="links">
                     @if (Route::has('login'))
                         @if (Auth::check())
-                            <a href="{{ url('/dashboard') }}">@lang('home.dashboard')</a>
+                            <a href="{{ route('dashboard') }}">@lang('home.dashboard')</a>
                         @else
-                            <a href="{{ url('/login') }}">@lang('auth.login')</a>
-                            <a href="{{ url('/register') }}">@lang('auth.register')</a>
+                            <a href="{{ route('login') }}">@lang('auth.login')</a>
+                            <a href="{{ route('register') }}">@lang('auth.register')</a>
                         @endif
                     @endif
                 </div>

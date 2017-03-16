@@ -4,6 +4,9 @@ namespace App\Models;
 
 use Alsofronie\Uuid\UuidModelTrait;
 
+use Dingo\Api\Facade\Route;
+use Illuminate\Support\Facades\Auth;
+
 /**
  * Class Project
  * @package App\Models
@@ -77,9 +80,9 @@ class Project extends ApiModel
 	 * @var array
 	 */
 	protected static $patchRules = [
-		'search_engine_id'  => 'required|exists:search_engine,id',
+		'search_engine_id'  => 'exists:search_engine,id',
 		'data_stream_id'    => 'exists:data_stream,id',
-		'name'              => 'required|string|max:100'
+		'name'              => 'string|max:100'
 	];
 
 	/**
@@ -137,5 +140,26 @@ class Project extends ApiModel
 	public function users()
 	{
 		return $this->belongsToMany('App\Models\User', 'user_has_project', 'project_id', 'user_id');
+	}
+
+	/**
+	 * Scope a query to include authorized access
+	 *
+	 * @param \Illuminate\Database\Eloquent\Builder $query
+	 * @param string[] $authorizedUserRolesIds User roles ids authorized to access to this route/resource
+	 * @param string[] $exceptUserGroupsIds User groups ids authorized to access to this route
+	 * @return \Illuminate\Database\Eloquent\Builder
+	 */
+	public function scopeAuthorized($query, $authorizedUserRolesIds = ['Owner', 'Administrator'], $exceptUserGroupsIds = ['Developer', 'Support'])
+	{
+		// Apply query scope if user group id isn't authorized
+		if (!in_array(Auth::user()->user_group_id, $exceptUserGroupsIds)) {
+			return $query->whereHas('hasUserProjects', function ($query) use ($authorizedUserRolesIds) {
+				$query->where('user_id', Auth::user()->id)
+					->whereIn('user_role_id', $authorizedUserRolesIds);
+			});
+		}
+
+		return $query;
 	}
 }
