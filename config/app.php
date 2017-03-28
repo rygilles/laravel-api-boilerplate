@@ -204,7 +204,7 @@ return [
 	    App\Providers\ExceptionsServiceProvider::class,
 
 	    // Documentaion generator
-	    Mpociot\ApiDoc\ApiDocGeneratorServiceProvider::class,
+	    Rygilles\ApiDoc\ApiDocGeneratorServiceProvider::class,
 
     ],
 

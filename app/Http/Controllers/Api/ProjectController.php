@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers\Api;
 
+use App\Http\Requests\StoreProjectRequest;
+use App\Http\Requests\UpdateProjectRequest;
 use App\Http\Transformers\Api\ProjectTransformer;
 use App\Models\Project;
 use App\Models\UserHasProject;
@@ -10,7 +12,7 @@ use Dingo\Api\Exception\ValidationHttpException;
 use Illuminate\Support\Facades\Validator;
 
 /**
- * Project
+ * @resource Project
  *
  * @package App\Http\Controllers\Api
  */
@@ -45,18 +47,12 @@ class ProjectController extends ApiController
 	/**
 	 * Create and store new project
 	 *
-	 * @param Request $request
+	 * @param StoreProjectRequest $request
 	 * @return \Dingo\Api\Http\Response|void
 	 * @throws ValidationHttpException
 	 */
-	public function store(Request $request)
+	public function store(StoreProjectRequest $request)
 	{
-		$validator = Validator::make($request->all(), Project::getStoreRules());
-
-		if ($validator->fails()) {
-			throw new ValidationHttpException($validator->errors());
-		}
-
 		$project = Project::create($request->all());
 
 		if ($project) {
@@ -97,7 +93,7 @@ class ProjectController extends ApiController
 	/**
 	 * Update a specified user project
 	 *
-	 * @param Request $request
+	 * @param UpdateProjectRequest $request
 	 * @param $projectId string Project UUID
 	 * @return \Dingo\Api\Http\Response|void
 	 *
@@ -107,13 +103,14 @@ class ProjectController extends ApiController
 	 *      @Parameter("projectId", type="string", required=true, description="Project UUID"),
 	 * })
 	 */
-	public function update(Request $request, $projectId)
+	public function update(UpdateProjectRequest $request, $projectId)
 	{
 		$project = Project::authorized(['Owner'])->find($projectId);
 
 		if (!$project)
 			return $this->response->errorNotFound();
 
+		
 		if ($request->getMethod() == 'PATCH') {
 			$validator = Validator::make($request->all(), Project::getPatchRules());
 		} elseif ($request->getMethod() == 'PUT') {
@@ -125,6 +122,7 @@ class ProjectController extends ApiController
 		if ($validator->fails()) {
 			throw new ValidationHttpException($validator->errors());
 		}
+		
 
 		$project->fill($request->all());
 		$project->save();

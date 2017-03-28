@@ -7,11 +7,9 @@ use \App\Models\User;
 use \Dingo\Api\Http\Request;
 
 /**
- * Me
+ * @resource Me
  *
  * @package App\Http\Controllers\Api
- *
- * @Resource("User", uri="/me")
  */
 class MeController extends ApiController
 {

@@ -15,16 +15,16 @@ class CreateProjectTable extends Migration
     {
         Schema::create('project', function (Blueprint $table) {
             $table->uuid('id');
-            $table->uuid('search_engine_id')->
-	                index()->
-                    references('id')->on('search_engine');
-            $table->uuid('data_stream_id')->
-                    nullable()->
-                    index()->
-                    references('id')->on('data_stream');
+            $table->uuid('search_engine_id')->index();
+            $table->uuid('data_stream_id')->nullable()->index();
             $table->string('name', 100);
             $table->timestamps();
             $table->primary('id');
+        });
+
+        Schema::table('project', function (Blueprint $table) {
+            $table->foreign('search_engine_id')->references('id')->on('search_engine');
+	        $table->foreign('data_stream_id')->references('id')->on('data_stream');
         });
     }
 

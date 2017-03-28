@@ -10,7 +10,7 @@ use Dingo\Api\Http\Request;
 use Illuminate\Support\Facades\Validator;
 
 /**
- * UserProject
+ * @resource User Project
  *
  * @package App\Http\Controllers\Api
  */

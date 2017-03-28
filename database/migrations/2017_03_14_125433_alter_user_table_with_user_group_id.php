@@ -27,6 +27,7 @@ class AlterUserTableWithUserGroupId extends Migration
     public function down()
     {
         Schema::table('user', function (Blueprint $table) {
+            $table->dropForeign('user_user_group_id_foreign');
             $table->dropcolumn('user_group_id');
         });
     }

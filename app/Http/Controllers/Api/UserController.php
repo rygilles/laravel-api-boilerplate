@@ -9,11 +9,9 @@ use Dingo\Api\Http\Request;
 use Illuminate\Support\Facades\Validator;
 
 /**
- * User
+ * @resource User
  *
  * @package App\Http\Controllers\Api
- *
- * @Resource("User", uri="/user")
  */
 class UserController extends ApiController
 {

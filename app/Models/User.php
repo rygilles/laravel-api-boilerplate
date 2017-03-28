@@ -144,4 +144,14 @@ class User extends ApiModel implements AuthenticatableContract,	AuthorizableCont
 	{
 		return $this->belongsToMany('App\Models\Project', 'user_has_project', 'user_id', 'project_id')->wherePivot('project_id', $project_id)->first();
 	}
+
+	/**
+	 * Get the user group of this user
+	 *
+	 * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
+	 */
+	public function userGroup()
+	{
+		return $this->BelongTo('App\Models\UserGroup');
+	}
 }

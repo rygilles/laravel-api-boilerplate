@@ -7,6 +7,12 @@ use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\Facades\Schema;
 use Laravel\Passport\Passport;
 
+use App\Models\User;
+use App\Models\Project;
+
+use App\Observers\UserObserver;
+use App\Observers\ProjectObserver;
+
 class AppServiceProvider extends ServiceProvider
 {
     /**
@@ -28,6 +34,10 @@ class AppServiceProvider extends ServiceProvider
         Validator::extend('uppercase_min', 'App\Http\CustomValidator@validateUppercaseMin');
         Validator::extend('lowercase_min', 'App\Http\CustomValidator@validateLowercaseMin');
         Validator::extend('numeric_min', 'App\Http\CustomValidator@validateNumericMin');
+
+        // Models observers
+	    User::observe(UserObserver::class);
+	    Project::observe(ProjectObserver::class);
     }
 
     /**
