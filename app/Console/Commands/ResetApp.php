@@ -4,6 +4,7 @@ namespace App\Console\Commands;
 
 use Illuminate\Console\Command;
 use Illuminate\Support\Facades\Artisan;
+use Illuminate\Support\Facades\DB;
 
 use App\Models\I18nLang;
 use App\Models\SearchEngine;
@@ -11,6 +12,10 @@ use App\Models\User;
 use App\Models\UserRole;
 use App\Models\UserGroup;
 
+use Laravel\Passport\Token;
+use Laravel\Passport\AuthCode;
+use Laravel\Passport\Client;
+use Laravel\Passport\PersonalAccessClient;
 
 class ResetApp extends Command
 {
@@ -109,5 +114,37 @@ class ResetApp extends Command
 			$userGroup->delete();
 		}
 		$this->info('UserGroups removed');
+
+		// Passport tables
+		$this->info('Passport tables :');
+		
+		foreach (Token::all() as $token) {
+			$token->delete();	
+		};
+		$this->info('Tokens removed');
+
+		foreach (AuthCode::all() as $authCode) {
+			$authCode->delete();
+		};
+		$this->info('AuthCodes removed');
+
+		foreach (Client::all() as $client) {
+			$client->delete();
+		};
+		$this->info('Clients removed');
+
+		foreach (PersonalAccessClient::all() as $personalAccessClient) {
+			$personalAccessClient->delete();
+		};
+		$this->info('PersonalAccessClients removed');
+		
+		DB::table('oauth_refresh_tokens')->truncate();
+		$this->info('oauth_refresh_tokens table truncated');
+
+		DB::table('oauth_refresh_tokens')->truncate();
+		$this->info('oauth_refresh_tokens table truncated');
+
+		DB::table('password_resets')->truncate();
+		$this->info('password_resets table truncated');
 	}
 }
