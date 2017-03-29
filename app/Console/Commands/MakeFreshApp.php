@@ -19,7 +19,7 @@ class MakeFreshApp extends Command
      *
      * @var string
      */
-    protected $description = 'This command will reset refresh migrations, ' .
+    protected $description = 'This command will reset/refresh migrations, ' .
                               're-create required database data and (optionally) ' .
                               'create a fresh app with samples data.';
 

@@ -15,7 +15,7 @@
 ```bash
 php artisan app:makeFresh
 ```
-This command will reset refresh migrations,
+This command will reset/refresh migrations,
 re-create required database data and (optionally)
 create a fresh app with samples data.
 
