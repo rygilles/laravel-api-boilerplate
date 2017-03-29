@@ -19,7 +19,7 @@ class GenerateApiDocs extends Command
      *
      * @var string
      */
-    protected $description = 'Generate API documentation using current database resources';
+    protected $description = 'Generate API documentation using current database resources.';
 
 	protected $actAsUserId = '';
 	
