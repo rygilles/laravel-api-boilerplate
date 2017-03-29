@@ -1,7 +1,7 @@
-title: API Reference
+title: emsearch API Reference
 
 language_tabs:
-- php
+- bash
 - javascript
 
 includes:

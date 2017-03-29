@@ -12,7 +12,7 @@
 
           <script>
         $(function() {
-            setupLanguages(["bash","javascript","php"]);
+            setupLanguages(["bash","javascript"]);
         });
       </script>
       </head>
@@ -29,7 +29,6 @@
                     <div class="lang-selector">
                                   <a href="#" data-language-name="bash">bash</a>
                                   <a href="#" data-language-name="javascript">javascript</a>
-                                  <a href="#" data-language-name="php">php</a>
                             </div>
                             <div class="search">
               <input type="text" class="search" id="input-search" placeholder="Search">
@@ -42,10 +41,10 @@
       <div class="dark-box"></div>
       <div class="content">
           <!-- START_INFO -->
-<h1>Api Documentation</h1>
+<h1>Developer Api Documentation</h1>
 <p>Welcome to the <b>emsearch</b> API reference.</p>
 <p><b>emsearch</b> API use <a href="https://oauth.net/2/">OAuth2</a> authentication.</p>
-<p>Try out our API with this <a href="http://emsearch.ryan.ems-dev.net/docs/collection.json">postman collection</a></p>
+<p>Try out our API with this <a href="collection.json">postman collection</a></p>
 <aside class="notice">Don't forget to provide a personal authentication token header for every request, like this : <code>Authentication: Bearer xxx</code></aside>
 <!-- END_INFO -->
 <h1>Me</h1>
@@ -74,11 +73,11 @@ $.ajax(settings).done(function (response) {
 </blockquote>
 <pre><code class="language-json">{
     "data": {
-        "id": "f34b7b41-d128-4e55-8d9c-df5fcee7b490",
-        "name": "Ryan Gilles",
-        "email": "ryan@e-monsite.com",
-        "created_at": "2017-02-14 10:02:15",
-        "updated_at": "2017-02-15 10:52:29"
+        "id": "41abdec2-1389-11e7-93ae-92361f002671",
+        "name": "John Doe",
+        "email": "john.doe@domain.tld",
+        "created_at": "2017-03-28 14:46:13",
+        "updated_at": "2017-03-28 14:46:13"
     }
 }</code></pre>
 <h3>HTTP Request</h3>
@@ -112,42 +111,34 @@ $.ajax(settings).done(function (response) {
 <pre><code class="language-json">{
     "data": [
         {
-            "id": "3cb3b192-39c7-475f-afe1-aae43bedfcde",
-            "search_engine_id": "a2e3a41e-0da4-4834-8ba8-d0b839bedad0",
+            "id": "1bcc7efc-138c-11e7-93ae-92361f002671",
+            "search_engine_id": "ee87e3b2-1388-11e7-93ae-92361f002671",
             "data_stream_id": null,
-            "name": "Test non attach",
-            "created_at": "2017-03-15 14:17:10",
-            "updated_at": "2017-03-15 14:17:10"
+            "name": "John Smith Sample Project 1",
+            "created_at": "2017-03-28 14:46:13",
+            "updated_at": "2017-03-28 14:46:13"
         },
         {
-            "id": "5486560d-8a90-40d4-ad74-9212cbc496a2",
-            "search_engine_id": "a2e3a41e-0da4-4834-8ba8-d0b839bedad0",
+            "id": "b6860dd2-138c-11e7-93ae-92361f002671",
+            "search_engine_id": "ee87e3b2-1388-11e7-93ae-92361f002671",
             "data_stream_id": null,
-            "name": "Test project",
-            "created_at": "2017-03-06 14:21:57",
-            "updated_at": "2017-03-07 11:07:18"
+            "name": "John Smith Sample Project 2",
+            "created_at": "2017-03-28 14:46:13",
+            "updated_at": "2017-03-28 14:46:13"
         },
         {
-            "id": "ac93c3b2-bad8-4ae8-aa2b-374920acf9dc",
-            "search_engine_id": "a2e3a41e-0da4-4834-8ba8-d0b839bedad0",
+            "id": "c4b5d93c-138c-11e7-93ae-92361f002671",
+            "search_engine_id": "ee87e3b2-1388-11e7-93ae-92361f002671",
             "data_stream_id": null,
-            "name": "Test 2",
-            "created_at": "2017-03-07 13:20:33",
-            "updated_at": "2017-03-07 13:20:33"
-        },
-        {
-            "id": "bc68c186-be46-4208-bfaa-efb8c60e27e4",
-            "search_engine_id": "a2e3a41e-0da4-4834-8ba8-d0b839bedad0",
-            "data_stream_id": null,
-            "name": "test patch yep",
-            "created_at": "2017-03-15 15:24:35",
-            "updated_at": "2017-03-16 15:15:59"
+            "name": "Mickey Mouse Sample Project",
+            "created_at": "2017-03-28 14:46:13",
+            "updated_at": "2017-03-28 14:46:13"
         }
     ],
     "meta": {
         "pagination": {
-            "total": 4,
-            "count": 4,
+            "total": 3,
+            "count": 3,
             "per_page": 20,
             "current_page": 1,
             "total_pages": 1,
@@ -245,16 +236,7 @@ $.ajax(settings).done(function (response) {
 <blockquote>
 <p>Example response:</p>
 </blockquote>
-<pre><code class="language-json">{
-    "data": {
-        "id": "5486560d-8a90-40d4-ad74-9212cbc496a2",
-        "search_engine_id": "a2e3a41e-0da4-4834-8ba8-d0b839bedad0",
-        "data_stream_id": null,
-        "name": "Test project",
-        "created_at": "2017-03-06 14:21:57",
-        "updated_at": "2017-03-07 11:07:18"
-    }
-}</code></pre>
+<pre><code class="language-json">null</code></pre>
 <h3>HTTP Request</h3>
 <p><code>GET /api/project/{project}</code></p>
 <p><code>HEAD /api/project/{project}</code></p>
@@ -350,32 +332,32 @@ $.ajax(settings).done(function (response) {
 <pre><code class="language-json">{
     "data": [
         {
-            "id": "09e98027-5de6-4dd5-8b21-31aba76f7f7c",
-            "name": "John Smith",
-            "email": "john.smith@domain.tld",
-            "created_at": "2017-02-10 10:11:19",
-            "updated_at": "2017-02-10 10:11:19"
-        },
-        {
-            "id": "1be68e86-7a5e-4767-9b27-d25351300d21",
+            "id": "41abdec2-1389-11e7-93ae-92361f002671",
             "name": "John Doe",
             "email": "john.doe@domain.tld",
-            "created_at": "2017-02-10 10:11:19",
-            "updated_at": "2017-02-10 10:11:19"
+            "created_at": "2017-03-28 14:46:13",
+            "updated_at": "2017-03-28 14:46:13"
         },
         {
-            "id": "f13eb306-9f09-4ba4-8fb8-2ee330a73ba4",
+            "id": "509dd5c0-1389-11e7-93ae-92361f002671",
             "name": "Alan Smithee",
             "email": "alan.smithee@domain.tld",
-            "created_at": "2017-02-10 10:11:19",
-            "updated_at": "2017-02-10 10:11:19"
+            "created_at": "2017-03-28 14:46:13",
+            "updated_at": "2017-03-28 14:46:13"
         },
         {
-            "id": "f34b7b41-d128-4e55-8d9c-df5fcee7b490",
-            "name": "Ryan Gilles",
-            "email": "ryan@e-monsite.com",
-            "created_at": "2017-02-14 10:02:15",
-            "updated_at": "2017-02-15 10:52:29"
+            "id": "605c7610-1389-11e7-93ae-92361f002671",
+            "name": "John Smith",
+            "email": "john.smith@domain.tld",
+            "created_at": "2017-03-28 14:46:13",
+            "updated_at": "2017-03-28 14:46:13"
+        },
+        {
+            "id": "82b5da82-138c-11e7-93ae-92361f002671",
+            "name": "Mickey Mouse",
+            "email": "mickey.mouse@domain.tld",
+            "created_at": "2017-03-28 14:46:13",
+            "updated_at": "2017-03-28 14:46:13"
         }
     ],
     "meta": {
@@ -557,7 +539,6 @@ $.ajax(settings).done(function (response) {
                         <div class="lang-selector">
                                     <a href="#" data-language-name="bash">bash</a>
                                     <a href="#" data-language-name="javascript">javascript</a>
-                                    <a href="#" data-language-name="php">php</a>
                               </div>
                 </div>
     </div>
