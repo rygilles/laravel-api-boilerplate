@@ -29,7 +29,18 @@ return [
 			'outputPathBase' => realpath(base_path('public/docs/developer')),
 			'actAsUserId' => '41abdec2-1389-11e7-93ae-92361f002671',
 			'bindings' => [
-				// @todo
+
+				// John Smith Sample Project 1'
+				'projectId' => '1bcc7efc-138c-11e7-93ae-92361f002671',
+
+				// John Smith
+				'userId' => '605c7610-1389-11e7-93ae-92361f002671',
+
+				// Algolia
+				'search_engine_id' => 'ee87e3b2-1388-11e7-93ae-92361f002671',
+
+				'user_role_id' => 'Owner'
+
 			],
 			'routes' => [
 

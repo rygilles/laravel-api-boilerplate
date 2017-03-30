@@ -54,14 +54,17 @@
 <p>Example request:</p>
 </blockquote>
 <pre><code class="language-bash">curl -X GET "http://emsearch.ryan.ems-dev.net/api/me" \
--H "Accept: application/json"</code></pre>
+-H "Accept: application/json" \
+-H "Authentication: Bearer xxx"
+</code></pre>
 <pre><code class="language-javascript">var settings = {
     "async": true,
     "crossDomain": true,
-    "url": "http://emsearch.ryan.ems-dev.net//api/me",
+    "url": "http://emsearch.ryan.ems-dev.net/api/me",
     "method": "GET",
     "headers": {
-        "accept": "application/json"
+        "Accept": "application/json",
+        "Authentication" : "Bearer xxx"
     }
 }
 
@@ -74,6 +77,7 @@ $.ajax(settings).done(function (response) {
 <pre><code class="language-json">{
     "data": {
         "id": "41abdec2-1389-11e7-93ae-92361f002671",
+        "user_group_id": "Developer",
         "name": "John Doe",
         "email": "john.doe@domain.tld",
         "created_at": "2017-03-28 14:46:13",
@@ -91,14 +95,17 @@ $.ajax(settings).done(function (response) {
 <p>Example request:</p>
 </blockquote>
 <pre><code class="language-bash">curl -X GET "http://emsearch.ryan.ems-dev.net/api/project" \
--H "Accept: application/json"</code></pre>
+-H "Accept: application/json" \
+-H "Authentication: Bearer xxx"
+</code></pre>
 <pre><code class="language-javascript">var settings = {
     "async": true,
     "crossDomain": true,
-    "url": "http://emsearch.ryan.ems-dev.net//api/project",
+    "url": "http://emsearch.ryan.ems-dev.net/api/project",
     "method": "GET",
     "headers": {
-        "accept": "application/json"
+        "Accept": "application/json",
+        "Authentication" : "Bearer xxx"
     }
 }
 
@@ -150,6 +157,46 @@ $.ajax(settings).done(function (response) {
 <p><code>GET /api/project</code></p>
 <p><code>HEAD /api/project</code></p>
 <!-- END_0244828c4ebed3e3aa5d2acc7f432f35 -->
+<!-- START_4c7672d1d57bba818fcb5bc7dc53776e -->
+<h2>Get specified user project</h2>
+<blockquote>
+<p>Example request:</p>
+</blockquote>
+<pre><code class="language-bash">curl -X GET "http://emsearch.ryan.ems-dev.net/api/project/1bcc7efc-138c-11e7-93ae-92361f002671" \
+-H "Accept: application/json" \
+-H "Authentication: Bearer xxx"
+</code></pre>
+<pre><code class="language-javascript">var settings = {
+    "async": true,
+    "crossDomain": true,
+    "url": "http://emsearch.ryan.ems-dev.net/api/project/1bcc7efc-138c-11e7-93ae-92361f002671",
+    "method": "GET",
+    "headers": {
+        "Accept": "application/json",
+        "Authentication" : "Bearer xxx"
+    }
+}
+
+$.ajax(settings).done(function (response) {
+    console.log(response);
+});</code></pre>
+<blockquote>
+<p>Example response:</p>
+</blockquote>
+<pre><code class="language-json">{
+    "data": {
+        "id": "1bcc7efc-138c-11e7-93ae-92361f002671",
+        "search_engine_id": "ee87e3b2-1388-11e7-93ae-92361f002671",
+        "data_stream_id": null,
+        "name": "John Smith Sample Project 1",
+        "created_at": "2017-03-28 14:46:13",
+        "updated_at": "2017-03-28 14:46:13"
+    }
+}</code></pre>
+<h3>HTTP Request</h3>
+<p><code>GET /api/project/{projectId}</code></p>
+<p><code>HEAD /api/project/{projectId}</code></p>
+<!-- END_4c7672d1d57bba818fcb5bc7dc53776e -->
 <!-- START_f77a6ccd588d420cab2180c05580e7ef -->
 <h2>Create and store new project</h2>
 <blockquote>
@@ -157,22 +204,25 @@ $.ajax(settings).done(function (response) {
 </blockquote>
 <pre><code class="language-bash">curl -X POST "http://emsearch.ryan.ems-dev.net/api/project" \
 -H "Accept: application/json" \
-    -d "search_engine_id"="minus" \
-    -d "data_stream_id"="minus" \
-    -d "name"="minus" \
+-H "Authentication: Bearer xxx"
+ \
+    -d "search_engine_id"="8eaac145-e432-3632-ae6a-f83067af1e97" \
+    -d "data_stream_id"="ebd19e4d-36aa-3d80-9039-10c3525c835b" \
+    -d "name"="Cupiditate et veritatis" \
 </code></pre>
 <pre><code class="language-javascript">var settings = {
     "async": true,
     "crossDomain": true,
-    "url": "http://emsearch.ryan.ems-dev.net//api/project",
+    "url": "http://emsearch.ryan.ems-dev.net/api/project",
     "method": "POST",
     "data": {
-        "search_engine_id": "minus",
-        "data_stream_id": "minus",
-        "name": "minus"
+        "search_engine_id": "8eaac145-e432-3632-ae6a-f83067af1e97",
+        "data_stream_id": "ebd19e4d-36aa-3d80-9039-10c3525c835b",
+        "name": "Cupiditate et veritatis"
 },
     "headers": {
-        "accept": "application/json"
+        "Accept": "application/json",
+        "Authentication" : "Bearer xxx"
     }
 }
 
@@ -196,74 +246,49 @@ $.ajax(settings).done(function (response) {
 <td>search_engine_id</td>
 <td>string</td>
 <td>required</td>
-<td>Valid search_engine id</td>
+<td>UUID Valid search_engine id</td>
 </tr>
 <tr>
 <td>data_stream_id</td>
 <td>string</td>
 <td>optional</td>
-<td>Valid data_stream id</td>
+<td>UUID Valid data_stream id</td>
 </tr>
 <tr>
 <td>name</td>
 <td>string</td>
 <td>required</td>
-<td>Maximum: <code>100</code></td>
+<td>Minimum: <code>5</code> Maximum: <code>100</code></td>
 </tr>
 </tbody>
 </table>
 <!-- END_f77a6ccd588d420cab2180c05580e7ef -->
-<!-- START_48295e905557186718bbf92bca1f48e5 -->
-<h2>Get specified user project</h2>
-<blockquote>
-<p>Example request:</p>
-</blockquote>
-<pre><code class="language-bash">curl -X GET "http://emsearch.ryan.ems-dev.net/api/project/{project}" \
--H "Accept: application/json"</code></pre>
-<pre><code class="language-javascript">var settings = {
-    "async": true,
-    "crossDomain": true,
-    "url": "http://emsearch.ryan.ems-dev.net//api/project/{project}",
-    "method": "GET",
-    "headers": {
-        "accept": "application/json"
-    }
-}
-
-$.ajax(settings).done(function (response) {
-    console.log(response);
-});</code></pre>
-<blockquote>
-<p>Example response:</p>
-</blockquote>
-<pre><code class="language-json">null</code></pre>
-<h3>HTTP Request</h3>
-<p><code>GET /api/project/{project}</code></p>
-<p><code>HEAD /api/project/{project}</code></p>
-<!-- END_48295e905557186718bbf92bca1f48e5 -->
-<!-- START_4fbe95cf853ec486b09c7dd34f550fea -->
+<!-- START_3ab7c7860cd533c91de466d299bc9cff -->
 <h2>Update a specified user project</h2>
 <blockquote>
 <p>Example request:</p>
 </blockquote>
-<pre><code class="language-bash">curl -X PUT "http://emsearch.ryan.ems-dev.net/api/project/{project}" \
+<pre><code class="language-bash">curl -X PUT "http://emsearch.ryan.ems-dev.net/api/project/1bcc7efc-138c-11e7-93ae-92361f002671" \
 -H "Accept: application/json" \
-    -d "search_engine_id"="vel" \
-    -d "data_stream_id"="vel" \
-    -d "name"="vel" \
+-H "Authentication: Bearer xxx"
+ \
+    -d "search_engine_id"="6e1c6451-ef39-3784-9d9c-041cd0c0d680" \
+    -d "data_stream_id"="a31c2e95-6e3a-3329-8b2f-6f2e7e04faf2" \
+    -d "name"="In et et" \
 </code></pre>
 <pre><code class="language-javascript">var settings = {
     "async": true,
     "crossDomain": true,
-    "url": "http://emsearch.ryan.ems-dev.net//api/project/{project}",
+    "url": "http://emsearch.ryan.ems-dev.net/api/project/1bcc7efc-138c-11e7-93ae-92361f002671",
     "method": "PUT",
     "data": {
-        "search_engine_id": "vel",
-        "data_stream_id": "vel",
-        "name": "vel"
+        "search_engine_id": "6e1c6451-ef39-3784-9d9c-041cd0c0d680",
+        "data_stream_id": "a31c2e95-6e3a-3329-8b2f-6f2e7e04faf2",
+        "name": "In et et"
 },
     "headers": {
-        "accept": "application/json"
+        "Accept": "application/json",
+        "Authentication" : "Bearer xxx"
     }
 }
 
@@ -271,8 +296,8 @@ $.ajax(settings).done(function (response) {
     console.log(response);
 });</code></pre>
 <h3>HTTP Request</h3>
-<p><code>PUT /api/project/{project}</code></p>
-<p><code>PATCH /api/project/{project}</code></p>
+<p><code>PUT /api/project/{projectId}</code></p>
+<p><code>PATCH /api/project/{projectId}</code></p>
 <h4>Parameters</h4>
 <table>
 <thead>
@@ -288,23 +313,23 @@ $.ajax(settings).done(function (response) {
 <td>search_engine_id</td>
 <td>string</td>
 <td>required</td>
-<td>Valid search_engine id</td>
+<td>UUID Valid search_engine id</td>
 </tr>
 <tr>
 <td>data_stream_id</td>
 <td>string</td>
 <td>optional</td>
-<td>Valid data_stream id</td>
+<td>UUID Valid data_stream id</td>
 </tr>
 <tr>
 <td>name</td>
 <td>string</td>
 <td>required</td>
-<td>Maximum: <code>100</code></td>
+<td>Minimum: <code>5</code> Maximum: <code>100</code></td>
 </tr>
 </tbody>
 </table>
-<!-- END_4fbe95cf853ec486b09c7dd34f550fea -->
+<!-- END_3ab7c7860cd533c91de466d299bc9cff -->
 <h1>User</h1>
 <!-- START_79bbe09b8f53b0948351390dffb959af -->
 <h2>User list</h2>
@@ -312,14 +337,17 @@ $.ajax(settings).done(function (response) {
 <p>Example request:</p>
 </blockquote>
 <pre><code class="language-bash">curl -X GET "http://emsearch.ryan.ems-dev.net/api/user" \
--H "Accept: application/json"</code></pre>
+-H "Accept: application/json" \
+-H "Authentication: Bearer xxx"
+</code></pre>
 <pre><code class="language-javascript">var settings = {
     "async": true,
     "crossDomain": true,
-    "url": "http://emsearch.ryan.ems-dev.net//api/user",
+    "url": "http://emsearch.ryan.ems-dev.net/api/user",
     "method": "GET",
     "headers": {
-        "accept": "application/json"
+        "Accept": "application/json",
+        "Authentication" : "Bearer xxx"
     }
 }
 
@@ -333,6 +361,7 @@ $.ajax(settings).done(function (response) {
     "data": [
         {
             "id": "41abdec2-1389-11e7-93ae-92361f002671",
+            "user_group_id": "Developer",
             "name": "John Doe",
             "email": "john.doe@domain.tld",
             "created_at": "2017-03-28 14:46:13",
@@ -340,6 +369,7 @@ $.ajax(settings).done(function (response) {
         },
         {
             "id": "509dd5c0-1389-11e7-93ae-92361f002671",
+            "user_group_id": "Support",
             "name": "Alan Smithee",
             "email": "alan.smithee@domain.tld",
             "created_at": "2017-03-28 14:46:13",
@@ -347,6 +377,7 @@ $.ajax(settings).done(function (response) {
         },
         {
             "id": "605c7610-1389-11e7-93ae-92361f002671",
+            "user_group_id": "End-User",
             "name": "John Smith",
             "email": "john.smith@domain.tld",
             "created_at": "2017-03-28 14:46:13",
@@ -354,6 +385,7 @@ $.ajax(settings).done(function (response) {
         },
         {
             "id": "82b5da82-138c-11e7-93ae-92361f002671",
+            "user_group_id": "End-User",
             "name": "Mickey Mouse",
             "email": "mickey.mouse@domain.tld",
             "created_at": "2017-03-28 14:46:13",
@@ -375,20 +407,74 @@ $.ajax(settings).done(function (response) {
 <p><code>GET /api/user</code></p>
 <p><code>HEAD /api/user</code></p>
 <!-- END_79bbe09b8f53b0948351390dffb959af -->
+<!-- START_e6d1bae0d0740199d7d557e0b0e1d25f -->
+<h2>Get specified user</h2>
+<blockquote>
+<p>Example request:</p>
+</blockquote>
+<pre><code class="language-bash">curl -X GET "http://emsearch.ryan.ems-dev.net/api/user/605c7610-1389-11e7-93ae-92361f002671" \
+-H "Accept: application/json" \
+-H "Authentication: Bearer xxx"
+</code></pre>
+<pre><code class="language-javascript">var settings = {
+    "async": true,
+    "crossDomain": true,
+    "url": "http://emsearch.ryan.ems-dev.net/api/user/605c7610-1389-11e7-93ae-92361f002671",
+    "method": "GET",
+    "headers": {
+        "Accept": "application/json",
+        "Authentication" : "Bearer xxx"
+    }
+}
+
+$.ajax(settings).done(function (response) {
+    console.log(response);
+});</code></pre>
+<blockquote>
+<p>Example response:</p>
+</blockquote>
+<pre><code class="language-json">{
+    "data": {
+        "id": "605c7610-1389-11e7-93ae-92361f002671",
+        "user_group_id": "End-User",
+        "name": "John Smith",
+        "email": "john.smith@domain.tld",
+        "created_at": "2017-03-28 14:46:13",
+        "updated_at": "2017-03-28 14:46:13"
+    }
+}</code></pre>
+<h3>HTTP Request</h3>
+<p><code>GET /api/user/{userId}</code></p>
+<p><code>HEAD /api/user/{userId}</code></p>
+<!-- END_e6d1bae0d0740199d7d557e0b0e1d25f -->
 <!-- START_ddfe841311822ba91babd6d2eb588875 -->
 <h2>Create and store new user</h2>
 <blockquote>
 <p>Example request:</p>
 </blockquote>
 <pre><code class="language-bash">curl -X POST "http://emsearch.ryan.ems-dev.net/api/user" \
--H "Accept: application/json"</code></pre>
+-H "Accept: application/json" \
+-H "Authentication: Bearer xxx"
+ \
+    -d "user_group_id"="Nam vel repudiandae" \
+    -d "name"="Expedita dignissimos architecto" \
+    -d "email"="bruce.balistreri@example.net" \
+    -d "password"="1&amp;gt;VTViV0/p{Lg8+tOd}" \
+</code></pre>
 <pre><code class="language-javascript">var settings = {
     "async": true,
     "crossDomain": true,
-    "url": "http://emsearch.ryan.ems-dev.net//api/user",
+    "url": "http://emsearch.ryan.ems-dev.net/api/user",
     "method": "POST",
+    "data": {
+        "user_group_id": "Nam vel repudiandae",
+        "name": "Expedita dignissimos architecto",
+        "email": "bruce.balistreri@example.net",
+        "password": "1&gt;VTViV0\/p{Lg8+tOd}"
+},
     "headers": {
-        "accept": "application/json"
+        "Accept": "application/json",
+        "Authentication" : "Bearer xxx"
     }
 }
 
@@ -397,50 +483,63 @@ $.ajax(settings).done(function (response) {
 });</code></pre>
 <h3>HTTP Request</h3>
 <p><code>POST /api/user</code></p>
+<h4>Parameters</h4>
+<table>
+<thead>
+<tr>
+<th>Parameter</th>
+<th>Type</th>
+<th>Status</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>user_group_id</td>
+<td>string</td>
+<td>required</td>
+<td>Valid user_group id</td>
+</tr>
+<tr>
+<td>name</td>
+<td>string</td>
+<td>required</td>
+<td>Maximum: <code>255</code></td>
+</tr>
+<tr>
+<td>email</td>
+<td>email</td>
+<td>required</td>
+<td>Maximum: <code>255</code></td>
+</tr>
+<tr>
+<td>password</td>
+<td>string</td>
+<td>required</td>
+<td>Password with at least: <code>8</code> chars, <code>1</code> numeric, <code>1</code> uppercase and <code>1</code> lowercase</td>
+</tr>
+</tbody>
+</table>
 <!-- END_ddfe841311822ba91babd6d2eb588875 -->
-<!-- START_e6d1bae0d0740199d7d557e0b0e1d25f -->
-<h2>Get specified user</h2>
-<blockquote>
-<p>Example request:</p>
-</blockquote>
-<pre><code class="language-bash">curl -X GET "http://emsearch.ryan.ems-dev.net/api/user/{userId}" \
--H "Accept: application/json"</code></pre>
-<pre><code class="language-javascript">var settings = {
-    "async": true,
-    "crossDomain": true,
-    "url": "http://emsearch.ryan.ems-dev.net//api/user/{userId}",
-    "method": "GET",
-    "headers": {
-        "accept": "application/json"
-    }
-}
-
-$.ajax(settings).done(function (response) {
-    console.log(response);
-});</code></pre>
-<blockquote>
-<p>Example response:</p>
-</blockquote>
-<pre><code class="language-json">null</code></pre>
-<h3>HTTP Request</h3>
-<p><code>GET /api/user/{userId}</code></p>
-<p><code>HEAD /api/user/{userId}</code></p>
-<!-- END_e6d1bae0d0740199d7d557e0b0e1d25f -->
 <h1>User Project</h1>
 <!-- START_aa8a35d90f07e0338dcd98a913a63c76 -->
 <h2>User project list</h2>
+<p>You can specify a GET parameter <code>user_role_id</code> to filter results.</p>
 <blockquote>
 <p>Example request:</p>
 </blockquote>
-<pre><code class="language-bash">curl -X GET "http://emsearch.ryan.ems-dev.net/api/user/{userId}/project" \
--H "Accept: application/json"</code></pre>
+<pre><code class="language-bash">curl -X GET "http://emsearch.ryan.ems-dev.net/api/user/605c7610-1389-11e7-93ae-92361f002671/project?user_role_id=Owner" \
+-H "Accept: application/json" \
+-H "Authentication: Bearer xxx"
+</code></pre>
 <pre><code class="language-javascript">var settings = {
     "async": true,
     "crossDomain": true,
-    "url": "http://emsearch.ryan.ems-dev.net//api/user/{userId}/project",
+    "url": "http://emsearch.ryan.ems-dev.net/api/user/605c7610-1389-11e7-93ae-92361f002671/project?user_role_id=Owner",
     "method": "GET",
     "headers": {
-        "accept": "application/json"
+        "Accept": "application/json",
+        "Authentication" : "Bearer xxx"
     }
 }
 
@@ -450,25 +549,76 @@ $.ajax(settings).done(function (response) {
 <blockquote>
 <p>Example response:</p>
 </blockquote>
-<pre><code class="language-json">null</code></pre>
+<pre><code class="language-json">{
+    "data": [
+        {
+            "id": "1bcc7efc-138c-11e7-93ae-92361f002671",
+            "search_engine_id": "ee87e3b2-1388-11e7-93ae-92361f002671",
+            "data_stream_id": null,
+            "name": "John Smith Sample Project 1",
+            "created_at": "2017-03-28 14:46:13",
+            "updated_at": "2017-03-28 14:46:13"
+        },
+        {
+            "id": "b6860dd2-138c-11e7-93ae-92361f002671",
+            "search_engine_id": "ee87e3b2-1388-11e7-93ae-92361f002671",
+            "data_stream_id": null,
+            "name": "John Smith Sample Project 2",
+            "created_at": "2017-03-28 14:46:13",
+            "updated_at": "2017-03-28 14:46:13"
+        }
+    ],
+    "meta": {
+        "pagination": {
+            "total": 2,
+            "count": 2,
+            "per_page": 20,
+            "current_page": 1,
+            "total_pages": 1,
+            "links": []
+        }
+    }
+}</code></pre>
 <h3>HTTP Request</h3>
 <p><code>GET /api/user/{userId}/project</code></p>
 <p><code>HEAD /api/user/{userId}/project</code></p>
+<h4>Parameters</h4>
+<table>
+<thead>
+<tr>
+<th>Parameter</th>
+<th>Type</th>
+<th>Status</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>user_role_id</td>
+<td>string</td>
+<td>optional</td>
+<td>Valid user_role id <code>Owner</code> or <code>Administrator</code></td>
+</tr>
+</tbody>
+</table>
 <!-- END_aa8a35d90f07e0338dcd98a913a63c76 -->
 <!-- START_28964cc27ab9afa6ce7f99c0bf0dc46b -->
 <h2>Get specified user project</h2>
 <blockquote>
 <p>Example request:</p>
 </blockquote>
-<pre><code class="language-bash">curl -X GET "http://emsearch.ryan.ems-dev.net/api/user/{userId}/project/{projectId}" \
--H "Accept: application/json"</code></pre>
+<pre><code class="language-bash">curl -X GET "http://emsearch.ryan.ems-dev.net/api/user/605c7610-1389-11e7-93ae-92361f002671/project/1bcc7efc-138c-11e7-93ae-92361f002671" \
+-H "Accept: application/json" \
+-H "Authentication: Bearer xxx"
+</code></pre>
 <pre><code class="language-javascript">var settings = {
     "async": true,
     "crossDomain": true,
-    "url": "http://emsearch.ryan.ems-dev.net//api/user/{userId}/project/{projectId}",
+    "url": "http://emsearch.ryan.ems-dev.net/api/user/605c7610-1389-11e7-93ae-92361f002671/project/1bcc7efc-138c-11e7-93ae-92361f002671",
     "method": "GET",
     "headers": {
-        "accept": "application/json"
+        "Accept": "application/json",
+        "Authentication" : "Bearer xxx"
     }
 }
 
@@ -478,7 +628,16 @@ $.ajax(settings).done(function (response) {
 <blockquote>
 <p>Example response:</p>
 </blockquote>
-<pre><code class="language-json">null</code></pre>
+<pre><code class="language-json">{
+    "data": {
+        "id": "1bcc7efc-138c-11e7-93ae-92361f002671",
+        "search_engine_id": "ee87e3b2-1388-11e7-93ae-92361f002671",
+        "data_stream_id": null,
+        "name": "John Smith Sample Project 1",
+        "created_at": "2017-03-28 14:46:13",
+        "updated_at": "2017-03-28 14:46:13"
+    }
+}</code></pre>
 <h3>HTTP Request</h3>
 <p><code>GET /api/user/{userId}/project/{projectId}</code></p>
 <p><code>HEAD /api/user/{userId}/project/{projectId}</code></p>

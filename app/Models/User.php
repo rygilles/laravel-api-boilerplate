@@ -67,26 +67,72 @@ class User extends ApiModel implements AuthenticatableContract,	AuthorizableCont
 	protected $perPageMax = 50;
 
 	/**
-	 * Model validation rules
-	 *
-	 * Passwords need one uppercase/lowercase and one number at least (RegEx)
-	 *
-	 * @var array
+	 * Model validation rules for new items
+	 * @var string[]
 	 */
-	protected static $rules = [
-		'name'      => 'required|string|max:255',
-		'email'     => 'required|email|max:255|unique:user',
-		'password'  => 'required|min:6|uppercase_min:1|lowercase_min:1|numeric_min:1'
+	protected static $storeRules = [
+		'user_group_id' => 'required|exists:user_group,id',
+		'name'          => 'required|string|max:255',
+		'email'         => 'required|email|max:255|unique:user',
+		'password'      => 'required|strength'
 	];
 
 	/**
-	 * Get model  validation rules
-	 *
-	 * @return array
+	 * Model validation rules for item patch
+	 * @var string[]
+	 */
+	protected static $patchRules = [
+		'user_group_id' => 'exists:user_group,id',
+		'name'          => 'string|max:255',
+		'email'         => 'email|max:255|unique:user',
+		'password'      => 'strength'
+	];
+
+	/**
+	 * Model validation rules for item replacement
+	 * @var string[]
+	 */
+	protected static $putRules = [
+		'user_group_id' => 'required|exists:user_group,id',
+		'name'          => 'required|string|max:255',
+		'email'         => 'required|email|max:255|unique:user',
+		'password'      => 'required|strength'
+	];
+
+	/**
+	 * Model default validation rules
+	 * @return string[]
 	 */
 	public static function getRules()
 	{
-		return self::$rules;
+		return self::getStoreRules();
+	}
+
+	/**
+	 * Get model validation rules for new items
+	 * @return string[]
+	 */
+	public static function getStoreRules()
+	{
+		return self::$storeRules;
+	}
+
+	/**
+	 * Get model validation rules for item patch
+	 * @return string[]
+	 */
+	public static function getPatchRules()
+	{
+		return self::$patchRules;
+	}
+
+	/**
+	 * Get model validation rules for item replacement
+	 * @return string[]
+	 */
+	public static function getPutRules()
+	{
+		return self::$putRules;
 	}
 
 	/**

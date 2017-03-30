@@ -32,37 +32,6 @@ class I18nLangController extends ApiController
 	 *
 	 * @param Request $request
 	 * @return \Dingo\Api\Http\Response
-	 * @Get(uri="/{?page,limit}")
-	 * @Parameters({
-	 *      @Parameter("page", description="The page of results to view.", default=1),
-	 *      @Parameter("limit", description="The amount of results per page.", default=20)
-	 * })
-	 * @Request(headers={"Authorization": "Bearer xxx"})
-	 * @Response(200, body={
-	 *      "data": {
-	 *          {
-	 *              "id": "fr_FR",
-	 *              "description": "French (France)"
-	 *          },
-	 *          {
-	 *              "id": "en_US",
-	 *              "description": "English (United States)"
-	 *          }
-	 *      },
-	 *      "meta": {
-	 *          "pagination": {
-	 *              "total": 12,
-	 *                "count": 2,
-	 *                "per_page": 2,
-	 *                "current_page": 3,
-	 *                "total_pages": 6,
-	 *                "links": {
-	 *                  "previous": "https://domain.tld/api/user?page=2&limit=2",
-	 *                  "next": "https://domain.tld/api/user?page=4&limit=2"
-	 *              }
-	 *          }
-	 *      }
-	 * })
 	 */
 	public function index(Request $request)
 	{
@@ -76,18 +45,6 @@ class I18nLangController extends ApiController
 	 *
 	 * @param $i18nLangId int User UUID
 	 * @return \Dingo\Api\Http\Response|void
-	 *
-	 * @Get(uri="/{i18nLangId}")
-	 * @Parameters({
-	 *      @Parameter("i18nLangId", type="string", required=true, description="I18n Lang ID"),
-	 * })
-	 * @Request(headers={"Authorization": "Bearer xxx"})
-	 * @Response(200, body={
-	 *      "data": {
-	 *          "id": "ar_EG",
-	 *          "description": "Arabic (Egypt)"
-	 *      }
-	 * })
 	 */
 	public function show($i18nLangId)
 	{
@@ -105,15 +62,6 @@ class I18nLangController extends ApiController
 	 * @param Request $request
 	 * @return \Dingo\Api\Http\Response|void
 	 * @throws ValidationHttpException
-	 *
-	 * @Post("/")
-	 * @Request({"id": "foo", "description": "bar"}),
-	 * @Response(201, body={
-	 *      "user": {
-	 *        "id": "foo",
-	 *        "description": "bar"
-	 *      }
-	 * })
 	 */
 	public function store(Request $request)
 	{
@@ -137,19 +85,6 @@ class I18nLangController extends ApiController
 	 * @param Request $request
 	 * @param $i18nLangId int User UUID
 	 * @return \Dingo\Api\Http\Response|void
-	 *
-	 * @Put(uri="/{i18nLangId}")
-	 * @Patch(uri="/{i18nLangId}")
-	 * @Parameters({
-	 *      @Parameter("i18nLangId", type="string", required=true, description="I18n Lang ID"),
-	 * })
-	 * @Request({"id": "foo", "description": "bar"}),
-	 * @Response(201, body={
-	 *      "user": {
-	 *        "id": "foo",
-	 *        "description": "bar"
-	 *      }
-	 * })
 	 */
 	public function update(Request $request, $i18nLangId)
 	{

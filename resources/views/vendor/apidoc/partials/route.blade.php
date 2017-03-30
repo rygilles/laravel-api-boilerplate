@@ -10,8 +10,13 @@
 > Example request:
 
 ```bash
-curl -X {{$parsedRoute['methods'][0]}} "{{config('app.url')}}{{$parsedRoute['uri']}}" \
--H "Accept: application/json"@if(count($parsedRoute['parameters'])) \
+curl -X {{$parsedRoute['methods'][0]}} "{{config('app.url')}}{{$parsedRoute['bindedUri']}}@if($parsedRoute['methods'][0] == 'GET' && count($parsedRoute['parameters']))
+@foreach($parsedRoute['parameters'] as $attribute => $parameter)
+@if($loop->first)?@endif{{$attribute}}={{$parameter['value']}}@endforeach
+@endif" \
+-H "Accept: application/json" \
+-H "Authentication: Bearer xxx"
+@if(count($parsedRoute['parameters']) && $parsedRoute['methods'][0] != 'GET') \
 @foreach($parsedRoute['parameters'] as $attribute => $parameter)
     -d "{{$attribute}}"="{{$parameter['value']}}" \
 @endforeach
@@ -23,13 +28,17 @@ curl -X {{$parsedRoute['methods'][0]}} "{{config('app.url')}}{{$parsedRoute['uri
 var settings = {
     "async": true,
     "crossDomain": true,
-    "url": "{{config('app.url')}}/{{$parsedRoute['uri']}}",
+    "url": "{{config('app.url')}}{{$parsedRoute['bindedUri']}}@if($parsedRoute['methods'][0] == 'GET' && count($parsedRoute['parameters']))
+@foreach($parsedRoute['parameters'] as $attribute => $parameter)
+@if($loop->first)?@endif{{$attribute}}={{$parameter['value']}}@endforeach
+@endif",
     "method": "{{$parsedRoute['methods'][0]}}",
-    @if(count($parsedRoute['parameters']))
+    @if(count($parsedRoute['parameters']) && $parsedRoute['methods'][0] != 'GET')
 "data": {!! str_replace('    ','        ',json_encode(array_combine(array_keys($parsedRoute['parameters']), array_map(function($param){ return $param['value']; },$parsedRoute['parameters'])), JSON_PRETTY_PRINT)) !!},
     @endif
 "headers": {
-        "accept": "application/json"
+        "Accept": "application/json",
+        "Authentication" : "Bearer xxx"
     }
 }
 

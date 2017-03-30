@@ -74,6 +74,7 @@ $.ajax(settings).done(function (response) {
 <pre><code class="language-json">{
     "data": {
         "id": "605c7610-1389-11e7-93ae-92361f002671",
+        "user_group_id": "End-User",
         "name": "John Smith",
         "email": "john.smith@domain.tld",
         "created_at": "2017-03-28 14:46:13",
@@ -85,6 +86,34 @@ $.ajax(settings).done(function (response) {
 <p><code>HEAD /api/me</code></p>
 <!-- END_01138559f486b5b7c062a19b1c0412fe -->
 <h1>Project</h1>
+<!-- START_4c7672d1d57bba818fcb5bc7dc53776e -->
+<h2>Get specified user project</h2>
+<blockquote>
+<p>Example request:</p>
+</blockquote>
+<pre><code class="language-bash">curl -X GET "http://emsearch.ryan.ems-dev.net/api/project/{projectId}" \
+-H "Accept: application/json"</code></pre>
+<pre><code class="language-javascript">var settings = {
+    "async": true,
+    "crossDomain": true,
+    "url": "http://emsearch.ryan.ems-dev.net//api/project/{projectId}",
+    "method": "GET",
+    "headers": {
+        "accept": "application/json"
+    }
+}
+
+$.ajax(settings).done(function (response) {
+    console.log(response);
+});</code></pre>
+<blockquote>
+<p>Example response:</p>
+</blockquote>
+<pre><code class="language-json">null</code></pre>
+<h3>HTTP Request</h3>
+<p><code>GET /api/project/{projectId}</code></p>
+<p><code>HEAD /api/project/{projectId}</code></p>
+<!-- END_4c7672d1d57bba818fcb5bc7dc53776e -->
 <!-- START_f77a6ccd588d420cab2180c05580e7ef -->
 <h2>Create and store new project</h2>
 <blockquote>
@@ -148,54 +177,26 @@ $.ajax(settings).done(function (response) {
 </tbody>
 </table>
 <!-- END_f77a6ccd588d420cab2180c05580e7ef -->
-<!-- START_48295e905557186718bbf92bca1f48e5 -->
-<h2>Get specified user project</h2>
-<blockquote>
-<p>Example request:</p>
-</blockquote>
-<pre><code class="language-bash">curl -X GET "http://emsearch.ryan.ems-dev.net/api/project/{project}" \
--H "Accept: application/json"</code></pre>
-<pre><code class="language-javascript">var settings = {
-    "async": true,
-    "crossDomain": true,
-    "url": "http://emsearch.ryan.ems-dev.net//api/project/{project}",
-    "method": "GET",
-    "headers": {
-        "accept": "application/json"
-    }
-}
-
-$.ajax(settings).done(function (response) {
-    console.log(response);
-});</code></pre>
-<blockquote>
-<p>Example response:</p>
-</blockquote>
-<pre><code class="language-json">null</code></pre>
-<h3>HTTP Request</h3>
-<p><code>GET /api/project/{project}</code></p>
-<p><code>HEAD /api/project/{project}</code></p>
-<!-- END_48295e905557186718bbf92bca1f48e5 -->
-<!-- START_4fbe95cf853ec486b09c7dd34f550fea -->
+<!-- START_3ab7c7860cd533c91de466d299bc9cff -->
 <h2>Update a specified user project</h2>
 <blockquote>
 <p>Example request:</p>
 </blockquote>
-<pre><code class="language-bash">curl -X PUT "http://emsearch.ryan.ems-dev.net/api/project/{project}" \
+<pre><code class="language-bash">curl -X PUT "http://emsearch.ryan.ems-dev.net/api/project/{projectId}" \
 -H "Accept: application/json" \
-    -d "search_engine_id"="vel" \
-    -d "data_stream_id"="vel" \
-    -d "name"="vel" \
+    -d "search_engine_id"="ipsam" \
+    -d "data_stream_id"="ipsam" \
+    -d "name"="ipsam" \
 </code></pre>
 <pre><code class="language-javascript">var settings = {
     "async": true,
     "crossDomain": true,
-    "url": "http://emsearch.ryan.ems-dev.net//api/project/{project}",
+    "url": "http://emsearch.ryan.ems-dev.net//api/project/{projectId}",
     "method": "PUT",
     "data": {
-        "search_engine_id": "vel",
-        "data_stream_id": "vel",
-        "name": "vel"
+        "search_engine_id": "ipsam",
+        "data_stream_id": "ipsam",
+        "name": "ipsam"
 },
     "headers": {
         "accept": "application/json"
@@ -206,8 +207,8 @@ $.ajax(settings).done(function (response) {
     console.log(response);
 });</code></pre>
 <h3>HTTP Request</h3>
-<p><code>PUT /api/project/{project}</code></p>
-<p><code>PATCH /api/project/{project}</code></p>
+<p><code>PUT /api/project/{projectId}</code></p>
+<p><code>PATCH /api/project/{projectId}</code></p>
 <h4>Parameters</h4>
 <table>
 <thead>
@@ -239,7 +240,7 @@ $.ajax(settings).done(function (response) {
 </tr>
 </tbody>
 </table>
-<!-- END_4fbe95cf853ec486b09c7dd34f550fea -->
+<!-- END_3ab7c7860cd533c91de466d299bc9cff -->
 <h1>User Project</h1>
 <!-- START_aa8a35d90f07e0338dcd98a913a63c76 -->
 <h2>User project list</h2>

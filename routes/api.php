@@ -17,11 +17,31 @@ $api = app('Dingo\Api\Routing\Router');
 
 $api->version('v1', ['middleware' => ['cors', 'auth:api']], function (Router $api) {
 
+	// Me
+
 	$api->get(
 		'me',
 		'App\Http\Controllers\Api\MeController@index'
 	)->name('me.index');
 
+	// User
+
+	$api->get(
+		'user',
+		'App\Http\Controllers\Api\UserController@index'
+	)->name('user.index');
+
+	$api->get(
+		'user/{userId}',
+		'App\Http\Controllers\Api\UserController@show'
+	)->name('user.show');
+
+	$api->post(
+		'user',
+		'App\Http\Controllers\Api\UserController@store'
+	)->name('user.store');
+
+	/*
 	$api->resource(
 		'user',
 		'App\Http\Controllers\Api\UserController',
@@ -30,6 +50,9 @@ $api->version('v1', ['middleware' => ['cors', 'auth:api']], function (Router $ap
 			'parameters' => ['user' => 'userId']
 		]
 	);
+	*/
+
+	// User Project
 
 	$api->get(
 		'user/{userId}/project',
@@ -41,6 +64,30 @@ $api->version('v1', ['middleware' => ['cors', 'auth:api']], function (Router $ap
 		'App\Http\Controllers\Api\UserProjectController@show'
 	)->name('userProject.show');
 
+	// Project
+
+	$api->get(
+		'project',
+		'App\Http\Controllers\Api\ProjectController@index'
+	)->name('project.index');
+
+	$api->get(
+		'project/{projectId}',
+		'App\Http\Controllers\Api\ProjectController@show'
+	)->name('project.show');
+
+	$api->post(
+		'project',
+		'App\Http\Controllers\Api\ProjectController@store'
+	)->name('project.store');
+
+	$api->match(
+		['put', 'patch'],
+		'project/{projectId}',
+		'App\Http\Controllers\Api\ProjectController@update'
+	)->name('project.update');
+
+	/*
 	$api->resource(
 		'project',
 		'App\Http\Controllers\Api\ProjectController',
@@ -49,4 +96,6 @@ $api->version('v1', ['middleware' => ['cors', 'auth:api']], function (Router $ap
 			'parameters' => ['project' => 'projectId']
 		]
 	);
+	*/
+	
 });

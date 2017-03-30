@@ -3,30 +3,10 @@
 namespace App\Http\Requests;
 
 use Dingo\Api\Http\FormRequest;
-use Symfony\Component\HttpKernel\Exception\HttpException;
+use App\Models\Project;
 
 class UpdateProjectRequest extends FormRequest
 {
-    /**
-     * Model validation rules for item patch
-     * @var array
-     */
-    protected static $patchRules = [
-        'search_engine_id'  => 'exists:search_engine,id',
-        'data_stream_id'    => 'exists:data_stream,id',
-        'name'              => 'string|max:100'
-    ];
-
-    /**
-     * Model validation rules for item replacement
-     * @var array
-     */
-    protected static $putRules = [
-        'search_engine_id'  => 'required|exists:search_engine,id',
-        'data_stream_id'    => 'exists:data_stream,id',
-        'name'              => 'required|string|max:100'
-    ];
-
     /**
      * Determine if the user is authorized to make this request.
      *
@@ -45,13 +25,12 @@ class UpdateProjectRequest extends FormRequest
     public function rules()
     {
 	    if ($this->isMethod('PATCH')) {
-		    return self::$patchRules;
+		    return Project::getPatchRules();
 	    } elseif ($this->isMethod('PUT')) {
-		    return self::$putRules;
+		    return Project::getPutRules();
 	    } else {
 		    // @fixme Api documentation generator method "GET" for update... return PUT method rules
-		    // dd($this);
-		    return self::$putRules;
+		    return Project::getPutRules();
 	    }
     }
 }

@@ -17,6 +17,7 @@ class UserTransformer extends TransformerAbstract
 	{
 		return [
 			'id'            => $user->id,
+			'user_group_id' => $user->user_group_id,
 			'name'          => $user->name,
 			'email'         => $user->email,
 			'created_at'    => $user->created_at->toDateTimeString(),

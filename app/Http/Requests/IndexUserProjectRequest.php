@@ -3,9 +3,8 @@
 namespace App\Http\Requests;
 
 use Dingo\Api\Http\FormRequest;
-use App\Models\Project;
 
-class StoreProjectRequest extends FormRequest
+class IndexUserProjectRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -24,6 +23,8 @@ class StoreProjectRequest extends FormRequest
      */
     public function rules()
     {
-        return Project::getStoreRules();
+        return [
+            'user_role_id' => 'exists:user_role,id|in:Owner,Administrator'
+        ];
     }
 }

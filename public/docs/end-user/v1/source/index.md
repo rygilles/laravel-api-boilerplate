@@ -57,6 +57,7 @@ $.ajax(settings).done(function (response) {
 {
     "data": {
         "id": "605c7610-1389-11e7-93ae-92361f002671",
+        "user_group_id": "End-User",
         "name": "John Smith",
         "email": "john.smith@domain.tld",
         "created_at": "2017-03-28 14:46:13",
@@ -74,6 +75,46 @@ $.ajax(settings).done(function (response) {
 <!-- END_01138559f486b5b7c062a19b1c0412fe -->
 
 #Project
+<!-- START_4c7672d1d57bba818fcb5bc7dc53776e -->
+## Get specified user project
+
+> Example request:
+
+```bash
+curl -X GET "http://emsearch.ryan.ems-dev.net/api/project/{projectId}" \
+-H "Accept: application/json"
+```
+
+```javascript
+var settings = {
+    "async": true,
+    "crossDomain": true,
+    "url": "http://emsearch.ryan.ems-dev.net//api/project/{projectId}",
+    "method": "GET",
+    "headers": {
+        "accept": "application/json"
+    }
+}
+
+$.ajax(settings).done(function (response) {
+    console.log(response);
+});
+```
+
+> Example response:
+
+```json
+null
+```
+
+### HTTP Request
+`GET /api/project/{projectId}`
+
+`HEAD /api/project/{projectId}`
+
+
+<!-- END_4c7672d1d57bba818fcb5bc7dc53776e -->
+
 <!-- START_f77a6ccd588d420cab2180c05580e7ef -->
 ## Create and store new project
 
@@ -123,57 +164,17 @@ Parameter | Type | Status | Description
 
 <!-- END_f77a6ccd588d420cab2180c05580e7ef -->
 
-<!-- START_48295e905557186718bbf92bca1f48e5 -->
-## Get specified user project
-
-> Example request:
-
-```bash
-curl -X GET "http://emsearch.ryan.ems-dev.net/api/project/{project}" \
--H "Accept: application/json"
-```
-
-```javascript
-var settings = {
-    "async": true,
-    "crossDomain": true,
-    "url": "http://emsearch.ryan.ems-dev.net//api/project/{project}",
-    "method": "GET",
-    "headers": {
-        "accept": "application/json"
-    }
-}
-
-$.ajax(settings).done(function (response) {
-    console.log(response);
-});
-```
-
-> Example response:
-
-```json
-null
-```
-
-### HTTP Request
-`GET /api/project/{project}`
-
-`HEAD /api/project/{project}`
-
-
-<!-- END_48295e905557186718bbf92bca1f48e5 -->
-
-<!-- START_4fbe95cf853ec486b09c7dd34f550fea -->
+<!-- START_3ab7c7860cd533c91de466d299bc9cff -->
 ## Update a specified user project
 
 > Example request:
 
 ```bash
-curl -X PUT "http://emsearch.ryan.ems-dev.net/api/project/{project}" \
+curl -X PUT "http://emsearch.ryan.ems-dev.net/api/project/{projectId}" \
 -H "Accept: application/json" \
-    -d "search_engine_id"="vel" \
-    -d "data_stream_id"="vel" \
-    -d "name"="vel" \
+    -d "search_engine_id"="ipsam" \
+    -d "data_stream_id"="ipsam" \
+    -d "name"="ipsam" \
 
 ```
 
@@ -181,12 +182,12 @@ curl -X PUT "http://emsearch.ryan.ems-dev.net/api/project/{project}" \
 var settings = {
     "async": true,
     "crossDomain": true,
-    "url": "http://emsearch.ryan.ems-dev.net//api/project/{project}",
+    "url": "http://emsearch.ryan.ems-dev.net//api/project/{projectId}",
     "method": "PUT",
     "data": {
-        "search_engine_id": "vel",
-        "data_stream_id": "vel",
-        "name": "vel"
+        "search_engine_id": "ipsam",
+        "data_stream_id": "ipsam",
+        "name": "ipsam"
 },
     "headers": {
         "accept": "application/json"
@@ -200,9 +201,9 @@ $.ajax(settings).done(function (response) {
 
 
 ### HTTP Request
-`PUT /api/project/{project}`
+`PUT /api/project/{projectId}`
 
-`PATCH /api/project/{project}`
+`PATCH /api/project/{projectId}`
 
 #### Parameters
 
@@ -212,7 +213,7 @@ Parameter | Type | Status | Description
     data_stream_id | string |  optional  | Valid data_stream id
     name | string |  required  | Maximum: `100`
 
-<!-- END_4fbe95cf853ec486b09c7dd34f550fea -->
+<!-- END_3ab7c7860cd533c91de466d299bc9cff -->
 
 #User Project
 <!-- START_aa8a35d90f07e0338dcd98a913a63c76 -->

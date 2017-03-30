@@ -67,36 +67,36 @@ class Project extends ApiModel
 
 	/**
 	 * Model validation rules for new items
-	 * @var array
+	 * @var string[]
 	 */
 	protected static $storeRules = [
-		'search_engine_id'  => 'required|exists:search_engine,id',
-		'data_stream_id'    => 'exists:data_stream,id',
-		'name'              => 'required|string|max:100'
+		'search_engine_id'  => 'required|uuid|exists:search_engine,id',
+		'data_stream_id'    => 'uuid|exists:data_stream,id',
+		'name'              => 'required|string|min:5|max:100'
 	];
 
 	/**
 	 * Model validation rules for item patch
-	 * @var array
+	 * @var string[]
 	 */
 	protected static $patchRules = [
-		'search_engine_id'  => 'exists:search_engine,id',
-		'data_stream_id'    => 'exists:data_stream,id',
-		'name'              => 'string|max:100'
+		'search_engine_id'  => 'uuid|exists:search_engine,id',
+		'data_stream_id'    => 'uuid|exists:data_stream,id',
+		'name'              => 'string|min:5|max:100'
 	];
 
 	/**
 	 * Model validation rules for item replacement
-	 * @var array
+	 * @var string[]
 	 */
 	protected static $putRules = [
-		'search_engine_id'  => 'required|exists:search_engine,id',
-		'data_stream_id'    => 'exists:data_stream,id',
-		'name'              => 'required|string|max:100'
+		'search_engine_id'  => 'required|uuid|exists:search_engine,id',
+		'data_stream_id'    => 'uuid|exists:data_stream,id',
+		'name'              => 'required|string|min:5|max:100'
 	];
 
 	/**
-	 * Model default validation rules (Used with laravel-apidoc-generator package to generate resources parameters list)
+	 * Model default validation rules
 	 * @return string[]
 	 */
 	public function rules()
@@ -106,7 +106,7 @@ class Project extends ApiModel
 
 	/**
 	 * Get model validation rules for new items
-	 * @return array
+	 * @return string[]
 	 */
 	public static function getStoreRules()
 	{
@@ -115,7 +115,7 @@ class Project extends ApiModel
 
 	/**
 	 * Get model validation rules for item patch
-	 * @return array
+	 * @return string[]
 	 */
 	public static function getPatchRules()
 	{
@@ -124,7 +124,7 @@ class Project extends ApiModel
 
 	/**
 	 * Get model validation rules for item replacement
-	 * @return array
+	 * @return string[]
 	 */
 	public static function getPutRules()
 	{

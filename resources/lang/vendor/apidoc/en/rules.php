@@ -31,4 +31,6 @@ return [
     'timezone' => 'Must be a valid timezone identifier',
     'exists' => 'Valid :attribute :attribute',
     'regex' => 'Must match this regular expression: `:attribute`',
+	'uuid' => 'UUID',
+	'strength' => 'Password with at least: `8` chars, `1` numeric, `1` uppercase and `1` lowercase',
 ];

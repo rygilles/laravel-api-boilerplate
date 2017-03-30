@@ -70,10 +70,12 @@ class GenerateApiDocs extends Command
 	    }
 	    $bindingsArgument = rtrim($bindingsArgument, '|');
 
+	    $routesPreview = implode(', ', $profile['routes']);
+
 	    $this->info('This script will generate the documentation using this parameters :');
 
 	    $this->info('Output path : ' . $outputPath);
-	    $this->info('Routes : ' . ($profile['routes'] ? implode(', ', $profile['routes']) : 'Not specified'));
+	    $this->info('Routes : ' . ($routesPreview ? $routesPreview : 'Not specified'));
 	    $this->info('Act as User ID : ' . $profile['actAsUserId']);
 	    $this->info('Bindings : ' . ($bindingsArgument ? $bindingsArgument : 'Not specified'));
 
@@ -84,11 +86,12 @@ class GenerateApiDocs extends Command
 			    '--router' => 'dingo',
 			    '--routePrefix' => $routePrefix,
 			    '--output' => $outputPath,
-			    '--actAsUserId' => $profile['actAsUserId']
+			    '--actAsUserId' => $profile['actAsUserId'],
+			    '--force' => ''
 		    ];
 
 		    if ($profile['bindings']) {
-			    $commandParameters['--bindings'] = $profile['bindings'];
+			    $commandParameters['--bindings'] = $bindingsArgument;
 		    }
 
 		    if ($profile['routes']) {
