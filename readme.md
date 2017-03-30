@@ -1,5 +1,6 @@
 ![logo.png](https://bitbucket.org/repo/KrMXBpk/images/1444268910-logo.png)
 ## Laravel based web application ##
+
 ### Dev VM links : ###
 
 - Front entry point : [http://emsearch.ryan.ems-dev.net](http://emsearch.ryan.ems-dev.net/)
@@ -11,15 +12,16 @@
 
 ### Database ###
 
-This application use InnoDB tables for foreign keys constraint support and utf8mb4_unicode_ci encoding for modern chars support (including emoji)
+This application use InnoDB tables for foreign keys constraint support and utf8mb4_unicode_ci encoding for modern chars support (including emoji).
 
-It also use UUID (128 bits)
+It also use UUID (128 bits).
 
 #### Samples Data ####
 
 An Artisan command (See below) can supply your database with samples data for users, projects, etc, for testing and documentation generation purpose.
 
-**Check `database/seeds/Samples` folder for more information**
+Check `database/seeds/Samples` folder for more information.
+
 
 | User ID                              | User Group ID | Name         | Email                   | Password    |
 |--------------------------------------|---------------|--------------|-------------------------|-------------|
@@ -45,7 +47,7 @@ php artisan app:reset
 This command will reset all your database data and (optionally)
 seed your app with samples data.
 
-
+ 
 ```bash
 php artisan app:generateApiDocs
 ```
