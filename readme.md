@@ -1,7 +1,8 @@
-![logo.png](https://bitbucket.org/repo/KrMXBpk/images/1444268910-logo.png)
-# Laravel based web application #
+#![logo.png](https://bitbucket.org/repo/KrMXBpk/images/1444268910-logo.png)#
 
-## Dev VM links : ##
+**Laravel based web application**
+
+## Dev VM links ##
 
 - Front entry point : [http://emsearch.ryan.ems-dev.net](http://emsearch.ryan.ems-dev.net/)
 - API entry point : [http://emsearch.ryan.ems-dev.net/api](http://emsearch.ryan.ems-dev.net/api/)
