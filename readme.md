@@ -20,11 +20,11 @@ It also use UUID (128 bits).
 
 An Artisan command (See below) can supply your database with samples data for users, projects, etc, for testing and documentation generation purpose.
 
-Check [database/seeds/Samples](https://bitbucket.org/emonsite/emsearch/src/master/database/seeds/Samples) folder for more information.
+*Check [database/seeds/Samples](https://bitbucket.org/emonsite/emsearch/src/master/database/seeds/Samples) folder for more information.*
 
 
 | User ID                                | User Group ID | Name         | Email                   | Password    |
-|----------------------------------------|---------------|--------------|-------------------------|-------------|
+|----------------------------------------|:-------------:|:------------:|:-----------------------:|:-----------:|
 | `41abdec2-1389-11e7-93ae-92361f002671` | Developer     | John Doe     | john.doe@domain.tld     | johndoe     |
 | `509dd5c0-1389-11e7-93ae-92361f002671` | Support       | Alan Smithee | alan.smithee@domain.tld | alansmithee |
 | `605c7610-1389-11e7-93ae-92361f002671` | End-User      | John Smith   | john.smith@domain.tld   | johnsmith   |
@@ -53,4 +53,4 @@ php artisan app:generateApiDocs
 ```
 Generate API documentation using current database resources.
 
-**Make sure you've configured all in [config/apidocs.php](https://bitbucket.org/emonsite/emsearch/src/master/config/apidocs.php) file**
+*Make sure you've configured all in [config/apidocs.php](https://bitbucket.org/emonsite/emsearch/src/master/config/apidocs.php) file.*
