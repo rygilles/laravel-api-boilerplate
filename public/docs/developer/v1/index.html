@@ -398,17 +398,17 @@ $.ajax(settings).done(function (response) {
 <h3>HTTP Request</h3>
 <p><code>POST /api/user</code></p>
 <!-- END_ddfe841311822ba91babd6d2eb588875 -->
-<!-- START_58a7597d78a515df314a48b0125a0b5b -->
+<!-- START_e6d1bae0d0740199d7d557e0b0e1d25f -->
 <h2>Get specified user</h2>
 <blockquote>
 <p>Example request:</p>
 </blockquote>
-<pre><code class="language-bash">curl -X GET "http://emsearch.ryan.ems-dev.net/api/user/{user}" \
+<pre><code class="language-bash">curl -X GET "http://emsearch.ryan.ems-dev.net/api/user/{userId}" \
 -H "Accept: application/json"</code></pre>
 <pre><code class="language-javascript">var settings = {
     "async": true,
     "crossDomain": true,
-    "url": "http://emsearch.ryan.ems-dev.net//api/user/{user}",
+    "url": "http://emsearch.ryan.ems-dev.net//api/user/{userId}",
     "method": "GET",
     "headers": {
         "accept": "application/json"
@@ -423,9 +423,9 @@ $.ajax(settings).done(function (response) {
 </blockquote>
 <pre><code class="language-json">null</code></pre>
 <h3>HTTP Request</h3>
-<p><code>GET /api/user/{user}</code></p>
-<p><code>HEAD /api/user/{user}</code></p>
-<!-- END_58a7597d78a515df314a48b0125a0b5b -->
+<p><code>GET /api/user/{userId}</code></p>
+<p><code>HEAD /api/user/{userId}</code></p>
+<!-- END_e6d1bae0d0740199d7d557e0b0e1d25f -->
 <h1>User Project</h1>
 <!-- START_aa8a35d90f07e0338dcd98a913a63c76 -->
 <h2>User project list</h2>

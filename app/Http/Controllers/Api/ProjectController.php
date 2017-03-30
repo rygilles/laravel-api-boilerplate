@@ -110,20 +110,6 @@ class ProjectController extends ApiController
 		if (!$project)
 			return $this->response->errorNotFound();
 
-		
-		if ($request->getMethod() == 'PATCH') {
-			$validator = Validator::make($request->all(), Project::getPatchRules());
-		} elseif ($request->getMethod() == 'PUT') {
-			$validator = Validator::make($request->all(), Project::getPutRules());
-		} else {
-			$this->response->errorMethodNotAllowed();
-		}
-
-		if ($validator->fails()) {
-			throw new ValidationHttpException($validator->errors());
-		}
-		
-
 		$project->fill($request->all());
 		$project->save();
 

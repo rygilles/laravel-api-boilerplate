@@ -16,12 +16,37 @@ use Dingo\Api\Routing\Router;
 $api = app('Dingo\Api\Routing\Router');
 
 $api->version('v1', ['middleware' => ['cors', 'auth:api']], function (Router $api) {
-	$api->get('me', 'App\Http\Controllers\Api\MeController@index')->name('me.index');
 
-	$api->resource('user', 'App\Http\Controllers\Api\UserController', ['only' => ['index', 'show', 'store']]);
+	$api->get(
+		'me',
+		'App\Http\Controllers\Api\MeController@index'
+	)->name('me.index');
 
-	$api->get('user/{userId}/project',             'App\Http\Controllers\Api\UserProjectController@index')->name('userProject.index');
-	$api->get('user/{userId}/project/{projectId}', 'App\Http\Controllers\Api\UserProjectController@show')->name('userProject.show');
+	$api->resource(
+		'user',
+		'App\Http\Controllers\Api\UserController',
+		[
+			'only' => ['index', 'show', 'store'],
+			'parameters' => ['user' => 'userId']
+		]
+	);
 
-	$api->resource('project', 'App\Http\Controllers\Api\ProjectController', ['only' => ['index', 'store', 'show', 'update']]);
+	$api->get(
+		'user/{userId}/project',
+		'App\Http\Controllers\Api\UserProjectController@index'
+	)->name('userProject.index');
+
+	$api->get(
+		'user/{userId}/project/{projectId}',
+		'App\Http\Controllers\Api\UserProjectController@show'
+	)->name('userProject.show');
+
+	$api->resource(
+		'project',
+		'App\Http\Controllers\Api\ProjectController',
+		[
+			'only' => ['index', 'store', 'show', 'update'],
+			'parameters' => ['project' => 'projectId']
+		]
+	);
 });
