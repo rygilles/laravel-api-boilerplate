@@ -1,15 +1,9 @@
 #![logo.png](https://bitbucket.org/repo/KrMXBpk/images/1444268910-logo.png)#
 
-**Laravel based web application**
+## Libs ##
 
-## Dev VM links ##
-
-- Front entry point : [http://emsearch.ryan.ems-dev.net](http://emsearch.ryan.ems-dev.net/)
-- API entry point : [http://emsearch.ryan.ems-dev.net/api](http://emsearch.ryan.ems-dev.net/api/)
-- API documentation entry point :
-    - Developer : [http://emsearch.ryan.ems-dev.net/docs/developer/v1](http://emsearch.ryan.ems-dev.net/docs/developer/v1)
-    - End-User : [http://emsearch.ryan.ems-dev.net/docs/end-user/v1](http://emsearch.ryan.ems-dev.net/docs/end-user/v1)
-- OAuth2 consumer application : [http://emsearch-api-consumer.ryan.ems-dev.net](http://emsearch-api-consumer.ryan.ems-dev.net/) (**DEV ONLY !**)
+*emsearch* is a [Laravel 5.*](https://laravel.com/) based web application.
+Check [composer.json](https://bitbucket.org/emonsite/emsearch/src/master/composer.json) file for more details.
 
 ## Database ##
 
@@ -55,3 +49,13 @@ php artisan app:generateApiDocs
 Generate API documentation using current database resources.
 
 *Make sure you've configured all in [config/apidocs.php](https://bitbucket.org/emonsite/emsearch/src/master/config/apidocs.php) file.*
+
+
+## emsearch.ryan.ems-dev.net VM ##
+
+- Front entry point : [http://emsearch.ryan.ems-dev.net](http://emsearch.ryan.ems-dev.net/)
+- API entry point : [http://emsearch.ryan.ems-dev.net/api](http://emsearch.ryan.ems-dev.net/api/)
+- API documentation entry point :
+    - Developer : [http://emsearch.ryan.ems-dev.net/docs/developer/v1](http://emsearch.ryan.ems-dev.net/docs/developer/v1)
+    - End-User : [http://emsearch.ryan.ems-dev.net/docs/end-user/v1](http://emsearch.ryan.ems-dev.net/docs/end-user/v1)
+- OAuth2 consumer application : [http://emsearch-api-consumer.ryan.ems-dev.net](http://emsearch-api-consumer.ryan.ems-dev.net/) (**DEV ONLY !**)
