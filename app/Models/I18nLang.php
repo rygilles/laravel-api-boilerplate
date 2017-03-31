@@ -83,6 +83,15 @@ class I18nLang extends ApiModel
 	];
 
 	/**
+	 * Model default validation rules
+	 * @return string[]
+	 */
+	public function rules()
+	{
+		return self::getStoreRules();
+	}
+
+	/**
 	 * Get model validation rules for new items
 	 * @return array
 	 */

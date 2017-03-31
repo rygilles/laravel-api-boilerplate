@@ -71,9 +71,9 @@ class User extends ApiModel implements AuthenticatableContract,	AuthorizableCont
 	 * @var string[]
 	 */
 	protected static $storeRules = [
-		'user_group_id' => 'required|exists:user_group,id',
-		'name'          => 'required|string|max:255',
-		'email'         => 'required|email|max:255|unique:user',
+		'user_group_id' => 'required|exists:user_group,id|in:Developer,Support,End-User',
+		'name'          => 'required|string|max:100',
+		'email'         => 'required|email|max:150|unique:user',
 		'password'      => 'required|strength'
 	];
 
@@ -82,9 +82,9 @@ class User extends ApiModel implements AuthenticatableContract,	AuthorizableCont
 	 * @var string[]
 	 */
 	protected static $patchRules = [
-		'user_group_id' => 'exists:user_group,id',
-		'name'          => 'string|max:255',
-		'email'         => 'email|max:255|unique:user',
+		'user_group_id' => 'exists:user_group,id|in:Developer,Support,End-User',
+		'name'          => 'string|max:100',
+		'email'         => 'email|max:150|unique:user',
 		'password'      => 'strength'
 	];
 
@@ -93,9 +93,9 @@ class User extends ApiModel implements AuthenticatableContract,	AuthorizableCont
 	 * @var string[]
 	 */
 	protected static $putRules = [
-		'user_group_id' => 'required|exists:user_group,id',
-		'name'          => 'required|string|max:255',
-		'email'         => 'required|email|max:255|unique:user',
+		'user_group_id' => 'required|exists:user_group,id|in:Developer,Support,End-User',
+		'name'          => 'required|string|max:100',
+		'email'         => 'required|email|max:150|unique:user',
 		'password'      => 'required|strength'
 	];
 

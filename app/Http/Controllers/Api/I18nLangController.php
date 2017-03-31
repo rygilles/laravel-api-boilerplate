@@ -2,18 +2,16 @@
 
 namespace App\Http\Controllers\Api;
 
+use App\Http\Requests\StoreI18nLangRequest;
+use App\Http\Requests\UpdateI18nLangRequest;
 use App\Http\Transformers\Api\I18nLangTransformer;
 use App\Models\I18nLang;
 use Dingo\Api\Exception\ValidationHttpException;
-use Dingo\Api\Http\Request;
-use Illuminate\Support\Facades\Validator;
 
 /**
- * I18n Lang
+ * @resource I18nLang
  *
  * @package App\Http\Controllers\Api
- *
- * @Resource("I18nLang", uri="/i18nLang")
  */
 class I18nLangController extends ApiController
 {
@@ -22,18 +20,16 @@ class I18nLangController extends ApiController
 	 */
 	public function __construct()
 	{
-
+		// User group restrictions
+		$this->middleware('verifyUserGroup:Developer,Support')->only('store,update');
 	}
 
 	/**
 	 * Show I18nLang list
 	 *
-	 * Get a JSON representation of all I18nLang.
-	 *
-	 * @param Request $request
 	 * @return \Dingo\Api\Http\Response
 	 */
-	public function index(Request $request)
+	public function index()
 	{
 		$i18nLangs = I18nLang::paginate();
 
@@ -59,18 +55,12 @@ class I18nLangController extends ApiController
 	/**
 	 * Create and store new I18n lang
 	 *
-	 * @param Request $request
+	 * @param StoreI18nLangRequest $request
 	 * @return \Dingo\Api\Http\Response|void
 	 * @throws ValidationHttpException
 	 */
-	public function store(Request $request)
+	public function store(StoreI18nLangRequest $request)
 	{
-		$validator = Validator::make($request->all(), I18nLang::getStoreRules());
-
-		if ($validator->fails()) {
-			throw new ValidationHttpException($validator->errors());
-		}
-
 		$i18nLang = I18nLang::create($request->all());
 
 		if ($i18nLang)
@@ -82,31 +72,19 @@ class I18nLangController extends ApiController
 	/**
 	 * Update a I18n lang
 	 *
-	 * @param Request $request
+	 * @param UpdateI18nLangRequest $request
 	 * @param $i18nLangId int User UUID
 	 * @return \Dingo\Api\Http\Response|void
 	 */
-	public function update(Request $request, $i18nLangId)
+	public function update(UpdateI18nLangRequest $request, $i18nLangId)
 	{
 		$i18nLang = I18nLang::find($i18nLangId);
 
 		if (!$i18nLang)
 			return $this->response->errorNotFound();
 
-		if ($request->getMethod() == 'PATCH')
-			$validator = Validator::make($request->all(), I18nLang::getPatchRules());
-		elseif ($request->getMethod() == 'PUT')
-			$validator = Validator::make($request->all(), I18nLang::getPutRules());
-		else
-			$this->response->errorMethodNotAllowed();
-
-		if ($validator->fails()) {
-			throw new ValidationHttpException($validator->errors());
-		}
-
 		$i18nLang->fill($request->all());
 		$i18nLang->save();
-		// = I18nLang::update($request->all());
 
 		return $this->response->item($i18nLang, new I18nLangTransformer);
 	}

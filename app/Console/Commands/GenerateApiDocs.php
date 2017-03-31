@@ -78,6 +78,9 @@ class GenerateApiDocs extends Command
 	    $this->info('Routes : ' . ($routesPreview ? $routesPreview : 'Not specified'));
 	    $this->info('Act as User ID : ' . $profile['actAsUserId']);
 	    $this->info('Bindings : ' . ($bindingsArgument ? $bindingsArgument : 'Not specified'));
+	    $this->info('');
+
+	    $this->warn('Manual changes discarded for routes in index.md ! Every routes documentation will be rewrited !');
 
 	    if ($this->confirm('Do you wish to continue ?', true)) {
 		    $this->info('Generate Api documentation');
@@ -87,7 +90,7 @@ class GenerateApiDocs extends Command
 			    '--routePrefix' => $routePrefix,
 			    '--output' => $outputPath,
 			    '--actAsUserId' => $profile['actAsUserId'],
-			    '--force' => ''
+			    '--force' => 'true'
 		    ];
 
 		    if ($profile['bindings']) {
@@ -98,7 +101,7 @@ class GenerateApiDocs extends Command
 			    $commandParameters['--routes'] = $profile['routes'];
 		    }
 
-		    Artisan::call('api:generate', $commandParameters);
+		    Artisan::call('api:generate', $commandParameters, $this->getOutput());
 	    } else {
 		    $this->info('Ok, nothing changes');
 	    }

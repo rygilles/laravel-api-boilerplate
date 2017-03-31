@@ -31,11 +31,6 @@ class ProjectController extends ApiController
 	 * Project list
 	 *
 	 * @return \Dingo\Api\Http\Response
-	 * @Get(uri="/project/{?page,limit}")
-	 * @Parameters({
-	 *      @Parameter("page", description="The page of results to view.", default=1),
-	 *      @Parameter("limit", description="The amount of results per page.", default=20)
-	 * })
 	 */
 	public function index()
 	{
@@ -74,11 +69,6 @@ class ProjectController extends ApiController
 	 *
 	 * @param $projectId string Project UUID
 	 * @return \Dingo\Api\Http\Response|void
-	 *
-	 * @Get(uri="/project/{projectId}")
-	 * @Parameters({
-	 *      @Parameter("projectId", type="string", required=true, description="Project UUID"),
-	 * })
 	 */
 	public function show($projectId)
 	{
@@ -96,12 +86,6 @@ class ProjectController extends ApiController
 	 * @param UpdateProjectRequest $request
 	 * @param $projectId string Project UUID
 	 * @return \Dingo\Api\Http\Response|void
-	 *
-	 * @Put(uri="/project/{projectId}")
-	 * @Patch(uri="/project/{projectId}")
-	 * @Parameters({
-	 *      @Parameter("projectId", type="string", required=true, description="Project UUID"),
-	 * })
 	 */
 	public function update(UpdateProjectRequest $request, $projectId)
 	{

@@ -33,4 +33,5 @@ return [
     'regex' => 'Must match this regular expression: `:attribute`',
 	'uuid' => 'UUID',
 	'strength' => 'Password with at least: `8` chars, `1` numeric, `1` uppercase and `1` lowercase',
+	'pagination' => '<aside class="notice">Pagination limit must be a value between <code>:attribute</code> and <code>:attribute</code>, default is <code>:attribute</code>.</aside>',
 ];

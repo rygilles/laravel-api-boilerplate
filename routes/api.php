@@ -97,5 +97,28 @@ $api->version('v1', ['middleware' => ['cors', 'auth:api']], function (Router $ap
 		]
 	);
 	*/
+
+	// I18n Lang
+
+	$api->get(
+		'i18nLang',
+		'App\Http\Controllers\Api\I18nLangController@index'
+	)->name('i18nLang.index');
+
+	$api->get(
+		'i18nLang/{i18nLangId}',
+		'App\Http\Controllers\Api\I18nLangController@show'
+	)->name('i18nLang.show');
+
+	$api->post(
+		'i18nLang',
+		'App\Http\Controllers\Api\I18nLangController@store'
+	)->name('i18nLang.store');
+
+	$api->match(
+		['put', 'patch'],
+		'i18nLang/{i18nLangId}',
+		'App\Http\Controllers\Api\I18nLangController@update'
+	)->name('i18nLang.update');
 	
 });
