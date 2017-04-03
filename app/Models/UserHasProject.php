@@ -23,7 +23,7 @@ class UserHasProject extends ApiModel
 	protected $fillable = [
 		'user_id',
 		'project_id',
-		'user_role'
+		'user_role_id'
 	];
 
 	/**
@@ -60,37 +60,46 @@ class UserHasProject extends ApiModel
 
 	/**
 	 * Model validation rules for new items
-	 * @var array
+	 * @var string[]
 	 */
 	protected static $storeRules = [
-		'user_id'       => 'required|exists:user,id',
-		'project_id'    => 'required|exists:project,id',
-		'user_role'     => 'required|exists:user_role,id',
+		'user_id'       => 'required|uuid|exists:user,id',
+		'project_id'    => 'required|uuid|exists:project,id',
+		'user_role_id'  => 'required|exists:user_role,id|in:Owner,Administrator',
 	];
 
 	/**
 	 * Model validation rules for item patch
-	 * @var array
+	 * @var string[]
 	 */
 	protected static $patchRules = [
-		'user_id'       => 'required|exists:user,id',
-		'project_id'    => 'required|exists:project,id',
-		'user_role'     => 'required|exists:user_role,id',
+		'user_id'       => 'uuid|exists:user,id',
+		'project_id'    => 'uuid|exists:project,id',
+		'user_role_id'  => 'exists:user_role,id|in:Owner,Administrator',
 	];
 
 	/**
 	 * Model validation rules for item replacement
-	 * @var array
+	 * @var string[]
 	 */
 	protected static $putRules = [
-		'user_id'       => 'required|exists:user,id',
-		'project_id'    => 'required|exists:project,id',
-		'user_role'     => 'required|exists:user_role,id',
+		'user_id'       => 'required|uuid|exists:user,id',
+		'project_id'    => 'required|uuid|exists:project,id',
+		'user_role_id'  => 'required|exists:user_role,id|in:Owner,Administrator',
 	];
 
 	/**
+	 * Model default validation rules
+	 * @return string[]
+	 */
+	public function rules()
+	{
+		return self::getStoreRules();
+	}
+
+	/**
 	 * Get model validation rules for new items
-	 * @return array
+	 * @return string[]
 	 */
 	public static function getStoreRules()
 	{
@@ -99,7 +108,7 @@ class UserHasProject extends ApiModel
 
 	/**
 	 * Get model validation rules for item patch
-	 * @return array
+	 * @return string[]
 	 */
 	public static function getPatchRules()
 	{
@@ -108,7 +117,7 @@ class UserHasProject extends ApiModel
 
 	/**
 	 * Get model validation rules for item replacement
-	 * @return array
+	 * @return string[]
 	 */
 	public static function getPutRules()
 	{

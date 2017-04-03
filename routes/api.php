@@ -98,6 +98,34 @@ $api->version('v1', ['middleware' => ['cors', 'auth:api']], function (Router $ap
 	);
 	*/
 
+	// User Has Project
+
+	$api->get(
+		'userHasProject',
+		'App\Http\Controllers\Api\UserHasProjectController@index'
+	)->name('userHasProject.index');
+
+	$api->get(
+		'userHasProject/{userId},{projectId}',
+		'App\Http\Controllers\Api\UserHasProjectController@show'
+	)->name('userHasProject.show');
+
+	$api->post(
+		'userHasProject',
+		'App\Http\Controllers\Api\UserHasProjectController@store'
+	)->name('userHasProject.store');
+
+	$api->match(
+		['put', 'patch'],
+		'userHasProject/{userId},{projectId}',
+		'App\Http\Controllers\Api\UserHasProjectController@update'
+	)->name('userHasProject.update');
+
+	$api->delete(
+		'userHasProject/{userId},{projectId}',
+		'App\Http\Controllers\Api\UserHasProjectController@destroy'
+	)->name('userHasProject.destroy');
+
 	// I18n Lang
 
 	$api->get(
@@ -120,5 +148,28 @@ $api->version('v1', ['middleware' => ['cors', 'auth:api']], function (Router $ap
 		'i18nLang/{i18nLangId}',
 		'App\Http\Controllers\Api\I18nLangController@update'
 	)->name('i18nLang.update');
+
+	// Search Engine
+
+	$api->get(
+		'searchEngine',
+		'App\Http\Controllers\Api\SearchEngineController@index'
+	)->name('searchEngine.index');
+
+	$api->get(
+		'searchEngine/{searchEngineId}',
+		'App\Http\Controllers\Api\SearchEngineController@show'
+	)->name('searchEngine.show');
+
+	$api->post(
+		'searchEngine',
+		'App\Http\Controllers\Api\SearchEngineController@store'
+	)->name('searchEngine.store');
+
+	$api->match(
+		['put', 'patch'],
+		'searchEngine/{searchEngineId}',
+		'App\Http\Controllers\Api\SearchEngineController@update'
+	)->name('searchEngine.update');
 	
 });

@@ -33,7 +33,7 @@ You can specify extra GET parameters with any index / listing routes to request 
 | page      | int  | optional | Page number              |
 | limit     | int  | optional | Maximum entries per page |
 
-<aside class="notice">Minimum / maximum entries limit values can be different according to the route resource complexity</aside>
+<aside class="notice">Minimum / maximum entries limit values can be different according to the route resource complexity.</aside>
 <!-- END_INFO -->
 
 
@@ -266,8 +266,8 @@ $.ajax(settings).done(function (response) {
         "user_group_id": "End-User",
         "name": "John Smith",
         "email": "john.smith@domain.tld",
-        "created_at": "2017-03-28 14:46:13",
-        "updated_at": "2017-03-28 14:46:13"
+        "created_at": "2017-03-31 13:07:55",
+        "updated_at": "2017-03-31 13:07:55"
     }
 }
 ```
@@ -319,8 +319,8 @@ $.ajax(settings).done(function (response) {
         "search_engine_id": "ee87e3b2-1388-11e7-93ae-92361f002671",
         "data_stream_id": null,
         "name": "John Smith Sample Project 1",
-        "created_at": "2017-03-28 14:46:13",
-        "updated_at": "2017-03-28 14:46:13"
+        "created_at": "2017-03-31 13:07:55",
+        "updated_at": "2017-03-31 13:07:55"
     }
 }
 ```
@@ -343,9 +343,9 @@ curl -X POST "http://emsearch.ryan.ems-dev.net/api/project" \
 -H "Accept: application/json" \
 -H "Authentication: Bearer xxx"
  \
-    -d "search_engine_id"="e7c50693-00a1-327a-9412-23b4c40a45c8" \
-    -d "data_stream_id"="f7701cd4-a1b8-32c1-ba77-efae17a8a680" \
-    -d "name"="Excepturi cum illum" \
+    -d "search_engine_id"="be6b5460-76af-303f-99ec-8ff393542b4f" \
+    -d "data_stream_id"="84d502c8-217a-3ea3-8a24-2a0d67689962" \
+    -d "name"="Rerum sed ea" \
 
 ```
 
@@ -356,9 +356,9 @@ var settings = {
     "url": "http://emsearch.ryan.ems-dev.net/api/project",
     "method": "POST",
     "data": {
-        "search_engine_id": "e7c50693-00a1-327a-9412-23b4c40a45c8",
-        "data_stream_id": "f7701cd4-a1b8-32c1-ba77-efae17a8a680",
-        "name": "Excepturi cum illum"
+        "search_engine_id": "be6b5460-76af-303f-99ec-8ff393542b4f",
+        "data_stream_id": "84d502c8-217a-3ea3-8a24-2a0d67689962",
+        "name": "Rerum sed ea"
 },
     "headers": {
         "Accept": "application/json",
@@ -395,9 +395,9 @@ curl -X PUT "http://emsearch.ryan.ems-dev.net/api/project/1bcc7efc-138c-11e7-93a
 -H "Accept: application/json" \
 -H "Authentication: Bearer xxx"
  \
-    -d "search_engine_id"="a0cb82a2-bcfd-3c4d-9201-eff6b452d7d4" \
-    -d "data_stream_id"="68fa5fed-11ce-30a9-9305-ffa6a0760234" \
-    -d "name"="Alias cumque et" \
+    -d "search_engine_id"="1677b8c2-864d-35f1-970a-cb76fc5d3d51" \
+    -d "data_stream_id"="0489f9ca-fbc5-328c-8d70-7948c3cb2f0c" \
+    -d "name"="Occaecati enim aut" \
 
 ```
 
@@ -408,9 +408,9 @@ var settings = {
     "url": "http://emsearch.ryan.ems-dev.net/api/project/1bcc7efc-138c-11e7-93ae-92361f002671",
     "method": "PUT",
     "data": {
-        "search_engine_id": "a0cb82a2-bcfd-3c4d-9201-eff6b452d7d4",
-        "data_stream_id": "68fa5fed-11ce-30a9-9305-ffa6a0760234",
-        "name": "Alias cumque et"
+        "search_engine_id": "1677b8c2-864d-35f1-970a-cb76fc5d3d51",
+        "data_stream_id": "0489f9ca-fbc5-328c-8d70-7948c3cb2f0c",
+        "name": "Occaecati enim aut"
 },
     "headers": {
         "Accept": "application/json",
@@ -481,16 +481,16 @@ $.ajax(settings).done(function (response) {
             "search_engine_id": "ee87e3b2-1388-11e7-93ae-92361f002671",
             "data_stream_id": null,
             "name": "John Smith Sample Project 1",
-            "created_at": "2017-03-28 14:46:13",
-            "updated_at": "2017-03-28 14:46:13"
+            "created_at": "2017-03-31 13:07:55",
+            "updated_at": "2017-03-31 13:07:55"
         },
         {
             "id": "b6860dd2-138c-11e7-93ae-92361f002671",
             "search_engine_id": "ee87e3b2-1388-11e7-93ae-92361f002671",
             "data_stream_id": null,
             "name": "John Smith Sample Project 2",
-            "created_at": "2017-03-28 14:46:13",
-            "updated_at": "2017-03-28 14:46:13"
+            "created_at": "2017-03-31 13:07:55",
+            "updated_at": "2017-03-31 13:07:55"
         }
     ],
     "meta": {
@@ -557,8 +557,8 @@ $.ajax(settings).done(function (response) {
         "search_engine_id": "ee87e3b2-1388-11e7-93ae-92361f002671",
         "data_stream_id": null,
         "name": "John Smith Sample Project 1",
-        "created_at": "2017-03-28 14:46:13",
-        "updated_at": "2017-03-28 14:46:13"
+        "created_at": "2017-03-31 13:07:55",
+        "updated_at": "2017-03-31 13:07:55"
     }
 }
 ```

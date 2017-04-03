@@ -5,7 +5,7 @@ namespace App\Models;
 use Alsofronie\Uuid\UuidModelTrait;
 
 /**
- * Class Project
+ * Class SearchEngine
  * @package App\Models
  */
 class SearchEngine extends ApiModel
@@ -62,7 +62,7 @@ class SearchEngine extends ApiModel
 
 	/**
 	 * Model validation rules for new items
-	 * @var array
+	 * @var string[]
 	 */
 	protected static $storeRules = [
 		'name'              => 'required|string|max:100'
@@ -70,23 +70,32 @@ class SearchEngine extends ApiModel
 
 	/**
 	 * Model validation rules for item patch
-	 * @var array
+	 * @var string[]
 	 */
 	protected static $patchRules = [
-		'name'              => 'required|string|max:100'
+		'name'              => 'string|max:100'
 	];
 
 	/**
 	 * Model validation rules for item replacement
-	 * @var array
+	 * @var string[]
 	 */
 	protected static $putRules = [
 		'name'              => 'required|string|max:100'
 	];
 
 	/**
+	 * Model default validation rules
+	 * @return string[]
+	 */
+	public function rules()
+	{
+		return self::getStoreRules();
+	}
+
+	/**
 	 * Get model validation rules for new items
-	 * @return array
+	 * @return string[]
 	 */
 	public static function getStoreRules()
 	{
@@ -95,7 +104,7 @@ class SearchEngine extends ApiModel
 
 	/**
 	 * Get model validation rules for item patch
-	 * @return array
+	 * @return string[]
 	 */
 	public static function getPatchRules()
 	{
@@ -104,7 +113,7 @@ class SearchEngine extends ApiModel
 
 	/**
 	 * Get model validation rules for item replacement
-	 * @return array
+	 * @return string[]
 	 */
 	public static function getPutRules()
 	{

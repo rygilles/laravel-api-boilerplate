@@ -11,7 +11,7 @@ use Dingo\Api\Http\Request;
 use Illuminate\Support\Facades\Validator;
 
 /**
- * @resource User Project
+ * @resource UserProject
  *
  * @package App\Http\Controllers\Api
  */

@@ -28,7 +28,7 @@ class UserController extends ApiController
 	/**
 	 * Get specified user
 	 *
-	 * @param $userId int User UUID
+	 * @param $userId string User UUID
 	 * @return \Dingo\Api\Http\Response|void
 	 */
 	public function show($userId)

@@ -62,16 +62,16 @@ class ResetApp extends Command
 		    
 		    // Initialize with required data
 		    $this->info('Initialize with required data seeder');
-		    Artisan::call('db:seed', ['--class' => 'InitSeeder']);
+		    Artisan::call('db:seed', ['--class' => 'InitSeeder'], $this->getOutput());
 
 		    if ($this->confirm('Run Passport install ? (highly recommended ! generate required app clients)', true)) {
-			    Artisan::call('passport:install');
+			    Artisan::call('passport:install', [], $this->getOutput());
 		    }
 
 		    if ($this->confirm('Do you want to seed your application with some samples data ?', false)) {
 			    // Seed with samples data
 			    $this->info('Seed with samples data');
-			    Artisan::call('db:seed', ['--class' => 'SamplesSeeder']);
+			    Artisan::call('db:seed', ['--class' => 'SamplesSeeder'], $this->getOutput());
 		    }
 
 		    $this->info('Your application is ready now.');

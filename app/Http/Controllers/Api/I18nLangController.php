@@ -39,7 +39,7 @@ class I18nLangController extends ApiController
 	/**
 	 * Get specified I18n lang
 	 *
-	 * @param $i18nLangId int User UUID
+	 * @param $i18nLangId string User UUID
 	 * @return \Dingo\Api\Http\Response|void
 	 */
 	public function show($i18nLangId)

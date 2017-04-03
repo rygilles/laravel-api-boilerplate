@@ -40,6 +40,22 @@ class ProjectController extends ApiController
 	}
 
 	/**
+	 * Get specified user project
+	 *
+	 * @param $projectId string Project UUID
+	 * @return \Dingo\Api\Http\Response|void
+	 */
+	public function show($projectId)
+	{
+		$project = Project::authorized(['Owner', 'Administrator'])->find($projectId);
+
+		if (!$project)
+			return $this->response->errorNotFound();
+
+		return $this->response->item($project, new ProjectTransformer);
+	}
+
+	/**
 	 * Create and store new project
 	 *
 	 * @param StoreProjectRequest $request
@@ -65,22 +81,6 @@ class ProjectController extends ApiController
 	}
 
 	/**
-	 * Get specified user project
-	 *
-	 * @param $projectId string Project UUID
-	 * @return \Dingo\Api\Http\Response|void
-	 */
-	public function show($projectId)
-	{
-		$project = Project::authorized(['Owner', 'Administrator'])->find($projectId);
-
-		if (!$project)
-			return $this->response->errorNotFound();
-
-		return $this->response->item($project, new ProjectTransformer);
-	}
-
-	/**
 	 * Update a specified user project
 	 *
 	 * @param UpdateProjectRequest $request
@@ -100,7 +100,7 @@ class ProjectController extends ApiController
 		return $this->response->item($project, new ProjectTransformer);
 	}
 
-	public function delete()
+	public function destroy()
 	{
 		// @todo
 		// delete (cascade ?) user_has_project

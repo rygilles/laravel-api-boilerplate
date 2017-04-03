@@ -45,6 +45,9 @@ return [
 				// en_US
 				'i18nLangId' => 'en_US',
 
+				// Algolia
+				'searchEngineId' => 'ee87e3b2-1388-11e7-93ae-92361f002671',
+
 			],
 			'routes' => [
 
@@ -62,10 +65,21 @@ return [
 				'project.store',
 				'project.update',
 
+				'userHasProject.index',
+				'userHasProject.show',
+				'userHasProject.store',
+				'userHasProject.update',
+				'userHasProject.destroy',
+
 				'i18nLang.index',
 				'i18nLang.show',
 				'i18nLang.store',
 				'i18nLang.update',
+
+				'searchEngine.index',
+				'searchEngine.show',
+				'searchEngine.store',
+				'searchEngine.update',
 
 			]
 
