@@ -14,6 +14,7 @@ class SamplesSeeder extends Seeder
         // Seed with samples data
 
 	    $this->call(UserTableSeeder::class);
+	    $this->call(DataStreamTableSeeder::class);
         $this->call(ProjectTableSeeder::class);
 	    $this->call(UserHasProjectTableSeeder::class);
     }

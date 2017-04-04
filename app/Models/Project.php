@@ -48,18 +48,6 @@ class Project extends ApiModel
 	public $incrementing = false;
 
 	/**
-	 * Default pagination limit
-	 * @var int
-	 */
-	protected $perPage = 20;
-
-	/**
-	 * Pagination limit inclusive min value
-	 * @var int
-	 */
-	protected $perPageMin = 1;
-
-	/**
 	 * Pagination limit inclusive max value
 	 * @var int
 	 */
@@ -96,42 +84,6 @@ class Project extends ApiModel
 	];
 
 	/**
-	 * Model default validation rules
-	 * @return string[]
-	 */
-	public function rules()
-	{
-		return self::getStoreRules();
-	}
-
-	/**
-	 * Get model validation rules for new items
-	 * @return string[]
-	 */
-	public static function getStoreRules()
-	{
-		return self::$storeRules;
-	}
-
-	/**
-	 * Get model validation rules for item patch
-	 * @return string[]
-	 */
-	public static function getPatchRules()
-	{
-		return self::$patchRules;
-	}
-
-	/**
-	 * Get model validation rules for item replacement
-	 * @return string[]
-	 */
-	public static function getPutRules()
-	{
-		return self::$putRules;
-	}
-
-	/**
 	 * Get the relationships between this project and his users
 	 *
 	 * @return \Illuminate\Database\Eloquent\Relations\HasMany
@@ -149,6 +101,16 @@ class Project extends ApiModel
 	public function users()
 	{
 		return $this->belongsToMany('App\Models\User', 'user_has_project', 'project_id', 'user_id');
+	}
+
+	/**
+	 * Get the data stream of this project
+	 *
+	 * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
+	 */
+	public function dataStream()
+	{
+		return $this->belongsTo('App\Models\DataStream');
 	}
 
 	/**

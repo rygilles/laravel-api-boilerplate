@@ -7,9 +7,7 @@ use App\Http\Requests\UpdateProjectRequest;
 use App\Http\Transformers\Api\ProjectTransformer;
 use App\Models\Project;
 use App\Models\UserHasProject;
-use Dingo\Api\Contract\Http\Request;
 use Dingo\Api\Exception\ValidationHttpException;
-use Illuminate\Support\Facades\Validator;
 
 /**
  * @resource Project
@@ -40,7 +38,7 @@ class ProjectController extends ApiController
 	}
 
 	/**
-	 * Get specified user project
+	 * Get specified project
 	 *
 	 * @param $projectId string Project UUID
 	 * @return \Dingo\Api\Http\Response|void
@@ -83,7 +81,7 @@ class ProjectController extends ApiController
 	}
 
 	/**
-	 * Update a specified user project
+	 * Update a specified project
 	 *
 	 * @ApiDocsNoCall
 	 *
@@ -105,7 +103,7 @@ class ProjectController extends ApiController
 	}
 
 	/**
-	 * Delete specified user project
+	 * Delete specified project
 	 *
 	 * All relationships between the project and his users will be automatically deleted too.
 	 * <aside class="notice">Only <code>Owner</code> of project is allowed to delete it.</aside>

@@ -25,7 +25,7 @@ class SearchEngineController extends ApiController
 	}
 
 	/**
-	 * Show Search Engine list
+	 * Show search engine list
 	 *
 	 * @return \Dingo\Api\Http\Response
 	 */
@@ -37,7 +37,7 @@ class SearchEngineController extends ApiController
 	}
 
 	/**
-	 * Get specified Search Engine
+	 * Get specified search engine
 	 *
 	 * @param $searchEngineId string Search Engine UUID
 	 * @return \Dingo\Api\Http\Response|void
@@ -53,7 +53,7 @@ class SearchEngineController extends ApiController
 	}
 
 	/**
-	 * Create and store new Search Engine
+	 * Create and store new search engine
 	 *
 	 * @ApiDocsNoCall
 	 *
@@ -72,7 +72,7 @@ class SearchEngineController extends ApiController
 	}
 
 	/**
-	 * Update a Search Engine
+	 * Update a search engine
 	 *
 	 * @ApiDocsNoCall
 	 *
@@ -94,7 +94,7 @@ class SearchEngineController extends ApiController
 	}
 
 	/**
-	 * Delete specified Search Engine
+	 * Delete specified search engine
 	 *
 	 * <aside class="warning">Avoid using this feature ! Check foreign keys constraints to remove dependent resources properly before.</aside>
 	 *

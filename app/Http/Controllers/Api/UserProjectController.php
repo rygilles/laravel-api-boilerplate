@@ -4,14 +4,10 @@ namespace App\Http\Controllers\Api;
 
 use App\Http\Requests\IndexUserProjectRequest;
 use App\Http\Transformers\Api\ProjectTransformer;
-use App\Models\Project;
 use App\Models\User;
-use Dingo\Api\Exception\ValidationHttpException;
-use Dingo\Api\Http\Request;
-use Illuminate\Support\Facades\Validator;
 
 /**
- * @resource UserProject
+ * @resource Project
  *
  * @package App\Http\Controllers\Api
  */
@@ -36,27 +32,5 @@ class UserProjectController extends ApiController
 		$paginator = $user->projects($request->input('user_role_id'))->paginate();
 
 		return $this->response->paginator($paginator, new ProjectTransformer);
-	}
-
-	/**
-	 * Get specified user project
-	 *
-	 * @param $userId string User UUID
-	 * @param $projectId string Project UUID
-	 * @return \Dingo\Api\Http\Response|void
-	 */
-	public function show($userId, $projectId)
-	{
-		$user = User::find($userId);
-
-		if (!$user)
-			return $this->response->errorNotFound();
-
-		$project = User::find($userId)->project($projectId);
-
-		if (!$project)
-			return $this->response->errorNotFound();
-
-		return $this->response->item($project, new ProjectTransformer);
 	}
 }

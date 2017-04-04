@@ -15,18 +15,21 @@ class ProjectTableSeeder extends Seeder
         Project::create([
             'id'                => '1bcc7efc-138c-11e7-93ae-92361f002671',
             'search_engine_id'  => 'ee87e3b2-1388-11e7-93ae-92361f002671',
+	        'data_stream_id'    => '56278dc8-1934-11e7-93ae-92361f002671',
             'name'              => 'John Smith Sample Project 1',
         ]);
 
         Project::create([
             'id'                => 'b6860dd2-138c-11e7-93ae-92361f002671',
             'search_engine_id'  => 'ee87e3b2-1388-11e7-93ae-92361f002671',
+			/* No data stream for John Smith Sample Project 2 */
             'name'              => 'John Smith Sample Project 2',
         ]);
 
 	    Project::create([
 		    'id'                => 'c4b5d93c-138c-11e7-93ae-92361f002671',
 		    'search_engine_id'  => 'ee87e3b2-1388-11e7-93ae-92361f002671',
+		    'data_stream_id'    => '605d712c-1934-11e7-93ae-92361f002671',
 		    'name'              => 'Mickey Mouse Sample Project',
 	    ]);
     }

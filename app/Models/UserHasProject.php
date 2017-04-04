@@ -41,24 +41,6 @@ class UserHasProject extends ApiModel
 	public $incrementing = false;
 
 	/**
-	 * Default pagination limit
-	 * @var int
-	 */
-	protected $perPage = 20;
-
-	/**
-	 * Pagination limit inclusive min value
-	 * @var int
-	 */
-	protected $perPageMin = 1;
-
-	/**
-	 * Pagination limit inclusive max value
-	 * @var int
-	 */
-	protected $perPageMax = 50;
-
-	/**
 	 * Model validation rules for new items
 	 * @var string[]
 	 */
@@ -87,42 +69,6 @@ class UserHasProject extends ApiModel
 		'project_id'    => 'required|uuid|exists:project,id',
 		'user_role_id'  => 'required|exists:user_role,id|in:Owner,Administrator',
 	];
-
-	/**
-	 * Model default validation rules
-	 * @return string[]
-	 */
-	public function rules()
-	{
-		return self::getStoreRules();
-	}
-
-	/**
-	 * Get model validation rules for new items
-	 * @return string[]
-	 */
-	public static function getStoreRules()
-	{
-		return self::$storeRules;
-	}
-
-	/**
-	 * Get model validation rules for item patch
-	 * @return string[]
-	 */
-	public static function getPatchRules()
-	{
-		return self::$patchRules;
-	}
-
-	/**
-	 * Get model validation rules for item replacement
-	 * @return string[]
-	 */
-	public static function getPutRules()
-	{
-		return self::$putRules;
-	}
 
 	/**
 	 * Get the user of this relationship

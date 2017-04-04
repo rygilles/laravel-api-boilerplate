@@ -30,11 +30,17 @@ return [
 			'actAsUserId' => '41abdec2-1389-11e7-93ae-92361f002671',
 			'bindings' => [
 
-				// John Smith Sample Project 1'
+				// John Smith Sample Project 1
 				'projectId' => '1bcc7efc-138c-11e7-93ae-92361f002671',
+
+				// Mickey Mouse Sample Project Data Stream
+				'dataStreamId' => '605d712c-1934-11e7-93ae-92361f002671',
 
 				// John Smith
 				'userId' => '605c7610-1389-11e7-93ae-92361f002671',
+
+				// End-User,
+				'userGroupId' => 'End-User',
 
 				// Algolia
 				'search_engine_id' => 'ee87e3b2-1388-11e7-93ae-92361f002671',
@@ -59,14 +65,23 @@ return [
 				'user.update',
 				'user.destroy',
 
+				'userGroup.index',
+
 				'userProject.index',
-				'userProject.show',
 
 				'project.index',
 				'project.show',
 				'project.store',
 				'project.update',
 				'project.destroy',
+
+				'dataStream.index',
+				'dataStream.show',
+				'dataStream.store',
+				'dataStream.update',
+				'dataStream.destroy',
+
+				'projectDataStream.show',
 
 				'userHasProject.index',
 				'userHasProject.show',
@@ -85,6 +100,8 @@ return [
 				'searchEngine.store',
 				'searchEngine.update',
 				'searchEngine.destroy',
+
+				'searchEngineProject.index',
 
 			]
 
@@ -105,8 +122,11 @@ return [
 			'actAsUserId' => '605c7610-1389-11e7-93ae-92361f002671',
 			'bindings' => [
 
-				// John Smith Sample Project 1'
+				// John Smith Sample Project 1
 				'projectId' => '1bcc7efc-138c-11e7-93ae-92361f002671',
+
+				// Mickey Mouse Sample Project Data Stream
+				'dataStreamId' => '605d712c-1934-11e7-93ae-92361f002671',
 
 				// John Smith
 				'userId' => '605c7610-1389-11e7-93ae-92361f002671',
@@ -126,12 +146,18 @@ return [
 				'me.index',
 
 				'userProject.index',
-				'userProject.show',
 
 				'project.show',
 				'project.store',
 				'project.update',
 				'project.destroy',
+
+				'dataStream.show',
+				'dataStream.store',
+				'dataStream.update',
+				'dataStream.destroy',
+
+				'projectDataStream.show',
 
 				'i18nLang.index',
 				'i18nLang.show',

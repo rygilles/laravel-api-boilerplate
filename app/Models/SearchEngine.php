@@ -43,24 +43,6 @@ class SearchEngine extends ApiModel
 	public $incrementing = false;
 
 	/**
-	 * Default pagination limit
-	 * @var int
-	 */
-	protected $perPage = 20;
-
-	/**
-	 * Pagination limit inclusive min value
-	 * @var int
-	 */
-	protected $perPageMin = 1;
-
-	/**
-	 * Pagination limit inclusive max value
-	 * @var int
-	 */
-	protected $perPageMax = 50;
-
-	/**
 	 * Model validation rules for new items
 	 * @var string[]
 	 */
@@ -85,38 +67,12 @@ class SearchEngine extends ApiModel
 	];
 
 	/**
-	 * Model default validation rules
-	 * @return string[]
+	 * Get the projects of this search engine
+	 *
+	 * @return \Illuminate\Database\Eloquent\Relations\HasMany
 	 */
-	public function rules()
+	public function projects()
 	{
-		return self::getStoreRules();
-	}
-
-	/**
-	 * Get model validation rules for new items
-	 * @return string[]
-	 */
-	public static function getStoreRules()
-	{
-		return self::$storeRules;
-	}
-
-	/**
-	 * Get model validation rules for item patch
-	 * @return string[]
-	 */
-	public static function getPatchRules()
-	{
-		return self::$patchRules;
-	}
-
-	/**
-	 * Get model validation rules for item replacement
-	 * @return string[]
-	 */
-	public static function getPutRules()
-	{
-		return self::$putRules;
+		return $this->hasMany('App\Models\Project');
 	}
 }

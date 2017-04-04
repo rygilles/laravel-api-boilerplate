@@ -63,17 +63,19 @@ $api->version('v1', ['middleware' => ['cors', 'auth:api']], function (Router $ap
 	);
 	*/
 
+	// User Group User
+
+	$api->get(
+		'userGroup/{userGroupId}/user',
+		'App\Http\Controllers\Api\UserGroupUserController@index'
+	)->name('userGroup.index');
+
 	// User Project
 
 	$api->get(
 		'user/{userId}/project',
 		'App\Http\Controllers\Api\UserProjectController@index'
 	)->name('userProject.index');
-
-	$api->get(
-		'user/{userId}/project/{projectId}',
-		'App\Http\Controllers\Api\UserProjectController@show'
-	)->name('userProject.show');
 
 	// Project
 
@@ -113,6 +115,41 @@ $api->version('v1', ['middleware' => ['cors', 'auth:api']], function (Router $ap
 		]
 	);
 	*/
+
+	// Data Stream
+
+	$api->get(
+		'dataStream',
+		'App\Http\Controllers\Api\DataStreamController@index'
+	)->name('dataStream.index');
+
+	$api->get(
+		'dataStream/{dataStreamId}',
+		'App\Http\Controllers\Api\DataStreamController@show'
+	)->name('dataStream.show');
+
+	$api->post(
+		'dataStream',
+		'App\Http\Controllers\Api\DataStreamController@store'
+	)->name('dataStream.store');
+
+	$api->match(
+		['put', 'patch'],
+		'dataStream/{dataStreamId}',
+		'App\Http\Controllers\Api\DataStreamController@update'
+	)->name('dataStream.update');
+
+	$api->delete(
+		'dataStream/{dataStreamId}',
+		'App\Http\Controllers\Api\DataStreamController@destroy'
+	)->name('dataStream.destroy');
+
+	// Project Data Stream
+
+	$api->get(
+		'project/{projectId}/dataStream',
+		'App\Http\Controllers\Api\ProjectDataStreamController@show'
+	)->name('projectDataStream.show');
 
 	// User Has Project
 
@@ -197,5 +234,12 @@ $api->version('v1', ['middleware' => ['cors', 'auth:api']], function (Router $ap
 		'searchEngine/{searchEngineId}',
 		'App\Http\Controllers\Api\SearchEngineController@destroy'
 	)->name('searchEngine.destroy');
+
+	// Search Engine Project
+
+	$api->get(
+		'searchEngine/{searchEngineId}/project',
+		'App\Http\Controllers\Api\SearchEngineProjectController@index'
+	)->name('searchEngineProject.index');
 	
 });

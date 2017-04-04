@@ -49,24 +49,6 @@ class User extends ApiModel implements AuthenticatableContract,	AuthorizableCont
 	];
 
 	/**
-	 * Default pagination limit
-	 * @var int
-	 */
-	protected $perPage = 20;
-
-	/**
-	 * Pagination limit inclusive min value
-	 * @var int
-	 */
-	protected $perPageMin = 1;
-
-	/**
-	 * Pagination limit inclusive max value
-	 * @var int
-	 */
-	protected $perPageMax = 50;
-
-	/**
 	 * Model validation rules for new items
 	 * @var string[]
 	 */
@@ -98,42 +80,6 @@ class User extends ApiModel implements AuthenticatableContract,	AuthorizableCont
 		'email'         => 'required|email|max:150|unique:user',
 		'password'      => 'required|strength'
 	];
-
-	/**
-	 * Model default validation rules
-	 * @return string[]
-	 */
-	public static function getRules()
-	{
-		return self::getStoreRules();
-	}
-
-	/**
-	 * Get model validation rules for new items
-	 * @return string[]
-	 */
-	public static function getStoreRules()
-	{
-		return self::$storeRules;
-	}
-
-	/**
-	 * Get model validation rules for item patch
-	 * @return string[]
-	 */
-	public static function getPatchRules()
-	{
-		return self::$patchRules;
-	}
-
-	/**
-	 * Get model validation rules for item replacement
-	 * @return string[]
-	 */
-	public static function getPutRules()
-	{
-		return self::$putRules;
-	}
 
 	/**
 	 * Magic attribute setter : Define password hashed value

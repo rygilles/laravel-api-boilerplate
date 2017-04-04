@@ -4,12 +4,9 @@ namespace App\Http\Controllers\Api;
 
 use App\Http\Requests\StoreUserHasProjectRequest;
 use App\Http\Requests\UpdateUserHasProjectRequest;
-use App\Http\Transformers\Api\ProjectTransformer;
 use App\Http\Transformers\Api\UserHasProjectTransformer;
 use App\Models\UserHasProject;
-use Dingo\Api\Contract\Http\Request;
 use Dingo\Api\Exception\ValidationHttpException;
-use Illuminate\Support\Facades\Validator;
 
 /**
  * @resource UserHasProject

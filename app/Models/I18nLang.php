@@ -40,18 +40,6 @@ class I18nLang extends ApiModel
 	public $incrementing = false;
 
 	/**
-	 * Default pagination limit
-	 * @var int
-	 */
-	protected $perPage = 20;
-
-	/**
-	 * Pagination limit inclusive min value
-	 * @var int
-	 */
-	protected $perPageMin = 1;
-
-	/**
 	 * Pagination limit inclusive max value
 	 * @var int
 	 */
@@ -81,40 +69,4 @@ class I18nLang extends ApiModel
 	protected static $putRules = [
 		'description'   => 'required|string'
 	];
-
-	/**
-	 * Model default validation rules
-	 * @return string[]
-	 */
-	public function rules()
-	{
-		return self::getStoreRules();
-	}
-
-	/**
-	 * Get model validation rules for new items
-	 * @return array
-	 */
-	public static function getStoreRules()
-	{
-		return self::$storeRules;
-	}
-
-	/**
-	 * Get model validation rules for item patch
-	 * @return array
-	 */
-	public static function getPatchRules()
-	{
-		return self::$patchRules;
-	}
-
-	/**
-	 * Get model validation rules for item replacement
-	 * @return array
-	 */
-	public static function getPutRules()
-	{
-		return self::$putRules;
-	}
 }

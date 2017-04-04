@@ -39,71 +39,12 @@ class UserRole extends ApiModel
 	public $incrementing = false;
 
 	/**
-	 * Default pagination limit
-	 * @var int
-	 */
-	protected $perPage = 20;
-
-	/**
-	 * Pagination limit inclusive min value
-	 * @var int
-	 */
-	protected $perPageMin = 1;
-
-	/**
-	 * Pagination limit inclusive max value
-	 * @var int
-	 */
-	protected $perPageMax = 50;
-
-	/**
 	 * Model validation rules for new items
 	 * @var array
 	 */
 	protected static $storeRules = [
 		'id' => 'required|string|max:30|unique:user_role,id',
 	];
-
-	/**
-	 * Model validation rules for item patch
-	 * @var array
-	 */
-	protected static $patchRules = [
-	];
-
-	/**
-	 * Model validation rules for item replacement
-	 * @var array
-	 */
-	protected static $putRules = [
-	];
-
-	/**
-	 * Get model validation rules for new items
-	 * @return array
-	 */
-	public static function getStoreRules()
-	{
-		return self::$storeRules;
-	}
-
-	/**
-	 * Get model validation rules for item patch
-	 * @return array
-	 */
-	public static function getPatchRules()
-	{
-		return self::$patchRules;
-	}
-
-	/**
-	 * Get model validation rules for item replacement
-	 * @return array
-	 */
-	public static function getPutRules()
-	{
-		return self::$putRules;
-	}
 
 	/**
 	 * Get the relationships between this user role and his projects

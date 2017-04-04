@@ -3,7 +3,6 @@
 namespace App\Http\Controllers\Api;
 
 use \App\Http\Transformers\Api\UserTransformer;
-use \App\Models\User;
 use \Dingo\Api\Http\Request;
 
 /**

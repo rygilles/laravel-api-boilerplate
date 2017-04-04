@@ -37,12 +37,253 @@ You can specify extra GET parameters with any index / listing routes to request 
 <!-- END_INFO -->
 
 
+#DataStream
+<!-- START_2637aedf610876a9acf882cb69dc2520 -->
+## Get specified data stream
+
+> Example request:
+
+```bash
+curl -X GET "http://emsearch.ryan.ems-dev.net/api/dataStream/605d712c-1934-11e7-93ae-92361f002671" \
+-H "Accept: application/json" \
+-H "Authentication: Bearer xxx"
+
+```
+
+```javascript
+var settings = {
+    "async": true,
+    "crossDomain": true,
+    "url": "http://emsearch.ryan.ems-dev.net/api/dataStream/605d712c-1934-11e7-93ae-92361f002671",
+    "method": "GET",
+    "headers": {
+        "Accept": "application/json",
+        "Authentication" : "Bearer xxx"
+    }
+}
+
+$.ajax(settings).done(function (response) {
+    console.log(response);
+});
+```
+
+> Example response:
+
+```json
+{
+    "data": {
+        "id": "605d712c-1934-11e7-93ae-92361f002671",
+        "name": "Mickey Mouse Sample Project Data Stream",
+        "feed_url": "http:\/\/domain.tld\/feedTheMouse.json",
+        "created_at": "2017-04-04 12:54:12",
+        "updated_at": "2017-04-04 12:54:12"
+    }
+}
+```
+
+### HTTP Request
+`GET /api/dataStream/{dataStreamId}`
+
+`HEAD /api/dataStream/{dataStreamId}`
+
+
+<!-- END_2637aedf610876a9acf882cb69dc2520 -->
+
+<!-- START_9806e6f48b29aa520cbf710b72b4fa3e -->
+## Create and store new data stream
+
+Only one data stream per project is allowed.
+
+> Example request:
+
+```bash
+curl -X POST "http://emsearch.ryan.ems-dev.net/api/dataStream" \
+-H "Accept: application/json" \
+-H "Authentication: Bearer xxx"
+ \
+    -d "name"="Rem quia nisi" \
+    -d "feed_url"="Et molestiae quo" \
+
+```
+
+```javascript
+var settings = {
+    "async": true,
+    "crossDomain": true,
+    "url": "http://emsearch.ryan.ems-dev.net/api/dataStream",
+    "method": "POST",
+    "data": {
+        "name": "Rem quia nisi",
+        "feed_url": "Et molestiae quo"
+},
+    "headers": {
+        "Accept": "application/json",
+        "Authentication" : "Bearer xxx"
+    }
+}
+
+$.ajax(settings).done(function (response) {
+    console.log(response);
+});
+```
+
+
+### HTTP Request
+`POST /api/dataStream`
+
+#### Parameters
+
+Parameter | Type | Status | Description
+--------- | ------- | ------- | ------- | -----------
+    name | string |  required  | Maximum: `200`
+    feed_url | string |  required  | 
+
+<!-- END_9806e6f48b29aa520cbf710b72b4fa3e -->
+
+<!-- START_87948eda1c008b091811da4bfc7cd218 -->
+## Update a data stream
+
+> Example request:
+
+```bash
+curl -X PUT "http://emsearch.ryan.ems-dev.net/api/dataStream/605d712c-1934-11e7-93ae-92361f002671" \
+-H "Accept: application/json" \
+-H "Authentication: Bearer xxx"
+ \
+    -d "name"="Doloremque cum vel" \
+    -d "feed_url"="Eaque et tenetur" \
+
+```
+
+```javascript
+var settings = {
+    "async": true,
+    "crossDomain": true,
+    "url": "http://emsearch.ryan.ems-dev.net/api/dataStream/605d712c-1934-11e7-93ae-92361f002671",
+    "method": "PUT",
+    "data": {
+        "name": "Doloremque cum vel",
+        "feed_url": "Eaque et tenetur"
+},
+    "headers": {
+        "Accept": "application/json",
+        "Authentication" : "Bearer xxx"
+    }
+}
+
+$.ajax(settings).done(function (response) {
+    console.log(response);
+});
+```
+
+
+### HTTP Request
+`PUT /api/dataStream/{dataStreamId}`
+
+`PATCH /api/dataStream/{dataStreamId}`
+
+#### Parameters
+
+Parameter | Type | Status | Description
+--------- | ------- | ------- | ------- | -----------
+    name | string |  optional  | Maximum: `200`
+    feed_url | string |  optional  | 
+
+<!-- END_87948eda1c008b091811da4bfc7cd218 -->
+
+<!-- START_0402b256ba5cab23aa735079addbfe3e -->
+## Delete specified data stream
+
+> Example request:
+
+```bash
+curl -X DELETE "http://emsearch.ryan.ems-dev.net/api/dataStream/605d712c-1934-11e7-93ae-92361f002671" \
+-H "Accept: application/json" \
+-H "Authentication: Bearer xxx"
+
+```
+
+```javascript
+var settings = {
+    "async": true,
+    "crossDomain": true,
+    "url": "http://emsearch.ryan.ems-dev.net/api/dataStream/605d712c-1934-11e7-93ae-92361f002671",
+    "method": "DELETE",
+    "headers": {
+        "Accept": "application/json",
+        "Authentication" : "Bearer xxx"
+    }
+}
+
+$.ajax(settings).done(function (response) {
+    console.log(response);
+});
+```
+
+
+### HTTP Request
+`DELETE /api/dataStream/{dataStreamId}`
+
+
+<!-- END_0402b256ba5cab23aa735079addbfe3e -->
+
+<!-- START_3867fe1670caea34cb239f0f926ad768 -->
+## Show project data stream
+
+> Example request:
+
+```bash
+curl -X GET "http://emsearch.ryan.ems-dev.net/api/project/1bcc7efc-138c-11e7-93ae-92361f002671/dataStream" \
+-H "Accept: application/json" \
+-H "Authentication: Bearer xxx"
+
+```
+
+```javascript
+var settings = {
+    "async": true,
+    "crossDomain": true,
+    "url": "http://emsearch.ryan.ems-dev.net/api/project/1bcc7efc-138c-11e7-93ae-92361f002671/dataStream",
+    "method": "GET",
+    "headers": {
+        "Accept": "application/json",
+        "Authentication" : "Bearer xxx"
+    }
+}
+
+$.ajax(settings).done(function (response) {
+    console.log(response);
+});
+```
+
+> Example response:
+
+```json
+{
+    "data": {
+        "id": "56278dc8-1934-11e7-93ae-92361f002671",
+        "name": "John Smith Sample Project Data Stream",
+        "feed_url": "http:\/\/domain.tld\/feedJohn.json",
+        "created_at": "2017-04-04 12:54:12",
+        "updated_at": "2017-04-04 12:54:12"
+    }
+}
+```
+
+### HTTP Request
+`GET /api/project/{projectId}/dataStream`
+
+`HEAD /api/project/{projectId}/dataStream`
+
+
+<!-- END_3867fe1670caea34cb239f0f926ad768 -->
+
 #I18nLang
 <!-- START_e1171537de1a9b8e9dfbd90e9ef7c13f -->
-## Show I18nLang list
+## Show i18n lang list
 
 
-<aside class="notice">Pagination limit must be a value between <code>1</code> and <code>50</code>, default is <code>20</code>.</aside>
+<aside class="notice">Pagination limit must be a value between <code>1</code> and <code>50</code>, default is <code>10</code>.</aside>
 
 > Example request:
 
@@ -114,55 +355,15 @@ $.ajax(settings).done(function (response) {
         {
             "id": "ar_BH",
             "description": "Arabic (Bahrain)"
-        },
-        {
-            "id": "ar_DZ",
-            "description": "Arabic (Algeria)"
-        },
-        {
-            "id": "ar_EG",
-            "description": "Arabic (Egypt)"
-        },
-        {
-            "id": "ar_IQ",
-            "description": "Arabic (Iraq)"
-        },
-        {
-            "id": "ar_JO",
-            "description": "Arabic (Jordan)"
-        },
-        {
-            "id": "ar_KW",
-            "description": "Arabic (Kuwait)"
-        },
-        {
-            "id": "ar_LB",
-            "description": "Arabic (Lebanon)"
-        },
-        {
-            "id": "ar_LY",
-            "description": "Arabic (Libya)"
-        },
-        {
-            "id": "ar_MA",
-            "description": "Arabic (Morocco)"
-        },
-        {
-            "id": "ar_OM",
-            "description": "Arabic (Oman)"
-        },
-        {
-            "id": "ar_QA",
-            "description": "Arabic (Qatar)"
         }
     ],
     "meta": {
         "pagination": {
             "total": 434,
-            "count": 20,
-            "per_page": 20,
+            "count": 10,
+            "per_page": 10,
             "current_page": 1,
-            "total_pages": 22,
+            "total_pages": 44,
             "links": {
                 "next": "http:\/\/emsearch.ryan.ems-dev.net\/api\/i18nLang?page=2"
             }
@@ -180,7 +381,7 @@ $.ajax(settings).done(function (response) {
 <!-- END_e1171537de1a9b8e9dfbd90e9ef7c13f -->
 
 <!-- START_8bf32d4b41c09d1d9801aff1b0737349 -->
-## Get specified I18n lang
+## Get specified i18n lang
 
 > Example request:
 
@@ -266,8 +467,8 @@ $.ajax(settings).done(function (response) {
         "user_group_id": "End-User",
         "name": "John Smith",
         "email": "john.smith@domain.tld",
-        "created_at": "2017-04-04 07:29:00",
-        "updated_at": "2017-04-04 07:29:00"
+        "created_at": "2017-04-04 12:54:12",
+        "updated_at": "2017-04-04 12:54:12"
     }
 }
 ```
@@ -281,8 +482,88 @@ $.ajax(settings).done(function (response) {
 <!-- END_01138559f486b5b7c062a19b1c0412fe -->
 
 #Project
+<!-- START_aa8a35d90f07e0338dcd98a913a63c76 -->
+## User project list
+
+You can specify a GET parameter `user_role_id` to filter results.
+<aside class="notice">Pagination limit must be a value between <code>1</code> and <code>50</code>, default is <code>10</code>.</aside>
+
+> Example request:
+
+```bash
+curl -X GET "http://emsearch.ryan.ems-dev.net/api/user/605c7610-1389-11e7-93ae-92361f002671/project?user_role_id=Owner" \
+-H "Accept: application/json" \
+-H "Authentication: Bearer xxx"
+
+```
+
+```javascript
+var settings = {
+    "async": true,
+    "crossDomain": true,
+    "url": "http://emsearch.ryan.ems-dev.net/api/user/605c7610-1389-11e7-93ae-92361f002671/project?user_role_id=Owner",
+    "method": "GET",
+    "headers": {
+        "Accept": "application/json",
+        "Authentication" : "Bearer xxx"
+    }
+}
+
+$.ajax(settings).done(function (response) {
+    console.log(response);
+});
+```
+
+> Example response:
+
+```json
+{
+    "data": [
+        {
+            "id": "1bcc7efc-138c-11e7-93ae-92361f002671",
+            "search_engine_id": "ee87e3b2-1388-11e7-93ae-92361f002671",
+            "data_stream_id": "56278dc8-1934-11e7-93ae-92361f002671",
+            "name": "John Smith Sample Project 1",
+            "created_at": "2017-04-04 12:54:12",
+            "updated_at": "2017-04-04 12:54:12"
+        },
+        {
+            "id": "b6860dd2-138c-11e7-93ae-92361f002671",
+            "search_engine_id": "ee87e3b2-1388-11e7-93ae-92361f002671",
+            "data_stream_id": null,
+            "name": "John Smith Sample Project 2",
+            "created_at": "2017-04-04 12:54:12",
+            "updated_at": "2017-04-04 12:54:12"
+        }
+    ],
+    "meta": {
+        "pagination": {
+            "total": 2,
+            "count": 2,
+            "per_page": 10,
+            "current_page": 1,
+            "total_pages": 1,
+            "links": []
+        }
+    }
+}
+```
+
+### HTTP Request
+`GET /api/user/{userId}/project`
+
+`HEAD /api/user/{userId}/project`
+
+#### Parameters
+
+Parameter | Type | Status | Description
+--------- | ------- | ------- | ------- | -----------
+    user_role_id | string |  optional  | Valid user_role id `Owner` or `Administrator`
+
+<!-- END_aa8a35d90f07e0338dcd98a913a63c76 -->
+
 <!-- START_4c7672d1d57bba818fcb5bc7dc53776e -->
-## Get specified user project
+## Get specified project
 
 > Example request:
 
@@ -317,10 +598,10 @@ $.ajax(settings).done(function (response) {
     "data": {
         "id": "1bcc7efc-138c-11e7-93ae-92361f002671",
         "search_engine_id": "ee87e3b2-1388-11e7-93ae-92361f002671",
-        "data_stream_id": null,
+        "data_stream_id": "56278dc8-1934-11e7-93ae-92361f002671",
         "name": "John Smith Sample Project 1",
-        "created_at": "2017-04-04 07:29:00",
-        "updated_at": "2017-04-04 07:29:00"
+        "created_at": "2017-04-04 12:54:12",
+        "updated_at": "2017-04-04 12:54:12"
     }
 }
 ```
@@ -343,9 +624,9 @@ curl -X POST "http://emsearch.ryan.ems-dev.net/api/project" \
 -H "Accept: application/json" \
 -H "Authentication: Bearer xxx"
  \
-    -d "search_engine_id"="9f03987e-87a7-3f90-b72a-647be4420f63" \
-    -d "data_stream_id"="5d3f414b-7cdd-3ff0-9404-a5e2cbe23578" \
-    -d "name"="Aut quisquam voluptas" \
+    -d "search_engine_id"="dd69b5f0-4578-3ed5-a079-fc9a441f96b3" \
+    -d "data_stream_id"="157a55ef-265a-391e-a502-01dd5ade1784" \
+    -d "name"="Corrupti soluta quaerat" \
 
 ```
 
@@ -356,9 +637,9 @@ var settings = {
     "url": "http://emsearch.ryan.ems-dev.net/api/project",
     "method": "POST",
     "data": {
-        "search_engine_id": "9f03987e-87a7-3f90-b72a-647be4420f63",
-        "data_stream_id": "5d3f414b-7cdd-3ff0-9404-a5e2cbe23578",
-        "name": "Aut quisquam voluptas"
+        "search_engine_id": "dd69b5f0-4578-3ed5-a079-fc9a441f96b3",
+        "data_stream_id": "157a55ef-265a-391e-a502-01dd5ade1784",
+        "name": "Corrupti soluta quaerat"
 },
     "headers": {
         "Accept": "application/json",
@@ -386,7 +667,7 @@ Parameter | Type | Status | Description
 <!-- END_f77a6ccd588d420cab2180c05580e7ef -->
 
 <!-- START_3ab7c7860cd533c91de466d299bc9cff -->
-## Update a specified user project
+## Update a specified project
 
 > Example request:
 
@@ -395,9 +676,9 @@ curl -X PUT "http://emsearch.ryan.ems-dev.net/api/project/1bcc7efc-138c-11e7-93a
 -H "Accept: application/json" \
 -H "Authentication: Bearer xxx"
  \
-    -d "search_engine_id"="44fc4658-d6b8-3c31-a752-6dffa962bb8b" \
-    -d "data_stream_id"="6ee981f4-f0a6-3df8-99d7-dd636c48e742" \
-    -d "name"="Consequatur aut maiores" \
+    -d "search_engine_id"="bbb94ad7-018a-3844-bee5-57e478408589" \
+    -d "data_stream_id"="c593131b-8039-3a6f-9e36-dbcb8ac7874a" \
+    -d "name"="Hic et autem" \
 
 ```
 
@@ -408,9 +689,9 @@ var settings = {
     "url": "http://emsearch.ryan.ems-dev.net/api/project/1bcc7efc-138c-11e7-93ae-92361f002671",
     "method": "PUT",
     "data": {
-        "search_engine_id": "44fc4658-d6b8-3c31-a752-6dffa962bb8b",
-        "data_stream_id": "6ee981f4-f0a6-3df8-99d7-dd636c48e742",
-        "name": "Consequatur aut maiores"
+        "search_engine_id": "bbb94ad7-018a-3844-bee5-57e478408589",
+        "data_stream_id": "c593131b-8039-3a6f-9e36-dbcb8ac7874a",
+        "name": "Hic et autem"
 },
     "headers": {
         "Accept": "application/json",
@@ -440,7 +721,7 @@ Parameter | Type | Status | Description
 <!-- END_3ab7c7860cd533c91de466d299bc9cff -->
 
 <!-- START_9e2aafbf3cd214246c2f0fe7511ec6ea -->
-## Delete specified user project
+## Delete specified project
 
 All relationships between the project and his users will be automatically deleted too.
 <aside class="notice">Only <code>Owner</code> of project is allowed to delete it.</aside>
@@ -477,136 +758,4 @@ $.ajax(settings).done(function (response) {
 
 
 <!-- END_9e2aafbf3cd214246c2f0fe7511ec6ea -->
-
-#UserProject
-<!-- START_aa8a35d90f07e0338dcd98a913a63c76 -->
-## User project list
-
-You can specify a GET parameter `user_role_id` to filter results.
-
-> Example request:
-
-```bash
-curl -X GET "http://emsearch.ryan.ems-dev.net/api/user/605c7610-1389-11e7-93ae-92361f002671/project?user_role_id=Owner" \
--H "Accept: application/json" \
--H "Authentication: Bearer xxx"
-
-```
-
-```javascript
-var settings = {
-    "async": true,
-    "crossDomain": true,
-    "url": "http://emsearch.ryan.ems-dev.net/api/user/605c7610-1389-11e7-93ae-92361f002671/project?user_role_id=Owner",
-    "method": "GET",
-    "headers": {
-        "Accept": "application/json",
-        "Authentication" : "Bearer xxx"
-    }
-}
-
-$.ajax(settings).done(function (response) {
-    console.log(response);
-});
-```
-
-> Example response:
-
-```json
-{
-    "data": [
-        {
-            "id": "1bcc7efc-138c-11e7-93ae-92361f002671",
-            "search_engine_id": "ee87e3b2-1388-11e7-93ae-92361f002671",
-            "data_stream_id": null,
-            "name": "John Smith Sample Project 1",
-            "created_at": "2017-04-04 07:29:00",
-            "updated_at": "2017-04-04 07:29:00"
-        },
-        {
-            "id": "b6860dd2-138c-11e7-93ae-92361f002671",
-            "search_engine_id": "ee87e3b2-1388-11e7-93ae-92361f002671",
-            "data_stream_id": null,
-            "name": "John Smith Sample Project 2",
-            "created_at": "2017-04-04 07:29:00",
-            "updated_at": "2017-04-04 07:29:00"
-        }
-    ],
-    "meta": {
-        "pagination": {
-            "total": 2,
-            "count": 2,
-            "per_page": 20,
-            "current_page": 1,
-            "total_pages": 1,
-            "links": []
-        }
-    }
-}
-```
-
-### HTTP Request
-`GET /api/user/{userId}/project`
-
-`HEAD /api/user/{userId}/project`
-
-#### Parameters
-
-Parameter | Type | Status | Description
---------- | ------- | ------- | ------- | -----------
-    user_role_id | string |  optional  | Valid user_role id `Owner` or `Administrator`
-
-<!-- END_aa8a35d90f07e0338dcd98a913a63c76 -->
-
-<!-- START_28964cc27ab9afa6ce7f99c0bf0dc46b -->
-## Get specified user project
-
-> Example request:
-
-```bash
-curl -X GET "http://emsearch.ryan.ems-dev.net/api/user/605c7610-1389-11e7-93ae-92361f002671/project/1bcc7efc-138c-11e7-93ae-92361f002671" \
--H "Accept: application/json" \
--H "Authentication: Bearer xxx"
-
-```
-
-```javascript
-var settings = {
-    "async": true,
-    "crossDomain": true,
-    "url": "http://emsearch.ryan.ems-dev.net/api/user/605c7610-1389-11e7-93ae-92361f002671/project/1bcc7efc-138c-11e7-93ae-92361f002671",
-    "method": "GET",
-    "headers": {
-        "Accept": "application/json",
-        "Authentication" : "Bearer xxx"
-    }
-}
-
-$.ajax(settings).done(function (response) {
-    console.log(response);
-});
-```
-
-> Example response:
-
-```json
-{
-    "data": {
-        "id": "1bcc7efc-138c-11e7-93ae-92361f002671",
-        "search_engine_id": "ee87e3b2-1388-11e7-93ae-92361f002671",
-        "data_stream_id": null,
-        "name": "John Smith Sample Project 1",
-        "created_at": "2017-04-04 07:29:00",
-        "updated_at": "2017-04-04 07:29:00"
-    }
-}
-```
-
-### HTTP Request
-`GET /api/user/{userId}/project/{projectId}`
-
-`HEAD /api/user/{userId}/project/{projectId}`
-
-
-<!-- END_28964cc27ab9afa6ce7f99c0bf0dc46b -->
 

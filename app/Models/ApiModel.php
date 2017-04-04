@@ -12,6 +12,12 @@ use App\Libs\ApiEloquentBuilder;
 class ApiModel extends Model
 {
 	/**
+	 * Default pagination limit
+	 * @var int
+	 */
+	protected $perPage = 10;
+
+	/**
 	 * Pagination limit inclusive min value
 	 * @var int
 	 */
@@ -22,6 +28,24 @@ class ApiModel extends Model
 	 * @var int
 	 */
 	protected $perPageMax = 20;
+
+	/**
+	 * Model validation rules for new items
+	 * @var array
+	 */
+	protected static $storeRules = [];
+
+	/**
+	 * Model validation rules for item patch
+	 * @var array
+	 */
+	protected static $patchRules = [];
+
+	/**
+	 * Model validation rules for item replacement
+	 * @var array
+	 */
+	protected static $putRules = [];
 
 	/**
 	 * {@inheritDoc}
@@ -75,6 +99,42 @@ class ApiModel extends Model
 		$this->perPageMax = $perPageMax;
 
 		return $this;
+	}
+
+	/**
+	 * Model default validation rules
+	 * @return string[]
+	 */
+	public function rules()
+	{
+		return static::getStoreRules();
+	}
+
+	/**
+	 * Get model validation rules for new items
+	 * @return array
+	 */
+	public static function getStoreRules()
+	{
+		return static::$storeRules;
+	}
+
+	/**
+	 * Get model validation rules for item patch
+	 * @return array
+	 */
+	public static function getPatchRules()
+	{
+		return static::$patchRules;
+	}
+
+	/**
+	 * Get model validation rules for item replacement
+	 * @return array
+	 */
+	public static function getPutRules()
+	{
+		return static::$putRules;
 	}
 }
 

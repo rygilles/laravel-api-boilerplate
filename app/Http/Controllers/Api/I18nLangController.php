@@ -25,7 +25,7 @@ class I18nLangController extends ApiController
 	}
 
 	/**
-	 * Show I18nLang list
+	 * Show i18n lang list
 	 *
 	 * @return \Dingo\Api\Http\Response
 	 */
@@ -37,7 +37,7 @@ class I18nLangController extends ApiController
 	}
 
 	/**
-	 * Get specified I18n lang
+	 * Get specified i18n lang
 	 *
 	 * @param $i18nLangId string I18n lang UUID
 	 * @return \Dingo\Api\Http\Response|void
@@ -53,7 +53,7 @@ class I18nLangController extends ApiController
 	}
 
 	/**
-	 * Create and store new I18n lang
+	 * Create and store new i18n lang
 	 *
 	 * @ApiDocsNoCall
 	 *
@@ -72,7 +72,7 @@ class I18nLangController extends ApiController
 	}
 
 	/**
-	 * Update a I18n lang
+	 * Update a i18n lang
 	 *
 	 * @ApiDocsNoCall
 	 *
@@ -94,7 +94,7 @@ class I18nLangController extends ApiController
 	}
 
 	/**
-	 * Delete specified I18n Lang
+	 * Delete specified i18n Lang
 	 *
 	 * <aside class="warning">Avoid using this feature ! Check foreign keys constraints to remove dependent resources properly before.</aside>
 	 *
