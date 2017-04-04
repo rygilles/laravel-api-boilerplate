@@ -266,8 +266,8 @@ $.ajax(settings).done(function (response) {
         "user_group_id": "End-User",
         "name": "John Smith",
         "email": "john.smith@domain.tld",
-        "created_at": "2017-03-31 13:07:55",
-        "updated_at": "2017-03-31 13:07:55"
+        "created_at": "2017-04-04 07:29:00",
+        "updated_at": "2017-04-04 07:29:00"
     }
 }
 ```
@@ -319,8 +319,8 @@ $.ajax(settings).done(function (response) {
         "search_engine_id": "ee87e3b2-1388-11e7-93ae-92361f002671",
         "data_stream_id": null,
         "name": "John Smith Sample Project 1",
-        "created_at": "2017-03-31 13:07:55",
-        "updated_at": "2017-03-31 13:07:55"
+        "created_at": "2017-04-04 07:29:00",
+        "updated_at": "2017-04-04 07:29:00"
     }
 }
 ```
@@ -343,9 +343,9 @@ curl -X POST "http://emsearch.ryan.ems-dev.net/api/project" \
 -H "Accept: application/json" \
 -H "Authentication: Bearer xxx"
  \
-    -d "search_engine_id"="be6b5460-76af-303f-99ec-8ff393542b4f" \
-    -d "data_stream_id"="84d502c8-217a-3ea3-8a24-2a0d67689962" \
-    -d "name"="Rerum sed ea" \
+    -d "search_engine_id"="9f03987e-87a7-3f90-b72a-647be4420f63" \
+    -d "data_stream_id"="5d3f414b-7cdd-3ff0-9404-a5e2cbe23578" \
+    -d "name"="Aut quisquam voluptas" \
 
 ```
 
@@ -356,9 +356,9 @@ var settings = {
     "url": "http://emsearch.ryan.ems-dev.net/api/project",
     "method": "POST",
     "data": {
-        "search_engine_id": "be6b5460-76af-303f-99ec-8ff393542b4f",
-        "data_stream_id": "84d502c8-217a-3ea3-8a24-2a0d67689962",
-        "name": "Rerum sed ea"
+        "search_engine_id": "9f03987e-87a7-3f90-b72a-647be4420f63",
+        "data_stream_id": "5d3f414b-7cdd-3ff0-9404-a5e2cbe23578",
+        "name": "Aut quisquam voluptas"
 },
     "headers": {
         "Accept": "application/json",
@@ -395,9 +395,9 @@ curl -X PUT "http://emsearch.ryan.ems-dev.net/api/project/1bcc7efc-138c-11e7-93a
 -H "Accept: application/json" \
 -H "Authentication: Bearer xxx"
  \
-    -d "search_engine_id"="1677b8c2-864d-35f1-970a-cb76fc5d3d51" \
-    -d "data_stream_id"="0489f9ca-fbc5-328c-8d70-7948c3cb2f0c" \
-    -d "name"="Occaecati enim aut" \
+    -d "search_engine_id"="44fc4658-d6b8-3c31-a752-6dffa962bb8b" \
+    -d "data_stream_id"="6ee981f4-f0a6-3df8-99d7-dd636c48e742" \
+    -d "name"="Consequatur aut maiores" \
 
 ```
 
@@ -408,9 +408,9 @@ var settings = {
     "url": "http://emsearch.ryan.ems-dev.net/api/project/1bcc7efc-138c-11e7-93ae-92361f002671",
     "method": "PUT",
     "data": {
-        "search_engine_id": "1677b8c2-864d-35f1-970a-cb76fc5d3d51",
-        "data_stream_id": "0489f9ca-fbc5-328c-8d70-7948c3cb2f0c",
-        "name": "Occaecati enim aut"
+        "search_engine_id": "44fc4658-d6b8-3c31-a752-6dffa962bb8b",
+        "data_stream_id": "6ee981f4-f0a6-3df8-99d7-dd636c48e742",
+        "name": "Consequatur aut maiores"
 },
     "headers": {
         "Accept": "application/json",
@@ -439,7 +439,46 @@ Parameter | Type | Status | Description
 
 <!-- END_3ab7c7860cd533c91de466d299bc9cff -->
 
-#User Project
+<!-- START_9e2aafbf3cd214246c2f0fe7511ec6ea -->
+## Delete specified user project
+
+All relationships between the project and his users will be automatically deleted too.
+<aside class="notice">Only <code>Owner</code> of project is allowed to delete it.</aside>
+
+> Example request:
+
+```bash
+curl -X DELETE "http://emsearch.ryan.ems-dev.net/api/project/1bcc7efc-138c-11e7-93ae-92361f002671" \
+-H "Accept: application/json" \
+-H "Authentication: Bearer xxx"
+
+```
+
+```javascript
+var settings = {
+    "async": true,
+    "crossDomain": true,
+    "url": "http://emsearch.ryan.ems-dev.net/api/project/1bcc7efc-138c-11e7-93ae-92361f002671",
+    "method": "DELETE",
+    "headers": {
+        "Accept": "application/json",
+        "Authentication" : "Bearer xxx"
+    }
+}
+
+$.ajax(settings).done(function (response) {
+    console.log(response);
+});
+```
+
+
+### HTTP Request
+`DELETE /api/project/{projectId}`
+
+
+<!-- END_9e2aafbf3cd214246c2f0fe7511ec6ea -->
+
+#UserProject
 <!-- START_aa8a35d90f07e0338dcd98a913a63c76 -->
 ## User project list
 
@@ -481,16 +520,16 @@ $.ajax(settings).done(function (response) {
             "search_engine_id": "ee87e3b2-1388-11e7-93ae-92361f002671",
             "data_stream_id": null,
             "name": "John Smith Sample Project 1",
-            "created_at": "2017-03-31 13:07:55",
-            "updated_at": "2017-03-31 13:07:55"
+            "created_at": "2017-04-04 07:29:00",
+            "updated_at": "2017-04-04 07:29:00"
         },
         {
             "id": "b6860dd2-138c-11e7-93ae-92361f002671",
             "search_engine_id": "ee87e3b2-1388-11e7-93ae-92361f002671",
             "data_stream_id": null,
             "name": "John Smith Sample Project 2",
-            "created_at": "2017-03-31 13:07:55",
-            "updated_at": "2017-03-31 13:07:55"
+            "created_at": "2017-04-04 07:29:00",
+            "updated_at": "2017-04-04 07:29:00"
         }
     ],
     "meta": {
@@ -557,8 +596,8 @@ $.ajax(settings).done(function (response) {
         "search_engine_id": "ee87e3b2-1388-11e7-93ae-92361f002671",
         "data_stream_id": null,
         "name": "John Smith Sample Project 1",
-        "created_at": "2017-03-31 13:07:55",
-        "updated_at": "2017-03-31 13:07:55"
+        "created_at": "2017-04-04 07:29:00",
+        "updated_at": "2017-04-04 07:29:00"
     }
 }
 ```

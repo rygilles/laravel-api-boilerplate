@@ -237,8 +237,8 @@ curl -X POST "http://emsearch.ryan.ems-dev.net/api/i18nLang" \
 -H "Accept: application/json" \
 -H "Authentication: Bearer xxx"
  \
-    -d "id"="Sint ipsam autem" \
-    -d "description"="Reprehenderit dicta corporis" \
+    -d "id"="Alias cumque et" \
+    -d "description"="Mollitia enim aut" \
 
 ```
 
@@ -249,8 +249,8 @@ var settings = {
     "url": "http://emsearch.ryan.ems-dev.net/api/i18nLang",
     "method": "POST",
     "data": {
-        "id": "Sint ipsam autem",
-        "description": "Reprehenderit dicta corporis"
+        "id": "Alias cumque et",
+        "description": "Mollitia enim aut"
 },
     "headers": {
         "Accept": "application/json",
@@ -286,7 +286,7 @@ curl -X PUT "http://emsearch.ryan.ems-dev.net/api/i18nLang/en_US" \
 -H "Accept: application/json" \
 -H "Authentication: Bearer xxx"
  \
-    -d "description"="Numquam dolor voluptatem" \
+    -d "description"="Quo ut id" \
 
 ```
 
@@ -297,7 +297,7 @@ var settings = {
     "url": "http://emsearch.ryan.ems-dev.net/api/i18nLang/en_US",
     "method": "PUT",
     "data": {
-        "description": "Numquam dolor voluptatem"
+        "description": "Quo ut id"
 },
     "headers": {
         "Accept": "application/json",
@@ -323,6 +323,44 @@ Parameter | Type | Status | Description
     description | string |  required  | 
 
 <!-- END_af8f6b1d140489943f05fd909d10f8c5 -->
+
+<!-- START_da33854f6c75cddbbd999cf866437d76 -->
+## Delete specified I18n Lang
+
+<aside class="warning">Avoid using this feature ! Check foreign keys constraints to remove dependent resources properly before.</aside>
+
+> Example request:
+
+```bash
+curl -X DELETE "http://emsearch.ryan.ems-dev.net/api/i18nLang/en_US" \
+-H "Accept: application/json" \
+-H "Authentication: Bearer xxx"
+
+```
+
+```javascript
+var settings = {
+    "async": true,
+    "crossDomain": true,
+    "url": "http://emsearch.ryan.ems-dev.net/api/i18nLang/en_US",
+    "method": "DELETE",
+    "headers": {
+        "Accept": "application/json",
+        "Authentication" : "Bearer xxx"
+    }
+}
+
+$.ajax(settings).done(function (response) {
+    console.log(response);
+});
+```
+
+
+### HTTP Request
+`DELETE /api/i18nLang/{i18nLangId}`
+
+
+<!-- END_da33854f6c75cddbbd999cf866437d76 -->
 
 #Me
 <!-- START_01138559f486b5b7c062a19b1c0412fe -->
@@ -363,8 +401,8 @@ $.ajax(settings).done(function (response) {
         "user_group_id": "Developer",
         "name": "John Doe",
         "email": "john.doe@domain.tld",
-        "created_at": "2017-04-03 10:03:36",
-        "updated_at": "2017-04-03 10:03:36"
+        "created_at": "2017-04-04 07:28:59",
+        "updated_at": "2017-04-04 07:28:59"
     }
 }
 ```
@@ -420,24 +458,24 @@ $.ajax(settings).done(function (response) {
             "search_engine_id": "ee87e3b2-1388-11e7-93ae-92361f002671",
             "data_stream_id": null,
             "name": "John Smith Sample Project 1",
-            "created_at": "2017-04-03 10:03:36",
-            "updated_at": "2017-04-03 10:03:36"
+            "created_at": "2017-04-04 07:29:00",
+            "updated_at": "2017-04-04 07:29:00"
         },
         {
             "id": "b6860dd2-138c-11e7-93ae-92361f002671",
             "search_engine_id": "ee87e3b2-1388-11e7-93ae-92361f002671",
             "data_stream_id": null,
             "name": "John Smith Sample Project 2",
-            "created_at": "2017-04-03 10:03:36",
-            "updated_at": "2017-04-03 10:03:36"
+            "created_at": "2017-04-04 07:29:00",
+            "updated_at": "2017-04-04 07:29:00"
         },
         {
             "id": "c4b5d93c-138c-11e7-93ae-92361f002671",
             "search_engine_id": "ee87e3b2-1388-11e7-93ae-92361f002671",
             "data_stream_id": null,
             "name": "Mickey Mouse Sample Project",
-            "created_at": "2017-04-03 10:03:36",
-            "updated_at": "2017-04-03 10:03:36"
+            "created_at": "2017-04-04 07:29:00",
+            "updated_at": "2017-04-04 07:29:00"
         }
     ],
     "meta": {
@@ -499,8 +537,8 @@ $.ajax(settings).done(function (response) {
         "search_engine_id": "ee87e3b2-1388-11e7-93ae-92361f002671",
         "data_stream_id": null,
         "name": "John Smith Sample Project 1",
-        "created_at": "2017-04-03 10:03:36",
-        "updated_at": "2017-04-03 10:03:36"
+        "created_at": "2017-04-04 07:29:00",
+        "updated_at": "2017-04-04 07:29:00"
     }
 }
 ```
@@ -523,9 +561,9 @@ curl -X POST "http://emsearch.ryan.ems-dev.net/api/project" \
 -H "Accept: application/json" \
 -H "Authentication: Bearer xxx"
  \
-    -d "search_engine_id"="c697ede7-182c-30b9-9d18-697a136c1a7b" \
-    -d "data_stream_id"="6aacbace-6f88-3a9d-b295-26110973645a" \
-    -d "name"="Voluptas est sit" \
+    -d "search_engine_id"="85abd88f-10de-3ce5-a46f-d006cc24de35" \
+    -d "data_stream_id"="0392cf9c-eb79-367d-8466-314df211d57c" \
+    -d "name"="Voluptas sunt et" \
 
 ```
 
@@ -536,9 +574,9 @@ var settings = {
     "url": "http://emsearch.ryan.ems-dev.net/api/project",
     "method": "POST",
     "data": {
-        "search_engine_id": "c697ede7-182c-30b9-9d18-697a136c1a7b",
-        "data_stream_id": "6aacbace-6f88-3a9d-b295-26110973645a",
-        "name": "Voluptas est sit"
+        "search_engine_id": "85abd88f-10de-3ce5-a46f-d006cc24de35",
+        "data_stream_id": "0392cf9c-eb79-367d-8466-314df211d57c",
+        "name": "Voluptas sunt et"
 },
     "headers": {
         "Accept": "application/json",
@@ -575,9 +613,9 @@ curl -X PUT "http://emsearch.ryan.ems-dev.net/api/project/1bcc7efc-138c-11e7-93a
 -H "Accept: application/json" \
 -H "Authentication: Bearer xxx"
  \
-    -d "search_engine_id"="1ad0bb76-50c0-32e0-957b-2c60641c6665" \
-    -d "data_stream_id"="3a8ebb28-3cf8-3024-a056-3d191ddeae52" \
-    -d "name"="Excepturi cum illum" \
+    -d "search_engine_id"="70678644-75a4-378a-b7d9-9602bd3dce4b" \
+    -d "data_stream_id"="abe75311-1b4f-33c8-8f74-ed60c8a48bdf" \
+    -d "name"="Excepturi quis qui" \
 
 ```
 
@@ -588,9 +626,9 @@ var settings = {
     "url": "http://emsearch.ryan.ems-dev.net/api/project/1bcc7efc-138c-11e7-93ae-92361f002671",
     "method": "PUT",
     "data": {
-        "search_engine_id": "1ad0bb76-50c0-32e0-957b-2c60641c6665",
-        "data_stream_id": "3a8ebb28-3cf8-3024-a056-3d191ddeae52",
-        "name": "Excepturi cum illum"
+        "search_engine_id": "70678644-75a4-378a-b7d9-9602bd3dce4b",
+        "data_stream_id": "abe75311-1b4f-33c8-8f74-ed60c8a48bdf",
+        "name": "Excepturi quis qui"
 },
     "headers": {
         "Accept": "application/json",
@@ -618,6 +656,45 @@ Parameter | Type | Status | Description
     name | string |  required  | Minimum: `5` Maximum: `100`
 
 <!-- END_3ab7c7860cd533c91de466d299bc9cff -->
+
+<!-- START_9e2aafbf3cd214246c2f0fe7511ec6ea -->
+## Delete specified user project
+
+All relationships between the project and his users will be automatically deleted too.
+<aside class="notice">Only <code>Owner</code> of project is allowed to delete it.</aside>
+
+> Example request:
+
+```bash
+curl -X DELETE "http://emsearch.ryan.ems-dev.net/api/project/1bcc7efc-138c-11e7-93ae-92361f002671" \
+-H "Accept: application/json" \
+-H "Authentication: Bearer xxx"
+
+```
+
+```javascript
+var settings = {
+    "async": true,
+    "crossDomain": true,
+    "url": "http://emsearch.ryan.ems-dev.net/api/project/1bcc7efc-138c-11e7-93ae-92361f002671",
+    "method": "DELETE",
+    "headers": {
+        "Accept": "application/json",
+        "Authentication" : "Bearer xxx"
+    }
+}
+
+$.ajax(settings).done(function (response) {
+    console.log(response);
+});
+```
+
+
+### HTTP Request
+`DELETE /api/project/{projectId}`
+
+
+<!-- END_9e2aafbf3cd214246c2f0fe7511ec6ea -->
 
 #SearchEngine
 <!-- START_4782f8649a902914ec1963f2a78da258 -->
@@ -660,8 +737,8 @@ $.ajax(settings).done(function (response) {
         {
             "id": "ee87e3b2-1388-11e7-93ae-92361f002671",
             "name": "Algolia",
-            "created_at": "2017-04-03 10:03:33",
-            "updated_at": "2017-04-03 10:03:33"
+            "created_at": "2017-04-04 07:28:55",
+            "updated_at": "2017-04-04 07:28:55"
         }
     ],
     "meta": {
@@ -721,8 +798,8 @@ $.ajax(settings).done(function (response) {
     "data": {
         "id": "ee87e3b2-1388-11e7-93ae-92361f002671",
         "name": "Algolia",
-        "created_at": "2017-04-03 10:03:33",
-        "updated_at": "2017-04-03 10:03:33"
+        "created_at": "2017-04-04 07:28:55",
+        "updated_at": "2017-04-04 07:28:55"
     }
 }
 ```
@@ -745,7 +822,7 @@ curl -X POST "http://emsearch.ryan.ems-dev.net/api/searchEngine" \
 -H "Accept: application/json" \
 -H "Authentication: Bearer xxx"
  \
-    -d "name"="Odit minima esse" \
+    -d "name"="Vero blanditiis esse" \
 
 ```
 
@@ -756,7 +833,7 @@ var settings = {
     "url": "http://emsearch.ryan.ems-dev.net/api/searchEngine",
     "method": "POST",
     "data": {
-        "name": "Odit minima esse"
+        "name": "Vero blanditiis esse"
 },
     "headers": {
         "Accept": "application/json",
@@ -791,7 +868,7 @@ curl -X PUT "http://emsearch.ryan.ems-dev.net/api/searchEngine/ee87e3b2-1388-11e
 -H "Accept: application/json" \
 -H "Authentication: Bearer xxx"
  \
-    -d "name"="Est non corrupti" \
+    -d "name"="Aut suscipit odit" \
 
 ```
 
@@ -802,7 +879,7 @@ var settings = {
     "url": "http://emsearch.ryan.ems-dev.net/api/searchEngine/ee87e3b2-1388-11e7-93ae-92361f002671",
     "method": "PUT",
     "data": {
-        "name": "Est non corrupti"
+        "name": "Aut suscipit odit"
 },
     "headers": {
         "Accept": "application/json",
@@ -828,6 +905,44 @@ Parameter | Type | Status | Description
     name | string |  required  | Maximum: `100`
 
 <!-- END_799a20e4e8308abe543bbd9509f1d445 -->
+
+<!-- START_1f959d663af6a541ba1b38647d63575b -->
+## Delete specified Search Engine
+
+<aside class="warning">Avoid using this feature ! Check foreign keys constraints to remove dependent resources properly before.</aside>
+
+> Example request:
+
+```bash
+curl -X DELETE "http://emsearch.ryan.ems-dev.net/api/searchEngine/ee87e3b2-1388-11e7-93ae-92361f002671" \
+-H "Accept: application/json" \
+-H "Authentication: Bearer xxx"
+
+```
+
+```javascript
+var settings = {
+    "async": true,
+    "crossDomain": true,
+    "url": "http://emsearch.ryan.ems-dev.net/api/searchEngine/ee87e3b2-1388-11e7-93ae-92361f002671",
+    "method": "DELETE",
+    "headers": {
+        "Accept": "application/json",
+        "Authentication" : "Bearer xxx"
+    }
+}
+
+$.ajax(settings).done(function (response) {
+    console.log(response);
+});
+```
+
+
+### HTTP Request
+`DELETE /api/searchEngine/{searchEngineId}`
+
+
+<!-- END_1f959d663af6a541ba1b38647d63575b -->
 
 #User
 <!-- START_79bbe09b8f53b0948351390dffb959af -->
@@ -872,32 +987,32 @@ $.ajax(settings).done(function (response) {
             "user_group_id": "Developer",
             "name": "John Doe",
             "email": "john.doe@domain.tld",
-            "created_at": "2017-04-03 10:03:36",
-            "updated_at": "2017-04-03 10:03:36"
+            "created_at": "2017-04-04 07:28:59",
+            "updated_at": "2017-04-04 07:28:59"
         },
         {
             "id": "509dd5c0-1389-11e7-93ae-92361f002671",
             "user_group_id": "Support",
             "name": "Alan Smithee",
             "email": "alan.smithee@domain.tld",
-            "created_at": "2017-04-03 10:03:36",
-            "updated_at": "2017-04-03 10:03:36"
+            "created_at": "2017-04-04 07:28:59",
+            "updated_at": "2017-04-04 07:28:59"
         },
         {
             "id": "605c7610-1389-11e7-93ae-92361f002671",
             "user_group_id": "End-User",
             "name": "John Smith",
             "email": "john.smith@domain.tld",
-            "created_at": "2017-04-03 10:03:36",
-            "updated_at": "2017-04-03 10:03:36"
+            "created_at": "2017-04-04 07:29:00",
+            "updated_at": "2017-04-04 07:29:00"
         },
         {
             "id": "82b5da82-138c-11e7-93ae-92361f002671",
             "user_group_id": "End-User",
             "name": "Mickey Mouse",
             "email": "mickey.mouse@domain.tld",
-            "created_at": "2017-04-03 10:03:36",
-            "updated_at": "2017-04-03 10:03:36"
+            "created_at": "2017-04-04 07:29:00",
+            "updated_at": "2017-04-04 07:29:00"
         }
     ],
     "meta": {
@@ -959,8 +1074,8 @@ $.ajax(settings).done(function (response) {
         "user_group_id": "End-User",
         "name": "John Smith",
         "email": "john.smith@domain.tld",
-        "created_at": "2017-04-03 10:03:36",
-        "updated_at": "2017-04-03 10:03:36"
+        "created_at": "2017-04-04 07:29:00",
+        "updated_at": "2017-04-04 07:29:00"
     }
 }
 ```
@@ -983,10 +1098,10 @@ curl -X POST "http://emsearch.ryan.ems-dev.net/api/user" \
 -H "Accept: application/json" \
 -H "Authentication: Bearer xxx"
  \
-    -d "user_group_id"="Developer" \
-    -d "name"="Ipsam natus numquam" \
-    -d "email"="metz.elinore@example.com" \
-    -d "password"="d4B&quot;BNh" \
+    -d "user_group_id"="Support" \
+    -d "name"="Consectetur sequi expedita" \
+    -d "email"="weldon.gerlach@example.net" \
+    -d "password"="-o$NA`{~2n8&#039;" \
 
 ```
 
@@ -997,10 +1112,10 @@ var settings = {
     "url": "http://emsearch.ryan.ems-dev.net/api/user",
     "method": "POST",
     "data": {
-        "user_group_id": "Developer",
-        "name": "Ipsam natus numquam",
-        "email": "metz.elinore@example.com",
-        "password": "d4B\"BNh"
+        "user_group_id": "Support",
+        "name": "Consectetur sequi expedita",
+        "email": "weldon.gerlach@example.net",
+        "password": "-o$NA`{~2n8'"
 },
     "headers": {
         "Accept": "application/json",
@@ -1027,6 +1142,102 @@ Parameter | Type | Status | Description
     password | string |  required  | Password with at least: `8` chars, `1` numeric, `1` uppercase and `1` lowercase
 
 <!-- END_ddfe841311822ba91babd6d2eb588875 -->
+
+<!-- START_707699ec45bed549f4600a85f0f86358 -->
+## Update a specified user
+
+> Example request:
+
+```bash
+curl -X PUT "http://emsearch.ryan.ems-dev.net/api/user/605c7610-1389-11e7-93ae-92361f002671" \
+-H "Accept: application/json" \
+-H "Authentication: Bearer xxx"
+ \
+    -d "user_group_id"="End-User" \
+    -d "name"="Enim eum facilis" \
+    -d "email"="kasandra87@example.net" \
+    -d "password"="suuL:Q/9" \
+
+```
+
+```javascript
+var settings = {
+    "async": true,
+    "crossDomain": true,
+    "url": "http://emsearch.ryan.ems-dev.net/api/user/605c7610-1389-11e7-93ae-92361f002671",
+    "method": "PUT",
+    "data": {
+        "user_group_id": "End-User",
+        "name": "Enim eum facilis",
+        "email": "kasandra87@example.net",
+        "password": "suuL:Q\/9"
+},
+    "headers": {
+        "Accept": "application/json",
+        "Authentication" : "Bearer xxx"
+    }
+}
+
+$.ajax(settings).done(function (response) {
+    console.log(response);
+});
+```
+
+
+### HTTP Request
+`PUT /api/user/{userId}`
+
+`PATCH /api/user/{userId}`
+
+#### Parameters
+
+Parameter | Type | Status | Description
+--------- | ------- | ------- | ------- | -----------
+    user_group_id | string |  required  | Valid user_group id `Developer`, `Support` or `End-User`
+    name | string |  required  | Maximum: `100`
+    email | email |  required  | Maximum: `150`
+    password | string |  required  | Password with at least: `8` chars, `1` numeric, `1` uppercase and `1` lowercase
+
+<!-- END_707699ec45bed549f4600a85f0f86358 -->
+
+<!-- START_186fff344f72d874e95af874b8843d4e -->
+## Delete specified user
+
+All relationships between the user and his projects will be automatically deleted too.<br />
+All projects owned by the user will be automatically deleted too.
+
+> Example request:
+
+```bash
+curl -X DELETE "http://emsearch.ryan.ems-dev.net/api/user/605c7610-1389-11e7-93ae-92361f002671" \
+-H "Accept: application/json" \
+-H "Authentication: Bearer xxx"
+
+```
+
+```javascript
+var settings = {
+    "async": true,
+    "crossDomain": true,
+    "url": "http://emsearch.ryan.ems-dev.net/api/user/605c7610-1389-11e7-93ae-92361f002671",
+    "method": "DELETE",
+    "headers": {
+        "Accept": "application/json",
+        "Authentication" : "Bearer xxx"
+    }
+}
+
+$.ajax(settings).done(function (response) {
+    console.log(response);
+});
+```
+
+
+### HTTP Request
+`DELETE /api/user/{userId}`
+
+
+<!-- END_186fff344f72d874e95af874b8843d4e -->
 
 #UserHasProject
 <!-- START_cf0313d53939313429ce6788fa95624c -->
@@ -1070,42 +1281,35 @@ $.ajax(settings).done(function (response) {
             "user_id": "605c7610-1389-11e7-93ae-92361f002671",
             "project_id": "1bcc7efc-138c-11e7-93ae-92361f002671",
             "user_role_id": "Owner",
-            "created_at": "2017-04-03 10:03:36",
-            "updated_at": "2017-04-03 10:03:36"
+            "created_at": "2017-04-04 07:29:00",
+            "updated_at": "2017-04-04 07:29:00"
         },
         {
             "user_id": "605c7610-1389-11e7-93ae-92361f002671",
             "project_id": "b6860dd2-138c-11e7-93ae-92361f002671",
             "user_role_id": "Owner",
-            "created_at": "2017-04-03 10:03:36",
-            "updated_at": "2017-04-03 10:03:36"
+            "created_at": "2017-04-04 07:29:00",
+            "updated_at": "2017-04-04 07:29:00"
         },
         {
             "user_id": "82b5da82-138c-11e7-93ae-92361f002671",
             "project_id": "c4b5d93c-138c-11e7-93ae-92361f002671",
             "user_role_id": "Owner",
-            "created_at": "2017-04-03 10:03:36",
-            "updated_at": "2017-04-03 10:03:36"
+            "created_at": "2017-04-04 07:29:00",
+            "updated_at": "2017-04-04 07:29:00"
         },
         {
             "user_id": "82b5da82-138c-11e7-93ae-92361f002671",
             "project_id": "1bcc7efc-138c-11e7-93ae-92361f002671",
             "user_role_id": "Administrator",
-            "created_at": "2017-04-03 10:03:36",
-            "updated_at": "2017-04-03 10:03:36"
-        },
-        {
-            "user_id": "605c7610-1389-11e7-93ae-92361f002671",
-            "project_id": "c4b5d93c-138c-11e7-93ae-92361f002671",
-            "user_role_id": "Administrator",
-            "created_at": "2017-04-03 10:04:50",
-            "updated_at": "2017-04-03 10:04:50"
+            "created_at": "2017-04-04 07:29:00",
+            "updated_at": "2017-04-04 07:29:00"
         }
     ],
     "meta": {
         "pagination": {
-            "total": 5,
-            "count": 5,
+            "total": 4,
+            "count": 4,
             "per_page": 20,
             "current_page": 1,
             "total_pages": 1,
@@ -1161,8 +1365,8 @@ $.ajax(settings).done(function (response) {
             "user_id": "605c7610-1389-11e7-93ae-92361f002671",
             "project_id": "1bcc7efc-138c-11e7-93ae-92361f002671",
             "user_role_id": "Owner",
-            "created_at": "2017-04-03 10:03:36",
-            "updated_at": "2017-04-03 10:03:36"
+            "created_at": "2017-04-04 07:29:00",
+            "updated_at": "2017-04-04 07:29:00"
         }
     ]
 }
@@ -1188,9 +1392,9 @@ curl -X POST "http://emsearch.ryan.ems-dev.net/api/userHasProject" \
 -H "Accept: application/json" \
 -H "Authentication: Bearer xxx"
  \
-    -d "user_id"="4e569840-25fc-39d3-8b9a-d8dcb7681f6c" \
-    -d "project_id"="21d33dbb-1797-362d-801c-eb97338d1fca" \
-    -d "user_role_id"="Owner" \
+    -d "user_id"="a9012f10-7038-30df-a0bc-bef82edc6f4d" \
+    -d "project_id"="0471419f-c7af-34ec-abc0-33320532e6e5" \
+    -d "user_role_id"="Administrator" \
 
 ```
 
@@ -1201,9 +1405,9 @@ var settings = {
     "url": "http://emsearch.ryan.ems-dev.net/api/userHasProject",
     "method": "POST",
     "data": {
-        "user_id": "4e569840-25fc-39d3-8b9a-d8dcb7681f6c",
-        "project_id": "21d33dbb-1797-362d-801c-eb97338d1fca",
-        "user_role_id": "Owner"
+        "user_id": "a9012f10-7038-30df-a0bc-bef82edc6f4d",
+        "project_id": "0471419f-c7af-34ec-abc0-33320532e6e5",
+        "user_role_id": "Administrator"
 },
     "headers": {
         "Accept": "application/json",
@@ -1242,9 +1446,9 @@ curl -X PUT "http://emsearch.ryan.ems-dev.net/api/userHasProject/605c7610-1389-1
 -H "Accept: application/json" \
 -H "Authentication: Bearer xxx"
  \
-    -d "user_id"="c9c096a6-9605-386c-a7c1-45371c6e1234" \
-    -d "project_id"="d140b71b-7cc8-3482-ab92-3cd60b3b316e" \
-    -d "user_role_id"="Administrator" \
+    -d "user_id"="edfcfd81-4290-3159-a497-67dbd0f58d04" \
+    -d "project_id"="85bc0251-e4d3-37fb-9a00-769012ddbdba" \
+    -d "user_role_id"="Owner" \
 
 ```
 
@@ -1255,9 +1459,9 @@ var settings = {
     "url": "http://emsearch.ryan.ems-dev.net/api/userHasProject/605c7610-1389-11e7-93ae-92361f002671,1bcc7efc-138c-11e7-93ae-92361f002671",
     "method": "PUT",
     "data": {
-        "user_id": "c9c096a6-9605-386c-a7c1-45371c6e1234",
-        "project_id": "d140b71b-7cc8-3482-ab92-3cd60b3b316e",
-        "user_role_id": "Administrator"
+        "user_id": "edfcfd81-4290-3159-a497-67dbd0f58d04",
+        "project_id": "85bc0251-e4d3-37fb-9a00-769012ddbdba",
+        "user_role_id": "Owner"
 },
     "headers": {
         "Accept": "application/json",
@@ -1364,30 +1568,22 @@ $.ajax(settings).done(function (response) {
             "search_engine_id": "ee87e3b2-1388-11e7-93ae-92361f002671",
             "data_stream_id": null,
             "name": "John Smith Sample Project 1",
-            "created_at": "2017-04-03 10:03:36",
-            "updated_at": "2017-04-03 10:03:36"
+            "created_at": "2017-04-04 07:29:00",
+            "updated_at": "2017-04-04 07:29:00"
         },
         {
             "id": "b6860dd2-138c-11e7-93ae-92361f002671",
             "search_engine_id": "ee87e3b2-1388-11e7-93ae-92361f002671",
             "data_stream_id": null,
             "name": "John Smith Sample Project 2",
-            "created_at": "2017-04-03 10:03:36",
-            "updated_at": "2017-04-03 10:03:36"
-        },
-        {
-            "id": "c4b5d93c-138c-11e7-93ae-92361f002671",
-            "search_engine_id": "ee87e3b2-1388-11e7-93ae-92361f002671",
-            "data_stream_id": null,
-            "name": "Mickey Mouse Sample Project",
-            "created_at": "2017-04-03 10:03:36",
-            "updated_at": "2017-04-03 10:03:36"
+            "created_at": "2017-04-04 07:29:00",
+            "updated_at": "2017-04-04 07:29:00"
         }
     ],
     "meta": {
         "pagination": {
-            "total": 3,
-            "count": 3,
+            "total": 2,
+            "count": 2,
             "per_page": 20,
             "current_page": 1,
             "total_pages": 1,
@@ -1448,8 +1644,8 @@ $.ajax(settings).done(function (response) {
         "search_engine_id": "ee87e3b2-1388-11e7-93ae-92361f002671",
         "data_stream_id": null,
         "name": "John Smith Sample Project 1",
-        "created_at": "2017-04-03 10:03:36",
-        "updated_at": "2017-04-03 10:03:36"
+        "created_at": "2017-04-04 07:29:00",
+        "updated_at": "2017-04-04 07:29:00"
     }
 }
 ```

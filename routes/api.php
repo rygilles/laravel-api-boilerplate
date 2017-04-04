@@ -41,6 +41,17 @@ $api->version('v1', ['middleware' => ['cors', 'auth:api']], function (Router $ap
 		'App\Http\Controllers\Api\UserController@store'
 	)->name('user.store');
 
+	$api->match(
+		['put', 'patch'],
+		'user/{userId}',
+		'App\Http\Controllers\Api\UserController@update'
+	)->name('user.update');
+
+	$api->delete(
+		'user/{userId}',
+		'App\Http\Controllers\Api\UserController@destroy'
+	)->name('user.destroy');
+
 	/*
 	$api->resource(
 		'user',
@@ -86,6 +97,11 @@ $api->version('v1', ['middleware' => ['cors', 'auth:api']], function (Router $ap
 		'project/{projectId}',
 		'App\Http\Controllers\Api\ProjectController@update'
 	)->name('project.update');
+
+	$api->delete(
+		'project/{projectId}',
+		'App\Http\Controllers\Api\ProjectController@destroy'
+	)->name('project.destroy');
 
 	/*
 	$api->resource(
@@ -149,6 +165,11 @@ $api->version('v1', ['middleware' => ['cors', 'auth:api']], function (Router $ap
 		'App\Http\Controllers\Api\I18nLangController@update'
 	)->name('i18nLang.update');
 
+	$api->delete(
+		'i18nLang/{i18nLangId}',
+		'App\Http\Controllers\Api\I18nLangController@destroy'
+	)->name('i18nLang.destroy');
+
 	// Search Engine
 
 	$api->get(
@@ -171,5 +192,10 @@ $api->version('v1', ['middleware' => ['cors', 'auth:api']], function (Router $ap
 		'searchEngine/{searchEngineId}',
 		'App\Http\Controllers\Api\SearchEngineController@update'
 	)->name('searchEngine.update');
+
+	$api->delete(
+		'searchEngine/{searchEngineId}',
+		'App\Http\Controllers\Api\SearchEngineController@destroy'
+	)->name('searchEngine.destroy');
 	
 });

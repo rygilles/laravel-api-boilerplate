@@ -15,6 +15,15 @@ use App\Models\User;
 class UserController extends ApiController
 {
 	/**
+	 * ProjectController constructor.
+	 */
+	public function __construct()
+	{
+		// User group restrictions
+		$this->middleware('verifyUserGroup:Developer,Support')->only('index,show,store,update,destroy');
+	}
+
+	/**
 	 * User list
 	 *
 	 * @return \Dingo\Api\Http\Response
@@ -44,6 +53,8 @@ class UserController extends ApiController
 	/**
 	 * Create and store new user
 	 *
+	 * @ApiDocsNoCall
+	 *
 	 * @param StoreUserRequest $request
 	 * @return \Dingo\Api\Http\Response|void
 	 */
@@ -59,7 +70,9 @@ class UserController extends ApiController
 
 
 	/**
-	 * Update a specified user project
+	 * Update a specified user
+	 *
+	 * @ApiDocsNoCall
 	 *
 	 * @param UpdateUserRequest $request
 	 * @param $userId string User UUID
@@ -76,6 +89,29 @@ class UserController extends ApiController
 		$user->save();
 
 		return $this->response->item($user, new UserTransformer);
+	}
+
+	/**
+	 * Delete specified user
+	 *
+	 * All relationships between the user and his projects will be automatically deleted too.<br />
+	 * All projects owned by the user will be automatically deleted too.
+	 *
+	 * @ApiDocsNoCall
+	 *
+	 * @param $userId string User UUID
+	 * @return \Dingo\Api\Http\Response|void
+	 */
+	public function destroy($userId)
+	{
+		$user = User::find($userId);
+
+		if (!$user)
+			return $this->response->errorNotFound();
+
+		$user->delete();
+
+		return $this->response->noContent();
 	}
 
 	/**

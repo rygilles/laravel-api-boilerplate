@@ -56,6 +56,8 @@ return [
 				'user.index',
 				'user.show',
 				'user.store',
+				'user.update',
+				'user.destroy',
 
 				'userProject.index',
 				'userProject.show',
@@ -64,6 +66,7 @@ return [
 				'project.show',
 				'project.store',
 				'project.update',
+				'project.destroy',
 
 				'userHasProject.index',
 				'userHasProject.show',
@@ -75,11 +78,13 @@ return [
 				'i18nLang.show',
 				'i18nLang.store',
 				'i18nLang.update',
+				'i18nLang.destroy',
 
 				'searchEngine.index',
 				'searchEngine.show',
 				'searchEngine.store',
 				'searchEngine.update',
+				'searchEngine.destroy',
 
 			]
 
@@ -126,6 +131,7 @@ return [
 				'project.show',
 				'project.store',
 				'project.update',
+				'project.destroy',
 
 				'i18nLang.index',
 				'i18nLang.show',

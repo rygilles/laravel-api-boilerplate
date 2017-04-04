@@ -55,6 +55,8 @@ class SearchEngineController extends ApiController
 	/**
 	 * Create and store new Search Engine
 	 *
+	 * @ApiDocsNoCall
+	 *
 	 * @param StoreSearchEngineRequest $request
 	 * @return \Dingo\Api\Http\Response|void
 	 * @throws ValidationHttpException
@@ -72,6 +74,8 @@ class SearchEngineController extends ApiController
 	/**
 	 * Update a Search Engine
 	 *
+	 * @ApiDocsNoCall
+	 *
 	 * @param UpdateSearchEngineRequest $request
 	 * @param $searchEngineId string User UUID
 	 * @return \Dingo\Api\Http\Response|void
@@ -87,5 +91,27 @@ class SearchEngineController extends ApiController
 		$searchEngine->save();
 
 		return $this->response->item($searchEngine, new SearchEngineTransformer);
+	}
+
+	/**
+	 * Delete specified Search Engine
+	 *
+	 * <aside class="warning">Avoid using this feature ! Check foreign keys constraints to remove dependent resources properly before.</aside>
+	 *
+	 * @ApiDocsNoCall
+	 *
+	 * @param $searchEngineId string Search Engine UUID
+	 * @return \Dingo\Api\Http\Response|void
+	 */
+	public function destroy($searchEngineId)
+	{
+		$searchEngine = SearchEngine::find($searchEngineId);
+
+		if (!$searchEngine)
+			return $this->response->errorNotFound();
+
+		$searchEngine->delete();
+
+		return $this->response->noContent();
 	}
 }

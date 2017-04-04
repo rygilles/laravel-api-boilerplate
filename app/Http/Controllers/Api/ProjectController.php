@@ -58,6 +58,8 @@ class ProjectController extends ApiController
 	/**
 	 * Create and store new project
 	 *
+	 * @ApiDocsNoCall
+	 *
 	 * @param StoreProjectRequest $request
 	 * @return \Dingo\Api\Http\Response|void
 	 * @throws ValidationHttpException
@@ -83,6 +85,8 @@ class ProjectController extends ApiController
 	/**
 	 * Update a specified user project
 	 *
+	 * @ApiDocsNoCall
+	 *
 	 * @param UpdateProjectRequest $request
 	 * @param $projectId string Project UUID
 	 * @return \Dingo\Api\Http\Response|void
@@ -100,9 +104,26 @@ class ProjectController extends ApiController
 		return $this->response->item($project, new ProjectTransformer);
 	}
 
-	public function destroy()
+	/**
+	 * Delete specified user project
+	 *
+	 * All relationships between the project and his users will be automatically deleted too.
+	 * <aside class="notice">Only <code>Owner</code> of project is allowed to delete it.</aside>
+	 *
+	 * @ApiDocsNoCall
+	 *
+	 * @param $projectId string Project UUID
+	 * @return \Dingo\Api\Http\Response|void
+	 */
+	public function destroy($projectId)
 	{
-		// @todo
-		// delete (cascade ?) user_has_project
+		$project = Project::authorized(['Owner'])->find($projectId);
+
+		if (!$project)
+			return $this->response->errorNotFound();
+
+		$project->delete();
+
+		return $this->response->noContent();
 	}
 }

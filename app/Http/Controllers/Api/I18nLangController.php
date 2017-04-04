@@ -21,7 +21,7 @@ class I18nLangController extends ApiController
 	public function __construct()
 	{
 		// User group restrictions
-		$this->middleware('verifyUserGroup:Developer,Support')->only('store,update');
+		$this->middleware('verifyUserGroup:Developer,Support')->only('store,update,destroy');
 	}
 
 	/**
@@ -39,7 +39,7 @@ class I18nLangController extends ApiController
 	/**
 	 * Get specified I18n lang
 	 *
-	 * @param $i18nLangId string User UUID
+	 * @param $i18nLangId string I18n lang UUID
 	 * @return \Dingo\Api\Http\Response|void
 	 */
 	public function show($i18nLangId)
@@ -54,6 +54,8 @@ class I18nLangController extends ApiController
 
 	/**
 	 * Create and store new I18n lang
+	 *
+	 * @ApiDocsNoCall
 	 *
 	 * @param StoreI18nLangRequest $request
 	 * @return \Dingo\Api\Http\Response|void
@@ -72,8 +74,10 @@ class I18nLangController extends ApiController
 	/**
 	 * Update a I18n lang
 	 *
+	 * @ApiDocsNoCall
+	 *
 	 * @param UpdateI18nLangRequest $request
-	 * @param $i18nLangId int User UUID
+	 * @param $i18nLangId string I18n lang UUID
 	 * @return \Dingo\Api\Http\Response|void
 	 */
 	public function update(UpdateI18nLangRequest $request, $i18nLangId)
@@ -87,5 +91,27 @@ class I18nLangController extends ApiController
 		$i18nLang->save();
 
 		return $this->response->item($i18nLang, new I18nLangTransformer);
+	}
+
+	/**
+	 * Delete specified I18n Lang
+	 *
+	 * <aside class="warning">Avoid using this feature ! Check foreign keys constraints to remove dependent resources properly before.</aside>
+	 *
+	 * @ApiDocsNoCall
+	 *
+	 * @param $i18nLangId string I18n lang UUID
+	 * @return \Dingo\Api\Http\Response|void
+	 */
+	public function destroy($i18nLangId)
+	{
+		$i18nLang = I18nLang::find($i18nLangId);
+
+		if (!$i18nLang)
+			return $this->response->errorNotFound();
+
+		$i18nLang->delete();
+
+		return $this->response->noContent();
 	}
 }

@@ -61,6 +61,8 @@ class UserHasProjectController extends ApiController
 	 *
 	 * <aside class="notice">Only one relationship per user/project is allowed and only one user can be <code>Owner</code>of a project.</aside>
 	 *
+	 * @ApiDocsNoCall
+	 *
 	 * @param StoreUserHasProjectRequest $request
 	 * @return \Dingo\Api\Http\Response|void
 	 * @throws ValidationHttpException
@@ -95,6 +97,8 @@ class UserHasProjectController extends ApiController
 	 * Update a specified relationship between a user and a project
 	 *
 	 * <aside class="notice">Only one relationship per user/project is allowed and only one user can be <code>Owner</code>of a project.</aside>
+	 *
+	 * @ApiDocsNoCall
 	 *
 	 * @param UpdateUserHasProjectRequest $request
 	 * @param $userId string User UUID
@@ -140,6 +144,8 @@ class UserHasProjectController extends ApiController
 
 	/**
 	 * Delete specified relationship between a user and a project
+	 *
+	 * @ApiDocsNoCall
 	 *
 	 * @param $userId string User UUID
 	 * @param $projectId string Project UUID
