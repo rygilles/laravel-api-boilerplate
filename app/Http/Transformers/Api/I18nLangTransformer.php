@@ -5,7 +5,7 @@ namespace App\Http\Transformers\Api;
 use League\Fractal\TransformerAbstract;
 use App\Models\I18nLang;
 
-class I18nLangTransformer extends TransformerAbstract
+class I18nLangTransformer extends ApiTransformer
 {
 	/**
 	 * Turn this item object into a generic array
@@ -15,9 +15,12 @@ class I18nLangTransformer extends TransformerAbstract
 	 */
 	public function transform(I18nLang $i18nLang)
 	{
-		return [
-			'id'            => $i18nLang->id,
-			'description'   => $i18nLang->description
-		];
+		return $this->filterWithModelConfiguration(
+			I18nLang::class,
+			[
+				'id'            => $i18nLang->id,
+				'description'   => $i18nLang->description
+			]
+		);
 	}
 }

@@ -19,6 +19,8 @@ class UserController extends ApiController
 	 */
 	public function __construct()
 	{
+		parent::__construct();
+
 		// User group restrictions
 		$this->middleware('verifyUserGroup:Developer,Support')->only('index,show,store,update,destroy');
 	}
@@ -62,8 +64,16 @@ class UserController extends ApiController
 	{
 		$user = User::create($request->all());
 
-		if ($user)
+		if ($user) {
+			// Register model transformer for created/accepted responses
+			// @link https://github.com/dingo/api/issues/1218
+			app('Dingo\Api\Transformer\Factory')->register(
+				'App\\Models\\User',
+				'App\\Http\\Transformers\\Api\\UserTransformer'
+			);
+
 			return $this->response->created(app('Dingo\Api\Routing\UrlGenerator')->version('v1')->route('user.show', $user->id), $user);
+		}
 
 		return $this->response->errorBadRequest();
 	}

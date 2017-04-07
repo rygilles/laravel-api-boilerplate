@@ -5,6 +5,7 @@ namespace App\Models;
 use Alsofronie\Uuid\UuidModelTrait;
 use Illuminate\Notifications\Notifiable;
 
+use Illuminate\Support\Facades\Auth;
 use Laravel\Passport\HasApiTokens;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Auth\Authenticatable;
@@ -25,7 +26,7 @@ class User extends ApiModel implements AuthenticatableContract,	AuthorizableCont
 
 	/**
 	 * The table associated with the model.
-	 * .
+	 *
 	 * @var string
 	 */
 	protected $table = 'user';

@@ -203,7 +203,7 @@ return [
 	    // Exceptions
 	    App\Providers\ExceptionsServiceProvider::class,
 
-	    // Documentaion generator
+	    // Documentation generator
 	    Rygilles\ApiDoc\ApiDocGeneratorServiceProvider::class,
 
     ],

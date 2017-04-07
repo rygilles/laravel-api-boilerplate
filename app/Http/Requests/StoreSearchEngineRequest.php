@@ -2,21 +2,10 @@
 
 namespace App\Http\Requests;
 
-use Dingo\Api\Http\FormRequest;
 use App\Models\SearchEngine;
 
-class StoreSearchEngineRequest extends FormRequest
+class StoreSearchEngineRequest extends ApiRequest
 {
-	/**
-	 * Determine if the user is authorized to make this request.
-	 *
-	 * @return bool
-	 */
-	public function authorize()
-	{
-		return true;
-	}
-
 	/**
 	 * Get the validation rules that apply to the request.
 	 *
@@ -24,6 +13,6 @@ class StoreSearchEngineRequest extends FormRequest
 	 */
 	public function rules()
 	{
-		return SearchEngine::getStoreRules();
+		return $this->filterWithModelConfiguration(SearchEngine::class, SearchEngine::getStoreRules());
 	}
 }

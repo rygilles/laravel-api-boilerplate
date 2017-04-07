@@ -20,6 +20,8 @@ class UserHasProjectController extends ApiController
 	 */
 	public function __construct()
 	{
+		parent::__construct();
+
 		// User group restrictions
 		$this->middleware('verifyUserGroup:Developer,Support')->only('index,show,store,update,destroy');
 	}
@@ -80,12 +82,20 @@ class UserHasProjectController extends ApiController
 
 		$userHasProject = UserHasProject::create($request->all());
 
-		if ($userHasProject)
+		if ($userHasProject) {
+			// Register model transformer for created/accepted responses
+			// @link https://github.com/dingo/api/issues/1218
+			app('Dingo\Api\Transformer\Factory')->register(
+				'App\\Models\\UserHasProject',
+				'App\\Http\\Transformers\\Api\\UserHasProjectTransformer'
+			);
+
 			return $this->response->created(
 				app('Dingo\Api\Routing\UrlGenerator')
 					->version('v1')
 					->route('userHasProject.show', [$userHasProject->user_id, $userHasProject->project_id]), $userHasProject
 			);
+		}
 
 		return $this->response->errorBadRequest();
 	}

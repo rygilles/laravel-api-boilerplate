@@ -3,6 +3,8 @@
 namespace App\Observers;
 
 use App\Models\Project;
+use App\Models\UserHasProject;
+use Illuminate\Support\Facades\Auth;
 
 class ProjectObserver
 {
@@ -14,7 +16,14 @@ class ProjectObserver
 	 */
 	public function created(Project $project)
 	{
-		//
+		if (Auth::user()) {
+			// Create user has project owner relationship
+			$userHasProject = new UserHasProject();
+			$userHasProject->user_id = Auth::user()->id;
+			$userHasProject->project_id = $project->id;
+			$userHasProject->user_role_id = 'Owner';
+			$userHasProject->save();
+		}
 	}
 
 	/**

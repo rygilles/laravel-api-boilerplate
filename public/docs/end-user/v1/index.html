@@ -126,8 +126,8 @@ $.ajax(settings).done(function (response) {
 -H "Accept: application/json" \
 -H "Authentication: Bearer xxx"
  \
-    -d "name"="Rem quia nisi" \
-    -d "feed_url"="Et molestiae quo" \
+    -d "name"="Voluptatem autem voluptatibus" \
+    -d "feed_url"="Quia vel velit" \
 </code></pre>
 <pre><code class="language-javascript">var settings = {
     "async": true,
@@ -135,8 +135,8 @@ $.ajax(settings).done(function (response) {
     "url": "http://emsearch.ryan.ems-dev.net/api/dataStream",
     "method": "POST",
     "data": {
-        "name": "Rem quia nisi",
-        "feed_url": "Et molestiae quo"
+        "name": "Voluptatem autem voluptatibus",
+        "feed_url": "Quia vel velit"
 },
     "headers": {
         "Accept": "application/json",
@@ -183,8 +183,8 @@ $.ajax(settings).done(function (response) {
 -H "Accept: application/json" \
 -H "Authentication: Bearer xxx"
  \
-    -d "name"="Doloremque cum vel" \
-    -d "feed_url"="Eaque et tenetur" \
+    -d "name"="Voluptatibus ipsum eos" \
+    -d "feed_url"="Sit tempora voluptatem" \
 </code></pre>
 <pre><code class="language-javascript">var settings = {
     "async": true,
@@ -192,8 +192,8 @@ $.ajax(settings).done(function (response) {
     "url": "http://emsearch.ryan.ems-dev.net/api/dataStream/605d712c-1934-11e7-93ae-92361f002671",
     "method": "PUT",
     "data": {
-        "name": "Doloremque cum vel",
-        "feed_url": "Eaque et tenetur"
+        "name": "Voluptatibus ipsum eos",
+        "feed_url": "Sit tempora voluptatem"
 },
     "headers": {
         "Accept": "application/json",
@@ -423,7 +423,7 @@ $.ajax(settings).done(function (response) {
 <!-- END_8bf32d4b41c09d1d9801aff1b0737349 -->
 <h1>Me</h1>
 <!-- START_01138559f486b5b7c062a19b1c0412fe -->
-<h2>Get curent user</h2>
+<h2>Get current user</h2>
 <blockquote>
 <p>Example request:</p>
 </blockquote>
@@ -495,7 +495,6 @@ $.ajax(settings).done(function (response) {
     "data": [
         {
             "id": "1bcc7efc-138c-11e7-93ae-92361f002671",
-            "search_engine_id": "ee87e3b2-1388-11e7-93ae-92361f002671",
             "data_stream_id": "56278dc8-1934-11e7-93ae-92361f002671",
             "name": "John Smith Sample Project 1",
             "created_at": "2017-04-04 12:54:12",
@@ -503,21 +502,78 @@ $.ajax(settings).done(function (response) {
         },
         {
             "id": "b6860dd2-138c-11e7-93ae-92361f002671",
-            "search_engine_id": "ee87e3b2-1388-11e7-93ae-92361f002671",
             "data_stream_id": null,
             "name": "John Smith Sample Project 2",
             "created_at": "2017-04-04 12:54:12",
             "updated_at": "2017-04-04 12:54:12"
+        },
+        {
+            "id": "f5224ea0-4bf0-4d9a-a7dd-86669fe1be4d",
+            "data_stream_id": null,
+            "name": "testcrea",
+            "created_at": "2017-04-05 14:46:16",
+            "updated_at": "2017-04-05 14:46:16"
+        },
+        {
+            "id": "e6fd9491-713e-4844-96e3-c49f14a1c339",
+            "data_stream_id": null,
+            "name": "testcrea",
+            "created_at": "2017-04-07 07:32:51",
+            "updated_at": "2017-04-07 07:32:51"
+        },
+        {
+            "id": "6cbb7e18-543e-488c-b86f-14e06167930c",
+            "data_stream_id": null,
+            "name": "testcrea",
+            "created_at": "2017-04-07 07:41:33",
+            "updated_at": "2017-04-07 07:41:33"
+        },
+        {
+            "id": "ea0e8c58-41c8-416b-b56d-a2f842ed1548",
+            "data_stream_id": null,
+            "name": "testcrea",
+            "created_at": "2017-04-07 07:42:12",
+            "updated_at": "2017-04-07 07:42:12"
+        },
+        {
+            "id": "a4f14635-4f7c-40c3-9e15-7b8336635613",
+            "data_stream_id": null,
+            "name": "testcreaggg",
+            "created_at": "2017-04-07 07:42:15",
+            "updated_at": "2017-04-07 07:42:15"
+        },
+        {
+            "id": "ea851063-86e6-4b56-a807-29c9203f27a0",
+            "data_stream_id": null,
+            "name": "testcreaggg",
+            "created_at": "2017-04-07 07:43:39",
+            "updated_at": "2017-04-07 07:43:39"
+        },
+        {
+            "id": "2c33abaf-dfc6-4472-ad10-48cda6c6ac8f",
+            "data_stream_id": null,
+            "name": "testcreaggg",
+            "created_at": "2017-04-07 07:58:07",
+            "updated_at": "2017-04-07 07:58:07"
+        },
+        {
+            "id": "6fd47014-2401-402e-b0d0-7045d4d932f8",
+            "data_stream_id": null,
+            "name": "testcreaggg",
+            "created_at": "2017-04-07 07:58:19",
+            "updated_at": "2017-04-07 07:58:19"
         }
     ],
     "meta": {
         "pagination": {
-            "total": 2,
-            "count": 2,
+            "total": 34,
+            "count": 10,
             "per_page": 10,
             "current_page": 1,
-            "total_pages": 1,
-            "links": []
+            "total_pages": 4,
+            "links": {
+                "next": "http:\/\/emsearch.ryan.ems-dev.net\/api\/user\/605c7610-1389-11e7-93ae-92361f002671\/project?page=2"
+            }
         }
     }
 }</code></pre>
@@ -573,7 +629,6 @@ $.ajax(settings).done(function (response) {
 <pre><code class="language-json">{
     "data": {
         "id": "1bcc7efc-138c-11e7-93ae-92361f002671",
-        "search_engine_id": "ee87e3b2-1388-11e7-93ae-92361f002671",
         "data_stream_id": "56278dc8-1934-11e7-93ae-92361f002671",
         "name": "John Smith Sample Project 1",
         "created_at": "2017-04-04 12:54:12",
@@ -593,9 +648,7 @@ $.ajax(settings).done(function (response) {
 -H "Accept: application/json" \
 -H "Authentication: Bearer xxx"
  \
-    -d "search_engine_id"="dd69b5f0-4578-3ed5-a079-fc9a441f96b3" \
-    -d "data_stream_id"="157a55ef-265a-391e-a502-01dd5ade1784" \
-    -d "name"="Corrupti soluta quaerat" \
+    -d "name"="In aspernatur autem" \
 </code></pre>
 <pre><code class="language-javascript">var settings = {
     "async": true,
@@ -603,9 +656,7 @@ $.ajax(settings).done(function (response) {
     "url": "http://emsearch.ryan.ems-dev.net/api/project",
     "method": "POST",
     "data": {
-        "search_engine_id": "dd69b5f0-4578-3ed5-a079-fc9a441f96b3",
-        "data_stream_id": "157a55ef-265a-391e-a502-01dd5ade1784",
-        "name": "Corrupti soluta quaerat"
+        "name": "In aspernatur autem"
 },
     "headers": {
         "Accept": "application/json",
@@ -630,18 +681,6 @@ $.ajax(settings).done(function (response) {
 </thead>
 <tbody>
 <tr>
-<td>search_engine_id</td>
-<td>string</td>
-<td>required</td>
-<td>UUID Valid search_engine id</td>
-</tr>
-<tr>
-<td>data_stream_id</td>
-<td>string</td>
-<td>optional</td>
-<td>UUID Valid data_stream id</td>
-</tr>
-<tr>
 <td>name</td>
 <td>string</td>
 <td>required</td>
@@ -659,9 +698,7 @@ $.ajax(settings).done(function (response) {
 -H "Accept: application/json" \
 -H "Authentication: Bearer xxx"
  \
-    -d "search_engine_id"="bbb94ad7-018a-3844-bee5-57e478408589" \
-    -d "data_stream_id"="c593131b-8039-3a6f-9e36-dbcb8ac7874a" \
-    -d "name"="Hic et autem" \
+    -d "name"="Autem quidem minus" \
 </code></pre>
 <pre><code class="language-javascript">var settings = {
     "async": true,
@@ -669,9 +706,7 @@ $.ajax(settings).done(function (response) {
     "url": "http://emsearch.ryan.ems-dev.net/api/project/1bcc7efc-138c-11e7-93ae-92361f002671",
     "method": "PUT",
     "data": {
-        "search_engine_id": "bbb94ad7-018a-3844-bee5-57e478408589",
-        "data_stream_id": "c593131b-8039-3a6f-9e36-dbcb8ac7874a",
-        "name": "Hic et autem"
+        "name": "Autem quidem minus"
 },
     "headers": {
         "Accept": "application/json",
@@ -696,18 +731,6 @@ $.ajax(settings).done(function (response) {
 </tr>
 </thead>
 <tbody>
-<tr>
-<td>search_engine_id</td>
-<td>string</td>
-<td>required</td>
-<td>UUID Valid search_engine id</td>
-</tr>
-<tr>
-<td>data_stream_id</td>
-<td>string</td>
-<td>optional</td>
-<td>UUID Valid data_stream id</td>
-</tr>
 <tr>
 <td>name</td>
 <td>string</td>

@@ -2,21 +2,10 @@
 
 namespace App\Http\Requests;
 
-use Dingo\Api\Http\FormRequest;
 use App\Models\DataStream;
 
-class UpdateDataStreamRequest extends FormRequest
+class UpdateDataStreamRequest extends ApiRequest
 {
-	/**
-	 * Determine if the user is authorized to make this request.
-	 *
-	 * @return bool
-	 */
-	public function authorize()
-	{
-		return true;
-	}
-
 	/**
 	 * Get the validation rules that apply to the request.
 	 *
@@ -25,12 +14,12 @@ class UpdateDataStreamRequest extends FormRequest
 	public function rules()
 	{
 		if ($this->isMethod('PATCH')) {
-			return DataStream::getPatchRules();
+			return $this->filterWithModelConfiguration(DataStream::class, DataStream::getPatchRules());
 		} elseif ($this->isMethod('PUT')) {
-			return DataStream::getPutRules();
+			return $this->filterWithModelConfiguration(DataStream::class, DataStream::getPutRules());
 		} else {
 			// @fixme Api documentation generator method "GET" for update... return PUT method rules
-			return DataStream::getPutRules();
+			return $this->filterWithModelConfiguration(DataStream::class, DataStream::getPutRules());
 		}
 	}
 }

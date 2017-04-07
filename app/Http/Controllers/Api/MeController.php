@@ -3,7 +3,8 @@
 namespace App\Http\Controllers\Api;
 
 use \App\Http\Transformers\Api\UserTransformer;
-use \Dingo\Api\Http\Request;
+use App\Models\User;
+use Illuminate\Support\Facades\Auth;
 
 /**
  * @resource Me
@@ -13,13 +14,13 @@ use \Dingo\Api\Http\Request;
 class MeController extends ApiController
 {
 	/**
-	 * Get curent user
+	 * Get current user
 	 *
-	 * @param $request \Dingo\Api\Http\Request
 	 * @return \Dingo\Api\Http\Response|void
 	 */
-	public function index(Request $request)
+	public function index()
 	{
-		return $this->response->item($request->user(), new UserTransformer);
+		$user = User::where('id', Auth::user()->id)->first();
+		return $this->response->item($user, new UserTransformer);
 	}
 }

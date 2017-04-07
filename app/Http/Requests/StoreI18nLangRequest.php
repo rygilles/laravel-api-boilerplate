@@ -2,21 +2,11 @@
 
 namespace App\Http\Requests;
 
-use Dingo\Api\Http\FormRequest;
 use App\Models\I18nLang;
 
-class StoreI18nLangRequest extends FormRequest
+class StoreI18nLangRequest extends ApiRequest
 {
-	/**
-	 * Determine if the user is authorized to make this request.
-	 *
-	 * @return bool
-	 */
-	public function authorize()
-	{
-		return true;
-	}
-
+	
 	/**
 	 * Get the validation rules that apply to the request.
 	 *
@@ -24,6 +14,6 @@ class StoreI18nLangRequest extends FormRequest
 	 */
 	public function rules()
 	{
-		return I18nLang::getStoreRules();
+		return $this->filterWithModelConfiguration(I18nLang::class, I18nLang::getStoreRules());
 	}
 }

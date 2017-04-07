@@ -5,7 +5,7 @@ namespace App\Http\Transformers\Api;
 use League\Fractal\TransformerAbstract;
 use App\Models\SearchEngine;
 
-class SearchEngineTransformer extends TransformerAbstract
+class SearchEngineTransformer extends ApiTransformer
 {
 	/**
 	 * Turn this item object into a generic array
@@ -15,11 +15,14 @@ class SearchEngineTransformer extends TransformerAbstract
 	 */
 	public function transform(SearchEngine $searchEngine)
 	{
-		return [
-			'id'            => $searchEngine->id,
-			'name'          => $searchEngine->name,
-			'created_at'    => $searchEngine->created_at->toDateTimeString(),
-			'updated_at'    => $searchEngine->updated_at->toDateTimeString()
-		];
+		return $this->filterWithModelConfiguration(
+			SearchEngine::class,
+				[
+				'id'            => $searchEngine->id,
+				'name'          => $searchEngine->name,
+				'created_at'    => $searchEngine->created_at->toDateTimeString(),
+				'updated_at'    => $searchEngine->updated_at->toDateTimeString()
+			]
+		);
 	}
 }

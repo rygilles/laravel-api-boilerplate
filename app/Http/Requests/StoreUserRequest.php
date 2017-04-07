@@ -2,21 +2,10 @@
 
 namespace App\Http\Requests;
 
-use Dingo\Api\Http\FormRequest;
 use App\Models\User;
 
-class StoreUserRequest extends FormRequest
+class StoreUserRequest extends ApiRequest
 {
-    /**
-     * Determine if the user is authorized to make this request.
-     *
-     * @return bool
-     */
-    public function authorize()
-    {
-        return true;
-    }
-
     /**
      * Get the validation rules that apply to the request.
      *
@@ -24,6 +13,6 @@ class StoreUserRequest extends FormRequest
      */
     public function rules()
     {
-        return User::getStoreRules();
+        return $this->filterWithModelConfiguration(User::class, User::getStoreRules());
     }
 }

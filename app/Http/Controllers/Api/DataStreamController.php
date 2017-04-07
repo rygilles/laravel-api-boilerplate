@@ -19,6 +19,8 @@ class DataStreamController extends ApiController
 	 */
 	public function __construct()
 	{
+		parent::__construct();
+		
 		// User group restrictions
 		$this->middleware('verifyUserGroup:Developer,Support')->only('index');
 	}
@@ -65,8 +67,16 @@ class DataStreamController extends ApiController
 	{
 		$dataStream = DataStream::create($request->all());
 
-		if ($dataStream)
+		if ($dataStream) {
+			// Register model transformer for created/accepted responses
+			// @link https://github.com/dingo/api/issues/1218
+			app('Dingo\Api\Transformer\Factory')->register(
+				'App\\Models\\DataStream',
+				'App\\Http\\Transformers\\Api\\DataStreamTransformer'
+			);
+
 			return $this->response->created(app('Dingo\Api\Routing\UrlGenerator')->version('v1')->route('dataStream.show', $dataStream->id), $dataStream);
+		}
 
 		return $this->response->errorBadRequest();
 	}

@@ -2,21 +2,10 @@
 
 namespace App\Http\Requests;
 
-use Dingo\Api\Http\FormRequest;
 use App\Models\Project;
 
-class UpdateProjectRequest extends FormRequest
+class UpdateProjectRequest extends ApiRequest
 {
-    /**
-     * Determine if the user is authorized to make this request.
-     *
-     * @return bool
-     */
-    public function authorize()
-    {
-        return true;
-    }
-
     /**
      * Get the validation rules that apply to the request.
      *
@@ -25,12 +14,12 @@ class UpdateProjectRequest extends FormRequest
     public function rules()
     {
 	    if ($this->isMethod('PATCH')) {
-		    return Project::getPatchRules();
+		    return $this->filterWithModelConfiguration(Project::class, Project::getPatchRules());
 	    } elseif ($this->isMethod('PUT')) {
-		    return Project::getPutRules();
+		    return $this->filterWithModelConfiguration(Project::class, Project::getPutRules());
 	    } else {
 		    // @fixme Api documentation generator method "GET" for update... return PUT method rules
-		    return Project::getPutRules();
+		    return $this->filterWithModelConfiguration(Project::class, Project::getPutRules());
 	    }
     }
 }

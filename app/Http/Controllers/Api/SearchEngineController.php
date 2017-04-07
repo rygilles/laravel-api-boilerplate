@@ -20,6 +20,8 @@ class SearchEngineController extends ApiController
 	 */
 	public function __construct()
 	{
+		parent::__construct();
+
 		// User group restrictions
 		$this->middleware('verifyUserGroup:Developer,Support')->only('index,show,store,update,delete');
 	}
@@ -65,8 +67,16 @@ class SearchEngineController extends ApiController
 	{
 		$searchEngine = SearchEngine::create($request->all());
 
-		if ($searchEngine)
+		if ($searchEngine) {
+			// Register model transformer for created/accepted responses
+			// @link https://github.com/dingo/api/issues/1218
+			app('Dingo\Api\Transformer\Factory')->register(
+				'App\\Models\\SearchEngine',
+				'App\\Http\\Transformers\\Api\\SearchEngineTransformer'
+			);
+
 			return $this->response->created(app('Dingo\Api\Routing\UrlGenerator')->version('v1')->route('searchEngine.show', $searchEngine->id), $searchEngine);
+		}
 
 		return $this->response->errorBadRequest();
 	}

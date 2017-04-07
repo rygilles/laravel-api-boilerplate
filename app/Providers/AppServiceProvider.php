@@ -2,6 +2,7 @@
 
 namespace App\Providers;
 
+use App\Models\ApiModel;
 use Illuminate\Support\ServiceProvider;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\Facades\Schema;

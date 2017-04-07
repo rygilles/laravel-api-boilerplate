@@ -6,7 +6,6 @@ use App\Http\Requests\StoreProjectRequest;
 use App\Http\Requests\UpdateProjectRequest;
 use App\Http\Transformers\Api\ProjectTransformer;
 use App\Models\Project;
-use App\Models\UserHasProject;
 use Dingo\Api\Exception\ValidationHttpException;
 
 /**
@@ -21,6 +20,8 @@ class ProjectController extends ApiController
 	 */
 	public function __construct()
 	{
+		parent::__construct();
+
 		// User group restrictions
 		$this->middleware('verifyUserGroup:Developer,Support')->only('index');
 	}
@@ -67,12 +68,12 @@ class ProjectController extends ApiController
 		$project = Project::create($request->all());
 
 		if ($project) {
-			// Create user has project owner relationship
-			$userHasProject = new UserHasProject();
-			$userHasProject->user_id = $request->user()->id;
-			$userHasProject->project_id = $project->id;
-			$userHasProject->user_role_id = 'Owner';
-			$userHasProject->save();
+			// Register model transformer for created/accepted responses
+			// @link https://github.com/dingo/api/issues/1218
+			app('Dingo\Api\Transformer\Factory')->register(
+				'App\\Models\\Project',
+				'App\\Http\\Transformers\\Api\\ProjectTransformer'
+			);
 
 			return $this->response->created(app('Dingo\Api\Routing\UrlGenerator')->version('v1')->route('project.show', $project->id), $project);
 		}

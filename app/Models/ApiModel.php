@@ -4,6 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 use App\Libs\ApiEloquentBuilder;
+use Illuminate\Support\Facades\Auth;
 
 /**
  * Api Model class with custom Eloquent query builder for api resources
@@ -46,6 +47,54 @@ class ApiModel extends Model
 	 * @var array
 	 */
 	protected static $putRules = [];
+
+	/**
+	 * Create a new Eloquent model instance.
+	 *
+	 * @param  array  $attributes
+	 */
+	public function __construct(array $attributes = [])
+	{
+		// Filter user only if already authenticated
+
+		// @todo ERR_EMPTY_RESPONSE on frontend ! :(
+		if (!Auth::user()) {
+			parent::__construct($attributes);
+			return;
+		}
+
+		$modelsConfig = config('models');
+
+		if (!isset($modelsConfig[static::class])) {
+			parent::__construct($attributes);
+			return;
+		}
+
+		$config = $modelsConfig[static::class];
+
+		if (!isset($config['attributes'])) {
+			parent::__construct($attributes);
+			return;
+		}
+
+		foreach ($config['attributes'] as $attribute => $attributeConfig) {
+			if (isset($attributeConfig['apiCannotFillOnUserGroups'])) {
+				if (!in_array(Auth::user()->user_group_id, $attributeConfig['apiCannotFillOnUserGroups'])) {
+					$this->setHidden([$attribute]);
+					$this->guard([$attribute]);
+					if (isset($attributes[$attribute])) {
+						unset($attributes[$attribute]);
+					}
+				}
+			}
+
+			if (isset($attributeConfig['defaultValue'])) {
+				$this->attributes[$attribute] = $attributeConfig['defaultValue'];
+			}
+		}
+
+		parent::__construct($attributes);
+	}
 
 	/**
 	 * {@inheritDoc}
