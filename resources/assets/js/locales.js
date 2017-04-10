@@ -15,6 +15,7 @@ var langs = ['en' , 'fr'];
 var files = [
     'common',
     'auth',
+    'api',
     'topbar',
     'home',
     'projects'

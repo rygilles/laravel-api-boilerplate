@@ -26,7 +26,7 @@ return [
 		'Developer' => [
 
 			'defaultRoutePrefix' => 'v1',
-			'outputPathBase' => realpath(base_path('public/docs/developer')),
+			'outputPathBase' => realpath(base_path('public/docs/Developer')),
 			'actAsUserId' => '41abdec2-1389-11e7-93ae-92361f002671',
 			'bindings' => [
 
@@ -118,7 +118,7 @@ return [
 		'End-User' => [
 
 			'defaultRoutePrefix' => 'v1',
-			'outputPathBase' => realpath(base_path('public/docs/end-user')),
+			'outputPathBase' => realpath(base_path('public/docs/End-User')),
 			'actAsUserId' => '605c7610-1389-11e7-93ae-92361f002671',
 			'bindings' => [
 

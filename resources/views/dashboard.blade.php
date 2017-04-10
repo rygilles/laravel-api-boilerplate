@@ -23,6 +23,8 @@
     <script>
         window.Laravel = {!! json_encode([
             'csrfToken' => csrf_token(),
+            'apiDocBaseUrl' => config('app.url') . '/docs',
+            'apiDocVersionUri' => 'v1',
         ]) !!};
     </script>
 </head>

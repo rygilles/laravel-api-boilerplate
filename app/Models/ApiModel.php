@@ -5,6 +5,7 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Model;
 use App\Libs\ApiEloquentBuilder;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Request;
 
 /**
  * Api Model class with custom Eloquent query builder for api resources
@@ -49,41 +50,59 @@ class ApiModel extends Model
 	protected static $putRules = [];
 
 	/**
-	 * Create a new Eloquent model instance.
+	 * Model configuration
+	 * @var array
+	 */
+	protected static $config = [];
+
+	/**
+	 * Fill the model with an array of attributes.
+	 *
+	 * Filter with model attributes configuration.
 	 *
 	 * @param  array  $attributes
+	 * @return $this
+	 *
+	 * @throws \Illuminate\Database\Eloquent\MassAssignmentException
 	 */
-	public function __construct(array $attributes = [])
+	public function fill(array $attributes)
 	{
-		// Filter user only if already authenticated
+		// Prevent infinite loop on model boot (calling this method...)
+		if (!count($attributes))
+			return $this;
 
-		// @todo ERR_EMPTY_RESPONSE on frontend ! :(
-		if (!Auth::user()) {
-			parent::__construct($attributes);
-			return;
+		$user = auth()->user();
+
+		// No user authenticated, no permissions check possible.
+		if (!$user) {
+			return $this;
 		}
 
 		$modelsConfig = config('models');
 
 		if (!isset($modelsConfig[static::class])) {
-			parent::__construct($attributes);
-			return;
+			return $this;
 		}
 
 		$config = $modelsConfig[static::class];
 
 		if (!isset($config['attributes'])) {
-			parent::__construct($attributes);
-			return;
+			return $this;
 		}
+
+		// Alter attributes configuration and set default values if exists.
+
+		$fillable = $this->getFillable();
+		$guarded = $this->getGuarded();
 
 		foreach ($config['attributes'] as $attribute => $attributeConfig) {
 			if (isset($attributeConfig['apiCannotFillOnUserGroups'])) {
-				if (!in_array(Auth::user()->user_group_id, $attributeConfig['apiCannotFillOnUserGroups'])) {
-					$this->setHidden([$attribute]);
-					$this->guard([$attribute]);
-					if (isset($attributes[$attribute])) {
-						unset($attributes[$attribute]);
+				if (in_array($user->user_group_id, $attributeConfig['apiCannotFillOnUserGroups'])) {
+					if (!in_array($attribute, $guarded)) {
+						$guarded[] = $attribute;
+					}
+					if (in_array($attribute, $fillable)) {
+						unset($fillable[array_search($attribute, $fillable)]);
 					}
 				}
 			}
@@ -93,7 +112,28 @@ class ApiModel extends Model
 			}
 		}
 
-		parent::__construct($attributes);
+		// Re-base keys
+		$fillable = array_values($fillable);
+		$guarded = array_values($guarded);
+
+		// Check first fillable array value for '*' or '' values
+		if (count($fillable)) {
+			if ((($fillable[0] == '*') || ($fillable[0] == '')) && (count($fillable) > 1)) {
+				unset($fillable[0]);
+			}
+		}
+
+		// Check first guarded array value for '*' or '' values
+		if (count($guarded)) {
+			if ((($guarded[0] == '*') || ($guarded[0] == '')) && (count($guarded) > 1)) {
+				unset($guarded[0]);
+			}
+		}
+
+		$this->fillable($fillable);
+		$this->guard($guarded);
+
+		return parent::fill($attributes);
 	}
 
 	/**

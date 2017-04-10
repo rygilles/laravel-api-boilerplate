@@ -45,6 +45,8 @@
 		data() {
 			return {
 				csrfToken : window.Laravel.csrfToken,
+				apiDocBaseUrl : window.Laravel.apiDocBaseUrl,
+				apiDocVersionUri : window.Laravel.apiDocVersionUri,
 				ready : false,
 				loading: false,
 				fetched: false,
