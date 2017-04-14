@@ -34,9 +34,30 @@ class ProjectObserver
 	 */
 	public function deleting(Project $project)
 	{
+		echo('deleting project "' . $project->name . '"' . "\n");
+
+		// Delete project data stream
+		$dataStream = $project->dataStream();
+		if ($dataStream) {
+			// Dissociate data stream with the parent project
+			$project->dataStream()->dissociate();
+			$project->save();
+			$dataStream->delete();
+		}
+
+		// Delete project sync items
+		foreach ($project->syncItems()->get() as $syncItem) {
+			$syncItem->delete();
+		}
+
+		// Delete project sync tasks
+		foreach ($project->syncTasks()->get() as $syncTask) {
+			$syncTask->delete();
+		}
+
 		// Delete user projects relationships
-		foreach ($project->hasUserProjects() as $hasUserProject) {
-			$hasUserProject->delete();
+		foreach ($project->hasUserProjects()->get() as $userHasProject) {
+			$userHasProject->delete();
 		}
 	}
 }

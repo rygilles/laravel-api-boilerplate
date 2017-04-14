@@ -114,6 +114,26 @@ class Project extends ApiModel
 	}
 
 	/**
+	 * Get the sync items
+	 *
+	 * @return \Illuminate\Database\Eloquent\Relations\HasMany
+	 */
+	public function syncItems()
+	{
+		return $this->HasMany('App\Models\SyncItem');
+	}
+
+	/**
+	 * Get the sync tasks
+	 *
+	 * @return \Illuminate\Database\Eloquent\Relations\HasMany
+	 */
+	public function syncTasks()
+	{
+		return $this->HasMany('App\Models\SyncTask');
+	}
+
+	/**
 	 * Scope a query to include authorized access
 	 *
 	 * @param \Illuminate\Database\Eloquent\Builder $query

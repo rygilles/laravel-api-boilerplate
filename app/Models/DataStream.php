@@ -49,7 +49,7 @@ class DataStream extends ApiModel
 	 */
 	protected static $storeRules = [
 		'name'      => 'required|string|max:200',
-		'feed_url'  => 'required|string'
+		'feed_url'  => 'required|url'
 	];
 
 	/**
@@ -57,8 +57,8 @@ class DataStream extends ApiModel
 	 * @var string[]
 	 */
 	protected static $patchRules = [
-		'name'      => 'required|string|max:200',
-		'feed_url'  => 'required|string'
+		'name'      => 'string|max:200',
+		'feed_url'  => 'url'
 	];
 
 	/**
@@ -66,8 +66,8 @@ class DataStream extends ApiModel
 	 * @var string[]
 	 */
 	protected static $putRules = [
-		'name'      => 'string|max:200',
-		'feed_url'  => 'string'
+		'name'      => 'required|string|max:200',
+		'feed_url'  => 'required|url'
 	];
 
 	/**

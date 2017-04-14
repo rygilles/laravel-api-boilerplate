@@ -147,4 +147,14 @@ class User extends ApiModel implements AuthenticatableContract,	AuthorizableCont
 	{
 		return $this->BelongTo('App\Models\UserGroup');
 	}
+
+	/**
+	 * Get the sync task created bu this user
+	 *
+	 * @return \Illuminate\Database\Eloquent\Relations\HasMany
+	 */
+	public function createdSyncTasks()
+	{
+		return $this->hasMany('App\Models\SyncTasks', 'created_by_user_id');
+	}
 }

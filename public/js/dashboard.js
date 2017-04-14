@@ -35428,7 +35428,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     userGroup: _vm.$root.me.user_group_id
   })) + " :"), _c('br'), _vm._v(" "), _c('a', {
     attrs: {
-      "href": '../docs/' + _vm.$root.me.user_group_id + '/v1'
+      "href": _vm.$root.apiDocBaseUrl + '/' + _vm.$root.me.user_group_id + '/' + _vm.$root.apiDocVersionUri
     }
   }, [_vm._v("\n\t\t\t\t\t\t" + _vm._s(_vm.$root.apiDocBaseUrl + '/' + _vm.$root.me.user_group_id + '/' + _vm.$root.apiDocVersionUri) + "\n\t\t\t\t\t")])])])])])
 },staticRenderFns: []}

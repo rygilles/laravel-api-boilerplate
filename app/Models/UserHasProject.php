@@ -2,12 +2,23 @@
 
 namespace App\Models;
 
+use App\Traits\HasCompositeKey;
+
 /**
  * Class UserHasProject
  * @package App\Models
  */
 class UserHasProject extends ApiModel
 {
+	use HasCompositeKey;
+
+	/**
+	 * The composite primary key for the model.
+	 *
+	 * @var string
+	 */
+	protected $primaryKey = ['user_id', 'project_id'];
+
 	/**
 	 * The table associated with the model.
 	 *
@@ -45,7 +56,7 @@ class UserHasProject extends ApiModel
 	 * @var string[]
 	 */
 	protected static $storeRules = [
-		'user_id'       => 'required|uuid|exists:user,id',
+		'user_id'       => 'required|uuid|exists:user,id|unique_with:user_has_project,project_id',
 		'project_id'    => 'required|uuid|exists:project,id',
 		'user_role_id'  => 'required|exists:user_role,id|in:Owner,Administrator',
 	];
@@ -55,7 +66,7 @@ class UserHasProject extends ApiModel
 	 * @var string[]
 	 */
 	protected static $patchRules = [
-		'user_id'       => 'uuid|exists:user,id',
+		'user_id'       => 'uuid|exists:user,id|unique_with:user_has_project,project_id',
 		'project_id'    => 'uuid|exists:project,id',
 		'user_role_id'  => 'exists:user_role,id|in:Owner,Administrator',
 	];
@@ -65,7 +76,7 @@ class UserHasProject extends ApiModel
 	 * @var string[]
 	 */
 	protected static $putRules = [
-		'user_id'       => 'required|uuid|exists:user,id',
+		'user_id'       => 'required|uuid|exists:user,id|unique_with:user_has_project,project_id',
 		'project_id'    => 'required|uuid|exists:project,id',
 		'user_role_id'  => 'required|exists:user_role,id|in:Owner,Administrator',
 	];

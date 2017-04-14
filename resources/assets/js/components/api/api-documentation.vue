@@ -13,7 +13,7 @@
 				<!-- Current Clients -->
 				<p class="m-b-none">
 					{{ $t('api.documentation.description', { userGroup : $root.me.user_group_id }) }} :<br />
-					<a v-bind:href="'../docs/' + $root.me.user_group_id  + '/v1'">
+					<a v-bind:href="$root.apiDocBaseUrl + '/' + $root.me.user_group_id  + '/' + $root.apiDocVersionUri">
 						{{ $root.apiDocBaseUrl + '/' + $root.me.user_group_id  + '/' + $root.apiDocVersionUri }}
 					</a>
 				</p>

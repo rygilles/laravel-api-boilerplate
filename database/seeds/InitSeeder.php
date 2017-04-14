@@ -17,5 +17,9 @@ class InitSeeder extends Seeder
         $this->call(SearchEngineTableSeeder::class);
 	    $this->call(UserGroupTableSeeder::class);
 	    $this->call(UserRoleTableSeeder::class);
+	    $this->call(SyncTaskTypeTableSeeder::class);
+	    $this->call(SyncTaskTypeVTableSeeder::class);
+	    $this->call(SyncTaskStatusTableSeeder::class);
+	    $this->call(SyncTaskStatusVTableSeeder::class);
     }
 }

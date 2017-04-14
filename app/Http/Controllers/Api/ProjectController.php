@@ -75,7 +75,11 @@ class ProjectController extends ApiController
 				'App\\Http\\Transformers\\Api\\ProjectTransformer'
 			);
 
-			return $this->response->created(app('Dingo\Api\Routing\UrlGenerator')->version('v1')->route('project.show', $project->id), $project);
+			return $this->response->created(
+				app('Dingo\Api\Routing\UrlGenerator')
+					->version('v1')
+					->route('project.show', $project->id),
+				$project);
 		}
 
 		return $this->response->errorBadRequest();
@@ -106,7 +110,9 @@ class ProjectController extends ApiController
 	/**
 	 * Delete specified project
 	 *
-	 * All relationships between the project and his users will be automatically deleted too.
+	 * All relationships between the project and his users will be automatically deleted too.<br />
+	 * The project sync items will be automatically deleted too.<br />
+	 * The project data stream will be automatically deleted too, if exists.
 	 * <aside class="notice">Only <code>Owner</code> of project is allowed to delete it.</aside>
 	 *
 	 * @ApiDocsNoCall

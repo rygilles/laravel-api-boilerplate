@@ -23,7 +23,7 @@ class I18nLangController extends ApiController
 		parent::__construct();
 		
 		// User group restrictions
-		$this->middleware('verifyUserGroup:Developer,Support')->only('store,update,destroy');
+		$this->middleware('verifyUserGroup:Developer')->only('store,update,destroy');
 	}
 
 	/**
@@ -71,11 +71,15 @@ class I18nLangController extends ApiController
 			// Register model transformer for created/accepted responses
 			// @link https://github.com/dingo/api/issues/1218
 			app('Dingo\Api\Transformer\Factory')->register(
-				'App\\Models\\i18nLang',
+				'App\\Models\\I18nLang',
 				'App\\Http\\Transformers\\Api\\i18nLangTransformer'
 			);
 
-			return $this->response->created(app('Dingo\Api\Routing\UrlGenerator')->version('v1')->route('i18nLang.show', $i18nLang->id), $i18nLang);
+			return $this->response->created(
+				app('Dingo\Api\Routing\UrlGenerator')
+					->version('v1')
+					->route('i18nLang.show', $i18nLang->id),
+				$i18nLang);
 		}
 
 		return $this->response->errorBadRequest();

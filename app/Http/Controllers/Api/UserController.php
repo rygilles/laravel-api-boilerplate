@@ -72,7 +72,11 @@ class UserController extends ApiController
 				'App\\Http\\Transformers\\Api\\UserTransformer'
 			);
 
-			return $this->response->created(app('Dingo\Api\Routing\UrlGenerator')->version('v1')->route('user.show', $user->id), $user);
+			return $this->response->created(
+				app('Dingo\Api\Routing\UrlGenerator')
+					->version('v1')
+					->route('user.show', $user->id),
+				$user);
 		}
 
 		return $this->response->errorBadRequest();

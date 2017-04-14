@@ -69,25 +69,25 @@ class ApiModel extends Model
 	{
 		// Prevent infinite loop on model boot (calling this method...)
 		if (!count($attributes))
-			return $this;
+			return parent::fill($attributes);
 
 		$user = auth()->user();
 
 		// No user authenticated, no permissions check possible.
 		if (!$user) {
-			return $this;
+			return parent::fill($attributes);
 		}
 
 		$modelsConfig = config('models');
 
 		if (!isset($modelsConfig[static::class])) {
-			return $this;
+			return parent::fill($attributes);
 		}
 
 		$config = $modelsConfig[static::class];
 
 		if (!isset($config['attributes'])) {
-			return $this;
+			return parent::fill($attributes);
 		}
 
 		// Alter attributes configuration and set default values if exists.

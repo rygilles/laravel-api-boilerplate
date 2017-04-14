@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers\Api;
 
-use \App\Http\Transformers\Api\UserTransformer;
+use App\Http\Transformers\Api\UserTransformer;
 use App\Models\User;
 use Illuminate\Support\Facades\Auth;
 

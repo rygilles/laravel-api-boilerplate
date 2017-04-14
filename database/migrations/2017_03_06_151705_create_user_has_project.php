@@ -21,6 +21,10 @@ class CreateUserHasProject extends Migration
         });
 
         Schema::table('user_has_project', function (Blueprint $table) {
+            $table->primary(['user_id', 'project_id']);
+        });
+
+        Schema::table('user_has_project', function (Blueprint $table) {
             $table->foreign('user_id')->references('id')->on('user');
             $table->foreign('project_id')->references('id')->on('project');
             $table->foreign('user_role_id')->references('id')->on('user_role');

@@ -86,6 +86,7 @@ return [
 	'uploaded'             => "Le fichier du champ :attribute n'a pu être téléchargé.",
 	'url'                  => "Le format de l'URL de :attribute n'est pas valide.",
 	'uuid'                 => 'Le champ :attribute doit être un UUID valide.',
+	'md5'                  => 'Le champ :attribute doit être un md5 valide.',
 
 	/*
 	|--------------------------------------------------------------------------

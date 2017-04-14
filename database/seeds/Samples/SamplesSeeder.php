@@ -17,5 +17,7 @@ class SamplesSeeder extends Seeder
 	    $this->call(DataStreamTableSeeder::class);
         $this->call(ProjectTableSeeder::class);
 	    $this->call(UserHasProjectTableSeeder::class);
+	    $this->call(SyncItemTableSeeder::class);
+	    $this->call(SyncTaskTableSeeder::class);
     }
 }

@@ -23,7 +23,8 @@ class SearchEngineController extends ApiController
 		parent::__construct();
 
 		// User group restrictions
-		$this->middleware('verifyUserGroup:Developer,Support')->only('index,show,store,update,delete');
+		$this->middleware('verifyUserGroup:Developer')->only('store,update,delete');
+		$this->middleware('verifyUserGroup:Developer,Support')->only('index,show');
 	}
 
 	/**
@@ -75,7 +76,11 @@ class SearchEngineController extends ApiController
 				'App\\Http\\Transformers\\Api\\SearchEngineTransformer'
 			);
 
-			return $this->response->created(app('Dingo\Api\Routing\UrlGenerator')->version('v1')->route('searchEngine.show', $searchEngine->id), $searchEngine);
+			return $this->response->created(
+				app('Dingo\Api\Routing\UrlGenerator')
+					->version('v1')
+					->route('searchEngine.show', $searchEngine->id),
+				$searchEngine);
 		}
 
 		return $this->response->errorBadRequest();

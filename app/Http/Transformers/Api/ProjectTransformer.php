@@ -17,12 +17,12 @@ class ProjectTransformer extends ApiTransformer
 		return $this->filterWithModelConfiguration(
 			Project::class,
 			[
-				'id' => $project->id,
-				'search_engine_id' => $project->search_engine_id,
-				'data_stream_id' => $project->data_stream_id,
-				'name' => $project->name,
-				'created_at' => $project->created_at->toDateTimeString(),
-				'updated_at' => $project->updated_at->toDateTimeString()
+				'id'                => $project->id,
+				'search_engine_id'  => $project->search_engine_id,
+				'data_stream_id'    => $project->data_stream_id,
+				'name'              => $project->name,
+				'created_at'        => $project->created_at->toDateTimeString(),
+				'updated_at'        => $project->updated_at->toDateTimeString()
 			]
 		);
 	}

@@ -54,10 +54,24 @@ return [
 				// Algolia
 				'searchEngineId' => 'ee87e3b2-1388-11e7-93ae-92361f002671',
 
+				// First Sync Item of John Smith Sample Project 1
+				'syncItemId' => 'a37eda90-1f56-11e7-93ae-92361f002671',
+
+				// John Smith Sample Project 1 Sync Task
+				'syncTaskId' => '8dbfd6e6-2055-11e7-93ae-92361f002671',
+
+				// Main
+				'syncTaskTypeId' => 'Main',
+
+				// Planned
+				'syncTaskStatusId' => 'Planned',
+
 			],
 			'routes' => [
 
 				'me.index',
+
+				'meProject.index',
 
 				'user.index',
 				'user.show',
@@ -65,7 +79,7 @@ return [
 				'user.update',
 				'user.destroy',
 
-				'userGroup.index',
+				'userGroupUser.index',
 
 				'userProject.index',
 
@@ -75,6 +89,50 @@ return [
 				'project.update',
 				'project.destroy',
 
+				'syncItem.index',
+				'syncItem.show',
+				'syncItem.store',
+				'syncItem.update',
+				'syncItem.destroy',
+
+				'syncTask.index',
+				'syncTask.show',
+				'syncTask.store',
+				'syncTask.update',
+				'syncTask.destroy',
+
+				'syncTaskType.index',
+				'syncTaskType.show',
+				'syncTaskType.store',
+				'syncTaskType.update',
+				'syncTaskType.destroy',
+
+				'syncTaskTypeVersion.index',
+				'syncTaskTypeVersion.show',
+				'syncTaskTypeVersion.store',
+				'syncTaskTypeVersion.update',
+				'syncTaskTypeVersion.destroy',
+
+				'syncTaskTypeSyncTaskTypeVersion.index',
+
+				'syncTaskStatus.index',
+				'syncTaskStatus.show',
+				'syncTaskStatus.store',
+				'syncTaskStatus.update',
+				'syncTaskStatus.destroy',
+
+				'syncTaskStatusVersion.index',
+				'syncTaskStatusVersion.show',
+				'syncTaskStatusVersion.store',
+				'syncTaskStatusVersion.update',
+				'syncTaskStatusVersion.destroy',
+
+				'syncTaskStatusSyncTaskStatusVersion.index',
+
+				'projectSyncItem.index',
+
+				'projectSyncTask.index',
+
 				'dataStream.index',
 				'dataStream.show',
 				'dataStream.store',
@@ -82,6 +140,9 @@ return [
 				'dataStream.destroy',
 
 				'projectDataStream.show',
+				'projectDataStream.store',
+				'projectDataStream.update',
+				'projectDataStream.destroy',
 
 				'userHasProject.index',
 				'userHasProject.show',
@@ -103,17 +164,138 @@ return [
 
 				'searchEngineProject.index',
 
+				'i18nLangSyncTaskTypeVersion.index',
+
 			]
 
 		],
 
-		/*
 		'Support' => [
 
-			// @todo ?
+			'defaultRoutePrefix' => 'v1',
+			'outputPathBase' => realpath(base_path('public/docs/Support')),
+			'actAsUserId' => '41abdec2-1389-11e7-93ae-92361f002671',
+			'bindings' => [
+
+				// John Smith Sample Project 1
+				'projectId' => '1bcc7efc-138c-11e7-93ae-92361f002671',
+
+				// Mickey Mouse Sample Project Data Stream
+				'dataStreamId' => '605d712c-1934-11e7-93ae-92361f002671',
+
+				// John Smith
+				'userId' => '605c7610-1389-11e7-93ae-92361f002671',
+
+				// End-User,
+				'userGroupId' => 'End-User',
+
+				// Algolia
+				'search_engine_id' => 'ee87e3b2-1388-11e7-93ae-92361f002671',
+
+				// Owner
+				'user_role_id' => 'Owner',
+
+				// en_US
+				'i18nLangId' => 'en_US',
+
+				// Algolia
+				'searchEngineId' => 'ee87e3b2-1388-11e7-93ae-92361f002671',
+
+				// First Sync Item of John Smith Sample Project 1
+				'syncItemId' => 'a37eda90-1f56-11e7-93ae-92361f002671',
+
+				// John Smith Sample Project 1 Sync Task
+				'syncTaskId' => '8dbfd6e6-2055-11e7-93ae-92361f002671',
+
+				// Main
+				'syncTaskTypeId' => 'Main',
+
+				// Planned
+				'syncTaskStatusId' => 'Planned',
+
+			],
+			'routes' => [
+
+				'me.index',
+
+				'meProject.index',
+
+				'user.index',
+				'user.show',
+				'user.store',
+				'user.update',
+				'user.destroy',
+
+				'userGroupUser.index',
+
+				'userProject.index',
+
+				'project.index',
+				'project.show',
+				'project.store',
+				'project.update',
+				'project.destroy',
+
+				'syncItem.index',
+				'syncItem.show',
+
+				'syncTask.index',
+				'syncTask.show',
+
+				'syncTaskType.index',
+				'syncTaskType.show',
+
+				'syncTaskTypeVersion.index',
+				'syncTaskTypeVersion.show',
+				'syncTaskTypeVersion.store',
+				'syncTaskTypeVersion.update',
+
+				'syncTaskTypeSyncTaskTypeVersion.index',
+
+				'syncTaskStatus.index',
+				'syncTaskStatus.show',
+
+				'syncTaskStatusVersion.index',
+				'syncTaskStatusVersion.show',
+				'syncTaskStatusVersion.store',
+				'syncTaskStatusVersion.update',
+
+				'syncTaskStatusSyncTaskStatusVersion.index',
+
+				'projectSyncItem.index',
+
+				'projectSyncTask.index',
+
+				'dataStream.index',
+				'dataStream.show',
+				'dataStream.store',
+				'dataStream.update',
+				'dataStream.destroy',
+
+				'projectDataStream.show',
+				'projectDataStream.store',
+				'projectDataStream.update',
+				'projectDataStream.destroy',
+
+				'userHasProject.index',
+				'userHasProject.show',
+				'userHasProject.store',
+				'userHasProject.update',
+				'userHasProject.destroy',
+
+				'i18nLang.index',
+				'i18nLang.show',
+
+				'searchEngine.index',
+				'searchEngine.show',
+
+				'searchEngineProject.index',
+
+				'i18nLangSyncTaskTypeVersion.index',
+
+			]
 
 		],
-		*/
 
 		'End-User' => [
 
@@ -140,27 +322,56 @@ return [
 				// en_US
 				'i18nLangId' => 'en_US',
 
+				// First Sync Item of John Smith Sample Project 1
+				'syncItemId' => 'a37eda90-1f56-11e7-93ae-92361f002671',
+
+				// Main
+				'syncTaskTypeId' => 'Main',
+
+				// Planned
+				'syncTaskStatusId' => 'Planned',
+
 			],
 			'routes' => [
 
 				'me.index',
 
-				'userProject.index',
+				'meProject.index',
 
 				'project.show',
 				'project.store',
 				'project.update',
 				'project.destroy',
 
-				'dataStream.show',
-				'dataStream.store',
-				'dataStream.update',
-				'dataStream.destroy',
+				'syncTaskType.index',
+				'syncTaskType.show',
 
+				'syncTaskTypeVersion.index',
+				'syncTaskTypeVersion.show',
+
+				'syncTaskTypeSyncTaskTypeVersion.index',
+
+				'syncTaskStatus.index',
+				'syncTaskStatus.show',
+
+				'syncTaskStatusVersion.index',
+				'syncTaskStatusVersion.show',
+
+				'syncTaskStatusSyncTaskStatusVersion.index',
+
+				'projectSyncItem.index',
+
+				'projectSyncTask.index',
+				
 				'projectDataStream.show',
+				'projectDataStream.store',
+				'projectDataStream.update',
+				'projectDataStream.destroy',
 
 				'i18nLang.index',
 				'i18nLang.show',
+
+				'i18nLangSyncTaskTypeVersion.index',
 
 			]
 

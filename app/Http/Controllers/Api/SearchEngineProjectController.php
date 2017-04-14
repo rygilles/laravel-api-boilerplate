@@ -13,6 +13,17 @@ use App\Models\SearchEngine;
 class SearchEngineProjectController extends ApiController
 {
 	/**
+	 * I18nLangController constructor.
+	 */
+	public function __construct()
+	{
+		parent::__construct();
+
+		// User group restrictions
+		$this->middleware('verifyUserGroup:Developer,Support')->only('index');
+	}
+
+	/**
 	 * Search engine project list
 	 * 
 	 * @param string $searchEngineId Search Engine UUID

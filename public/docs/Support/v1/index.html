@@ -1,0 +1,3149 @@
+<!doctype html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta content="IE=edge,chrome=1" http-equiv="X-UA-Compatible">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <title>emsearch</title>
+
+    <link rel="shortcut icon" href="images/favicon.jpg">
+    <link rel="stylesheet" href="css/style.css" />
+    <script src="js/all.js"></script>
+
+
+            <script>
+            $(function() {
+                setupLanguages(["bash","javascript"]);
+            });
+        </script>
+    </head>
+
+<body class="">
+<a href="#" id="nav-button">
+      <span>
+        NAV
+        <img src="images/navbar.png" />
+      </span>
+</a>
+<div class="tocify-wrapper">
+    <img src="images/logo.png" />fuck
+            <div class="lang-selector">
+                            <a href="#" data-language-name="bash">bash</a>
+                            <a href="#" data-language-name="javascript">javascript</a>
+                    </div>
+                <div class="search">
+            <input type="text" class="search" id="input-search" placeholder="Search">
+        </div>
+        <ul class="search-results"></ul>
+        <div id="toc">
+    </div>
+    </div>
+<div class="page-wrapper">
+    <div class="dark-box"></div>
+    <div class="content">
+        <!-- START_INFO -->
+<h1>Support Api Documentation</h1>
+<p>Welcome to the <b>emsearch</b> API reference.</p>
+<h2>Authentication</h2>
+<p><b>emsearch</b> API use <a href="https://oauth.net/2/">OAuth2</a> authentication.</p>
+<p>Try out our API with this <a href="collection.json">postman collection</a></p>
+<aside class="notice">Don't forget to provide a personal authentication token header for every request, like this : <code>Authentication: Bearer xxx</code></aside>
+<h2>Pagination</h2>
+<p>You can specify extra GET parameters with any index / listing routes to request different amount of entries per page and a page number.</p>
+<table>
+<thead>
+<tr>
+<th>Parameter</th>
+<th>Type</th>
+<th>Status</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>page</td>
+<td>int</td>
+<td>optional</td>
+<td>Page number</td>
+</tr>
+<tr>
+<td>limit</td>
+<td>int</td>
+<td>optional</td>
+<td>Maximum entries per page</td>
+</tr>
+</tbody>
+</table>
+<aside class="notice">Minimum / maximum entries limit values can be different according to the route resource complexity.</aside>
+<!-- END_INFO -->
+<h1>DataStream</h1>
+<!-- START_087b800e384b5eb8fe1cdf0329840008 -->
+<h2>Show data stream list</h2>
+<aside class="notice">Pagination limit must be a value between <code>1</code> and <code>20</code>, default is <code>10</code>.</aside>
+<blockquote>
+<p>Example request:</p>
+</blockquote>
+<pre><code class="language-bash">curl -X GET "http://emsearch.ryan.ems-dev.net/api/dataStream" \
+-H "Accept: application/json" \
+-H "Authentication: Bearer xxx"
+</code></pre>
+<pre><code class="language-javascript">var settings = {
+    "async": true,
+    "crossDomain": true,
+    "url": "http://emsearch.ryan.ems-dev.net/api/dataStream",
+    "method": "GET",
+    "headers": {
+        "Accept": "application/json",
+        "Authentication" : "Bearer xxx"
+    }
+}
+
+$.ajax(settings).done(function (response) {
+    console.log(response);
+});</code></pre>
+<blockquote>
+<p>Example response:</p>
+</blockquote>
+<pre><code class="language-json">{
+    "data": [
+        {
+            "id": "56278dc8-1934-11e7-93ae-92361f002671",
+            "name": "John Smith Sample Project Data Stream",
+            "feed_url": "http:\/\/domain.tld\/feedJohn.json",
+            "created_at": "2017-04-14 11:20:27",
+            "updated_at": "2017-04-14 11:20:27"
+        },
+        {
+            "id": "605d712c-1934-11e7-93ae-92361f002671",
+            "name": "Mickey Mouse Sample Project Data Stream",
+            "feed_url": "http:\/\/domain.tld\/feedTheMouse.json",
+            "created_at": "2017-04-14 11:20:27",
+            "updated_at": "2017-04-14 11:20:27"
+        }
+    ],
+    "meta": {
+        "pagination": {
+            "total": 2,
+            "count": 2,
+            "per_page": 10,
+            "current_page": 1,
+            "total_pages": 1,
+            "links": []
+        }
+    }
+}</code></pre>
+<h3>HTTP Request</h3>
+<p><code>GET /api/dataStream</code></p>
+<p><code>HEAD /api/dataStream</code></p>
+<!-- END_087b800e384b5eb8fe1cdf0329840008 -->
+<!-- START_2637aedf610876a9acf882cb69dc2520 -->
+<h2>Get specified data stream</h2>
+<blockquote>
+<p>Example request:</p>
+</blockquote>
+<pre><code class="language-bash">curl -X GET "http://emsearch.ryan.ems-dev.net/api/dataStream/605d712c-1934-11e7-93ae-92361f002671" \
+-H "Accept: application/json" \
+-H "Authentication: Bearer xxx"
+</code></pre>
+<pre><code class="language-javascript">var settings = {
+    "async": true,
+    "crossDomain": true,
+    "url": "http://emsearch.ryan.ems-dev.net/api/dataStream/605d712c-1934-11e7-93ae-92361f002671",
+    "method": "GET",
+    "headers": {
+        "Accept": "application/json",
+        "Authentication" : "Bearer xxx"
+    }
+}
+
+$.ajax(settings).done(function (response) {
+    console.log(response);
+});</code></pre>
+<blockquote>
+<p>Example response:</p>
+</blockquote>
+<pre><code class="language-json">{
+    "data": {
+        "id": "605d712c-1934-11e7-93ae-92361f002671",
+        "name": "Mickey Mouse Sample Project Data Stream",
+        "feed_url": "http:\/\/domain.tld\/feedTheMouse.json",
+        "created_at": "2017-04-14 11:20:27",
+        "updated_at": "2017-04-14 11:20:27"
+    }
+}</code></pre>
+<h3>HTTP Request</h3>
+<p><code>GET /api/dataStream/{dataStreamId}</code></p>
+<p><code>HEAD /api/dataStream/{dataStreamId}</code></p>
+<!-- END_2637aedf610876a9acf882cb69dc2520 -->
+<!-- START_9806e6f48b29aa520cbf710b72b4fa3e -->
+<h2>Create and store new data stream</h2>
+<p>Only one data stream per project is allowed.</p>
+<blockquote>
+<p>Example request:</p>
+</blockquote>
+<pre><code class="language-bash">curl -X POST "http://emsearch.ryan.ems-dev.net/api/dataStream" \
+-H "Accept: application/json" \
+-H "Authentication: Bearer xxx"
+ \
+    -d "name"="Neque incidunt ut" \
+    -d "feed_url"="http://dach.org/quod-rerum-praesentium-ipsa-consequuntur-non" \
+</code></pre>
+<pre><code class="language-javascript">var settings = {
+    "async": true,
+    "crossDomain": true,
+    "url": "http://emsearch.ryan.ems-dev.net/api/dataStream",
+    "method": "POST",
+    "data": {
+        "name": "Neque incidunt ut",
+        "feed_url": "http:\/\/dach.org\/quod-rerum-praesentium-ipsa-consequuntur-non"
+},
+    "headers": {
+        "Accept": "application/json",
+        "Authentication" : "Bearer xxx"
+    }
+}
+
+$.ajax(settings).done(function (response) {
+    console.log(response);
+});</code></pre>
+<h3>HTTP Request</h3>
+<p><code>POST /api/dataStream</code></p>
+<h4>Parameters</h4>
+<table>
+<thead>
+<tr>
+<th>Parameter</th>
+<th>Type</th>
+<th>Status</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>name</td>
+<td>string</td>
+<td>required</td>
+<td>Maximum: <code>200</code></td>
+</tr>
+<tr>
+<td>feed_url</td>
+<td>url</td>
+<td>required</td>
+</tr>
+</tbody>
+</table>
+<!-- END_9806e6f48b29aa520cbf710b72b4fa3e -->
+<!-- START_87948eda1c008b091811da4bfc7cd218 -->
+<h2>Update a data stream</h2>
+<blockquote>
+<p>Example request:</p>
+</blockquote>
+<pre><code class="language-bash">curl -X PUT "http://emsearch.ryan.ems-dev.net/api/dataStream/605d712c-1934-11e7-93ae-92361f002671" \
+-H "Accept: application/json" \
+-H "Authentication: Bearer xxx"
+ \
+    -d "name"="Maxime qui quis" \
+    -d "feed_url"="http://www.gislason.com/rerum-et-sit-voluptatem-inventore-mollitia" \
+</code></pre>
+<pre><code class="language-javascript">var settings = {
+    "async": true,
+    "crossDomain": true,
+    "url": "http://emsearch.ryan.ems-dev.net/api/dataStream/605d712c-1934-11e7-93ae-92361f002671",
+    "method": "PUT",
+    "data": {
+        "name": "Maxime qui quis",
+        "feed_url": "http:\/\/www.gislason.com\/rerum-et-sit-voluptatem-inventore-mollitia"
+},
+    "headers": {
+        "Accept": "application/json",
+        "Authentication" : "Bearer xxx"
+    }
+}
+
+$.ajax(settings).done(function (response) {
+    console.log(response);
+});</code></pre>
+<h3>HTTP Request</h3>
+<p><code>PUT /api/dataStream/{dataStreamId}</code></p>
+<p><code>PATCH /api/dataStream/{dataStreamId}</code></p>
+<h4>Parameters</h4>
+<table>
+<thead>
+<tr>
+<th>Parameter</th>
+<th>Type</th>
+<th>Status</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>name</td>
+<td>string</td>
+<td>required</td>
+<td>Maximum: <code>200</code></td>
+</tr>
+<tr>
+<td>feed_url</td>
+<td>url</td>
+<td>required</td>
+</tr>
+</tbody>
+</table>
+<!-- END_87948eda1c008b091811da4bfc7cd218 -->
+<!-- START_0402b256ba5cab23aa735079addbfe3e -->
+<h2>Delete specified data stream</h2>
+<blockquote>
+<p>Example request:</p>
+</blockquote>
+<pre><code class="language-bash">curl -X DELETE "http://emsearch.ryan.ems-dev.net/api/dataStream/605d712c-1934-11e7-93ae-92361f002671" \
+-H "Accept: application/json" \
+-H "Authentication: Bearer xxx"
+</code></pre>
+<pre><code class="language-javascript">var settings = {
+    "async": true,
+    "crossDomain": true,
+    "url": "http://emsearch.ryan.ems-dev.net/api/dataStream/605d712c-1934-11e7-93ae-92361f002671",
+    "method": "DELETE",
+    "headers": {
+        "Accept": "application/json",
+        "Authentication" : "Bearer xxx"
+    }
+}
+
+$.ajax(settings).done(function (response) {
+    console.log(response);
+});</code></pre>
+<h3>HTTP Request</h3>
+<p><code>DELETE /api/dataStream/{dataStreamId}</code></p>
+<!-- END_0402b256ba5cab23aa735079addbfe3e -->
+<!-- START_3867fe1670caea34cb239f0f926ad768 -->
+<h2>Show project data stream</h2>
+<blockquote>
+<p>Example request:</p>
+</blockquote>
+<pre><code class="language-bash">curl -X GET "http://emsearch.ryan.ems-dev.net/api/project/1bcc7efc-138c-11e7-93ae-92361f002671/dataStream" \
+-H "Accept: application/json" \
+-H "Authentication: Bearer xxx"
+</code></pre>
+<pre><code class="language-javascript">var settings = {
+    "async": true,
+    "crossDomain": true,
+    "url": "http://emsearch.ryan.ems-dev.net/api/project/1bcc7efc-138c-11e7-93ae-92361f002671/dataStream",
+    "method": "GET",
+    "headers": {
+        "Accept": "application/json",
+        "Authentication" : "Bearer xxx"
+    }
+}
+
+$.ajax(settings).done(function (response) {
+    console.log(response);
+});</code></pre>
+<blockquote>
+<p>Example response:</p>
+</blockquote>
+<pre><code class="language-json">{
+    "data": {
+        "id": "56278dc8-1934-11e7-93ae-92361f002671",
+        "name": "John Smith Sample Project Data Stream",
+        "feed_url": "http:\/\/domain.tld\/feedJohn.json",
+        "created_at": "2017-04-14 11:20:27",
+        "updated_at": "2017-04-14 11:20:27"
+    }
+}</code></pre>
+<h3>HTTP Request</h3>
+<p><code>GET /api/project/{projectId}/dataStream</code></p>
+<p><code>HEAD /api/project/{projectId}/dataStream</code></p>
+<!-- END_3867fe1670caea34cb239f0f926ad768 -->
+<!-- START_41e37bb4ea451c1a5a85f3a3b34c6589 -->
+<h2>Create and store the project data stream</h2>
+<p>Only one data stream per project is allowed.</p>
+<blockquote>
+<p>Example request:</p>
+</blockquote>
+<pre><code class="language-bash">curl -X POST "http://emsearch.ryan.ems-dev.net/api/project/1bcc7efc-138c-11e7-93ae-92361f002671/dataStream" \
+-H "Accept: application/json" \
+-H "Authentication: Bearer xxx"
+ \
+    -d "name"="Omnis neque laboriosam" \
+    -d "feed_url"="http://crooks.com/quas-ut-pariatur-doloremque-impedit-consequatur" \
+</code></pre>
+<pre><code class="language-javascript">var settings = {
+    "async": true,
+    "crossDomain": true,
+    "url": "http://emsearch.ryan.ems-dev.net/api/project/1bcc7efc-138c-11e7-93ae-92361f002671/dataStream",
+    "method": "POST",
+    "data": {
+        "name": "Omnis neque laboriosam",
+        "feed_url": "http:\/\/crooks.com\/quas-ut-pariatur-doloremque-impedit-consequatur"
+},
+    "headers": {
+        "Accept": "application/json",
+        "Authentication" : "Bearer xxx"
+    }
+}
+
+$.ajax(settings).done(function (response) {
+    console.log(response);
+});</code></pre>
+<h3>HTTP Request</h3>
+<p><code>POST /api/project/{projectId}/dataStream</code></p>
+<h4>Parameters</h4>
+<table>
+<thead>
+<tr>
+<th>Parameter</th>
+<th>Type</th>
+<th>Status</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>name</td>
+<td>string</td>
+<td>required</td>
+<td>Maximum: <code>200</code></td>
+</tr>
+<tr>
+<td>feed_url</td>
+<td>url</td>
+<td>required</td>
+</tr>
+</tbody>
+</table>
+<!-- END_41e37bb4ea451c1a5a85f3a3b34c6589 -->
+<!-- START_b3bd4bcca43f451aebf51006a642ad0c -->
+<h2>Update the project data stream</h2>
+<blockquote>
+<p>Example request:</p>
+</blockquote>
+<pre><code class="language-bash">curl -X PUT "http://emsearch.ryan.ems-dev.net/api/project/1bcc7efc-138c-11e7-93ae-92361f002671/dataStream" \
+-H "Accept: application/json" \
+-H "Authentication: Bearer xxx"
+ \
+    -d "name"="Quaerat ipsam fugit" \
+    -d "feed_url"="http://www.lang.com/dolores-ea-repellat-nisi.html" \
+</code></pre>
+<pre><code class="language-javascript">var settings = {
+    "async": true,
+    "crossDomain": true,
+    "url": "http://emsearch.ryan.ems-dev.net/api/project/1bcc7efc-138c-11e7-93ae-92361f002671/dataStream",
+    "method": "PUT",
+    "data": {
+        "name": "Quaerat ipsam fugit",
+        "feed_url": "http:\/\/www.lang.com\/dolores-ea-repellat-nisi.html"
+},
+    "headers": {
+        "Accept": "application/json",
+        "Authentication" : "Bearer xxx"
+    }
+}
+
+$.ajax(settings).done(function (response) {
+    console.log(response);
+});</code></pre>
+<h3>HTTP Request</h3>
+<p><code>PUT /api/project/{projectId}/dataStream</code></p>
+<p><code>PATCH /api/project/{projectId}/dataStream</code></p>
+<h4>Parameters</h4>
+<table>
+<thead>
+<tr>
+<th>Parameter</th>
+<th>Type</th>
+<th>Status</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>name</td>
+<td>string</td>
+<td>required</td>
+<td>Maximum: <code>200</code></td>
+</tr>
+<tr>
+<td>feed_url</td>
+<td>url</td>
+<td>required</td>
+</tr>
+</tbody>
+</table>
+<!-- END_b3bd4bcca43f451aebf51006a642ad0c -->
+<!-- START_820f0f614fb757aec7e225d86da8b40d -->
+<h2>Delete the project data stream</h2>
+<blockquote>
+<p>Example request:</p>
+</blockquote>
+<pre><code class="language-bash">curl -X DELETE "http://emsearch.ryan.ems-dev.net/api/project/1bcc7efc-138c-11e7-93ae-92361f002671/dataStream" \
+-H "Accept: application/json" \
+-H "Authentication: Bearer xxx"
+</code></pre>
+<pre><code class="language-javascript">var settings = {
+    "async": true,
+    "crossDomain": true,
+    "url": "http://emsearch.ryan.ems-dev.net/api/project/1bcc7efc-138c-11e7-93ae-92361f002671/dataStream",
+    "method": "DELETE",
+    "headers": {
+        "Accept": "application/json",
+        "Authentication" : "Bearer xxx"
+    }
+}
+
+$.ajax(settings).done(function (response) {
+    console.log(response);
+});</code></pre>
+<h3>HTTP Request</h3>
+<p><code>DELETE /api/project/{projectId}/dataStream</code></p>
+<!-- END_820f0f614fb757aec7e225d86da8b40d -->
+<h1>I18nLang</h1>
+<!-- START_e1171537de1a9b8e9dfbd90e9ef7c13f -->
+<h2>Show i18n lang list</h2>
+<aside class="notice">Pagination limit must be a value between <code>1</code> and <code>50</code>, default is <code>10</code>.</aside>
+<blockquote>
+<p>Example request:</p>
+</blockquote>
+<pre><code class="language-bash">curl -X GET "http://emsearch.ryan.ems-dev.net/api/i18nLang" \
+-H "Accept: application/json" \
+-H "Authentication: Bearer xxx"
+</code></pre>
+<pre><code class="language-javascript">var settings = {
+    "async": true,
+    "crossDomain": true,
+    "url": "http://emsearch.ryan.ems-dev.net/api/i18nLang",
+    "method": "GET",
+    "headers": {
+        "Accept": "application/json",
+        "Authentication" : "Bearer xxx"
+    }
+}
+
+$.ajax(settings).done(function (response) {
+    console.log(response);
+});</code></pre>
+<blockquote>
+<p>Example response:</p>
+</blockquote>
+<pre><code class="language-json">{
+    "data": [
+        {
+            "id": "af",
+            "description": "Afrikaans"
+        },
+        {
+            "id": "af_NA",
+            "description": "Afrikaans (Namibia)"
+        },
+        {
+            "id": "af_ZA",
+            "description": "Afrikaans (South Africa)"
+        },
+        {
+            "id": "ak",
+            "description": "Akan"
+        },
+        {
+            "id": "ak_GH",
+            "description": "Akan (Ghana)"
+        },
+        {
+            "id": "am",
+            "description": "Amharic"
+        },
+        {
+            "id": "am_ET",
+            "description": "Amharic (Ethiopia)"
+        },
+        {
+            "id": "ar",
+            "description": "Arabic"
+        },
+        {
+            "id": "ar_AE",
+            "description": "Arabic (United Arab Emirates)"
+        },
+        {
+            "id": "ar_BH",
+            "description": "Arabic (Bahrain)"
+        }
+    ],
+    "meta": {
+        "pagination": {
+            "total": 434,
+            "count": 10,
+            "per_page": 10,
+            "current_page": 1,
+            "total_pages": 44,
+            "links": {
+                "next": "http:\/\/emsearch.ryan.ems-dev.net\/api\/i18nLang?page=2"
+            }
+        }
+    }
+}</code></pre>
+<h3>HTTP Request</h3>
+<p><code>GET /api/i18nLang</code></p>
+<p><code>HEAD /api/i18nLang</code></p>
+<!-- END_e1171537de1a9b8e9dfbd90e9ef7c13f -->
+<!-- START_8bf32d4b41c09d1d9801aff1b0737349 -->
+<h2>Get specified i18n lang</h2>
+<blockquote>
+<p>Example request:</p>
+</blockquote>
+<pre><code class="language-bash">curl -X GET "http://emsearch.ryan.ems-dev.net/api/i18nLang/en_US" \
+-H "Accept: application/json" \
+-H "Authentication: Bearer xxx"
+</code></pre>
+<pre><code class="language-javascript">var settings = {
+    "async": true,
+    "crossDomain": true,
+    "url": "http://emsearch.ryan.ems-dev.net/api/i18nLang/en_US",
+    "method": "GET",
+    "headers": {
+        "Accept": "application/json",
+        "Authentication" : "Bearer xxx"
+    }
+}
+
+$.ajax(settings).done(function (response) {
+    console.log(response);
+});</code></pre>
+<blockquote>
+<p>Example response:</p>
+</blockquote>
+<pre><code class="language-json">{
+    "data": {
+        "id": "en_US",
+        "description": "English (United States)"
+    }
+}</code></pre>
+<h3>HTTP Request</h3>
+<p><code>GET /api/i18nLang/{i18nLangId}</code></p>
+<p><code>HEAD /api/i18nLang/{i18nLangId}</code></p>
+<!-- END_8bf32d4b41c09d1d9801aff1b0737349 -->
+<h1>Me</h1>
+<!-- START_01138559f486b5b7c062a19b1c0412fe -->
+<h2>Get current user</h2>
+<blockquote>
+<p>Example request:</p>
+</blockquote>
+<pre><code class="language-bash">curl -X GET "http://emsearch.ryan.ems-dev.net/api/me" \
+-H "Accept: application/json" \
+-H "Authentication: Bearer xxx"
+</code></pre>
+<pre><code class="language-javascript">var settings = {
+    "async": true,
+    "crossDomain": true,
+    "url": "http://emsearch.ryan.ems-dev.net/api/me",
+    "method": "GET",
+    "headers": {
+        "Accept": "application/json",
+        "Authentication" : "Bearer xxx"
+    }
+}
+
+$.ajax(settings).done(function (response) {
+    console.log(response);
+});</code></pre>
+<blockquote>
+<p>Example response:</p>
+</blockquote>
+<pre><code class="language-json">{
+    "data": {
+        "id": "41abdec2-1389-11e7-93ae-92361f002671",
+        "user_group_id": "Developer",
+        "name": "John Doe",
+        "email": "john.doe@domain.tld",
+        "created_at": "2017-04-14 11:20:27",
+        "updated_at": "2017-04-14 11:20:27"
+    }
+}</code></pre>
+<h3>HTTP Request</h3>
+<p><code>GET /api/me</code></p>
+<p><code>HEAD /api/me</code></p>
+<!-- END_01138559f486b5b7c062a19b1c0412fe -->
+<h1>Project</h1>
+<!-- START_5951e28de2699182212669b38146cae2 -->
+<h2>Current user project list</h2>
+<p>You can specify a GET parameter <code>user_role_id</code> to filter results.</p>
+<aside class="notice">Pagination limit must be a value between <code>1</code> and <code>50</code>, default is <code>10</code>.</aside>
+<blockquote>
+<p>Example request:</p>
+</blockquote>
+<pre><code class="language-bash">curl -X GET "http://emsearch.ryan.ems-dev.net/api/me/project?user_role_id=Owner" \
+-H "Accept: application/json" \
+-H "Authentication: Bearer xxx"
+</code></pre>
+<pre><code class="language-javascript">var settings = {
+    "async": true,
+    "crossDomain": true,
+    "url": "http://emsearch.ryan.ems-dev.net/api/me/project?user_role_id=Owner",
+    "method": "GET",
+    "headers": {
+        "Accept": "application/json",
+        "Authentication" : "Bearer xxx"
+    }
+}
+
+$.ajax(settings).done(function (response) {
+    console.log(response);
+});</code></pre>
+<blockquote>
+<p>Example response:</p>
+</blockquote>
+<pre><code class="language-json">{
+    "data": [],
+    "meta": {
+        "pagination": {
+            "total": 0,
+            "count": 0,
+            "per_page": 10,
+            "current_page": 1,
+            "total_pages": 0,
+            "links": []
+        }
+    }
+}</code></pre>
+<h3>HTTP Request</h3>
+<p><code>GET /api/me/project</code></p>
+<p><code>HEAD /api/me/project</code></p>
+<h4>Parameters</h4>
+<table>
+<thead>
+<tr>
+<th>Parameter</th>
+<th>Type</th>
+<th>Status</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>user_role_id</td>
+<td>string</td>
+<td>optional</td>
+<td>Valid user_role id <code>Owner</code> or <code>Administrator</code></td>
+</tr>
+</tbody>
+</table>
+<!-- END_5951e28de2699182212669b38146cae2 -->
+<!-- START_aa8a35d90f07e0338dcd98a913a63c76 -->
+<h2>User project list</h2>
+<p>You can specify a GET parameter <code>user_role_id</code> to filter results.</p>
+<aside class="notice">Pagination limit must be a value between <code>1</code> and <code>50</code>, default is <code>10</code>.</aside>
+<blockquote>
+<p>Example request:</p>
+</blockquote>
+<pre><code class="language-bash">curl -X GET "http://emsearch.ryan.ems-dev.net/api/user/605c7610-1389-11e7-93ae-92361f002671/project?user_role_id=Administrator" \
+-H "Accept: application/json" \
+-H "Authentication: Bearer xxx"
+</code></pre>
+<pre><code class="language-javascript">var settings = {
+    "async": true,
+    "crossDomain": true,
+    "url": "http://emsearch.ryan.ems-dev.net/api/user/605c7610-1389-11e7-93ae-92361f002671/project?user_role_id=Administrator",
+    "method": "GET",
+    "headers": {
+        "Accept": "application/json",
+        "Authentication" : "Bearer xxx"
+    }
+}
+
+$.ajax(settings).done(function (response) {
+    console.log(response);
+});</code></pre>
+<blockquote>
+<p>Example response:</p>
+</blockquote>
+<pre><code class="language-json">{
+    "data": [
+        {
+            "id": "1bcc7efc-138c-11e7-93ae-92361f002671",
+            "search_engine_id": "ee87e3b2-1388-11e7-93ae-92361f002671",
+            "data_stream_id": "56278dc8-1934-11e7-93ae-92361f002671",
+            "name": "John Smith Sample Project 1",
+            "created_at": "2017-04-14 11:20:27",
+            "updated_at": "2017-04-14 11:20:27"
+        },
+        {
+            "id": "b6860dd2-138c-11e7-93ae-92361f002671",
+            "search_engine_id": "ee87e3b2-1388-11e7-93ae-92361f002671",
+            "data_stream_id": null,
+            "name": "John Smith Sample Project 2",
+            "created_at": "2017-04-14 11:20:28",
+            "updated_at": "2017-04-14 11:20:28"
+        }
+    ],
+    "meta": {
+        "pagination": {
+            "total": 2,
+            "count": 2,
+            "per_page": 10,
+            "current_page": 1,
+            "total_pages": 1,
+            "links": []
+        }
+    }
+}</code></pre>
+<h3>HTTP Request</h3>
+<p><code>GET /api/user/{userId}/project</code></p>
+<p><code>HEAD /api/user/{userId}/project</code></p>
+<h4>Parameters</h4>
+<table>
+<thead>
+<tr>
+<th>Parameter</th>
+<th>Type</th>
+<th>Status</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>user_role_id</td>
+<td>string</td>
+<td>optional</td>
+<td>Valid user_role id <code>Owner</code> or <code>Administrator</code></td>
+</tr>
+</tbody>
+</table>
+<!-- END_aa8a35d90f07e0338dcd98a913a63c76 -->
+<!-- START_0244828c4ebed3e3aa5d2acc7f432f35 -->
+<h2>Project list</h2>
+<aside class="notice">Pagination limit must be a value between <code>1</code> and <code>50</code>, default is <code>10</code>.</aside>
+<blockquote>
+<p>Example request:</p>
+</blockquote>
+<pre><code class="language-bash">curl -X GET "http://emsearch.ryan.ems-dev.net/api/project" \
+-H "Accept: application/json" \
+-H "Authentication: Bearer xxx"
+</code></pre>
+<pre><code class="language-javascript">var settings = {
+    "async": true,
+    "crossDomain": true,
+    "url": "http://emsearch.ryan.ems-dev.net/api/project",
+    "method": "GET",
+    "headers": {
+        "Accept": "application/json",
+        "Authentication" : "Bearer xxx"
+    }
+}
+
+$.ajax(settings).done(function (response) {
+    console.log(response);
+});</code></pre>
+<blockquote>
+<p>Example response:</p>
+</blockquote>
+<pre><code class="language-json">{
+    "data": [
+        {
+            "id": "1bcc7efc-138c-11e7-93ae-92361f002671",
+            "search_engine_id": "ee87e3b2-1388-11e7-93ae-92361f002671",
+            "data_stream_id": "56278dc8-1934-11e7-93ae-92361f002671",
+            "name": "John Smith Sample Project 1",
+            "created_at": "2017-04-14 11:20:27",
+            "updated_at": "2017-04-14 11:20:27"
+        },
+        {
+            "id": "b6860dd2-138c-11e7-93ae-92361f002671",
+            "search_engine_id": "ee87e3b2-1388-11e7-93ae-92361f002671",
+            "data_stream_id": null,
+            "name": "John Smith Sample Project 2",
+            "created_at": "2017-04-14 11:20:28",
+            "updated_at": "2017-04-14 11:20:28"
+        },
+        {
+            "id": "c4b5d93c-138c-11e7-93ae-92361f002671",
+            "search_engine_id": "ee87e3b2-1388-11e7-93ae-92361f002671",
+            "data_stream_id": "605d712c-1934-11e7-93ae-92361f002671",
+            "name": "Mickey Mouse Sample Project",
+            "created_at": "2017-04-14 11:20:28",
+            "updated_at": "2017-04-14 11:20:28"
+        }
+    ],
+    "meta": {
+        "pagination": {
+            "total": 3,
+            "count": 3,
+            "per_page": 10,
+            "current_page": 1,
+            "total_pages": 1,
+            "links": []
+        }
+    }
+}</code></pre>
+<h3>HTTP Request</h3>
+<p><code>GET /api/project</code></p>
+<p><code>HEAD /api/project</code></p>
+<!-- END_0244828c4ebed3e3aa5d2acc7f432f35 -->
+<!-- START_4c7672d1d57bba818fcb5bc7dc53776e -->
+<h2>Get specified project</h2>
+<blockquote>
+<p>Example request:</p>
+</blockquote>
+<pre><code class="language-bash">curl -X GET "http://emsearch.ryan.ems-dev.net/api/project/1bcc7efc-138c-11e7-93ae-92361f002671" \
+-H "Accept: application/json" \
+-H "Authentication: Bearer xxx"
+</code></pre>
+<pre><code class="language-javascript">var settings = {
+    "async": true,
+    "crossDomain": true,
+    "url": "http://emsearch.ryan.ems-dev.net/api/project/1bcc7efc-138c-11e7-93ae-92361f002671",
+    "method": "GET",
+    "headers": {
+        "Accept": "application/json",
+        "Authentication" : "Bearer xxx"
+    }
+}
+
+$.ajax(settings).done(function (response) {
+    console.log(response);
+});</code></pre>
+<blockquote>
+<p>Example response:</p>
+</blockquote>
+<pre><code class="language-json">{
+    "data": {
+        "id": "1bcc7efc-138c-11e7-93ae-92361f002671",
+        "search_engine_id": "ee87e3b2-1388-11e7-93ae-92361f002671",
+        "data_stream_id": "56278dc8-1934-11e7-93ae-92361f002671",
+        "name": "John Smith Sample Project 1",
+        "created_at": "2017-04-14 11:20:27",
+        "updated_at": "2017-04-14 11:20:27"
+    }
+}</code></pre>
+<h3>HTTP Request</h3>
+<p><code>GET /api/project/{projectId}</code></p>
+<p><code>HEAD /api/project/{projectId}</code></p>
+<!-- END_4c7672d1d57bba818fcb5bc7dc53776e -->
+<!-- START_f77a6ccd588d420cab2180c05580e7ef -->
+<h2>Create and store new project</h2>
+<blockquote>
+<p>Example request:</p>
+</blockquote>
+<pre><code class="language-bash">curl -X POST "http://emsearch.ryan.ems-dev.net/api/project" \
+-H "Accept: application/json" \
+-H "Authentication: Bearer xxx"
+ \
+    -d "search_engine_id"="b5cd7c6d-3b58-30f8-a518-8d240f94dedc" \
+    -d "data_stream_id"="5c927fb9-3c2c-36e8-84f6-14527be086a2" \
+    -d "name"="Est numquam dolorum" \
+</code></pre>
+<pre><code class="language-javascript">var settings = {
+    "async": true,
+    "crossDomain": true,
+    "url": "http://emsearch.ryan.ems-dev.net/api/project",
+    "method": "POST",
+    "data": {
+        "search_engine_id": "b5cd7c6d-3b58-30f8-a518-8d240f94dedc",
+        "data_stream_id": "5c927fb9-3c2c-36e8-84f6-14527be086a2",
+        "name": "Est numquam dolorum"
+},
+    "headers": {
+        "Accept": "application/json",
+        "Authentication" : "Bearer xxx"
+    }
+}
+
+$.ajax(settings).done(function (response) {
+    console.log(response);
+});</code></pre>
+<h3>HTTP Request</h3>
+<p><code>POST /api/project</code></p>
+<h4>Parameters</h4>
+<table>
+<thead>
+<tr>
+<th>Parameter</th>
+<th>Type</th>
+<th>Status</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>search_engine_id</td>
+<td>string</td>
+<td>required</td>
+<td>UUID Valid search_engine id</td>
+</tr>
+<tr>
+<td>data_stream_id</td>
+<td>string</td>
+<td>optional</td>
+<td>UUID Valid data_stream id</td>
+</tr>
+<tr>
+<td>name</td>
+<td>string</td>
+<td>required</td>
+<td>Minimum: <code>5</code> Maximum: <code>100</code></td>
+</tr>
+</tbody>
+</table>
+<!-- END_f77a6ccd588d420cab2180c05580e7ef -->
+<!-- START_3ab7c7860cd533c91de466d299bc9cff -->
+<h2>Update a specified project</h2>
+<blockquote>
+<p>Example request:</p>
+</blockquote>
+<pre><code class="language-bash">curl -X PUT "http://emsearch.ryan.ems-dev.net/api/project/1bcc7efc-138c-11e7-93ae-92361f002671" \
+-H "Accept: application/json" \
+-H "Authentication: Bearer xxx"
+ \
+    -d "search_engine_id"="a666e2fa-87ad-3188-b6cd-c22161bb1fbd" \
+    -d "data_stream_id"="2b2078e3-fc5a-3e2e-8c36-f1fa0d1a65e5" \
+    -d "name"="Enim laboriosam eveniet" \
+</code></pre>
+<pre><code class="language-javascript">var settings = {
+    "async": true,
+    "crossDomain": true,
+    "url": "http://emsearch.ryan.ems-dev.net/api/project/1bcc7efc-138c-11e7-93ae-92361f002671",
+    "method": "PUT",
+    "data": {
+        "search_engine_id": "a666e2fa-87ad-3188-b6cd-c22161bb1fbd",
+        "data_stream_id": "2b2078e3-fc5a-3e2e-8c36-f1fa0d1a65e5",
+        "name": "Enim laboriosam eveniet"
+},
+    "headers": {
+        "Accept": "application/json",
+        "Authentication" : "Bearer xxx"
+    }
+}
+
+$.ajax(settings).done(function (response) {
+    console.log(response);
+});</code></pre>
+<h3>HTTP Request</h3>
+<p><code>PUT /api/project/{projectId}</code></p>
+<p><code>PATCH /api/project/{projectId}</code></p>
+<h4>Parameters</h4>
+<table>
+<thead>
+<tr>
+<th>Parameter</th>
+<th>Type</th>
+<th>Status</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>search_engine_id</td>
+<td>string</td>
+<td>required</td>
+<td>UUID Valid search_engine id</td>
+</tr>
+<tr>
+<td>data_stream_id</td>
+<td>string</td>
+<td>optional</td>
+<td>UUID Valid data_stream id</td>
+</tr>
+<tr>
+<td>name</td>
+<td>string</td>
+<td>required</td>
+<td>Minimum: <code>5</code> Maximum: <code>100</code></td>
+</tr>
+</tbody>
+</table>
+<!-- END_3ab7c7860cd533c91de466d299bc9cff -->
+<!-- START_9e2aafbf3cd214246c2f0fe7511ec6ea -->
+<h2>Delete specified project</h2>
+<p>All relationships between the project and his users will be automatically deleted too.<br />
+The project sync items will be automatically deleted too.<br />
+The project data stream will be automatically deleted too, if exists.</p>
+<aside class="notice">Only <code>Owner</code> of project is allowed to delete it.</aside>
+<blockquote>
+<p>Example request:</p>
+</blockquote>
+<pre><code class="language-bash">curl -X DELETE "http://emsearch.ryan.ems-dev.net/api/project/1bcc7efc-138c-11e7-93ae-92361f002671" \
+-H "Accept: application/json" \
+-H "Authentication: Bearer xxx"
+</code></pre>
+<pre><code class="language-javascript">var settings = {
+    "async": true,
+    "crossDomain": true,
+    "url": "http://emsearch.ryan.ems-dev.net/api/project/1bcc7efc-138c-11e7-93ae-92361f002671",
+    "method": "DELETE",
+    "headers": {
+        "Accept": "application/json",
+        "Authentication" : "Bearer xxx"
+    }
+}
+
+$.ajax(settings).done(function (response) {
+    console.log(response);
+});</code></pre>
+<h3>HTTP Request</h3>
+<p><code>DELETE /api/project/{projectId}</code></p>
+<!-- END_9e2aafbf3cd214246c2f0fe7511ec6ea -->
+<!-- START_5422def9f3ee3793fdd3b81ad0bce1b0 -->
+<h2>Search engine project list</h2>
+<aside class="notice">Pagination limit must be a value between <code>1</code> and <code>50</code>, default is <code>10</code>.</aside>
+<blockquote>
+<p>Example request:</p>
+</blockquote>
+<pre><code class="language-bash">curl -X GET "http://emsearch.ryan.ems-dev.net/api/searchEngine/ee87e3b2-1388-11e7-93ae-92361f002671/project" \
+-H "Accept: application/json" \
+-H "Authentication: Bearer xxx"
+</code></pre>
+<pre><code class="language-javascript">var settings = {
+    "async": true,
+    "crossDomain": true,
+    "url": "http://emsearch.ryan.ems-dev.net/api/searchEngine/ee87e3b2-1388-11e7-93ae-92361f002671/project",
+    "method": "GET",
+    "headers": {
+        "Accept": "application/json",
+        "Authentication" : "Bearer xxx"
+    }
+}
+
+$.ajax(settings).done(function (response) {
+    console.log(response);
+});</code></pre>
+<blockquote>
+<p>Example response:</p>
+</blockquote>
+<pre><code class="language-json">{
+    "data": [
+        {
+            "id": "1bcc7efc-138c-11e7-93ae-92361f002671",
+            "search_engine_id": "ee87e3b2-1388-11e7-93ae-92361f002671",
+            "data_stream_id": "56278dc8-1934-11e7-93ae-92361f002671",
+            "name": "John Smith Sample Project 1",
+            "created_at": "2017-04-14 11:20:27",
+            "updated_at": "2017-04-14 11:20:27"
+        },
+        {
+            "id": "b6860dd2-138c-11e7-93ae-92361f002671",
+            "search_engine_id": "ee87e3b2-1388-11e7-93ae-92361f002671",
+            "data_stream_id": null,
+            "name": "John Smith Sample Project 2",
+            "created_at": "2017-04-14 11:20:28",
+            "updated_at": "2017-04-14 11:20:28"
+        },
+        {
+            "id": "c4b5d93c-138c-11e7-93ae-92361f002671",
+            "search_engine_id": "ee87e3b2-1388-11e7-93ae-92361f002671",
+            "data_stream_id": "605d712c-1934-11e7-93ae-92361f002671",
+            "name": "Mickey Mouse Sample Project",
+            "created_at": "2017-04-14 11:20:28",
+            "updated_at": "2017-04-14 11:20:28"
+        }
+    ],
+    "meta": {
+        "pagination": {
+            "total": 3,
+            "count": 3,
+            "per_page": 10,
+            "current_page": 1,
+            "total_pages": 1,
+            "links": []
+        }
+    }
+}</code></pre>
+<h3>HTTP Request</h3>
+<p><code>GET /api/searchEngine/{searchEngineId}/project</code></p>
+<p><code>HEAD /api/searchEngine/{searchEngineId}/project</code></p>
+<!-- END_5422def9f3ee3793fdd3b81ad0bce1b0 -->
+<h1>SearchEngine</h1>
+<!-- START_4782f8649a902914ec1963f2a78da258 -->
+<h2>Show search engine list</h2>
+<aside class="notice">Pagination limit must be a value between <code>1</code> and <code>20</code>, default is <code>10</code>.</aside>
+<blockquote>
+<p>Example request:</p>
+</blockquote>
+<pre><code class="language-bash">curl -X GET "http://emsearch.ryan.ems-dev.net/api/searchEngine" \
+-H "Accept: application/json" \
+-H "Authentication: Bearer xxx"
+</code></pre>
+<pre><code class="language-javascript">var settings = {
+    "async": true,
+    "crossDomain": true,
+    "url": "http://emsearch.ryan.ems-dev.net/api/searchEngine",
+    "method": "GET",
+    "headers": {
+        "Accept": "application/json",
+        "Authentication" : "Bearer xxx"
+    }
+}
+
+$.ajax(settings).done(function (response) {
+    console.log(response);
+});</code></pre>
+<blockquote>
+<p>Example response:</p>
+</blockquote>
+<pre><code class="language-json">{
+    "data": [
+        {
+            "id": "ee87e3b2-1388-11e7-93ae-92361f002671",
+            "name": "Algolia",
+            "created_at": "2017-04-14 11:20:24",
+            "updated_at": "2017-04-14 11:20:24"
+        }
+    ],
+    "meta": {
+        "pagination": {
+            "total": 1,
+            "count": 1,
+            "per_page": 10,
+            "current_page": 1,
+            "total_pages": 1,
+            "links": []
+        }
+    }
+}</code></pre>
+<h3>HTTP Request</h3>
+<p><code>GET /api/searchEngine</code></p>
+<p><code>HEAD /api/searchEngine</code></p>
+<!-- END_4782f8649a902914ec1963f2a78da258 -->
+<!-- START_2722bd2e446fc75e00b2f6449ed3d886 -->
+<h2>Get specified search engine</h2>
+<blockquote>
+<p>Example request:</p>
+</blockquote>
+<pre><code class="language-bash">curl -X GET "http://emsearch.ryan.ems-dev.net/api/searchEngine/ee87e3b2-1388-11e7-93ae-92361f002671" \
+-H "Accept: application/json" \
+-H "Authentication: Bearer xxx"
+</code></pre>
+<pre><code class="language-javascript">var settings = {
+    "async": true,
+    "crossDomain": true,
+    "url": "http://emsearch.ryan.ems-dev.net/api/searchEngine/ee87e3b2-1388-11e7-93ae-92361f002671",
+    "method": "GET",
+    "headers": {
+        "Accept": "application/json",
+        "Authentication" : "Bearer xxx"
+    }
+}
+
+$.ajax(settings).done(function (response) {
+    console.log(response);
+});</code></pre>
+<blockquote>
+<p>Example response:</p>
+</blockquote>
+<pre><code class="language-json">{
+    "data": {
+        "id": "ee87e3b2-1388-11e7-93ae-92361f002671",
+        "name": "Algolia",
+        "created_at": "2017-04-14 11:20:24",
+        "updated_at": "2017-04-14 11:20:24"
+    }
+}</code></pre>
+<h3>HTTP Request</h3>
+<p><code>GET /api/searchEngine/{searchEngineId}</code></p>
+<p><code>HEAD /api/searchEngine/{searchEngineId}</code></p>
+<!-- END_2722bd2e446fc75e00b2f6449ed3d886 -->
+<h1>SyncItem</h1>
+<!-- START_bfc41d85f90ecc0fcd7613be812fb092 -->
+<h2>Sync item list</h2>
+<aside class="notice">Pagination limit must be a value between <code>1</code> and <code>50</code>, default is <code>10</code>.</aside>
+<blockquote>
+<p>Example request:</p>
+</blockquote>
+<pre><code class="language-bash">curl -X GET "http://emsearch.ryan.ems-dev.net/api/syncItem" \
+-H "Accept: application/json" \
+-H "Authentication: Bearer xxx"
+</code></pre>
+<pre><code class="language-javascript">var settings = {
+    "async": true,
+    "crossDomain": true,
+    "url": "http://emsearch.ryan.ems-dev.net/api/syncItem",
+    "method": "GET",
+    "headers": {
+        "Accept": "application/json",
+        "Authentication" : "Bearer xxx"
+    }
+}
+
+$.ajax(settings).done(function (response) {
+    console.log(response);
+});</code></pre>
+<blockquote>
+<p>Example response:</p>
+</blockquote>
+<pre><code class="language-json">{
+    "data": [
+        {
+            "item_id": "a37eda90-1f56-11e7-93ae-92361f002671",
+            "project_id": "1bcc7efc-138c-11e7-93ae-92361f002671",
+            "item_signature": "f56a6607aee20f0dab169820bda38706",
+            "created_at": "2017-04-14 11:20:28",
+            "updated_at": "2017-04-14 11:20:28"
+        },
+        {
+            "item_id": "b06e221a-1f56-11e7-93ae-92361f002671",
+            "project_id": "1bcc7efc-138c-11e7-93ae-92361f002671",
+            "item_signature": "d66e8b5e5d17933bdcaf5a03f614e007",
+            "created_at": "2017-04-14 11:20:28",
+            "updated_at": "2017-04-14 11:20:28"
+        },
+        {
+            "item_id": "c07d179c-1f56-11e7-93ae-92361f002671",
+            "project_id": "1bcc7efc-138c-11e7-93ae-92361f002671",
+            "item_signature": "52864717b0abe4851b74bed750df0144",
+            "created_at": "2017-04-14 11:20:28",
+            "updated_at": "2017-04-14 11:20:28"
+        },
+        {
+            "item_id": "d1040d28-1f56-11e7-93ae-92361f002671",
+            "project_id": "1bcc7efc-138c-11e7-93ae-92361f002671",
+            "item_signature": "098de3bc3c69ad3e027d9fefc44fa7a5",
+            "created_at": "2017-04-14 11:20:28",
+            "updated_at": "2017-04-14 11:20:28"
+        },
+        {
+            "item_id": "e6b018e2-1f56-11e7-93ae-92361f002671",
+            "project_id": "1bcc7efc-138c-11e7-93ae-92361f002671",
+            "item_signature": "a18513691f0d1c2a8e3f3ae0c0b8260c",
+            "created_at": "2017-04-14 11:20:28",
+            "updated_at": "2017-04-14 11:20:28"
+        }
+    ],
+    "meta": {
+        "pagination": {
+            "total": 5,
+            "count": 5,
+            "per_page": 10,
+            "current_page": 1,
+            "total_pages": 1,
+            "links": []
+        }
+    }
+}</code></pre>
+<h3>HTTP Request</h3>
+<p><code>GET /api/syncItem</code></p>
+<p><code>HEAD /api/syncItem</code></p>
+<!-- END_bfc41d85f90ecc0fcd7613be812fb092 -->
+<!-- START_7f0ee008d31d890ef106fa3127e34832 -->
+<h2>Get specified sync item</h2>
+<blockquote>
+<p>Example request:</p>
+</blockquote>
+<pre><code class="language-bash">curl -X GET "http://emsearch.ryan.ems-dev.net/api/syncItem/a37eda90-1f56-11e7-93ae-92361f002671,1bcc7efc-138c-11e7-93ae-92361f002671" \
+-H "Accept: application/json" \
+-H "Authentication: Bearer xxx"
+</code></pre>
+<pre><code class="language-javascript">var settings = {
+    "async": true,
+    "crossDomain": true,
+    "url": "http://emsearch.ryan.ems-dev.net/api/syncItem/a37eda90-1f56-11e7-93ae-92361f002671,1bcc7efc-138c-11e7-93ae-92361f002671",
+    "method": "GET",
+    "headers": {
+        "Accept": "application/json",
+        "Authentication" : "Bearer xxx"
+    }
+}
+
+$.ajax(settings).done(function (response) {
+    console.log(response);
+});</code></pre>
+<blockquote>
+<p>Example response:</p>
+</blockquote>
+<pre><code class="language-json">{
+    "data": [
+        {
+            "item_id": "a37eda90-1f56-11e7-93ae-92361f002671",
+            "project_id": "1bcc7efc-138c-11e7-93ae-92361f002671",
+            "item_signature": "f56a6607aee20f0dab169820bda38706",
+            "created_at": "2017-04-14 11:20:28",
+            "updated_at": "2017-04-14 11:20:28"
+        }
+    ]
+}</code></pre>
+<h3>HTTP Request</h3>
+<p><code>GET /api/syncItem/{syncItemId},{projectId}</code></p>
+<p><code>HEAD /api/syncItem/{syncItemId},{projectId}</code></p>
+<!-- END_7f0ee008d31d890ef106fa3127e34832 -->
+<!-- START_6dc95e6a9c747452ea9b21a9e5cbcbee -->
+<h2>Project sync item list</h2>
+<aside class="notice">Pagination limit must be a value between <code>1</code> and <code>50</code>, default is <code>10</code>.</aside>
+<blockquote>
+<p>Example request:</p>
+</blockquote>
+<pre><code class="language-bash">curl -X GET "http://emsearch.ryan.ems-dev.net/api/project/1bcc7efc-138c-11e7-93ae-92361f002671/syncItem" \
+-H "Accept: application/json" \
+-H "Authentication: Bearer xxx"
+</code></pre>
+<pre><code class="language-javascript">var settings = {
+    "async": true,
+    "crossDomain": true,
+    "url": "http://emsearch.ryan.ems-dev.net/api/project/1bcc7efc-138c-11e7-93ae-92361f002671/syncItem",
+    "method": "GET",
+    "headers": {
+        "Accept": "application/json",
+        "Authentication" : "Bearer xxx"
+    }
+}
+
+$.ajax(settings).done(function (response) {
+    console.log(response);
+});</code></pre>
+<blockquote>
+<p>Example response:</p>
+</blockquote>
+<pre><code class="language-json">{
+    "data": [
+        {
+            "item_id": "a37eda90-1f56-11e7-93ae-92361f002671",
+            "project_id": "1bcc7efc-138c-11e7-93ae-92361f002671",
+            "item_signature": "f56a6607aee20f0dab169820bda38706",
+            "created_at": "2017-04-14 11:20:28",
+            "updated_at": "2017-04-14 11:20:28"
+        },
+        {
+            "item_id": "b06e221a-1f56-11e7-93ae-92361f002671",
+            "project_id": "1bcc7efc-138c-11e7-93ae-92361f002671",
+            "item_signature": "d66e8b5e5d17933bdcaf5a03f614e007",
+            "created_at": "2017-04-14 11:20:28",
+            "updated_at": "2017-04-14 11:20:28"
+        },
+        {
+            "item_id": "c07d179c-1f56-11e7-93ae-92361f002671",
+            "project_id": "1bcc7efc-138c-11e7-93ae-92361f002671",
+            "item_signature": "52864717b0abe4851b74bed750df0144",
+            "created_at": "2017-04-14 11:20:28",
+            "updated_at": "2017-04-14 11:20:28"
+        },
+        {
+            "item_id": "d1040d28-1f56-11e7-93ae-92361f002671",
+            "project_id": "1bcc7efc-138c-11e7-93ae-92361f002671",
+            "item_signature": "098de3bc3c69ad3e027d9fefc44fa7a5",
+            "created_at": "2017-04-14 11:20:28",
+            "updated_at": "2017-04-14 11:20:28"
+        },
+        {
+            "item_id": "e6b018e2-1f56-11e7-93ae-92361f002671",
+            "project_id": "1bcc7efc-138c-11e7-93ae-92361f002671",
+            "item_signature": "a18513691f0d1c2a8e3f3ae0c0b8260c",
+            "created_at": "2017-04-14 11:20:28",
+            "updated_at": "2017-04-14 11:20:28"
+        }
+    ],
+    "meta": {
+        "pagination": {
+            "total": 5,
+            "count": 5,
+            "per_page": 10,
+            "current_page": 1,
+            "total_pages": 1,
+            "links": []
+        }
+    }
+}</code></pre>
+<h3>HTTP Request</h3>
+<p><code>GET /api/project/{projectId}/syncItem</code></p>
+<p><code>HEAD /api/project/{projectId}/syncItem</code></p>
+<!-- END_6dc95e6a9c747452ea9b21a9e5cbcbee -->
+<h1>SyncTask</h1>
+<!-- START_2978e0998f660697ab1a780503cb443f -->
+<h2>Sync task list</h2>
+<aside class="notice">Pagination limit must be a value between <code>1</code> and <code>20</code>, default is <code>10</code>.</aside>
+<blockquote>
+<p>Example request:</p>
+</blockquote>
+<pre><code class="language-bash">curl -X GET "http://emsearch.ryan.ems-dev.net/api/syncTask" \
+-H "Accept: application/json" \
+-H "Authentication: Bearer xxx"
+</code></pre>
+<pre><code class="language-javascript">var settings = {
+    "async": true,
+    "crossDomain": true,
+    "url": "http://emsearch.ryan.ems-dev.net/api/syncTask",
+    "method": "GET",
+    "headers": {
+        "Accept": "application/json",
+        "Authentication" : "Bearer xxx"
+    }
+}
+
+$.ajax(settings).done(function (response) {
+    console.log(response);
+});</code></pre>
+<blockquote>
+<p>Example response:</p>
+</blockquote>
+<pre><code class="language-json">{
+    "data": [
+        {
+            "id": "8dbfd6e6-2055-11e7-93ae-92361f002671",
+            "sync_task_id": null,
+            "sync_task_type_id": "Main",
+            "sync_task_status_id": "InProgress",
+            "created_by_user_id": "605c7610-1389-11e7-93ae-92361f002671",
+            "project_id": "1bcc7efc-138c-11e7-93ae-92361f002671",
+            "created_at": "2017-04-14 11:20:28",
+            "updated_at": "2017-04-14 11:20:28"
+        },
+        {
+            "id": "91bf2f58-2055-11e7-93ae-92361f002671",
+            "sync_task_id": "8dbfd6e6-2055-11e7-93ae-92361f002671",
+            "sync_task_type_id": "DataStreamDownload",
+            "sync_task_status_id": "InProgress",
+            "created_by_user_id": "605c7610-1389-11e7-93ae-92361f002671",
+            "project_id": "1bcc7efc-138c-11e7-93ae-92361f002671",
+            "created_at": "2017-04-14 11:20:28",
+            "updated_at": "2017-04-14 11:20:28"
+        }
+    ],
+    "meta": {
+        "pagination": {
+            "total": 2,
+            "count": 2,
+            "per_page": 10,
+            "current_page": 1,
+            "total_pages": 1,
+            "links": []
+        }
+    }
+}</code></pre>
+<h3>HTTP Request</h3>
+<p><code>GET /api/syncTask</code></p>
+<p><code>HEAD /api/syncTask</code></p>
+<!-- END_2978e0998f660697ab1a780503cb443f -->
+<!-- START_f9f5013ec23ba437ac7ebb90bcde561a -->
+<h2>Get specified sync task</h2>
+<blockquote>
+<p>Example request:</p>
+</blockquote>
+<pre><code class="language-bash">curl -X GET "http://emsearch.ryan.ems-dev.net/api/syncTask/8dbfd6e6-2055-11e7-93ae-92361f002671" \
+-H "Accept: application/json" \
+-H "Authentication: Bearer xxx"
+</code></pre>
+<pre><code class="language-javascript">var settings = {
+    "async": true,
+    "crossDomain": true,
+    "url": "http://emsearch.ryan.ems-dev.net/api/syncTask/8dbfd6e6-2055-11e7-93ae-92361f002671",
+    "method": "GET",
+    "headers": {
+        "Accept": "application/json",
+        "Authentication" : "Bearer xxx"
+    }
+}
+
+$.ajax(settings).done(function (response) {
+    console.log(response);
+});</code></pre>
+<blockquote>
+<p>Example response:</p>
+</blockquote>
+<pre><code class="language-json">{
+    "data": {
+        "id": "8dbfd6e6-2055-11e7-93ae-92361f002671",
+        "sync_task_id": null,
+        "sync_task_type_id": "Main",
+        "sync_task_status_id": "InProgress",
+        "created_by_user_id": "605c7610-1389-11e7-93ae-92361f002671",
+        "project_id": "1bcc7efc-138c-11e7-93ae-92361f002671",
+        "created_at": "2017-04-14 11:20:28",
+        "updated_at": "2017-04-14 11:20:28"
+    }
+}</code></pre>
+<h3>HTTP Request</h3>
+<p><code>GET /api/syncTask/{syncTaskId}</code></p>
+<p><code>HEAD /api/syncTask/{syncTaskId}</code></p>
+<!-- END_f9f5013ec23ba437ac7ebb90bcde561a -->
+<!-- START_8151bc8465cc13065e561f4910642cfc -->
+<h2>Project sync task list</h2>
+<aside class="notice">Pagination limit must be a value between <code>1</code> and <code>20</code>, default is <code>10</code>.</aside>
+<blockquote>
+<p>Example request:</p>
+</blockquote>
+<pre><code class="language-bash">curl -X GET "http://emsearch.ryan.ems-dev.net/api/project/1bcc7efc-138c-11e7-93ae-92361f002671/syncTask" \
+-H "Accept: application/json" \
+-H "Authentication: Bearer xxx"
+</code></pre>
+<pre><code class="language-javascript">var settings = {
+    "async": true,
+    "crossDomain": true,
+    "url": "http://emsearch.ryan.ems-dev.net/api/project/1bcc7efc-138c-11e7-93ae-92361f002671/syncTask",
+    "method": "GET",
+    "headers": {
+        "Accept": "application/json",
+        "Authentication" : "Bearer xxx"
+    }
+}
+
+$.ajax(settings).done(function (response) {
+    console.log(response);
+});</code></pre>
+<blockquote>
+<p>Example response:</p>
+</blockquote>
+<pre><code class="language-json">{
+    "data": [
+        {
+            "id": "8dbfd6e6-2055-11e7-93ae-92361f002671",
+            "sync_task_id": null,
+            "sync_task_type_id": "Main",
+            "sync_task_status_id": "InProgress",
+            "created_by_user_id": "605c7610-1389-11e7-93ae-92361f002671",
+            "project_id": "1bcc7efc-138c-11e7-93ae-92361f002671",
+            "created_at": "2017-04-14 11:20:28",
+            "updated_at": "2017-04-14 11:20:28"
+        },
+        {
+            "id": "91bf2f58-2055-11e7-93ae-92361f002671",
+            "sync_task_id": "8dbfd6e6-2055-11e7-93ae-92361f002671",
+            "sync_task_type_id": "DataStreamDownload",
+            "sync_task_status_id": "InProgress",
+            "created_by_user_id": "605c7610-1389-11e7-93ae-92361f002671",
+            "project_id": "1bcc7efc-138c-11e7-93ae-92361f002671",
+            "created_at": "2017-04-14 11:20:28",
+            "updated_at": "2017-04-14 11:20:28"
+        }
+    ],
+    "meta": {
+        "pagination": {
+            "total": 2,
+            "count": 2,
+            "per_page": 10,
+            "current_page": 1,
+            "total_pages": 1,
+            "links": []
+        }
+    }
+}</code></pre>
+<h3>HTTP Request</h3>
+<p><code>GET /api/project/{projectId}/syncTask</code></p>
+<p><code>HEAD /api/project/{projectId}/syncTask</code></p>
+<!-- END_8151bc8465cc13065e561f4910642cfc -->
+<h1>SyncTaskStatus</h1>
+<!-- START_4717d42cd5763bf3c418a96430240035 -->
+<h2>Show sync task status list</h2>
+<aside class="notice">Pagination limit must be a value between <code>1</code> and <code>20</code>, default is <code>10</code>.</aside>
+<blockquote>
+<p>Example request:</p>
+</blockquote>
+<pre><code class="language-bash">curl -X GET "http://emsearch.ryan.ems-dev.net/api/syncTaskStatus" \
+-H "Accept: application/json" \
+-H "Authentication: Bearer xxx"
+</code></pre>
+<pre><code class="language-javascript">var settings = {
+    "async": true,
+    "crossDomain": true,
+    "url": "http://emsearch.ryan.ems-dev.net/api/syncTaskStatus",
+    "method": "GET",
+    "headers": {
+        "Accept": "application/json",
+        "Authentication" : "Bearer xxx"
+    }
+}
+
+$.ajax(settings).done(function (response) {
+    console.log(response);
+});</code></pre>
+<blockquote>
+<p>Example response:</p>
+</blockquote>
+<pre><code class="language-json">{
+    "data": [
+        {
+            "id": "Complete"
+        },
+        {
+            "id": "InProgress"
+        },
+        {
+            "id": "Planned"
+        }
+    ],
+    "meta": {
+        "pagination": {
+            "total": 3,
+            "count": 3,
+            "per_page": 10,
+            "current_page": 1,
+            "total_pages": 1,
+            "links": []
+        }
+    }
+}</code></pre>
+<h3>HTTP Request</h3>
+<p><code>GET /api/syncTaskStatus</code></p>
+<p><code>HEAD /api/syncTaskStatus</code></p>
+<!-- END_4717d42cd5763bf3c418a96430240035 -->
+<!-- START_ef5bd46c31f4520ae31c481e3881f393 -->
+<h2>Get specified sync task status</h2>
+<blockquote>
+<p>Example request:</p>
+</blockquote>
+<pre><code class="language-bash">curl -X GET "http://emsearch.ryan.ems-dev.net/api/syncTaskStatus/Planned" \
+-H "Accept: application/json" \
+-H "Authentication: Bearer xxx"
+</code></pre>
+<pre><code class="language-javascript">var settings = {
+    "async": true,
+    "crossDomain": true,
+    "url": "http://emsearch.ryan.ems-dev.net/api/syncTaskStatus/Planned",
+    "method": "GET",
+    "headers": {
+        "Accept": "application/json",
+        "Authentication" : "Bearer xxx"
+    }
+}
+
+$.ajax(settings).done(function (response) {
+    console.log(response);
+});</code></pre>
+<blockquote>
+<p>Example response:</p>
+</blockquote>
+<pre><code class="language-json">{
+    "data": {
+        "id": "Planned"
+    }
+}</code></pre>
+<h3>HTTP Request</h3>
+<p><code>GET /api/syncTaskStatus/{syncTaskStatusId}</code></p>
+<p><code>HEAD /api/syncTaskStatus/{syncTaskStatusId}</code></p>
+<!-- END_ef5bd46c31f4520ae31c481e3881f393 -->
+<h1>SyncTaskStatusVersion</h1>
+<!-- START_20fd565a8f7cfe7eee960e158fcbbe29 -->
+<h2>Sync task status version item list</h2>
+<aside class="notice">Pagination limit must be a value between <code>1</code> and <code>20</code>, default is <code>10</code>.</aside>
+<blockquote>
+<p>Example request:</p>
+</blockquote>
+<pre><code class="language-bash">curl -X GET "http://emsearch.ryan.ems-dev.net/api/syncTaskStatusVersion" \
+-H "Accept: application/json" \
+-H "Authentication: Bearer xxx"
+</code></pre>
+<pre><code class="language-javascript">var settings = {
+    "async": true,
+    "crossDomain": true,
+    "url": "http://emsearch.ryan.ems-dev.net/api/syncTaskStatusVersion",
+    "method": "GET",
+    "headers": {
+        "Accept": "application/json",
+        "Authentication" : "Bearer xxx"
+    }
+}
+
+$.ajax(settings).done(function (response) {
+    console.log(response);
+});</code></pre>
+<blockquote>
+<p>Example response:</p>
+</blockquote>
+<pre><code class="language-json">{
+    "data": [
+        {
+            "sync_task_type_id": "Complete",
+            "i18n_lang_id": "en_US",
+            "description": "Items synchronization is complete.",
+            "created_at": "2017-04-14 11:20:24",
+            "updated_at": "2017-04-14 11:20:24"
+        },
+        {
+            "sync_task_type_id": "Complete",
+            "i18n_lang_id": "fr_FR",
+            "description": "La synchronisation des items est terminée",
+            "created_at": "2017-04-14 11:20:24",
+            "updated_at": "2017-04-14 11:20:24"
+        },
+        {
+            "sync_task_type_id": "InProgress",
+            "i18n_lang_id": "en_US",
+            "description": "Items synchronization is in progress.",
+            "created_at": "2017-04-14 11:20:24",
+            "updated_at": "2017-04-14 11:20:24"
+        },
+        {
+            "sync_task_type_id": "InProgress",
+            "i18n_lang_id": "fr_FR",
+            "description": "La synchronisation des items est en cours.",
+            "created_at": "2017-04-14 11:20:24",
+            "updated_at": "2017-04-14 11:20:24"
+        },
+        {
+            "sync_task_type_id": "Planned",
+            "i18n_lang_id": "en_US",
+            "description": "Items synchronization is planned.",
+            "created_at": "2017-04-14 11:20:24",
+            "updated_at": "2017-04-14 11:20:24"
+        },
+        {
+            "sync_task_type_id": "Planned",
+            "i18n_lang_id": "fr_FR",
+            "description": "La synchronisation des items est plannifiée",
+            "created_at": "2017-04-14 11:20:24",
+            "updated_at": "2017-04-14 11:20:24"
+        }
+    ],
+    "meta": {
+        "pagination": {
+            "total": 6,
+            "count": 6,
+            "per_page": 10,
+            "current_page": 1,
+            "total_pages": 1,
+            "links": []
+        }
+    }
+}</code></pre>
+<h3>HTTP Request</h3>
+<p><code>GET /api/syncTaskStatusVersion</code></p>
+<p><code>HEAD /api/syncTaskStatusVersion</code></p>
+<!-- END_20fd565a8f7cfe7eee960e158fcbbe29 -->
+<!-- START_3154293d7e3ad8c7b20f143c3d0e5151 -->
+<h2>Get specified sync task status version</h2>
+<blockquote>
+<p>Example request:</p>
+</blockquote>
+<pre><code class="language-bash">curl -X GET "http://emsearch.ryan.ems-dev.net/api/syncTaskStatusVersion/Planned,en_US" \
+-H "Accept: application/json" \
+-H "Authentication: Bearer xxx"
+</code></pre>
+<pre><code class="language-javascript">var settings = {
+    "async": true,
+    "crossDomain": true,
+    "url": "http://emsearch.ryan.ems-dev.net/api/syncTaskStatusVersion/Planned,en_US",
+    "method": "GET",
+    "headers": {
+        "Accept": "application/json",
+        "Authentication" : "Bearer xxx"
+    }
+}
+
+$.ajax(settings).done(function (response) {
+    console.log(response);
+});</code></pre>
+<blockquote>
+<p>Example response:</p>
+</blockquote>
+<pre><code class="language-json">{
+    "data": [
+        {
+            "sync_task_type_id": "Planned",
+            "i18n_lang_id": "en_US",
+            "description": "Items synchronization is planned.",
+            "created_at": "2017-04-14 11:20:24",
+            "updated_at": "2017-04-14 11:20:24"
+        }
+    ]
+}</code></pre>
+<h3>HTTP Request</h3>
+<p><code>GET /api/syncTaskStatusVersion/{syncTaskStatusId},{i18nLangId}</code></p>
+<p><code>HEAD /api/syncTaskStatusVersion/{syncTaskStatusId},{i18nLangId}</code></p>
+<!-- END_3154293d7e3ad8c7b20f143c3d0e5151 -->
+<!-- START_f8d52ae3047e3b3b55a78f36e855095e -->
+<h2>Create and store new sync task status version</h2>
+<blockquote>
+<p>Example request:</p>
+</blockquote>
+<pre><code class="language-bash">curl -X POST "http://emsearch.ryan.ems-dev.net/api/syncTaskStatusVersion" \
+-H "Accept: application/json" \
+-H "Authentication: Bearer xxx"
+ \
+    -d "sync_task_status_id"="Ut consequatur non" \
+    -d "i18n_lang_id"="Ad esse debitis" \
+    -d "description"="Minus nam inventore" \
+</code></pre>
+<pre><code class="language-javascript">var settings = {
+    "async": true,
+    "crossDomain": true,
+    "url": "http://emsearch.ryan.ems-dev.net/api/syncTaskStatusVersion",
+    "method": "POST",
+    "data": {
+        "sync_task_status_id": "Ut consequatur non",
+        "i18n_lang_id": "Ad esse debitis",
+        "description": "Minus nam inventore"
+},
+    "headers": {
+        "Accept": "application/json",
+        "Authentication" : "Bearer xxx"
+    }
+}
+
+$.ajax(settings).done(function (response) {
+    console.log(response);
+});</code></pre>
+<h3>HTTP Request</h3>
+<p><code>POST /api/syncTaskStatusVersion</code></p>
+<h4>Parameters</h4>
+<table>
+<thead>
+<tr>
+<th>Parameter</th>
+<th>Type</th>
+<th>Status</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>sync_task_status_id</td>
+<td>string</td>
+<td>required</td>
+<td>Maximum: <code>50</code> Valid sync_task_status id</td>
+</tr>
+<tr>
+<td>i18n_lang_id</td>
+<td>string</td>
+<td>required</td>
+<td>Maximum: <code>30</code> Valid i18n_lang id</td>
+</tr>
+<tr>
+<td>description</td>
+<td>string</td>
+<td>required</td>
+</tr>
+</tbody>
+</table>
+<!-- END_f8d52ae3047e3b3b55a78f36e855095e -->
+<!-- START_30fd948e95f773b1dd1c9fb6a441f419 -->
+<h2>Update a specified sync task status version</h2>
+<blockquote>
+<p>Example request:</p>
+</blockquote>
+<pre><code class="language-bash">curl -X PUT "http://emsearch.ryan.ems-dev.net/api/syncTaskStatusVersion/Planned,en_US" \
+-H "Accept: application/json" \
+-H "Authentication: Bearer xxx"
+ \
+    -d "sync_task_status_id"="Autem cumque voluptatum" \
+    -d "i18n_lang_id"="Iure rerum eum" \
+    -d "description"="Aperiam deleniti quia" \
+</code></pre>
+<pre><code class="language-javascript">var settings = {
+    "async": true,
+    "crossDomain": true,
+    "url": "http://emsearch.ryan.ems-dev.net/api/syncTaskStatusVersion/Planned,en_US",
+    "method": "PUT",
+    "data": {
+        "sync_task_status_id": "Autem cumque voluptatum",
+        "i18n_lang_id": "Iure rerum eum",
+        "description": "Aperiam deleniti quia"
+},
+    "headers": {
+        "Accept": "application/json",
+        "Authentication" : "Bearer xxx"
+    }
+}
+
+$.ajax(settings).done(function (response) {
+    console.log(response);
+});</code></pre>
+<h3>HTTP Request</h3>
+<p><code>PUT /api/syncTaskStatusVersion/{syncTaskStatusId},{i18nLangId}</code></p>
+<p><code>PATCH /api/syncTaskStatusVersion/{syncTaskStatusId},{i18nLangId}</code></p>
+<h4>Parameters</h4>
+<table>
+<thead>
+<tr>
+<th>Parameter</th>
+<th>Type</th>
+<th>Status</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>sync_task_status_id</td>
+<td>string</td>
+<td>required</td>
+<td>Maximum: <code>50</code> Valid sync_task_status id</td>
+</tr>
+<tr>
+<td>i18n_lang_id</td>
+<td>string</td>
+<td>required</td>
+<td>Maximum: <code>30</code> Valid i18n_lang id</td>
+</tr>
+<tr>
+<td>description</td>
+<td>string</td>
+<td>required</td>
+</tr>
+</tbody>
+</table>
+<!-- END_30fd948e95f773b1dd1c9fb6a441f419 -->
+<!-- START_13b4f9936bf59c1205310a48e4965fa2 -->
+<h2>Sync task status sync task status versions list</h2>
+<aside class="notice">Pagination limit must be a value between <code>1</code> and <code>20</code>, default is <code>10</code>.</aside>
+<blockquote>
+<p>Example request:</p>
+</blockquote>
+<pre><code class="language-bash">curl -X GET "http://emsearch.ryan.ems-dev.net/api/syncTaskStatus/Planned/version" \
+-H "Accept: application/json" \
+-H "Authentication: Bearer xxx"
+</code></pre>
+<pre><code class="language-javascript">var settings = {
+    "async": true,
+    "crossDomain": true,
+    "url": "http://emsearch.ryan.ems-dev.net/api/syncTaskStatus/Planned/version",
+    "method": "GET",
+    "headers": {
+        "Accept": "application/json",
+        "Authentication" : "Bearer xxx"
+    }
+}
+
+$.ajax(settings).done(function (response) {
+    console.log(response);
+});</code></pre>
+<blockquote>
+<p>Example response:</p>
+</blockquote>
+<pre><code class="language-json">{
+    "data": [
+        {
+            "sync_task_type_id": "Planned",
+            "i18n_lang_id": "en_US",
+            "description": "Items synchronization is planned.",
+            "created_at": "2017-04-14 11:20:24",
+            "updated_at": "2017-04-14 11:20:24"
+        },
+        {
+            "sync_task_type_id": "Planned",
+            "i18n_lang_id": "fr_FR",
+            "description": "La synchronisation des items est plannifiée",
+            "created_at": "2017-04-14 11:20:24",
+            "updated_at": "2017-04-14 11:20:24"
+        }
+    ],
+    "meta": {
+        "pagination": {
+            "total": 2,
+            "count": 2,
+            "per_page": 10,
+            "current_page": 1,
+            "total_pages": 1,
+            "links": []
+        }
+    }
+}</code></pre>
+<h3>HTTP Request</h3>
+<p><code>GET /api/syncTaskStatus/{syncTaskStatusId}/version</code></p>
+<p><code>HEAD /api/syncTaskStatus/{syncTaskStatusId}/version</code></p>
+<!-- END_13b4f9936bf59c1205310a48e4965fa2 -->
+<h1>SyncTaskType</h1>
+<!-- START_a869c8fb18f078796b83ed04a7f1d327 -->
+<h2>Show sync task type list</h2>
+<aside class="notice">Pagination limit must be a value between <code>1</code> and <code>20</code>, default is <code>10</code>.</aside>
+<blockquote>
+<p>Example request:</p>
+</blockquote>
+<pre><code class="language-bash">curl -X GET "http://emsearch.ryan.ems-dev.net/api/syncTaskType" \
+-H "Accept: application/json" \
+-H "Authentication: Bearer xxx"
+</code></pre>
+<pre><code class="language-javascript">var settings = {
+    "async": true,
+    "crossDomain": true,
+    "url": "http://emsearch.ryan.ems-dev.net/api/syncTaskType",
+    "method": "GET",
+    "headers": {
+        "Accept": "application/json",
+        "Authentication" : "Bearer xxx"
+    }
+}
+
+$.ajax(settings).done(function (response) {
+    console.log(response);
+});</code></pre>
+<blockquote>
+<p>Example response:</p>
+</blockquote>
+<pre><code class="language-json">{
+    "data": [
+        {
+            "id": "DataStreamCheck"
+        },
+        {
+            "id": "DataStreamDownload"
+        },
+        {
+            "id": "DataStreamPrepare"
+        },
+        {
+            "id": "ItemsDelete"
+        },
+        {
+            "id": "ItemsInsertion"
+        },
+        {
+            "id": "ItemsUpdate"
+        },
+        {
+            "id": "Main"
+        }
+    ],
+    "meta": {
+        "pagination": {
+            "total": 7,
+            "count": 7,
+            "per_page": 10,
+            "current_page": 1,
+            "total_pages": 1,
+            "links": []
+        }
+    }
+}</code></pre>
+<h3>HTTP Request</h3>
+<p><code>GET /api/syncTaskType</code></p>
+<p><code>HEAD /api/syncTaskType</code></p>
+<!-- END_a869c8fb18f078796b83ed04a7f1d327 -->
+<!-- START_3f3f80bcc247d7b44b856a9cd57ceb0a -->
+<h2>Get specified sync task type</h2>
+<blockquote>
+<p>Example request:</p>
+</blockquote>
+<pre><code class="language-bash">curl -X GET "http://emsearch.ryan.ems-dev.net/api/syncTaskType/Main" \
+-H "Accept: application/json" \
+-H "Authentication: Bearer xxx"
+</code></pre>
+<pre><code class="language-javascript">var settings = {
+    "async": true,
+    "crossDomain": true,
+    "url": "http://emsearch.ryan.ems-dev.net/api/syncTaskType/Main",
+    "method": "GET",
+    "headers": {
+        "Accept": "application/json",
+        "Authentication" : "Bearer xxx"
+    }
+}
+
+$.ajax(settings).done(function (response) {
+    console.log(response);
+});</code></pre>
+<blockquote>
+<p>Example response:</p>
+</blockquote>
+<pre><code class="language-json">{
+    "data": {
+        "id": "Main"
+    }
+}</code></pre>
+<h3>HTTP Request</h3>
+<p><code>GET /api/syncTaskType/{syncTaskTypeId}</code></p>
+<p><code>HEAD /api/syncTaskType/{syncTaskTypeId}</code></p>
+<!-- END_3f3f80bcc247d7b44b856a9cd57ceb0a -->
+<h1>SyncTaskTypeVersion</h1>
+<!-- START_9a01498af6c604afdba7cca1c3a04ce5 -->
+<h2>Sync task type version item list</h2>
+<aside class="notice">Pagination limit must be a value between <code>1</code> and <code>20</code>, default is <code>10</code>.</aside>
+<blockquote>
+<p>Example request:</p>
+</blockquote>
+<pre><code class="language-bash">curl -X GET "http://emsearch.ryan.ems-dev.net/api/syncTaskTypeVersion" \
+-H "Accept: application/json" \
+-H "Authentication: Bearer xxx"
+</code></pre>
+<pre><code class="language-javascript">var settings = {
+    "async": true,
+    "crossDomain": true,
+    "url": "http://emsearch.ryan.ems-dev.net/api/syncTaskTypeVersion",
+    "method": "GET",
+    "headers": {
+        "Accept": "application/json",
+        "Authentication" : "Bearer xxx"
+    }
+}
+
+$.ajax(settings).done(function (response) {
+    console.log(response);
+});</code></pre>
+<blockquote>
+<p>Example response:</p>
+</blockquote>
+<pre><code class="language-json">{
+    "data": [
+        {
+            "sync_task_type_id": "DataStreamCheck",
+            "i18n_lang_id": "en_US",
+            "description": "Comparison and verification of downloaded data.",
+            "created_at": "2017-04-14 11:20:24",
+            "updated_at": "2017-04-14 11:20:24"
+        },
+        {
+            "sync_task_type_id": "DataStreamCheck",
+            "i18n_lang_id": "fr_FR",
+            "description": "Comparaison et vérification des données téléchargées.",
+            "created_at": "2017-04-14 11:20:24",
+            "updated_at": "2017-04-14 11:20:24"
+        },
+        {
+            "sync_task_type_id": "DataStreamDownload",
+            "i18n_lang_id": "en_US",
+            "description": "Downloading the provided data feed url of the data stream.",
+            "created_at": "2017-04-14 11:20:24",
+            "updated_at": "2017-04-14 11:20:24"
+        },
+        {
+            "sync_task_type_id": "DataStreamDownload",
+            "i18n_lang_id": "fr_FR",
+            "description": "Téléchargement des données fournies par l'url du flux de données.",
+            "created_at": "2017-04-14 11:20:24",
+            "updated_at": "2017-04-14 11:20:24"
+        },
+        {
+            "sync_task_type_id": "DataStreamPrepare",
+            "i18n_lang_id": "en_US",
+            "description": "Data breakdown for creation, edition or deletion.",
+            "created_at": "2017-04-14 11:20:24",
+            "updated_at": "2017-04-14 11:20:24"
+        },
+        {
+            "sync_task_type_id": "DataStreamPrepare",
+            "i18n_lang_id": "fr_FR",
+            "description": "Ventilation des données pour la création, modification ou suppression.",
+            "created_at": "2017-04-14 11:20:24",
+            "updated_at": "2017-04-14 11:20:24"
+        },
+        {
+            "sync_task_type_id": "ItemsDelete",
+            "i18n_lang_id": "en_US",
+            "description": "Deleting records.",
+            "created_at": "2017-04-14 11:20:24",
+            "updated_at": "2017-04-14 11:20:24"
+        },
+        {
+            "sync_task_type_id": "ItemsDelete",
+            "i18n_lang_id": "fr_FR",
+            "description": "Suppression d'enregistrements.",
+            "created_at": "2017-04-14 11:20:24",
+            "updated_at": "2017-04-14 11:20:24"
+        },
+        {
+            "sync_task_type_id": "ItemsInsertion",
+            "i18n_lang_id": "en_US",
+            "description": "Creating new records.",
+            "created_at": "2017-04-14 11:20:24",
+            "updated_at": "2017-04-14 11:20:24"
+        },
+        {
+            "sync_task_type_id": "ItemsInsertion",
+            "i18n_lang_id": "fr_FR",
+            "description": "Création des nouveaux enregistrements.",
+            "created_at": "2017-04-14 11:20:24",
+            "updated_at": "2017-04-14 11:20:24"
+        }
+    ],
+    "meta": {
+        "pagination": {
+            "total": 14,
+            "count": 10,
+            "per_page": 10,
+            "current_page": 1,
+            "total_pages": 2,
+            "links": {
+                "next": "http:\/\/emsearch.ryan.ems-dev.net\/api\/syncTaskTypeVersion?page=2"
+            }
+        }
+    }
+}</code></pre>
+<h3>HTTP Request</h3>
+<p><code>GET /api/syncTaskTypeVersion</code></p>
+<p><code>HEAD /api/syncTaskTypeVersion</code></p>
+<!-- END_9a01498af6c604afdba7cca1c3a04ce5 -->
+<!-- START_94297c423be097f34970c23692babbec -->
+<h2>Get specified sync task type version</h2>
+<blockquote>
+<p>Example request:</p>
+</blockquote>
+<pre><code class="language-bash">curl -X GET "http://emsearch.ryan.ems-dev.net/api/syncTaskTypeVersion/Main,en_US" \
+-H "Accept: application/json" \
+-H "Authentication: Bearer xxx"
+</code></pre>
+<pre><code class="language-javascript">var settings = {
+    "async": true,
+    "crossDomain": true,
+    "url": "http://emsearch.ryan.ems-dev.net/api/syncTaskTypeVersion/Main,en_US",
+    "method": "GET",
+    "headers": {
+        "Accept": "application/json",
+        "Authentication" : "Bearer xxx"
+    }
+}
+
+$.ajax(settings).done(function (response) {
+    console.log(response);
+});</code></pre>
+<blockquote>
+<p>Example response:</p>
+</blockquote>
+<pre><code class="language-json">{
+    "data": [
+        {
+            "sync_task_type_id": "Main",
+            "i18n_lang_id": "en_US",
+            "description": "Main task who rules and manage subtasks.",
+            "created_at": "2017-04-14 11:20:24",
+            "updated_at": "2017-04-14 11:20:24"
+        }
+    ]
+}</code></pre>
+<h3>HTTP Request</h3>
+<p><code>GET /api/syncTaskTypeVersion/{syncTaskTypeId},{i18nLangId}</code></p>
+<p><code>HEAD /api/syncTaskTypeVersion/{syncTaskTypeId},{i18nLangId}</code></p>
+<!-- END_94297c423be097f34970c23692babbec -->
+<!-- START_751ccfe3854931840964b8a085df46a8 -->
+<h2>Create and store new sync task type version</h2>
+<blockquote>
+<p>Example request:</p>
+</blockquote>
+<pre><code class="language-bash">curl -X POST "http://emsearch.ryan.ems-dev.net/api/syncTaskTypeVersion" \
+-H "Accept: application/json" \
+-H "Authentication: Bearer xxx"
+ \
+    -d "sync_task_type_id"="Ipsa similique numquam" \
+    -d "i18n_lang_id"="Aliquam necessitatibus nostrum" \
+    -d "description"="Mollitia et impedit" \
+</code></pre>
+<pre><code class="language-javascript">var settings = {
+    "async": true,
+    "crossDomain": true,
+    "url": "http://emsearch.ryan.ems-dev.net/api/syncTaskTypeVersion",
+    "method": "POST",
+    "data": {
+        "sync_task_type_id": "Ipsa similique numquam",
+        "i18n_lang_id": "Aliquam necessitatibus nostrum",
+        "description": "Mollitia et impedit"
+},
+    "headers": {
+        "Accept": "application/json",
+        "Authentication" : "Bearer xxx"
+    }
+}
+
+$.ajax(settings).done(function (response) {
+    console.log(response);
+});</code></pre>
+<h3>HTTP Request</h3>
+<p><code>POST /api/syncTaskTypeVersion</code></p>
+<h4>Parameters</h4>
+<table>
+<thead>
+<tr>
+<th>Parameter</th>
+<th>Type</th>
+<th>Status</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>sync_task_type_id</td>
+<td>string</td>
+<td>required</td>
+<td>Maximum: <code>50</code> Valid sync_task_type id</td>
+</tr>
+<tr>
+<td>i18n_lang_id</td>
+<td>string</td>
+<td>required</td>
+<td>Maximum: <code>30</code> Valid i18n_lang id</td>
+</tr>
+<tr>
+<td>description</td>
+<td>string</td>
+<td>required</td>
+</tr>
+</tbody>
+</table>
+<!-- END_751ccfe3854931840964b8a085df46a8 -->
+<!-- START_77ba68f936c675f0d8693d691bd4c420 -->
+<h2>Update a specified sync task type version</h2>
+<blockquote>
+<p>Example request:</p>
+</blockquote>
+<pre><code class="language-bash">curl -X PUT "http://emsearch.ryan.ems-dev.net/api/syncTaskTypeVersion/Main,en_US" \
+-H "Accept: application/json" \
+-H "Authentication: Bearer xxx"
+ \
+    -d "sync_task_type_id"="Sed iusto rerum" \
+    -d "i18n_lang_id"="Praesentium id delectus" \
+    -d "description"="Quos doloremque exercitationem" \
+</code></pre>
+<pre><code class="language-javascript">var settings = {
+    "async": true,
+    "crossDomain": true,
+    "url": "http://emsearch.ryan.ems-dev.net/api/syncTaskTypeVersion/Main,en_US",
+    "method": "PUT",
+    "data": {
+        "sync_task_type_id": "Sed iusto rerum",
+        "i18n_lang_id": "Praesentium id delectus",
+        "description": "Quos doloremque exercitationem"
+},
+    "headers": {
+        "Accept": "application/json",
+        "Authentication" : "Bearer xxx"
+    }
+}
+
+$.ajax(settings).done(function (response) {
+    console.log(response);
+});</code></pre>
+<h3>HTTP Request</h3>
+<p><code>PUT /api/syncTaskTypeVersion/{syncTaskTypeId},{i18nLangId}</code></p>
+<p><code>PATCH /api/syncTaskTypeVersion/{syncTaskTypeId},{i18nLangId}</code></p>
+<h4>Parameters</h4>
+<table>
+<thead>
+<tr>
+<th>Parameter</th>
+<th>Type</th>
+<th>Status</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>sync_task_type_id</td>
+<td>string</td>
+<td>required</td>
+<td>Maximum: <code>50</code> Valid sync_task_type id</td>
+</tr>
+<tr>
+<td>i18n_lang_id</td>
+<td>string</td>
+<td>required</td>
+<td>Maximum: <code>30</code> Valid i18n_lang id</td>
+</tr>
+<tr>
+<td>description</td>
+<td>string</td>
+<td>required</td>
+</tr>
+</tbody>
+</table>
+<!-- END_77ba68f936c675f0d8693d691bd4c420 -->
+<!-- START_23d45485a9001240593300c466ec2b0c -->
+<h2>I18n lang sync task type versions list</h2>
+<aside class="notice">Pagination limit must be a value between <code>1</code> and <code>20</code>, default is <code>10</code>.</aside>
+<blockquote>
+<p>Example request:</p>
+</blockquote>
+<pre><code class="language-bash">curl -X GET "http://emsearch.ryan.ems-dev.net/api/i18nLang/en_US/syncTaskTypeVersion" \
+-H "Accept: application/json" \
+-H "Authentication: Bearer xxx"
+</code></pre>
+<pre><code class="language-javascript">var settings = {
+    "async": true,
+    "crossDomain": true,
+    "url": "http://emsearch.ryan.ems-dev.net/api/i18nLang/en_US/syncTaskTypeVersion",
+    "method": "GET",
+    "headers": {
+        "Accept": "application/json",
+        "Authentication" : "Bearer xxx"
+    }
+}
+
+$.ajax(settings).done(function (response) {
+    console.log(response);
+});</code></pre>
+<blockquote>
+<p>Example response:</p>
+</blockquote>
+<pre><code class="language-json">{
+    "data": [
+        {
+            "sync_task_type_id": "DataStreamCheck",
+            "i18n_lang_id": "en_US",
+            "description": "Comparison and verification of downloaded data.",
+            "created_at": "2017-04-14 11:20:24",
+            "updated_at": "2017-04-14 11:20:24"
+        },
+        {
+            "sync_task_type_id": "DataStreamDownload",
+            "i18n_lang_id": "en_US",
+            "description": "Downloading the provided data feed url of the data stream.",
+            "created_at": "2017-04-14 11:20:24",
+            "updated_at": "2017-04-14 11:20:24"
+        },
+        {
+            "sync_task_type_id": "DataStreamPrepare",
+            "i18n_lang_id": "en_US",
+            "description": "Data breakdown for creation, edition or deletion.",
+            "created_at": "2017-04-14 11:20:24",
+            "updated_at": "2017-04-14 11:20:24"
+        },
+        {
+            "sync_task_type_id": "ItemsDelete",
+            "i18n_lang_id": "en_US",
+            "description": "Deleting records.",
+            "created_at": "2017-04-14 11:20:24",
+            "updated_at": "2017-04-14 11:20:24"
+        },
+        {
+            "sync_task_type_id": "ItemsInsertion",
+            "i18n_lang_id": "en_US",
+            "description": "Creating new records.",
+            "created_at": "2017-04-14 11:20:24",
+            "updated_at": "2017-04-14 11:20:24"
+        },
+        {
+            "sync_task_type_id": "ItemsUpdate",
+            "i18n_lang_id": "en_US",
+            "description": "Updating records.",
+            "created_at": "2017-04-14 11:20:24",
+            "updated_at": "2017-04-14 11:20:24"
+        },
+        {
+            "sync_task_type_id": "Main",
+            "i18n_lang_id": "en_US",
+            "description": "Main task who rules and manage subtasks.",
+            "created_at": "2017-04-14 11:20:24",
+            "updated_at": "2017-04-14 11:20:24"
+        }
+    ],
+    "meta": {
+        "pagination": {
+            "total": 7,
+            "count": 7,
+            "per_page": 10,
+            "current_page": 1,
+            "total_pages": 1,
+            "links": []
+        }
+    }
+}</code></pre>
+<h3>HTTP Request</h3>
+<p><code>GET /api/i18nLang/{i18nLangId}/syncTaskTypeVersion</code></p>
+<p><code>HEAD /api/i18nLang/{i18nLangId}/syncTaskTypeVersion</code></p>
+<!-- END_23d45485a9001240593300c466ec2b0c -->
+<h1>User</h1>
+<!-- START_79bbe09b8f53b0948351390dffb959af -->
+<h2>User list</h2>
+<aside class="notice">Pagination limit must be a value between <code>1</code> and <code>20</code>, default is <code>10</code>.</aside>
+<blockquote>
+<p>Example request:</p>
+</blockquote>
+<pre><code class="language-bash">curl -X GET "http://emsearch.ryan.ems-dev.net/api/user" \
+-H "Accept: application/json" \
+-H "Authentication: Bearer xxx"
+</code></pre>
+<pre><code class="language-javascript">var settings = {
+    "async": true,
+    "crossDomain": true,
+    "url": "http://emsearch.ryan.ems-dev.net/api/user",
+    "method": "GET",
+    "headers": {
+        "Accept": "application/json",
+        "Authentication" : "Bearer xxx"
+    }
+}
+
+$.ajax(settings).done(function (response) {
+    console.log(response);
+});</code></pre>
+<blockquote>
+<p>Example response:</p>
+</blockquote>
+<pre><code class="language-json">{
+    "data": [
+        {
+            "id": "41abdec2-1389-11e7-93ae-92361f002671",
+            "user_group_id": "Developer",
+            "name": "John Doe",
+            "email": "john.doe@domain.tld",
+            "created_at": "2017-04-14 11:20:27",
+            "updated_at": "2017-04-14 11:20:27"
+        },
+        {
+            "id": "509dd5c0-1389-11e7-93ae-92361f002671",
+            "user_group_id": "Support",
+            "name": "Alan Smithee",
+            "email": "alan.smithee@domain.tld",
+            "created_at": "2017-04-14 11:20:27",
+            "updated_at": "2017-04-14 11:20:27"
+        },
+        {
+            "id": "605c7610-1389-11e7-93ae-92361f002671",
+            "user_group_id": "End-User",
+            "name": "John Smith",
+            "email": "john.smith@domain.tld",
+            "created_at": "2017-04-14 11:20:27",
+            "updated_at": "2017-04-14 11:20:27"
+        },
+        {
+            "id": "82b5da82-138c-11e7-93ae-92361f002671",
+            "user_group_id": "End-User",
+            "name": "Mickey Mouse",
+            "email": "mickey.mouse@domain.tld",
+            "created_at": "2017-04-14 11:20:27",
+            "updated_at": "2017-04-14 11:20:27"
+        }
+    ],
+    "meta": {
+        "pagination": {
+            "total": 4,
+            "count": 4,
+            "per_page": 10,
+            "current_page": 1,
+            "total_pages": 1,
+            "links": []
+        }
+    }
+}</code></pre>
+<h3>HTTP Request</h3>
+<p><code>GET /api/user</code></p>
+<p><code>HEAD /api/user</code></p>
+<!-- END_79bbe09b8f53b0948351390dffb959af -->
+<!-- START_e6d1bae0d0740199d7d557e0b0e1d25f -->
+<h2>Get specified user</h2>
+<blockquote>
+<p>Example request:</p>
+</blockquote>
+<pre><code class="language-bash">curl -X GET "http://emsearch.ryan.ems-dev.net/api/user/605c7610-1389-11e7-93ae-92361f002671" \
+-H "Accept: application/json" \
+-H "Authentication: Bearer xxx"
+</code></pre>
+<pre><code class="language-javascript">var settings = {
+    "async": true,
+    "crossDomain": true,
+    "url": "http://emsearch.ryan.ems-dev.net/api/user/605c7610-1389-11e7-93ae-92361f002671",
+    "method": "GET",
+    "headers": {
+        "Accept": "application/json",
+        "Authentication" : "Bearer xxx"
+    }
+}
+
+$.ajax(settings).done(function (response) {
+    console.log(response);
+});</code></pre>
+<blockquote>
+<p>Example response:</p>
+</blockquote>
+<pre><code class="language-json">{
+    "data": {
+        "id": "605c7610-1389-11e7-93ae-92361f002671",
+        "user_group_id": "End-User",
+        "name": "John Smith",
+        "email": "john.smith@domain.tld",
+        "created_at": "2017-04-14 11:20:27",
+        "updated_at": "2017-04-14 11:20:27"
+    }
+}</code></pre>
+<h3>HTTP Request</h3>
+<p><code>GET /api/user/{userId}</code></p>
+<p><code>HEAD /api/user/{userId}</code></p>
+<!-- END_e6d1bae0d0740199d7d557e0b0e1d25f -->
+<!-- START_ddfe841311822ba91babd6d2eb588875 -->
+<h2>Create and store new user</h2>
+<blockquote>
+<p>Example request:</p>
+</blockquote>
+<pre><code class="language-bash">curl -X POST "http://emsearch.ryan.ems-dev.net/api/user" \
+-H "Accept: application/json" \
+-H "Authentication: Bearer xxx"
+ \
+    -d "user_group_id"="Developer" \
+    -d "name"="Est modi et" \
+    -d "email"="wolf.gwen@example.net" \
+    -d "password"="}#SNL#E|\+.5QA\" \
+</code></pre>
+<pre><code class="language-javascript">var settings = {
+    "async": true,
+    "crossDomain": true,
+    "url": "http://emsearch.ryan.ems-dev.net/api/user",
+    "method": "POST",
+    "data": {
+        "user_group_id": "Developer",
+        "name": "Est modi et",
+        "email": "wolf.gwen@example.net",
+        "password": "}#SNL#E|\\+.5QA\\"
+},
+    "headers": {
+        "Accept": "application/json",
+        "Authentication" : "Bearer xxx"
+    }
+}
+
+$.ajax(settings).done(function (response) {
+    console.log(response);
+});</code></pre>
+<h3>HTTP Request</h3>
+<p><code>POST /api/user</code></p>
+<h4>Parameters</h4>
+<table>
+<thead>
+<tr>
+<th>Parameter</th>
+<th>Type</th>
+<th>Status</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>user_group_id</td>
+<td>string</td>
+<td>required</td>
+<td>Valid user_group id <code>Developer</code>, <code>Support</code> or <code>End-User</code></td>
+</tr>
+<tr>
+<td>name</td>
+<td>string</td>
+<td>required</td>
+<td>Maximum: <code>100</code></td>
+</tr>
+<tr>
+<td>email</td>
+<td>email</td>
+<td>required</td>
+<td>Maximum: <code>150</code></td>
+</tr>
+<tr>
+<td>password</td>
+<td>string</td>
+<td>required</td>
+<td>Password with at least: <code>8</code> chars, <code>1</code> numeric, <code>1</code> uppercase and <code>1</code> lowercase</td>
+</tr>
+</tbody>
+</table>
+<!-- END_ddfe841311822ba91babd6d2eb588875 -->
+<!-- START_707699ec45bed549f4600a85f0f86358 -->
+<h2>Update a specified user</h2>
+<blockquote>
+<p>Example request:</p>
+</blockquote>
+<pre><code class="language-bash">curl -X PUT "http://emsearch.ryan.ems-dev.net/api/user/605c7610-1389-11e7-93ae-92361f002671" \
+-H "Accept: application/json" \
+-H "Authentication: Bearer xxx"
+ \
+    -d "user_group_id"="Support" \
+    -d "name"="Architecto neque voluptas" \
+    -d "email"="ubeier@example.org" \
+    -d "password"=":GEI90oss(P+v=Z}TZ" \
+</code></pre>
+<pre><code class="language-javascript">var settings = {
+    "async": true,
+    "crossDomain": true,
+    "url": "http://emsearch.ryan.ems-dev.net/api/user/605c7610-1389-11e7-93ae-92361f002671",
+    "method": "PUT",
+    "data": {
+        "user_group_id": "Support",
+        "name": "Architecto neque voluptas",
+        "email": "ubeier@example.org",
+        "password": ":GEI90oss(P+v=Z}TZ"
+},
+    "headers": {
+        "Accept": "application/json",
+        "Authentication" : "Bearer xxx"
+    }
+}
+
+$.ajax(settings).done(function (response) {
+    console.log(response);
+});</code></pre>
+<h3>HTTP Request</h3>
+<p><code>PUT /api/user/{userId}</code></p>
+<p><code>PATCH /api/user/{userId}</code></p>
+<h4>Parameters</h4>
+<table>
+<thead>
+<tr>
+<th>Parameter</th>
+<th>Type</th>
+<th>Status</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>user_group_id</td>
+<td>string</td>
+<td>required</td>
+<td>Valid user_group id <code>Developer</code>, <code>Support</code> or <code>End-User</code></td>
+</tr>
+<tr>
+<td>name</td>
+<td>string</td>
+<td>required</td>
+<td>Maximum: <code>100</code></td>
+</tr>
+<tr>
+<td>email</td>
+<td>email</td>
+<td>required</td>
+<td>Maximum: <code>150</code></td>
+</tr>
+<tr>
+<td>password</td>
+<td>string</td>
+<td>required</td>
+<td>Password with at least: <code>8</code> chars, <code>1</code> numeric, <code>1</code> uppercase and <code>1</code> lowercase</td>
+</tr>
+</tbody>
+</table>
+<!-- END_707699ec45bed549f4600a85f0f86358 -->
+<!-- START_186fff344f72d874e95af874b8843d4e -->
+<h2>Delete specified user</h2>
+<p>All relationships between the user and his projects will be automatically deleted too.<br />
+All projects owned by the user will be automatically deleted too.</p>
+<blockquote>
+<p>Example request:</p>
+</blockquote>
+<pre><code class="language-bash">curl -X DELETE "http://emsearch.ryan.ems-dev.net/api/user/605c7610-1389-11e7-93ae-92361f002671" \
+-H "Accept: application/json" \
+-H "Authentication: Bearer xxx"
+</code></pre>
+<pre><code class="language-javascript">var settings = {
+    "async": true,
+    "crossDomain": true,
+    "url": "http://emsearch.ryan.ems-dev.net/api/user/605c7610-1389-11e7-93ae-92361f002671",
+    "method": "DELETE",
+    "headers": {
+        "Accept": "application/json",
+        "Authentication" : "Bearer xxx"
+    }
+}
+
+$.ajax(settings).done(function (response) {
+    console.log(response);
+});</code></pre>
+<h3>HTTP Request</h3>
+<p><code>DELETE /api/user/{userId}</code></p>
+<!-- END_186fff344f72d874e95af874b8843d4e -->
+<h1>UserHasProject</h1>
+<!-- START_cf0313d53939313429ce6788fa95624c -->
+<h2>List of relationships between users and projects</h2>
+<aside class="notice">Pagination limit must be a value between <code>1</code> and <code>20</code>, default is <code>10</code>.</aside>
+<blockquote>
+<p>Example request:</p>
+</blockquote>
+<pre><code class="language-bash">curl -X GET "http://emsearch.ryan.ems-dev.net/api/userHasProject" \
+-H "Accept: application/json" \
+-H "Authentication: Bearer xxx"
+</code></pre>
+<pre><code class="language-javascript">var settings = {
+    "async": true,
+    "crossDomain": true,
+    "url": "http://emsearch.ryan.ems-dev.net/api/userHasProject",
+    "method": "GET",
+    "headers": {
+        "Accept": "application/json",
+        "Authentication" : "Bearer xxx"
+    }
+}
+
+$.ajax(settings).done(function (response) {
+    console.log(response);
+});</code></pre>
+<blockquote>
+<p>Example response:</p>
+</blockquote>
+<pre><code class="language-json">{
+    "data": [
+        {
+            "user_id": "605c7610-1389-11e7-93ae-92361f002671",
+            "project_id": "1bcc7efc-138c-11e7-93ae-92361f002671",
+            "user_role_id": "Owner",
+            "created_at": "2017-04-14 11:20:28",
+            "updated_at": "2017-04-14 11:20:28"
+        },
+        {
+            "user_id": "605c7610-1389-11e7-93ae-92361f002671",
+            "project_id": "b6860dd2-138c-11e7-93ae-92361f002671",
+            "user_role_id": "Owner",
+            "created_at": "2017-04-14 11:20:28",
+            "updated_at": "2017-04-14 11:20:28"
+        },
+        {
+            "user_id": "82b5da82-138c-11e7-93ae-92361f002671",
+            "project_id": "1bcc7efc-138c-11e7-93ae-92361f002671",
+            "user_role_id": "Administrator",
+            "created_at": "2017-04-14 11:20:28",
+            "updated_at": "2017-04-14 11:20:28"
+        },
+        {
+            "user_id": "82b5da82-138c-11e7-93ae-92361f002671",
+            "project_id": "c4b5d93c-138c-11e7-93ae-92361f002671",
+            "user_role_id": "Owner",
+            "created_at": "2017-04-14 11:20:28",
+            "updated_at": "2017-04-14 11:20:28"
+        }
+    ],
+    "meta": {
+        "pagination": {
+            "total": 4,
+            "count": 4,
+            "per_page": 10,
+            "current_page": 1,
+            "total_pages": 1,
+            "links": []
+        }
+    }
+}</code></pre>
+<h3>HTTP Request</h3>
+<p><code>GET /api/userHasProject</code></p>
+<p><code>HEAD /api/userHasProject</code></p>
+<!-- END_cf0313d53939313429ce6788fa95624c -->
+<!-- START_e2d2b03985c6de501aad3f7ca46704ee -->
+<h2>Get specified relationship between a user and a project</h2>
+<blockquote>
+<p>Example request:</p>
+</blockquote>
+<pre><code class="language-bash">curl -X GET "http://emsearch.ryan.ems-dev.net/api/userHasProject/605c7610-1389-11e7-93ae-92361f002671,1bcc7efc-138c-11e7-93ae-92361f002671" \
+-H "Accept: application/json" \
+-H "Authentication: Bearer xxx"
+</code></pre>
+<pre><code class="language-javascript">var settings = {
+    "async": true,
+    "crossDomain": true,
+    "url": "http://emsearch.ryan.ems-dev.net/api/userHasProject/605c7610-1389-11e7-93ae-92361f002671,1bcc7efc-138c-11e7-93ae-92361f002671",
+    "method": "GET",
+    "headers": {
+        "Accept": "application/json",
+        "Authentication" : "Bearer xxx"
+    }
+}
+
+$.ajax(settings).done(function (response) {
+    console.log(response);
+});</code></pre>
+<blockquote>
+<p>Example response:</p>
+</blockquote>
+<pre><code class="language-json">{
+    "data": [
+        {
+            "user_id": "605c7610-1389-11e7-93ae-92361f002671",
+            "project_id": "1bcc7efc-138c-11e7-93ae-92361f002671",
+            "user_role_id": "Owner",
+            "created_at": "2017-04-14 11:20:28",
+            "updated_at": "2017-04-14 11:20:28"
+        }
+    ]
+}</code></pre>
+<h3>HTTP Request</h3>
+<p><code>GET /api/userHasProject/{userId},{projectId}</code></p>
+<p><code>HEAD /api/userHasProject/{userId},{projectId}</code></p>
+<!-- END_e2d2b03985c6de501aad3f7ca46704ee -->
+<!-- START_dabe60a16184150a559916ed8dc0e3b4 -->
+<h2>Create and store new relationship between a user and a project</h2>
+<aside class="notice">Only one relationship per user/project is allowed and only one user can be <code>Owner</code>of a project.</aside>
+<blockquote>
+<p>Example request:</p>
+</blockquote>
+<pre><code class="language-bash">curl -X POST "http://emsearch.ryan.ems-dev.net/api/userHasProject" \
+-H "Accept: application/json" \
+-H "Authentication: Bearer xxx"
+ \
+    -d "user_id"="8ec2ffac-9f8e-3438-b309-624d51087948" \
+    -d "project_id"="f509f418-cec5-38d1-9d2e-e31f44b531ad" \
+    -d "user_role_id"="Owner" \
+</code></pre>
+<pre><code class="language-javascript">var settings = {
+    "async": true,
+    "crossDomain": true,
+    "url": "http://emsearch.ryan.ems-dev.net/api/userHasProject",
+    "method": "POST",
+    "data": {
+        "user_id": "8ec2ffac-9f8e-3438-b309-624d51087948",
+        "project_id": "f509f418-cec5-38d1-9d2e-e31f44b531ad",
+        "user_role_id": "Owner"
+},
+    "headers": {
+        "Accept": "application/json",
+        "Authentication" : "Bearer xxx"
+    }
+}
+
+$.ajax(settings).done(function (response) {
+    console.log(response);
+});</code></pre>
+<h3>HTTP Request</h3>
+<p><code>POST /api/userHasProject</code></p>
+<h4>Parameters</h4>
+<table>
+<thead>
+<tr>
+<th>Parameter</th>
+<th>Type</th>
+<th>Status</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>user_id</td>
+<td>string</td>
+<td>required</td>
+<td>UUID Valid user id</td>
+</tr>
+<tr>
+<td>project_id</td>
+<td>string</td>
+<td>required</td>
+<td>UUID Valid project id</td>
+</tr>
+<tr>
+<td>user_role_id</td>
+<td>string</td>
+<td>required</td>
+<td>Valid user_role id <code>Owner</code> or <code>Administrator</code></td>
+</tr>
+</tbody>
+</table>
+<!-- END_dabe60a16184150a559916ed8dc0e3b4 -->
+<!-- START_4637e0c2dda7db05925a85154e6d9569 -->
+<h2>Update a specified relationship between a user and a project</h2>
+<aside class="notice">Only one relationship per user/project is allowed and only one user can be <code>Owner</code>of a project.</aside>
+<blockquote>
+<p>Example request:</p>
+</blockquote>
+<pre><code class="language-bash">curl -X PUT "http://emsearch.ryan.ems-dev.net/api/userHasProject/605c7610-1389-11e7-93ae-92361f002671,1bcc7efc-138c-11e7-93ae-92361f002671" \
+-H "Accept: application/json" \
+-H "Authentication: Bearer xxx"
+ \
+    -d "user_id"="c0eb69be-e366-3184-b61b-011a8c046cf8" \
+    -d "project_id"="146c9b38-5eff-3e5e-8164-928c0e5691a4" \
+    -d "user_role_id"="Owner" \
+</code></pre>
+<pre><code class="language-javascript">var settings = {
+    "async": true,
+    "crossDomain": true,
+    "url": "http://emsearch.ryan.ems-dev.net/api/userHasProject/605c7610-1389-11e7-93ae-92361f002671,1bcc7efc-138c-11e7-93ae-92361f002671",
+    "method": "PUT",
+    "data": {
+        "user_id": "c0eb69be-e366-3184-b61b-011a8c046cf8",
+        "project_id": "146c9b38-5eff-3e5e-8164-928c0e5691a4",
+        "user_role_id": "Owner"
+},
+    "headers": {
+        "Accept": "application/json",
+        "Authentication" : "Bearer xxx"
+    }
+}
+
+$.ajax(settings).done(function (response) {
+    console.log(response);
+});</code></pre>
+<h3>HTTP Request</h3>
+<p><code>PUT /api/userHasProject/{userId},{projectId}</code></p>
+<p><code>PATCH /api/userHasProject/{userId},{projectId}</code></p>
+<h4>Parameters</h4>
+<table>
+<thead>
+<tr>
+<th>Parameter</th>
+<th>Type</th>
+<th>Status</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>user_id</td>
+<td>string</td>
+<td>required</td>
+<td>UUID Valid user id</td>
+</tr>
+<tr>
+<td>project_id</td>
+<td>string</td>
+<td>required</td>
+<td>UUID Valid project id</td>
+</tr>
+<tr>
+<td>user_role_id</td>
+<td>string</td>
+<td>required</td>
+<td>Valid user_role id <code>Owner</code> or <code>Administrator</code></td>
+</tr>
+</tbody>
+</table>
+<!-- END_4637e0c2dda7db05925a85154e6d9569 -->
+<!-- START_b81617da55a317875b73c99a2a96f111 -->
+<h2>Delete specified relationship between a user and a project</h2>
+<blockquote>
+<p>Example request:</p>
+</blockquote>
+<pre><code class="language-bash">curl -X DELETE "http://emsearch.ryan.ems-dev.net/api/userHasProject/605c7610-1389-11e7-93ae-92361f002671,1bcc7efc-138c-11e7-93ae-92361f002671" \
+-H "Accept: application/json" \
+-H "Authentication: Bearer xxx"
+</code></pre>
+<pre><code class="language-javascript">var settings = {
+    "async": true,
+    "crossDomain": true,
+    "url": "http://emsearch.ryan.ems-dev.net/api/userHasProject/605c7610-1389-11e7-93ae-92361f002671,1bcc7efc-138c-11e7-93ae-92361f002671",
+    "method": "DELETE",
+    "headers": {
+        "Accept": "application/json",
+        "Authentication" : "Bearer xxx"
+    }
+}
+
+$.ajax(settings).done(function (response) {
+    console.log(response);
+});</code></pre>
+<h3>HTTP Request</h3>
+<p><code>DELETE /api/userHasProject/{userId},{projectId}</code></p>
+<!-- END_b81617da55a317875b73c99a2a96f111 --><h1>Errors</h1>
+<aside class="notice">This error section is stored in a separate file in `includes/_errors.md`. Whiteboard allows you to optionally separate out your docs into many files...just save them to the `includes` folder and add them to the top of your `index.md`'s frontmatter. Files are included in the order listed.</aside>
+<p>The Kittn API uses the following error codes:</p>
+<table>
+<thead>
+<tr>
+<th>Error Code</th>
+<th>Meaning</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>400</td>
+<td>Bad Request -- Your request sucks</td>
+</tr>
+<tr>
+<td>401</td>
+<td>Unauthorized -- Your API key is wrong</td>
+</tr>
+<tr>
+<td>403</td>
+<td>Forbidden -- The kitten requested is hidden for administrators only</td>
+</tr>
+<tr>
+<td>404</td>
+<td>Not Found -- The specified kitten could not be found</td>
+</tr>
+<tr>
+<td>405</td>
+<td>Method Not Allowed -- You tried to access a kitten with an invalid method</td>
+</tr>
+<tr>
+<td>406</td>
+<td>Not Acceptable -- You requested a format that isn't json</td>
+</tr>
+<tr>
+<td>410</td>
+<td>Gone -- The kitten requested has been removed from our servers</td>
+</tr>
+<tr>
+<td>418</td>
+<td>I'm a teapot</td>
+</tr>
+<tr>
+<td>429</td>
+<td>Too Many Requests -- You're requesting too many kittens! Slow down!</td>
+</tr>
+<tr>
+<td>500</td>
+<td>Internal Server Error -- We had a problem with our server. Try again later.</td>
+</tr>
+<tr>
+<td>503</td>
+<td>Service Unavailable -- We're temporarially offline for maintanance. Please try again later.</td>
+</tr>
+</tbody>
+</table>
+    </div>
+    <div class="dark-box">
+                    <div class="lang-selector">
+                                    <a href="#" data-language-name="bash">bash</a>
+                                    <a href="#" data-language-name="javascript">javascript</a>
+                            </div>
+            </div>
+</div>
+</body>
+</html>

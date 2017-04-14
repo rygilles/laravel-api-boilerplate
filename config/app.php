@@ -206,6 +206,9 @@ return [
 	    // Documentation generator
 	    Rygilles\ApiDoc\ApiDocGeneratorServiceProvider::class,
 
+	    // Unique with rule validation
+	    Felixkiss\UniqueWithValidator\ServiceProvider::class,
+
     ],
 
     /*

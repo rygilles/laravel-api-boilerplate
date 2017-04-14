@@ -69,4 +69,14 @@ class I18nLang extends ApiModel
 	protected static $putRules = [
 		'description'   => 'required|string'
 	];
+
+	/**
+	 * Get the sync task type versions
+	 *
+	 * @return \Illuminate\Database\Eloquent\Relations\HasMany
+	 */
+	public function syncTaskTypeVersions()
+	{
+		return $this->HasMany('App\Models\SyncTaskTypeVersion');
+	}
 }

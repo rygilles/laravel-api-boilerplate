@@ -17,6 +17,7 @@
         "barryvdh/laravel-debugbar": "^2.3",
         "dingo/api": "1.0.*@dev",
         "doctrine/dbal": "^2.5",
+        "felixkiss/uniquewith-validator": "^3.0",
         "filp/whoops": "^2.1",
         "guzzlehttp/guzzle": "^6.2",
         "laravel/framework": "5.4.*",

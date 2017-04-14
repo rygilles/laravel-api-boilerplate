@@ -11,6 +11,9 @@ use App\Models\SearchEngine;
 use App\Models\User;
 use App\Models\UserRole;
 use App\Models\UserGroup;
+use App\Models\SyncTaskStatus;
+use App\Models\SyncTaskType;
+use App\Models\SyncTask;
 
 use Laravel\Passport\Token;
 use Laravel\Passport\AuthCode;
@@ -86,6 +89,8 @@ class ResetApp extends Command
 	 */
 	public function resetDatabaseData()
 	{
+		// @todo delete cascade on new models ?????
+
 		// /!\ Reset all tables data (using models tables dependencies)
 
 		$this->warn('Reset all tables data (using models tables dependencies)');
@@ -94,11 +99,6 @@ class ResetApp extends Command
 			$user->delete();
 		}
 		$this->info('Users removed');
-
-		foreach (I18nLang::all() as $i18nLang) {
-			$i18nLang->delete();
-		}
-		$this->info('I18nLangs removed');
 
 		foreach (SearchEngine::all() as $searchEngine) {
 			$searchEngine->delete();
@@ -115,7 +115,33 @@ class ResetApp extends Command
 		}
 		$this->info('UserGroups removed');
 
+		foreach (SyncTaskStatus::all() as $syncTaskStatus) {
+			$syncTaskStatus->delete();
+		}
+		$this->info('SyncTaskStatuses removed');
+
+		foreach (SyncTaskType::all() as $syncTaskType) {
+			$syncTaskType->delete();
+		}
+		$this->info('SyncTaskTypes removed');
+
+		foreach (SyncTask::all() as $syncTask) {
+			$syncTask->delete();
+		}
+		$this->info('SyncTaskTypes removed');
+
+		foreach (I18nLang::all() as $i18nLang) {
+			$i18nLang->delete();
+		}
+		$this->info('I18nLangs removed');
+
+		foreach (I18nLang::all() as $i18nLang) {
+			$i18nLang->delete();
+		}
+		$this->info('I18nLangs removed');
+
 		// Passport tables
+		
 		$this->info('Passport tables :');
 		
 		foreach (Token::all() as $token) {

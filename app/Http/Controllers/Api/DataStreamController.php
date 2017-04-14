@@ -22,7 +22,7 @@ class DataStreamController extends ApiController
 		parent::__construct();
 		
 		// User group restrictions
-		$this->middleware('verifyUserGroup:Developer,Support')->only('index');
+		$this->middleware('verifyUserGroup:Developer,Support')->only('index,show,store,update,destroy');
 	}
 
 	/**
@@ -75,7 +75,11 @@ class DataStreamController extends ApiController
 				'App\\Http\\Transformers\\Api\\DataStreamTransformer'
 			);
 
-			return $this->response->created(app('Dingo\Api\Routing\UrlGenerator')->version('v1')->route('dataStream.show', $dataStream->id), $dataStream);
+			return $this->response->created(
+				app('Dingo\Api\Routing\UrlGenerator')
+					->version('v1')
+					->route('dataStream.show', $dataStream->id),
+				$dataStream);
 		}
 
 		return $this->response->errorBadRequest();

@@ -24,6 +24,20 @@ class CustomValidator
 	}
 
 	/**
+	 * Custom validation : md5
+	 *
+	 * @param string $attribute
+	 * @param mixed $value
+	 * @param array $parameters
+	 * @param \Illuminate\Validation\Validator $validator
+	 * @return bool
+	 */
+	public function validateMd5($attribute, $value, $parameters, $validator)
+	{
+		return (preg_match('/^[a-f0-9]{32}$/i', $value));
+	}
+
+	/**
 	 * Custom strength validation for passwords
 	 *
 	 * @param string $attribute

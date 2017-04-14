@@ -86,6 +86,7 @@ return [
     'uploaded'             => 'The :attribute failed to upload.',
     'url'                  => 'The :attribute format is invalid.',
     'uuid'                 => 'The :attribute field is not a valid UUID.',
+    'md5'                  => 'The :attribute field is not a valid md5.',
 
     /*
     |--------------------------------------------------------------------------

@@ -14,6 +14,17 @@ use App\Models\User;
 class UserProjectController extends ApiController
 {
 	/**
+	 * UserProjectController constructor.
+	 */
+	public function __construct()
+	{
+		parent::__construct();
+
+		// User group restrictions
+		$this->middleware('verifyUserGroup:Developer,Support')->only('index');
+	}
+
+	/**
 	 * User project list
 	 *
 	 * You can specify a GET parameter `user_role_id` to filter results.
