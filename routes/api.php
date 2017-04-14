@@ -186,6 +186,13 @@ $api->version('v1', ['middleware' => ['cors', 'auth:api']], function (Router $ap
 		'App\Http\Controllers\Api\SyncTaskController@destroy'
 	)->name('syncTask.destroy');
 
+	// Sync Task Sync Task Log
+
+	$api->get(
+		'syncTask/{syncTaskId}/log',
+		'App\Http\Controllers\Api\SyncTaskSyncTaskLogController@index'
+	)->name('syncTaskSyncTaskLog.index');
+
 	// Project Sync Task
 
 	$api->get(

@@ -60,6 +60,9 @@ return [
 				// John Smith Sample Project 1 Sync Task
 				'syncTaskId' => '8dbfd6e6-2055-11e7-93ae-92361f002671',
 
+				// Public Sync Task
+				'public' => 1,
+
 				// Main
 				'syncTaskTypeId' => 'Main',
 
@@ -100,6 +103,8 @@ return [
 				'syncTask.store',
 				'syncTask.update',
 				'syncTask.destroy',
+
+				'syncTaskSyncTaskLog.index',
 
 				'syncTaskType.index',
 				'syncTaskType.show',
@@ -207,6 +212,9 @@ return [
 				// John Smith Sample Project 1 Sync Task
 				'syncTaskId' => '8dbfd6e6-2055-11e7-93ae-92361f002671',
 
+				// Public Sync Task
+				'public' => 1,
+
 				// Main
 				'syncTaskTypeId' => 'Main',
 
@@ -241,6 +249,8 @@ return [
 
 				'syncTask.index',
 				'syncTask.show',
+
+				'syncTaskSyncTaskLog.index',
 
 				'syncTaskType.index',
 				'syncTaskType.show',
@@ -325,6 +335,12 @@ return [
 				// First Sync Item of John Smith Sample Project 1
 				'syncItemId' => 'a37eda90-1f56-11e7-93ae-92361f002671',
 
+				// John Smith Sample Project 1 Sync Task
+				'syncTaskId' => '8dbfd6e6-2055-11e7-93ae-92361f002671',
+
+				// Public Sync Task
+				'public' => false,
+
 				// Main
 				'syncTaskTypeId' => 'Main',
 
@@ -342,6 +358,8 @@ return [
 				'project.store',
 				'project.update',
 				'project.destroy',
+
+				'syncTaskSyncTaskLog.index',
 
 				'syncTaskType.index',
 				'syncTaskType.show',

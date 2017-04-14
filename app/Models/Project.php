@@ -3,8 +3,6 @@
 namespace App\Models;
 
 use Alsofronie\Uuid\UuidModelTrait;
-
-use Dingo\Api\Facade\Route;
 use Illuminate\Support\Facades\Auth;
 
 /**

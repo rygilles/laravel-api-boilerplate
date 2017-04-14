@@ -1,6 +1,8 @@
 <?php
 
 namespace App\Models;
+
+use Illuminate\Support\Facades\Auth;
 use Alsofronie\Uuid\UuidModelTrait;
 
 /**
@@ -46,7 +48,7 @@ class SyncTask extends ApiModel
 
 	/**
 	 * Model validation rules for new items
-	 * @var array
+	 * @var string[]
 	 */
 	protected static $storeRules = [
 		'sync_task_id'          => 'uuid|exists:sync_task,id',
@@ -139,4 +141,38 @@ class SyncTask extends ApiModel
 	{
 		return $this->belongsTo('App\Models\Project');
 	}
+
+	/**
+	 * Get the sync task logs
+	 *
+	 * @return \Illuminate\Database\Eloquent\Relations\hasMany
+	 */
+	public function syncTaskLogs()
+	{
+		return $this->hasMany('App\Models\SyncTaskLog');
+	}
+
+	/**
+	 * Scope a query to include authorized access
+	 *
+	 * @param \Illuminate\Database\Eloquent\Builder $query
+	 * @param string[] $authorizedUserRolesIds User roles ids authorized to access to this route/resource
+	 * @param string[] $exceptUserGroupsIds User groups ids authorized to access to this route
+	 * @return \Illuminate\Database\Eloquent\Builder
+	 */
+	public function scopeAuthorized($query, $authorizedUserRolesIds = ['Owner', 'Administrator'], $exceptUserGroupsIds = ['Developer', 'Support'])
+	{
+		// Apply query scope if user group id isn't authorized
+		if (!in_array(Auth::user()->user_group_id, $exceptUserGroupsIds)) {
+			return $query->whereHas('project', function ($query) use ($authorizedUserRolesIds) {
+				$query->whereHas('hasUserProjects', function ($query) use ($authorizedUserRolesIds) {
+					$query->where('user_id', Auth::user()->id)
+						->whereIn('user_role_id', $authorizedUserRolesIds);
+				});
+			});
+		}
+
+		return $query;
+	}
+
 }
