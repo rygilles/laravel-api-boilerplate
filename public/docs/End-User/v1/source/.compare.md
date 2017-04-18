@@ -150,8 +150,8 @@ curl -X PUT "http://emsearch.ryan.ems-dev.net/api/project/1bcc7efc-138c-11e7-93a
 -H "Accept: application/json" \
 -H "Authentication: Bearer xxx"
  \
-    -d "name"="Doloremque dolor qui" \
-    -d "feed_url"="http://jacobson.com/" \
+    -d "name"="Voluptatem aut eos" \
+    -d "feed_url"="http://www.wyman.com/" \
 
 ```
 
@@ -162,8 +162,8 @@ var settings = {
     "url": "http://emsearch.ryan.ems-dev.net/api/project/1bcc7efc-138c-11e7-93ae-92361f002671/dataStream",
     "method": "PUT",
     "data": {
-        "name": "Doloremque dolor qui",
-        "feed_url": "http:\/\/jacobson.com\/"
+        "name": "Voluptatem aut eos",
+        "feed_url": "http:\/\/www.wyman.com\/"
 },
     "headers": {
         "Accept": "application/json",
@@ -570,7 +570,7 @@ curl -X POST "http://emsearch.ryan.ems-dev.net/api/project" \
 -H "Accept: application/json" \
 -H "Authentication: Bearer xxx"
  \
-    -d "name"="Est ducimus id" \
+    -d "name"="Voluptatem quasi aut" \
 
 ```
 
@@ -581,7 +581,7 @@ var settings = {
     "url": "http://emsearch.ryan.ems-dev.net/api/project",
     "method": "POST",
     "data": {
-        "name": "Est ducimus id"
+        "name": "Voluptatem quasi aut"
 },
     "headers": {
         "Accept": "application/json",
@@ -616,7 +616,7 @@ curl -X PUT "http://emsearch.ryan.ems-dev.net/api/project/1bcc7efc-138c-11e7-93a
 -H "Accept: application/json" \
 -H "Authentication: Bearer xxx"
  \
-    -d "name"="Ea vel sit" \
+    -d "name"="Facere laboriosam commodi" \
 
 ```
 
@@ -627,7 +627,7 @@ var settings = {
     "url": "http://emsearch.ryan.ems-dev.net/api/project/1bcc7efc-138c-11e7-93ae-92361f002671",
     "method": "PUT",
     "data": {
-        "name": "Ea vel sit"
+        "name": "Facere laboriosam commodi"
 },
     "headers": {
         "Accept": "application/json",
@@ -874,7 +874,7 @@ $.ajax(settings).done(function (response) {
 <!-- START_e7e309913cf8d9268290f526607d5647 -->
 ## Sync task sync task logs list
 
-You can specify a GET parameter `public` to filter results.
+You can specify a GET parameter `public` to filter results (Only allowed for `Developer` and `Support` users).
 <aside class="notice">Pagination limit must be a value between <code>1</code> and <code>20</code>, default is <code>10</code>.</aside>
 
 > Example request:

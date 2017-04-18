@@ -17,8 +17,7 @@ class SyncTaskSyncTaskLogController extends ApiController
 	/**
 	 * Sync task sync task logs list
 	 *
-	 * @todo Api doc for restricted profiles
-	 * You can specify a GET parameter `public` to filter results.
+	 * You can specify a GET parameter `public` to filter results (Only allowed for `Developer` and `Support` users).
 	 *
 	 * @param IndexSyncTaskSyncTaskLogRequest $request
 	 * @param string $syncTaskId Sync Task ID

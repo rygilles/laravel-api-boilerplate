@@ -174,8 +174,8 @@ curl -X POST "http://emsearch.ryan.ems-dev.net/api/dataStream" \
 -H "Accept: application/json" \
 -H "Authentication: Bearer xxx"
  \
-    -d "name"="Ipsa sed qui" \
-    -d "feed_url"="http://www.quigley.com/nam-voluptatem-magni-nesciunt-porro-sequi-laborum" \
+    -d "name"="Est facilis sit" \
+    -d "feed_url"="https://mueller.com/magnam-numquam-omnis-eaque-ea.html" \
 
 ```
 
@@ -186,8 +186,8 @@ var settings = {
     "url": "http://emsearch.ryan.ems-dev.net/api/dataStream",
     "method": "POST",
     "data": {
-        "name": "Ipsa sed qui",
-        "feed_url": "http:\/\/www.quigley.com\/nam-voluptatem-magni-nesciunt-porro-sequi-laborum"
+        "name": "Est facilis sit",
+        "feed_url": "https:\/\/mueller.com\/magnam-numquam-omnis-eaque-ea.html"
 },
     "headers": {
         "Accept": "application/json",
@@ -223,8 +223,8 @@ curl -X PUT "http://emsearch.ryan.ems-dev.net/api/dataStream/605d712c-1934-11e7-
 -H "Accept: application/json" \
 -H "Authentication: Bearer xxx"
  \
-    -d "name"="Dolores ab voluptatibus" \
-    -d "feed_url"="https://www.kertzmann.com/perspiciatis-et-fugiat-ipsam-qui-delectus-magnam-ut" \
+    -d "name"="Sequi non minima" \
+    -d "feed_url"="http://www.skiles.com/dolores-cum-totam-perferendis-nulla-odit-nemo.html" \
 
 ```
 
@@ -235,8 +235,8 @@ var settings = {
     "url": "http://emsearch.ryan.ems-dev.net/api/dataStream/605d712c-1934-11e7-93ae-92361f002671",
     "method": "PUT",
     "data": {
-        "name": "Dolores ab voluptatibus",
-        "feed_url": "https:\/\/www.kertzmann.com\/perspiciatis-et-fugiat-ipsam-qui-delectus-magnam-ut"
+        "name": "Sequi non minima",
+        "feed_url": "http:\/\/www.skiles.com\/dolores-cum-totam-perferendis-nulla-odit-nemo.html"
 },
     "headers": {
         "Accept": "application/json",
@@ -412,8 +412,8 @@ curl -X PUT "http://emsearch.ryan.ems-dev.net/api/project/1bcc7efc-138c-11e7-93a
 -H "Accept: application/json" \
 -H "Authentication: Bearer xxx"
  \
-    -d "name"="Eius perspiciatis aut" \
-    -d "feed_url"="http://www.lemke.com/vitae-voluptas-vero-voluptatem-voluptatem-est-consequatur-reprehenderit.html" \
+    -d "name"="Eveniet rerum illo" \
+    -d "feed_url"="http://quitzon.biz/voluptas-velit-alias-vel-molestias.html" \
 
 ```
 
@@ -424,8 +424,8 @@ var settings = {
     "url": "http://emsearch.ryan.ems-dev.net/api/project/1bcc7efc-138c-11e7-93ae-92361f002671/dataStream",
     "method": "PUT",
     "data": {
-        "name": "Eius perspiciatis aut",
-        "feed_url": "http:\/\/www.lemke.com\/vitae-voluptas-vero-voluptatem-voluptatem-est-consequatur-reprehenderit.html"
+        "name": "Eveniet rerum illo",
+        "feed_url": "http:\/\/quitzon.biz\/voluptas-velit-alias-vel-molestias.html"
 },
     "headers": {
         "Accept": "application/json",
@@ -649,8 +649,8 @@ curl -X POST "http://emsearch.ryan.ems-dev.net/api/i18nLang" \
 -H "Accept: application/json" \
 -H "Authentication: Bearer xxx"
  \
-    -d "id"="Quibusdam maxime nostrum" \
-    -d "description"="Quaerat quia et" \
+    -d "id"="Asperiores earum eos" \
+    -d "description"="Odit minima esse" \
 
 ```
 
@@ -661,8 +661,8 @@ var settings = {
     "url": "http://emsearch.ryan.ems-dev.net/api/i18nLang",
     "method": "POST",
     "data": {
-        "id": "Quibusdam maxime nostrum",
-        "description": "Quaerat quia et"
+        "id": "Asperiores earum eos",
+        "description": "Odit minima esse"
 },
     "headers": {
         "Accept": "application/json",
@@ -698,7 +698,7 @@ curl -X PUT "http://emsearch.ryan.ems-dev.net/api/i18nLang/en_US" \
 -H "Accept: application/json" \
 -H "Authentication: Bearer xxx"
  \
-    -d "description"="Id esse reprehenderit" \
+    -d "description"="Aliquid ratione debitis" \
 
 ```
 
@@ -709,7 +709,7 @@ var settings = {
     "url": "http://emsearch.ryan.ems-dev.net/api/i18nLang/en_US",
     "method": "PUT",
     "data": {
-        "description": "Id esse reprehenderit"
+        "description": "Aliquid ratione debitis"
 },
     "headers": {
         "Accept": "application/json",
@@ -1116,9 +1116,9 @@ curl -X POST "http://emsearch.ryan.ems-dev.net/api/project" \
 -H "Accept: application/json" \
 -H "Authentication: Bearer xxx"
  \
-    -d "search_engine_id"="a885a7d1-a37c-366a-9169-dd46ff19de5d" \
-    -d "data_stream_id"="2b2aa2ad-b786-3e39-9c8d-496afe0f522e" \
-    -d "name"="Maxime nesciunt velit" \
+    -d "search_engine_id"="76ce7a1e-bad8-31ec-8cef-ca6b400455fa" \
+    -d "data_stream_id"="afc7558b-868d-3040-a4b5-9544f1014dce" \
+    -d "name"="Itaque quo ut" \
 
 ```
 
@@ -1129,9 +1129,9 @@ var settings = {
     "url": "http://emsearch.ryan.ems-dev.net/api/project",
     "method": "POST",
     "data": {
-        "search_engine_id": "a885a7d1-a37c-366a-9169-dd46ff19de5d",
-        "data_stream_id": "2b2aa2ad-b786-3e39-9c8d-496afe0f522e",
-        "name": "Maxime nesciunt velit"
+        "search_engine_id": "76ce7a1e-bad8-31ec-8cef-ca6b400455fa",
+        "data_stream_id": "afc7558b-868d-3040-a4b5-9544f1014dce",
+        "name": "Itaque quo ut"
 },
     "headers": {
         "Accept": "application/json",
@@ -1168,9 +1168,9 @@ curl -X PUT "http://emsearch.ryan.ems-dev.net/api/project/1bcc7efc-138c-11e7-93a
 -H "Accept: application/json" \
 -H "Authentication: Bearer xxx"
  \
-    -d "search_engine_id"="a40394bd-bc34-3116-bd89-58e41a26a84b" \
-    -d "data_stream_id"="928484a7-7887-3f29-9347-077d29ef322b" \
-    -d "name"="Id sed molestiae" \
+    -d "search_engine_id"="458402a7-2036-35ba-b967-52a7f081bd21" \
+    -d "data_stream_id"="f697d394-2ee6-38ec-a631-6ffb8d82da28" \
+    -d "name"="Et exercitationem alias" \
 
 ```
 
@@ -1181,9 +1181,9 @@ var settings = {
     "url": "http://emsearch.ryan.ems-dev.net/api/project/1bcc7efc-138c-11e7-93ae-92361f002671",
     "method": "PUT",
     "data": {
-        "search_engine_id": "a40394bd-bc34-3116-bd89-58e41a26a84b",
-        "data_stream_id": "928484a7-7887-3f29-9347-077d29ef322b",
-        "name": "Id sed molestiae"
+        "search_engine_id": "458402a7-2036-35ba-b967-52a7f081bd21",
+        "data_stream_id": "f697d394-2ee6-38ec-a631-6ffb8d82da28",
+        "name": "Et exercitationem alias"
 },
     "headers": {
         "Accept": "application/json",
@@ -1462,7 +1462,7 @@ curl -X POST "http://emsearch.ryan.ems-dev.net/api/searchEngine" \
 -H "Accept: application/json" \
 -H "Authentication: Bearer xxx"
  \
-    -d "name"="Totam aut saepe" \
+    -d "name"="In aut molestiae" \
 
 ```
 
@@ -1473,7 +1473,7 @@ var settings = {
     "url": "http://emsearch.ryan.ems-dev.net/api/searchEngine",
     "method": "POST",
     "data": {
-        "name": "Totam aut saepe"
+        "name": "In aut molestiae"
 },
     "headers": {
         "Accept": "application/json",
@@ -1508,7 +1508,7 @@ curl -X PUT "http://emsearch.ryan.ems-dev.net/api/searchEngine/ee87e3b2-1388-11e
 -H "Accept: application/json" \
 -H "Authentication: Bearer xxx"
  \
-    -d "name"="Tenetur repellendus soluta" \
+    -d "name"="Magni iusto qui" \
 
 ```
 
@@ -1519,7 +1519,7 @@ var settings = {
     "url": "http://emsearch.ryan.ems-dev.net/api/searchEngine/ee87e3b2-1388-11e7-93ae-92361f002671",
     "method": "PUT",
     "data": {
-        "name": "Tenetur repellendus soluta"
+        "name": "Magni iusto qui"
 },
     "headers": {
         "Accept": "application/json",
@@ -1742,9 +1742,9 @@ curl -X POST "http://emsearch.ryan.ems-dev.net/api/syncItem" \
 -H "Accept: application/json" \
 -H "Authentication: Bearer xxx"
  \
-    -d "item_id"="Velit nisi error" \
-    -d "project_id"="899cf494-8b8b-34fa-bae1-2b677cd5aee0" \
-    -d "item_signature"="751b572a876bda5cc1765b2555864c1e" \
+    -d "item_id"="Consequatur aut maiores" \
+    -d "project_id"="eb9f32d7-d51c-39c0-b651-1d2588021949" \
+    -d "item_signature"="77306ced2e33d90fd442190c28e48133" \
 
 ```
 
@@ -1755,9 +1755,9 @@ var settings = {
     "url": "http://emsearch.ryan.ems-dev.net/api/syncItem",
     "method": "POST",
     "data": {
-        "item_id": "Velit nisi error",
-        "project_id": "899cf494-8b8b-34fa-bae1-2b677cd5aee0",
-        "item_signature": "751b572a876bda5cc1765b2555864c1e"
+        "item_id": "Consequatur aut maiores",
+        "project_id": "eb9f32d7-d51c-39c0-b651-1d2588021949",
+        "item_signature": "77306ced2e33d90fd442190c28e48133"
 },
     "headers": {
         "Accept": "application/json",
@@ -1794,9 +1794,9 @@ curl -X PUT "http://emsearch.ryan.ems-dev.net/api/syncItem/a37eda90-1f56-11e7-93
 -H "Accept: application/json" \
 -H "Authentication: Bearer xxx"
  \
-    -d "item_id"="Aut perferendis in" \
-    -d "project_id"="a0750487-d8d6-3a3c-ba2d-ba367adc1340" \
-    -d "item_signature"="0f0e0e3cd548965bbc8969c0c281f89b" \
+    -d "item_id"="Dolores quasi consequatur" \
+    -d "project_id"="f6cd05c4-b120-3abd-b3f9-b6c278471ad6" \
+    -d "item_signature"="fba3b8edec4a6d3a2f3c0dd87a162586" \
 
 ```
 
@@ -1807,9 +1807,9 @@ var settings = {
     "url": "http://emsearch.ryan.ems-dev.net/api/syncItem/a37eda90-1f56-11e7-93ae-92361f002671,1bcc7efc-138c-11e7-93ae-92361f002671",
     "method": "PUT",
     "data": {
-        "item_id": "Aut perferendis in",
-        "project_id": "a0750487-d8d6-3a3c-ba2d-ba367adc1340",
-        "item_signature": "0f0e0e3cd548965bbc8969c0c281f89b"
+        "item_id": "Dolores quasi consequatur",
+        "project_id": "f6cd05c4-b120-3abd-b3f9-b6c278471ad6",
+        "item_signature": "fba3b8edec4a6d3a2f3c0dd87a162586"
 },
     "headers": {
         "Accept": "application/json",
@@ -2112,11 +2112,11 @@ curl -X POST "http://emsearch.ryan.ems-dev.net/api/syncTask" \
 -H "Accept: application/json" \
 -H "Authentication: Bearer xxx"
  \
-    -d "sync_task_id"="0bb048e5-ad6e-345e-8556-9b2cc9cec589" \
-    -d "sync_task_type_id"="Totam laborum esse" \
-    -d "sync_task_status_id"="Quia autem nisi" \
-    -d "created_by_user_id"="3b56d0bf-dc84-31d5-a2ff-2cdc4939cb01" \
-    -d "project_id"="ce14da49-4bdc-38ad-8b98-17b4577df639" \
+    -d "sync_task_id"="60b6eac9-e8fc-3c50-8312-d91c0e370379" \
+    -d "sync_task_type_id"="Ut alias ut" \
+    -d "sync_task_status_id"="Quibusdam explicabo similique" \
+    -d "created_by_user_id"="59b40b3d-74a5-3b11-923b-f481fb6a40c0" \
+    -d "project_id"="b621a502-2cdd-38b9-9b85-335f83c62826" \
 
 ```
 
@@ -2127,11 +2127,11 @@ var settings = {
     "url": "http://emsearch.ryan.ems-dev.net/api/syncTask",
     "method": "POST",
     "data": {
-        "sync_task_id": "0bb048e5-ad6e-345e-8556-9b2cc9cec589",
-        "sync_task_type_id": "Totam laborum esse",
-        "sync_task_status_id": "Quia autem nisi",
-        "created_by_user_id": "3b56d0bf-dc84-31d5-a2ff-2cdc4939cb01",
-        "project_id": "ce14da49-4bdc-38ad-8b98-17b4577df639"
+        "sync_task_id": "60b6eac9-e8fc-3c50-8312-d91c0e370379",
+        "sync_task_type_id": "Ut alias ut",
+        "sync_task_status_id": "Quibusdam explicabo similique",
+        "created_by_user_id": "59b40b3d-74a5-3b11-923b-f481fb6a40c0",
+        "project_id": "b621a502-2cdd-38b9-9b85-335f83c62826"
 },
     "headers": {
         "Accept": "application/json",
@@ -2170,11 +2170,11 @@ curl -X PUT "http://emsearch.ryan.ems-dev.net/api/syncTask/8dbfd6e6-2055-11e7-93
 -H "Accept: application/json" \
 -H "Authentication: Bearer xxx"
  \
-    -d "sync_task_id"="84b59545-e2c9-3ad4-8e86-8e5f8f6d6e7c" \
-    -d "sync_task_type_id"="Modi odio quam" \
-    -d "sync_task_status_id"="Vero sit molestiae" \
-    -d "created_by_user_id"="c4847ae1-8db0-3dcb-9de3-d4ac1fa093b8" \
-    -d "project_id"="1b057078-384d-343f-9e48-6a8a6cb4aac7" \
+    -d "sync_task_id"="e15d3ee8-2981-3304-9172-83f2a1e1eb72" \
+    -d "sync_task_type_id"="Voluptatem aut eos" \
+    -d "sync_task_status_id"="Ex et tempore" \
+    -d "created_by_user_id"="fe691ffa-9c79-3644-af60-7855a590c7cd" \
+    -d "project_id"="7607054d-3e82-3036-9b3e-9d37f953843b" \
 
 ```
 
@@ -2185,11 +2185,11 @@ var settings = {
     "url": "http://emsearch.ryan.ems-dev.net/api/syncTask/8dbfd6e6-2055-11e7-93ae-92361f002671",
     "method": "PUT",
     "data": {
-        "sync_task_id": "84b59545-e2c9-3ad4-8e86-8e5f8f6d6e7c",
-        "sync_task_type_id": "Modi odio quam",
-        "sync_task_status_id": "Vero sit molestiae",
-        "created_by_user_id": "c4847ae1-8db0-3dcb-9de3-d4ac1fa093b8",
-        "project_id": "1b057078-384d-343f-9e48-6a8a6cb4aac7"
+        "sync_task_id": "e15d3ee8-2981-3304-9172-83f2a1e1eb72",
+        "sync_task_type_id": "Voluptatem aut eos",
+        "sync_task_status_id": "Ex et tempore",
+        "created_by_user_id": "fe691ffa-9c79-3644-af60-7855a590c7cd",
+        "project_id": "7607054d-3e82-3036-9b3e-9d37f953843b"
 },
     "headers": {
         "Accept": "application/json",
@@ -2339,7 +2339,7 @@ $.ajax(settings).done(function (response) {
 <!-- START_e7e309913cf8d9268290f526607d5647 -->
 ## Sync task sync task logs list
 
-You can specify a GET parameter `public` to filter results.
+You can specify a GET parameter `public` to filter results (Only allowed for `Developer` and `Support` users).
 <aside class="notice">Pagination limit must be a value between <code>1</code> and <code>20</code>, default is <code>10</code>.</aside>
 
 > Example request:
@@ -2544,7 +2544,7 @@ curl -X POST "http://emsearch.ryan.ems-dev.net/api/syncTaskStatus" \
 -H "Accept: application/json" \
 -H "Authentication: Bearer xxx"
  \
-    -d "id"="Tempora possimus voluptas" \
+    -d "id"="Est perspiciatis enim" \
 
 ```
 
@@ -2555,7 +2555,7 @@ var settings = {
     "url": "http://emsearch.ryan.ems-dev.net/api/syncTaskStatus",
     "method": "POST",
     "data": {
-        "id": "Tempora possimus voluptas"
+        "id": "Est perspiciatis enim"
 },
     "headers": {
         "Accept": "application/json",
@@ -2822,9 +2822,9 @@ curl -X POST "http://emsearch.ryan.ems-dev.net/api/syncTaskStatusVersion" \
 -H "Accept: application/json" \
 -H "Authentication: Bearer xxx"
  \
-    -d "sync_task_status_id"="Ipsum quae est" \
-    -d "i18n_lang_id"="Recusandae illum officiis" \
-    -d "description"="Totam repudiandae nostrum" \
+    -d "sync_task_status_id"="Sed id id" \
+    -d "i18n_lang_id"="Fugiat dolores officiis" \
+    -d "description"="Ex suscipit impedit" \
 
 ```
 
@@ -2835,9 +2835,9 @@ var settings = {
     "url": "http://emsearch.ryan.ems-dev.net/api/syncTaskStatusVersion",
     "method": "POST",
     "data": {
-        "sync_task_status_id": "Ipsum quae est",
-        "i18n_lang_id": "Recusandae illum officiis",
-        "description": "Totam repudiandae nostrum"
+        "sync_task_status_id": "Sed id id",
+        "i18n_lang_id": "Fugiat dolores officiis",
+        "description": "Ex suscipit impedit"
 },
     "headers": {
         "Accept": "application/json",
@@ -2874,9 +2874,9 @@ curl -X PUT "http://emsearch.ryan.ems-dev.net/api/syncTaskStatusVersion/Planned,
 -H "Accept: application/json" \
 -H "Authentication: Bearer xxx"
  \
-    -d "sync_task_status_id"="Debitis soluta cumque" \
-    -d "i18n_lang_id"="Ratione in expedita" \
-    -d "description"="Ipsum autem quod" \
+    -d "sync_task_status_id"="Sit blanditiis molestiae" \
+    -d "i18n_lang_id"="In velit ut" \
+    -d "description"="Ipsum et commodi" \
 
 ```
 
@@ -2887,9 +2887,9 @@ var settings = {
     "url": "http://emsearch.ryan.ems-dev.net/api/syncTaskStatusVersion/Planned,en_US",
     "method": "PUT",
     "data": {
-        "sync_task_status_id": "Debitis soluta cumque",
-        "i18n_lang_id": "Ratione in expedita",
-        "description": "Ipsum autem quod"
+        "sync_task_status_id": "Sit blanditiis molestiae",
+        "i18n_lang_id": "In velit ut",
+        "description": "Ipsum et commodi"
 },
     "headers": {
         "Accept": "application/json",
@@ -3165,7 +3165,7 @@ curl -X POST "http://emsearch.ryan.ems-dev.net/api/syncTaskType" \
 -H "Accept: application/json" \
 -H "Authentication: Bearer xxx"
  \
-    -d "id"="Nulla voluptatem qui" \
+    -d "id"="Minus nam inventore" \
 
 ```
 
@@ -3176,7 +3176,7 @@ var settings = {
     "url": "http://emsearch.ryan.ems-dev.net/api/syncTaskType",
     "method": "POST",
     "data": {
-        "id": "Nulla voluptatem qui"
+        "id": "Minus nam inventore"
 },
     "headers": {
         "Accept": "application/json",
@@ -3473,9 +3473,9 @@ curl -X POST "http://emsearch.ryan.ems-dev.net/api/syncTaskTypeVersion" \
 -H "Accept: application/json" \
 -H "Authentication: Bearer xxx"
  \
-    -d "sync_task_type_id"="Doloremque dolor qui" \
-    -d "i18n_lang_id"="Facilis pariatur enim" \
-    -d "description"="Sit blanditiis molestiae" \
+    -d "sync_task_type_id"="Doloremque eligendi ea" \
+    -d "i18n_lang_id"="Quia impedit vitae" \
+    -d "description"="Qui nemo non" \
 
 ```
 
@@ -3486,9 +3486,9 @@ var settings = {
     "url": "http://emsearch.ryan.ems-dev.net/api/syncTaskTypeVersion",
     "method": "POST",
     "data": {
-        "sync_task_type_id": "Doloremque dolor qui",
-        "i18n_lang_id": "Facilis pariatur enim",
-        "description": "Sit blanditiis molestiae"
+        "sync_task_type_id": "Doloremque eligendi ea",
+        "i18n_lang_id": "Quia impedit vitae",
+        "description": "Qui nemo non"
 },
     "headers": {
         "Accept": "application/json",
@@ -3525,9 +3525,9 @@ curl -X PUT "http://emsearch.ryan.ems-dev.net/api/syncTaskTypeVersion/Main,en_US
 -H "Accept: application/json" \
 -H "Authentication: Bearer xxx"
  \
-    -d "sync_task_type_id"="Excepturi quis qui" \
-    -d "i18n_lang_id"="Ut non sunt" \
-    -d "description"="Dolores saepe qui" \
+    -d "sync_task_type_id"="Quia in ducimus" \
+    -d "i18n_lang_id"="Et consequuntur enim" \
+    -d "description"="Ipsum temporibus accusantium" \
 
 ```
 
@@ -3538,9 +3538,9 @@ var settings = {
     "url": "http://emsearch.ryan.ems-dev.net/api/syncTaskTypeVersion/Main,en_US",
     "method": "PUT",
     "data": {
-        "sync_task_type_id": "Excepturi quis qui",
-        "i18n_lang_id": "Ut non sunt",
-        "description": "Dolores saepe qui"
+        "sync_task_type_id": "Quia in ducimus",
+        "i18n_lang_id": "Et consequuntur enim",
+        "description": "Ipsum temporibus accusantium"
 },
     "headers": {
         "Accept": "application/json",
@@ -3868,9 +3868,9 @@ curl -X POST "http://emsearch.ryan.ems-dev.net/api/user" \
 -H "Authentication: Bearer xxx"
  \
     -d "user_group_id"="Developer" \
-    -d "name"="Placeat doloremque id" \
-    -d "email"="koepp.rubie@example.org" \
-    -d "password"="&lt;bp~&gt;nC:*&quot;`N&quot;1.=" \
+    -d "name"="Minima sed illo" \
+    -d "email"="glangosh@example.com" \
+    -d "password"=";8=@(-K]~" \
 
 ```
 
@@ -3882,9 +3882,9 @@ var settings = {
     "method": "POST",
     "data": {
         "user_group_id": "Developer",
-        "name": "Placeat doloremque id",
-        "email": "koepp.rubie@example.org",
-        "password": "<bp~>nC:*\"`N\"1.="
+        "name": "Minima sed illo",
+        "email": "glangosh@example.com",
+        "password": ";8=@(-K]~"
 },
     "headers": {
         "Accept": "application/json",
@@ -3922,10 +3922,10 @@ curl -X PUT "http://emsearch.ryan.ems-dev.net/api/user/605c7610-1389-11e7-93ae-9
 -H "Accept: application/json" \
 -H "Authentication: Bearer xxx"
  \
-    -d "user_group_id"="Developer" \
-    -d "name"="Illum aliquam animi" \
-    -d "email"="pascale75@example.org" \
-    -d "password"="Ovbn?1mMh}QExZyl" \
+    -d "user_group_id"="End-User" \
+    -d "name"="Accusamus repellat magni" \
+    -d "email"="wmarks@example.org" \
+    -d "password"="0pyI5$C41];L" \
 
 ```
 
@@ -3936,10 +3936,10 @@ var settings = {
     "url": "http://emsearch.ryan.ems-dev.net/api/user/605c7610-1389-11e7-93ae-92361f002671",
     "method": "PUT",
     "data": {
-        "user_group_id": "Developer",
-        "name": "Illum aliquam animi",
-        "email": "pascale75@example.org",
-        "password": "Ovbn?1mMh}QExZyl"
+        "user_group_id": "End-User",
+        "name": "Accusamus repellat magni",
+        "email": "wmarks@example.org",
+        "password": "0pyI5$C41];L"
 },
     "headers": {
         "Accept": "application/json",
@@ -4154,9 +4154,9 @@ curl -X POST "http://emsearch.ryan.ems-dev.net/api/userHasProject" \
 -H "Accept: application/json" \
 -H "Authentication: Bearer xxx"
  \
-    -d "user_id"="0f908356-cd83-3bb0-827d-ff88b8ef0519" \
-    -d "project_id"="b6e2d9ca-d860-3f8d-9b58-7a303653188d" \
-    -d "user_role_id"="Owner" \
+    -d "user_id"="bce12511-d30f-33b8-bbc1-6fe465c9f417" \
+    -d "project_id"="e5cc49fd-6534-34b7-8fd0-d92609584932" \
+    -d "user_role_id"="Administrator" \
 
 ```
 
@@ -4167,9 +4167,9 @@ var settings = {
     "url": "http://emsearch.ryan.ems-dev.net/api/userHasProject",
     "method": "POST",
     "data": {
-        "user_id": "0f908356-cd83-3bb0-827d-ff88b8ef0519",
-        "project_id": "b6e2d9ca-d860-3f8d-9b58-7a303653188d",
-        "user_role_id": "Owner"
+        "user_id": "bce12511-d30f-33b8-bbc1-6fe465c9f417",
+        "project_id": "e5cc49fd-6534-34b7-8fd0-d92609584932",
+        "user_role_id": "Administrator"
 },
     "headers": {
         "Accept": "application/json",
@@ -4208,9 +4208,9 @@ curl -X PUT "http://emsearch.ryan.ems-dev.net/api/userHasProject/605c7610-1389-1
 -H "Accept: application/json" \
 -H "Authentication: Bearer xxx"
  \
-    -d "user_id"="7974876d-da72-3fdf-b334-a99341516058" \
-    -d "project_id"="070c7b1b-de3c-3f38-8d73-33dc604f18c7" \
-    -d "user_role_id"="Owner" \
+    -d "user_id"="1f3b8ce5-62f4-36bb-9e4d-18220d7a1797" \
+    -d "project_id"="20461514-2933-3568-976a-7eafb93b3d23" \
+    -d "user_role_id"="Administrator" \
 
 ```
 
@@ -4221,9 +4221,9 @@ var settings = {
     "url": "http://emsearch.ryan.ems-dev.net/api/userHasProject/605c7610-1389-11e7-93ae-92361f002671,1bcc7efc-138c-11e7-93ae-92361f002671",
     "method": "PUT",
     "data": {
-        "user_id": "7974876d-da72-3fdf-b334-a99341516058",
-        "project_id": "070c7b1b-de3c-3f38-8d73-33dc604f18c7",
-        "user_role_id": "Owner"
+        "user_id": "1f3b8ce5-62f4-36bb-9e4d-18220d7a1797",
+        "project_id": "20461514-2933-3568-976a-7eafb93b3d23",
+        "user_role_id": "Administrator"
 },
     "headers": {
         "Accept": "application/json",

@@ -183,8 +183,8 @@ $.ajax(settings).done(function (response) {
 -H "Accept: application/json" \
 -H "Authentication: Bearer xxx"
  \
-    -d "name"="Doloremque dolor qui" \
-    -d "feed_url"="http://jacobson.com/" \
+    -d "name"="Voluptatem aut eos" \
+    -d "feed_url"="http://www.wyman.com/" \
 </code></pre>
 <pre><code class="language-javascript">var settings = {
     "async": true,
@@ -192,8 +192,8 @@ $.ajax(settings).done(function (response) {
     "url": "http://emsearch.ryan.ems-dev.net/api/project/1bcc7efc-138c-11e7-93ae-92361f002671/dataStream",
     "method": "PUT",
     "data": {
-        "name": "Doloremque dolor qui",
-        "feed_url": "http:\/\/jacobson.com\/"
+        "name": "Voluptatem aut eos",
+        "feed_url": "http:\/\/www.wyman.com\/"
 },
     "headers": {
         "Accept": "application/json",
@@ -551,7 +551,7 @@ $.ajax(settings).done(function (response) {
 -H "Accept: application/json" \
 -H "Authentication: Bearer xxx"
  \
-    -d "name"="Est ducimus id" \
+    -d "name"="Voluptatem quasi aut" \
 </code></pre>
 <pre><code class="language-javascript">var settings = {
     "async": true,
@@ -559,7 +559,7 @@ $.ajax(settings).done(function (response) {
     "url": "http://emsearch.ryan.ems-dev.net/api/project",
     "method": "POST",
     "data": {
-        "name": "Est ducimus id"
+        "name": "Voluptatem quasi aut"
 },
     "headers": {
         "Accept": "application/json",
@@ -601,7 +601,7 @@ $.ajax(settings).done(function (response) {
 -H "Accept: application/json" \
 -H "Authentication: Bearer xxx"
  \
-    -d "name"="Ea vel sit" \
+    -d "name"="Facere laboriosam commodi" \
 </code></pre>
 <pre><code class="language-javascript">var settings = {
     "async": true,
@@ -609,7 +609,7 @@ $.ajax(settings).done(function (response) {
     "url": "http://emsearch.ryan.ems-dev.net/api/project/1bcc7efc-138c-11e7-93ae-92361f002671",
     "method": "PUT",
     "data": {
-        "name": "Ea vel sit"
+        "name": "Facere laboriosam commodi"
 },
     "headers": {
         "Accept": "application/json",
@@ -823,7 +823,7 @@ $.ajax(settings).done(function (response) {
 <h1>SyncTaskLog</h1>
 <!-- START_e7e309913cf8d9268290f526607d5647 -->
 <h2>Sync task sync task logs list</h2>
-<p>You can specify a GET parameter <code>public</code> to filter results.</p>
+<p>You can specify a GET parameter <code>public</code> to filter results (Only allowed for <code>Developer</code> and <code>Support</code> users).</p>
 <aside class="notice">Pagination limit must be a value between <code>1</code> and <code>20</code>, default is <code>10</code>.</aside>
 <blockquote>
 <p>Example request:</p>
