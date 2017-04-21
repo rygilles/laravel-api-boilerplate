@@ -7,7 +7,7 @@ export default {
     'project_name': 'Project Name',
     'create_new_project': 'Create New Project',
 
-    'owner_projects': 'My projects',
+    'owner_projects': 'Owned projects',
     'admin_projects': 'Administered projects',
 
     'edit_btn': 'Edit',

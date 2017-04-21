@@ -10,16 +10,12 @@
 
     <title>{{ config('app.name', 'Laravel') }}</title>
 
-
-    <link href='https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.5.0/css/font-awesome.min.css' rel='stylesheet' type='text/css'>
-
     <!-- Styles -->
     <link rel="shortcut icon" href="img/favicon.jpg">
-    <link href="/css/app.css" rel="stylesheet">
+    <link href="{{ mix('/css/all.css') }}" rel="stylesheet" type="text/css" />
 
     <!-- Scripts -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.17.1/moment.min.js"></script>
-
+    <script src="/js/pace.min.js"></script>
     <script>
         window.Laravel = {!! json_encode([
             'csrfToken' => csrf_token(),
@@ -27,12 +23,18 @@
             'apiDocVersionUri' => 'v1',
         ]) !!};
     </script>
+
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+    <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
+    <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <![endif]-->
 </head>
-<body v-cloak>
+<body class="skin-blue sidebar-mini">
 
     <div id="dashboard"></div>
-
-    <script src="/js/dashboard.js"></script>
+    <script src="{{ mix('/js/dashboard.js') }}"></script>
 
 </body>
 </html>

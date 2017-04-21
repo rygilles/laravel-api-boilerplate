@@ -48,7 +48,7 @@ export default {
 
     'oauth_create_client_modal': {
         'title': 'Create Client',
-        'error': '<strong>Whoops!</strong> Something went wrong!',
+        'error': 'Whoops! Something went wrong!',
         'name': 'Name',
         'name_help': 'Something your users will recognize and trust.',
         'redirect_url': 'Redirect URL',
@@ -59,7 +59,7 @@ export default {
 
     'oauth_edit_client_modal': {
         'title': 'Edit Client',
-        'error': '<strong>Whoops!</strong> Something went wrong!',
+        'error': 'Whoops! Something went wrong!',
         'name': 'Name',
         'name_help': 'Something your users will recognize and trust.',
         'redirect_url': 'Redirect URL',
@@ -85,6 +85,7 @@ export default {
 
     'personal_access_tokens_create_modal': {
         'title': 'Create Token',
+        'error': 'Whoops! Something went wrong!',
         'name': 'Name',
         'scopes': 'Scopes',
         'close_btn': 'Close',
@@ -102,7 +103,7 @@ export default {
     'authorization_request': {
         'authorization': 'Authorization',
         'authorization_request': 'Authorization Request',
-        'client_requesting_permission': '<strong>:name</strong> is requesting permission to access your account.',
+        'client_requesting_permission': ':name is requesting permission to access your account.',
         'this_application_will_be_able_to': 'This application will be able to:',
         'authorize_btn': 'Authorize',
         'cancel_btn': 'Cancel'

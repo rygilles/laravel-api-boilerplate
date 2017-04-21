@@ -37,7 +37,7 @@ class User extends ApiModel implements AuthenticatableContract,	AuthorizableCont
 	 * @var array
 	 */
 	protected $fillable = [
-		'name', 'email', 'password',
+		'name', 'email', 'password', 'user_group_id'
 	];
 
 	/**

@@ -19,7 +19,7 @@ return [
 	'project_name' => 'Nom du projet',
 	'create_new_project' => 'Créer un nouveau projet',
 
-	'owner_projects' => 'Mes projets',
+	'owner_projects' => 'Projets créés',
 	'admin_projects' => 'Projets administrés',
 
 	'edit_btn' => 'Modifier',

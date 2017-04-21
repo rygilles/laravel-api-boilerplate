@@ -1,80 +1,83 @@
-<style scoped>
-    .action-link {
-        cursor: pointer;
-    }
-
-    .m-b-none {
-        margin-bottom: 0;
-    }
-</style>
-
 <template>
     <div>
-        <div class="panel panel-default">
-            <div class="panel-heading">
-                <div style="display: flex; justify-content: space-between; align-items: center;">
-                    <span>
-                        {{ $t('auth.oauth_clients.title') }}
-                    </span>
+		<div class="row">
+			<div class="col-xs-12">
+				<div class="box">
+					<div class="box-header with-border">
+						<h3 class="box-title">{{ $t('auth.oauth_clients.title') }}</h3>
+						<a class="action-link pull-right" @click="showCreateClientForm">
+							{{ $t('auth.oauth_clients.create_new_client') }}
+						</a>
+					</div>
+					<div class="box-body">
+						<p class="m-b-none" v-if="clients.length === 0">
+							{{ $t('auth.oauth_clients.no_client_yet') }}
+						</p>
+						<div class="dataTables_wrapper form-inline dt-bootstrap" v-if="clients.length > 0">
+							<div class="row">
+								<div class="col-sm-6">
+									<div class="dataTables_length">
 
-                    <a class="action-link" @click="showCreateClientForm">
-						{{ $t('auth.oauth_clients.create_new_client') }}
-                    </a>
-                </div>
-            </div>
+									</div>
+								</div>
+							</div>
 
-            <div class="panel-body">
-                <!-- Current Clients -->
-                <p class="m-b-none" v-if="clients.length === 0">
-					{{ $t('auth.oauth_clients.no_client_yet') }}
-                </p>
+							<div class="row">
+								<div class="col-sm-12 table-responsive">
+									<table aria-describedby="example1_info" role="grid" class="table table-bordered table-striped dataTable">
+										<thead>
+										<tr role="row">
+											<th>{{ $t('auth.oauth_clients.client_id') }}</th>
+											<th>{{ $t('auth.oauth_clients.client_name') }}</th>
+											<th>{{ $t('auth.oauth_clients.client_secret') }}</th>
+											<th></th>
+										</tr>
+										</thead>
+										<tbody>
 
-                <table class="table table-borderless m-b-none table-condensed" v-if="clients.length > 0">
-                    <thead>
-                        <tr>
-                            <th>{{ $t('auth.oauth_clients.client_id') }}</th>
-                            <th>{{ $t('auth.oauth_clients.client_name') }}</th>
-                            <th>{{ $t('auth.oauth_clients.client_secret') }}</th>
-                            <th></th>
-                            <th></th>
-                        </tr>
-                    </thead>
+										<tr v-for="client in clients" role="row">
+											<!-- ID -->
+											<td class="col-md-2" style="vertical-align: middle;">
+												{{ client.id }}
+											</td>
 
-                    <tbody>
-                        <tr v-for="client in clients">
-                            <!-- ID -->
-                            <td class="col-md-2" style="vertical-align: middle;">
-                                {{ client.id }}
-                            </td>
+											<!-- Name -->
+											<td class="col-md-2" style="vertical-align: middle;">
+												{{ client.name }}
+											</td>
 
-                            <!-- Name -->
-                            <td class="col-md-2" style="vertical-align: middle;">
-                                {{ client.name }}
-                            </td>
+											<!-- Secret -->
+											<td class="col-md-2" style="vertical-align: middle;">
+												<code>{{ client.secret }}</code>
+											</td>
 
-                            <!-- Secret -->
-                            <td class="col-md-2" style="vertical-align: middle;">
-                                <code>{{ client.secret }}</code>
-                            </td>
-
-                            <!-- Edit Button -->
-                            <td class="col-md-1 text-right" style="vertical-align: middle;">
-                                <a class="action-link" @click="edit(client)">
-                                    {{ $t('auth.oauth_clients.edit_btn') }}
-                                </a>
-                            </td>
-
-                            <!-- Delete Button -->
-                            <td class="col-md-1 text-right"  style="vertical-align: middle;">
-                                <a class="action-link text-danger" @click="destroy(client)">
-									{{ $t('auth.oauth_clients.delete_btn') }}
-                                </a>
-                            </td>
-                        </tr>
-                    </tbody>
-                </table>
-            </div>
-        </div>
+											<td class="col-md-2 text-right" style="vertical-align: middle;">
+												<a class="action-link btn btn-default" @click="edit(client)">
+													{{ $t('auth.oauth_clients.edit_btn') }}
+												</a>
+												<a class="btn btn-danger action-link" @click="destroy(client)">
+													{{ $t('auth.oauth_clients.delete_btn') }}
+												</a>
+											</td>
+										</tr>
+										</tbody>
+									</table>
+								</div>
+							</div>
+						</div>
+					</div>
+					<div class="box-footer clearfix">
+						<ul class="pagination pagination-sm no-margin pull-right">
+							<li><a href="#">&laquo;</a></li>
+							<li><a href="#">1</a></li>
+							<li><a href="#">2</a></li>
+							<li><a href="#">3</a></li>
+							<li><a href="#">&raquo;</a></li>
+						</ul>
+					</div>
+				</div>
+			</div>
+		</div>
 
         <!-- Create Client Modal -->
         <div class="modal fade" id="modal-create-client" tabindex="-1" role="dialog">
@@ -221,6 +224,8 @@
          */
         data() {
             return {
+				loading_clients: true,
+
                 clients: [],
 
                 createForm: {
@@ -271,10 +276,14 @@
              * Get all of the OAuth clients for the user.
              */
             getClients() {
+				this.loading_clients = true;
                 oauthAxios.get('/oauth/clients')
                         .then(response => {
                             this.clients = response.data;
-                        });
+							this.loading_tokens = false;
+                        }).catch(error => {
+							this.$root.axiosError(error);
+						});
             },
 
             /**
@@ -335,7 +344,7 @@
                         if (typeof error.response.data === 'object') {
                             form.errors = _.flatten(_.toArray(error.response.data));
                         } else {
-                            form.errors = ['Something went wrong. Please try again.'];
+							this.$root.axiosError(error);
                         }
                     });
             },
@@ -345,9 +354,11 @@
              */
             destroy(client) {
                 oauthAxios.delete('/oauth/clients/' + client.id)
-                        .then(response => {
-                            this.getClients();
-                        });
+					.then(response => {
+						this.getClients();
+					}).catch(error => {
+						this.$root.axiosError(error);
+					});
             }
         }
     }

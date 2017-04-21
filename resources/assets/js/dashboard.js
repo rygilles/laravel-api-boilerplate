@@ -15,7 +15,6 @@ require('./bootstrap');
 /**
  * OAuth Axios for token requesting
  */
-
 window.oauthAxios = window.axios.create({
     withCredentials : true,
     headers : {
@@ -27,7 +26,6 @@ window.oauthAxios = window.axios.create({
 /**
  * Api Axios
  */
-
 window.apiAxios = window.axios.create({
     baseURL : 'http://emsearch.ryan.ems-dev.net/api',
     withCredentials : true,
@@ -49,6 +47,13 @@ window.apiAxios = window.axios.create({
 //     broadcaster: 'pusher',
 //     key: 'your-pusher-key'
 // });
+
+
+/**
+ * Gravatar for users
+ */
+import Gravatar from 'vue-gravatar';
+Vue.component('v-gravatar', Gravatar);
 
 /**
  * Vue i18n

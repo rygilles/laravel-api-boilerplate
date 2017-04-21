@@ -1,57 +1,76 @@
-<style scoped>
-    .action-link {
-        cursor: pointer;
-    }
-
-    .m-b-none {
-        margin-bottom: 0;
-    }
-</style>
-
 <template>
-    <div>
-        <div v-if="tokens.length > 0">
-            <div class="panel panel-default">
-                <div class="panel-heading">{{ $t('auth.authorized_applications.title') }}</div>
+	<div>
+		<div class="row" v-if="tokens.length > 0">
+			<div class="col-xs-12">
+				<div class="box">
+					<div class="box-header with-border">
+						<h3 class="box-title">{{ $t('auth.authorized_applications.title') }}</h3>
+					</div>
+					<div class="overlay" v-if="loading_tokens">
+						<i class="fa fa-refresh fa-spin"></i>
+					</div>
+					<div class="box-body" v-if="!loading_tokens">
+						<div class="dataTables_wrapper form-inline dt-bootstrap">
+							<div class="row">
+								<div class="col-sm-6">
+									<div class="dataTables_length">
 
-                <div class="panel-body">
-                    <!-- Authorized Tokens -->
-                    <table class="table table-borderless m-b-none">
-                        <thead>
-                            <tr>
-                                <th>{{ $t('auth.authorized_applications.name') }}</th>
-                                <th>{{ $t('auth.authorized_applications.scopes') }}</th>
-                                <th></th>
-                            </tr>
-                        </thead>
+									</div>
+								</div>
+							</div>
 
-                        <tbody>
-                            <tr v-for="token in tokens">
-                                <!-- Client Name -->
-                                <td class="col-md-3" style="vertical-align: middle;">
-                                    {{ token.client.name }}
-                                </td>
+							<div class="row">
+								<div class="col-sm-12 table-responsive">
+									<table aria-describedby="example1_info" role="grid" class="table table-bordered table-striped dataTable">
+										<thead>
+										<tr role="row">
+											<th>{{ $t('auth.authorized_applications.name') }}</th>
+											<th>{{ $t('auth.authorized_applications.scopes') }}</th>
+											<th></th>
+										</tr>
+										</thead>
+										<tbody>
 
-                                <!-- Scopes -->
-                                <td class="col-md-4 text-center" style="vertical-align: middle;">
-                                    <span v-if="token.scopes.length > 0">
-                                        {{ token.scopes.join(', ') }}
-                                    </span>
-                                </td>
+										<tr v-for="token in tokens">
+											<!-- Client Name -->
+											<td class="col-md-3" style="vertical-align: middle;">
+												{{ token.client.name }}
+											</td>
 
-                                <!-- Revoke Button -->
-                                <td class="col-md-1 text-right" style="vertical-align: middle;">
-                                    <a class="action-link text-danger" @click="revoke(token)">
-                                        {{ $t('auth.authorized_applications.revoke') }}
-                                    </a>
-                                </td>
-                            </tr>
-                        </tbody>
-                    </table>
-                </div>
-            </div>
-        </div>
-    </div>
+											<!-- Scopes -->
+											<td class="col-md-4 text-center" style="vertical-align: middle;">
+												<span v-if="token.scopes.length > 0">
+													{{ token.scopes.join(', ') }}
+												</span>
+											</td>
+
+											<!-- Revoke Button -->
+											<td class="col-md-1 text-right" style="vertical-align: middle;">
+												<a class="action-link btn btn-danger" @click="revoke(token)">
+													{{ $t('auth.authorized_applications.revoke') }}
+												</a>
+											</td>
+										</tr>
+
+										</tbody>
+									</table>
+								</div>
+							</div>
+						</div>
+					</div>
+					<div class="box-footer clearfix">
+						<ul class="pagination pagination-sm no-margin pull-right">
+							<li><a href="#">&laquo;</a></li>
+							<li><a href="#">1</a></li>
+							<li><a href="#">2</a></li>
+							<li><a href="#">3</a></li>
+							<li><a href="#">&raquo;</a></li>
+						</ul>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
 </template>
 
 <script>
@@ -61,7 +80,8 @@
          */
         data() {
             return {
-                tokens: []
+                tokens: [],
+				loading_tokens: true,
             };
         },
 
@@ -91,10 +111,14 @@
              * Get all of the authorized tokens for the user.
              */
             getTokens() {
+				this.loading_tokens = true;
                 oauthAxios.get('/oauth/tokens')
-                        .then(response => {
-                            this.tokens = response.data;
-                        });
+					.then(response => {
+						this.tokens = response.data;
+						this.loading_tokens = false;
+					}).catch(error => {
+						this.$root.axiosError(error);
+					});
             },
 
             /**
@@ -102,9 +126,11 @@
              */
             revoke(token) {
                 oauthAxios.delete('/oauth/tokens/' + token.id)
-                        .then(response => {
-                            this.getTokens();
-                        });
+					.then(response => {
+						this.getTokens();
+					}).catch(error => {
+						this.$root.axiosError(error);
+					});
             }
         }
     }

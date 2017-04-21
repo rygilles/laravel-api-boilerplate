@@ -14,6 +14,7 @@ var langs = ['en' , 'fr'];
  */
 var files = [
     'common',
+    'routes',
     'auth',
     'api',
     'topbar',

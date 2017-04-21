@@ -1,6 +1,7 @@
 export default [
     {
         path : '/home',
+        name : 'home',
         component : require('./components/dashboard/home.vue'),
         alias : '/'
     },

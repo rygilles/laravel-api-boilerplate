@@ -48,7 +48,7 @@ export default {
 
     'oauth_create_client_modal': {
         'title': 'Créer un client',
-        'error': '<strong>Oops!</strong> Une erreur est survenue!',
+        'error': 'Oops! Une erreur est survenue!',
         'name': 'Nom',
         'name_help': 'Quelque chose de confiance que vos utilisateurs reconnaîtrons.',
         'redirect_url': 'URL de redirection',
@@ -59,7 +59,7 @@ export default {
 
     'oauth_edit_client_modal': {
         'title': 'Edit Client',
-        'error': '<strong>Oops!</strong> Une erreur est survenue!',
+        'error': 'Oops! Une erreur est survenue!',
         'name': 'Nom',
         'name_help': 'Quelque chose de confiance que vos utilisateurs reconnaîtrons.',
         'redirect_url': 'URL de redirection',
@@ -85,6 +85,7 @@ export default {
 
     'personal_access_tokens_create_modal': {
         'title': 'Créer un jeton',
+        'error': 'Oops! Une erreur est survenue!',
         'name': 'Nom',
         'scopes': 'Scopes',
         'close_btn': 'Fermer',
@@ -102,7 +103,7 @@ export default {
     'authorization_request': {
         'authorization': 'Authorisation',
         'authorization_request': 'Requête d\'authorisation',
-        'client_requesting_permission': '<strong>:name</strong> demande l\'autorisation d\'accéder à votre compte.',
+        'client_requesting_permission': ':name demande l\'autorisation d\'accéder à votre compte.',
         'this_application_will_be_able_to': 'Cette application sera capable de :',
         'authorize_btn': 'Autoriser',
         'cancel_btn': 'Annuler'

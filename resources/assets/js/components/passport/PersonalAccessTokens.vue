@@ -1,160 +1,168 @@
-<style scoped>
-    .action-link {
-        cursor: pointer;
-    }
-
-    .m-b-none {
-        margin-bottom: 0;
-    }
-</style>
-
 <template>
-    <div>
-        <div>
-            <div class="panel panel-default">
-                <div class="panel-heading">
-                    <div style="display: flex; justify-content: space-between; align-items: center;">
-                        <span>
-                            {{ $t('auth.personal_access_tokens.title') }}
-                        </span>
-
-                        <a class="action-link" @click="showCreateTokenForm">
+	<div>
+		<div class="row">
+			<div class="col-xs-12">
+				<div class="box">
+					<div class="box-header with-border">
+						<h3 class="box-title">{{ $t('auth.personal_access_tokens.title') }}</h3>
+						<a class="action-link pull-right" @click="showCreateTokenForm">
 							{{ $t('auth.personal_access_tokens.create_new_token') }}
-                        </a>
-                    </div>
-                </div>
+						</a>
+					</div>
+					<div class="overlay" v-if="loading_pat || loading_scopes">
+						<i class="fa fa-refresh fa-spin"></i>
+					</div>
+					<div class="box-body" v-if="!loading_pat && !loading_scopes">
+						<p class="m-b-none" v-if="tokens.length === 0">
+							{{ $t('auth.personal_access_tokens.no_token_yet') }}
+						</p>
+						<div class="dataTables_wrapper form-inline dt-bootstrap" v-if="tokens.length > 0">
+							<div class="row">
+								<div class="col-sm-6">
+									<div class="dataTables_length">
 
-                <div class="panel-body">
-                    <!-- No Tokens Notice -->
-                    <p class="m-b-none" v-if="tokens.length === 0">
-						{{ $t('auth.personal_access_tokens.no_token_yet') }}
-                    </p>
+									</div>
+								</div>
+							</div>
 
-                    <!-- Personal Access Tokens -->
-                    <table class="table table-borderless m-b-none" v-if="tokens.length > 0">
-                        <thead>
-                            <tr>
-                                <th>{{ $t('auth.personal_access_tokens.name') }}</th>
-                                <th></th>
-                            </tr>
-                        </thead>
+							<div class="row">
+								<div class="col-sm-12 table-responsive">
+									<table aria-describedby="example1_info" role="grid" class="table table-bordered table-striped dataTable">
+										<thead>
+										<tr role="row">
+											<th>{{ $t('auth.personal_access_tokens.name') }}</th>
+											<th></th>
+										</tr>
+										</thead>
+										<tbody>
 
-                        <tbody>
-                            <tr v-for="token in tokens">
-                                <!-- Client Name -->
-                                <td style="vertical-align: middle;">
-                                    {{ token.name }}
-                                </td>
+										<tr v-for="token in tokens">
+											<!-- Client Name -->
+											<td style="vertical-align: middle;">
+												{{ token.name }}
+											</td>
 
-                                <!-- Delete Button -->
-                                <td class="col-md-1 text-right"  style="vertical-align: middle;">
-                                    <a class="action-link text-danger" @click="revoke(token)">
-										{{ $t('auth.personal_access_tokens.delete') }}
-                                    </a>
-                                </td>
-                            </tr>
-                        </tbody>
-                    </table>
-                </div>
-            </div>
-        </div>
+											<!-- Delete Button -->
+											<td class="col-md-2 text-right"  style="vertical-align: middle;">
+												<a class="btn btn-danger action-link" @click="revoke(token)">
+													{{ $t('auth.personal_access_tokens.delete') }}
+												</a>
+											</td>
+										</tr>
+										</tbody>
+									</table>
+								</div>
+							</div>
+						</div>
+					</div>
+					<div class="box-footer clearfix">
+						<ul class="pagination pagination-sm no-margin pull-right">
+							<li><a href="#">&laquo;</a></li>
+							<li><a href="#">1</a></li>
+							<li><a href="#">2</a></li>
+							<li><a href="#">3</a></li>
+							<li><a href="#">&raquo;</a></li>
+						</ul>
+					</div>
+				</div>
+			</div>
+		</div>
+		<!-- Create Token Modal -->
+		<div class="modal fade" id="modal-create-token" tabindex="-1" role="dialog">
+			<div class="modal-dialog">
+				<div class="modal-content">
+					<div class="modal-header">
+						<button type="button " class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
 
-        <!-- Create Token Modal -->
-        <div class="modal fade" id="modal-create-token" tabindex="-1" role="dialog">
-            <div class="modal-dialog">
-                <div class="modal-content">
-                    <div class="modal-header">
-                        <button type="button " class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+						<h4 class="modal-title">
+							{{ $t('auth.personal_access_tokens_create_modal.title') }}
+						</h4>
+					</div>
 
-                        <h4 class="modal-title">
-                            {{ $t('auth.personal_access_tokens_create_modal.title') }}
-                        </h4>
-                    </div>
+					<div class="modal-body">
+						<!-- Form Errors -->
+						<div class="alert alert-danger" v-if="form.errors.length > 0">
+							<p>{{ $t('auth.personal_access_tokens_create_modal.error') }}</p>
+							<br>
+							<ul>
+								<li v-for="error in form.errors">
+									{{ error }}
+								</li>
+							</ul>
+						</div>
 
-                    <div class="modal-body">
-                        <!-- Form Errors -->
-                        <div class="alert alert-danger" v-if="form.errors.length > 0">
-                            <p><strong>Whoops!</strong> Something went wrong!</p>
-                            <br>
-                            <ul>
-                                <li v-for="error in form.errors">
-                                    {{ error }}
-                                </li>
-                            </ul>
-                        </div>
+						<!-- Create Token Form -->
+						<form class="form-horizontal" role="form" @submit.prevent="store">
+							<!-- Name -->
+							<div class="form-group">
+								<label class="col-md-4 control-label">{{ $t('auth.personal_access_tokens_create_modal.name') }}</label>
 
-                        <!-- Create Token Form -->
-                        <form class="form-horizontal" role="form" @submit.prevent="store">
-                            <!-- Name -->
-                            <div class="form-group">
-                                <label class="col-md-4 control-label">{{ $t('auth.personal_access_tokens_create_modal.name') }}</label>
+								<div class="col-md-6">
+									<input id="create-token-name" type="text" class="form-control" name="name" v-model="form.name">
+								</div>
+							</div>
 
-                                <div class="col-md-6">
-                                    <input id="create-token-name" type="text" class="form-control" name="name" v-model="form.name">
-                                </div>
-                            </div>
+							<!-- Scopes -->
+							<div class="form-group" v-if="scopes.length > 0">
+								<label class="col-md-4 control-label">{{ $t('auth.personal_access_tokens_create_modal.scopes') }}</label>
 
-                            <!-- Scopes -->
-                            <div class="form-group" v-if="scopes.length > 0">
-                                <label class="col-md-4 control-label">{{ $t('auth.personal_access_tokens_create_modal.scopes') }}</label>
+								<div class="col-md-6">
+									<div v-for="scope in scopes">
+										<div class="checkbox">
+											<label>
+												<input type="checkbox"
+													@click="toggleScope(scope.id)"
+													:checked="scopeIsAssigned(scope.id)">
 
-                                <div class="col-md-6">
-                                    <div v-for="scope in scopes">
-                                        <div class="checkbox">
-                                            <label>
-                                                <input type="checkbox"
-                                                    @click="toggleScope(scope.id)"
-                                                    :checked="scopeIsAssigned(scope.id)">
+													{{ scope.id }}
+											</label>
+										</div>
+									</div>
+								</div>
+							</div>
+						</form>
+					</div>
 
-                                                    {{ scope.id }}
-                                            </label>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </form>
-                    </div>
+					<!-- Modal Actions -->
+					<div class="modal-footer">
+						<button type="button" class="btn btn-default" data-dismiss="modal">{{ $t('auth.personal_access_tokens_create_modal.close_btn') }}</button>
 
-                    <!-- Modal Actions -->
-                    <div class="modal-footer">
-                        <button type="button" class="btn btn-default" data-dismiss="modal">{{ $t('auth.personal_access_tokens_create_modal.close_btn') }}</button>
+						<button type="button" class="btn btn-primary" @click="store">
+							{{ $t('auth.personal_access_tokens_create_modal.create_btn') }}
+						</button>
+					</div>
+				</div>
+			</div>
+		</div>
 
-                        <button type="button" class="btn btn-primary" @click="store">
-                            {{ $t('auth.personal_access_tokens_create_modal.create_btn') }}
-                        </button>
-                    </div>
-                </div>
-            </div>
-        </div>
+		<!-- Access Token Modal -->
+		<div class="modal fade" id="modal-access-token" tabindex="-1" role="dialog">
+			<div class="modal-dialog">
+				<div class="modal-content">
+					<div class="modal-header">
+						<button type="button " class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
 
-        <!-- Access Token Modal -->
-        <div class="modal fade" id="modal-access-token" tabindex="-1" role="dialog">
-            <div class="modal-dialog">
-                <div class="modal-content">
-                    <div class="modal-header">
-                        <button type="button " class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+						<h4 class="modal-title">
+							{{ $t('auth.personal_access_tokens_access_modal.title') }}
+						</h4>
+					</div>
 
-                        <h4 class="modal-title">
-                            {{ $t('auth.personal_access_tokens_access_modal.title') }}
-                        </h4>
-                    </div>
+					<div class="modal-body">
+						<p>
+							{{ $t('auth.personal_access_tokens_access_modal.description') }}
+						</p>
 
-                    <div class="modal-body">
-                        <p>
-                            {{ $t('auth.personal_access_tokens_access_modal.description') }}
-                        </p>
+						<pre><code>{{ accessToken }}</code></pre>
+					</div>
 
-                        <pre><code>{{ accessToken }}</code></pre>
-                    </div>
-
-                    <!-- Modal Actions -->
-                    <div class="modal-footer">
-                        <button type="button" class="btn btn-default" data-dismiss="modal">{{ $t('auth.personal_access_tokens_access_modal.close_btn') }}</button>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
+					<!-- Modal Actions -->
+					<div class="modal-footer">
+						<button type="button" class="btn btn-default" data-dismiss="modal">{{ $t('auth.personal_access_tokens_access_modal.close_btn') }}</button>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
 </template>
 
 <script>
@@ -164,6 +172,9 @@
          */
         data() {
             return {
+				loading_pat: true,
+				loading_scopes: true,
+
                 accessToken: null,
 
                 tokens: [],
@@ -208,20 +219,28 @@
              * Get all of the personal access tokens for the user.
              */
             getTokens() {
+				this.loading_pat = true;
                 oauthAxios.get('/oauth/personal-access-tokens')
-                        .then(response => {
-                            this.tokens = response.data;
-                        });
+					.then(response => {
+						this.tokens = response.data;
+						this.loading_pat = false;
+					}).catch(error => {
+						this.$root.axiosError(error);
+					});
             },
 
             /**
              * Get all of the available scopes.
              */
             getScopes() {
+				this.loading_scopes = true;
                 oauthAxios.get('/oauth/scopes')
-                        .then(response => {
-                            this.scopes = response.data;
-                        });
+					.then(response => {
+						this.scopes = response.data;
+						this.loading_scopes = false;
+					}).catch(error => {
+						this.$root.axiosError(error);
+					});
             },
 
             /**
@@ -240,22 +259,22 @@
                 this.form.errors = [];
 
                 oauthAxios.post('/oauth/personal-access-tokens', this.form)
-                        .then(response => {
-                            this.form.name = '';
-                            this.form.scopes = [];
-                            this.form.errors = [];
+					.then(response => {
+						this.form.name = '';
+						this.form.scopes = [];
+						this.form.errors = [];
 
-                            this.tokens.push(response.data.token);
+						this.tokens.push(response.data.token);
 
-                            this.showAccessToken(response.data.accessToken);
-                        })
-                        .catch(error => {
-                            if (typeof error.response.data === 'object') {
-                                this.form.errors = _.flatten(_.toArray(error.response.data));
-                            } else {
-                                this.form.errors = ['Something went wrong. Please try again.'];
-                            }
-                        });
+						this.showAccessToken(response.data.accessToken);
+					})
+					.catch(error => {
+						if (typeof error.response.data === 'object') {
+							this.form.errors = _.flatten(_.toArray(error.response.data));
+						} else {
+							this.$root.axiosError(error);
+						}
+					});
             },
 
             /**
@@ -292,9 +311,11 @@
              */
             revoke(token) {
                 oauthAxios.delete('/oauth/personal-access-tokens/' + token.id)
-                        .then(response => {
-                            this.getTokens();
-                        });
+					.then(response => {
+						this.getTokens();
+					}).catch(error => {
+						this.$root.axiosError(error);
+					});
             }
         }
     }

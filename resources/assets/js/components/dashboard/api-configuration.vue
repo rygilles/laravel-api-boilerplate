@@ -1,10 +1,21 @@
+<style>
+	.action-link {
+		cursor: pointer;
+	}
+
+	.m-b-none {
+		margin-bottom: 0;
+	}
+</style>
+
 <template>
-	<div>
+	<!-- Main content -->
+	<section class="content">
 		<passport-clients></passport-clients>
 		<passport-authorized-clients></passport-authorized-clients>
 		<passport-personal-access-tokens></passport-personal-access-tokens>
 		<api-documentation></api-documentation>
-	</div>
+	</section>
 </template>
 
 <script>

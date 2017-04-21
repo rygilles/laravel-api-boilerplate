@@ -9,121 +9,165 @@
 </style>
 
 <template>
-	<div v-if="$root.fetched">
-		<div>
-			<div class="panel panel-default">
-				<div class="panel-heading">
-					<div style="display: flex; justify-content: space-between; align-items: center;">
-						<span>
-							{{ $t('projects.owner_projects') }}
-						</span>
-
-						<a class="action-link">
+	<!-- Main content -->
+	<section class="content">
+		<div class="row">
+			<div class="col-xs-12">
+				<div class="box">
+					<div class="box-header with-border">
+						<h3 class="box-title">{{ $t('projects.owner_projects') }}</h3>
+						<a class="action-link pull-right">
 							{{ $t('projects.create_new_project') }}
 						</a>
 					</div>
-				</div>
+					<div class="overlay" v-if="loading_owner_projects">
+						<i class="fa fa-refresh fa-spin"></i>
+					</div>
+					<div class="box-body" v-if="!loading_owner_projects">
+						<p class="m-b-none" v-if="(owner_projects.length + admin_projects.length) === 0">
+							{{ $t('projects.no_project_yet') }}
+						</p>
+						<div class="dataTables_wrapper form-inline dt-bootstrap" v-if="owner_projects.length > 0">
+							<div class="row">
+								<div class="col-sm-6">
+									<div class="dataTables_length">
 
-				<div class="panel-body">
+									</div>
+								</div>
+							</div>
 
-					<p class="m-b-none" v-if="(owner_projects.length + admin_projects.length) === 0">
-						{{ $t('projects.no_project_yet') }}
-					</p>
+							<div class="row">
+								<div class="col-sm-12 table-responsive">
+									<table aria-describedby="example1_info" role="grid" class="table table-bordered table-striped dataTable">
+										<thead>
+										<tr role="row">
+											<th>{{ $t('projects.project_name') }}</th>
+											<th>{{ $t('common.created_at') }}</th>
+											<th>{{ $t('common.updated_at') }}</th>
+											<th></th>
+										</tr>
+										</thead>
+										<tbody>
 
-					<table class="table table-borderless m-b-none table-condensed" v-if="owner_projects.length > 0">
-						<thead>
-						<tr>
-							<th>{{ $t('projects.project_name') }}</th>
-							<th>{{ $t('common.created_at') }}</th>
-							<th>{{ $t('common.updated_at') }}</th>
-							<th></th>
-							<th></th>
-						</tr>
-						</thead>
+										<tr v-for="project in owner_projects" role="row">
+											<!-- Name -->
+											<td class="col-md-2" style="vertical-align: middle;">
+												<router-link :to="{ name: 'user-project', params: { projectId: project.id }}">{{ project.name }}</router-link>
+											</td>
 
-						<tbody>
-						<tr v-for="project in owner_projects">
-							<!-- Name -->
-							<td class="col-md-2" style="vertical-align: middle;">
-								<router-link :to="{ name: 'user-project', params: { projectId: project.id }}">{{ project.name }}</router-link>
-							</td>
+											<!-- Created At -->
+											<td class="col-md-2" style="vertical-align: middle;">
+												{{ momentLocalDate(project.created_at) }}
+											</td>
 
-							<!-- Created At -->
-							<td class="col-md-2" style="vertical-align: middle;">
-								{{ momentLocalDate(project.created_at) }}
-							</td>
+											<!-- Updated At -->
+											<td class="col-md-2" style="vertical-align: middle;">
+												{{ momentLocalDate(project.updated_at) }}
+											</td>
 
-							<!-- Updated At -->
-							<td class="col-md-2" style="vertical-align: middle;">
-								{{ momentLocalDate(project.updated_at) }}
-							</td>
-
-							<!-- Edit Button -->
-							<td class="col-md-1 text-right" style="vertical-align: middle;">
-								<a class="action-link">
-									{{ $t('projects.edit_btn') }}
-								</a>
-							</td>
-
-							<!-- Delete Button -->
-							<td class="col-md-1 text-right"  style="vertical-align: middle;">
-								<a class="action-link text-danger">
-									{{ $t('projects.delete_btn') }}
-								</a>
-							</td>
-						</tr>
-
-						</tbody>
-					</table>
-				</div>
-			</div>
-		</div>
-		<div v-if="(admin_projects.length) > 0">
-			<div class="panel panel-default">
-				<div class="panel-heading">
-					<div style="display: flex; justify-content: space-between; align-items: center;">
-						<span>
-							{{ $t('projects.admin_projects') }}
-						</span>
+											<!-- Buttons -->
+											<td class="col-md-1 text-right" style="vertical-align: middle;">
+												<a class="btn btn-default">
+													{{ $t('projects.edit_btn') }}
+												</a>
+												<a class="btn btn-danger">
+													{{ $t('projects.delete_btn') }}
+												</a>
+											</td>
+										</tr>
+										</tbody>
+									</table>
+								</div>
+							</div>
+						</div>
+					</div>
+					<div class="box-footer clearfix">
+						<ul class="pagination pagination-sm no-margin pull-right">
+							<li><a href="#">&laquo;</a></li>
+							<li><a href="#">1</a></li>
+							<li><a href="#">2</a></li>
+							<li><a href="#">3</a></li>
+							<li><a href="#">&raquo;</a></li>
+						</ul>
 					</div>
 				</div>
+			</div>
+		</div>
+		<div class="row" v-if="(admin_projects.length) > 0">
+			<div class="col-xs-12">
+				<div class="box">
+					<div class="box-header with-border">
+						<h3 class="box-title">{{ $t('projects.admin_projects') }}</h3>
+					</div>
+					<div class="overlay" v-if="loading_admin_projects">
+						<i class="fa fa-refresh fa-spin"></i>
+					</div>
+					<div class="box-body" v-if="!loading_admin_projects">>
+						<p class="m-b-none" v-if="(owner_projects.length + admin_projects.length) === 0">
+							{{ $t('projects.no_project_yet') }}
+						</p>
+						<div class="dataTables_wrapper form-inline dt-bootstrap" v-if="owner_projects.length > 0">
+							<div class="row">
+								<div class="col-sm-6">
+									<div class="dataTables_length">
 
-				<div class="panel-body">
+									</div>
+								</div>
+							</div>
 
-					<table class="table table-borderless m-b-none table-condensed">
-						<thead>
-						<tr>
-							<th>{{ $t('projects.project_name') }}</th>
-							<th>{{ $t('common.created_at') }}</th>
-							<th>{{ $t('common.updated_at') }}</th>
-						</tr>
-						</thead>
+							<div class="row">
+								<div class="col-sm-12 table-responsive">
+									<table aria-describedby="example1_info" role="grid" class="table table-bordered table-striped dataTable">
+										<thead>
+										<tr role="row">
+											<th>{{ $t('projects.project_name') }}</th>
+											<th>{{ $t('common.created_at') }}</th>
+											<th>{{ $t('common.updated_at') }}</th>
+											<th></th>
+										</tr>
+										</thead>
+										<tbody>
 
-						<tbody>
-						<tr v-for="project in admin_projects">
-							<!-- Name -->
-							<td class="col-md-2" style="vertical-align: middle;">
-								{{ project.name }}
-							</td>
+										<tr v-for="project in admin_projects" role="row">
+											<!-- Name -->
+											<td class="col-md-2" style="vertical-align: middle;">
+												<router-link :to="{ name: 'user-project', params: { projectId: project.id }}">{{ project.name }}</router-link>
+											</td>
 
-							<!-- Created At -->
-							<td class="col-md-2" style="vertical-align: middle;">
-								{{ momentLocalDate(project.created_at) }}
-							</td>
+											<!-- Created At -->
+											<td class="col-md-2" style="vertical-align: middle;">
+												{{ momentLocalDate(project.created_at) }}
+											</td>
 
-							<!-- Updated At -->
-							<td class="col-md-2" style="vertical-align: middle;">
-								{{ momentLocalDate(project.updated_at) }}
-							</td>
+											<!-- Updated At -->
+											<td class="col-md-2" style="vertical-align: middle;">
+												{{ momentLocalDate(project.updated_at) }}
+											</td>
 
-						</tr>
+											<!-- Buttons -->
+											<td class="col-md-1 text-right" style="vertical-align: middle;">
 
-						</tbody>
-					</table>
+											</td>
+										</tr>
+										</tbody>
+									</table>
+								</div>
+							</div>
+						</div>
+					</div>
+					<div class="box-footer clearfix">
+						<ul class="pagination pagination-sm no-margin pull-right">
+							<li><a href="#">&laquo;</a></li>
+							<li><a href="#">1</a></li>
+							<li><a href="#">2</a></li>
+							<li><a href="#">3</a></li>
+							<li><a href="#">&raquo;</a></li>
+						</ul>
+					</div>
 				</div>
 			</div>
 		</div>
-	</div>
+	</section>
 </template>
 
 <script>
@@ -134,7 +178,9 @@
 		data() {
 			return {
 				owner_projects : [],
-				admin_projects: []
+				admin_projects: [],
+				loading_owner_projects: true,
+				loading_admin_projects: true,
 			};
 		},
 
@@ -157,8 +203,6 @@
 
 		methods: {
 			fetchData() {
-				this.$root.resetLoading();
-
 				this.owner_projects = [];
 				this.admin_projects = [];
 
@@ -170,26 +214,29 @@
 			 */
 			getUserProjects() {
 				this.getUserOwnerProjects();
+				this.getUserAdminProjects();
 			},
 
 			getUserOwnerProjects() {
-				apiAxios.get('/user/' + this.$root.me.id + '/project?user_role_id=Owner')
-						.then(response => {
-					this.owner_projects = response.data.data;
-				this.getUserAdminProjects();
-			}).catch(error => {
-					this.$root.axiosError(error);
-			}
-			);
+				this.loading_owner_projects = true;
+				apiAxios.get('/me/project?user_role_id=Owner')
+					.then(response => {
+						this.owner_projects = response.data.data;
+						this.loading_owner_projects = false;
+					}).catch(error => {
+						this.$root.axiosError(error);
+					});
 			},
 
 			getUserAdminProjects() {
-				apiAxios.get('/user/' + this.$root.me.id + '/project?user_role_id=Administrator')
-						.then(response => {
-					this.admin_projects = response.data.data;
-
-				this.$root.loadingComplete();
-			});
+				this.loading_admin_projects = true;
+				apiAxios.get('/me/project?user_role_id=Administrator')
+					.then(response => {
+						this.admin_projects = response.data.data;
+						this.loading_admin_projects = false;
+					}).catch(error => {
+						this.$root.axiosError(error);
+					});
 			}
 		}
 	}

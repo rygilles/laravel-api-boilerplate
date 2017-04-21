@@ -64,8 +64,6 @@
 
 		methods: {
 			fetchData() {
-				this.$root.resetLoading();
-
 				this.project = null;
 
 				var propsData = this.$options.propsData;
@@ -76,7 +74,6 @@
 				apiAxios.get('/project/' + projectId )
 						.then(response => {
 							console.log(response.data);
-							this.$root.loadingComplete();
 						}).catch(error => {
 							this.$root.axiosError(error);
 						});
