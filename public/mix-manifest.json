@@ -2,5 +2,6 @@
   "/js/dashboard.js": "/js/dashboard.js",
   "/css/app.css": "/css/app.css",
   "/css/dashboard.css": "/css/dashboard.css",
+  "/js/pace.min.js": "/js/pace.min.js",
   "/css/all.css": "/css/all.css"
 }

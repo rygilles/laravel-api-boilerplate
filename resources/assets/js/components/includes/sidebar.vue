@@ -7,14 +7,14 @@
 			<!-- Sidebar user panel (optional) -->
 			<div class="user-panel">
 				<div class="pull-left image">
-					<v-gravatar :email="$root.me.email" default-img="mm" :size="45" />
+					<v-gravatar :email="me.email" default-img="mm" :size="45" />
 				</div>
 				<div class="pull-left info">
 					<div>
-						<p class="white">{{ $root.me.name }}</p>
+						<p class="white">{{ me.name }}</p>
 					</div>
 					<a href="javascript:;">
-						<i class="fa fa-circle text-success"></i> Online
+						<i class="fa fa-circle text-success"></i> {{ $t('sidebar.online') }}
 					</a>
 				</div>
 			</div>
@@ -29,11 +29,11 @@
 						   data-toggle="hideseek" p
 						   laceholder="Search Menus"
 						   data-list=".sidebar-menu">
-          <span class="input-group-btn">
-            <button type="submit" name="search" id="search-btn" class="btn btn-flat">
-				<i class="fa fa-search"></i>
-			</button>
-          </span>
+						<span class="input-group-btn">
+							<button type="submit" name="search" id="search-btn" class="btn btn-flat">
+								<i class="fa fa-search"></i>
+							</button>
+						</span>
 				</div>
 			</form>
 			<!-- /.search form -->
@@ -50,8 +50,8 @@
 
 	export default {
 		name: 'Sidebar',
-		props: ['displayName', 'pictureUrl'],
-		components: { SidebarMenu }
+		props: ['me'],
+		components: { SidebarMenu },
 	}
 </script>
 <style>

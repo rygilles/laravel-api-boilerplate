@@ -17,8 +17,14 @@
     <!-- Scripts -->
     <script src="/js/pace.min.js"></script>
     <script>
+        window.Pace.options.ajax.trackWebSockets = false;
         window.Laravel = {!! json_encode([
             'csrfToken' => csrf_token(),
+            'pusher' => [
+                'appKey' => config('broadcasting.connections.pusher.key'),
+                'cluster' => config('broadcasting.connections.pusher.options.cluster'),
+                'encrypted' => config('broadcasting.connections.pusher.options.encrypted'),
+            ],
             'apiDocBaseUrl' => config('app.url') . '/docs',
             'apiDocVersionUri' => 'v1',
         ]) !!};
@@ -34,6 +40,11 @@
 <body class="skin-blue sidebar-mini">
 
     <div id="dashboard"></div>
+    <audio id="noty_audio">
+        <source src="{{ asset('audio/notify.mp3') }}">
+        <source src="{{ asset('audio/notify.ogg') }}">
+        <source src="{{ asset('audio/notify.wav') }}">
+    </audio>
     <script src="{{ mix('/js/dashboard.js') }}"></script>
 
 </body>

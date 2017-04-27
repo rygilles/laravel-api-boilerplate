@@ -8,7 +8,8 @@ export default [
     {
         path : '/api-configuration',
         name : 'api-configuration',
-        component : require('./components/dashboard/api-configuration.vue')
+        component : require('./components/dashboard/api-configuration.vue'),
+        props : true
     },
     {
         path : '/user-projects',

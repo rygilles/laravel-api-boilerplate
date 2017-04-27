@@ -3,6 +3,7 @@
 namespace App\Models;
 
 use Alsofronie\Uuid\UuidModelTrait;
+use App\Models\Project;
 
 /**
  * Class DataStream
@@ -77,6 +78,6 @@ class DataStream extends ApiModel
 	 */
 	public function project()
 	{
-		return $this->hasOne('App\Models\Project');
+		return $this->hasOne(Project::class);
 	}
 }

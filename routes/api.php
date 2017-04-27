@@ -31,6 +31,23 @@ $api->version('v1', ['middleware' => ['cors', 'auth:api']], function (Router $ap
 		'App\Http\Controllers\Api\MeProjectController@index'
 	)->name('meProject.index');
 
+	// Me Notification
+
+	$api->get(
+		'me/notification',
+		'App\Http\Controllers\Api\MeNotificationController@index'
+	)->name('meNotification.index');
+
+	$api->post(
+		'me/notification/{notificationId}/read',
+		'App\Http\Controllers\Api\MeNotificationController@updateRead'
+	)->name('meNotification.updateRead');
+
+	$api->post(
+		'me/notification/{notificationId}/unread',
+		'App\Http\Controllers\Api\MeNotificationController@updateUnread'
+	)->name('meNotification.updateUnread');
+
 	// User
 
 	$api->get(

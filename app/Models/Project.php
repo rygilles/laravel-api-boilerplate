@@ -3,6 +3,11 @@
 namespace App\Models;
 
 use Alsofronie\Uuid\UuidModelTrait;
+use App\Models\DataStream;
+use App\Models\SyncItem;
+use App\Models\SyncTask;
+use App\Models\User;
+use App\Models\UserHasProject;
 use Illuminate\Support\Facades\Auth;
 
 /**
@@ -88,17 +93,21 @@ class Project extends ApiModel
 	 */
 	public function hasUserProjects()
 	{
-		return $this->hasMany('App\Models\UserHasProject');
+		return $this->hasMany(UserHasProject::class);
 	}
 
 	/**
 	 * Get the users of this project using relationship table
 	 *
+	 * @param   string  $user_role_id   Pivot user role id
 	 * @return \Illuminate\Database\Eloquent\Relations\BelongsToMany
 	 */
-	public function users()
+	public function users($user_role_id = null)
 	{
-		return $this->belongsToMany('App\Models\User', 'user_has_project', 'project_id', 'user_id');
+		if (!is_null($user_role_id))
+			return $this->belongsToMany(User::class, 'user_has_project', 'project_id', 'user_id')->wherePivot('user_role_id', $user_role_id);
+		else
+			return $this->belongsToMany(User::class, 'user_has_project', 'project_id', 'user_id');
 	}
 
 	/**
@@ -108,7 +117,7 @@ class Project extends ApiModel
 	 */
 	public function dataStream()
 	{
-		return $this->belongsTo('App\Models\DataStream');
+		return $this->belongsTo(DataStream::class);
 	}
 
 	/**
@@ -118,7 +127,7 @@ class Project extends ApiModel
 	 */
 	public function syncItems()
 	{
-		return $this->HasMany('App\Models\SyncItem');
+		return $this->HasMany(SyncItem::class);
 	}
 
 	/**
@@ -128,7 +137,7 @@ class Project extends ApiModel
 	 */
 	public function syncTasks()
 	{
-		return $this->HasMany('App\Models\SyncTask');
+		return $this->HasMany(SyncTask::class);
 	}
 
 	/**

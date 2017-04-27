@@ -1,6 +1,7 @@
 <?php
 
 namespace App\Models;
+use App\Models\UserHasProject;
 
 /**
  * Class UserRole
@@ -53,6 +54,6 @@ class UserRole extends ApiModel
 	 */
 	public function hasUserProjects()
 	{
-		return $this->hasMany('App\Models\UserHasProject');
+		return $this->hasMany(UserHasProject::class);
 	}
 }

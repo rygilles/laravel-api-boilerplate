@@ -39,5 +39,12 @@ class UserHasProjectTableSeeder extends Seeder
 		    'project_id'    => '1bcc7efc-138c-11e7-93ae-92361f002671',
 		    'user_role_id'  => 'Administrator'
 	    ]);
+
+	    // John Smith -> (Administrator) -> Mickey Mouse Sample Project
+	    UserHasProject::create([
+		    'user_id'       => '605c7610-1389-11e7-93ae-92361f002671',
+		    'project_id'    => 'c4b5d93c-138c-11e7-93ae-92361f002671',
+		    'user_role_id'  => 'Administrator'
+	    ]);
     }
 }

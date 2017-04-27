@@ -1,89 +1,11 @@
 <template>
 	<div id="app">
 		<div class="wrapper">
-			<header class="main-header">
-				<a href="/" class="logo">
-					<!-- mini logo for sidebar -->
-					<span class="logo-mini">
-						<img src="/img/dashboard-mini-logo.png" alt="emsearch" class="img-responsive center-block">
-					</span>
-					<!-- logo for regular state and mobile devices -->
-					<div class="logo-lg">
-						<img src="/img/dashboard-logo.png" alt="emsearch" class="img-responsive">
-					</div>
-				</a>
+			<!-- top bar. contains the logo and the navbar -->
+			<topbar :laravel="laravel" :me="me" />
 
-				<!-- Header Navbar -->
-				<nav class="navbar navbar-static-top" role="navigation">
-					<!-- Sidebar toggle button-->
-					<a href="javascript:;" class="sidebar-toggle" data-toggle="offcanvas" role="button">
-						<span class="sr-only">Toggle navigation</span>
-					</a>
-					<!-- Navbar Right Menu -->
-					<div class="navbar-custom-menu">
-						<ul class="nav navbar-nav">
-							<!-- User Account Menu -->
-							<li class="dropdown user user-menu">
-								<a href="javascript:;" class="dropdown-toggle" data-toggle="dropdown">
-									<!-- The user image in the navbar-->
-									<v-gravatar :email="me.email" default-img="mm" :size="25" class="user-image" alt="User Image" />
-									<!-- hidden-xs hides the username on small devices so only the image appears. -->
-									<span class="hidden-xs">{{ $root.me.name }}</span>
-								</a>
-								<ul class="dropdown-menu">
-									<!-- User image -->
-									<li class="user-header">
-										<v-gravatar :email="me.email" default-img="mm" :size="90" class="img-circle" alt="User Image"></v-gravatar>
-										<p>
-											{{ $root.me.name }}
-											<small>Member since Nov. 2012</small>
-										</p>
-									</li>
-									<!-- Menu Body -->
-									<li class="user-body">
-										<div class="row">
-											<div class="col-xs-4 text-center">
-												<router-link :to="{ name: 'api-configuration' }">
-													<i class="fa fa-fw fa-btn fa-cubes"></i> {{ $t('topbar.user_menu.api') }}
-												</router-link>
-											</div>
-											<div class="col-xs-4 text-center">
-												<a href="#">TODO</a>
-											</div>
-											<div class="col-xs-4 text-center">
-												<a href="#">TODO</a>
-											</div>
-										</div>
-										<!-- /.row -->
-									</li>
-									<!-- Menu Footer-->
-									<li class="user-footer">
-										<div class="pull-left">
-											<a href="#" class="btn btn-default btn-sm">
-												<i class="fa fa-fw fa-btn fa-cog"></i> {{ $t('topbar.user_menu.settings') }}
-											</a>
-										</div>
-										<div class="pull-right">
-											<a href="/logout"
-											   onclick="event.preventDefault();
-											 document.getElementById('logout-form').submit();" class="btn btn-default btn-sm">
-												<i class="fa fa-fw fa-btn fa-sign-out"></i> {{ $t('topbar.user_menu.logout') }}
-											</a>
-
-											<form id="logout-form" action="/logout" method="POST" style="display: none;">
-												<input type="hidden" name="_token" :value="$root.csrfToken">
-											</form>
-										</div>
-									</li>
-								</ul>
-							</li>
-						</ul>
-					</div>
-				</nav>
-			</header>
 			<!-- Left side column. contains the logo and sidebar -->
-			<sidebar :display-name="demo.displayName"
-					 :picture-url="demo.avatar" />
+			<sidebar :me="me" />
 
 			<!-- Content Wrapper. Contains page content -->
 			<div class="content-wrapper">
@@ -103,7 +25,7 @@
 					</ol>
 				</section>
 
-				<router-view></router-view>
+				<router-view :laravel="laravel" :me="me"></router-view>
 			</div>
 			<!-- /.content-wrapper -->
 
@@ -117,65 +39,60 @@
 </template>
 
 <script>
+	import topbar from './components/includes/topbar.vue';
 	import sidebar from './components/includes/sidebar.vue';
 
 	export default {
-		components: { sidebar },
+		components: { topbar, sidebar },
 
-		/**
-		 * The root component's data.
-		 */
-		data() {
-			return {
+		created() {
+			// set laravel data in store
+			this.$store.commit('setLaravel', {
 				csrfToken : window.Laravel.csrfToken,
 				apiDocBaseUrl : window.Laravel.apiDocBaseUrl,
 				apiDocVersionUri : window.Laravel.apiDocVersionUri,
-				ready : false,
-				loading: false,
-				fetched: false,
-				error: null,
-				me : {
-					'id' : '',
-					'email' : '',
-					'name' : '',
-					'user_group_id' : ''
-				}
-			};
-		},
+			});
 
-		/**
-		 * Component created
-		 */
-		created() {
-			// fetch the data when the view is created and the data is
-			// already being observed
 			this.fetchData();
 		},
 
 		computed: {
-			demo() {
-				return {
-					displayName: 'Ryan Gilles',
-					avatar: 'https://s3.amazonaws.com/uifaces/faces/twitter/kianoshp/128.jpg',
-					email: 'demo@demo.com'
-				}
+
+			laravel() {
+				return this.$store.getters.laravel;
 			},
+
+			me() {
+				return this.$store.getters.me;
+			}
+
 		},
 
 		methods: {
 
 			fetchData() {
-				this.getMe();
+				this.loadMe();
+			},
+
+			listenForNotifications() {
+				console.log('Listening on private channel :', 'App.Models.User.' + this.$store.getters.me.id);
+				// listen to notifications events
+				Echo.private('App.Models.User.' + this.$store.getters.me.id)
+					.notification((notification) => {
+						// add 'pushed' property to trigger noty
+						notification.pushed = true;
+						this.$store.commit('addNotification', notification);
+					});
 			},
 
 			/**
-			 * Get current user
+			 * Get current user and store it
 			 */
-			getMe() {
+			loadMe() {
 				apiAxios.get('/me')
-						.then(response => {
-							this.me = response.data.data;
-							this.ready = true;
+						.then((response) => {
+							this.$store.commit('setMe', response.data.data);
+							this.listenForNotifications();
 						}).catch(error => {
 							this.axiosError(error);
 						});

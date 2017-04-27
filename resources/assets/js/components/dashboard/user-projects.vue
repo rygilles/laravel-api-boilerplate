@@ -102,7 +102,7 @@
 					<div class="overlay" v-if="loading_admin_projects">
 						<i class="fa fa-refresh fa-spin"></i>
 					</div>
-					<div class="box-body" v-if="!loading_admin_projects">>
+					<div class="box-body" v-if="!loading_admin_projects">
 						<p class="m-b-none" v-if="(owner_projects.length + admin_projects.length) === 0">
 							{{ $t('projects.no_project_yet') }}
 						</p>

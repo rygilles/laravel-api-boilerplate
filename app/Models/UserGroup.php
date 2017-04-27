@@ -1,6 +1,7 @@
 <?php
 
 namespace App\Models;
+use App\Models\User;
 
 /**
  * Class UserGroup
@@ -53,6 +54,6 @@ class UserGroup extends ApiModel
 	 */
 	public function users()
 	{
-		return $this->HasMany('App\Models\User');
+		return $this->HasMany(User::class);
 	}
 }

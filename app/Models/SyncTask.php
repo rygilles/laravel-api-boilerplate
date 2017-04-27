@@ -2,6 +2,11 @@
 
 namespace App\Models;
 
+use App\Models\Project;
+use App\Models\SyncTaskLog;
+use App\Models\SyncTaskStatus;
+use App\Models\SyncTaskType;
+use App\Models\User;
 use Illuminate\Support\Facades\Auth;
 use Alsofronie\Uuid\UuidModelTrait;
 
@@ -89,7 +94,7 @@ class SyncTask extends ApiModel
 	 */
 	public function parentSyncTask()
 	{
-		return $this->belongsTo('App\Models\SyncTask', 'sync_task_id');
+		return $this->belongsTo(SyncTask::class, 'sync_task_id');
 	}
 
 	/**
@@ -99,7 +104,7 @@ class SyncTask extends ApiModel
 	 */
 	public function childrenSyncTask()
 	{
-		return $this->hasMany('App\Models\SyncTask', 'sync_task_id');
+		return $this->hasMany(SyncTask::class, 'sync_task_id');
 	}
 
 	/**
@@ -109,7 +114,7 @@ class SyncTask extends ApiModel
 	 */
 	public function syncTaskType()
 	{
-		return $this->belongsTo('App\Models\SyncTaskType');
+		return $this->belongsTo(SyncTaskType::class);
 	}
 
 	/**
@@ -119,7 +124,7 @@ class SyncTask extends ApiModel
 	 */
 	public function syncTaskStatus()
 	{
-		return $this->belongsTo('App\Models\SyncTaskStatus');
+		return $this->belongsTo(SyncTaskStatus::class);
 	}
 
 	/**
@@ -129,7 +134,7 @@ class SyncTask extends ApiModel
 	 */
 	public function createdByUser()
 	{
-		return $this->belongsTo('App\Models\User', 'created_by_user_id');
+		return $this->belongsTo(User::class, 'created_by_user_id');
 	}
 
 	/**
@@ -139,7 +144,7 @@ class SyncTask extends ApiModel
 	 */
 	public function project()
 	{
-		return $this->belongsTo('App\Models\Project');
+		return $this->belongsTo(Project::class);
 	}
 
 	/**
@@ -149,7 +154,7 @@ class SyncTask extends ApiModel
 	 */
 	public function syncTaskLogs()
 	{
-		return $this->hasMany('App\Models\SyncTaskLog');
+		return $this->hasMany(SyncTaskLog::class);
 	}
 
 	/**

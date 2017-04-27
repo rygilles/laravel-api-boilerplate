@@ -2,6 +2,9 @@
 
 namespace App\Models;
 
+use App\Models\Project;
+use App\Models\User;
+use App\Models\UserRole;
 use App\Traits\HasCompositeKey;
 
 /**
@@ -88,7 +91,7 @@ class UserHasProject extends ApiModel
 	 */
 	public function user()
 	{
-		return $this->belongsTo('App\Models\User');
+		return $this->belongsTo(User::class);
 	}
 
 	/**
@@ -98,7 +101,7 @@ class UserHasProject extends ApiModel
 	 */
 	public function project()
 	{
-		return $this->belongsTo('App\Models\Project');
+		return $this->belongsTo(Project::class);
 	}
 
 	/**
@@ -108,6 +111,6 @@ class UserHasProject extends ApiModel
 	 */
 	public function userRole()
 	{
-		return $this->belongsTo('App\Models\UserRole');
+		return $this->belongsTo(UserRole::class);
 	}
 }

@@ -7,9 +7,9 @@
 				</div>
 				<div class="box-body">
 					<p class="m-b-none">
-						{{ $t('api.documentation.description', { userGroup : $root.me.user_group_id }) }} :<br />
-						<a v-bind:href="$root.apiDocBaseUrl + '/' + $root.me.user_group_id  + '/' + $root.apiDocVersionUri">
-							{{ $root.apiDocBaseUrl + '/' + $root.me.user_group_id  + '/' + $root.apiDocVersionUri }}
+						{{ $t('api.documentation.description', { userGroup : me.user_group_id }) }} :<br />
+						<a v-bind:href="laravel.apiDocBaseUrl + '/' + me.user_group_id  + '/' + laravel.apiDocVersionUri">
+							{{ laravel.apiDocBaseUrl + '/' + me.user_group_id  + '/' + laravel.apiDocVersionUri }}
 						</a>
 					</p>
 				</div>
@@ -17,3 +17,9 @@
 		</div>
 	</div>
 </template>
+<script>
+	export default {
+		name: 'ApiDocumentation',
+		props : ['laravel', 'me']
+	}
+</script>

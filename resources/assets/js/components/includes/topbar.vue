@@ -1,78 +1,96 @@
 <template>
-	<nav class="navbar navbar-default navbar-static-top">
-		<div class="container">
-			<div class="navbar-header">
-
-				<!-- Collapsed Hamburger -->
-				<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#app-navbar-collapse">
-					<span class="sr-only">Toggle Navigation</span>
-					<span class="icon-bar"></span>
-					<span class="icon-bar"></span>
-					<span class="icon-bar"></span>
-				</button>
-
-				<!-- Branding Image -->
-				<a class="navbar-brand" href="#">
-					<img src="/img/nav-logo.png" style="height: 32px;" alt="emsearch">
-				</a>
+	<header class="main-header">
+		<a href="/" class="logo">
+			<!-- mini logo for sidebar -->
+			<span class="logo-mini">
+				<img src="/img/dashboard-mini-logo.png" alt="emsearch" class="img-responsive center-block">
+			</span>
+			<!-- logo for regular state and mobile devices -->
+			<div class="logo-lg">
+				<img src="/img/dashboard-logo.png" alt="emsearch" class="img-responsive">
 			</div>
+		</a>
 
-			<div class="collapse navbar-collapse" id="app-navbar-collapse">
-				<!-- Left Side Of Navbar -->
+		<!-- Header Navbar -->
+		<nav class="navbar navbar-static-top" role="navigation">
+			<!-- Sidebar toggle button-->
+			<a href="javascript:;" class="sidebar-toggle" data-toggle="offcanvas" role="button">
+				<span class="sr-only">Toggle navigation</span>
+			</a>
+			<!-- Navbar Right Menu -->
+			<div class="navbar-custom-menu">
 				<ul class="nav navbar-nav">
-					<li>
-						<router-link :to="{ name: 'user-projects' }">{{ $t('topbar.projects') }}</router-link>
-					</li>
-				</ul>
-
-				<!-- Right Side Of Navbar -->
-				<ul class="nav navbar-nav navbar-right">
-					<li class="dropdown">
-						<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
-							{{ $root.me.name }}&nbsp;<span class="caret"></span>
+					<!-- User Notifications Menu -->
+					<notifications />
+					<!-- User Account Menu -->
+					<li class="dropdown user user-menu">
+						<a href="javascript:;" class="dropdown-toggle" data-toggle="dropdown">
+							<!-- The user image in the navbar-->
+							<v-gravatar :email="me.email" default-img="mm" :size="25" class="user-image" alt="User Image" />
+							<!-- hidden-xs hides the username on small devices so only the image appears. -->
+							<span class="hidden-xs">{{ me.name }}</span>
 						</a>
-
-						<ul class="dropdown-menu" role="menu">
-							<!-- Settings -->
-							<li class="dropdown-header">{{ $t('topbar.user_menu.settings') }}</li>
-
-							<!-- Your Settings -->
-							<li>
-								<a href="/settings">
-									<i class="fa fa-fw fa-btn fa-cog"></i>{{ $t('topbar.user_menu.your_settings') }}
-								</a>
+						<ul class="dropdown-menu">
+							<!-- User image -->
+							<li class="user-header">
+								<v-gravatar :email="me.email" default-img="mm" :size="90" class="img-circle" alt="User Image"></v-gravatar>
+								<p>
+									{{ me.name }}
+									<small>{{ $t('topbar.user_menu.member_since', { 'date': memberSince }) }}</small>
+								</p>
 							</li>
-
-							<li class="divider"></li>
-
-							<!-- Tools -->
-							<li class="dropdown-header">{{ $t('topbar.user_menu.tools') }}</li>
-
-							<!-- API -->
-							<li>
-								<router-link :to="{ name: 'api-configuration' }">
-									<i class="fa fa-fw fa-btn fa-cubes"></i>{{ $t('topbar.user_menu.api') }}
-								</router-link>
+							<!-- Menu Body -->
+							<li class="user-body">
+								<div class="row">
+									<div class="col-xs-12 text-center">
+										<router-link :to="{ name: 'api-configuration' }">
+											<i class="fa fa-fw fa-btn fa-cubes"></i> {{ $t('topbar.user_menu.api') }}
+										</router-link>
+									</div>
+								</div>
+								<!-- /.row -->
 							</li>
+							<!-- Menu Footer-->
+							<li class="user-footer">
+								<div class="pull-left">
+									<a href="#" class="btn btn-default btn-sm">
+										<i class="fa fa-fw fa-btn fa-cog"></i> {{ $t('topbar.user_menu.settings') }}
+									</a>
+								</div>
+								<div class="pull-right">
+									<a href="/logout"
+									   onclick="event.preventDefault();
+												 document.getElementById('logout-form').submit();" class="btn btn-default btn-sm">
+										<i class="fa fa-fw fa-btn fa-sign-out"></i> {{ $t('topbar.user_menu.logout') }}
+									</a>
 
-							<li class="divider"></li>
-
-							<!-- Logout -->
-							<li>
-								<a href="/logout"
-								   onclick="event.preventDefault();
-											 document.getElementById('logout-form').submit();">
-									<i class="fa fa-fw fa-btn fa-sign-out"></i>{{ $t('topbar.user_menu.logout') }}
-								</a>
-
-								<form id="logout-form" action="/logout" method="POST" style="display: none;">
-									<input type="hidden" name="_token" :value="$root.csrfToken">
-								</form>
+									<form id="logout-form" action="/logout" method="POST" style="display: none;">
+										<input type="hidden" name="_token" :value="laravel.csrfToken">
+									</form>
+								</div>
 							</li>
 						</ul>
 					</li>
 				</ul>
 			</div>
-		</div>
-	</nav>
+		</nav>
+	</header>
 </template>
+<script>
+	import notifications from './notifications.vue';
+
+	export default {
+		props: ['laravel', 'me'],
+		components: {
+			notifications
+		},
+		computed: {
+			memberSince() {
+				return moment
+					.utc(this.me.created_at, 'YYYY-MM-DD H:mm:ss')
+					.local()
+					.format(this.$i18n.messages['en'].topbar.user_menu.member_since_datetime_format);
+			}
+		}
+	}
+</script>

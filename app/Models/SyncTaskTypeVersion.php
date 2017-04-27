@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use App\Models\SyncTaskType;
 use App\Traits\HasCompositeKey;
 
 /**
@@ -88,6 +89,6 @@ class SyncTaskTypeVersion extends ApiModel
 	 */
 	public function syncTaskType()
 	{
-		return $this->belongsTo('App\Models\SyncTaskType');
+		return $this->belongsTo(SyncTaskType::class);
 	}
 }

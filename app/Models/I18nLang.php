@@ -1,6 +1,7 @@
 <?php
 
 namespace App\Models;
+use App\Models\SyncTaskTypeVersion;
 
 /**
  * Class I18nLang
@@ -77,6 +78,6 @@ class I18nLang extends ApiModel
 	 */
 	public function syncTaskTypeVersions()
 	{
-		return $this->HasMany('App\Models\SyncTaskTypeVersion');
+		return $this->HasMany(SyncTaskTypeVersion::class);
 	}
 }

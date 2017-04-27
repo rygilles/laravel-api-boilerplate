@@ -9,9 +9,11 @@ window._ = require('lodash');
 
 window.$ = window.jQuery = require('jquery');
 
-require('bootstrap-less');
-require('admin-lte');
 window.moment = require('moment');
+
+require('moment/locale/fr');
+
+window.Noty = require('noty');
 
 /**
  * Vue is a modern JavaScript library for building interactive web interfaces
@@ -29,15 +31,17 @@ window.Vue = require('vue');
 
 window.axios = require('axios');
 
-/**
- * Echo exposes an expressive API for subscribing to channels and listening
- * for events that are broadcast by Laravel. Echo and event broadcasting
- * allows your team to easily build robust real-time web applications.
- */
+require('bootstrap-less');
 
-// import Echo from "laravel-echo"
+// Admin LTE main javascript
+require('admin-lte');
 
-// window.Echo = new Echo({
-//     broadcaster: 'pusher',
-//     key: 'your-pusher-key'
-// });
+// Admin LTE plugins
+
+// Pace loading shall be externalized of the mixed file !
+//require('admin-lte/plugins/pace/pace');
+require('admin-lte/plugins/daterangepicker/daterangepicker');
+require('admin-lte/plugins/datepicker/bootstrap-datepicker');
+require('admin-lte/plugins/datepicker/locales/bootstrap-datepicker.fr');
+require('admin-lte/plugins/slimScroll/jquery.slimscroll');
+require('admin-lte/plugins/fastclick/fastclick');

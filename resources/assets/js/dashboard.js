@@ -41,13 +41,21 @@ window.apiAxios = window.axios.create({
  * allows your team to easily build robust real-time web applications.
  */
 
-// import Echo from "laravel-echo"
+import Pusher from 'pusher-js';
+import Echo from "laravel-echo";
 
-// window.Echo = new Echo({
-//     broadcaster: 'pusher',
-//     key: 'your-pusher-key'
-// });
+window.Echo = new Echo({
+    broadcaster: 'pusher',
+    key: window.Laravel.pusher.appKey,
+    cluster: window.Laravel.pusher.cluster,
+    encrypted: window.Laravel.pusher.encrypted,
+});
 
+/**
+ * Vuex Store
+ */
+import store from './store';
+window.store = store;
 
 /**
  * Gravatar for users
@@ -70,6 +78,12 @@ var i18n = new VueI18n({
     locale: Vue.config.lang,
     messages : locales
 })
+
+// Set moment.js locale
+window.moment.locale(Vue.config.lang);
+
+// Set bootstrap-datepicker locale
+$.fn.datepicker.defaults.language = Vue.config.lang;
 
 /**
  * Vue router
@@ -98,7 +112,8 @@ const DashboardVue = Vue.extend(require('./dashboard.vue'));
 
 window.Dashboard = new DashboardVue({
     i18n : i18n,
-    router : DashboardRouter
+    router : DashboardRouter,
+    store : store,
 }).$mount('#dashboard');
 
 /**
@@ -108,3 +123,9 @@ window.Dashboard = new DashboardVue({
 window.Vue.prototype.momentLocalDate = (date) => {
     return moment.utc(date, 'YYYY-MM-DD H:mm:ss').local().format(window.Dashboard.$i18n.messages[window.Dashboard.$i18n.locale].common.datetime_format);
 };
+
+window.Vue.prototype.momentFromNow = (date) => {
+    return moment.utc(date, 'YYYY-MM-DD H:mm:ss').local().fromNow();
+};
+
+$(document).ajaxStart(function() { Pace.restart(); });

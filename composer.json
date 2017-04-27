@@ -15,6 +15,7 @@
         "alsofronie/eloquent-uuid": "^1.0",
         "barryvdh/laravel-cors": "^0.8.6",
         "barryvdh/laravel-debugbar": "^2.3",
+        "bugsnag/bugsnag-laravel": "^2.0",
         "dingo/api": "1.0.*@dev",
         "doctrine/dbal": "^2.5",
         "felixkiss/uniquewith-validator": "^3.0",
@@ -23,6 +24,7 @@
         "laravel/framework": "5.4.*",
         "laravel/passport": "^2.0",
         "laravel/tinker": "~1.0",
+        "pusher/pusher-php-server": "^2.6",
         "rygilles/laravel-apidoc-generator": "@dev"
     },
     "require-dev": {

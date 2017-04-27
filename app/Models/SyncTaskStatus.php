@@ -1,6 +1,9 @@
 <?php
 
 namespace App\Models;
+use App\Models\SyncTask;
+use App\Models\SyncTaskLog;
+use App\Models\SyncTaskStatusVersion;
 
 /**
  * Class SyncTaskStatus
@@ -53,7 +56,7 @@ class SyncTaskStatus extends ApiModel
 	 */
 	public function syncTasks()
 	{
-		return $this->HasMany('App\Models\SyncTask');
+		return $this->HasMany(SyncTask::class);
 	}
 
 	/**
@@ -63,7 +66,7 @@ class SyncTaskStatus extends ApiModel
 	 */
 	public function syncTaskLogs()
 	{
-		return $this->HasMany('App\Models\SyncTaskLog');
+		return $this->HasMany(SyncTaskLog::class);
 	}
 
 	/**
@@ -73,6 +76,6 @@ class SyncTaskStatus extends ApiModel
 	 */
 	public function syncTaskStatusVersions()
 	{
-		return $this->HasMany('App\Models\SyncTaskStatusVersion');
+		return $this->HasMany(SyncTaskStatusVersion::class);
 	}
 }

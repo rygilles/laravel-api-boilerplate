@@ -2,6 +2,8 @@
 
 namespace App\Models;
 use Alsofronie\Uuid\UuidModelTrait;
+use App\Models\SyncTask;
+use App\Models\SyncTaskStatus;
 
 /**
  * Class SyncTaskLog
@@ -84,7 +86,7 @@ class SyncTaskLog extends ApiModel
 	 */
 	public function syncTaskStatus()
 	{
-		return $this->belongsTo('App\Models\SyncTaskStatus');
+		return $this->belongsTo(SyncTaskStatus::class);
 	}
 
 	/**
@@ -94,7 +96,7 @@ class SyncTaskLog extends ApiModel
 	 */
 	public function syncTask()
 	{
-		return $this->belongsTo('App\Models\SyncTask');
+		return $this->belongsTo(SyncTask::class);
 	}
 
 	/**

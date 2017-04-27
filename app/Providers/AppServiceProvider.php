@@ -6,7 +6,9 @@ use App\Models\ApiModel;
 use App\Models\SyncTask;
 use App\Models\SyncTaskStatus;
 use App\Models\SyncTaskType;
+use App\Models\UserHasProject;
 use App\Observers\SyncTaskObserver;
+use App\Observers\UserHasProjectObserver;
 use Illuminate\Support\ServiceProvider;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\Facades\Schema;
@@ -46,6 +48,7 @@ class AppServiceProvider extends ServiceProvider
         // Models observers
 	    User::observe(UserObserver::class);
 	    Project::observe(ProjectObserver::class);
+	    UserHasProject::observe(UserHasProjectObserver::class);
 	    SyncTask::observe(SyncTaskObserver::class);
 	    SyncTaskType::observe(SyncTaskTypeObserver::class);
 	    SyncTaskStatus::observe(SyncTaskStatusObserver::class);
@@ -58,6 +61,8 @@ class AppServiceProvider extends ServiceProvider
      */
     public function register()
     {
-        //
+	    // Bugsnag
+	    $this->app->alias('bugsnag.logger', \Illuminate\Contracts\Logging\Log::class);
+	    $this->app->alias('bugsnag.logger', \Psr\Log\LoggerInterface::class);
     }
 }

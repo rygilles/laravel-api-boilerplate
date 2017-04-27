@@ -3,8 +3,13 @@
 namespace App\Models;
 
 use Alsofronie\Uuid\UuidModelTrait;
+use App\Models\Project;
+use App\Models\SyncTasks;
+use App\Models\UserGroup;
+use App\Models\UserHasProject;
 use Illuminate\Notifications\Notifiable;
 
+use Illuminate\Notifications\RoutesNotifications;
 use Illuminate\Support\Facades\Auth;
 use Laravel\Passport\HasApiTokens;
 use Illuminate\Support\Facades\Hash;
@@ -14,6 +19,7 @@ use Illuminate\Auth\Passwords\CanResetPassword;
 use Illuminate\Contracts\Auth\Authenticatable as AuthenticatableContract;
 use Illuminate\Contracts\Auth\Access\Authorizable as AuthorizableContract;
 use Illuminate\Contracts\Auth\CanResetPassword as CanResetPasswordContract;
+use Illuminate\Broadcasting\PrivateChannel;
 
 use App\Auth\Notifications\ResetPassword as ResetPasswordNotification;
 
@@ -21,7 +27,7 @@ class User extends ApiModel implements AuthenticatableContract,	AuthorizableCont
 {
 	use HasApiTokens;
 	use Authenticatable, Authorizable, CanResetPassword;
-	use Notifiable;
+	use RoutesNotifications;
 	use UuidModelTrait;
 
 	/**
@@ -110,7 +116,7 @@ class User extends ApiModel implements AuthenticatableContract,	AuthorizableCont
 	 */
 	public function hasUserProjects()
 	{
-		return $this->hasMany('App\Models\UserHasProject');
+		return $this->hasMany(UserHasProject::class);
 	}
 
 	/**
@@ -122,20 +128,20 @@ class User extends ApiModel implements AuthenticatableContract,	AuthorizableCont
 	public function projects($user_role_id = null)
 	{
 		if (!is_null($user_role_id))
-			return $this->belongsToMany('App\Models\Project', 'user_has_project', 'user_id', 'project_id')->wherePivot('user_role_id', $user_role_id);
+			return $this->belongsToMany(Project::class, 'user_has_project', 'user_id', 'project_id')->wherePivot('user_role_id', $user_role_id);
 		else
-			return $this->belongsToMany('App\Models\Project', 'user_has_project', 'user_id', 'project_id');
+			return $this->belongsToMany(Project::class, 'user_has_project', 'user_id', 'project_id');
 	}
 
 	/**
 	 * Get the project of this user using relationship table
 	 *
 	 * @param   string  $project_id Project ID
-	 * @return \App\Models\Project
+	 * @return Project
 	 */
 	public function project($project_id)
 	{
-		return $this->belongsToMany('App\Models\Project', 'user_has_project', 'user_id', 'project_id')->wherePivot('project_id', $project_id)->first();
+		return $this->belongsToMany(Project::class, 'user_has_project', 'user_id', 'project_id')->wherePivot('project_id', $project_id)->first();
 	}
 
 	/**
@@ -145,7 +151,7 @@ class User extends ApiModel implements AuthenticatableContract,	AuthorizableCont
 	 */
 	public function userGroup()
 	{
-		return $this->BelongTo('App\Models\UserGroup');
+		return $this->BelongTo(UserGroup::class);
 	}
 
 	/**
@@ -155,6 +161,33 @@ class User extends ApiModel implements AuthenticatableContract,	AuthorizableCont
 	 */
 	public function createdSyncTasks()
 	{
-		return $this->hasMany('App\Models\SyncTasks', 'created_by_user_id');
+		return $this->hasMany(SyncTask::class, 'created_by_user_id');
+	}
+
+	/**
+	 * Get the entity's notifications.
+	 */
+	public function notifications()
+	{
+		return $this->morphMany(Notification::class, 'notifiable')
+			->orderBy('created_at', 'desc');
+	}
+
+	/**
+	 * Get the entity's read notifications.
+	 */
+	public function readNotifications()
+	{
+		return $this->notifications()
+			->whereNotNull('read_at');
+	}
+
+	/**
+	 * Get the entity's unread notifications.
+	 */
+	public function unreadNotifications()
+	{
+		return $this->notifications()
+			->whereNull('read_at');
 	}
 }

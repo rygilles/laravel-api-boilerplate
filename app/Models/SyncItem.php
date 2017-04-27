@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use App\Models\Project;
 use App\Traits\HasCompositeKey;
 
 /**
@@ -94,6 +95,6 @@ class SyncItem extends ApiModel
 	 */
 	public function project()
 	{
-		return $this->belongsTo('App\Models\Project');
+		return $this->belongsTo(Project::class);
 	}
 }

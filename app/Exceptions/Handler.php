@@ -48,7 +48,7 @@ class Handler extends ExceptionHandler
 
         if (config('app.debug') && !($exception instanceof AuthenticationException))
         {
-            //return $this->renderExceptionWithWhoops($exception);
+            return $this->renderExceptionWithWhoops($exception);
         }
 
         return parent::render($request, $exception);

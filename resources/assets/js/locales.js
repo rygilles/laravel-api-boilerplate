@@ -10,6 +10,7 @@ var langs = ['en' , 'fr'];
 
 /**
  * Specify lang subfolders files path here
+ * @fixme dynamic require/loading for all the zone/file instead of using this array
  * @type {string[]}
  */
 var files = [
@@ -17,7 +18,9 @@ var files = [
     'routes',
     'auth',
     'api',
+    'sidebar',
     'topbar',
+    'notifications',
     'home',
     'projects'
 ];

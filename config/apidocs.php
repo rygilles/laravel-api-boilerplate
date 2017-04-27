@@ -30,6 +30,9 @@ return [
 			'actAsUserId' => '41abdec2-1389-11e7-93ae-92361f002671',
 			'bindings' => [
 
+				// Notification filter
+				'read_status' => 'unread',
+
 				// John Smith Sample Project 1
 				'projectId' => '1bcc7efc-138c-11e7-93ae-92361f002671',
 
@@ -75,6 +78,10 @@ return [
 				'me.index',
 
 				'meProject.index',
+
+				'meNotification.index',
+				'meNotification.updateRead',
+				'meNotification.updateUnread',
 
 				'user.index',
 				'user.show',
@@ -182,6 +189,9 @@ return [
 			'actAsUserId' => '41abdec2-1389-11e7-93ae-92361f002671',
 			'bindings' => [
 
+				// Notification filter
+				'read_status' => 'unread',
+
 				// John Smith Sample Project 1
 				'projectId' => '1bcc7efc-138c-11e7-93ae-92361f002671',
 
@@ -227,6 +237,10 @@ return [
 				'me.index',
 
 				'meProject.index',
+
+				'meNotification.index',
+				'meNotification.updateRead',
+				'meNotification.updateUnread',
 
 				'user.index',
 				'user.show',
@@ -314,6 +328,12 @@ return [
 			'actAsUserId' => '605c7610-1389-11e7-93ae-92361f002671',
 			'bindings' => [
 
+				// Notification filter
+				'read_status' => 'unread',
+
+				// Notification
+				'notificationId' => '5b0decfd-6f95-4e76-be12-8cc7fef976b0',
+
 				// John Smith Sample Project 1
 				'projectId' => '1bcc7efc-138c-11e7-93ae-92361f002671',
 
@@ -353,6 +373,10 @@ return [
 				'me.index',
 
 				'meProject.index',
+
+				'meNotification.index',
+				'meNotification.updateRead',
+				'meNotification.updateUnread',
 
 				'project.show',
 				'project.store',

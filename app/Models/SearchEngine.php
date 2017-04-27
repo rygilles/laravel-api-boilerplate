@@ -3,6 +3,7 @@
 namespace App\Models;
 
 use Alsofronie\Uuid\UuidModelTrait;
+use App\Models\Project;
 
 /**
  * Class SearchEngine
@@ -73,6 +74,6 @@ class SearchEngine extends ApiModel
 	 */
 	public function projects()
 	{
-		return $this->hasMany('App\Models\Project');
+		return $this->hasMany(Project::class);
 	}
 }

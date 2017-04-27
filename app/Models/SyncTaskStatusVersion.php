@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use App\Models\SyncTaskStatus;
 use App\Traits\HasCompositeKey;
 
 /**
@@ -88,6 +89,6 @@ class SyncTaskStatusVersion extends ApiModel
 	 */
 	public function syncTaskStatus()
 	{
-		return $this->belongsTo('App\Models\SyncTaskStatus');
+		return $this->belongsTo(SyncTaskStatus::class);
 	}
 }
