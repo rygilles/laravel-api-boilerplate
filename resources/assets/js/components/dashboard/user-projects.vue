@@ -2,10 +2,6 @@
 	.action-link {
 		cursor: pointer;
 	}
-
-	.m-b-none {
-		margin-bottom: 0;
-	}
 </style>
 
 <template>
@@ -20,14 +16,14 @@
 							{{ $t('projects.create_new_project') }}
 						</a>
 					</div>
-					<div class="overlay" v-if="loading_owner_projects">
+					<div class="overlay" v-if="ownerProjectsLoading">
 						<i class="fa fa-refresh fa-spin"></i>
 					</div>
-					<div class="box-body" v-if="!loading_owner_projects">
-						<p class="m-b-none" v-if="(owner_projects.length + admin_projects.length) === 0">
+					<div class="box-body" v-if="!ownerProjectsLoading">
+						<p class="m-b-none" v-if="(ownerProjects.data.length + adminProjects.data.length) === 0">
 							{{ $t('projects.no_project_yet') }}
 						</p>
-						<div class="dataTables_wrapper form-inline dt-bootstrap" v-if="owner_projects.length > 0">
+						<div class="dataTables_wrapper form-inline dt-bootstrap" v-if="ownerProjects.data.length > 0">
 							<div class="row">
 								<div class="col-sm-6">
 									<div class="dataTables_length">
@@ -49,7 +45,7 @@
 										</thead>
 										<tbody>
 
-										<tr v-for="project in owner_projects" role="row">
+										<tr v-for="project in ownerProjects.data" role="row">
 											<!-- Name -->
 											<td class="col-md-2" style="vertical-align: middle;">
 												<router-link :to="{ name: 'user-project', params: { projectId: project.id }}">{{ project.name }}</router-link>
@@ -82,6 +78,7 @@
 						</div>
 					</div>
 					<div class="box-footer clearfix">
+						@todo Tester avec i18nLangs pour avoir une vraie pagination !
 						<ul class="pagination pagination-sm no-margin pull-right">
 							<li><a href="#">&laquo;</a></li>
 							<li><a href="#">1</a></li>
@@ -93,20 +90,20 @@
 				</div>
 			</div>
 		</div>
-		<div class="row" v-if="(admin_projects.length) > 0">
+		<div class="row" v-if="(adminProjects.data.length) > 0">
 			<div class="col-xs-12">
 				<div class="box">
 					<div class="box-header with-border">
 						<h3 class="box-title">{{ $t('projects.admin_projects') }}</h3>
 					</div>
-					<div class="overlay" v-if="loading_admin_projects">
+					<div class="overlay" v-if="adminProjectsLoading">
 						<i class="fa fa-refresh fa-spin"></i>
 					</div>
-					<div class="box-body" v-if="!loading_admin_projects">
-						<p class="m-b-none" v-if="(owner_projects.length + admin_projects.length) === 0">
+					<div class="box-body" v-if="!adminProjectsLoading">
+						<p class="m-b-none" v-if="(ownerProjects.data.length + adminProjects.data.length) === 0">
 							{{ $t('projects.no_project_yet') }}
 						</p>
-						<div class="dataTables_wrapper form-inline dt-bootstrap" v-if="owner_projects.length > 0">
+						<div class="dataTables_wrapper form-inline dt-bootstrap" v-if="ownerProjects.data.length > 0">
 							<div class="row">
 								<div class="col-sm-6">
 									<div class="dataTables_length">
@@ -128,7 +125,7 @@
 										</thead>
 										<tbody>
 
-										<tr v-for="project in admin_projects" role="row">
+										<tr v-for="project in adminProjects.data" role="row">
 											<!-- Name -->
 											<td class="col-md-2" style="vertical-align: middle;">
 												<router-link :to="{ name: 'user-project', params: { projectId: project.id }}">{{ project.name }}</router-link>
@@ -173,23 +170,9 @@
 <script>
 	export default {
 		/**
-		 * The component's data.
-		 */
-		data() {
-			return {
-				owner_projects : [],
-				admin_projects: [],
-				loading_owner_projects: true,
-				loading_admin_projects: true,
-			};
-		},
-
-		/**
 		 * Component created
 		 */
 		created() {
-			// fetch the data when the view is created and the data is
-			// already being observed
 			this.fetchData();
 		},
 
@@ -203,41 +186,24 @@
 
 		methods: {
 			fetchData() {
-				this.owner_projects = [];
-				this.admin_projects = [];
-
-				this.getUserProjects();
+				this.$store.dispatch('getUserOwnerProjects');
+				this.$store.dispatch('getUserAdminProjects');
 			},
+		},
 
-			/**
-			 * Get all of the projetcs for the user.
-			 */
-			getUserProjects() {
-				this.getUserOwnerProjects();
-				this.getUserAdminProjects();
+		computed: {
+			ownerProjects() {
+				return this.$store.state.ownerProjects;
 			},
-
-			getUserOwnerProjects() {
-				this.loading_owner_projects = true;
-				apiAxios.get('/me/project?user_role_id=Owner')
-					.then(response => {
-						this.owner_projects = response.data.data;
-						this.loading_owner_projects = false;
-					}).catch(error => {
-						this.$root.axiosError(error);
-					});
+			ownerProjectsLoading() {
+				return this.$store.state.ownerProjectsLoading;
 			},
-
-			getUserAdminProjects() {
-				this.loading_admin_projects = true;
-				apiAxios.get('/me/project?user_role_id=Administrator')
-					.then(response => {
-						this.admin_projects = response.data.data;
-						this.loading_admin_projects = false;
-					}).catch(error => {
-						this.$root.axiosError(error);
-					});
-			}
-		}
+			adminProjects() {
+				return this.$store.state.adminProjects;
+			},
+			adminProjectsLoading() {
+				return this.$store.state.adminProjectsLoading;
+			},
+		},
 	}
 </script>

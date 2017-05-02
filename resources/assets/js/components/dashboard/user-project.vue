@@ -2,10 +2,6 @@
 	.action-link {
 		cursor: pointer;
 	}
-
-	.m-b-none {
-		margin-bottom: 0;
-	}
 </style>
 
 <template>

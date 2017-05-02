@@ -16,6 +16,90 @@ use Illuminate\Support\Facades\Validator;
 class ApiEloquentBuilder extends Builder
 {
 	/**
+	 * Apply request query string for ordering, filtering, searching, etc. using params configuration mixed array.
+	 *
+	 * @return $this
+	 */
+	public function applyRequestQueryString()
+	{
+		// Configuration
+
+		$modelClass = get_class($this->model);
+
+		$modelsConfig = config('models');
+
+		if (!isset($modelsConfig[$modelClass])) {
+			return $this;
+		}
+
+		$config = $modelsConfig[$modelClass];
+
+		if (!isset($config['requestQueryStringParameters'])) {
+			return $this;
+		}
+
+		$params = $config['requestQueryStringParameters'];
+
+		// Basic searching
+
+		$request_search = Request::input('search');
+
+		if (!is_null($request_search)) {
+			if (!isset($params['defaultSearchColumns'])) {
+				throw new ValidationHttpException(['No search parameter is allowed on this route.']);
+			}
+
+			// Replace '*' char by '%' in here clause
+			$request_search = str_replace('*', '%', $request_search);
+
+			// Classic search if no special chars are defined
+			if (!strstr($request_search, '%')) {
+				$request_search = '%' . $request_search . '%';
+			}
+
+			$searchColumns = explode(',', $params['defaultSearchColumns']);
+			foreach ($searchColumns as $searchColumn) {
+				$this->orWhere($searchColumn, 'like', $request_search);
+			}
+		}
+
+		// Order by
+
+		$request_order_by = Request::input('order_by');
+
+		if (!is_null($request_order_by)) {
+
+			if (!isset($params['authorizedOrderByColumns'])) {
+				throw new ValidationHttpException(['No order_by parameter is allowed on this route.']);
+			}
+
+			$conditions = explode('|', $request_order_by);
+			foreach ($conditions as $condition) {
+				$conditionArray = explode(',', $condition);
+				if (count($conditionArray) == 1) {
+					$column = $condition;
+					$direction = 'asc';
+				} else {
+					list($column, $direction) = $conditionArray;
+				}
+
+				$validator = Validator::make(['order_by_column' => $column, 'order_by_direction' => $direction], [
+					'order_by_column' => 'in:' . $params['authorizedOrderByColumns'],
+					'order_by_direction' => 'in:asc,desc'
+				]);
+
+				if ($validator->fails()) {
+					throw new ValidationHttpException($validator->errors());
+				}
+
+				$this->orderBy($column, $direction);
+			}
+		}
+
+		return $this;
+	}
+	
+	/**
 	 * Paginate the given query.
 	 *
 	 * @param  int $perPage

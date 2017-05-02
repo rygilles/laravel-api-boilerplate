@@ -39,7 +39,7 @@
 			<!-- /.search form -->
 
 			<!-- Sidebar Menu -->
-			<sidebar-menu />
+			<sidebar-menu :me="me" />
 			<!-- /.sidebar-menu -->
 		</section>
 		<!-- /.sidebar -->

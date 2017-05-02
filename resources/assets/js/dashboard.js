@@ -127,5 +127,3 @@ window.Vue.prototype.momentLocalDate = (date) => {
 window.Vue.prototype.momentFromNow = (date) => {
     return moment.utc(date, 'YYYY-MM-DD H:mm:ss').local().fromNow();
 };
-
-$(document).ajaxStart(function() { Pace.restart(); });

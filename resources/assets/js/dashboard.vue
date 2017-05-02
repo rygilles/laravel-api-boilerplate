@@ -21,10 +21,9 @@
 								<i class="fa fa-home"></i>{{ $t('routes.home.title') }}</a>
 							</router-link>
 						</li>
-						<li class="active">{{ $t('routes.' + $route.name + '.title') }}</li>
+						<li v-if="$route.name != 'home'" class="active">{{ $t('routes.' + $route.name + '.title') }}</li>
 					</ol>
 				</section>
-
 				<router-view :laravel="laravel" :me="me"></router-view>
 			</div>
 			<!-- /.content-wrapper -->

@@ -17,5 +17,5 @@ return [
 	'datetime_format' => 'YYYY/MM/DD at H\:mm',
 
 	'axio_error' => 'An error occurred',
-	
+
 ];

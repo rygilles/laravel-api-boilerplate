@@ -25,7 +25,7 @@ mix.combine([
     //VENDOR RESOURCES
     .copy('node_modules/font-awesome/fonts/*.*','public/fonts/')
     .copy('node_modules/ionicons/dist/fonts/*.*','public/fonts/')
-    /*.copy('node_modules/admin-lte/bootstrap/fonts/*.*','public/fonts/bootstrap')*/
+    .copy('node_modules/admin-lte/bootstrap/fonts/*.*','public/fonts/bootstrap')
 
 if (mix.config.inProduction) {
     mix.version();

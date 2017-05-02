@@ -24,6 +24,9 @@
 // Bootstrap-Datepicker
 @import "node_modules/admin-lte/plugins/datepicker/datepicker3";
 
+// Bootstrap-Datatables
+@import "node_modules/admin-lte/plugins/datatables/dataTables.bootstrap";
+
 #app .notifications-menu > .dropdown-menu {
   width: 430px;
 }

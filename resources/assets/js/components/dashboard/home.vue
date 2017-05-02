@@ -24,21 +24,3 @@
 		</div>
 	</section>
 </template>
-
-
-<script>
-	export default {
-		/**
-		 * Component created
-		 */
-		created() {
-			$(document).ready(function(){
-				$('.dropdown-toggle').on("click", function(e){
-					$(this).next('ul').toggle();
-					e.stopPropagation();
-					e.preventDefault();
-				});
-			});
-		}
-	}
-</script>

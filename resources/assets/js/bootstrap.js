@@ -45,3 +45,5 @@ require('admin-lte/plugins/datepicker/bootstrap-datepicker');
 require('admin-lte/plugins/datepicker/locales/bootstrap-datepicker.fr');
 require('admin-lte/plugins/slimScroll/jquery.slimscroll');
 require('admin-lte/plugins/fastclick/fastclick');
+require('admin-lte/plugins/datatables/jquery.dataTables');
+//require('admin-lte/plugins/datatables/dataTables.bootstrap');

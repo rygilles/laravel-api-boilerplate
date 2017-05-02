@@ -9,6 +9,7 @@ export default {
 
     'owner_projects': 'Projets créés',
     'admin_projects': 'Projets administrés',
+    'all_projects': 'Tous projets',
 
     'edit_btn': 'Modifier',
     'delete_btn': 'Supprimer',

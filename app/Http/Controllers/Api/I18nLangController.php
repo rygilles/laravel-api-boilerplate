@@ -33,7 +33,7 @@ class I18nLangController extends ApiController
 	 */
 	public function index()
 	{
-		$i18nLangs = I18nLang::paginate();
+		$i18nLangs = I18nLang::applyRequestQueryString()->paginate();
 
 		return $this->response->paginator($i18nLangs, new I18nLangTransformer);
 	}

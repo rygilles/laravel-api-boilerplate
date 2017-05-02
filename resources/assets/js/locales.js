@@ -22,7 +22,8 @@ var files = [
     'topbar',
     'notifications',
     'home',
-    'projects'
+    'projects',
+    'i18n_langs',
 ];
 
 // Create locales from file hierarchy

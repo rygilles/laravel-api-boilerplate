@@ -18,6 +18,10 @@ return [
 	|                                   @see App\Http\Transformers\Api\ApiTransformer
 	|   - apiCannotFillOnUserGroups :   Remove fill access (remove from fillable fields)
 	|                                   from the Api user if it's not in the supplied user groups (string[])
+	| - requestQueryStringParameters :  List of query string filtering parameters
+	|   - authorizedOrderByColumns :    Comma delimited column names allowed for order by
+	|   - authorizedSearchColumns :     Comma delimited column names allowed for searching
+	|   - defaultSearchFields :         Comma delimited column names used for basic searching ("search=xxx" query parameter)
 	|
 	| @see App\Models\ApiModel
 	*/
@@ -56,6 +60,18 @@ return [
 				'apiCannotFillOnUserGroups' => ['End-User'],
 
 			]
+
+		]
+
+	],
+
+	App\Models\I18nLang::class => [
+
+		'requestQueryStringParameters' => [
+
+			'authorizedOrderByColumns' => 'id,description',
+			'authorizedSearchColumns' => 'id,description',
+			'defaultSearchColumns' => 'id,description',
 
 		]
 
