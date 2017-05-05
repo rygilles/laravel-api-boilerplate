@@ -67,14 +67,14 @@ class SyncTaskStatusVersionController extends ApiController
 	 */
 	public function store(StoreSyncTaskStatusVersionRequest $request)
 	{
-		$syncTaskStatusVersion = SyncTaskStatusVersion::create($request->all());
+		$syncTaskStatusVersion = SyncTaskStatusVersion::create($request->all(), $request->getRealMethod());
 
 		if ($syncTaskStatusVersion) {
 			// Register model transformer for created/accepted responses
 			// @link https://github.com/dingo/api/issues/1218
 			app('Dingo\Api\Transformer\Factory')->register(
-				'App\\Models\\$syncTaskTypeStatus',
-				'App\\Http\\Transformers\\Api\\$syncTaskTypeStatusTransformer'
+				SyncTaskStatusVersion::class,
+				SyncTaskStatusVersionTransformer::class
 			);
 
 			return $this->response->created(
@@ -104,7 +104,7 @@ class SyncTaskStatusVersionController extends ApiController
 		if (!$syncTaskStatusVersion)
 			return $this->response->errorNotFound();
 
-		$syncTaskStatusVersion->fill($request->all());
+		$syncTaskStatusVersion->fill($request->all(), $request->getRealMethod());
 		$syncTaskStatusVersion->save();
 
 		return $this->response->item($syncTaskStatusVersion, new SyncTaskStatusVersionTransformer);

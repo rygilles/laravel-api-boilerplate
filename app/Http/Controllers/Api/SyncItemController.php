@@ -67,14 +67,14 @@ class SyncItemController extends ApiController
 	 */
 	public function store(StoreSyncItemRequest $request)
 	{
-		$syncItem = SyncItem::create($request->all());
+		$syncItem = SyncItem::create($request->all(), $request->getRealMethod());
 
 		if ($syncItem) {
 			// Register model transformer for created/accepted responses
 			// @link https://github.com/dingo/api/issues/1218
 			app('Dingo\Api\Transformer\Factory')->register(
-				'App\\Models\\SyncItem',
-				'App\\Http\\Transformers\\Api\\SyncItemTransformer'
+				SyncItem::class,
+				SyncItemTransformer::class
 			);
 
 			return $this->response->created(
@@ -104,7 +104,7 @@ class SyncItemController extends ApiController
 		if (!$syncItem)
 			return $this->response->errorNotFound();
 
-		$syncItem->fill($request->all());
+		$syncItem->fill($request->all(), $request->getRealMethod());
 		$syncItem->save();
 
 		return $this->response->item($syncItem, new SyncItemTransformer);

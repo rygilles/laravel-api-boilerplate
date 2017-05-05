@@ -17,4 +17,13 @@ export default {
     },
 
     'search' : 'Recherche',
+
+    'close_btn' : 'Fermer',
+    'create_btn' : 'Créer',
+    'edit_btn' : 'Modifier',
+    'delete_btn' : 'Supprimer',
+
+    'delete_message' : 'Êtes-vous sûr de vouloir supprimer cet item ?',
+
+    'error': 'Oops! Une erreur est survenue!',
 }

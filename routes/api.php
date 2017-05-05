@@ -15,7 +15,7 @@ use Dingo\Api\Routing\Router;
 
 $api = app('Dingo\Api\Routing\Router');
 
-$api->version('v1', ['middleware' => ['cors', 'auth:api']], function (Router $api) {
+$api->version('v1', ['middleware' => ['acceptLanguage', 'cors', 'auth:api']], function (Router $api) {
 
 	// Me
 
@@ -449,6 +449,11 @@ $api->version('v1', ['middleware' => ['cors', 'auth:api']], function (Router $ap
 		'i18nLang/{i18nLangId}',
 		'App\Http\Controllers\Api\I18nLangController@destroy'
 	)->name('i18nLang.destroy');
+
+	$api->get(
+		'i18nLang/search/',
+		'App\Http\Controllers\Api\I18nLangController@index'
+	)->name('i18nLang.index');
 
 	// I18n Lang Sync Task Type Version
 

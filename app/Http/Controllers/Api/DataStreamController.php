@@ -65,14 +65,14 @@ class DataStreamController extends ApiController
 	 */
 	public function store(StoreDataStreamRequest $request)
 	{
-		$dataStream = DataStream::create($request->all());
+		$dataStream = DataStream::create($request->all(), $request->getRealMethod());
 
 		if ($dataStream) {
 			// Register model transformer for created/accepted responses
 			// @link https://github.com/dingo/api/issues/1218
 			app('Dingo\Api\Transformer\Factory')->register(
-				'App\\Models\\DataStream',
-				'App\\Http\\Transformers\\Api\\DataStreamTransformer'
+				DataStream::class,
+				DataStreamTransformer::class
 			);
 
 			return $this->response->created(
@@ -101,7 +101,7 @@ class DataStreamController extends ApiController
 		if (!$dataStream)
 			return $this->response->errorNotFound();
 
-		$dataStream->fill($request->all());
+		$dataStream->fill($request->all(), $request->getRealMethod());
 		$dataStream->save();
 
 		return $this->response->item($dataStream, new DataStreamTransformer);

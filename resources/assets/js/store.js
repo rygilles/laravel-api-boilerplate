@@ -102,6 +102,12 @@ var store = new Vuex.Store({
             state.me = me;
         },
         addNotification(state, notification) {
+            // Remove duplicate before
+            var oldNotification = _.find(state.notifications, {'id' : notification.id});
+            if (oldNotification) {
+                state.notifications.pop(oldNotification);
+            }
+
             state.notifications.push(notification);
         },
         removeNotification(state, notification) {

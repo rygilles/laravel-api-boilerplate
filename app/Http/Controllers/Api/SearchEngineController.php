@@ -66,14 +66,14 @@ class SearchEngineController extends ApiController
 	 */
 	public function store(StoreSearchEngineRequest $request)
 	{
-		$searchEngine = SearchEngine::create($request->all());
+		$searchEngine = SearchEngine::create($request->all(), $request->getRealMethod());
 
 		if ($searchEngine) {
 			// Register model transformer for created/accepted responses
 			// @link https://github.com/dingo/api/issues/1218
 			app('Dingo\Api\Transformer\Factory')->register(
-				'App\\Models\\SearchEngine',
-				'App\\Http\\Transformers\\Api\\SearchEngineTransformer'
+				SearchEngine::class,
+				SearchEngineTransformer::class
 			);
 
 			return $this->response->created(
@@ -102,7 +102,7 @@ class SearchEngineController extends ApiController
 		if (!$searchEngine)
 			return $this->response->errorNotFound();
 
-		$searchEngine->fill($request->all());
+		$searchEngine->fill($request->all(), $request->getRealMethod());
 		$searchEngine->save();
 
 		return $this->response->item($searchEngine, new SearchEngineTransformer);

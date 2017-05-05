@@ -65,14 +65,14 @@ class ProjectController extends ApiController
 	 */
 	public function store(StoreProjectRequest $request)
 	{
-		$project = Project::create($request->all());
+		$project = Project::create($request->all(), $request->getRealMethod());
 
 		if ($project) {
 			// Register model transformer for created/accepted responses
 			// @link https://github.com/dingo/api/issues/1218
 			app('Dingo\Api\Transformer\Factory')->register(
-				'App\\Models\\Project',
-				'App\\Http\\Transformers\\Api\\ProjectTransformer'
+				Project::class,
+				ProjectTransformer::class
 			);
 
 			return $this->response->created(
@@ -101,7 +101,7 @@ class ProjectController extends ApiController
 		if (!$project)
 			return $this->response->errorNotFound();
 
-		$project->fill($request->all());
+		$project->fill($request->all(), $request->getRealMethod());
 		$project->save();
 
 		return $this->response->item($project, new ProjectTransformer);

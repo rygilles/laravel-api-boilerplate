@@ -47,6 +47,31 @@ class I18nLang extends ApiModel
 	protected $perPageMax = 50;
 
 	/**
+	 * Model fillable fields for new items
+	 * @var array
+	 */
+	protected static $storeFillable = [
+		'id',
+		'description',
+	];
+
+	/**
+	 * Model fillable fields for item patch
+	 * @var array
+	 */
+	protected static $patchFillable = [
+		'description',
+	];
+
+	/**
+	 * Model fillable fields for item replacement
+	 * @var array
+	 */
+	protected static $putFillable = [
+		'description',
+	];
+
+	/**
 	 * Model validation rules for new items
 	 * @var array
 	 */

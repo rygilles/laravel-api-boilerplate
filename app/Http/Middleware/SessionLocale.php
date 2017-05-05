@@ -15,8 +15,7 @@ class SessionLocale
 	 */
 	public function handle($request, Closure $next)
 	{
-		if (!Session::has('locale'))
-		{
+		if (!Session::has('locale')) {
 			Session::put('locale', $request->getPreferredLanguage(config('app.locales')));
 		}
 

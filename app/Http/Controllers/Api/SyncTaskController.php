@@ -66,14 +66,14 @@ class SyncTaskController extends ApiController
 	 */
 	public function store(StoreSyncTaskRequest $request)
 	{
-		$syncTask = SyncTask::create($request->all());
+		$syncTask = SyncTask::create($request->all(), $request->getRealMethod());
 
 		if ($syncTask) {
 			// Register model transformer for created/accepted responses
 			// @link https://github.com/dingo/api/issues/1218
 			app('Dingo\Api\Transformer\Factory')->register(
-				'App\\Models\\SyncTask',
-				'App\\Http\\Transformers\\Api\\SyncTaskTransformer'
+				SyncTask::class,
+				SyncTaskTransformer::class
 			);
 
 			return $this->response->created(
@@ -102,7 +102,7 @@ class SyncTaskController extends ApiController
 		if (!$syncTask)
 			return $this->response->errorNotFound();
 
-		$syncTask->fill($request->all());
+		$syncTask->fill($request->all(), $request->getRealMethod());
 		$syncTask->save();
 
 		return $this->response->item($syncTask, new SyncTaskTransformer);

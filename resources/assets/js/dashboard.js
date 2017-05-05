@@ -121,7 +121,7 @@ window.Dashboard = new DashboardVue({
  */
 
 window.Vue.prototype.momentLocalDate = (date) => {
-    return moment.utc(date, 'YYYY-MM-DD H:mm:ss').local().format(window.Dashboard.$i18n.messages[window.Dashboard.$i18n.locale].common.datetime_format);
+    return moment.utc(date, 'YYYY-MM-DD H:mm:ss').local().format(window.Dashboard.$i18n.t('common.datetime_format'));
 };
 
 window.Vue.prototype.momentFromNow = (date) => {

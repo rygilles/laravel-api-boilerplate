@@ -80,14 +80,14 @@ class UserHasProjectController extends ApiController
 			}
 		}
 
-		$userHasProject = UserHasProject::create($request->all());
+		$userHasProject = UserHasProject::create($request->all(), $request->getRealMethod());
 
 		if ($userHasProject) {
 			// Register model transformer for created/accepted responses
 			// @link https://github.com/dingo/api/issues/1218
 			app('Dingo\Api\Transformer\Factory')->register(
-				'App\\Models\\UserHasProject',
-				'App\\Http\\Transformers\\Api\\UserHasProjectTransformer'
+				UserHasProject::class,
+				UserHasProjectTransformer::class
 			);
 
 			return $this->response->created(

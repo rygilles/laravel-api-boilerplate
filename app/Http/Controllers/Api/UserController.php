@@ -62,14 +62,14 @@ class UserController extends ApiController
 	 */
 	public function store(StoreUserRequest $request)
 	{
-		$user = User::create($request->all());
+		$user = User::create($request->all(), $request->getRealMethod());
 
 		if ($user) {
 			// Register model transformer for created/accepted responses
 			// @link https://github.com/dingo/api/issues/1218
 			app('Dingo\Api\Transformer\Factory')->register(
-				'App\\Models\\User',
-				'App\\Http\\Transformers\\Api\\UserTransformer'
+				User::class,
+				UserTransformer::class
 			);
 
 			return $this->response->created(
@@ -99,7 +99,7 @@ class UserController extends ApiController
 		if (!$user)
 			return $this->response->errorNotFound();
 
-		$user->fill($request->all());
+		$user->fill($request->all(), $request->getRealMethod());
 		$user->save();
 
 		return $this->response->item($user, new UserTransformer);

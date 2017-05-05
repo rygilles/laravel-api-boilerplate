@@ -16,6 +16,24 @@ use Illuminate\Support\Facades\Validator;
 class ApiEloquentBuilder extends Builder
 {
 	/**
+	 * Save a new model and return the instance.
+	 *
+	 * @param  array  $attributes
+	 * @param  string|null $requestMethod
+	 * @return \Illuminate\Database\Eloquent\Model
+	 */
+	public function create(array $attributes = [], $requestMethod = null)
+	{
+		$instance = $this->model->newInstance($attributes, false, $requestMethod)->setConnection(
+			$this->query->getConnection()->getName()
+		);
+
+		$instance->save();
+
+		return $instance;
+	}
+	
+	/**
 	 * Apply request query string for ordering, filtering, searching, etc. using params configuration mixed array.
 	 *
 	 * @return $this

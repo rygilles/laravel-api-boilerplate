@@ -57,7 +57,7 @@ class ProjectDataStreamController extends ApiController
 		if ($project->dataStream()->exists())
 			return $this->response->errorForbidden('This project has already a data stream.');
 
-		$dataStream = DataStream::create($request->all());
+		$dataStream = DataStream::create($request->all(), $request->getRealMethod());
 
 		if ($dataStream) {
 			// Associate data stream with the parent project
@@ -67,8 +67,8 @@ class ProjectDataStreamController extends ApiController
 			// Register model transformer for created/accepted responses
 			// @link https://github.com/dingo/api/issues/1218
 			app('Dingo\Api\Transformer\Factory')->register(
-				'App\\Models\\DataStream',
-				'App\\Http\\Transformers\\Api\\DataStreamTransformer'
+				DataStream::class,
+				DataStreamTransformer::class
 			);
 
 			return $this->response->created(
@@ -102,7 +102,7 @@ class ProjectDataStreamController extends ApiController
 		if (!$dataStream)
 			return $this->response->errorNotFound();
 
-		$dataStream->fill($request->all());
+		$dataStream->fill($request->all(), $request->getRealMethod());
 		$dataStream->save();
 
 		return $this->response->item($dataStream, new DataStreamTransformer);

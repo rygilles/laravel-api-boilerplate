@@ -42,8 +42,14 @@ class ApiRequest extends FormRequest
 			if (isset($attributeConfig['apiCannotFillOnUserGroups'])) {
 				// Filter user only if already authenticated
 				if (Auth::user()) {
-					if (in_array(Auth::user()->user_group_id, $attributeConfig['apiCannotFillOnUserGroups'])) {
-						unset($rules[$attribute]);
+					if (is_array($attributeConfig['apiCannotFillOnUserGroups'])) {
+						if (in_array(Auth::user()->user_group_id, $attributeConfig['apiCannotFillOnUserGroups'])) {
+							unset($rules[$attribute]);
+						}
+					} elseif (is_string($attributeConfig['apiCannotFillOnUserGroups'])) {
+						if ($attributeConfig['apiCannotFillOnUserGroups'] == '*') {
+							unset($rules[$attribute]);
+						}
 					}
 				}
 			}

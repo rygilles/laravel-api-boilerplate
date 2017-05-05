@@ -7,6 +7,8 @@ use App\Http\Requests\UpdateI18nLangRequest;
 use App\Http\Transformers\Api\I18nLangTransformer;
 use App\Models\I18nLang;
 use Dingo\Api\Exception\ValidationHttpException;
+use Dingo\Api\Routing\UrlGenerator;
+use Dingo\Api\Transformer\Factory;
 
 /**
  * @resource I18nLang
@@ -65,18 +67,18 @@ class I18nLangController extends ApiController
 	 */
 	public function store(StoreI18nLangRequest $request)
 	{
-		$i18nLang = I18nLang::create($request->all());
+		$i18nLang = I18nLang::create($request->all(), $request->getRealMethod());
 
 		if ($i18nLang) {
 			// Register model transformer for created/accepted responses
 			// @link https://github.com/dingo/api/issues/1218
-			app('Dingo\Api\Transformer\Factory')->register(
-				'App\\Models\\I18nLang',
-				'App\\Http\\Transformers\\Api\\i18nLangTransformer'
+			app(Factory::class)->register(
+				I18nLang::class,
+				i18nLangTransformer::class
 			);
 
 			return $this->response->created(
-				app('Dingo\Api\Routing\UrlGenerator')
+				app(UrlGenerator::class)
 					->version('v1')
 					->route('i18nLang.show', $i18nLang->id),
 				$i18nLang);
@@ -101,7 +103,7 @@ class I18nLangController extends ApiController
 		if (!$i18nLang)
 			return $this->response->errorNotFound();
 
-		$i18nLang->fill($request->all());
+		$i18nLang->fill($request->all(), $request->getRealMethod());
 		$i18nLang->save();
 
 		return $this->response->item($i18nLang, new I18nLangTransformer);

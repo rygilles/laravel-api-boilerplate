@@ -65,14 +65,14 @@ class SyncTaskStatusController extends ApiController
 	 */
 	public function store(StoreSyncTaskStatusRequest $request)
 	{
-		$syncTaskStatus = SyncTaskStatus::create($request->all());
+		$syncTaskStatus = SyncTaskStatus::create($request->all(), $request->getRealMethod());
 
 		if ($syncTaskStatus) {
 			// Register model transformer for created/accepted responses
 			// @link https://github.com/dingo/api/issues/1218
 			app('Dingo\Api\Transformer\Factory')->register(
-				'App\\Models\\SyncTaskStatus',
-				'App\\Http\\Transformers\\Api\\SyncTaskStatusTransformer'
+				SyncTaskStatus::class,
+				SyncTaskStatusTransformer::class
 			);
 
 			return $this->response->created(
@@ -101,7 +101,7 @@ class SyncTaskStatusController extends ApiController
 		if (!$syncTaskStatus)
 			return $this->response->errorNotFound();
 
-		$syncTaskStatus->fill($request->all());
+		$syncTaskStatus->fill($request->all(), $request->getRealMethod());
 		$syncTaskStatus->save();
 
 		return $this->response->item($syncTaskStatus, new SyncTaskStatusTransformer);
