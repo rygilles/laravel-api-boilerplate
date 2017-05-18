@@ -16,14 +16,21 @@ export default {
         'last' : 'Last',
     },
 
+    'mass' : {
+        'showing_info' : '<strong>{count}</strong> entity selected | <strong>{count}</strong> entities selected',
+    },
+
     'search' : 'Search',
 
     'close_btn' : 'Close',
     'create_btn' : 'Create',
+    'see_btn' : 'See',
     'edit_btn' : 'Edit',
     'delete_btn' : 'Delete',
+    'unselect_all_btn' : 'Unselect all',
 
     'delete_message' : 'Are you sure you want to delete this item ?',
+    'mass_delete_message' : 'Are you sure you want to delete this items ?',
 
     'error' : 'Whoops! Something went wrong!',
 }

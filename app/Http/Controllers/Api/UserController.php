@@ -32,7 +32,7 @@ class UserController extends ApiController
 	 */
 	public function index()
 	{
-		$paginator = User::paginate();
+		$paginator = User::applyRequestQueryString()->paginate();
 		return $this->response->paginator($paginator, new UserTransformer);
 	}
 

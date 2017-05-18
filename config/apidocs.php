@@ -89,6 +89,8 @@ return [
 				'user.update',
 				'user.destroy',
 
+				'userGroup.index',
+
 				'userGroupUser.index',
 
 				'userProject.index',
@@ -247,6 +249,8 @@ return [
 				'user.store',
 				'user.update',
 				'user.destroy',
+
+				'userGroup.index',
 
 				'userGroupUser.index',
 

@@ -79,15 +79,15 @@ $.ajax(settings).done(function (response) {
             "id": "56278dc8-1934-11e7-93ae-92361f002671",
             "name": "John Smith Sample Project Data Stream",
             "feed_url": "http:\/\/domain.tld\/feedJohn.json",
-            "created_at": "2017-04-25 09:29:00",
-            "updated_at": "2017-04-25 09:29:00"
+            "created_at": "2017-05-18 13:49:12",
+            "updated_at": "2017-05-18 13:49:12"
         },
         {
             "id": "605d712c-1934-11e7-93ae-92361f002671",
             "name": "Mickey Mouse Sample Project Data Stream",
             "feed_url": "http:\/\/domain.tld\/feedTheMouse.json",
-            "created_at": "2017-04-25 09:29:00",
-            "updated_at": "2017-04-25 09:29:00"
+            "created_at": "2017-05-18 13:49:12",
+            "updated_at": "2017-05-18 13:49:12"
         }
     ],
     "meta": {
@@ -148,8 +148,8 @@ $.ajax(settings).done(function (response) {
         "id": "605d712c-1934-11e7-93ae-92361f002671",
         "name": "Mickey Mouse Sample Project Data Stream",
         "feed_url": "http:\/\/domain.tld\/feedTheMouse.json",
-        "created_at": "2017-04-25 09:29:00",
-        "updated_at": "2017-04-25 09:29:00"
+        "created_at": "2017-05-18 13:49:12",
+        "updated_at": "2017-05-18 13:49:12"
     }
 }
 ```
@@ -174,8 +174,8 @@ curl -X POST "http://emsearch.ryan.ems-dev.net/api/dataStream" \
 -H "Accept: application/json" \
 -H "Authentication: Bearer xxx"
  \
-    -d "name"="Minus id sunt" \
-    -d "feed_url"="http://lesch.com/aut-qui-eum-blanditiis" \
+    -d "name"="Est rerum a" \
+    -d "feed_url"="http://www.shields.net/" \
 
 ```
 
@@ -186,8 +186,8 @@ var settings = {
     "url": "http://emsearch.ryan.ems-dev.net/api/dataStream",
     "method": "POST",
     "data": {
-        "name": "Minus id sunt",
-        "feed_url": "http:\/\/lesch.com\/aut-qui-eum-blanditiis"
+        "name": "Est rerum a",
+        "feed_url": "http:\/\/www.shields.net\/"
 },
     "headers": {
         "Accept": "application/json",
@@ -223,8 +223,8 @@ curl -X PUT "http://emsearch.ryan.ems-dev.net/api/dataStream/605d712c-1934-11e7-
 -H "Accept: application/json" \
 -H "Authentication: Bearer xxx"
  \
-    -d "name"="Nihil consequatur distinctio" \
-    -d "feed_url"="http://www.wunsch.com/" \
+    -d "name"="Sit accusantium eius" \
+    -d "feed_url"="http://www.mayer.info/alias-fuga-vero-voluptatem-temporibus" \
 
 ```
 
@@ -235,8 +235,8 @@ var settings = {
     "url": "http://emsearch.ryan.ems-dev.net/api/dataStream/605d712c-1934-11e7-93ae-92361f002671",
     "method": "PUT",
     "data": {
-        "name": "Nihil consequatur distinctio",
-        "feed_url": "http:\/\/www.wunsch.com\/"
+        "name": "Sit accusantium eius",
+        "feed_url": "http:\/\/www.mayer.info\/alias-fuga-vero-voluptatem-temporibus"
 },
     "headers": {
         "Accept": "application/json",
@@ -337,8 +337,8 @@ $.ajax(settings).done(function (response) {
         "id": "56278dc8-1934-11e7-93ae-92361f002671",
         "name": "John Smith Sample Project Data Stream",
         "feed_url": "http:\/\/domain.tld\/feedJohn.json",
-        "created_at": "2017-04-25 09:29:00",
-        "updated_at": "2017-04-25 09:29:00"
+        "created_at": "2017-05-18 13:49:12",
+        "updated_at": "2017-05-18 13:49:12"
     }
 }
 ```
@@ -412,8 +412,8 @@ curl -X PUT "http://emsearch.ryan.ems-dev.net/api/project/1bcc7efc-138c-11e7-93a
 -H "Accept: application/json" \
 -H "Authentication: Bearer xxx"
  \
-    -d "name"="Dolore et aut" \
-    -d "feed_url"="https://collins.com/sed-quo-soluta-et-animi.html" \
+    -d "name"="Et aut vel" \
+    -d "feed_url"="http://rutherford.com/sunt-nostrum-sit-consequatur-dolor-est-ipsum" \
 
 ```
 
@@ -424,8 +424,8 @@ var settings = {
     "url": "http://emsearch.ryan.ems-dev.net/api/project/1bcc7efc-138c-11e7-93ae-92361f002671/dataStream",
     "method": "PUT",
     "data": {
-        "name": "Dolore et aut",
-        "feed_url": "https:\/\/collins.com\/sed-quo-soluta-et-animi.html"
+        "name": "Et aut vel",
+        "feed_url": "http:\/\/rutherford.com\/sunt-nostrum-sit-consequatur-dolor-est-ipsum"
 },
     "headers": {
         "Accept": "application/json",
@@ -639,6 +639,52 @@ $.ajax(settings).done(function (response) {
 
 <!-- END_8bf32d4b41c09d1d9801aff1b0737349 -->
 
+<!-- START_23e983fda5cf9784111b947c3a498672 -->
+## Show i18n lang list
+
+
+<aside class="notice">Pagination limit must be a value between <code>1</code> and <code>50</code>, default is <code>10</code>.</aside>
+
+> Example request:
+
+```bash
+curl -X GET "http://emsearch.ryan.ems-dev.net/api/i18nLang/search" \
+-H "Accept: application/json" \
+-H "Authentication: Bearer xxx"
+
+```
+
+```javascript
+var settings = {
+    "async": true,
+    "crossDomain": true,
+    "url": "http://emsearch.ryan.ems-dev.net/api/i18nLang/search",
+    "method": "GET",
+    "headers": {
+        "Accept": "application/json",
+        "Authentication" : "Bearer xxx"
+    }
+}
+
+$.ajax(settings).done(function (response) {
+    console.log(response);
+});
+```
+
+> Example response:
+
+```json
+null
+```
+
+### HTTP Request
+`GET /api/i18nLang/search`
+
+`HEAD /api/i18nLang/search`
+
+
+<!-- END_23e983fda5cf9784111b947c3a498672 -->
+
 #Me
 <!-- START_01138559f486b5b7c062a19b1c0412fe -->
 ## Get current user
@@ -678,8 +724,8 @@ $.ajax(settings).done(function (response) {
         "user_group_id": "Developer",
         "name": "John Doe",
         "email": "john.doe@domain.tld",
-        "created_at": "2017-04-25 09:29:00",
-        "updated_at": "2017-04-25 09:29:00"
+        "created_at": "2017-05-18 13:49:12",
+        "updated_at": "2017-05-18 13:49:12"
     }
 }
 ```
@@ -934,24 +980,24 @@ $.ajax(settings).done(function (response) {
             "search_engine_id": "ee87e3b2-1388-11e7-93ae-92361f002671",
             "data_stream_id": "56278dc8-1934-11e7-93ae-92361f002671",
             "name": "John Smith Sample Project 1",
-            "created_at": "2017-04-25 09:29:00",
-            "updated_at": "2017-04-25 09:29:00"
+            "created_at": "2017-05-18 13:49:12",
+            "updated_at": "2017-05-18 13:49:12"
         },
         {
             "id": "b6860dd2-138c-11e7-93ae-92361f002671",
             "search_engine_id": "ee87e3b2-1388-11e7-93ae-92361f002671",
             "data_stream_id": null,
             "name": "John Smith Sample Project 2",
-            "created_at": "2017-04-25 09:29:00",
-            "updated_at": "2017-04-25 09:29:00"
+            "created_at": "2017-05-18 13:49:12",
+            "updated_at": "2017-05-18 13:49:12"
         },
         {
             "id": "c4b5d93c-138c-11e7-93ae-92361f002671",
             "search_engine_id": "ee87e3b2-1388-11e7-93ae-92361f002671",
             "data_stream_id": "605d712c-1934-11e7-93ae-92361f002671",
             "name": "Mickey Mouse Sample Project",
-            "created_at": "2017-04-25 09:29:00",
-            "updated_at": "2017-04-25 09:29:00"
+            "created_at": "2017-05-18 13:49:12",
+            "updated_at": "2017-05-18 13:49:12"
         }
     ],
     "meta": {
@@ -1022,24 +1068,24 @@ $.ajax(settings).done(function (response) {
             "search_engine_id": "ee87e3b2-1388-11e7-93ae-92361f002671",
             "data_stream_id": "56278dc8-1934-11e7-93ae-92361f002671",
             "name": "John Smith Sample Project 1",
-            "created_at": "2017-04-25 09:29:00",
-            "updated_at": "2017-04-25 09:29:00"
+            "created_at": "2017-05-18 13:49:12",
+            "updated_at": "2017-05-18 13:49:12"
         },
         {
             "id": "b6860dd2-138c-11e7-93ae-92361f002671",
             "search_engine_id": "ee87e3b2-1388-11e7-93ae-92361f002671",
             "data_stream_id": null,
             "name": "John Smith Sample Project 2",
-            "created_at": "2017-04-25 09:29:00",
-            "updated_at": "2017-04-25 09:29:00"
+            "created_at": "2017-05-18 13:49:12",
+            "updated_at": "2017-05-18 13:49:12"
         },
         {
             "id": "c4b5d93c-138c-11e7-93ae-92361f002671",
             "search_engine_id": "ee87e3b2-1388-11e7-93ae-92361f002671",
             "data_stream_id": "605d712c-1934-11e7-93ae-92361f002671",
             "name": "Mickey Mouse Sample Project",
-            "created_at": "2017-04-25 09:29:00",
-            "updated_at": "2017-04-25 09:29:00"
+            "created_at": "2017-05-18 13:49:12",
+            "updated_at": "2017-05-18 13:49:12"
         }
     ],
     "meta": {
@@ -1101,8 +1147,8 @@ $.ajax(settings).done(function (response) {
         "search_engine_id": "ee87e3b2-1388-11e7-93ae-92361f002671",
         "data_stream_id": "56278dc8-1934-11e7-93ae-92361f002671",
         "name": "John Smith Sample Project 1",
-        "created_at": "2017-04-25 09:29:00",
-        "updated_at": "2017-04-25 09:29:00"
+        "created_at": "2017-05-18 13:49:12",
+        "updated_at": "2017-05-18 13:49:12"
     }
 }
 ```
@@ -1125,9 +1171,9 @@ curl -X POST "http://emsearch.ryan.ems-dev.net/api/project" \
 -H "Accept: application/json" \
 -H "Authentication: Bearer xxx"
  \
-    -d "search_engine_id"="0a84f7c6-774f-3e57-b349-d9a26bef7745" \
-    -d "data_stream_id"="77585fa9-224f-3433-95f3-38d209fc086c" \
-    -d "name"="Quia officiis occaecati" \
+    -d "search_engine_id"="df21357a-7d2b-30d6-a9c4-85ae2d6f0ab9" \
+    -d "data_stream_id"="a7fc663d-8f8f-38da-a6c7-ceabbe08d3a5" \
+    -d "name"="Sit blanditiis molestiae" \
 
 ```
 
@@ -1138,9 +1184,9 @@ var settings = {
     "url": "http://emsearch.ryan.ems-dev.net/api/project",
     "method": "POST",
     "data": {
-        "search_engine_id": "0a84f7c6-774f-3e57-b349-d9a26bef7745",
-        "data_stream_id": "77585fa9-224f-3433-95f3-38d209fc086c",
-        "name": "Quia officiis occaecati"
+        "search_engine_id": "df21357a-7d2b-30d6-a9c4-85ae2d6f0ab9",
+        "data_stream_id": "a7fc663d-8f8f-38da-a6c7-ceabbe08d3a5",
+        "name": "Sit blanditiis molestiae"
 },
     "headers": {
         "Accept": "application/json",
@@ -1177,9 +1223,9 @@ curl -X PUT "http://emsearch.ryan.ems-dev.net/api/project/1bcc7efc-138c-11e7-93a
 -H "Accept: application/json" \
 -H "Authentication: Bearer xxx"
  \
-    -d "search_engine_id"="1dcd591e-ac55-3a75-9b0e-d5b9719f4a83" \
-    -d "data_stream_id"="0f9b13f8-1c5e-3458-81dc-ae2bc7fb0275" \
-    -d "name"="Ratione laboriosam facilis" \
+    -d "search_engine_id"="65c40963-3354-3ea9-a30b-bcbd5baf54f2" \
+    -d "data_stream_id"="8b48a979-e3c7-31b1-ae5b-8b1ca593eecd" \
+    -d "name"="Eligendi consequatur molestiae" \
 
 ```
 
@@ -1190,9 +1236,9 @@ var settings = {
     "url": "http://emsearch.ryan.ems-dev.net/api/project/1bcc7efc-138c-11e7-93ae-92361f002671",
     "method": "PUT",
     "data": {
-        "search_engine_id": "1dcd591e-ac55-3a75-9b0e-d5b9719f4a83",
-        "data_stream_id": "0f9b13f8-1c5e-3458-81dc-ae2bc7fb0275",
-        "name": "Ratione laboriosam facilis"
+        "search_engine_id": "65c40963-3354-3ea9-a30b-bcbd5baf54f2",
+        "data_stream_id": "8b48a979-e3c7-31b1-ae5b-8b1ca593eecd",
+        "name": "Eligendi consequatur molestiae"
 },
     "headers": {
         "Accept": "application/json",
@@ -1304,24 +1350,24 @@ $.ajax(settings).done(function (response) {
             "search_engine_id": "ee87e3b2-1388-11e7-93ae-92361f002671",
             "data_stream_id": "56278dc8-1934-11e7-93ae-92361f002671",
             "name": "John Smith Sample Project 1",
-            "created_at": "2017-04-25 09:29:00",
-            "updated_at": "2017-04-25 09:29:00"
+            "created_at": "2017-05-18 13:49:12",
+            "updated_at": "2017-05-18 13:49:12"
         },
         {
             "id": "b6860dd2-138c-11e7-93ae-92361f002671",
             "search_engine_id": "ee87e3b2-1388-11e7-93ae-92361f002671",
             "data_stream_id": null,
             "name": "John Smith Sample Project 2",
-            "created_at": "2017-04-25 09:29:00",
-            "updated_at": "2017-04-25 09:29:00"
+            "created_at": "2017-05-18 13:49:12",
+            "updated_at": "2017-05-18 13:49:12"
         },
         {
             "id": "c4b5d93c-138c-11e7-93ae-92361f002671",
             "search_engine_id": "ee87e3b2-1388-11e7-93ae-92361f002671",
             "data_stream_id": "605d712c-1934-11e7-93ae-92361f002671",
             "name": "Mickey Mouse Sample Project",
-            "created_at": "2017-04-25 09:29:00",
-            "updated_at": "2017-04-25 09:29:00"
+            "created_at": "2017-05-18 13:49:12",
+            "updated_at": "2017-05-18 13:49:12"
         }
     ],
     "meta": {
@@ -1386,8 +1432,8 @@ $.ajax(settings).done(function (response) {
         {
             "id": "ee87e3b2-1388-11e7-93ae-92361f002671",
             "name": "Algolia",
-            "created_at": "2017-04-25 09:28:58",
-            "updated_at": "2017-04-25 09:28:58"
+            "created_at": "2017-05-18 13:49:11",
+            "updated_at": "2017-05-18 13:49:11"
         }
     ],
     "meta": {
@@ -1447,8 +1493,8 @@ $.ajax(settings).done(function (response) {
     "data": {
         "id": "ee87e3b2-1388-11e7-93ae-92361f002671",
         "name": "Algolia",
-        "created_at": "2017-04-25 09:28:58",
-        "updated_at": "2017-04-25 09:28:58"
+        "created_at": "2017-05-18 13:49:11",
+        "updated_at": "2017-05-18 13:49:11"
     }
 }
 ```
@@ -1503,36 +1549,36 @@ $.ajax(settings).done(function (response) {
             "item_id": "a37eda90-1f56-11e7-93ae-92361f002671",
             "project_id": "1bcc7efc-138c-11e7-93ae-92361f002671",
             "item_signature": "f56a6607aee20f0dab169820bda38706",
-            "created_at": "2017-04-25 09:29:01",
-            "updated_at": "2017-04-25 09:29:01"
+            "created_at": "2017-05-18 13:49:12",
+            "updated_at": "2017-05-18 13:49:12"
         },
         {
             "item_id": "b06e221a-1f56-11e7-93ae-92361f002671",
             "project_id": "1bcc7efc-138c-11e7-93ae-92361f002671",
             "item_signature": "d66e8b5e5d17933bdcaf5a03f614e007",
-            "created_at": "2017-04-25 09:29:01",
-            "updated_at": "2017-04-25 09:29:01"
+            "created_at": "2017-05-18 13:49:12",
+            "updated_at": "2017-05-18 13:49:12"
         },
         {
             "item_id": "c07d179c-1f56-11e7-93ae-92361f002671",
             "project_id": "1bcc7efc-138c-11e7-93ae-92361f002671",
             "item_signature": "52864717b0abe4851b74bed750df0144",
-            "created_at": "2017-04-25 09:29:01",
-            "updated_at": "2017-04-25 09:29:01"
+            "created_at": "2017-05-18 13:49:12",
+            "updated_at": "2017-05-18 13:49:12"
         },
         {
             "item_id": "d1040d28-1f56-11e7-93ae-92361f002671",
             "project_id": "1bcc7efc-138c-11e7-93ae-92361f002671",
             "item_signature": "098de3bc3c69ad3e027d9fefc44fa7a5",
-            "created_at": "2017-04-25 09:29:01",
-            "updated_at": "2017-04-25 09:29:01"
+            "created_at": "2017-05-18 13:49:12",
+            "updated_at": "2017-05-18 13:49:12"
         },
         {
             "item_id": "e6b018e2-1f56-11e7-93ae-92361f002671",
             "project_id": "1bcc7efc-138c-11e7-93ae-92361f002671",
             "item_signature": "a18513691f0d1c2a8e3f3ae0c0b8260c",
-            "created_at": "2017-04-25 09:29:01",
-            "updated_at": "2017-04-25 09:29:01"
+            "created_at": "2017-05-18 13:49:12",
+            "updated_at": "2017-05-18 13:49:12"
         }
     ],
     "meta": {
@@ -1594,8 +1640,8 @@ $.ajax(settings).done(function (response) {
             "item_id": "a37eda90-1f56-11e7-93ae-92361f002671",
             "project_id": "1bcc7efc-138c-11e7-93ae-92361f002671",
             "item_signature": "f56a6607aee20f0dab169820bda38706",
-            "created_at": "2017-04-25 09:29:01",
-            "updated_at": "2017-04-25 09:29:01"
+            "created_at": "2017-05-18 13:49:12",
+            "updated_at": "2017-05-18 13:49:12"
         }
     ]
 }
@@ -1650,36 +1696,36 @@ $.ajax(settings).done(function (response) {
             "item_id": "a37eda90-1f56-11e7-93ae-92361f002671",
             "project_id": "1bcc7efc-138c-11e7-93ae-92361f002671",
             "item_signature": "f56a6607aee20f0dab169820bda38706",
-            "created_at": "2017-04-25 09:29:01",
-            "updated_at": "2017-04-25 09:29:01"
+            "created_at": "2017-05-18 13:49:12",
+            "updated_at": "2017-05-18 13:49:12"
         },
         {
             "item_id": "b06e221a-1f56-11e7-93ae-92361f002671",
             "project_id": "1bcc7efc-138c-11e7-93ae-92361f002671",
             "item_signature": "d66e8b5e5d17933bdcaf5a03f614e007",
-            "created_at": "2017-04-25 09:29:01",
-            "updated_at": "2017-04-25 09:29:01"
+            "created_at": "2017-05-18 13:49:12",
+            "updated_at": "2017-05-18 13:49:12"
         },
         {
             "item_id": "c07d179c-1f56-11e7-93ae-92361f002671",
             "project_id": "1bcc7efc-138c-11e7-93ae-92361f002671",
             "item_signature": "52864717b0abe4851b74bed750df0144",
-            "created_at": "2017-04-25 09:29:01",
-            "updated_at": "2017-04-25 09:29:01"
+            "created_at": "2017-05-18 13:49:12",
+            "updated_at": "2017-05-18 13:49:12"
         },
         {
             "item_id": "d1040d28-1f56-11e7-93ae-92361f002671",
             "project_id": "1bcc7efc-138c-11e7-93ae-92361f002671",
             "item_signature": "098de3bc3c69ad3e027d9fefc44fa7a5",
-            "created_at": "2017-04-25 09:29:01",
-            "updated_at": "2017-04-25 09:29:01"
+            "created_at": "2017-05-18 13:49:12",
+            "updated_at": "2017-05-18 13:49:12"
         },
         {
             "item_id": "e6b018e2-1f56-11e7-93ae-92361f002671",
             "project_id": "1bcc7efc-138c-11e7-93ae-92361f002671",
             "item_signature": "a18513691f0d1c2a8e3f3ae0c0b8260c",
-            "created_at": "2017-04-25 09:29:01",
-            "updated_at": "2017-04-25 09:29:01"
+            "created_at": "2017-05-18 13:49:12",
+            "updated_at": "2017-05-18 13:49:12"
         }
     ],
     "meta": {
@@ -1748,8 +1794,8 @@ $.ajax(settings).done(function (response) {
             "sync_task_status_id": "InProgress",
             "created_by_user_id": "605c7610-1389-11e7-93ae-92361f002671",
             "project_id": "1bcc7efc-138c-11e7-93ae-92361f002671",
-            "created_at": "2017-04-25 09:29:01",
-            "updated_at": "2017-04-25 09:29:01"
+            "created_at": "2017-05-18 13:49:12",
+            "updated_at": "2017-05-18 13:49:12"
         },
         {
             "id": "91bf2f58-2055-11e7-93ae-92361f002671",
@@ -1758,8 +1804,8 @@ $.ajax(settings).done(function (response) {
             "sync_task_status_id": "InProgress",
             "created_by_user_id": "605c7610-1389-11e7-93ae-92361f002671",
             "project_id": "1bcc7efc-138c-11e7-93ae-92361f002671",
-            "created_at": "2017-04-25 09:29:01",
-            "updated_at": "2017-04-25 09:29:01"
+            "created_at": "2017-05-18 13:49:12",
+            "updated_at": "2017-05-18 13:49:12"
         }
     ],
     "meta": {
@@ -1823,8 +1869,8 @@ $.ajax(settings).done(function (response) {
         "sync_task_status_id": "InProgress",
         "created_by_user_id": "605c7610-1389-11e7-93ae-92361f002671",
         "project_id": "1bcc7efc-138c-11e7-93ae-92361f002671",
-        "created_at": "2017-04-25 09:29:01",
-        "updated_at": "2017-04-25 09:29:01"
+        "created_at": "2017-05-18 13:49:12",
+        "updated_at": "2017-05-18 13:49:12"
     }
 }
 ```
@@ -1881,8 +1927,8 @@ $.ajax(settings).done(function (response) {
             "sync_task_status_id": "InProgress",
             "created_by_user_id": "605c7610-1389-11e7-93ae-92361f002671",
             "project_id": "1bcc7efc-138c-11e7-93ae-92361f002671",
-            "created_at": "2017-04-25 09:29:01",
-            "updated_at": "2017-04-25 09:29:01"
+            "created_at": "2017-05-18 13:49:12",
+            "updated_at": "2017-05-18 13:49:12"
         },
         {
             "id": "91bf2f58-2055-11e7-93ae-92361f002671",
@@ -1891,8 +1937,8 @@ $.ajax(settings).done(function (response) {
             "sync_task_status_id": "InProgress",
             "created_by_user_id": "605c7610-1389-11e7-93ae-92361f002671",
             "project_id": "1bcc7efc-138c-11e7-93ae-92361f002671",
-            "created_at": "2017-04-25 09:29:01",
-            "updated_at": "2017-04-25 09:29:01"
+            "created_at": "2017-05-18 13:49:12",
+            "updated_at": "2017-05-18 13:49:12"
         }
     ],
     "meta": {
@@ -1960,8 +2006,8 @@ $.ajax(settings).done(function (response) {
             "sync_task_id": "8dbfd6e6-2055-11e7-93ae-92361f002671",
             "entry": "Synchronization planned.",
             "public": "1",
-            "created_at": "2017-04-25 09:29:01",
-            "updated_at": "2017-04-25 09:29:01"
+            "created_at": "2017-05-18 13:49:13",
+            "updated_at": "2017-05-18 13:49:13"
         },
         {
             "id": "c8fd9a1e-210d-11e7-93ae-92361f002671",
@@ -1969,8 +2015,8 @@ $.ajax(settings).done(function (response) {
             "sync_task_id": "8dbfd6e6-2055-11e7-93ae-92361f002671",
             "entry": "Synchronization in progress.",
             "public": "1",
-            "created_at": "2017-04-25 09:29:03",
-            "updated_at": "2017-04-25 09:29:03"
+            "created_at": "2017-05-18 13:49:15",
+            "updated_at": "2017-05-18 13:49:15"
         }
     ],
     "meta": {
@@ -2157,43 +2203,43 @@ $.ajax(settings).done(function (response) {
             "sync_task_status_id": "Complete",
             "i18n_lang_id": "en_US",
             "description": "Items synchronization is complete.",
-            "created_at": "2017-04-25 09:28:58",
-            "updated_at": "2017-04-25 09:28:58"
+            "created_at": "2017-05-18 13:49:11",
+            "updated_at": "2017-05-18 13:49:11"
         },
         {
             "sync_task_status_id": "Complete",
             "i18n_lang_id": "fr_FR",
             "description": "La synchronisation des items est terminée",
-            "created_at": "2017-04-25 09:28:58",
-            "updated_at": "2017-04-25 09:28:58"
+            "created_at": "2017-05-18 13:49:11",
+            "updated_at": "2017-05-18 13:49:11"
         },
         {
             "sync_task_status_id": "InProgress",
             "i18n_lang_id": "en_US",
             "description": "Items synchronization is in progress.",
-            "created_at": "2017-04-25 09:28:58",
-            "updated_at": "2017-04-25 09:28:58"
+            "created_at": "2017-05-18 13:49:11",
+            "updated_at": "2017-05-18 13:49:11"
         },
         {
             "sync_task_status_id": "InProgress",
             "i18n_lang_id": "fr_FR",
             "description": "La synchronisation des items est en cours.",
-            "created_at": "2017-04-25 09:28:58",
-            "updated_at": "2017-04-25 09:28:58"
+            "created_at": "2017-05-18 13:49:11",
+            "updated_at": "2017-05-18 13:49:11"
         },
         {
             "sync_task_status_id": "Planned",
             "i18n_lang_id": "en_US",
             "description": "Items synchronization is planned.",
-            "created_at": "2017-04-25 09:28:58",
-            "updated_at": "2017-04-25 09:28:58"
+            "created_at": "2017-05-18 13:49:11",
+            "updated_at": "2017-05-18 13:49:11"
         },
         {
             "sync_task_status_id": "Planned",
             "i18n_lang_id": "fr_FR",
             "description": "La synchronisation des items est plannifiée",
-            "created_at": "2017-04-25 09:28:58",
-            "updated_at": "2017-04-25 09:28:58"
+            "created_at": "2017-05-18 13:49:11",
+            "updated_at": "2017-05-18 13:49:11"
         }
     ],
     "meta": {
@@ -2255,8 +2301,8 @@ $.ajax(settings).done(function (response) {
             "sync_task_status_id": "Planned",
             "i18n_lang_id": "en_US",
             "description": "Items synchronization is planned.",
-            "created_at": "2017-04-25 09:28:58",
-            "updated_at": "2017-04-25 09:28:58"
+            "created_at": "2017-05-18 13:49:11",
+            "updated_at": "2017-05-18 13:49:11"
         }
     ]
 }
@@ -2280,9 +2326,9 @@ curl -X POST "http://emsearch.ryan.ems-dev.net/api/syncTaskStatusVersion" \
 -H "Accept: application/json" \
 -H "Authentication: Bearer xxx"
  \
-    -d "sync_task_status_id"="Architecto quis eum" \
-    -d "i18n_lang_id"="Ut molestiae error" \
-    -d "description"="Reiciendis dolorem consequatur" \
+    -d "sync_task_status_id"="Velit excepturi ut" \
+    -d "i18n_lang_id"="Neque totam iste" \
+    -d "description"="Odit eos animi" \
 
 ```
 
@@ -2293,9 +2339,9 @@ var settings = {
     "url": "http://emsearch.ryan.ems-dev.net/api/syncTaskStatusVersion",
     "method": "POST",
     "data": {
-        "sync_task_status_id": "Architecto quis eum",
-        "i18n_lang_id": "Ut molestiae error",
-        "description": "Reiciendis dolorem consequatur"
+        "sync_task_status_id": "Velit excepturi ut",
+        "i18n_lang_id": "Neque totam iste",
+        "description": "Odit eos animi"
 },
     "headers": {
         "Accept": "application/json",
@@ -2332,9 +2378,9 @@ curl -X PUT "http://emsearch.ryan.ems-dev.net/api/syncTaskStatusVersion/Planned,
 -H "Accept: application/json" \
 -H "Authentication: Bearer xxx"
  \
-    -d "sync_task_status_id"="Vitae doloremque accusantium" \
-    -d "i18n_lang_id"="Quidem assumenda voluptatem" \
-    -d "description"="Et quod beatae" \
+    -d "sync_task_status_id"="Et tempore qui" \
+    -d "i18n_lang_id"="Quisquam pariatur corporis" \
+    -d "description"="Laudantium eaque hic" \
 
 ```
 
@@ -2345,9 +2391,9 @@ var settings = {
     "url": "http://emsearch.ryan.ems-dev.net/api/syncTaskStatusVersion/Planned,en_US",
     "method": "PUT",
     "data": {
-        "sync_task_status_id": "Vitae doloremque accusantium",
-        "i18n_lang_id": "Quidem assumenda voluptatem",
-        "description": "Et quod beatae"
+        "sync_task_status_id": "Et tempore qui",
+        "i18n_lang_id": "Quisquam pariatur corporis",
+        "description": "Laudantium eaque hic"
 },
     "headers": {
         "Accept": "application/json",
@@ -2417,15 +2463,15 @@ $.ajax(settings).done(function (response) {
             "sync_task_status_id": "Planned",
             "i18n_lang_id": "en_US",
             "description": "Items synchronization is planned.",
-            "created_at": "2017-04-25 09:28:58",
-            "updated_at": "2017-04-25 09:28:58"
+            "created_at": "2017-05-18 13:49:11",
+            "updated_at": "2017-05-18 13:49:11"
         },
         {
             "sync_task_status_id": "Planned",
             "i18n_lang_id": "fr_FR",
             "description": "La synchronisation des items est plannifiée",
-            "created_at": "2017-04-25 09:28:58",
-            "updated_at": "2017-04-25 09:28:58"
+            "created_at": "2017-05-18 13:49:11",
+            "updated_at": "2017-05-18 13:49:11"
         }
     ],
     "meta": {
@@ -2619,71 +2665,71 @@ $.ajax(settings).done(function (response) {
             "sync_task_type_id": "DataStreamCheck",
             "i18n_lang_id": "en_US",
             "description": "Comparison and verification of downloaded data.",
-            "created_at": "2017-04-25 09:28:58",
-            "updated_at": "2017-04-25 09:28:58"
+            "created_at": "2017-05-18 13:49:11",
+            "updated_at": "2017-05-18 13:49:11"
         },
         {
             "sync_task_type_id": "DataStreamCheck",
             "i18n_lang_id": "fr_FR",
             "description": "Comparaison et vérification des données téléchargées.",
-            "created_at": "2017-04-25 09:28:58",
-            "updated_at": "2017-04-25 09:28:58"
+            "created_at": "2017-05-18 13:49:11",
+            "updated_at": "2017-05-18 13:49:11"
         },
         {
             "sync_task_type_id": "DataStreamDownload",
             "i18n_lang_id": "en_US",
             "description": "Downloading the provided data feed url of the data stream.",
-            "created_at": "2017-04-25 09:28:58",
-            "updated_at": "2017-04-25 09:28:58"
+            "created_at": "2017-05-18 13:49:11",
+            "updated_at": "2017-05-18 13:49:11"
         },
         {
             "sync_task_type_id": "DataStreamDownload",
             "i18n_lang_id": "fr_FR",
             "description": "Téléchargement des données fournies par l'url du flux de données.",
-            "created_at": "2017-04-25 09:28:58",
-            "updated_at": "2017-04-25 09:28:58"
+            "created_at": "2017-05-18 13:49:11",
+            "updated_at": "2017-05-18 13:49:11"
         },
         {
             "sync_task_type_id": "DataStreamPrepare",
             "i18n_lang_id": "en_US",
             "description": "Data breakdown for creation, edition or deletion.",
-            "created_at": "2017-04-25 09:28:58",
-            "updated_at": "2017-04-25 09:28:58"
+            "created_at": "2017-05-18 13:49:11",
+            "updated_at": "2017-05-18 13:49:11"
         },
         {
             "sync_task_type_id": "DataStreamPrepare",
             "i18n_lang_id": "fr_FR",
             "description": "Ventilation des données pour la création, modification ou suppression.",
-            "created_at": "2017-04-25 09:28:58",
-            "updated_at": "2017-04-25 09:28:58"
+            "created_at": "2017-05-18 13:49:11",
+            "updated_at": "2017-05-18 13:49:11"
         },
         {
             "sync_task_type_id": "ItemsDelete",
             "i18n_lang_id": "en_US",
             "description": "Deleting records.",
-            "created_at": "2017-04-25 09:28:58",
-            "updated_at": "2017-04-25 09:28:58"
+            "created_at": "2017-05-18 13:49:11",
+            "updated_at": "2017-05-18 13:49:11"
         },
         {
             "sync_task_type_id": "ItemsDelete",
             "i18n_lang_id": "fr_FR",
             "description": "Suppression d'enregistrements.",
-            "created_at": "2017-04-25 09:28:58",
-            "updated_at": "2017-04-25 09:28:58"
+            "created_at": "2017-05-18 13:49:11",
+            "updated_at": "2017-05-18 13:49:11"
         },
         {
             "sync_task_type_id": "ItemsInsertion",
             "i18n_lang_id": "en_US",
             "description": "Creating new records.",
-            "created_at": "2017-04-25 09:28:58",
-            "updated_at": "2017-04-25 09:28:58"
+            "created_at": "2017-05-18 13:49:11",
+            "updated_at": "2017-05-18 13:49:11"
         },
         {
             "sync_task_type_id": "ItemsInsertion",
             "i18n_lang_id": "fr_FR",
             "description": "Création des nouveaux enregistrements.",
-            "created_at": "2017-04-25 09:28:58",
-            "updated_at": "2017-04-25 09:28:58"
+            "created_at": "2017-05-18 13:49:11",
+            "updated_at": "2017-05-18 13:49:11"
         }
     ],
     "meta": {
@@ -2747,8 +2793,8 @@ $.ajax(settings).done(function (response) {
             "sync_task_type_id": "Main",
             "i18n_lang_id": "en_US",
             "description": "Main task who rules and manage subtasks.",
-            "created_at": "2017-04-25 09:28:58",
-            "updated_at": "2017-04-25 09:28:58"
+            "created_at": "2017-05-18 13:49:11",
+            "updated_at": "2017-05-18 13:49:11"
         }
     ]
 }
@@ -2772,9 +2818,9 @@ curl -X POST "http://emsearch.ryan.ems-dev.net/api/syncTaskTypeVersion" \
 -H "Accept: application/json" \
 -H "Authentication: Bearer xxx"
  \
-    -d "sync_task_type_id"="Quaerat magnam nesciunt" \
-    -d "i18n_lang_id"="Pariatur illo laborum" \
-    -d "description"="Esse quidem aut" \
+    -d "sync_task_type_id"="Sed fuga quod" \
+    -d "i18n_lang_id"="Quia et porro" \
+    -d "description"="Accusamus dolorem cupiditate" \
 
 ```
 
@@ -2785,9 +2831,9 @@ var settings = {
     "url": "http://emsearch.ryan.ems-dev.net/api/syncTaskTypeVersion",
     "method": "POST",
     "data": {
-        "sync_task_type_id": "Quaerat magnam nesciunt",
-        "i18n_lang_id": "Pariatur illo laborum",
-        "description": "Esse quidem aut"
+        "sync_task_type_id": "Sed fuga quod",
+        "i18n_lang_id": "Quia et porro",
+        "description": "Accusamus dolorem cupiditate"
 },
     "headers": {
         "Accept": "application/json",
@@ -2824,9 +2870,9 @@ curl -X PUT "http://emsearch.ryan.ems-dev.net/api/syncTaskTypeVersion/Main,en_US
 -H "Accept: application/json" \
 -H "Authentication: Bearer xxx"
  \
-    -d "sync_task_type_id"="Dolorem aliquid distinctio" \
-    -d "i18n_lang_id"="Quo quia enim" \
-    -d "description"="Et beatae quasi" \
+    -d "sync_task_type_id"="Odit impedit nulla" \
+    -d "i18n_lang_id"="Similique id quo" \
+    -d "description"="Eaque quis necessitatibus" \
 
 ```
 
@@ -2837,9 +2883,9 @@ var settings = {
     "url": "http://emsearch.ryan.ems-dev.net/api/syncTaskTypeVersion/Main,en_US",
     "method": "PUT",
     "data": {
-        "sync_task_type_id": "Dolorem aliquid distinctio",
-        "i18n_lang_id": "Quo quia enim",
-        "description": "Et beatae quasi"
+        "sync_task_type_id": "Odit impedit nulla",
+        "i18n_lang_id": "Similique id quo",
+        "description": "Eaque quis necessitatibus"
 },
     "headers": {
         "Accept": "application/json",
@@ -2909,50 +2955,50 @@ $.ajax(settings).done(function (response) {
             "sync_task_type_id": "DataStreamCheck",
             "i18n_lang_id": "en_US",
             "description": "Comparison and verification of downloaded data.",
-            "created_at": "2017-04-25 09:28:58",
-            "updated_at": "2017-04-25 09:28:58"
+            "created_at": "2017-05-18 13:49:11",
+            "updated_at": "2017-05-18 13:49:11"
         },
         {
             "sync_task_type_id": "DataStreamDownload",
             "i18n_lang_id": "en_US",
             "description": "Downloading the provided data feed url of the data stream.",
-            "created_at": "2017-04-25 09:28:58",
-            "updated_at": "2017-04-25 09:28:58"
+            "created_at": "2017-05-18 13:49:11",
+            "updated_at": "2017-05-18 13:49:11"
         },
         {
             "sync_task_type_id": "DataStreamPrepare",
             "i18n_lang_id": "en_US",
             "description": "Data breakdown for creation, edition or deletion.",
-            "created_at": "2017-04-25 09:28:58",
-            "updated_at": "2017-04-25 09:28:58"
+            "created_at": "2017-05-18 13:49:11",
+            "updated_at": "2017-05-18 13:49:11"
         },
         {
             "sync_task_type_id": "ItemsDelete",
             "i18n_lang_id": "en_US",
             "description": "Deleting records.",
-            "created_at": "2017-04-25 09:28:58",
-            "updated_at": "2017-04-25 09:28:58"
+            "created_at": "2017-05-18 13:49:11",
+            "updated_at": "2017-05-18 13:49:11"
         },
         {
             "sync_task_type_id": "ItemsInsertion",
             "i18n_lang_id": "en_US",
             "description": "Creating new records.",
-            "created_at": "2017-04-25 09:28:58",
-            "updated_at": "2017-04-25 09:28:58"
+            "created_at": "2017-05-18 13:49:11",
+            "updated_at": "2017-05-18 13:49:11"
         },
         {
             "sync_task_type_id": "ItemsUpdate",
             "i18n_lang_id": "en_US",
             "description": "Updating records.",
-            "created_at": "2017-04-25 09:28:58",
-            "updated_at": "2017-04-25 09:28:58"
+            "created_at": "2017-05-18 13:49:11",
+            "updated_at": "2017-05-18 13:49:11"
         },
         {
             "sync_task_type_id": "Main",
             "i18n_lang_id": "en_US",
             "description": "Main task who rules and manage subtasks.",
-            "created_at": "2017-04-25 09:28:58",
-            "updated_at": "2017-04-25 09:28:58"
+            "created_at": "2017-05-18 13:49:11",
+            "updated_at": "2017-05-18 13:49:11"
         }
     ],
     "meta": {
@@ -3019,32 +3065,32 @@ $.ajax(settings).done(function (response) {
             "user_group_id": "Developer",
             "name": "John Doe",
             "email": "john.doe@domain.tld",
-            "created_at": "2017-04-25 09:29:00",
-            "updated_at": "2017-04-25 09:29:00"
+            "created_at": "2017-05-18 13:49:12",
+            "updated_at": "2017-05-18 13:49:12"
         },
         {
             "id": "509dd5c0-1389-11e7-93ae-92361f002671",
             "user_group_id": "Support",
             "name": "Alan Smithee",
             "email": "alan.smithee@domain.tld",
-            "created_at": "2017-04-25 09:29:00",
-            "updated_at": "2017-04-25 09:29:00"
+            "created_at": "2017-05-18 13:49:12",
+            "updated_at": "2017-05-18 13:49:12"
         },
         {
             "id": "605c7610-1389-11e7-93ae-92361f002671",
             "user_group_id": "End-User",
             "name": "John Smith",
             "email": "john.smith@domain.tld",
-            "created_at": "2017-04-25 09:29:00",
-            "updated_at": "2017-04-25 09:29:00"
+            "created_at": "2017-05-18 13:49:12",
+            "updated_at": "2017-05-18 13:49:12"
         },
         {
             "id": "82b5da82-138c-11e7-93ae-92361f002671",
             "user_group_id": "End-User",
             "name": "Mickey Mouse",
             "email": "mickey.mouse@domain.tld",
-            "created_at": "2017-04-25 09:29:00",
-            "updated_at": "2017-04-25 09:29:00"
+            "created_at": "2017-05-18 13:49:12",
+            "updated_at": "2017-05-18 13:49:12"
         }
     ],
     "meta": {
@@ -3106,8 +3152,8 @@ $.ajax(settings).done(function (response) {
         "user_group_id": "End-User",
         "name": "John Smith",
         "email": "john.smith@domain.tld",
-        "created_at": "2017-04-25 09:29:00",
-        "updated_at": "2017-04-25 09:29:00"
+        "created_at": "2017-05-18 13:49:12",
+        "updated_at": "2017-05-18 13:49:12"
     }
 }
 ```
@@ -3130,10 +3176,10 @@ curl -X POST "http://emsearch.ryan.ems-dev.net/api/user" \
 -H "Accept: application/json" \
 -H "Authentication: Bearer xxx"
  \
-    -d "user_group_id"="Developer" \
-    -d "name"="Et quo voluptas" \
-    -d "email"="afarrell@example.com" \
-    -d "password"="DA&gt;&quot;cP0" \
+    -d "user_group_id"="Support" \
+    -d "name"="Quidem assumenda voluptatem" \
+    -d "email"="fweimann@example.org" \
+    -d "password"="\P,N{M&quot;M+&quot;_G~j" \
 
 ```
 
@@ -3144,10 +3190,10 @@ var settings = {
     "url": "http://emsearch.ryan.ems-dev.net/api/user",
     "method": "POST",
     "data": {
-        "user_group_id": "Developer",
-        "name": "Et quo voluptas",
-        "email": "afarrell@example.com",
-        "password": "DA>\"cP0"
+        "user_group_id": "Support",
+        "name": "Quidem assumenda voluptatem",
+        "email": "fweimann@example.org",
+        "password": "\\P,N{M\"M+\"_G~j"
 },
     "headers": {
         "Accept": "application/json",
@@ -3185,10 +3231,10 @@ curl -X PUT "http://emsearch.ryan.ems-dev.net/api/user/605c7610-1389-11e7-93ae-9
 -H "Accept: application/json" \
 -H "Authentication: Bearer xxx"
  \
-    -d "user_group_id"="Support" \
-    -d "name"="Iure harum nobis" \
-    -d "email"="austen19@example.net" \
-    -d "password"="4%i$e2m&amp;eJa?2w" \
+    -d "user_group_id"="End-User" \
+    -d "name"="Maiores voluptatibus omnis" \
+    -d "email"="rasheed01@example.net" \
+    -d "password"="T9~[P*\*~" \
 
 ```
 
@@ -3199,10 +3245,10 @@ var settings = {
     "url": "http://emsearch.ryan.ems-dev.net/api/user/605c7610-1389-11e7-93ae-92361f002671",
     "method": "PUT",
     "data": {
-        "user_group_id": "Support",
-        "name": "Iure harum nobis",
-        "email": "austen19@example.net",
-        "password": "4%i$e2m&eJa?2w"
+        "user_group_id": "End-User",
+        "name": "Maiores voluptatibus omnis",
+        "email": "rasheed01@example.net",
+        "password": "T9~[P*\\*~"
 },
     "headers": {
         "Accept": "application/json",
@@ -3271,6 +3317,150 @@ $.ajax(settings).done(function (response) {
 
 <!-- END_186fff344f72d874e95af874b8843d4e -->
 
+<!-- START_9617a8e5eaf8871dba9ad8f5000f9cd0 -->
+## User group user list
+
+
+<aside class="notice">Pagination limit must be a value between <code>1</code> and <code>20</code>, default is <code>10</code>.</aside>
+
+> Example request:
+
+```bash
+curl -X GET "http://emsearch.ryan.ems-dev.net/api/userGroup/End-User/user" \
+-H "Accept: application/json" \
+-H "Authentication: Bearer xxx"
+
+```
+
+```javascript
+var settings = {
+    "async": true,
+    "crossDomain": true,
+    "url": "http://emsearch.ryan.ems-dev.net/api/userGroup/End-User/user",
+    "method": "GET",
+    "headers": {
+        "Accept": "application/json",
+        "Authentication" : "Bearer xxx"
+    }
+}
+
+$.ajax(settings).done(function (response) {
+    console.log(response);
+});
+```
+
+> Example response:
+
+```json
+{
+    "data": [
+        {
+            "id": "605c7610-1389-11e7-93ae-92361f002671",
+            "user_group_id": "End-User",
+            "name": "John Smith",
+            "email": "john.smith@domain.tld",
+            "created_at": "2017-05-18 13:49:12",
+            "updated_at": "2017-05-18 13:49:12"
+        },
+        {
+            "id": "82b5da82-138c-11e7-93ae-92361f002671",
+            "user_group_id": "End-User",
+            "name": "Mickey Mouse",
+            "email": "mickey.mouse@domain.tld",
+            "created_at": "2017-05-18 13:49:12",
+            "updated_at": "2017-05-18 13:49:12"
+        }
+    ],
+    "meta": {
+        "pagination": {
+            "total": 2,
+            "count": 2,
+            "per_page": 10,
+            "current_page": 1,
+            "total_pages": 1,
+            "links": []
+        }
+    }
+}
+```
+
+### HTTP Request
+`GET /api/userGroup/{userGroupId}/user`
+
+`HEAD /api/userGroup/{userGroupId}/user`
+
+
+<!-- END_9617a8e5eaf8871dba9ad8f5000f9cd0 -->
+
+#UserGroup
+<!-- START_6ee7257d4cfc462bf0f13e592e8d61fe -->
+## Show User group list
+
+
+<aside class="notice">Pagination limit must be a value between <code>1</code> and <code>20</code>, default is <code>10</code>.</aside>
+
+> Example request:
+
+```bash
+curl -X GET "http://emsearch.ryan.ems-dev.net/api/userGroup" \
+-H "Accept: application/json" \
+-H "Authentication: Bearer xxx"
+
+```
+
+```javascript
+var settings = {
+    "async": true,
+    "crossDomain": true,
+    "url": "http://emsearch.ryan.ems-dev.net/api/userGroup",
+    "method": "GET",
+    "headers": {
+        "Accept": "application/json",
+        "Authentication" : "Bearer xxx"
+    }
+}
+
+$.ajax(settings).done(function (response) {
+    console.log(response);
+});
+```
+
+> Example response:
+
+```json
+{
+    "data": [
+        {
+            "id": "Developer"
+        },
+        {
+            "id": "End-User"
+        },
+        {
+            "id": "Support"
+        }
+    ],
+    "meta": {
+        "pagination": {
+            "total": 3,
+            "count": 3,
+            "per_page": 10,
+            "current_page": 1,
+            "total_pages": 1,
+            "links": []
+        }
+    }
+}
+```
+
+### HTTP Request
+`GET /api/userGroup`
+
+`HEAD /api/userGroup`
+
+
+<!-- END_6ee7257d4cfc462bf0f13e592e8d61fe -->
+
 #UserHasProject
 <!-- START_cf0313d53939313429ce6788fa95624c -->
 ## List of relationships between users and projects
@@ -3313,36 +3503,36 @@ $.ajax(settings).done(function (response) {
             "user_id": "605c7610-1389-11e7-93ae-92361f002671",
             "project_id": "1bcc7efc-138c-11e7-93ae-92361f002671",
             "user_role_id": "Owner",
-            "created_at": "2017-04-25 09:29:00",
-            "updated_at": "2017-04-25 09:29:00"
+            "created_at": "2017-05-18 13:49:12",
+            "updated_at": "2017-05-18 13:49:12"
         },
         {
             "user_id": "605c7610-1389-11e7-93ae-92361f002671",
             "project_id": "b6860dd2-138c-11e7-93ae-92361f002671",
             "user_role_id": "Owner",
-            "created_at": "2017-04-25 09:29:00",
-            "updated_at": "2017-04-25 09:29:00"
+            "created_at": "2017-05-18 13:49:12",
+            "updated_at": "2017-05-18 13:49:12"
         },
         {
             "user_id": "605c7610-1389-11e7-93ae-92361f002671",
             "project_id": "c4b5d93c-138c-11e7-93ae-92361f002671",
             "user_role_id": "Administrator",
-            "created_at": "2017-04-25 09:29:01",
-            "updated_at": "2017-04-25 09:29:01"
+            "created_at": "2017-05-18 13:49:12",
+            "updated_at": "2017-05-18 13:49:12"
         },
         {
             "user_id": "82b5da82-138c-11e7-93ae-92361f002671",
             "project_id": "1bcc7efc-138c-11e7-93ae-92361f002671",
             "user_role_id": "Administrator",
-            "created_at": "2017-04-25 09:29:00",
-            "updated_at": "2017-04-25 09:29:00"
+            "created_at": "2017-05-18 13:49:12",
+            "updated_at": "2017-05-18 13:49:12"
         },
         {
             "user_id": "82b5da82-138c-11e7-93ae-92361f002671",
             "project_id": "c4b5d93c-138c-11e7-93ae-92361f002671",
             "user_role_id": "Owner",
-            "created_at": "2017-04-25 09:29:00",
-            "updated_at": "2017-04-25 09:29:00"
+            "created_at": "2017-05-18 13:49:12",
+            "updated_at": "2017-05-18 13:49:12"
         }
     ],
     "meta": {
@@ -3404,8 +3594,8 @@ $.ajax(settings).done(function (response) {
             "user_id": "605c7610-1389-11e7-93ae-92361f002671",
             "project_id": "1bcc7efc-138c-11e7-93ae-92361f002671",
             "user_role_id": "Owner",
-            "created_at": "2017-04-25 09:29:00",
-            "updated_at": "2017-04-25 09:29:00"
+            "created_at": "2017-05-18 13:49:12",
+            "updated_at": "2017-05-18 13:49:12"
         }
     ]
 }
@@ -3431,9 +3621,9 @@ curl -X POST "http://emsearch.ryan.ems-dev.net/api/userHasProject" \
 -H "Accept: application/json" \
 -H "Authentication: Bearer xxx"
  \
-    -d "user_id"="dba70999-bec9-3d5c-abcf-dc819d194d45" \
-    -d "project_id"="bbb94ad7-018a-3844-bee5-57e478408589" \
-    -d "user_role_id"="Owner" \
+    -d "user_id"="60c4356d-6a09-3f7d-8f4b-e314390db7f0" \
+    -d "project_id"="a798c82e-0fa5-353b-b83a-629a9589dede" \
+    -d "user_role_id"="Administrator" \
 
 ```
 
@@ -3444,9 +3634,9 @@ var settings = {
     "url": "http://emsearch.ryan.ems-dev.net/api/userHasProject",
     "method": "POST",
     "data": {
-        "user_id": "dba70999-bec9-3d5c-abcf-dc819d194d45",
-        "project_id": "bbb94ad7-018a-3844-bee5-57e478408589",
-        "user_role_id": "Owner"
+        "user_id": "60c4356d-6a09-3f7d-8f4b-e314390db7f0",
+        "project_id": "a798c82e-0fa5-353b-b83a-629a9589dede",
+        "user_role_id": "Administrator"
 },
     "headers": {
         "Accept": "application/json",
@@ -3485,8 +3675,8 @@ curl -X PUT "http://emsearch.ryan.ems-dev.net/api/userHasProject/605c7610-1389-1
 -H "Accept: application/json" \
 -H "Authentication: Bearer xxx"
  \
-    -d "user_id"="78c3a49b-bd24-37f1-bb7d-b5477201ed2b" \
-    -d "project_id"="5cbe0ff5-621a-37e3-9e42-63b8594e8e2e" \
+    -d "user_id"="351dd337-8b2b-307c-a8fd-11e75a7b8369" \
+    -d "project_id"="6d4ca748-b5fd-3ee7-9d28-1fa292023444" \
     -d "user_role_id"="Owner" \
 
 ```
@@ -3498,8 +3688,8 @@ var settings = {
     "url": "http://emsearch.ryan.ems-dev.net/api/userHasProject/605c7610-1389-11e7-93ae-92361f002671,1bcc7efc-138c-11e7-93ae-92361f002671",
     "method": "PUT",
     "data": {
-        "user_id": "78c3a49b-bd24-37f1-bb7d-b5477201ed2b",
-        "project_id": "5cbe0ff5-621a-37e3-9e42-63b8594e8e2e",
+        "user_id": "351dd337-8b2b-307c-a8fd-11e75a7b8369",
+        "project_id": "6d4ca748-b5fd-3ee7-9d28-1fa292023444",
         "user_role_id": "Owner"
 },
     "headers": {

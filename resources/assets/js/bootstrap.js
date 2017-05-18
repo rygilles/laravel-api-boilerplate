@@ -45,5 +45,8 @@ require('admin-lte/plugins/datepicker/bootstrap-datepicker');
 require('admin-lte/plugins/datepicker/locales/bootstrap-datepicker.fr');
 require('admin-lte/plugins/slimScroll/jquery.slimscroll');
 require('admin-lte/plugins/fastclick/fastclick');
+require('admin-lte/plugins/select2/select2');
+require('admin-lte/plugins/select2/i18n/fr');
 require('admin-lte/plugins/datatables/jquery.dataTables');
+require('datatables.net-select');
 //require('admin-lte/plugins/datatables/dataTables.bootstrap');

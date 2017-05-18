@@ -37,6 +37,24 @@ return [
 				'apiCannotFillOnUserGroups' => ['End-User'],
 
 			]
+		],
+
+		'requestQueryStringParameters' => [
+
+			'authorizedOrderByColumns' => 'id,user_group_id,name',
+			'authorizedSearchColumns' => 'name',
+			'defaultSearchColumns' => 'name',
+
+		]
+
+	],
+
+	App\Models\UserGroup::class => [
+
+		'requestQueryStringParameters' => [
+
+			'authorizedOrderByColumns' => 'id',
+
 		]
 
 	],
@@ -61,6 +79,15 @@ return [
 
 			]
 
+		],
+
+		'requestQueryStringParameters' => [
+
+			'authorizedOrderByColumns' => 'id,name,created_at,updated_at',
+			'authorizedSearchColumns' => 'id,name',
+			'defaultSearchColumns' => 'id,name',
+			'authorizedIncludes' => 'searchEngine'
+
 		]
 
 	],
@@ -72,6 +99,18 @@ return [
 			'authorizedOrderByColumns' => 'id,description',
 			'authorizedSearchColumns' => 'id,description',
 			'defaultSearchColumns' => 'id,description',
+
+		]
+
+	],
+
+	App\Models\SearchEngine::class => [
+
+		'requestQueryStringParameters' => [
+
+			'authorizedOrderByColumns' => 'id,name',
+			'authorizedSearchColumns' => 'name',
+			'defaultSearchColumns' => 'name',
 
 		]
 

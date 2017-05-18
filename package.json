@@ -20,10 +20,12 @@
     "vue": "^2.0.1"
   },
   "dependencies": {
+    "datatables.net-select-dt": "^1.2.2",
     "laravel-echo": "^1.3.0",
     "pusher-js": "^4.1.0",
     "vue-gravatar": "^1.1.3",
     "vue-router": "^2.3.0",
+    "vue-select": "github:sagalbot/vue-select",
     "vuex": "^2.3.1"
   }
 }

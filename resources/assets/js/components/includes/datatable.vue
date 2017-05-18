@@ -4,8 +4,12 @@
 	}
 	.buttons-column {
 		vertical-align: middle;
-		width: 1%;
+		text-align: right;
 		white-space: nowrap;
+	}
+
+	.buttons-column-spacing {
+		width: 1%;
 	}
 
 	.buttons-column .btn {
@@ -13,6 +17,44 @@
 	}
 
 	.buttons-column .btn:last-child {
+		margin-right: 0;
+	}
+
+	th.select-checkbox {
+		width: 1%
+	}
+
+	table.dataTable tbody td.select-checkbox:before,
+	table.dataTable tbody th.select-checkbox:before {
+		margin-top: -6px;
+	}
+
+	table.dataTable tbody td.select-checkbox:before,
+	table.dataTable tbody td.select-checkbox:after,
+	table.dataTable tbody th.select-checkbox:before,
+	table.dataTable tbody th.select-checkbox:after {
+		top: 50%;
+	}
+
+	div.dataTables_info {
+		padding-top: 0;
+	}
+
+	.vcenter {
+		display: inline-block;
+		vertical-align: middle;
+		float: none;
+	}
+
+	.mass-selected span {
+		margin-right: 9px;
+	}
+
+	.mass-selected .btn {
+		margin-right: 4px;
+	}
+
+	.mass-selected .btn:last {
 		margin-right: 0;
 	}
 </style>
@@ -28,9 +70,9 @@
 		</div>
 		<div class="box-body">
 			<div class="dataTables_wrapper form-inline dt-bootstrap">
-				<div class="row">
+				<div v-if="paginationLimiting || searching" class="row">
 					<div class="col-sm-6">
-						<div class="dataTables_length">
+						<div v-if="paginationLimiting" class="dataTables_length">
 							<label>
 								{{ $t('common.pagination.show') }}
 								<select v-model.number="limit" name="i18nLangs_length" class="form-control input-sm">
@@ -41,7 +83,7 @@
 						</div>
 					</div>
 					<div class="col-sm-6">
-						<div class="dataTables_filter">
+						<div v-if="searching" class="dataTables_filter">
 							<label>
 								{{ $t('common.search') }} :
 								<input v-model="search" type="search" class="form-control input-sm" placeholder="">
@@ -49,33 +91,55 @@
 						</div>
 					</div>
 				</div>
-				<div class="row">
+				<div v-if="(dataStoreState.data.length == 0) && (emptyMessage != '')" class="row">
+					<div class="col-md-8">
+						<p v-html="emptyMessage"></p>
+					</div>
+				</div>
+				<div v-else class="row">
 					<div class="col-sm-12 table-responsive">
-						<table role="grid" class="table table-bordered table-striped dataTable">
+						<table role="grid" class="table table-striped table-hover table-responsive dataTable display">
 							<thead>
-							<tr role="row">
-								<th v-for="column in columns" @click="toggleOrderBy(column)"
-									:class="[column.class, orderByThClassObject(column)]">
-									{{ column.title }}
-								</th>
-								<th></th>
-							</tr>
+								<tr role="row">
+									<th v-if="checkboxes.enabled"
+										class="select-checkbox">
+									</th>
+									<th v-for="column in columns" @click="toggleOrderBy(column)"
+										:class="[column.class, orderByThClassObject(column)]"
+										v-html="column.title">
+									</th>
+									<th></th>
+								</tr>
 							</thead>
 							<tbody>
 
-							<tr v-for="dataRow in dataStoreState.data" role="row">
+							<tr v-for="(dataRow, key, index) in dataStoreState.data"
+								role="row"
+								:class="dataRowTrClassObject(index, dataRow)">
+
+								<td v-if="checkboxes.enabled"
+									class="select-checkbox"
+									@click="selectRow(dataRow)">
+								</td>
 
 								<td v-for="column in columns"
 									:class="column.class"
 									style="vertical-align: middle;">
-									{{ dataRow[column.name] }}
+									<router-link
+										v-if="'routerLink' in column"
+										:to="resolveColumnRouterTo(dataRow, column)">
+										<span v-html="resolveColumnDataValue(dataRow, column)"></span>
+									</router-link>
+									<span v-else v-html="resolveColumnDataValue(dataRow, column)"></span>
 								</td>
 
 								<!-- Buttons -->
-								<td class="buttons-column">
-									<button v-for="rowButton in rowsButtons" type="button" :class="rowButton.class" @click="rowButton.onClick(dataRow)">
-										{{ rowButton.title }}
-									</button>
+								<td :class="buttonsColumnClassObject()">
+									<button v-for="rowButton in rowsButtons"
+											type="button"
+											@click="rowButton.onClick(dataRow)"
+											:class="rowButton.class"
+											v-html="rowButton.title"></button>
 								</td>
 							</tr>
 							</tbody>
@@ -84,19 +148,27 @@
 				</div>
 			</div>
 		</div>
-		<div class="box-footer clearfix">
+		<div v-if="checkboxes.enabled || ('pagination' in dataStoreState.meta && dataStoreState.meta.pagination.total_pages > 1)"
+			class="box-footer clearfix"
+		>
 			<div class="row">
-				<div class="col-sm-5">
-					<div class="dataTables_info"
+				<div class="col-md-8">
+					<div class="dataTables_info row"
 						 role="status"
-						 v-html="$t('common.pagination.showing_info', {
-									from: (dataStoreState.meta.pagination.current_page - 1) * dataStoreState.meta.pagination.per_page + 1,
-									to: (dataStoreState.meta.pagination.current_page - 1) * dataStoreState.meta.pagination.per_page + dataStoreState.meta.pagination.count,
-									total: dataStoreState.meta.pagination.total
-								 })">
+					>
+						<div class="mass-selected col-md-6 vcenter" v-if="selectedRows.length > 0">
+							<span v-html="$tc('common.mass.showing_info', selectedRows.length, { count: selectedRows.length})"></span>
+							<button v-for="massButton in checkboxes.massButtons"
+									type="button"
+									:class="massButton.class"
+									@click="massButton.onClick(selectedRows)"
+									v-html="massButton.title"></button>
+						</div>
+						<div :class="['col-md-6', 'vcenter', {'text-center' : (selectedRows.length > 0)}] "
+							  v-html="showingInfo"></div>
 					</div>
 				</div>
-				<div class="col-sm-7">
+				<div class="col-md-4">
 					<Pagination
 						@update:page="val => page = val"
 						:limit="limit"
@@ -120,9 +192,29 @@
 
 		props: {
 			'mainTitle': String,
+			'emptyMessage' : {
+				type: String,
+				default: ''
+			},
+			'defaultOrderByColumn' : {
+				type: String,
+				default: 'id'
+			},
+			'defaultOrderByDirection' : {
+				type: String,
+				default: 'asc'
+			},
 			'defaultPaginationLimit': {
 				type: Number,
 				default: function() { return 25; }
+			},
+			'searching': {
+				type: Boolean,
+				default: true,
+			},
+			'paginationLimiting': {
+				type: Boolean,
+				default: true,
 			},
 			'paginationLimits': {
 				type: Array,
@@ -133,6 +225,10 @@
 			'dataStoreStateName': String,
 			'dataLoadingStoreStateName': String,
 			'dataDispatchAction': String,
+			'buttonsColumnClass': {
+				type: String,
+				default: ''
+			},
 			'columns': {
 				type: Array,
 				default: function() {
@@ -142,21 +238,47 @@
 							'class': 'col-md-2',
 							'title': 'Id',
 							'orderable': true,
+							'order_by_field' : 'id',
+							'transformValue' : function(value) {
+								return value;
+							},
 						}
 					]
 				}
 			},
+			'requestInclude' : {
+				default: ''
+			},
 			'rowsButtons' : {
 				type : Array,
-				default : [
-					{
-						title : 'example',
-						class : 'btn btn-default',
-						onClick : function(row) {
-							alert(row);
+				default : function() {
+					return [
+						{
+							title: 'Example',
+							class: 'btn btn-default',
+							onClick: function (row) {
+								alert(row);
+							}
 						}
+					];
+				}
+			},
+			'checkboxes' : {
+				type : Object,
+				default : function() {
+					return {
+						'enabled' : true,
+						'massButtons' : [
+							{
+								title : 'Example',
+								class : 'btn btn-default',
+								onClick : function(rows) {
+									alert(rows.length + ' items selected');
+								}
+							}
+						]
 					}
-				]
+				}
 			}
 		},
 
@@ -166,11 +288,12 @@
 				'limit' : this.defaultPaginationLimit,
 				'search' : '',
 				'order_by' : {
-					'column' : 'id',
-					'direction' : 'asc',
+					'column' : this.defaultOrderByColumn,
+					'direction' : this.defaultOrderByDirection,
 				},
 				'paginationPreviousRange' : 3,
 				'paginationNextRange' : 3,
+				'selectedRows' : [],
 			};
 		},
 
@@ -195,20 +318,24 @@
 
 		methods: {
 			fetchData: function() {
+				this.selectedRows = [];
 				this.$store.dispatch(this.dataDispatchAction, {
 					page: this.page,
 					limit: this.limit,
 					search: this.search,
 					order_by: this.order_by,
+					include: this.requestInclude,
 				});
 			},
 			fetchDataDebounced: _.debounce(
 				function() {
+					this.selectedRows = [];
 					this.$store.dispatch(this.dataDispatchAction, {
 						page: this.page,
 						limit: this.limit,
 						search: this.search,
 						order_by: this.order_by,
+						include: this.requestInclude,
 					});
 				}, 500
 			),
@@ -217,7 +344,7 @@
 					return;
 				}
 
-				if (this.order_by.column == column.name) {
+				if (this.order_by.column == column.order_by_field) {
 					if (this.order_by.direction == 'asc') {
 						this.order_by.direction = 'desc';
 					}
@@ -225,7 +352,7 @@
 						this.order_by.direction = 'asc';
 					}
 				} else {
-					this.order_by.column = column.name;
+					this.order_by.column = column.order_by_field;
 					this.order_by.direction = 'asc';
 				}
 			},
@@ -240,6 +367,52 @@
 					'sorting_desc' : ((this.order_by.column == column.name) && (this.order_by.direction == 'desc')),
 				};
 			},
+			buttonsColumnClassObject() {
+				var classes = {
+					'buttons-column': true
+				};
+				if (this.buttonsColumnClass != '') {
+					classes[this.buttonsColumnClass] = true;
+				} else {
+					classes['buttons-column-spacing'] = true;
+				}
+				return classes;
+			},
+			dataRowTrClassObject(index, dataRow) {
+				return {
+					'even' : index % 2 == 0,
+					'odd' : index % 2 != 0,
+					'selected' : (_.indexOf(this.selectedRows, dataRow) != -1)
+				};
+			},
+			selectRow(dataRow) {
+				var rowIndex = _.indexOf(this.selectedRows, dataRow);
+				if (rowIndex != -1) {
+					this.selectedRows.splice(rowIndex, 1);
+				} else {
+					this.selectedRows.push(dataRow);
+				}
+			},
+			resolveColumnDataValue(dataRow, column) {
+				if ('transformValue' in column) {
+					if (typeof column.transformValue == 'function') {
+						return column.transformValue(column.name.split('.').reduce((o,i)=>o[i], dataRow));
+					}
+				}
+				return column.name.split('.').reduce((o,i)=>o[i], dataRow);
+			},
+			resolveColumnRouterTo(dataRow, column) {
+				var to = {
+					name: column.routerLink.routeName,
+					params : {}
+				};
+
+				for (var paramName in column.routerLink.paramsNames) {
+					to.params[paramName] = column.routerLink.paramsNames[paramName].split('.').reduce((o,i)=>o[i], dataRow);
+				}
+
+				return to;
+			}
 		},
 
 		computed: {
@@ -249,6 +422,17 @@
 			dataLoadingStoreState() {
 				return this.$store.state[this.dataLoadingStoreStateName];
 			},
+			showingInfo() {
+				try {
+					return this.$i18n.t('common.pagination.showing_info', {
+						from: (this.dataStoreState.meta.pagination.current_page - 1) * this.dataStoreState.meta.pagination.per_page + 1,
+						to: (this.dataStoreState.meta.pagination.current_page - 1) * this.dataStoreState.meta.pagination.per_page + this.dataStoreState.meta.pagination.count,
+						total: this.dataStoreState.meta.pagination.total
+					});
+				} catch (e) {
+					return '';
+				}
+			}
 		},
 	}
 </script>

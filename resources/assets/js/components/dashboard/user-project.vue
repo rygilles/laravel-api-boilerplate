@@ -1,29 +1,13 @@
-<style scoped>
-	.action-link {
-		cursor: pointer;
-	}
-</style>
-
 <template>
-	<div v-if="$root.fetched">
-		<div>
-			<div class="panel panel-default">
-				<div class="panel-heading">
-					<div style="display: flex; justify-content: space-between; align-items: center;">
-						<span>
-							{{ $t('projects.owner_projects') }}
-						</span>
-					</div>
-				</div>
-
-				<div class="panel-body">
-
-					<p>Test...</p>
-
-				</div>
+	<!-- Main content -->
+	<section class="content">
+		<div class="row">
+			<div class="col-xs-12">
+				@todo
+				<pre v-html="project"></pre>
 			</div>
 		</div>
-	</div>
+	</section>
 </template>
 
 <script>
@@ -67,12 +51,13 @@
 			},
 
 			getUserProject(projectId) {
-				apiAxios.get('/project/' + projectId )
-						.then(response => {
-							console.log(response.data);
-						}).catch(error => {
-							this.$root.axiosError(error);
-						});
+				apiAxios
+					.get('/project/' + projectId)
+					.then(response => {
+						this.project = response.data.data;
+					}).catch(error => {
+						this.$root.axiosError(error);
+					});
 			}
 		}
 	}

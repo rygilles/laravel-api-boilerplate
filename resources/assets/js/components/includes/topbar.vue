@@ -21,7 +21,7 @@
 			<div class="navbar-custom-menu">
 				<ul class="nav navbar-nav">
 					<!-- User Notifications Menu -->
-					<notifications />
+					<notifications ref="notifications" />
 					<!-- User Account Menu -->
 					<li class="dropdown user user-menu">
 						<a href="javascript:;" class="dropdown-toggle" data-toggle="dropdown">

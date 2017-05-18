@@ -33,7 +33,7 @@ class ProjectController extends ApiController
 	 */
 	public function index()
 	{
-		$paginator = Project::paginate();
+		$paginator = Project::applyRequestQueryString()->paginate();
 
 		return $this->response->paginator($paginator, new ProjectTransformer);
 	}

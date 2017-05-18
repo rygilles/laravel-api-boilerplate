@@ -30,17 +30,21 @@ var store = new Vuex.Store({
 
         i18nLangs: {
             data: [],
-            meta: {
-                pagination: {
-                    count: 0,
-                    current_page: 0,
-                    per_page: 25,
-                    total: 0,
-                    total_pages: 0,
-                }
-            }
+            meta: {}
         },
         i18nLangsLoading: true,
+
+        users: {
+            data: [],
+            meta: {}
+        },
+        usersLoading: true,
+
+        userGroups: {
+            data: [],
+            meta: {}
+        },
+        userGroupsLoading: true,
     },
     getters: {
         laravel(state) {
@@ -93,6 +97,20 @@ var store = new Vuex.Store({
         i18nLangsLoading(state) {
             return state.i18nLangsLoading;
         },
+
+        users(state) {
+            return state.users;
+        },
+        usersLoading(state) {
+            return state.usersLoading;
+        },
+
+        userGroups(state) {
+            return state.userGroups;
+        },
+        userGroupsLoading(state) {
+            return state.userGroupsLoading;
+        },
     },
     mutations: {
         setLaravel(state, laravel) {
@@ -141,11 +159,44 @@ var store = new Vuex.Store({
         setI18nLangsLoading(state, loading) {
             state.i18nLangsLoading = loading;
         },
+
+        setUsers(state, users) {
+            state.users = users;
+        },
+        setUsersLoading(state, loading) {
+            state.usersLoading = loading;
+        },
+
+        setUserGroups(state, users) {
+            state.userGroups = users;
+        },
+        setUserGroupsLoading(state, loading) {
+            state.userGroupsLoading = loading;
+        },
     },
     actions: {
-        getUserOwnerProjects(state) {
+        getUserOwnerProjects(state, options) {
             state.commit('setOwnerProjectsLoading', true);
-            apiAxios.get('/me/project?user_role_id=Owner')
+
+            var config = {
+                params: {
+                    page: (options.page ? options.page : 1),
+                    limit: (options.limit ? options.limit : 20),
+                    user_role_id: 'Owner',
+                }
+            };
+
+            if ('order_by' in options) {
+                config.params.order_by = options.order_by.column + ',' + options.order_by.direction;
+            }
+
+            if ('search' in options) {
+                if (options.search != '') {
+                    config.params.search = options.search;
+                }
+            }
+
+            apiAxios.get('/me/project', config)
                 .then(response => {
                     state.commit('setOwnerProjects', response.data);
                     state.commit('setOwnerProjectsLoading', false);
@@ -165,9 +216,35 @@ var store = new Vuex.Store({
             });
         },
 
-        getAllProjects(state) {
+        getAllProjects(state, options) {
             state.commit('setAllProjectsLoading', true);
-            apiAxios.get('/project')
+
+            var config = {
+                params: {
+                    page: (options.page ? options.page : 1),
+                    limit: (options.limit ? options.limit : 20),
+                }
+            };
+
+            if ('order_by' in options) {
+                config.params.order_by = options.order_by.column + ',' + options.order_by.direction;
+            }
+
+            if ('search' in options) {
+                if (options.search != '') {
+                    config.params.search = options.search;
+                }
+            }
+
+            if ('include' in options) {
+                if (Array.isArray(options.include)) {
+                    config.params.include = _.join(options.include, ',');
+                } else if (typeof options.include == 'string') {
+                    config.params.include = options.include;
+                }
+            }
+
+            apiAxios.get('/project', config)
                 .then(response => {
                     state.commit('setAllProjects', response.data);
                     state.commit('setAllProjectsLoading', false);
@@ -182,7 +259,7 @@ var store = new Vuex.Store({
             var config = {
                 params: {
                     page: (options.page ? options.page : 1),
-                    limit: (options.limit ? options.limit : 25),
+                    limit: (options.limit ? options.limit : 20),
                 }
             };
 
@@ -200,6 +277,64 @@ var store = new Vuex.Store({
                 .then(response => {
                     state.commit('setI18nLangs', response.data);
                     state.commit('setI18nLangsLoading', false);
+                }).catch(error => {
+                this.$root.axiosError(error);
+            });
+        },
+
+        getUsers(state, options) {
+            state.commit('setUsersLoading', true);
+
+            var config = {
+                params: {
+                    page: (options.page ? options.page : 1),
+                    limit: (options.limit ? options.limit : 20),
+                }
+            };
+
+            if ('order_by' in options) {
+                config.params.order_by = options.order_by.column + ',' + options.order_by.direction;
+            }
+
+            if ('search' in options) {
+                if (options.search != '') {
+                    config.params.search = options.search;
+                }
+            }
+
+            apiAxios.get('/user', config)
+                .then(response => {
+                    state.commit('setUsers', response.data);
+                    state.commit('setUsersLoading', false);
+                }).catch(error => {
+                this.$root.axiosError(error);
+            });
+        },
+
+        getUserGroups(state, options) {
+            state.commit('setUserGroupsLoading', true);
+
+            var config = {
+                params: {
+                    page: (options.page ? options.page : 1),
+                    limit: (options.limit ? options.limit : 20),
+                }
+            };
+
+            if ('order_by' in options) {
+                config.params.order_by = options.order_by.column + ',' + options.order_by.direction;
+            }
+
+            if ('search' in options) {
+                if (options.search != '') {
+                    config.params.search = options.search;
+                }
+            }
+
+            apiAxios.get('/userGroup', config)
+                .then(response => {
+                    state.commit('setUserGroups', response.data);
+                    state.commit('setUserGroupsLoading', false);
                 }).catch(error => {
                 this.$root.axiosError(error);
             });

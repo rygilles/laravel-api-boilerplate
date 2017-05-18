@@ -7,6 +7,11 @@
 					<span class="page">{{ $t('routes.home.title') }}</span>
 				</router-link>
 			</li>
+			<li class="pageLink" v-on:click="toggleMenu">
+				<router-link :to="{ name: 'users' }"><i class="fa fa-desktop"></i>
+					<span class="page">{{ $t('routes.users.title') }}</span>
+				</router-link>
+			</li>
 			<li class="treeview">
 				<a href="javascript:;">
 					<i class="fa fa-folder"></i>
@@ -44,6 +49,11 @@
 			<li class="pageLink" v-on:click="toggleMenu">
 				<router-link to="/"><i class="fa fa-desktop"></i>
 					<span class="page">{{ $t('routes.home.title') }}</span>
+				</router-link>
+			</li>
+			<li class="pageLink" v-on:click="toggleMenu">
+				<router-link :to="{ name: 'users' }"><i class="fa fa-desktop"></i>
+					<span class="page">{{ $t('routes.users.title') }}</span>
 				</router-link>
 			</li>
 			<li class="treeview">

@@ -13,11 +13,11 @@
 				<DataTable
 					ref="datatable"
 					:mainTitle="mainTitle"
-					:defaultPaginationLimit="30"
-					:paginationLimits="[10,20,30,40,50]"
-					dataStoreStateName="i18nLangs"
-					dataLoadingStoreStateName="i18nLangsLoading"
-					dataDispatchAction="getI18nLangs"
+					:defaultPaginationLimit="20"
+					:paginationLimits="[5,10,20]"
+					dataStoreStateName="users"
+					dataLoadingStoreStateName="usersLoading"
+					dataDispatchAction="getUsers"
 					:columns="columns"
 					:rowsButtons="rowsButtons"
 					:checkboxes="checkboxes"
@@ -29,14 +29,14 @@
 					</span>
 				</DataTable>
 				<CreateModal
-					id="i18n-langs-create-modal"
+					id="users-create-modal"
 					:title="createModalTitle"
-					postUri="/i18nLang"
+					postUri="/user"
 					:fields="createModalFields"
 					:onSuccess="createModalSuccess"
 				></CreateModal>
 				<EditModal
-					id="i18n-langs-edit-modal"
+					id="users-edit-modal"
 					:title="editModalTitle"
 					:putUri="editModalPutUri"
 					:fields="editModalFields"
@@ -44,14 +44,14 @@
 					:rowsButtons="rowsButtons"
 				></EditModal>
 				<DeleteModal
-					id="i18n-langs-delete-modal"
+					id="users-delete-modal"
 					:title="deleteModalTitle"
 					:deleteUri="deleteModalDeleteUri"
 					:onSuccess="deleteModalSuccess"
 					:message="deleteModalMessage"
 				></DeleteModal>
 				<MassDeleteModal
-					id="i18n-langs-mass-delete-modal"
+					id="users-mass-delete-modal"
 					:title="massDeleteModalTitle"
 					:rows="massDeleteRows"
 					:deleteUriTemplate="massDeleteModalDeleteUriTemplate"
@@ -71,51 +71,64 @@
 	import MassDeleteModal from '../includes/mass-delete-modal'
 
 	export default {
-		name: 'I18nLangs',
+		name: 'Users',
 
 		components: { DataTable, CreateModal, EditModal , DeleteModal, MassDeleteModal },
 
 		data() {
 			return {
-				editModalI18nLang : Object,
+				editModalUser : Object,
 				editModalPutUri : String,
 				deleteModalDeleteUri : String,
-				deleteModalI18nLang : Object,
+				deleteModalUser : Object,
 				massDeleteRows : []
 			}
 		},
 
 		computed: {
 			mainTitle() {
-				return this.$i18n.t('i18n_langs.i18n_langs');
+				return this.$i18n.t('users.users');
 			},
 			createModalTitle() {
-				return this.$i18n.t('i18n_langs.create_new_i18n_lang');
+				return this.$i18n.t('users.create_new_user');
 			},
 			editModalTitle() {
-				return this.$i18n.t('i18n_langs.edit_i18n_lang', {'id' : this.editModalI18nLang.id});
+				return this.$i18n.t('users.edit_user', {'id' : this.editModalUser.id});
 			},
 			deleteModalTitle() {
-				return this.$i18n.t('i18n_langs.delete_i18n_lang');
+				return this.$i18n.t('users.delete_user');
 			},
 			massDeleteModalTitle() {
-				return this.$i18n.t('i18n_langs.mass_delete_i18n_lang');
+				return this.$i18n.t('users.mass_delete_user');
 			},
 			columns() {
 				return [
 					{
 						name : 'id',
-						class : 'col-md-1 id-column',
-						title : this.$i18n.t('i18n_langs.i18n_lang_id'),
+						class : 'col-md-3 id-column',
+						title : this.$i18n.t('users.user_id'),
 						orderable : true,
 						order_by_field : 'id',
 					},
 					{
-						name : 'description',
-						class : '',
-						title  : this.$i18n.t('i18n_langs.i18n_lang_description'),
+						name : 'user_group_id',
+						class : 'col-md-1',
+						title  : this.$i18n.t('users.user_group_id'),
 						orderable : true,
-						order_by_field : 'description',
+						order_by_field : 'user_group_id',
+						routerLink : {
+							routeName : 'user-group',
+							paramsNames : {
+								'userGroupId' : 'user_group_id'
+							}
+						}
+					},
+					{
+						name : 'name',
+						class : '',
+						title  : this.$i18n.t('users.user_name'),
+						orderable : true,
+						order_by_field : 'name',
 					}
 				];
 			},
@@ -124,11 +137,11 @@
 					{
 						title : this.$i18n.t('common.see_btn'),
 						class : 'btn btn-default',
-						onClick : (i18nLang) => {
+						onClick : (user) => {
 							this.$router.push({
-								name: 'i18n-lang',
+								name: 'user',
 								params: {
-									'i18nLangId': i18nLang.id
+									'userId': user.id
 								}
 							});
 						}
@@ -136,18 +149,18 @@
 					{
 						title : this.$i18n.t('common.edit_btn'),
 						class : 'btn btn-default',
-						onClick : (i18nLang) => {
-							this.editModalI18nLang = i18nLang;
-							this.editModalPutUri = '/i18nLang/' + i18nLang.id;
+						onClick : (user) => {
+							this.editModalUser = user;
+							this.editModalPutUri = '/user/' + user.id;
 							this.showEditModal();
 						}
 					},
 					{
 						title : this.$i18n.t('common.delete_btn'),
 						class : 'btn btn-danger',
-						onClick : (i18nLang) => {
-							this.deleteModalI18nLang = i18nLang;
-							this.deleteModalDeleteUri = '/i18nLang/' + i18nLang.id;
+						onClick : (user) => {
+							this.deleteModalUser = user;
+							this.deleteModalDeleteUri = '/user/' + user.id;
 							this.showDeleteModal();
 						}
 					}
@@ -156,16 +169,9 @@
 			createModalFields() {
 				return [
 					{
-						name : 'id',
-						title : this.$i18n.t('i18n_langs.i18n_lang_id'),
-						help : this.$i18n.t('i18n_langs.i18n_lang_id_help'),
-						value : '',
-						type : 'input'
-					},
-					{
-						name : 'description',
-						title : this.$i18n.t('i18n_langs.i18n_lang_description'),
-						help : this.$i18n.t('i18n_langs.i18n_lang_description_help'),
+						name : 'name',
+						title : this.$i18n.t('users.user_name'),
+						help : this.$i18n.t('users.user_name_help'),
 						value : '',
 						type : 'textarea'
 					}
@@ -174,22 +180,22 @@
 			editModalFields() {
 				return [
 					{
-						name : 'description',
-						title : this.$i18n.t('i18n_langs.i18n_lang_description'),
-						help : this.$i18n.t('i18n_langs.i18n_lang_description_help'),
-						value : this.editModalI18nLang.description,
+						name : 'name',
+						title : this.$i18n.t('users.user_name'),
+						help : this.$i18n.t('users.user_name_help'),
+						value : this.editModalUser.name,
 						type : 'textarea'
 					}
 				];
 			},
 			deleteModalMessage() {
-				return this.$i18n.t('i18n_langs.delete_i18n_lang_message', {'id' : this.deleteModalI18nLang.id});
+				return this.$i18n.t('users.delete_user_message', {'name' : this.deleteModalUser.name});
 			},
 			massDeleteModalDeleteUriTemplate() {
-				return '/i18nLang/<%- row.id %>';
+				return '/user/<%- row.id %>';
 			},
 			massDeleteModalMessageTemplate() {
-				return this.$i18n.t('i18n_langs.mass_delete_i18n_lang_message_template');
+				return this.$i18n.t('users.mass_delete_user_message_template');
 			},
 			checkboxes() {
 				return {
@@ -219,16 +225,16 @@
 		},
 		methods: {
 			showCreateModal() {
-				$('#i18n-langs-create-modal').modal('show');
+				$('#users-create-modal').modal('show');
 			},
 			showEditModal() {
-				$('#i18n-langs-edit-modal').modal('show');
+				$('#users-edit-modal').modal('show');
 			},
 			showDeleteModal() {
-				$('#i18n-langs-delete-modal').modal('show');
+				$('#users-delete-modal').modal('show');
 			},
 			showMassDeleteModal() {
-				$('#i18n-langs-mass-delete-modal').modal('show');
+				$('#users-mass-delete-modal').modal('show');
 			},
 			createModalSuccess() {
 				// Refresh datatable

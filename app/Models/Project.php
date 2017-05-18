@@ -57,6 +57,36 @@ class Project extends ApiModel
 	protected $perPageMax = 50;
 
 	/**
+	 * Model fillable fields for new items
+	 * @var array
+	 */
+	protected static $storeFillable = [
+		'search_engine_id',
+		'data_stream_id',
+		'name'
+	];
+
+	/**
+	 * Model fillable fields for item patch
+	 * @var array
+	 */
+	protected static $patchFillable = [
+		'search_engine_id',
+		'data_stream_id',
+		'name'
+	];
+
+	/**
+	 * Model fillable fields for item replacement
+	 * @var array
+	 */
+	protected static $putFillable = [
+		'search_engine_id',
+		'data_stream_id',
+		'name'
+	];
+
+	/**
 	 * Model validation rules for new items
 	 * @var string[]
 	 */
@@ -85,6 +115,16 @@ class Project extends ApiModel
 		'data_stream_id'    => 'uuid|exists:data_stream,id',
 		'name'              => 'required|string|min:5|max:100'
 	];
+
+	/**
+	 * Get the search engine of this project
+	 *
+	 * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
+	 */
+	public function searchEngine()
+	{
+		return $this->belongsTo(SearchEngine::class);
+	}
 
 	/**
 	 * Get the relationships between this project and his users

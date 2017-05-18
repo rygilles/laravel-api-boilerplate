@@ -1,5 +1,5 @@
 <template v-if="notification.type == 'App\\Notifications\\AdministeredProject'">
-	<a :data-notification-id="notification.id" href="javascript:;" @click="selectNotification(notification)">
+	<a :data-notification-id="notification.id" href="javascript:;" @click="selectNotification()">
 		<v-gravatar :email="notification.data.assigned_by_user.email" default-img="mm" :size="48" class="user-image" alt="User Image" />
 		<div>
 			<div>
@@ -27,12 +27,12 @@
 		mounted() {
 			// pushed property if just received
 			if ('pushed' in this.notification) {
-				var notyText = $('[data-notification-id="' + this.notification.id + '"]').html();
-				new Noty({
+				var notificationHtml = $('[data-notification-id="' + this.notification.id + '"]').html()
+					var n = new Noty({
 					theme: 'semanticui',
 					type: 'alert',
 					layout: 'bottomRight',
-					text: notyText,
+					text: notificationHtml,
 					timeout: 5000,
 					progressBar: true,
 					closeWith: ['click', 'button'],
@@ -40,7 +40,13 @@
 						open: 'noty_effects_open',
 						close: 'noty_effects_close'
 					},
-				}).show();
+					callbacks: {
+						onShow: () => {
+							$(n.barDom).bind('click', () => { this.selectNotification(); });
+						}
+					}
+				});
+				n.show();
 
 				document.getElementById('noty_audio').play();
 			}
@@ -49,13 +55,25 @@
 			/**
 			 * Mark notification as read and/or redirect
 			 */
-			selectNotification(notification) {
-				if (notification.read_at)
+			selectNotification() {
+				// Redirect to the resource route
+				switch (this.notification.type) {
+					case 'App\\Notifications\\AdministeredProject' :
+						this.$router.push({
+							name: 'user-project',
+							params: {
+								'projectId': this.notification.data.project_id
+							}
+						});
+						break;
+				}
+
+				if (this.notification.read_at)
 					return;
 
-				apiAxios.post('/me/notification/' + notification.id + '/read')
+				apiAxios.post('/me/notification/' + this.notification.id + '/read')
 					.then(response => {
-						notification.read_at = response.data.data.read_at;
+						this.notification.read_at = response.data.data.read_at;
 					}).catch(error => {
 						this.$root.axiosError(error);
 					});

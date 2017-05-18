@@ -151,7 +151,7 @@ class User extends ApiModel implements AuthenticatableContract,	AuthorizableCont
 	 */
 	public function userGroup()
 	{
-		return $this->BelongTo(UserGroup::class);
+		return $this->belongsTo(UserGroup::class);
 	}
 
 	/**

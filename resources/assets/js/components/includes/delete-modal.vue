@@ -53,6 +53,7 @@
 		methods: {
 			destroy() {
 				this.errors = [];
+				this.rawErrors = {};
 
 				apiAxios.delete(this.deleteUri)
 					.then(response => {

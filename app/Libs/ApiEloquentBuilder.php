@@ -114,6 +114,31 @@ class ApiEloquentBuilder extends Builder
 			}
 		}
 
+		// Include
+
+		$request_include = Request::input('include');
+
+		if (!is_null($request_include)) {
+
+			if (!isset($params['authorizedIncludes'])) {
+				throw new ValidationHttpException(['No include parameter is allowed on this route.']);
+			}
+
+			$includes = explode(',', $request_include);
+			foreach ($includes as $include) {
+
+				$validator = Validator::make(['include' => $include], [
+					'include' => 'in:' . $params['authorizedIncludes'],
+				]);
+
+				if ($validator->fails()) {
+					throw new ValidationHttpException($validator->errors());
+				}
+
+				$this->with($include);
+			}
+		}
+
 		return $this;
 	}
 	

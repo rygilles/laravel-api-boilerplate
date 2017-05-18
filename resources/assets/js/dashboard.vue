@@ -2,7 +2,7 @@
 	<div id="app">
 		<div class="wrapper">
 			<!-- top bar. contains the logo and the navbar -->
-			<topbar :laravel="laravel" :me="me" />
+			<topbar ref="topbar" :laravel="laravel" :me="me" />
 
 			<!-- Left side column. contains the logo and sidebar -->
 			<sidebar :me="me" />

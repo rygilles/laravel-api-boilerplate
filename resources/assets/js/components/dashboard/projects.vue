@@ -11,21 +11,19 @@
 		<div class="row">
 			<div class="col-xs-12">
 				<DataTable
-					ref="ownerProjectsDatatable"
-					:mainTitle="ownerProjectsMainTitle"
+					ref="datatable"
+					:mainTitle="mainTitle"
 					defaultOrderByColumn="name"
 					defaultOrderByDirection="asc"
-					:defaultPaginationLimit="20"
-					:paginationLimiting="false"
-					:searching="false"
-					dataStoreStateName="ownerProjects"
-					dataLoadingStoreStateName="ownerProjectsLoading"
-					dataDispatchAction="getUserOwnerProjects"
-					:columns="ownerProjectsColumns"
-					:rowsButtons="ownerProjectsRowsButtons"
-					buttonsColumnClass="col-md-2"
+					:defaultPaginationLimit="30"
+					:paginationLimits="[10,20,30,40,50]"
+					dataStoreStateName="allProjects"
+					dataLoadingStoreStateName="allProjectsLoading"
+					dataDispatchAction="getAllProjects"
+					requestInclude="searchEngine"
+					:columns="columns"
+					:rowsButtons="rowsButtons"
 					:checkboxes="checkboxes"
-					:emptyMessage="ownerProjectsEmptyMessage"
 				>
 					<span slot="top-actions">
 						<a class="action-link pull-right" @click="showCreateModal">
@@ -33,58 +31,38 @@
 						</a>
 					</span>
 				</DataTable>
+				<CreateModal
+					id="projects-create-modal"
+					:title="createModalTitle"
+					postUri="/project"
+					:fields="createModalFields"
+					:onSuccess="createModalSuccess"
+				></CreateModal>
+				<EditModal
+					id="projects-edit-modal"
+					:title="editModalTitle"
+					:putUri="editModalPutUri"
+					:fields="editModalFields"
+					:onSuccess="editModalSuccess"
+					:rowsButtons="rowsButtons"
+				></EditModal>
+				<DeleteModal
+					id="projects-delete-modal"
+					:title="deleteModalTitle"
+					:deleteUri="deleteModalDeleteUri"
+					:onSuccess="deleteModalSuccess"
+					:message="deleteModalMessage"
+				></DeleteModal>
+				<MassDeleteModal
+					id="projects-mass-delete-modal"
+					:title="massDeleteModalTitle"
+					:rows="massDeleteRows"
+					:deleteUriTemplate="massDeleteModalDeleteUriTemplate"
+					:onSuccess="massDeleteModalSuccess"
+					:messageTemplate="massDeleteModalMessageTemplate"
+				></MassDeleteModal>
 			</div>
 		</div>
-		<div class="row" v-if="!('pagination' in adminProjectsDataStoreState.meta) || ((adminProjectsDataStoreState.data.length) > 0)">
-			<div class="col-xs-12">
-				<DataTable
-					ref="adminProjectsDatatable"
-					:mainTitle="adminProjectsMainTitle"
-					defaultOrderByColumn="name"
-					defaultOrderByDirection="asc"
-					:defaultPaginationLimit="20"
-					:paginationLimiting="false"
-					:searching="false"
-					dataStoreStateName="adminProjects"
-					dataLoadingStoreStateName="adminProjectsLoading"
-					dataDispatchAction="getUserAdminProjects"
-					:columns="adminProjectsColumns"
-					:rowsButtons="adminProjectsRowsButtons"
-					buttonsColumnClass="col-md-2"
-					:checkboxes="checkboxes"
-				>
-				</DataTable>
-			</div>
-		</div>
-		<CreateModal
-			id="projects-create-modal"
-			:title="createModalTitle"
-			postUri="/project"
-			:fields="createModalFields"
-			:onSuccess="createModalSuccess"
-		></CreateModal>
-		<EditModal
-			id="projects-edit-modal"
-			:title="editModalTitle"
-			:putUri="editModalPutUri"
-			:fields="editModalFields"
-			:onSuccess="editModalSuccess"
-		></EditModal>
-		<DeleteModal
-			id="projects-delete-modal"
-			:title="deleteModalTitle"
-			:deleteUri="deleteModalDeleteUri"
-			:onSuccess="deleteModalSuccess"
-			:message="deleteModalMessage"
-		></DeleteModal>
-		<MassDeleteModal
-			id="projects-mass-delete-modal"
-			:title="massDeleteModalTitle"
-			:rows="massDeleteRows"
-			:deleteUriTemplate="massDeleteModalDeleteUriTemplate"
-			:onSuccess="massDeleteModalSuccess"
-			:messageTemplate="massDeleteModalMessageTemplate"
-		></MassDeleteModal>
 	</section>
 </template>
 
@@ -111,14 +89,8 @@
 		},
 
 		computed: {
-			adminProjectsDataStoreState() {
-				return this.$store.state.adminProjects;
-			},
-			ownerProjectsMainTitle() {
-				return this.$i18n.t('projects.owner_projects');
-			},
-			adminProjectsMainTitle() {
-				return this.$i18n.t('projects.admin_projects');
+			mainTitle() {
+				return this.$i18n.t('projects.projects');
 			},
 			createModalTitle() {
 				return this.$i18n.t('projects.create_new_project');
@@ -132,18 +104,37 @@
 			massDeleteModalTitle() {
 				return this.$i18n.t('projects.mass_delete_project');
 			},
-			ownerProjectsColumns() {
+			columns() {
 				return [
 					{
+						name : 'id',
+						class : 'col-md-3 id-column',
+						title : this.$i18n.t('projects.project_id'),
+						orderable : true,
+						order_by_field : 'id',
+					},
+					{
 						name : 'name',
-						class : 'col-md-6',
+						class : '',
 						title : this.$i18n.t('projects.project_name'),
 						orderable : true,
 						order_by_field : 'name',
 					},
 					{
+						name : 'searchEngine.data.name',
+						class : '',
+						title : this.$i18n.t('projects.search_engine_name'),
+						orderable : false,
+						routerLink : {
+							routeName : 'search-engine',
+							paramsNames : {
+								'searchEngineId' : 'search_engine_id'
+							}
+						}
+					},
+					{
 						name : 'created_at',
-						class : 'col-md-2',
+						class : '',
 						title : this.$i18n.t('common.created_at'),
 						orderable : true,
 						order_by_field : 'created_at',
@@ -153,7 +144,7 @@
 					},
 					{
 						name : 'updated_at',
-						class : 'col-md-2',
+						class : '',
 						title : this.$i18n.t('common.updated_at'),
 						orderable : true,
 						order_by_field : 'updated_at',
@@ -163,45 +154,14 @@
 					}
 				];
 			},
-			adminProjectsColumns() {
-				return [
-					{
-						name : 'name',
-						class : 'col-md-6',
-						title : this.$i18n.t('projects.project_name'),
-						orderable : true,
-						order_by_field : 'name',
-					},
-					{
-						name : 'created_at',
-						class : 'col-md-2',
-						title : this.$i18n.t('common.created_at'),
-						orderable : true,
-						order_by_field : 'created_at',
-						transformValue : (value) => {
-							return this.momentLocalDate(value);
-						}
-					},
-					{
-						name : 'updated_at',
-						class : 'col-md-2',
-						title : this.$i18n.t('common.updated_at'),
-						orderable : true,
-						order_by_field : 'updated_at',
-						transformValue : (value) => {
-							return this.momentLocalDate(value);
-						}
-					}
-				];
-			},
-			ownerProjectsRowsButtons() {
+			rowsButtons() {
 				return [
 					{
 						title : this.$i18n.t('common.see_btn'),
 						class : 'btn btn-default',
 						onClick : (project) => {
 							this.$router.push({
-								name: 'user-project',
+								name: 'project',
 								params: {
 									'projectId': project.id
 								}
@@ -228,24 +188,8 @@
 					}
 				]
 			},
-			adminProjectsRowsButtons() {
-				return [
-					{
-						title : this.$i18n.t('common.see_btn'),
-						class : 'btn btn-default',
-						onClick : (project) => {
-							this.$router.push({
-								name: 'user-project',
-								params: {
-									'projectId': project.id
-								}
-							});
-						}
-					},
-				]
-			},
 			createModalFields() {
-				var fields = [
+				return [
 					{
 						name : 'name',
 						title : this.$i18n.t('projects.project_name'),
@@ -253,10 +197,7 @@
 						value : '',
 						type : 'textarea'
 					},
-				];
-
-				if (['Developer', 'Support'].indexOf(this.$store.getters.me.user_group_id) != -1) {
-					fields.push({
+					{
 						name : 'search_engine_id',
 						title : this.$i18n.t('projects.search_engine_name'),
 						help : this.$i18n.t('projects.search_engine_name_help'),
@@ -273,13 +214,11 @@
 								}
 							},
 						},
-					});
-				}
-
-				return fields;
+					}
+				];
 			},
 			editModalFields() {
-				var fields = [
+				return [
 					{
 						name : 'name',
 						title : this.$i18n.t('projects.project_name'),
@@ -287,10 +226,7 @@
 						value : this.editModalProject.name,
 						type : 'textarea'
 					},
-				];
-
-				if (['Developer', 'Support'].indexOf(this.$store.getters.me.user_group_id) != -1) {
-					fields.push({
+					{
 						name : 'search_engine_id',
 						title : this.$i18n.t('projects.search_engine_name'),
 						help : this.$i18n.t('projects.search_engine_name_help'),
@@ -307,10 +243,8 @@
 								}
 							},
 						},
-					});
-				}
-
-				return fields;
+					},
+				];
 			},
 			deleteModalMessage() {
 				return this.$i18n.t('projects.delete_project_message', {'name' : this.deleteModalProject.name});
@@ -323,12 +257,29 @@
 			},
 			checkboxes() {
 				return {
-					'enabled' : false,
+					'enabled' : true,
+					'massButtons' : [
+						{
+							title : this.$i18n.t('common.unselect_all_btn'),
+							class : 'btn btn-default',
+							onClick : function(rows) {
+								var l = rows.length;
+								for (var i  = 0 ; i < l ; i++) {
+									rows.shift();
+								}
+							}
+						},
+						{
+							title : this.$i18n.t('common.delete_btn'),
+							class : 'btn btn-danger',
+							onClick : (rows) => {
+								this.massDeleteRows = rows;
+								this.showMassDeleteModal();
+							}
+						}
+					]
 				}
-			},
-			ownerProjectsEmptyMessage() {
-				return this.$i18n.t('projects.no_project_yet');
-			},
+			}
 		},
 		methods: {
 			showCreateModal() {
@@ -344,20 +295,20 @@
 				$('#projects-mass-delete-modal').modal('show');
 			},
 			createModalSuccess() {
-				// Refresh datatables
-				this.$refs.ownerProjectsDatatable.fetchData();
+				// Refresh datatable
+				this.$refs.datatable.fetchData();
 			},
 			editModalSuccess() {
-				// Refresh datatables
-				this.$refs.ownerProjectsDatatable.fetchData();
+				// Refresh datatable
+				this.$refs.datatable.fetchData();
 			},
 			deleteModalSuccess() {
-				// Refresh datatables
-				this.$refs.ownerProjectsDatatable.fetchData();
+				// Refresh datatable
+				this.$refs.datatable.fetchData();
 			},
 			massDeleteModalSuccess() {
-				// Refresh datatables
-				this.$refs.ownerProjectsDatatable.fetchData();
+				// Refresh datatable
+				this.$refs.datatable.fetchData();
 			}
 		}
 	}

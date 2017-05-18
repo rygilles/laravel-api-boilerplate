@@ -65,7 +65,12 @@
 			'metaPagination': {
 				// store meta pagination object
 				type: Object,
-			}
+				default: function() {
+					return {
+						current_page: 1}
+					;
+				}
+			},
 		},
 		methods: {
 			setCurrentPage(currentPage) {

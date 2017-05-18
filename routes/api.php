@@ -48,6 +48,13 @@ $api->version('v1', ['middleware' => ['acceptLanguage', 'cors', 'auth:api']], fu
 		'App\Http\Controllers\Api\MeNotificationController@updateUnread'
 	)->name('meNotification.updateUnread');
 
+	// User Group
+
+	$api->get(
+		'userGroup',
+		'App\Http\Controllers\Api\UserGroupController@index'
+	)->name('userGroup.index');
+
 	// User
 
 	$api->get(

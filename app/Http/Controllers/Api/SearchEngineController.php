@@ -34,7 +34,7 @@ class SearchEngineController extends ApiController
 	 */
 	public function index()
 	{
-		$searchEngines = SearchEngine::paginate();
+		$searchEngines = SearchEngine::applyRequestQueryString()->paginate();
 
 		return $this->response->paginator($searchEngines, new SearchEngineTransformer);
 	}

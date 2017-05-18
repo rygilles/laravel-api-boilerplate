@@ -20,7 +20,16 @@
 				<label class="col-md-3 control-label">{{ field.title }}</label>
 				<div class="col-md-7">
 					<input v-if="field.type == 'input'" type="text" class="form-control" @keyup.enter="store" v-model="field.value">
-					<textarea v-if="field.type == 'textarea'" class="form-control"  v-model="field.value"></textarea>
+					<textarea v-if="field.type == 'textarea'" class="form-control" v-model="field.value"></textarea>
+					<Select2
+						v-if="field.type == 'select2'"
+						v-model="field.value"
+						:options="field.select2.options"
+						:feed="field.select2.feed"
+						:labelProp="field.select2.labelProp"
+						:valueProp="field.select2.valueProp"
+						class="form-control"
+					></Select2>
 					<span v-if="'help' in field" class="help-block" v-html="field.help"></span>
 				</div>
 			</div>
@@ -34,11 +43,12 @@
 	</Modal>
 </template>
 <script>
-	import Modal from './modal'
+	import Modal from './modal';
+	import Select2 from './select2';
 
 	export default {
 		name: 'CreateModal',
-		components: { Modal },
+		components: { Modal, Select2 },
 		props: {
 			id : String,
 			title : String,

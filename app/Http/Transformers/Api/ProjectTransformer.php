@@ -7,6 +7,15 @@ use App\Models\Project;
 class ProjectTransformer extends ApiTransformer
 {
 	/**
+	 * Resources that can be included if requested.
+	 *
+	 * @var array
+	 */
+	protected $availableIncludes = [
+		'searchEngine'
+	];
+
+	/**
 	 * Turn this item object into a generic array
 	 *
 	 * @param Project $project
@@ -25,5 +34,17 @@ class ProjectTransformer extends ApiTransformer
 				'updated_at'        => $project->updated_at->toDateTimeString()
 			]
 		);
+	}
+
+	/**
+	 * Include SearchEngine
+	 *
+	 * @return League\Fractal\ItemResource
+	 */
+	public function includeSearchEngine(Project $project)
+	{
+		$searchEngine = $project->searchEngine;
+
+		return $this->item($searchEngine, new SearchEngineTransformer);
 	}
 }

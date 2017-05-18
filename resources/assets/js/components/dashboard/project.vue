@@ -4,7 +4,7 @@
 		<div class="row">
 			<div class="col-xs-12">
 				@todo
-				<pre v-html="i18nLang"></pre>
+				<pre v-html="project"></pre>
 			</div>
 		</div>
 	</section>
@@ -17,12 +17,12 @@
 		 */
 		data() {
 			return {
-				i18nLang : null
+				project : null
 			};
 		},
 
 		props : {
-			'i18nLangId' : String
+			'projectId' : String
 		},
 
 		/**
@@ -44,17 +44,17 @@
 
 		methods: {
 			fetchData() {
-				this.i18nLang = null;
+				this.project = null;
 
 				var propsData = this.$options.propsData;
-				this.getI18nLang(propsData.i18nLangId);
+				this.getProject(propsData.projectId);
 			},
 
-			getI18nLang(i18nLangId) {
+			getProject(projectId) {
 				apiAxios
-					.get('/i18nLang/' + i18nLangId)
+					.get('/project/' + projectId)
 					.then(response => {
-						this.i18nLang = response.data.data;
+						this.project = response.data.data;
 					}).catch(error => {
 						this.$root.axiosError(error);
 					});
