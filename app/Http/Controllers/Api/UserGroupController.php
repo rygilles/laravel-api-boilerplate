@@ -30,7 +30,7 @@ class UserGroupController extends ApiController
 	 */
 	public function index()
 	{
-		$userGroups = UserGroup::applyRequestQueryString()->paginate();
+		$userGroups = UserGroup::applyRequestQueryString()->withCount('users')->paginate();
 
 		return $this->response->paginator($userGroups, new UserGroupTransformer);
 	}

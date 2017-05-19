@@ -39,7 +39,7 @@
 
 		computed: {
 			mainTitle() {
-				return this.$i18n.t('i18n_langs.i18n_langs');
+				return this.$i18n.t('user_groups.user_groups');
 			},
 			columns() {
 				return [
@@ -50,6 +50,13 @@
 						orderable : true,
 						order_by_field : 'id',
 					},
+					{
+						name : 'users_count',
+						class : 'col-md-2',
+						title : this.$i18n.t('user_groups.users_count'),
+						orderable : true,
+						order_by_field : 'users_count',
+					}
 				];
 			},
 			rowsButtons() {

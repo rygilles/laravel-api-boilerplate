@@ -39,6 +39,7 @@ class ProjectTransformer extends ApiTransformer
 	/**
 	 * Include SearchEngine
 	 *
+	 * @param Project $project
 	 * @return League\Fractal\ItemResource
 	 */
 	public function includeSearchEngine(Project $project)

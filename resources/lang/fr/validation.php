@@ -103,6 +103,8 @@ return [
 			'rule-name' => 'custom-message',
 		],
 	],
+	'strength'  => 'Le champ :attribute doit avoir au moins : 8 caractères dont 1 numérique, 1 en majuscule et 1 en minucsule.',
+
 	/*
 	|--------------------------------------------------------------------------
 	| Custom Validation Attributes

@@ -18,6 +18,7 @@ class UserGroupTransformer extends ApiTransformer
 			UserGroup::class,
 			[
 				'id'            => $userGroup->id,
+				'users_count'   => $userGroup->users_count,
 			]
 		);
 	}

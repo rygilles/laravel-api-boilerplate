@@ -25,4 +25,15 @@ export default {
         'title': 'I18n Langs',
         'description': 'System locales'
     },
+    'users-folder': {
+        'title': 'Users',
+    },
+    'user-groups': {
+        'title': 'User Groups',
+        'description': '',
+    },
+    'users': {
+        'title': 'Users',
+        'description': '',
+    }
 }

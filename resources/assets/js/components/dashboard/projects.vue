@@ -195,7 +195,7 @@
 						title : this.$i18n.t('projects.project_name'),
 						help : this.$i18n.t('projects.project_name_help'),
 						value : '',
-						type : 'textarea'
+						type : 'input'
 					},
 					{
 						name : 'search_engine_id',
@@ -224,7 +224,7 @@
 						title : this.$i18n.t('projects.project_name'),
 						help : this.$i18n.t('projects.project_name_help'),
 						value : this.editModalProject.name,
-						type : 'textarea'
+						type : 'input'
 					},
 					{
 						name : 'search_engine_id',

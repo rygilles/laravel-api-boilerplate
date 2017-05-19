@@ -24,6 +24,8 @@ var files = [
     'home',
     'projects',
     'i18n_langs',
+    'user_groups',
+    'users',
 ];
 
 // Create locales from file hierarchy

@@ -20,6 +20,7 @@
 				<label class="col-md-3 control-label">{{ field.title }}</label>
 				<div class="col-md-7">
 					<input v-if="field.type == 'input'" type="text" class="form-control" @keyup.enter="store" v-model="field.value">
+					<input v-if="field.type == 'password'" type="password" class="form-control" @keyup.enter="store" v-model="field.value">
 					<textarea v-if="field.type == 'textarea'" class="form-control" v-model="field.value"></textarea>
 					<Select2
 						v-if="field.type == 'select2'"

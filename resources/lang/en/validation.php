@@ -104,6 +104,7 @@ return [
             'rule-name' => 'custom-message',
         ],
     ],
+    'strength'  => 'The :attribute muse have at least: 8 chars, 1 numeric, 1 uppercase and 1 lowercase.',
 
     /*
     |--------------------------------------------------------------------------

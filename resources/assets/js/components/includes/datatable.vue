@@ -394,6 +394,11 @@
 				}
 			},
 			resolveColumnDataValue(dataRow, column) {
+				if ('resolveColumnDataValue' in column) {
+					if (typeof column.resolveColumnDataValue == 'function') {
+						return column.resolveColumnDataValue(dataRow, column);
+					}
+				}
 				if ('transformValue' in column) {
 					if (typeof column.transformValue == 'function') {
 						return column.transformValue(column.name.split('.').reduce((o,i)=>o[i], dataRow));

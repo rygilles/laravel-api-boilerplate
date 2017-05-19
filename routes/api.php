@@ -15,7 +15,7 @@ use Dingo\Api\Routing\Router;
 
 $api = app('Dingo\Api\Routing\Router');
 
-$api->version('v1', ['middleware' => ['acceptLanguage', 'cors', 'auth:api']], function (Router $api) {
+$api->version('v1', ['middleware' => ['acceptLanguage', /*'cors',*/ 'auth:api']], function (Router $api) {
 
 	// Me
 

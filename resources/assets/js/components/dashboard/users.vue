@@ -24,7 +24,7 @@
 				>
 					<span slot="top-actions">
 						<a class="action-link pull-right" @click="showCreateModal">
-							{{ $t('i18n_langs.create_new_i18n_lang') }}
+							{{ $t('users.create_new_user') }}
 						</a>
 					</span>
 				</DataTable>
@@ -129,6 +129,13 @@
 						title  : this.$i18n.t('users.user_name'),
 						orderable : true,
 						order_by_field : 'name',
+					},
+					{
+						name : 'email',
+						class : '',
+						title  : this.$i18n.t('users.user_email'),
+						orderable : true,
+						order_by_field : 'email',
 					}
 				];
 			},
@@ -169,23 +176,87 @@
 			createModalFields() {
 				return [
 					{
+						name : 'user_group_id',
+						title : this.$i18n.t('users.user_group_id'),
+						help : this.$i18n.t('users.user_group_id_help'),
+						value : '',
+						type : 'select2',
+						select2 : {
+							labelProp : 'id',
+							valueProp : 'id',
+							feed : {
+								getUri : '/userGroup',
+								params : {
+									limit: 10,
+									order_by: 'id,asc',
+								}
+							},
+						},
+					},
+					{
 						name : 'name',
 						title : this.$i18n.t('users.user_name'),
 						help : this.$i18n.t('users.user_name_help'),
 						value : '',
-						type : 'textarea'
-					}
+						type : 'input'
+					},
+					{
+						name : 'email',
+						title : this.$i18n.t('users.user_email'),
+						help : this.$i18n.t('users.user_email_help'),
+						value : '',
+						type : 'input'
+					},
+					{
+						name : 'password',
+						title : this.$i18n.t('users.user_password'),
+						help : this.$i18n.t('users.user_password_help'),
+						value : '',
+						type : 'password'
+					},
 				];
 			},
 			editModalFields() {
 				return [
 					{
+						name : 'user_group_id',
+						title : this.$i18n.t('users.user_group_id'),
+						help : this.$i18n.t('users.user_group_id_help'),
+						value : this.editModalUser.user_group_id,
+						type : 'select2',
+						select2 : {
+							labelProp : 'id',
+							valueProp : 'id',
+							feed : {
+								getUri : '/userGroup',
+								params : {
+									limit: 10,
+									order_by: 'id,asc',
+								}
+							},
+						},
+					},
+					{
 						name : 'name',
 						title : this.$i18n.t('users.user_name'),
 						help : this.$i18n.t('users.user_name_help'),
 						value : this.editModalUser.name,
-						type : 'textarea'
-					}
+						type : 'input'
+					},
+					{
+						name : 'email',
+						title : this.$i18n.t('users.user_email'),
+						help : this.$i18n.t('users.user_email_help'),
+						value : this.editModalUser.email,
+						type : 'input'
+					},
+					{
+						name : 'password',
+						title : this.$i18n.t('users.user_password'),
+						help : this.$i18n.t('users.user_password_help'),
+						value : '', // @todo rewrite only if not empty !
+						type : 'password'
+					},
 				];
 			},
 			deleteModalMessage() {

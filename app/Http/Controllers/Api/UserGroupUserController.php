@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Api;
 
 use App\Http\Transformers\Api\UserTransformer;
 use App\Models\UserGroup;
+use Dingo\Api\Http\Response;
 
 /**
  * @resource User

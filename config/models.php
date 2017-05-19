@@ -41,9 +41,9 @@ return [
 
 		'requestQueryStringParameters' => [
 
-			'authorizedOrderByColumns' => 'id,user_group_id,name',
-			'authorizedSearchColumns' => 'name',
-			'defaultSearchColumns' => 'name',
+			'authorizedOrderByColumns' => 'id,user_group_id,name,email',
+			'authorizedSearchColumns' => 'name,email',
+			'defaultSearchColumns' => 'name,email',
 
 		]
 
@@ -53,7 +53,7 @@ return [
 
 		'requestQueryStringParameters' => [
 
-			'authorizedOrderByColumns' => 'id',
+			'authorizedOrderByColumns' => 'id,users_count',
 
 		]
 
