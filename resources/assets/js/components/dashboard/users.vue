@@ -93,7 +93,7 @@
 				return this.$i18n.t('users.create_new_user');
 			},
 			editModalTitle() {
-				return this.$i18n.t('users.edit_user', {'id' : this.editModalUser.id});
+				return this.$i18n.t('users.edit_user', {'name' : this.editModalUser.name});
 			},
 			deleteModalTitle() {
 				return this.$i18n.t('users.delete_user');
@@ -136,6 +136,26 @@
 						title  : this.$i18n.t('users.user_email'),
 						orderable : true,
 						order_by_field : 'email',
+					},
+					{
+						name : 'created_at',
+						class : '',
+						title : this.$i18n.t('common.created_at'),
+						orderable : true,
+						order_by_field : 'created_at',
+						transformValue : (value) => {
+							return this.momentLocalDate(value);
+						}
+					},
+					{
+						name : 'updated_at',
+						class : '',
+						title : this.$i18n.t('common.updated_at'),
+						orderable : true,
+						order_by_field : 'updated_at',
+						transformValue : (value) => {
+							return this.momentLocalDate(value);
+						}
 					}
 				];
 			},
@@ -217,25 +237,7 @@
 				];
 			},
 			editModalFields() {
-				return [
-					{
-						name : 'user_group_id',
-						title : this.$i18n.t('users.user_group_id'),
-						help : this.$i18n.t('users.user_group_id_help'),
-						value : this.editModalUser.user_group_id,
-						type : 'select2',
-						select2 : {
-							labelProp : 'id',
-							valueProp : 'id',
-							feed : {
-								getUri : '/userGroup',
-								params : {
-									limit: 10,
-									order_by: 'id,asc',
-								}
-							},
-						},
-					},
+				var fields = [
 					{
 						name : 'name',
 						title : this.$i18n.t('users.user_name'),
@@ -258,6 +260,29 @@
 						type : 'password'
 					},
 				];
+
+				if (['Developer'].indexOf(this.$store.getters.me.user_group_id) != -1) {
+					fields.unshift({
+						name : 'user_group_id',
+						title : this.$i18n.t('users.user_group_id'),
+						help : this.$i18n.t('users.user_group_id_help'),
+						value : this.editModalUser.user_group_id,
+						type : 'select2',
+						select2 : {
+							labelProp : 'id',
+							valueProp : 'id',
+							feed : {
+								getUri : '/userGroup',
+								params : {
+									limit: 10,
+									order_by: 'id,asc',
+								}
+							},
+						}
+					});
+				}
+
+				return fields;
 			},
 			deleteModalMessage() {
 				return this.$i18n.t('users.delete_user_message', {'name' : this.deleteModalUser.name});

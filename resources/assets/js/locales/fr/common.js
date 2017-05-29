@@ -1,6 +1,9 @@
 export default {
     'created_at': 'Créé le',
+    'created_at_f': 'Créée le',
+    
     'updated_at': 'Modifié le',
+    'updated_at_f': 'Modifiée le',
 
     'datetime_format': 'DD/MM/YYYY à H\:mm',
 

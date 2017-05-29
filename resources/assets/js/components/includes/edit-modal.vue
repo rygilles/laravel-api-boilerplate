@@ -80,10 +80,16 @@
 				var form = {};
 
 				this.fields.forEach((field) => {
-					form[field.name] = field.value;
+					if (field.type == 'password') {
+						if (field.value != '') {
+							form[field.name] = field.value;
+						}
+					} else {
+						form[field.name] = field.value;
+					}
 				});
 
-				apiAxios.put(this.putUri, form)
+				apiAxios.patch(this.putUri, form)
 						.then(response => {
 							this.onSuccess();
 							this.errors = [];

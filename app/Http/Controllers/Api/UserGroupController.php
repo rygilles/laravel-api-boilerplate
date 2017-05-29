@@ -20,7 +20,7 @@ class UserGroupController extends ApiController
 		parent::__construct();
 
 		// User group restrictions
-		$this->middleware('verifyUserGroup:Developer,Support')->only('index');
+		$this->middleware('verifyUserGroup:Developer,Support')->only('index,show');
 	}
 
 	/**
@@ -33,5 +33,21 @@ class UserGroupController extends ApiController
 		$userGroups = UserGroup::applyRequestQueryString()->withCount('users')->paginate();
 
 		return $this->response->paginator($userGroups, new UserGroupTransformer);
+	}
+
+	/**
+	 * Get specified User group
+	 *
+	 * @param $userGroupId string User Group Id
+	 * @return \Dingo\Api\Http\Response|void
+	 */
+	public function show($userGroupId)
+	{
+		$userGroup = UserGroup::withCount('users')->find($userGroupId);
+
+		if (!$userGroup)
+			return $this->response->errorNotFound();
+
+		return $this->response->item($userGroup, new UserGroupTransformer);
 	}
 }

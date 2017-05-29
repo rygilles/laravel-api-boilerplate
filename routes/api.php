@@ -55,6 +55,11 @@ $api->version('v1', ['middleware' => ['acceptLanguage', /*'cors',*/ 'auth:api']]
 		'App\Http\Controllers\Api\UserGroupController@index'
 	)->name('userGroup.index');
 
+	$api->get(
+		'userGroup/{userGroupId}',
+		'App\Http\Controllers\Api\UserGroupController@show'
+	)->name('userGroup.show');
+
 	// User
 
 	$api->get(
@@ -100,6 +105,21 @@ $api->version('v1', ['middleware' => ['acceptLanguage', /*'cors',*/ 'auth:api']]
 		'userGroup/{userGroupId}/user',
 		'App\Http\Controllers\Api\UserGroupUserController@index'
 	)->name('userGroup.index');
+
+	// User User Has Project
+
+	$api->get(
+		'user/{userId}/userHasProject',
+		'App\Http\Controllers\Api\UserUserHasProjectController@index'
+	)->name('userUserHasProject.index');
+
+	// Project User Has Project
+
+	$api->get(
+		'project/{projectId}/userHasProject',
+		'App\Http\Controllers\Api\ProjectUserHasProjectController@index'
+	)->name('projectUserHasProject.index');
+
 
 	// User Project
 

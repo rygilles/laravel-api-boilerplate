@@ -21,6 +21,14 @@ export default {
     'misc-folder': {
         'title': 'Divers'
     },
+    'search-engines': {
+        'title': 'Moteurs de recherche',
+        'description': '',
+    },
+    'search-engine': {
+        'title': 'Moteur de recherche',
+        'description': '',
+    },
     'i18n-langs': {
         'title': 'I18n Langs',
         'description': 'Locales du système'
@@ -35,5 +43,13 @@ export default {
     'users': {
         'title': 'Utilisateurs',
         'description': '',
-    }
+    },
+    'user': {
+        'title': 'Utilisateur',
+        'description': '',
+    },
+    'user-group': {
+        'title': 'Groupe d\'utilisateurs',
+        'description': '',
+    },
 }

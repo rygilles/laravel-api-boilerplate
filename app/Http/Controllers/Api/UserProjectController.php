@@ -40,7 +40,7 @@ class UserProjectController extends ApiController
 		if (!$user)
 			return $this->response->errorNotFound();
 
-		$paginator = $user->projects($request->input('user_role_id'))->paginate();
+		$paginator = $user->projects($request->input('user_role_id'))->applyRequestQueryString()->paginate();
 
 		return $this->response->paginator($paginator, new ProjectTransformer);
 	}

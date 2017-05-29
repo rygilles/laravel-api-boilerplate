@@ -76,9 +76,12 @@ class ApiEloquentBuilder extends Builder
 			}
 
 			$searchColumns = explode(',', $params['defaultSearchColumns']);
-			foreach ($searchColumns as $searchColumn) {
-				$this->orWhere($searchColumn, 'like', $request_search);
-			}
+
+			$this->where(function($query) use ($searchColumns, $request_search) {
+				foreach ($searchColumns as $searchColumn) {
+					$query->orWhere($searchColumn, 'like', $request_search);
+				}
+			});
 		}
 
 		// Order by

@@ -117,6 +117,14 @@ return [
     |
     */
 
-    'attributes' => [],
+    'attributes' => [
+	    'user_group_id'         => 'User group',
+	    'search_engine_id'      => 'Search engine',
+	    'user_id'               => 'User name',
+	    'project_id'            => 'Project name',
+	    'user_role_id'          => 'Role',
+    ],
+
+	'unique_with' => 'This combination of :fields already exists.',
 
 ];

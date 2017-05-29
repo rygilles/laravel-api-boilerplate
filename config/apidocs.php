@@ -90,8 +90,12 @@ return [
 				'user.destroy',
 
 				'userGroup.index',
+				'userGroup.show',
 
 				'userGroupUser.index',
+
+				'userUserHasProject.index',
+				'projectUserHasProject.index',
 
 				'userProject.index',
 
@@ -251,8 +255,12 @@ return [
 				'user.destroy',
 
 				'userGroup.index',
+				'userGroup.show',
 
 				'userGroupUser.index',
+
+				'userUserHasProject.index',
+				'projectUserHasProject.index',
 
 				'userProject.index',
 

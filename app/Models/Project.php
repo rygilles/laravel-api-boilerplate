@@ -137,6 +137,20 @@ class Project extends ApiModel
 	}
 
 	/**
+	 * Get the relationships between this project and his users
+	 *
+	 * @param   string  $user_role_id   Pivot user role id
+	 * @return \Illuminate\Database\Eloquent\Relations\HasMany
+	 */
+	public function userHasProjects($user_role_id = null)
+	{
+		if (!is_null($user_role_id))
+			return $this->hasMany(UserHasProject::class)->where('user_role_id', $user_role_id);
+		else
+			return $this->hasMany(UserHasProject::class);
+	}
+
+	/**
 	 * Get the users of this project using relationship table
 	 *
 	 * @param   string  $user_role_id   Pivot user role id

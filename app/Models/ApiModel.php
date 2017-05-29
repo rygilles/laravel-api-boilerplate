@@ -200,7 +200,9 @@ class ApiModel extends Model
 			}
 
 			if (isset($attributeConfig['defaultValue'])) {
-				$this->attributes[$attribute] = $attributeConfig['defaultValue'];
+				if (!isset($this->attributes[$attribute])) {
+					$this->attributes[$attribute] = $attributeConfig['defaultValue'];
+				}
 			}
 		}
 
@@ -224,6 +226,12 @@ class ApiModel extends Model
 
 		$this->fillable($fillable);
 		$this->guard($guarded);
+
+		foreach ($guarded as $guarded_attribute) {
+			if (isset($attributes[$guarded_attribute])) {
+				unset($attributes[$guarded_attribute]);
+			}
+		}
 
 		return parent::fill($attributes);
 	}

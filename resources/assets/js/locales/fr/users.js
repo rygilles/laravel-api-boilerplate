@@ -6,14 +6,14 @@ export default {
     'user_group_id': 'Groupe',
     'user_group_id_help': 'Groupe d\'utilisateurs',
 
-    'user_name': 'Nom',
+    'user_name': 'Nom de l\'utilisateur',
     'user_name_help': 'Nom complet.',
 
     'user_email': 'Adresse E-mail',
     'user_email_help': 'Une adresse E-mail valide.',
 
     'user_password': 'Mot de passe',
-    'user_password_help': 'Au moins 8 caractères.',
+    'user_password_help': 'Au moins 8 caractères.<br /> Remplissez ce champ pour modifier le mot de passe.',
 
     'create_new_user': 'Créer un nouvel utilisateur',
     'edit_user' : 'Modifier l\'utilisateur "{name}"',
@@ -24,6 +24,7 @@ export default {
     'mass_delete_user' : 'Supprimer une liste d\'utilisateurs',
     'mass_delete_user_message_template' : 'Êtes-vous sûr de vouloir supprimer ces utilisateurs ?<br /><strong><% _.forEach(rows, function(row) {%><%- row.name %><br /><% }); %></strong>',
 
+    'see_user_btn' : 'Voir Utilisateur',
     'edit_btn': 'Modifier',
     'delete_btn': 'Supprimer',
 

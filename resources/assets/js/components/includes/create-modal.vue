@@ -94,9 +94,25 @@
 							$('#' + this.id).modal('hide');
 						})
 						.catch(error => {
-							if (typeof error.response.data === 'object') {
-								this.rawErrors = error.response.data.errors;
-								this.errors = _.flatten(_.toArray(error.response.data.errors));
+							if (('response' in error) && (typeof error.response.data === 'object')) {
+								if ('errors' in error.response.data) {
+									this.rawErrors = error.response.data.errors;
+									var translatedErrors = error.response.data.errors;
+									for (var errFieldName in translatedErrors) {
+										this.fields.forEach((field) => {
+											if (field.name == errFieldName) {
+												console.log(errFieldName);
+												translatedErrors[errFieldName].forEach((errLine, index) => {
+													console.log(_.replace(field.name, '_', ' '));
+													translatedErrors[errFieldName][index] = _.replace(errLine, new RegExp(_.replace(field.name, new RegExp('_', 'g'), ' '), 'g'), '"' + field.title + '"');
+												});
+											}
+										});
+									}
+									this.errors = _.flatten(_.toArray(translatedErrors));
+								} else if ('message' in error.response.data) {
+									this.errors = [error.response.data.message];
+								}
 							} else {
 								this.$root.axiosError(error);
 							}

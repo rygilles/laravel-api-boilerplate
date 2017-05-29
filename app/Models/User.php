@@ -43,7 +43,10 @@ class User extends ApiModel implements AuthenticatableContract,	AuthorizableCont
 	 * @var array
 	 */
 	protected $fillable = [
-		'name', 'email', 'password', 'user_group_id'
+		'name',
+		'email',
+		'password',
+		'user_group_id'
 	];
 
 	/**
@@ -53,6 +56,40 @@ class User extends ApiModel implements AuthenticatableContract,	AuthorizableCont
 	 */
 	protected $hidden = [
 		'password', 'remember_token',
+	];
+
+	/**
+	 * Model fillable fields for new items
+	 * @var array
+	 */
+	protected static $storeFillable = [
+		'id',
+		'name',
+		'email',
+		'password',
+		'user_group_id'
+	];
+
+	/**
+	 * Model fillable fields for item patch
+	 * @var array
+	 */
+	protected static $patchFillable = [
+		'name',
+		'email',
+		'password',
+		'user_group_id'
+	];
+
+	/**
+	 * Model fillable fields for item replacement
+	 * @var array
+	 */
+	protected static $putFillable = [
+		'name',
+		'email',
+		'password',
+		'user_group_id'
 	];
 
 	/**
@@ -73,7 +110,7 @@ class User extends ApiModel implements AuthenticatableContract,	AuthorizableCont
 	protected static $patchRules = [
 		'user_group_id' => 'exists:user_group,id|in:Developer,Support,End-User',
 		'name'          => 'string|max:100',
-		'email'         => 'email|max:150|unique:user',
+		'email'         => 'email|max:150', // 'unique:user' in controller method to manage "ignore" parameter.
 		'password'      => 'strength'
 	];
 
@@ -84,7 +121,7 @@ class User extends ApiModel implements AuthenticatableContract,	AuthorizableCont
 	protected static $putRules = [
 		'user_group_id' => 'required|exists:user_group,id|in:Developer,Support,End-User',
 		'name'          => 'required|string|max:100',
-		'email'         => 'required|email|max:150|unique:user',
+		'email'         => 'required|email|max:150', // 'unique:user' in controller method to manage "ignore" parameter.
 		'password'      => 'required|strength'
 	];
 
@@ -112,11 +149,15 @@ class User extends ApiModel implements AuthenticatableContract,	AuthorizableCont
 	/**
 	 * Get the relationships between this user and his projects
 	 *
+	 * @param   string  $user_role_id   Pivot user role id
 	 * @return \Illuminate\Database\Eloquent\Relations\HasMany
 	 */
-	public function hasUserProjects()
+	public function userHasProjects($user_role_id = null)
 	{
-		return $this->hasMany(UserHasProject::class);
+		if (!is_null($user_role_id))
+			return $this->hasMany(UserHasProject::class)->where('user_role_id', $user_role_id);
+		else
+			return $this->hasMany(UserHasProject::class);
 	}
 
 	/**

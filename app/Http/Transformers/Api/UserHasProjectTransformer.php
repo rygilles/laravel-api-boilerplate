@@ -2,11 +2,20 @@
 
 namespace App\Http\Transformers\Api;
 
-use League\Fractal\TransformerAbstract;
 use App\Models\UserHasProject;
 
 class UserHasProjectTransformer extends ApiTransformer
 {
+	/**
+	 * Resources that can be included if requested.
+	 *
+	 * @var array
+	 */
+	protected $availableIncludes = [
+		'user',
+		'project'
+	];
+
 	/**
 	 * Turn this item object into a generic array
 	 *
@@ -16,7 +25,7 @@ class UserHasProjectTransformer extends ApiTransformer
 	public function transform(UserHasProject $userHasProject)
 	{
 		return $this->filterWithModelConfiguration(
-			SearchEngine::class,
+			UserHasProject::class,
 			[
 				'user_id'       => $userHasProject->user_id,
 				'project_id'    => $userHasProject->project_id,
@@ -25,5 +34,31 @@ class UserHasProjectTransformer extends ApiTransformer
 				'updated_at'    => $userHasProject->updated_at->toDateTimeString()
 			]
 		);
+	}
+
+	/**
+	 * Include User
+	 *
+	 * @param UserHasProject $userHasProject
+	 * @return League\Fractal\ItemResource
+	 */
+	public function includeUser(UserHasProject $userHasProject)
+	{
+		$user = $userHasProject->user;
+
+		return $this->item($user, new UserTransformer);
+	}
+
+	/**
+	 * Include Project
+	 *
+	 * @param UserHasProject $userHasProject
+	 * @return League\Fractal\ItemResource
+	 */
+	public function includeProject(UserHasProject $userHasProject)
+	{
+		$project = $userHasProject->project;
+
+		return $this->item($project, new ProjectTransformer);
 	}
 }

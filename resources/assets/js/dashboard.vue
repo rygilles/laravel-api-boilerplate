@@ -12,17 +12,14 @@
 				<!-- Content Header (Page header) -->
 				<section class="content-header">
 					<h1>
+						<span v-if="('meta' in $route) && ('breadcrumbIconClass' in $route.meta)">
+							<i :class="['fa-lg', $route.meta.breadcrumbIconClass]"></i>&nbsp;
+						</span>
 						{{ $t('routes.' + $route.name + '.title') }}
 						<small>{{ $t('routes.' + $route.name + '.description') }}</small>
 					</h1>
-					<ol class="breadcrumb">
-						<li>
-							<router-link :to="{ name: 'home' }">
-								<i class="fa fa-home"></i>{{ $t('routes.home.title') }}</a>
-							</router-link>
-						</li>
-						<li v-if="$route.name != 'home'" class="active">{{ $t('routes.' + $route.name + '.title') }}</li>
-					</ol>
+
+					<breadcrumb :route="$route"></breadcrumb>
 				</section>
 				<router-view :laravel="laravel" :me="me"></router-view>
 			</div>
@@ -40,9 +37,10 @@
 <script>
 	import topbar from './components/includes/topbar.vue';
 	import sidebar from './components/includes/sidebar.vue';
+	import breadcrumb from './components/includes/breadcrumb.vue';
 
 	export default {
-		components: { topbar, sidebar },
+		components: { topbar, sidebar, breadcrumb },
 
 		created() {
 			// set laravel data in store

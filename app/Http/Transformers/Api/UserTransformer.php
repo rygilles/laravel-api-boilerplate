@@ -17,7 +17,7 @@ class UserTransformer extends ApiTransformer
 	public function transform(User $user)
 	{
 		return $this->filterWithModelConfiguration(
-			SearchEngine::class,
+			User::class,
 			[
 				'id'            => $user->id,
 				'user_group_id' => $user->user_group_id,

@@ -145,6 +145,14 @@ return [
 		'time'                  => 'Heure',
 		'available'             => 'Disponible',
 		'size'                  => 'Taille',
+
+		'user_group_id'         => 'Groupe d\'utilisateurs',
+		'search_engine_id'      => 'Moteur de recherche',
+		'user_id'               => 'Nom de l\'utilisateur',
+		'project_id'            => 'Nom du projet',
+		'user_role_id'          => 'Rôle',
 	],
+
+	'unique_with' => 'Une relation entre :fields existe déjà.',
 	
 ];

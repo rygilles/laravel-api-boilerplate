@@ -18,10 +18,11 @@ class SearchEngineTransformer extends ApiTransformer
 		return $this->filterWithModelConfiguration(
 			SearchEngine::class,
 				[
-				'id'            => $searchEngine->id,
-				'name'          => $searchEngine->name,
-				'created_at'    => $searchEngine->created_at->toDateTimeString(),
-				'updated_at'    => $searchEngine->updated_at->toDateTimeString()
+				'id'                => $searchEngine->id,
+				'name'              => $searchEngine->name,
+				'created_at'        => $searchEngine->created_at->toDateTimeString(),
+				'updated_at'        => $searchEngine->updated_at->toDateTimeString(),
+				'projects_count'    => $searchEngine->projects_count,
 			]
 		);
 	}

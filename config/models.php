@@ -33,17 +33,29 @@ return [
 			'user_group_id' => [
 
 				'defaultValue' => 'End-User',
-
-				'apiCannotFillOnUserGroups' => ['End-User'],
+				'apiCannotFillOnUserGroups' => ['Support', 'End-User'],
 
 			]
 		],
 
 		'requestQueryStringParameters' => [
 
-			'authorizedOrderByColumns' => 'id,user_group_id,name,email',
+			'authorizedOrderByColumns' => 'id,user_group_id,name,email,created_at,updated_at',
 			'authorizedSearchColumns' => 'name,email',
 			'defaultSearchColumns' => 'name,email',
+
+		]
+
+	],
+
+	App\Models\UserHasProject::class => [
+
+		'requestQueryStringParameters' => [
+
+			'authorizedOrderByColumns' => 'id,user_role_id,created_at,updated_at',
+			/*'authorizedSearchColumns' => 'id,name',
+			'defaultSearchColumns' => 'id,name',*/
+			'authorizedIncludes' => 'user,project'
 
 		]
 
@@ -67,7 +79,6 @@ return [
 
 				/* Algolia */
 				'defaultValue' => 'ee87e3b2-1388-11e7-93ae-92361f002671',
-
 				'apiCannotReadOnUserGroups' => ['End-User'],
 				'apiCannotFillOnUserGroups' => ['End-User'],
 
@@ -108,7 +119,7 @@ return [
 
 		'requestQueryStringParameters' => [
 
-			'authorizedOrderByColumns' => 'id,name',
+			'authorizedOrderByColumns' => 'id,name,created_at,updated_at,projects_count',
 			'authorizedSearchColumns' => 'name',
 			'defaultSearchColumns' => 'name',
 

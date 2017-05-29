@@ -36,7 +36,6 @@
 		},
 		data() {
 			return {
-				currentValueText: '',
 				currentOptions: [],
 			}
 		},
@@ -44,23 +43,38 @@
 			value: function (value) {
 				// Get the current value
 				if (this.value != '') {
-					apiAxios
-						.get(this.feed.getUri + '/' + value)
-						.then(response => {
-							this.currentValueText = response.data.data[this.labelProp];
-							$(this.$el).select2('destroy');
-							this.currentOptions = [];
-							this.currentOptions.push({
-								id: value,
-								text: this.currentValueText,
-							});
-							this.initializeSelect2();
-							//this.currentValueText;
-							$(this.$el).val(value).trigger('change');
-						})
-						.catch(error => {
-							this.$root.axiosError(error);
+					if (this.labelProp == this.valueProp) {
+						$(this.$el).select2('destroy');
+						this.currentOptions = [];
+						this.currentOptions.push({
+							id: value,
+							text: value,
 						});
+						this.initializeSelect2();
+						$(this.$el).val(value).trigger('change');
+					} else {
+						if (this.feed.getUri != '') {
+							apiAxios
+								.get(this.feed.getUri + '/' + value)
+								.then(response => {
+									$(this.$el).select2('destroy');
+									this.currentOptions = [];
+									this.currentOptions.push({
+										id: value,
+										text: response.data.data[this.labelProp]
+									});
+									this.initializeSelect2();
+									$(this.$el).val(value).trigger('change');
+								})
+								.catch(error => {
+									this.$root.axiosError(error);
+								});
+						}
+					}
+				} else {
+					$(this.$el).select2('destroy');
+					this.initializeSelect2();
+					$(this.$el).val(value).trigger('change');
 				}
 			},
 			options: function (options) {
@@ -72,6 +86,7 @@
 			}
 		},
 		mounted() {
+			this.currentOptions = this.options;
 			this.initializeSelect2();
 
 			var vm = this;

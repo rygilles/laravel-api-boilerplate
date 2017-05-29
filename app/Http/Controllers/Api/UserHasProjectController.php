@@ -7,6 +7,7 @@ use App\Http\Requests\UpdateUserHasProjectRequest;
 use App\Http\Transformers\Api\UserHasProjectTransformer;
 use App\Models\UserHasProject;
 use Dingo\Api\Exception\ValidationHttpException;
+use Illuminate\Support\Facades\Lang;
 
 /**
  * @resource UserHasProject
@@ -70,13 +71,13 @@ class UserHasProjectController extends ApiController
 	{
 		// Check if a relationship between the specified user and project already exists.
 		if (UserHasProject::where('user_id', $request->input('user_id'))->where('project_id', $request->input('project_id'))->exists()) {
-			return $this->response->errorBadRequest('A relationship between this project/user already exists.');
+			return $this->response->errorBadRequest(Lang::get('errors.user_project_relationship_exists'));
 		}
 
 		// Check if a 'Owner' relationship is requested and verify if there's no relationship of this kind with the project.
 		if ($request->input('user_role_id') == 'Owner') {
 			if (UserHasProject::where('project_id', $request->input('project_id'))->where('user_role_id', 'Owner')->exists()) {
-				return $this->response->errorBadRequest('A "Owner" relationship between this project and a user already exists.');
+				return $this->response->errorBadRequest(Lang::get('errors.user_project_owner_exists'));
 			}
 		}
 
@@ -122,7 +123,7 @@ class UserHasProjectController extends ApiController
 		// Check if a relationship between the specified user and project already exists (ignoring the current if not changed).
 		if (($userId != $request->input('user_id')) || ($projectId != $request->input('project_id'))) {
 			if (UserHasProject::where('user_id', $request->input('user_id'))->where('project_id', $request->input('project_id'))->exists()) {
-				return $this->response->errorBadRequest('A relationship between this project/user already exists.');
+				return $this->response->errorBadRequest(Lang::get('errors.user_project_relationship_exists'));
 			}
 		}
 
@@ -131,7 +132,7 @@ class UserHasProjectController extends ApiController
 			(($userId == $request->input('user_id')) && ($projectId == $request->input('project_id')) && ($userHasProject->user_role_id != $request->input('user_role_id')))) {
 			if ($request->input('user_role_id') == 'Owner') {
 				if (UserHasProject::where('project_id', $request->input('project_id'))->where('user_role_id', 'Owner')->exists()) {
-					return $this->response->errorBadRequest('A "Owner" relationship between this project and a user already exists.');
+					return $this->response->errorBadRequest(Lang::get('errors.user_project_owner_exists'));
 				}
 			}
 		}

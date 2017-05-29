@@ -3,23 +3,23 @@
 		<!-- Developer menu -->
 		<ul v-if="me.user_group_id == 'Developer'" class="sidebar-menu">
 			<li class="pageLink" v-on:click="toggleMenu">
-				<router-link to="/"><i class="fa fa-home"></i>
+				<router-link to="/"><i class="fa fa-home fa-fw"></i>
 					<span class="page">{{ $t('routes.home.title') }}</span>
 				</router-link>
 			</li>
 			<li class="treeview">
 				<a href="javascript:;">
-					<i class="fa fa-user"></i>
+					<i class="fa fa-user fa-fw"></i>
 					<span>{{ $t('routes.users-folder.title ') }}</span> <i class="fa fa-angle-left pull-right"></i>
 				</a>
 				<ul class="treeview-menu">
 					<li v-on:click="toggleMenu">
-						<router-link :to="{ name: 'user-groups' }"><i class="fa fa-users"></i>
+						<router-link :to="{ name: 'user-groups' }"><i class="fa fa-users fa-fw"></i>
 							<span class="page">{{ $t('routes.user-groups.title') }}</span>
 						</router-link>
 					</li>
 					<li v-on:click="toggleMenu">
-						<router-link :to="{ name: 'users' }"><i class="fa fa-user"></i>
+						<router-link :to="{ name: 'users' }"><i class="fa fa-user fa-fw"></i>
 							<span class="page">{{ $t('routes.users.title') }}</span>
 						</router-link>
 					</li>
@@ -27,17 +27,17 @@
 			</li>
 			<li class="treeview">
 				<a href="javascript:;">
-					<i class="fa fa-sticky-note-o"></i>
+					<i class="fa fa-sticky-note-o fa-fw"></i>
 					<span>{{ $t('routes.projects-folder.title ') }}</span> <i class="fa fa-angle-left pull-right"></i>
 				</a>
 				<ul class="treeview-menu">
 					<li v-on:click="toggleMenu">
-						<router-link :to="{ name: 'user-projects' }"><i class="fa fa-sticky-note"></i>
+						<router-link :to="{ name: 'user-projects' }"><i class="fa fa-sticky-note fa-fw"></i>
 							<span class="page">{{ $t('routes.user-projects.title ') }}</span>
 						</router-link>
 					</li>
 					<li v-on:click="toggleMenu">
-						<router-link :to="{ name: 'all-projects' }"><i class="fa fa-sticky-note-o"></i>
+						<router-link :to="{ name: 'all-projects' }"><i class="fa fa-sticky-note-o fa-fw"></i>
 							<span class="page">{{ $t('routes.all-projects.title ') }}</span>
 						</router-link>
 					</li>
@@ -45,12 +45,17 @@
 			</li>
 			<li class="treeview">
 				<a href="javascript:;">
-					<i class="fa fa-folder"></i>
+					<i class="fa fa-folder fa-fw"></i>
 					<span>{{ $t('routes.misc-folder.title ') }}</span> <i class="fa fa-angle-left pull-right"></i>
 				</a>
 				<ul class="treeview-menu">
 					<li v-on:click="toggleMenu">
-						<router-link :to="{ name: 'i18n-langs' }"><i class="fa fa-table"></i>
+						<router-link :to="{ name: 'search-engines' }"><i class="fa fa-search fa-fw"></i>
+							<span class="page">{{ $t('routes.search-engines.title ') }}</span>
+						</router-link>
+					</li>
+					<li v-on:click="toggleMenu">
+						<router-link :to="{ name: 'i18n-langs' }"><i class="fa fa-language fa-fw"></i>
 							<span class="page">{{ $t('routes.i18n-langs.title ') }}</span>
 						</router-link>
 					</li>
@@ -60,23 +65,23 @@
 		<!-- Support menu -->
 		<ul v-if="me.user_group_id == 'Support'" class="sidebar-menu">
 			<li class="pageLink" v-on:click="toggleMenu">
-				<router-link to="/"><i class="fa fa-home"></i>
+				<router-link to="/"><i class="fa fa-home fa-fw"></i>
 					<span class="page">{{ $t('routes.home.title') }}</span>
 				</router-link>
 			</li>
 			<li class="treeview">
 				<a href="javascript:;">
-					<i class="fa fa-user"></i>
+					<i class="fa fa-user fa-fw"></i>
 					<span>{{ $t('routes.users-folder.title ') }}</span> <i class="fa fa-angle-left pull-right"></i>
 				</a>
 				<ul class="treeview-menu">
 					<li v-on:click="toggleMenu">
-						<router-link :to="{ name: 'user-groups' }"><i class="fa fa-users"></i>
+						<router-link :to="{ name: 'user-groups' }"><i class="fa fa-users fa-fw"></i>
 							<span class="page">{{ $t('routes.user-groups.title') }}</span>
 						</router-link>
 					</li>
 					<li v-on:click="toggleMenu">
-						<router-link :to="{ name: 'users' }"><i class="fa fa-user"></i>
+						<router-link :to="{ name: 'users' }"><i class="fa fa-user fa-fw"></i>
 							<span class="page">{{ $t('routes.users.title') }}</span>
 						</router-link>
 					</li>
@@ -84,18 +89,36 @@
 			</li>
 			<li class="treeview">
 				<a href="javascript:;">
-					<i class="fa fa-sticky-note-o"></i>
+					<i class="fa fa-sticky-note-o fa-fw"></i>
 					<span>{{ $t('routes.projects-folder.title ') }}</span> <i class="fa fa-angle-left pull-right"></i>
 				</a>
 				<ul class="treeview-menu">
 					<li v-on:click="toggleMenu">
-						<router-link :to="{ name: 'user-projects' }"><i class="fa fa-sticky-note"></i>
+						<router-link :to="{ name: 'user-projects' }"><i class="fa fa-sticky-note fa-fw"></i>
 							<span class="page">{{ $t('routes.user-projects.title ') }}</span>
 						</router-link>
 					</li>
 					<li v-on:click="toggleMenu">
-						<router-link :to="{ name: 'all-projects' }"><i class="fa fa-sticky-note-o"></i>
+						<router-link :to="{ name: 'all-projects' }"><i class="fa fa-sticky-note-o fa-fw"></i>
 							<span class="page">{{ $t('routes.all-projects.title ') }}</span>
+						</router-link>
+					</li>
+				</ul>
+			</li>
+			<li class="treeview">
+				<a href="javascript:;">
+					<i class="fa fa-folder fa-fw"></i>
+					<span>{{ $t('routes.misc-folder.title ') }}</span> <i class="fa fa-angle-left pull-right"></i>
+				</a>
+				<ul class="treeview-menu">
+					<li v-on:click="toggleMenu">
+						<router-link :to="{ name: 'search-engines' }"><i class="fa fa-search fa-fw"></i>
+							<span class="page">{{ $t('routes.search-engines.title ') }}</span>
+						</router-link>
+					</li>
+					<li v-on:click="toggleMenu">
+						<router-link :to="{ name: 'i18n-langs' }"><i class="fa fa-language fa-fw"></i>
+							<span class="page">{{ $t('routes.i18n-langs.title ') }}</span>
 						</router-link>
 					</li>
 				</ul>
@@ -104,12 +127,12 @@
 		<!-- End-User menu -->
 		<ul v-if="me.user_group_id == 'End-User'" class="sidebar-menu">
 			<li class="pageLink" v-on:click="toggleMenu">
-				<router-link to="/"><i class="fa fa-home"></i>
+				<router-link to="/"><i class="fa fa-home fa-fw"></i>
 					<span class="page">{{ $t('routes.home.title') }}</span>
 				</router-link>
 			</li>
 			<li class="pageLink" v-on:click="toggleMenu">
-				<router-link :to="{ name: 'user-projects' }"><i class="fa fa-table"></i>
+				<router-link :to="{ name: 'user-projects' }"><i class="fa fa-table fa-fw"></i>
 					<span class="page">{{ $t('routes.user-projects.title ') }}</span>
 				</router-link>
 			</li>

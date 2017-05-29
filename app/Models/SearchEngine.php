@@ -44,6 +44,30 @@ class SearchEngine extends ApiModel
 	public $incrementing = false;
 
 	/**
+	 * Model fillable fields for new items
+	 * @var array
+	 */
+	protected static $storeFillable = [
+		'name'
+	];
+
+	/**
+	 * Model fillable fields for item patch
+	 * @var array
+	 */
+	protected static $patchFillable = [
+		'name'
+	];
+
+	/**
+	 * Model fillable fields for item replacement
+	 * @var array
+	 */
+	protected static $putFillable = [
+		'name'
+	];
+
+	/**
 	 * Model validation rules for new items
 	 * @var string[]
 	 */

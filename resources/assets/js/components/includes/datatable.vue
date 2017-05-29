@@ -148,7 +148,7 @@
 				</div>
 			</div>
 		</div>
-		<div v-if="checkboxes.enabled || ('pagination' in dataStoreState.meta && dataStoreState.meta.pagination.total_pages > 1)"
+		<div v-if="(checkboxes.enabled && ('pagination' in dataStoreState.meta && dataStoreState.meta.pagination.total > 0)) || ('pagination' in dataStoreState.meta && dataStoreState.meta.pagination.total_pages > 1)"
 			class="box-footer clearfix"
 		>
 			<div class="row">
@@ -249,6 +249,12 @@
 			'requestInclude' : {
 				default: ''
 			},
+			'requestExtraParameters' : {
+				type: Object,
+				default: function() {
+					return {};
+				}
+			},
 			'rowsButtons' : {
 				type : Array,
 				default : function() {
@@ -319,24 +325,38 @@
 		methods: {
 			fetchData: function() {
 				this.selectedRows = [];
-				this.$store.dispatch(this.dataDispatchAction, {
+
+				var params = {
 					page: this.page,
 					limit: this.limit,
 					search: this.search,
 					order_by: this.order_by,
 					include: this.requestInclude,
-				});
+				};
+
+				for (var param_name in this.requestExtraParameters) {
+					params[param_name] = this.requestExtraParameters[param_name];
+				}
+
+				this.$store.dispatch(this.dataDispatchAction, params);
 			},
 			fetchDataDebounced: _.debounce(
 				function() {
 					this.selectedRows = [];
-					this.$store.dispatch(this.dataDispatchAction, {
+
+					var params = {
 						page: this.page,
 						limit: this.limit,
 						search: this.search,
 						order_by: this.order_by,
 						include: this.requestInclude,
-					});
+					};
+
+					for (var param_name in this.requestExtraParameters) {
+						params[param_name] = this.requestExtraParameters[param_name];
+					}
+
+					this.$store.dispatch(this.dataDispatchAction, params);
 				}, 500
 			),
 			toggleOrderBy(column) {

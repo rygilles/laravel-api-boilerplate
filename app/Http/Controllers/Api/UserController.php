@@ -6,6 +6,9 @@ use App\Http\Requests\StoreUserRequest;
 use App\Http\Requests\UpdateUserRequest;
 use App\Http\Transformers\Api\UserTransformer;
 use App\Models\User;
+use Illuminate\Support\Facades\Validator;
+use Dingo\Api\Exception\ValidationHttpException;
+use Illuminate\Validation\Rule;
 
 /**
  * @resource User
@@ -91,6 +94,7 @@ class UserController extends ApiController
 	 * @param UpdateUserRequest $request
 	 * @param $userId string User UUID
 	 * @return \Dingo\Api\Http\Response|void
+	 * @throws ValidationHttpException
 	 */
 	public function update(UpdateUserRequest $request, $userId)
 	{
@@ -98,6 +102,15 @@ class UserController extends ApiController
 
 		if (!$user)
 			return $this->response->errorNotFound();
+
+		// 'unique:user' in controller method to manage "ignore" parameter.
+		$validator = Validator::make($request->all(), [
+			'email' => [Rule::unique('user')->ignore($user->id)]
+		]);
+
+		if ($validator->fails()) {
+			throw new ValidationHttpException($validator->errors());
+		}
 
 		$user->fill($request->all(), $request->getRealMethod());
 		$user->save();

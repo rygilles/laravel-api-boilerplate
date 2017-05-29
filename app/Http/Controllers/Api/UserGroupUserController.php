@@ -37,7 +37,7 @@ class UserGroupUserController extends ApiController
 		if (!$userGroup)
 			return $this->response->errorNotFound();
 
-		$paginator = $userGroup->users()->paginate();
+		$paginator = $userGroup->users()->applyRequestQueryString()->paginate();
 
 		return $this->response->paginator($paginator, new UserTransformer());
 	}

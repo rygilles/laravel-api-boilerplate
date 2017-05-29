@@ -23,9 +23,11 @@ var files = [
     'notifications',
     'home',
     'projects',
+    'search_engines',
     'i18n_langs',
     'user_groups',
     'users',
+    'user_has_projects',
 ];
 
 // Create locales from file hierarchy

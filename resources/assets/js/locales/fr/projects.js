@@ -23,6 +23,8 @@ export default {
     'mass_delete_project' : 'Supprimer une liste de projets',
     'mass_delete_project_message_template' : 'Êtes-vous sûr de vouloir supprimer ces projets ?<br /><strong><% _.forEach(rows, function(row) {%><%- row.name %><br /><% }); %></strong>',
 
+    'see_project_btn' : 'Voir Projet',
+
     'edit_btn': 'Modifier',
     'delete_btn': 'Supprimer',
 
