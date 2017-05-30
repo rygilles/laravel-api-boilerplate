@@ -54808,7 +54808,7 @@ window.oauthAxios = window.axios.create({
  * Api Axios
  */
 window.apiAxios = window.axios.create({
-  baseURL: 'http://emsearch.ryan.ems-dev.net/api',
+  baseURL: 'https://emsearch.ryan.ems-dev.net/api',
   withCredentials: true,
   headers: {
     'X-CSRF-TOKEN': window.Laravel.csrfToken,

@@ -53,10 +53,10 @@ Generate API documentation using current database resources.
 
 ## emsearch.ryan.ems-dev.net VM ##
 
-- Front entry point : [http://emsearch.ryan.ems-dev.net](http://emsearch.ryan.ems-dev.net/)
-- API entry point : [http://emsearch.ryan.ems-dev.net/api](http://emsearch.ryan.ems-dev.net/api/)
+- Front entry point : [https://emsearch.ryan.ems-dev.net](https://emsearch.ryan.ems-dev.net/)
+- API entry point : [https://emsearch.ryan.ems-dev.net/api](https://emsearch.ryan.ems-dev.net/api/)
 - API documentation entry point :
-    - Developer : [http://emsearch.ryan.ems-dev.net/docs/Developer/v1](http://emsearch.ryan.ems-dev.net/docs/Developer/v1)
-    - Support : [http://emsearch.ryan.ems-dev.net/docs/Support/v1](http://emsearch.ryan.ems-dev.net/docs/Support/v1)
-    - End-User : [http://emsearch.ryan.ems-dev.net/docs/End-User/v1](http://emsearch.ryan.ems-dev.net/docs/End-User/v1)
-- OAuth2 consumer application : [http://emsearch-api-consumer.ryan.ems-dev.net](http://emsearch-api-consumer.ryan.ems-dev.net/) (**DEV ONLY !**)
+    - Developer : [https://emsearch.ryan.ems-dev.net/docs/Developer/v1](https://emsearch.ryan.ems-dev.net/docs/Developer/v1)
+    - Support : [https://emsearch.ryan.ems-dev.net/docs/Support/v1](https://emsearch.ryan.ems-dev.net/docs/Support/v1)
+    - End-User : [https://emsearch.ryan.ems-dev.net/docs/End-User/v1](https://emsearch.ryan.ems-dev.net/docs/End-User/v1)
+- OAuth2 consumer application : [https://emsearch-api-consumer.ryan.ems-dev.net](https://emsearch-api-consumer.ryan.ems-dev.net/) (**DEV ONLY !**)
