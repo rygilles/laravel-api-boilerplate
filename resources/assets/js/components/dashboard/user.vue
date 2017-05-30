@@ -138,6 +138,7 @@
 				user : null,
 				userEditModalUser : Object,
 				userEditModalPutUri : String,
+				createModalDefaultUserHasProject : Object,
 				editModalUserHasProject : {
 					user: {
 						data: {
@@ -346,7 +347,7 @@
 					name : 'user_id',
 					title : this.$i18n.t('user_has_projects.user_name'),
 					help : this.$i18n.t('user_has_projects.user_name_help'),
-					value : '',
+					value : this.createModalDefaultUserHasProject.user_id,
 					type : 'select2',
 					select2 : {
 						labelProp : 'name',
@@ -365,7 +366,7 @@
 					name : 'project_id',
 					title : this.$i18n.t('user_has_projects.project_name'),
 					help : this.$i18n.t('user_has_projects.project_name_help'),
-					value : '',
+					value : this.createModalDefaultUserHasProject.project_id,
 					type : 'select2',
 					select2 : {
 						labelProp : 'name',
@@ -384,7 +385,7 @@
 					name : 'user_role_id',
 					title : this.$i18n.t('user_has_projects.user_role_id'),
 					help : this.$i18n.t('user_has_projects.user_role_id_help'),
-					value : '',
+					value : this.createModalDefaultUserHasProject.user_role_id,
 					type : 'select2',
 					select2 : {
 						labelProp : 'label',
@@ -442,6 +443,28 @@
 								order_by: 'name,asc',
 							}
 						},
+					},
+				});
+
+				fields.push({
+					name : 'user_role_id',
+					title : this.$i18n.t('user_has_projects.user_role_id'),
+					help : this.$i18n.t('user_has_projects.user_role_id_help'),
+					value : this.editModalUserHasProject.user_role_id,
+					type : 'select2',
+					select2 : {
+						labelProp : 'label',
+						valueProp : 'id',
+						options : [
+							{
+								id : 'Owner',
+								text : this.$i18n.t('user_has_projects.user_role.Owner'),
+							},
+							{
+								id : 'Administrator',
+								text : this.$i18n.t('user_has_projects.user_role.Administrator'),
+							}
+						]
 					},
 				});
 
@@ -516,6 +539,12 @@
 			},
 
 			userHasProjectShowCreateModal() {
+				this.createModalDefaultUserHasProject = {
+					user_id : this.userId,
+					project_id : '',
+					user_role_id : '',
+				};
+
 				$('#user-has-projects-create-modal').modal('show');
 			},
 			userHasProjectShowEditModal() {

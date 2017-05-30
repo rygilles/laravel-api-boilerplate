@@ -45,15 +45,29 @@
 				if (this.value != '') {
 					if (this.labelProp == this.valueProp) {
 						$(this.$el).select2('destroy');
-						this.currentOptions = [];
-						this.currentOptions.push({
-							id: value,
-							text: value,
-						});
+						if (this.options.length > 0) {
+							this.currentOptions = [];
+							this.options.forEach((option) => {
+								this.currentOptions.push(option);
+							});
+						} else {
+							this.currentOptions = [];
+							this.currentOptions.push({
+								id: value,
+								text: value,
+							});
+						}
 						this.initializeSelect2();
 						$(this.$el).val(value).trigger('change');
 					} else {
-						if (this.feed.getUri != '') {
+						if (this.options.length > 0) {
+							this.currentOptions = [];
+							this.options.forEach((option) => {
+								this.currentOptions.push(option);
+							});
+							this.initializeSelect2();
+							$(this.$el).val(value).trigger('change');
+						} else if (this.feed.getUri != '') {
 							apiAxios
 								.get(this.feed.getUri + '/' + value)
 								.then(response => {
@@ -90,7 +104,6 @@
 			this.initializeSelect2();
 
 			var vm = this;
-
 			$(this.$el)
 				.val(vm.value)
 				.trigger('change')

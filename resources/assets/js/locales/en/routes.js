@@ -18,6 +18,10 @@ export default {
         'title': 'All Projects',
         'description': 'All users projects'
     },
+    'project': {
+        'title': 'Project',
+        'description': '',
+    },
     'misc-folder': {
         'title': 'Miscellaneous'
     },
