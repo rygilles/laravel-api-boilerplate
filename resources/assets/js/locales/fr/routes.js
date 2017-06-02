@@ -7,6 +7,10 @@ export default {
         'title': 'Mes Projets',
         'description': 'Liste des projets dont je suis propriétaire ou administrateur'
     },
+    'user-project': {
+        'title': 'Mon Projet',
+        'description': 'Projet que j\'ai créé / dont je suis propriétaire'
+    },
     'api-configuration': {
         'title': 'Api',
         'description': 'Gérez l\'identification à votre Api ici'

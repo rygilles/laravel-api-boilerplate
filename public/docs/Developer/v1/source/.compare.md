@@ -47,7 +47,7 @@ You can specify extra GET parameters with any index / listing routes to request 
 > Example request:
 
 ```bash
-curl -X GET "http://emsearch.ryan.ems-dev.net/api/dataStream" \
+curl -X GET "https://emsearch.ryan.ems-dev.net/api/dataStream" \
 -H "Accept: application/json" \
 -H "Authentication: Bearer xxx"
 
@@ -57,7 +57,7 @@ curl -X GET "http://emsearch.ryan.ems-dev.net/api/dataStream" \
 var settings = {
     "async": true,
     "crossDomain": true,
-    "url": "http://emsearch.ryan.ems-dev.net/api/dataStream",
+    "url": "https://emsearch.ryan.ems-dev.net/api/dataStream",
     "method": "GET",
     "headers": {
         "Accept": "application/json",
@@ -117,7 +117,7 @@ $.ajax(settings).done(function (response) {
 > Example request:
 
 ```bash
-curl -X GET "http://emsearch.ryan.ems-dev.net/api/dataStream/605d712c-1934-11e7-93ae-92361f002671" \
+curl -X GET "https://emsearch.ryan.ems-dev.net/api/dataStream/605d712c-1934-11e7-93ae-92361f002671" \
 -H "Accept: application/json" \
 -H "Authentication: Bearer xxx"
 
@@ -127,7 +127,7 @@ curl -X GET "http://emsearch.ryan.ems-dev.net/api/dataStream/605d712c-1934-11e7-
 var settings = {
     "async": true,
     "crossDomain": true,
-    "url": "http://emsearch.ryan.ems-dev.net/api/dataStream/605d712c-1934-11e7-93ae-92361f002671",
+    "url": "https://emsearch.ryan.ems-dev.net/api/dataStream/605d712c-1934-11e7-93ae-92361f002671",
     "method": "GET",
     "headers": {
         "Accept": "application/json",
@@ -170,12 +170,12 @@ Only one data stream per project is allowed.
 > Example request:
 
 ```bash
-curl -X POST "http://emsearch.ryan.ems-dev.net/api/dataStream" \
+curl -X POST "https://emsearch.ryan.ems-dev.net/api/dataStream" \
 -H "Accept: application/json" \
 -H "Authentication: Bearer xxx"
  \
-    -d "name"="Delectus esse earum" \
-    -d "feed_url"="http://wuckert.com/quidem-ullam-blanditiis-voluptatibus-doloremque-magnam" \
+    -d "name"="Ab sit qui" \
+    -d "feed_url"="https://www.schroeder.com/modi-a-architecto-ut-perferendis" \
 
 ```
 
@@ -183,11 +183,11 @@ curl -X POST "http://emsearch.ryan.ems-dev.net/api/dataStream" \
 var settings = {
     "async": true,
     "crossDomain": true,
-    "url": "http://emsearch.ryan.ems-dev.net/api/dataStream",
+    "url": "https://emsearch.ryan.ems-dev.net/api/dataStream",
     "method": "POST",
     "data": {
-        "name": "Delectus esse earum",
-        "feed_url": "http:\/\/wuckert.com\/quidem-ullam-blanditiis-voluptatibus-doloremque-magnam"
+        "name": "Ab sit qui",
+        "feed_url": "https:\/\/www.schroeder.com\/modi-a-architecto-ut-perferendis"
 },
     "headers": {
         "Accept": "application/json",
@@ -219,12 +219,12 @@ Parameter | Type | Status | Description
 > Example request:
 
 ```bash
-curl -X PUT "http://emsearch.ryan.ems-dev.net/api/dataStream/605d712c-1934-11e7-93ae-92361f002671" \
+curl -X PUT "https://emsearch.ryan.ems-dev.net/api/dataStream/605d712c-1934-11e7-93ae-92361f002671" \
 -H "Accept: application/json" \
 -H "Authentication: Bearer xxx"
  \
-    -d "name"="Est porro commodi" \
-    -d "feed_url"="http://leannon.net/repudiandae-tempora-facilis-ut-ipsum-at-qui-pariatur-quam" \
+    -d "name"="Id at sint" \
+    -d "feed_url"="http://www.daniel.biz/id-rem-quidem-autem-consectetur-quia-a-ut.html" \
 
 ```
 
@@ -232,11 +232,11 @@ curl -X PUT "http://emsearch.ryan.ems-dev.net/api/dataStream/605d712c-1934-11e7-
 var settings = {
     "async": true,
     "crossDomain": true,
-    "url": "http://emsearch.ryan.ems-dev.net/api/dataStream/605d712c-1934-11e7-93ae-92361f002671",
+    "url": "https://emsearch.ryan.ems-dev.net/api/dataStream/605d712c-1934-11e7-93ae-92361f002671",
     "method": "PUT",
     "data": {
-        "name": "Est porro commodi",
-        "feed_url": "http:\/\/leannon.net\/repudiandae-tempora-facilis-ut-ipsum-at-qui-pariatur-quam"
+        "name": "Id at sint",
+        "feed_url": "http:\/\/www.daniel.biz\/id-rem-quidem-autem-consectetur-quia-a-ut.html"
 },
     "headers": {
         "Accept": "application/json",
@@ -270,7 +270,7 @@ Parameter | Type | Status | Description
 > Example request:
 
 ```bash
-curl -X DELETE "http://emsearch.ryan.ems-dev.net/api/dataStream/605d712c-1934-11e7-93ae-92361f002671" \
+curl -X DELETE "https://emsearch.ryan.ems-dev.net/api/dataStream/605d712c-1934-11e7-93ae-92361f002671" \
 -H "Accept: application/json" \
 -H "Authentication: Bearer xxx"
 
@@ -280,7 +280,7 @@ curl -X DELETE "http://emsearch.ryan.ems-dev.net/api/dataStream/605d712c-1934-11
 var settings = {
     "async": true,
     "crossDomain": true,
-    "url": "http://emsearch.ryan.ems-dev.net/api/dataStream/605d712c-1934-11e7-93ae-92361f002671",
+    "url": "https://emsearch.ryan.ems-dev.net/api/dataStream/605d712c-1934-11e7-93ae-92361f002671",
     "method": "DELETE",
     "headers": {
         "Accept": "application/json",
@@ -306,7 +306,7 @@ $.ajax(settings).done(function (response) {
 > Example request:
 
 ```bash
-curl -X GET "http://emsearch.ryan.ems-dev.net/api/project/1bcc7efc-138c-11e7-93ae-92361f002671/dataStream" \
+curl -X GET "https://emsearch.ryan.ems-dev.net/api/project/1bcc7efc-138c-11e7-93ae-92361f002671/dataStream" \
 -H "Accept: application/json" \
 -H "Authentication: Bearer xxx"
 
@@ -316,7 +316,7 @@ curl -X GET "http://emsearch.ryan.ems-dev.net/api/project/1bcc7efc-138c-11e7-93a
 var settings = {
     "async": true,
     "crossDomain": true,
-    "url": "http://emsearch.ryan.ems-dev.net/api/project/1bcc7efc-138c-11e7-93ae-92361f002671/dataStream",
+    "url": "https://emsearch.ryan.ems-dev.net/api/project/1bcc7efc-138c-11e7-93ae-92361f002671/dataStream",
     "method": "GET",
     "headers": {
         "Accept": "application/json",
@@ -359,7 +359,7 @@ Only one data stream per project is allowed.
 > Example request:
 
 ```bash
-curl -X POST "http://emsearch.ryan.ems-dev.net/api/project/1bcc7efc-138c-11e7-93ae-92361f002671/dataStream" \
+curl -X POST "https://emsearch.ryan.ems-dev.net/api/project/1bcc7efc-138c-11e7-93ae-92361f002671/dataStream" \
 -H "Accept: application/json" \
 -H "Authentication: Bearer xxx"
  \
@@ -372,7 +372,7 @@ curl -X POST "http://emsearch.ryan.ems-dev.net/api/project/1bcc7efc-138c-11e7-93
 var settings = {
     "async": true,
     "crossDomain": true,
-    "url": "http://emsearch.ryan.ems-dev.net/api/project/1bcc7efc-138c-11e7-93ae-92361f002671/dataStream",
+    "url": "https://emsearch.ryan.ems-dev.net/api/project/1bcc7efc-138c-11e7-93ae-92361f002671/dataStream",
     "method": "POST",
     "data": {
         "name": "Omnis neque laboriosam",
@@ -408,12 +408,12 @@ Parameter | Type | Status | Description
 > Example request:
 
 ```bash
-curl -X PUT "http://emsearch.ryan.ems-dev.net/api/project/1bcc7efc-138c-11e7-93ae-92361f002671/dataStream" \
+curl -X PUT "https://emsearch.ryan.ems-dev.net/api/project/1bcc7efc-138c-11e7-93ae-92361f002671/dataStream" \
 -H "Accept: application/json" \
 -H "Authentication: Bearer xxx"
  \
-    -d "name"="Deleniti sunt et" \
-    -d "feed_url"="http://www.hand.info/necessitatibus-delectus-illo-in-dolorum" \
+    -d "name"="Sit facilis et" \
+    -d "feed_url"="http://friesen.org/harum-labore-aspernatur-cupiditate" \
 
 ```
 
@@ -421,11 +421,11 @@ curl -X PUT "http://emsearch.ryan.ems-dev.net/api/project/1bcc7efc-138c-11e7-93a
 var settings = {
     "async": true,
     "crossDomain": true,
-    "url": "http://emsearch.ryan.ems-dev.net/api/project/1bcc7efc-138c-11e7-93ae-92361f002671/dataStream",
+    "url": "https://emsearch.ryan.ems-dev.net/api/project/1bcc7efc-138c-11e7-93ae-92361f002671/dataStream",
     "method": "PUT",
     "data": {
-        "name": "Deleniti sunt et",
-        "feed_url": "http:\/\/www.hand.info\/necessitatibus-delectus-illo-in-dolorum"
+        "name": "Sit facilis et",
+        "feed_url": "http:\/\/friesen.org\/harum-labore-aspernatur-cupiditate"
 },
     "headers": {
         "Accept": "application/json",
@@ -459,7 +459,7 @@ Parameter | Type | Status | Description
 > Example request:
 
 ```bash
-curl -X DELETE "http://emsearch.ryan.ems-dev.net/api/project/1bcc7efc-138c-11e7-93ae-92361f002671/dataStream" \
+curl -X DELETE "https://emsearch.ryan.ems-dev.net/api/project/1bcc7efc-138c-11e7-93ae-92361f002671/dataStream" \
 -H "Accept: application/json" \
 -H "Authentication: Bearer xxx"
 
@@ -469,7 +469,7 @@ curl -X DELETE "http://emsearch.ryan.ems-dev.net/api/project/1bcc7efc-138c-11e7-
 var settings = {
     "async": true,
     "crossDomain": true,
-    "url": "http://emsearch.ryan.ems-dev.net/api/project/1bcc7efc-138c-11e7-93ae-92361f002671/dataStream",
+    "url": "https://emsearch.ryan.ems-dev.net/api/project/1bcc7efc-138c-11e7-93ae-92361f002671/dataStream",
     "method": "DELETE",
     "headers": {
         "Accept": "application/json",
@@ -499,7 +499,7 @@ $.ajax(settings).done(function (response) {
 > Example request:
 
 ```bash
-curl -X GET "http://emsearch.ryan.ems-dev.net/api/i18nLang" \
+curl -X GET "https://emsearch.ryan.ems-dev.net/api/i18nLang" \
 -H "Accept: application/json" \
 -H "Authentication: Bearer xxx"
 
@@ -509,7 +509,7 @@ curl -X GET "http://emsearch.ryan.ems-dev.net/api/i18nLang" \
 var settings = {
     "async": true,
     "crossDomain": true,
-    "url": "http://emsearch.ryan.ems-dev.net/api/i18nLang",
+    "url": "https://emsearch.ryan.ems-dev.net/api/i18nLang",
     "method": "GET",
     "headers": {
         "Accept": "application/json",
@@ -576,7 +576,7 @@ $.ajax(settings).done(function (response) {
             "current_page": 1,
             "total_pages": 44,
             "links": {
-                "next": "http:\/\/emsearch.ryan.ems-dev.net\/api\/i18nLang?page=2"
+                "next": "https:\/\/emsearch.ryan.ems-dev.net\/api\/i18nLang?page=2"
             }
         }
     }
@@ -597,7 +597,7 @@ $.ajax(settings).done(function (response) {
 > Example request:
 
 ```bash
-curl -X GET "http://emsearch.ryan.ems-dev.net/api/i18nLang/en_US" \
+curl -X GET "https://emsearch.ryan.ems-dev.net/api/i18nLang/en_US" \
 -H "Accept: application/json" \
 -H "Authentication: Bearer xxx"
 
@@ -607,7 +607,7 @@ curl -X GET "http://emsearch.ryan.ems-dev.net/api/i18nLang/en_US" \
 var settings = {
     "async": true,
     "crossDomain": true,
-    "url": "http://emsearch.ryan.ems-dev.net/api/i18nLang/en_US",
+    "url": "https://emsearch.ryan.ems-dev.net/api/i18nLang/en_US",
     "method": "GET",
     "headers": {
         "Accept": "application/json",
@@ -645,12 +645,12 @@ $.ajax(settings).done(function (response) {
 > Example request:
 
 ```bash
-curl -X POST "http://emsearch.ryan.ems-dev.net/api/i18nLang" \
+curl -X POST "https://emsearch.ryan.ems-dev.net/api/i18nLang" \
 -H "Accept: application/json" \
 -H "Authentication: Bearer xxx"
  \
-    -d "id"="Non quae est" \
-    -d "description"="Itaque ea est" \
+    -d "id"="Facere consequatur natus" \
+    -d "description"="Voluptatum perspiciatis dolores" \
 
 ```
 
@@ -658,11 +658,11 @@ curl -X POST "http://emsearch.ryan.ems-dev.net/api/i18nLang" \
 var settings = {
     "async": true,
     "crossDomain": true,
-    "url": "http://emsearch.ryan.ems-dev.net/api/i18nLang",
+    "url": "https://emsearch.ryan.ems-dev.net/api/i18nLang",
     "method": "POST",
     "data": {
-        "id": "Non quae est",
-        "description": "Itaque ea est"
+        "id": "Facere consequatur natus",
+        "description": "Voluptatum perspiciatis dolores"
 },
     "headers": {
         "Accept": "application/json",
@@ -694,11 +694,11 @@ Parameter | Type | Status | Description
 > Example request:
 
 ```bash
-curl -X PUT "http://emsearch.ryan.ems-dev.net/api/i18nLang/en_US" \
+curl -X PUT "https://emsearch.ryan.ems-dev.net/api/i18nLang/en_US" \
 -H "Accept: application/json" \
 -H "Authentication: Bearer xxx"
  \
-    -d "description"="Totam aut saepe" \
+    -d "description"="Ab consequatur cum" \
 
 ```
 
@@ -706,10 +706,10 @@ curl -X PUT "http://emsearch.ryan.ems-dev.net/api/i18nLang/en_US" \
 var settings = {
     "async": true,
     "crossDomain": true,
-    "url": "http://emsearch.ryan.ems-dev.net/api/i18nLang/en_US",
+    "url": "https://emsearch.ryan.ems-dev.net/api/i18nLang/en_US",
     "method": "PUT",
     "data": {
-        "description": "Totam aut saepe"
+        "description": "Ab consequatur cum"
 },
     "headers": {
         "Accept": "application/json",
@@ -744,7 +744,7 @@ Parameter | Type | Status | Description
 > Example request:
 
 ```bash
-curl -X DELETE "http://emsearch.ryan.ems-dev.net/api/i18nLang/en_US" \
+curl -X DELETE "https://emsearch.ryan.ems-dev.net/api/i18nLang/en_US" \
 -H "Accept: application/json" \
 -H "Authentication: Bearer xxx"
 
@@ -754,7 +754,7 @@ curl -X DELETE "http://emsearch.ryan.ems-dev.net/api/i18nLang/en_US" \
 var settings = {
     "async": true,
     "crossDomain": true,
-    "url": "http://emsearch.ryan.ems-dev.net/api/i18nLang/en_US",
+    "url": "https://emsearch.ryan.ems-dev.net/api/i18nLang/en_US",
     "method": "DELETE",
     "headers": {
         "Accept": "application/json",
@@ -783,7 +783,7 @@ $.ajax(settings).done(function (response) {
 > Example request:
 
 ```bash
-curl -X GET "http://emsearch.ryan.ems-dev.net/api/i18nLang/search" \
+curl -X GET "https://emsearch.ryan.ems-dev.net/api/i18nLang/search" \
 -H "Accept: application/json" \
 -H "Authentication: Bearer xxx"
 
@@ -793,7 +793,7 @@ curl -X GET "http://emsearch.ryan.ems-dev.net/api/i18nLang/search" \
 var settings = {
     "async": true,
     "crossDomain": true,
-    "url": "http://emsearch.ryan.ems-dev.net/api/i18nLang/search",
+    "url": "https://emsearch.ryan.ems-dev.net/api/i18nLang/search",
     "method": "GET",
     "headers": {
         "Accept": "application/json",
@@ -827,7 +827,7 @@ null
 > Example request:
 
 ```bash
-curl -X GET "http://emsearch.ryan.ems-dev.net/api/me" \
+curl -X GET "https://emsearch.ryan.ems-dev.net/api/me" \
 -H "Accept: application/json" \
 -H "Authentication: Bearer xxx"
 
@@ -837,7 +837,7 @@ curl -X GET "http://emsearch.ryan.ems-dev.net/api/me" \
 var settings = {
     "async": true,
     "crossDomain": true,
-    "url": "http://emsearch.ryan.ems-dev.net/api/me",
+    "url": "https://emsearch.ryan.ems-dev.net/api/me",
     "method": "GET",
     "headers": {
         "Accept": "application/json",
@@ -883,7 +883,7 @@ You can specify a GET parameter `read_status` to filter results.
 > Example request:
 
 ```bash
-curl -X GET "http://emsearch.ryan.ems-dev.net/api/me/notification?read_status=unread" \
+curl -X GET "https://emsearch.ryan.ems-dev.net/api/me/notification?read_status=read" \
 -H "Accept: application/json" \
 -H "Authentication: Bearer xxx"
 
@@ -893,7 +893,7 @@ curl -X GET "http://emsearch.ryan.ems-dev.net/api/me/notification?read_status=un
 var settings = {
     "async": true,
     "crossDomain": true,
-    "url": "http://emsearch.ryan.ems-dev.net/api/me/notification?read_status=unread",
+    "url": "https://emsearch.ryan.ems-dev.net/api/me/notification?read_status=read",
     "method": "GET",
     "headers": {
         "Accept": "application/json",
@@ -910,15 +910,228 @@ $.ajax(settings).done(function (response) {
 
 ```json
 {
-    "data": [],
+    "data": [
+        {
+            "id": "f9164fb1-0c7a-4288-81d8-76d3572810fc",
+            "type": "App\\Notifications\\AdministeredProject",
+            "notifiable_id": "41abdec2-1389-11e7-93ae-92361f002671",
+            "notifiable_type": "App\\Models\\User",
+            "data": {
+                "user_id": "41abdec2-1389-11e7-93ae-92361f002671",
+                "project_id": "1bcc7efc-138c-11e7-93ae-92361f002671",
+                "assigned_by_user_id": "41abdec2-1389-11e7-93ae-92361f002671",
+                "assigned_by_user": {
+                    "name": "John Doe",
+                    "email": "john.doe@domain.tld"
+                },
+                "project": {
+                    "name": "John Smith Sample Project 1"
+                }
+            },
+            "read_at": "2017-05-30 08:29:45",
+            "created_at": "2017-05-29 09:30:29",
+            "updated_at": "2017-05-30 08:29:45"
+        },
+        {
+            "id": "d90876bd-3115-4be8-967b-889728e5a0d4",
+            "type": "App\\Notifications\\AdministeredProject",
+            "notifiable_id": "41abdec2-1389-11e7-93ae-92361f002671",
+            "notifiable_type": "App\\Models\\User",
+            "data": {
+                "user_id": "41abdec2-1389-11e7-93ae-92361f002671",
+                "project_id": "1bcc7efc-138c-11e7-93ae-92361f002671",
+                "assigned_by_user_id": "41abdec2-1389-11e7-93ae-92361f002671",
+                "assigned_by_user": {
+                    "name": "John Doe",
+                    "email": "john.doe@domain.tld"
+                },
+                "project": {
+                    "name": "John Smith Sample Project 1"
+                }
+            },
+            "read_at": null,
+            "created_at": "2017-05-29 08:56:56",
+            "updated_at": "2017-05-29 08:56:56"
+        },
+        {
+            "id": "52e758f5-5a17-44ad-8539-26a021b68bad",
+            "type": "App\\Notifications\\AdministeredProject",
+            "notifiable_id": "41abdec2-1389-11e7-93ae-92361f002671",
+            "notifiable_type": "App\\Models\\User",
+            "data": {
+                "user_id": "41abdec2-1389-11e7-93ae-92361f002671",
+                "project_id": "1bcc7efc-138c-11e7-93ae-92361f002671",
+                "assigned_by_user_id": "41abdec2-1389-11e7-93ae-92361f002671",
+                "assigned_by_user": {
+                    "name": "John Doe",
+                    "email": "john.doe@domain.tld"
+                },
+                "project": {
+                    "name": "John Smith Sample Project 1"
+                }
+            },
+            "read_at": null,
+            "created_at": "2017-05-29 08:11:36",
+            "updated_at": "2017-05-29 08:11:36"
+        },
+        {
+            "id": "d4c8ff00-1bbf-4215-8f22-e827ecdf238b",
+            "type": "App\\Notifications\\AdministeredProject",
+            "notifiable_id": "41abdec2-1389-11e7-93ae-92361f002671",
+            "notifiable_type": "App\\Models\\User",
+            "data": {
+                "user_id": "41abdec2-1389-11e7-93ae-92361f002671",
+                "project_id": "1bcc7efc-138c-11e7-93ae-92361f002671",
+                "assigned_by_user_id": "41abdec2-1389-11e7-93ae-92361f002671",
+                "assigned_by_user": {
+                    "name": "John Doe",
+                    "email": "john.doe@domain.tld"
+                },
+                "project": {
+                    "name": "John Smith Sample Project 1"
+                }
+            },
+            "read_at": null,
+            "created_at": "2017-05-29 08:05:31",
+            "updated_at": "2017-05-29 08:05:31"
+        },
+        {
+            "id": "11f1b53f-d67e-49de-8cd8-0f7777247174",
+            "type": "App\\Notifications\\AdministeredProject",
+            "notifiable_id": "41abdec2-1389-11e7-93ae-92361f002671",
+            "notifiable_type": "App\\Models\\User",
+            "data": {
+                "user_id": "41abdec2-1389-11e7-93ae-92361f002671",
+                "project_id": "b6860dd2-138c-11e7-93ae-92361f002671",
+                "assigned_by_user_id": "41abdec2-1389-11e7-93ae-92361f002671",
+                "assigned_by_user": {
+                    "name": "John Doe",
+                    "email": "john.doe@domain.tld"
+                },
+                "project": {
+                    "name": "John Smith Sample Project 2"
+                }
+            },
+            "read_at": null,
+            "created_at": "2017-05-29 07:59:47",
+            "updated_at": "2017-05-29 07:59:47"
+        },
+        {
+            "id": "6279cc04-c0e5-482e-8179-f4f181897d7e",
+            "type": "App\\Notifications\\AdministeredProject",
+            "notifiable_id": "41abdec2-1389-11e7-93ae-92361f002671",
+            "notifiable_type": "App\\Models\\User",
+            "data": {
+                "user_id": "41abdec2-1389-11e7-93ae-92361f002671",
+                "project_id": "b6860dd2-138c-11e7-93ae-92361f002671",
+                "assigned_by_user_id": "41abdec2-1389-11e7-93ae-92361f002671",
+                "assigned_by_user": {
+                    "name": "John Doe",
+                    "email": "john.doe@domain.tld"
+                },
+                "project": {
+                    "name": "John Smith Sample Project 2"
+                }
+            },
+            "read_at": null,
+            "created_at": "2017-05-29 07:59:28",
+            "updated_at": "2017-05-29 07:59:28"
+        },
+        {
+            "id": "126444cd-6de4-438c-bb6e-71969018d373",
+            "type": "App\\Notifications\\AdministeredProject",
+            "notifiable_id": "41abdec2-1389-11e7-93ae-92361f002671",
+            "notifiable_type": "App\\Models\\User",
+            "data": {
+                "user_id": "41abdec2-1389-11e7-93ae-92361f002671",
+                "project_id": "1bcc7efc-138c-11e7-93ae-92361f002671",
+                "assigned_by_user_id": "41abdec2-1389-11e7-93ae-92361f002671",
+                "assigned_by_user": {
+                    "name": "John Doe",
+                    "email": "john.doe@domain.tld"
+                },
+                "project": {
+                    "name": "John Smith Sample Project 1"
+                }
+            },
+            "read_at": null,
+            "created_at": "2017-05-29 07:59:18",
+            "updated_at": "2017-05-29 07:59:18"
+        },
+        {
+            "id": "dc021b94-8443-43be-a5aa-881d91f674d5",
+            "type": "App\\Notifications\\AdministeredProject",
+            "notifiable_id": "41abdec2-1389-11e7-93ae-92361f002671",
+            "notifiable_type": "App\\Models\\User",
+            "data": {
+                "user_id": "41abdec2-1389-11e7-93ae-92361f002671",
+                "project_id": "b6860dd2-138c-11e7-93ae-92361f002671",
+                "assigned_by_user_id": "41abdec2-1389-11e7-93ae-92361f002671",
+                "assigned_by_user": {
+                    "name": "John Doe",
+                    "email": "john.doe@domain.tld"
+                },
+                "project": {
+                    "name": "John Smith Sample Project 2"
+                }
+            },
+            "read_at": "2017-05-29 08:00:02",
+            "created_at": "2017-05-29 07:56:53",
+            "updated_at": "2017-05-29 08:00:02"
+        },
+        {
+            "id": "e8a1b9f5-6cfb-4786-b649-005a51a6ad16",
+            "type": "App\\Notifications\\AdministeredProject",
+            "notifiable_id": "41abdec2-1389-11e7-93ae-92361f002671",
+            "notifiable_type": "App\\Models\\User",
+            "data": {
+                "user_id": "41abdec2-1389-11e7-93ae-92361f002671",
+                "project_id": "1bcc7efc-138c-11e7-93ae-92361f002671",
+                "assigned_by_user_id": "41abdec2-1389-11e7-93ae-92361f002671",
+                "assigned_by_user": {
+                    "name": "John Doe",
+                    "email": "john.doe@domain.tld"
+                },
+                "project": {
+                    "name": "John Smith Sample Project 1"
+                }
+            },
+            "read_at": null,
+            "created_at": "2017-05-29 07:55:56",
+            "updated_at": "2017-05-29 07:55:56"
+        },
+        {
+            "id": "cf2ac241-0e46-4f5d-90a0-96bc5a55d51b",
+            "type": "App\\Notifications\\AdministeredProject",
+            "notifiable_id": "41abdec2-1389-11e7-93ae-92361f002671",
+            "notifiable_type": "App\\Models\\User",
+            "data": {
+                "user_id": "41abdec2-1389-11e7-93ae-92361f002671",
+                "project_id": "b6860dd2-138c-11e7-93ae-92361f002671",
+                "assigned_by_user_id": "41abdec2-1389-11e7-93ae-92361f002671",
+                "assigned_by_user": {
+                    "name": "John Doe",
+                    "email": "john.doe@domain.tld"
+                },
+                "project": {
+                    "name": "John Smith Sample Project 2"
+                }
+            },
+            "read_at": "2017-05-29 08:00:05",
+            "created_at": "2017-05-29 07:54:03",
+            "updated_at": "2017-05-29 08:00:05"
+        }
+    ],
     "meta": {
         "pagination": {
-            "total": 0,
-            "count": 0,
+            "total": 27,
+            "count": 10,
             "per_page": 10,
             "current_page": 1,
-            "total_pages": 0,
-            "links": []
+            "total_pages": 3,
+            "links": {
+                "next": "https:\/\/emsearch.ryan.ems-dev.net\/api\/me\/notification?page=2"
+            }
         }
     }
 }
@@ -943,7 +1156,7 @@ Parameter | Type | Status | Description
 > Example request:
 
 ```bash
-curl -X POST "http://emsearch.ryan.ems-dev.net/api/me/notification/{notificationId}/read" \
+curl -X POST "https://emsearch.ryan.ems-dev.net/api/me/notification/{notificationId}/read" \
 -H "Accept: application/json" \
 -H "Authentication: Bearer xxx"
 
@@ -953,7 +1166,7 @@ curl -X POST "http://emsearch.ryan.ems-dev.net/api/me/notification/{notification
 var settings = {
     "async": true,
     "crossDomain": true,
-    "url": "http://emsearch.ryan.ems-dev.net/api/me/notification/{notificationId}/read",
+    "url": "https://emsearch.ryan.ems-dev.net/api/me/notification/{notificationId}/read",
     "method": "POST",
     "headers": {
         "Accept": "application/json",
@@ -979,7 +1192,7 @@ $.ajax(settings).done(function (response) {
 > Example request:
 
 ```bash
-curl -X POST "http://emsearch.ryan.ems-dev.net/api/me/notification/{notificationId}/unread" \
+curl -X POST "https://emsearch.ryan.ems-dev.net/api/me/notification/{notificationId}/unread" \
 -H "Accept: application/json" \
 -H "Authentication: Bearer xxx"
 
@@ -989,7 +1202,7 @@ curl -X POST "http://emsearch.ryan.ems-dev.net/api/me/notification/{notification
 var settings = {
     "async": true,
     "crossDomain": true,
-    "url": "http://emsearch.ryan.ems-dev.net/api/me/notification/{notificationId}/unread",
+    "url": "https://emsearch.ryan.ems-dev.net/api/me/notification/{notificationId}/unread",
     "method": "POST",
     "headers": {
         "Accept": "application/json",
@@ -1019,7 +1232,7 @@ You can specify a GET parameter `user_role_id` to filter results.
 > Example request:
 
 ```bash
-curl -X GET "http://emsearch.ryan.ems-dev.net/api/me/project?user_role_id=Owner" \
+curl -X GET "https://emsearch.ryan.ems-dev.net/api/me/project?user_role_id=Owner" \
 -H "Accept: application/json" \
 -H "Authentication: Bearer xxx"
 
@@ -1029,7 +1242,7 @@ curl -X GET "http://emsearch.ryan.ems-dev.net/api/me/project?user_role_id=Owner"
 var settings = {
     "async": true,
     "crossDomain": true,
-    "url": "http://emsearch.ryan.ems-dev.net/api/me/project?user_role_id=Owner",
+    "url": "https://emsearch.ryan.ems-dev.net/api/me/project?user_role_id=Owner",
     "method": "GET",
     "headers": {
         "Accept": "application/json",
@@ -1046,14 +1259,23 @@ $.ajax(settings).done(function (response) {
 
 ```json
 {
-    "data": [],
+    "data": [
+        {
+            "id": "1bcc7efc-138c-11e7-93ae-92361f002671",
+            "search_engine_id": "ee87e3b2-1388-11e7-93ae-92361f002671",
+            "data_stream_id": "56278dc8-1934-11e7-93ae-92361f002671",
+            "name": "John Smith Sample Project 1",
+            "created_at": "2017-05-23 11:16:50",
+            "updated_at": "2017-05-29 14:44:35"
+        }
+    ],
     "meta": {
         "pagination": {
-            "total": 0,
-            "count": 0,
+            "total": 1,
+            "count": 1,
             "per_page": 10,
             "current_page": 1,
-            "total_pages": 0,
+            "total_pages": 1,
             "links": []
         }
     }
@@ -1082,7 +1304,7 @@ You can specify a GET parameter `user_role_id` to filter results.
 > Example request:
 
 ```bash
-curl -X GET "http://emsearch.ryan.ems-dev.net/api/user/605c7610-1389-11e7-93ae-92361f002671/project?user_role_id=Owner" \
+curl -X GET "https://emsearch.ryan.ems-dev.net/api/user/605c7610-1389-11e7-93ae-92361f002671/project?user_role_id=Owner" \
 -H "Accept: application/json" \
 -H "Authentication: Bearer xxx"
 
@@ -1092,7 +1314,7 @@ curl -X GET "http://emsearch.ryan.ems-dev.net/api/user/605c7610-1389-11e7-93ae-9
 var settings = {
     "async": true,
     "crossDomain": true,
-    "url": "http://emsearch.ryan.ems-dev.net/api/user/605c7610-1389-11e7-93ae-92361f002671/project?user_role_id=Owner",
+    "url": "https://emsearch.ryan.ems-dev.net/api/user/605c7610-1389-11e7-93ae-92361f002671/project?user_role_id=Owner",
     "method": "GET",
     "headers": {
         "Accept": "application/json",
@@ -1116,7 +1338,7 @@ $.ajax(settings).done(function (response) {
             "data_stream_id": "56278dc8-1934-11e7-93ae-92361f002671",
             "name": "John Smith Sample Project 1",
             "created_at": "2017-05-23 11:16:50",
-            "updated_at": "2017-05-23 11:16:50"
+            "updated_at": "2017-05-29 14:44:35"
         },
         {
             "id": "b6860dd2-138c-11e7-93ae-92361f002671",
@@ -1170,7 +1392,7 @@ Parameter | Type | Status | Description
 > Example request:
 
 ```bash
-curl -X GET "http://emsearch.ryan.ems-dev.net/api/project" \
+curl -X GET "https://emsearch.ryan.ems-dev.net/api/project" \
 -H "Accept: application/json" \
 -H "Authentication: Bearer xxx"
 
@@ -1180,7 +1402,7 @@ curl -X GET "http://emsearch.ryan.ems-dev.net/api/project" \
 var settings = {
     "async": true,
     "crossDomain": true,
-    "url": "http://emsearch.ryan.ems-dev.net/api/project",
+    "url": "https://emsearch.ryan.ems-dev.net/api/project",
     "method": "GET",
     "headers": {
         "Accept": "application/json",
@@ -1204,7 +1426,7 @@ $.ajax(settings).done(function (response) {
             "data_stream_id": "56278dc8-1934-11e7-93ae-92361f002671",
             "name": "John Smith Sample Project 1",
             "created_at": "2017-05-23 11:16:50",
-            "updated_at": "2017-05-23 11:16:50"
+            "updated_at": "2017-05-29 14:44:35"
         },
         {
             "id": "b6860dd2-138c-11e7-93ae-92361f002671",
@@ -1250,7 +1472,7 @@ $.ajax(settings).done(function (response) {
 > Example request:
 
 ```bash
-curl -X GET "http://emsearch.ryan.ems-dev.net/api/project/1bcc7efc-138c-11e7-93ae-92361f002671" \
+curl -X GET "https://emsearch.ryan.ems-dev.net/api/project/1bcc7efc-138c-11e7-93ae-92361f002671" \
 -H "Accept: application/json" \
 -H "Authentication: Bearer xxx"
 
@@ -1260,7 +1482,7 @@ curl -X GET "http://emsearch.ryan.ems-dev.net/api/project/1bcc7efc-138c-11e7-93a
 var settings = {
     "async": true,
     "crossDomain": true,
-    "url": "http://emsearch.ryan.ems-dev.net/api/project/1bcc7efc-138c-11e7-93ae-92361f002671",
+    "url": "https://emsearch.ryan.ems-dev.net/api/project/1bcc7efc-138c-11e7-93ae-92361f002671",
     "method": "GET",
     "headers": {
         "Accept": "application/json",
@@ -1283,7 +1505,7 @@ $.ajax(settings).done(function (response) {
         "data_stream_id": "56278dc8-1934-11e7-93ae-92361f002671",
         "name": "John Smith Sample Project 1",
         "created_at": "2017-05-23 11:16:50",
-        "updated_at": "2017-05-23 11:16:50"
+        "updated_at": "2017-05-29 14:44:35"
     }
 }
 ```
@@ -1302,13 +1524,13 @@ $.ajax(settings).done(function (response) {
 > Example request:
 
 ```bash
-curl -X POST "http://emsearch.ryan.ems-dev.net/api/project" \
+curl -X POST "https://emsearch.ryan.ems-dev.net/api/project" \
 -H "Accept: application/json" \
 -H "Authentication: Bearer xxx"
  \
-    -d "search_engine_id"="f79124cb-df3d-36f6-81af-f07f5c4ae56c" \
-    -d "data_stream_id"="33b77957-c83f-32d2-b2f2-b906469e4079" \
-    -d "name"="Et natus ipsam" \
+    -d "search_engine_id"="6669acff-7711-3da8-b755-8d8191368a80" \
+    -d "data_stream_id"="6d55fd1e-2d1e-329f-b177-8da8acc19831" \
+    -d "name"="Libero assumenda magni" \
 
 ```
 
@@ -1316,12 +1538,12 @@ curl -X POST "http://emsearch.ryan.ems-dev.net/api/project" \
 var settings = {
     "async": true,
     "crossDomain": true,
-    "url": "http://emsearch.ryan.ems-dev.net/api/project",
+    "url": "https://emsearch.ryan.ems-dev.net/api/project",
     "method": "POST",
     "data": {
-        "search_engine_id": "f79124cb-df3d-36f6-81af-f07f5c4ae56c",
-        "data_stream_id": "33b77957-c83f-32d2-b2f2-b906469e4079",
-        "name": "Et natus ipsam"
+        "search_engine_id": "6669acff-7711-3da8-b755-8d8191368a80",
+        "data_stream_id": "6d55fd1e-2d1e-329f-b177-8da8acc19831",
+        "name": "Libero assumenda magni"
 },
     "headers": {
         "Accept": "application/json",
@@ -1354,13 +1576,13 @@ Parameter | Type | Status | Description
 > Example request:
 
 ```bash
-curl -X PUT "http://emsearch.ryan.ems-dev.net/api/project/1bcc7efc-138c-11e7-93ae-92361f002671" \
+curl -X PUT "https://emsearch.ryan.ems-dev.net/api/project/1bcc7efc-138c-11e7-93ae-92361f002671" \
 -H "Accept: application/json" \
 -H "Authentication: Bearer xxx"
  \
-    -d "search_engine_id"="ece40eac-d408-3797-9db2-456e3e1d52b0" \
-    -d "data_stream_id"="923dbf2a-7086-3106-b25f-a49d28e6bbeb" \
-    -d "name"="Expedita dignissimos architecto" \
+    -d "search_engine_id"="a3daeee1-4073-3c87-8f16-a58b6d8147e7" \
+    -d "data_stream_id"="edbc870c-3cc6-348a-acce-3b7cfd357490" \
+    -d "name"="Quam ut corrupti" \
 
 ```
 
@@ -1368,12 +1590,12 @@ curl -X PUT "http://emsearch.ryan.ems-dev.net/api/project/1bcc7efc-138c-11e7-93a
 var settings = {
     "async": true,
     "crossDomain": true,
-    "url": "http://emsearch.ryan.ems-dev.net/api/project/1bcc7efc-138c-11e7-93ae-92361f002671",
+    "url": "https://emsearch.ryan.ems-dev.net/api/project/1bcc7efc-138c-11e7-93ae-92361f002671",
     "method": "PUT",
     "data": {
-        "search_engine_id": "ece40eac-d408-3797-9db2-456e3e1d52b0",
-        "data_stream_id": "923dbf2a-7086-3106-b25f-a49d28e6bbeb",
-        "name": "Expedita dignissimos architecto"
+        "search_engine_id": "a3daeee1-4073-3c87-8f16-a58b6d8147e7",
+        "data_stream_id": "edbc870c-3cc6-348a-acce-3b7cfd357490",
+        "name": "Quam ut corrupti"
 },
     "headers": {
         "Accept": "application/json",
@@ -1413,7 +1635,7 @@ The project data stream will be automatically deleted too, if exists.
 > Example request:
 
 ```bash
-curl -X DELETE "http://emsearch.ryan.ems-dev.net/api/project/1bcc7efc-138c-11e7-93ae-92361f002671" \
+curl -X DELETE "https://emsearch.ryan.ems-dev.net/api/project/1bcc7efc-138c-11e7-93ae-92361f002671" \
 -H "Accept: application/json" \
 -H "Authentication: Bearer xxx"
 
@@ -1423,7 +1645,7 @@ curl -X DELETE "http://emsearch.ryan.ems-dev.net/api/project/1bcc7efc-138c-11e7-
 var settings = {
     "async": true,
     "crossDomain": true,
-    "url": "http://emsearch.ryan.ems-dev.net/api/project/1bcc7efc-138c-11e7-93ae-92361f002671",
+    "url": "https://emsearch.ryan.ems-dev.net/api/project/1bcc7efc-138c-11e7-93ae-92361f002671",
     "method": "DELETE",
     "headers": {
         "Accept": "application/json",
@@ -1452,7 +1674,7 @@ $.ajax(settings).done(function (response) {
 > Example request:
 
 ```bash
-curl -X GET "http://emsearch.ryan.ems-dev.net/api/searchEngine/ee87e3b2-1388-11e7-93ae-92361f002671/project" \
+curl -X GET "https://emsearch.ryan.ems-dev.net/api/searchEngine/ee87e3b2-1388-11e7-93ae-92361f002671/project" \
 -H "Accept: application/json" \
 -H "Authentication: Bearer xxx"
 
@@ -1462,7 +1684,7 @@ curl -X GET "http://emsearch.ryan.ems-dev.net/api/searchEngine/ee87e3b2-1388-11e
 var settings = {
     "async": true,
     "crossDomain": true,
-    "url": "http://emsearch.ryan.ems-dev.net/api/searchEngine/ee87e3b2-1388-11e7-93ae-92361f002671/project",
+    "url": "https://emsearch.ryan.ems-dev.net/api/searchEngine/ee87e3b2-1388-11e7-93ae-92361f002671/project",
     "method": "GET",
     "headers": {
         "Accept": "application/json",
@@ -1486,7 +1708,7 @@ $.ajax(settings).done(function (response) {
             "data_stream_id": "56278dc8-1934-11e7-93ae-92361f002671",
             "name": "John Smith Sample Project 1",
             "created_at": "2017-05-23 11:16:50",
-            "updated_at": "2017-05-23 11:16:50"
+            "updated_at": "2017-05-29 14:44:35"
         },
         {
             "id": "b6860dd2-138c-11e7-93ae-92361f002671",
@@ -1536,7 +1758,7 @@ $.ajax(settings).done(function (response) {
 > Example request:
 
 ```bash
-curl -X GET "http://emsearch.ryan.ems-dev.net/api/searchEngine" \
+curl -X GET "https://emsearch.ryan.ems-dev.net/api/searchEngine" \
 -H "Accept: application/json" \
 -H "Authentication: Bearer xxx"
 
@@ -1546,7 +1768,7 @@ curl -X GET "http://emsearch.ryan.ems-dev.net/api/searchEngine" \
 var settings = {
     "async": true,
     "crossDomain": true,
-    "url": "http://emsearch.ryan.ems-dev.net/api/searchEngine",
+    "url": "https://emsearch.ryan.ems-dev.net/api/searchEngine",
     "method": "GET",
     "headers": {
         "Accept": "application/json",
@@ -1599,7 +1821,7 @@ $.ajax(settings).done(function (response) {
 > Example request:
 
 ```bash
-curl -X GET "http://emsearch.ryan.ems-dev.net/api/searchEngine/ee87e3b2-1388-11e7-93ae-92361f002671" \
+curl -X GET "https://emsearch.ryan.ems-dev.net/api/searchEngine/ee87e3b2-1388-11e7-93ae-92361f002671" \
 -H "Accept: application/json" \
 -H "Authentication: Bearer xxx"
 
@@ -1609,7 +1831,7 @@ curl -X GET "http://emsearch.ryan.ems-dev.net/api/searchEngine/ee87e3b2-1388-11e
 var settings = {
     "async": true,
     "crossDomain": true,
-    "url": "http://emsearch.ryan.ems-dev.net/api/searchEngine/ee87e3b2-1388-11e7-93ae-92361f002671",
+    "url": "https://emsearch.ryan.ems-dev.net/api/searchEngine/ee87e3b2-1388-11e7-93ae-92361f002671",
     "method": "GET",
     "headers": {
         "Accept": "application/json",
@@ -1650,11 +1872,11 @@ $.ajax(settings).done(function (response) {
 > Example request:
 
 ```bash
-curl -X POST "http://emsearch.ryan.ems-dev.net/api/searchEngine" \
+curl -X POST "https://emsearch.ryan.ems-dev.net/api/searchEngine" \
 -H "Accept: application/json" \
 -H "Authentication: Bearer xxx"
  \
-    -d "name"="Deserunt qui ex" \
+    -d "name"="Quisquam qui qui" \
 
 ```
 
@@ -1662,10 +1884,10 @@ curl -X POST "http://emsearch.ryan.ems-dev.net/api/searchEngine" \
 var settings = {
     "async": true,
     "crossDomain": true,
-    "url": "http://emsearch.ryan.ems-dev.net/api/searchEngine",
+    "url": "https://emsearch.ryan.ems-dev.net/api/searchEngine",
     "method": "POST",
     "data": {
-        "name": "Deserunt qui ex"
+        "name": "Quisquam qui qui"
 },
     "headers": {
         "Accept": "application/json",
@@ -1696,11 +1918,11 @@ Parameter | Type | Status | Description
 > Example request:
 
 ```bash
-curl -X PUT "http://emsearch.ryan.ems-dev.net/api/searchEngine/ee87e3b2-1388-11e7-93ae-92361f002671" \
+curl -X PUT "https://emsearch.ryan.ems-dev.net/api/searchEngine/ee87e3b2-1388-11e7-93ae-92361f002671" \
 -H "Accept: application/json" \
 -H "Authentication: Bearer xxx"
  \
-    -d "name"="Omnis explicabo et" \
+    -d "name"="Quod aut nisi" \
 
 ```
 
@@ -1708,10 +1930,10 @@ curl -X PUT "http://emsearch.ryan.ems-dev.net/api/searchEngine/ee87e3b2-1388-11e
 var settings = {
     "async": true,
     "crossDomain": true,
-    "url": "http://emsearch.ryan.ems-dev.net/api/searchEngine/ee87e3b2-1388-11e7-93ae-92361f002671",
+    "url": "https://emsearch.ryan.ems-dev.net/api/searchEngine/ee87e3b2-1388-11e7-93ae-92361f002671",
     "method": "PUT",
     "data": {
-        "name": "Omnis explicabo et"
+        "name": "Quod aut nisi"
 },
     "headers": {
         "Accept": "application/json",
@@ -1746,7 +1968,7 @@ Parameter | Type | Status | Description
 > Example request:
 
 ```bash
-curl -X DELETE "http://emsearch.ryan.ems-dev.net/api/searchEngine/ee87e3b2-1388-11e7-93ae-92361f002671" \
+curl -X DELETE "https://emsearch.ryan.ems-dev.net/api/searchEngine/ee87e3b2-1388-11e7-93ae-92361f002671" \
 -H "Accept: application/json" \
 -H "Authentication: Bearer xxx"
 
@@ -1756,7 +1978,7 @@ curl -X DELETE "http://emsearch.ryan.ems-dev.net/api/searchEngine/ee87e3b2-1388-
 var settings = {
     "async": true,
     "crossDomain": true,
-    "url": "http://emsearch.ryan.ems-dev.net/api/searchEngine/ee87e3b2-1388-11e7-93ae-92361f002671",
+    "url": "https://emsearch.ryan.ems-dev.net/api/searchEngine/ee87e3b2-1388-11e7-93ae-92361f002671",
     "method": "DELETE",
     "headers": {
         "Accept": "application/json",
@@ -1786,7 +2008,7 @@ $.ajax(settings).done(function (response) {
 > Example request:
 
 ```bash
-curl -X GET "http://emsearch.ryan.ems-dev.net/api/syncItem" \
+curl -X GET "https://emsearch.ryan.ems-dev.net/api/syncItem" \
 -H "Accept: application/json" \
 -H "Authentication: Bearer xxx"
 
@@ -1796,7 +2018,7 @@ curl -X GET "http://emsearch.ryan.ems-dev.net/api/syncItem" \
 var settings = {
     "async": true,
     "crossDomain": true,
-    "url": "http://emsearch.ryan.ems-dev.net/api/syncItem",
+    "url": "https://emsearch.ryan.ems-dev.net/api/syncItem",
     "method": "GET",
     "headers": {
         "Accept": "application/json",
@@ -1877,7 +2099,7 @@ $.ajax(settings).done(function (response) {
 > Example request:
 
 ```bash
-curl -X GET "http://emsearch.ryan.ems-dev.net/api/syncItem/a37eda90-1f56-11e7-93ae-92361f002671,1bcc7efc-138c-11e7-93ae-92361f002671" \
+curl -X GET "https://emsearch.ryan.ems-dev.net/api/syncItem/a37eda90-1f56-11e7-93ae-92361f002671,1bcc7efc-138c-11e7-93ae-92361f002671" \
 -H "Accept: application/json" \
 -H "Authentication: Bearer xxx"
 
@@ -1887,7 +2109,7 @@ curl -X GET "http://emsearch.ryan.ems-dev.net/api/syncItem/a37eda90-1f56-11e7-93
 var settings = {
     "async": true,
     "crossDomain": true,
-    "url": "http://emsearch.ryan.ems-dev.net/api/syncItem/a37eda90-1f56-11e7-93ae-92361f002671,1bcc7efc-138c-11e7-93ae-92361f002671",
+    "url": "https://emsearch.ryan.ems-dev.net/api/syncItem/a37eda90-1f56-11e7-93ae-92361f002671,1bcc7efc-138c-11e7-93ae-92361f002671",
     "method": "GET",
     "headers": {
         "Accept": "application/json",
@@ -1930,13 +2152,13 @@ $.ajax(settings).done(function (response) {
 > Example request:
 
 ```bash
-curl -X POST "http://emsearch.ryan.ems-dev.net/api/syncItem" \
+curl -X POST "https://emsearch.ryan.ems-dev.net/api/syncItem" \
 -H "Accept: application/json" \
 -H "Authentication: Bearer xxx"
  \
-    -d "item_id"="Et quo voluptas" \
-    -d "project_id"="ba40c8db-0c0d-3532-8a12-8ec4417b6b22" \
-    -d "item_signature"="0a085569a2d954a889115ef8523be7e8" \
+    -d "item_id"="Nisi voluptatem rerum" \
+    -d "project_id"="6f8bd76a-ad60-3478-9ae3-a035af9c1d55" \
+    -d "item_signature"="a6c69812cc8e4a360cb862ece5d86623" \
 
 ```
 
@@ -1944,12 +2166,12 @@ curl -X POST "http://emsearch.ryan.ems-dev.net/api/syncItem" \
 var settings = {
     "async": true,
     "crossDomain": true,
-    "url": "http://emsearch.ryan.ems-dev.net/api/syncItem",
+    "url": "https://emsearch.ryan.ems-dev.net/api/syncItem",
     "method": "POST",
     "data": {
-        "item_id": "Et quo voluptas",
-        "project_id": "ba40c8db-0c0d-3532-8a12-8ec4417b6b22",
-        "item_signature": "0a085569a2d954a889115ef8523be7e8"
+        "item_id": "Nisi voluptatem rerum",
+        "project_id": "6f8bd76a-ad60-3478-9ae3-a035af9c1d55",
+        "item_signature": "a6c69812cc8e4a360cb862ece5d86623"
 },
     "headers": {
         "Accept": "application/json",
@@ -1982,13 +2204,13 @@ Parameter | Type | Status | Description
 > Example request:
 
 ```bash
-curl -X PUT "http://emsearch.ryan.ems-dev.net/api/syncItem/a37eda90-1f56-11e7-93ae-92361f002671,1bcc7efc-138c-11e7-93ae-92361f002671" \
+curl -X PUT "https://emsearch.ryan.ems-dev.net/api/syncItem/a37eda90-1f56-11e7-93ae-92361f002671,1bcc7efc-138c-11e7-93ae-92361f002671" \
 -H "Accept: application/json" \
 -H "Authentication: Bearer xxx"
  \
-    -d "item_id"="Porro animi vero" \
-    -d "project_id"="d23f2c1c-a7cf-3b33-83a4-ac7f0deeb8d2" \
-    -d "item_signature"="97509718bed16d63b35e7b511e4600d4" \
+    -d "item_id"="Incidunt fuga molestias" \
+    -d "project_id"="dd73f257-c040-3679-997a-a88e151a0d56" \
+    -d "item_signature"="44da011b3dd762033e138c533b498ad0" \
 
 ```
 
@@ -1996,12 +2218,12 @@ curl -X PUT "http://emsearch.ryan.ems-dev.net/api/syncItem/a37eda90-1f56-11e7-93
 var settings = {
     "async": true,
     "crossDomain": true,
-    "url": "http://emsearch.ryan.ems-dev.net/api/syncItem/a37eda90-1f56-11e7-93ae-92361f002671,1bcc7efc-138c-11e7-93ae-92361f002671",
+    "url": "https://emsearch.ryan.ems-dev.net/api/syncItem/a37eda90-1f56-11e7-93ae-92361f002671,1bcc7efc-138c-11e7-93ae-92361f002671",
     "method": "PUT",
     "data": {
-        "item_id": "Porro animi vero",
-        "project_id": "d23f2c1c-a7cf-3b33-83a4-ac7f0deeb8d2",
-        "item_signature": "97509718bed16d63b35e7b511e4600d4"
+        "item_id": "Incidunt fuga molestias",
+        "project_id": "dd73f257-c040-3679-997a-a88e151a0d56",
+        "item_signature": "44da011b3dd762033e138c533b498ad0"
 },
     "headers": {
         "Accept": "application/json",
@@ -2036,7 +2258,7 @@ Parameter | Type | Status | Description
 > Example request:
 
 ```bash
-curl -X DELETE "http://emsearch.ryan.ems-dev.net/api/syncItem/a37eda90-1f56-11e7-93ae-92361f002671,1bcc7efc-138c-11e7-93ae-92361f002671" \
+curl -X DELETE "https://emsearch.ryan.ems-dev.net/api/syncItem/a37eda90-1f56-11e7-93ae-92361f002671,1bcc7efc-138c-11e7-93ae-92361f002671" \
 -H "Accept: application/json" \
 -H "Authentication: Bearer xxx"
 
@@ -2046,7 +2268,7 @@ curl -X DELETE "http://emsearch.ryan.ems-dev.net/api/syncItem/a37eda90-1f56-11e7
 var settings = {
     "async": true,
     "crossDomain": true,
-    "url": "http://emsearch.ryan.ems-dev.net/api/syncItem/a37eda90-1f56-11e7-93ae-92361f002671,1bcc7efc-138c-11e7-93ae-92361f002671",
+    "url": "https://emsearch.ryan.ems-dev.net/api/syncItem/a37eda90-1f56-11e7-93ae-92361f002671,1bcc7efc-138c-11e7-93ae-92361f002671",
     "method": "DELETE",
     "headers": {
         "Accept": "application/json",
@@ -2075,7 +2297,7 @@ $.ajax(settings).done(function (response) {
 > Example request:
 
 ```bash
-curl -X GET "http://emsearch.ryan.ems-dev.net/api/project/1bcc7efc-138c-11e7-93ae-92361f002671/syncItem" \
+curl -X GET "https://emsearch.ryan.ems-dev.net/api/project/1bcc7efc-138c-11e7-93ae-92361f002671/syncItem" \
 -H "Accept: application/json" \
 -H "Authentication: Bearer xxx"
 
@@ -2085,7 +2307,7 @@ curl -X GET "http://emsearch.ryan.ems-dev.net/api/project/1bcc7efc-138c-11e7-93a
 var settings = {
     "async": true,
     "crossDomain": true,
-    "url": "http://emsearch.ryan.ems-dev.net/api/project/1bcc7efc-138c-11e7-93ae-92361f002671/syncItem",
+    "url": "https://emsearch.ryan.ems-dev.net/api/project/1bcc7efc-138c-11e7-93ae-92361f002671/syncItem",
     "method": "GET",
     "headers": {
         "Accept": "application/json",
@@ -2170,7 +2392,7 @@ $.ajax(settings).done(function (response) {
 > Example request:
 
 ```bash
-curl -X GET "http://emsearch.ryan.ems-dev.net/api/syncTask" \
+curl -X GET "https://emsearch.ryan.ems-dev.net/api/syncTask" \
 -H "Accept: application/json" \
 -H "Authentication: Bearer xxx"
 
@@ -2180,7 +2402,7 @@ curl -X GET "http://emsearch.ryan.ems-dev.net/api/syncTask" \
 var settings = {
     "async": true,
     "crossDomain": true,
-    "url": "http://emsearch.ryan.ems-dev.net/api/syncTask",
+    "url": "https://emsearch.ryan.ems-dev.net/api/syncTask",
     "method": "GET",
     "headers": {
         "Accept": "application/json",
@@ -2246,7 +2468,7 @@ $.ajax(settings).done(function (response) {
 > Example request:
 
 ```bash
-curl -X GET "http://emsearch.ryan.ems-dev.net/api/syncTask/8dbfd6e6-2055-11e7-93ae-92361f002671" \
+curl -X GET "https://emsearch.ryan.ems-dev.net/api/syncTask/8dbfd6e6-2055-11e7-93ae-92361f002671" \
 -H "Accept: application/json" \
 -H "Authentication: Bearer xxx"
 
@@ -2256,7 +2478,7 @@ curl -X GET "http://emsearch.ryan.ems-dev.net/api/syncTask/8dbfd6e6-2055-11e7-93
 var settings = {
     "async": true,
     "crossDomain": true,
-    "url": "http://emsearch.ryan.ems-dev.net/api/syncTask/8dbfd6e6-2055-11e7-93ae-92361f002671",
+    "url": "https://emsearch.ryan.ems-dev.net/api/syncTask/8dbfd6e6-2055-11e7-93ae-92361f002671",
     "method": "GET",
     "headers": {
         "Accept": "application/json",
@@ -2300,15 +2522,15 @@ $.ajax(settings).done(function (response) {
 > Example request:
 
 ```bash
-curl -X POST "http://emsearch.ryan.ems-dev.net/api/syncTask" \
+curl -X POST "https://emsearch.ryan.ems-dev.net/api/syncTask" \
 -H "Accept: application/json" \
 -H "Authentication: Bearer xxx"
  \
-    -d "sync_task_id"="b71830c5-7e6a-3079-a613-7c8851656a9d" \
-    -d "sync_task_type_id"="Eius excepturi eveniet" \
-    -d "sync_task_status_id"="Quo quia enim" \
-    -d "created_by_user_id"="f509f418-cec5-38d1-9d2e-e31f44b531ad" \
-    -d "project_id"="43e2c396-ea8f-393a-956d-b7ea2f92c4f4" \
+    -d "sync_task_id"="0e042f56-9f8d-3369-a2ce-cead54fd5d54" \
+    -d "sync_task_type_id"="Molestias sed facere" \
+    -d "sync_task_status_id"="Ut consequatur non" \
+    -d "created_by_user_id"="940ca9ed-5d29-3087-b90b-40991edd2329" \
+    -d "project_id"="90cdbcc7-39ad-3d2d-9c19-b4344fe35088" \
 
 ```
 
@@ -2316,14 +2538,14 @@ curl -X POST "http://emsearch.ryan.ems-dev.net/api/syncTask" \
 var settings = {
     "async": true,
     "crossDomain": true,
-    "url": "http://emsearch.ryan.ems-dev.net/api/syncTask",
+    "url": "https://emsearch.ryan.ems-dev.net/api/syncTask",
     "method": "POST",
     "data": {
-        "sync_task_id": "b71830c5-7e6a-3079-a613-7c8851656a9d",
-        "sync_task_type_id": "Eius excepturi eveniet",
-        "sync_task_status_id": "Quo quia enim",
-        "created_by_user_id": "f509f418-cec5-38d1-9d2e-e31f44b531ad",
-        "project_id": "43e2c396-ea8f-393a-956d-b7ea2f92c4f4"
+        "sync_task_id": "0e042f56-9f8d-3369-a2ce-cead54fd5d54",
+        "sync_task_type_id": "Molestias sed facere",
+        "sync_task_status_id": "Ut consequatur non",
+        "created_by_user_id": "940ca9ed-5d29-3087-b90b-40991edd2329",
+        "project_id": "90cdbcc7-39ad-3d2d-9c19-b4344fe35088"
 },
     "headers": {
         "Accept": "application/json",
@@ -2358,15 +2580,15 @@ Parameter | Type | Status | Description
 > Example request:
 
 ```bash
-curl -X PUT "http://emsearch.ryan.ems-dev.net/api/syncTask/8dbfd6e6-2055-11e7-93ae-92361f002671" \
+curl -X PUT "https://emsearch.ryan.ems-dev.net/api/syncTask/8dbfd6e6-2055-11e7-93ae-92361f002671" \
 -H "Accept: application/json" \
 -H "Authentication: Bearer xxx"
  \
-    -d "sync_task_id"="d23f2c1c-a7cf-3b33-83a4-ac7f0deeb8d2" \
-    -d "sync_task_type_id"="Unde beatae sed" \
-    -d "sync_task_status_id"="In id officia" \
-    -d "created_by_user_id"="abca7ad0-d6c8-3709-9abc-4b08f9635c40" \
-    -d "project_id"="ce363417-a5f9-3c51-9c67-7f0d3163a9de" \
+    -d "sync_task_id"="7684cc8b-cedf-37cd-9063-4401f8112285" \
+    -d "sync_task_type_id"="Mollitia quibusdam neque" \
+    -d "sync_task_status_id"="Quis aut est" \
+    -d "created_by_user_id"="180d7dfb-38dc-33d2-ad1b-5fc2e03f788b" \
+    -d "project_id"="d0a49eeb-ec74-3e89-b291-549794fa753c" \
 
 ```
 
@@ -2374,14 +2596,14 @@ curl -X PUT "http://emsearch.ryan.ems-dev.net/api/syncTask/8dbfd6e6-2055-11e7-93
 var settings = {
     "async": true,
     "crossDomain": true,
-    "url": "http://emsearch.ryan.ems-dev.net/api/syncTask/8dbfd6e6-2055-11e7-93ae-92361f002671",
+    "url": "https://emsearch.ryan.ems-dev.net/api/syncTask/8dbfd6e6-2055-11e7-93ae-92361f002671",
     "method": "PUT",
     "data": {
-        "sync_task_id": "d23f2c1c-a7cf-3b33-83a4-ac7f0deeb8d2",
-        "sync_task_type_id": "Unde beatae sed",
-        "sync_task_status_id": "In id officia",
-        "created_by_user_id": "abca7ad0-d6c8-3709-9abc-4b08f9635c40",
-        "project_id": "ce363417-a5f9-3c51-9c67-7f0d3163a9de"
+        "sync_task_id": "7684cc8b-cedf-37cd-9063-4401f8112285",
+        "sync_task_type_id": "Mollitia quibusdam neque",
+        "sync_task_status_id": "Quis aut est",
+        "created_by_user_id": "180d7dfb-38dc-33d2-ad1b-5fc2e03f788b",
+        "project_id": "d0a49eeb-ec74-3e89-b291-549794fa753c"
 },
     "headers": {
         "Accept": "application/json",
@@ -2418,7 +2640,7 @@ Parameter | Type | Status | Description
 > Example request:
 
 ```bash
-curl -X DELETE "http://emsearch.ryan.ems-dev.net/api/syncTask/8dbfd6e6-2055-11e7-93ae-92361f002671" \
+curl -X DELETE "https://emsearch.ryan.ems-dev.net/api/syncTask/8dbfd6e6-2055-11e7-93ae-92361f002671" \
 -H "Accept: application/json" \
 -H "Authentication: Bearer xxx"
 
@@ -2428,7 +2650,7 @@ curl -X DELETE "http://emsearch.ryan.ems-dev.net/api/syncTask/8dbfd6e6-2055-11e7
 var settings = {
     "async": true,
     "crossDomain": true,
-    "url": "http://emsearch.ryan.ems-dev.net/api/syncTask/8dbfd6e6-2055-11e7-93ae-92361f002671",
+    "url": "https://emsearch.ryan.ems-dev.net/api/syncTask/8dbfd6e6-2055-11e7-93ae-92361f002671",
     "method": "DELETE",
     "headers": {
         "Accept": "application/json",
@@ -2457,7 +2679,7 @@ $.ajax(settings).done(function (response) {
 > Example request:
 
 ```bash
-curl -X GET "http://emsearch.ryan.ems-dev.net/api/project/1bcc7efc-138c-11e7-93ae-92361f002671/syncTask" \
+curl -X GET "https://emsearch.ryan.ems-dev.net/api/project/1bcc7efc-138c-11e7-93ae-92361f002671/syncTask" \
 -H "Accept: application/json" \
 -H "Authentication: Bearer xxx"
 
@@ -2467,7 +2689,7 @@ curl -X GET "http://emsearch.ryan.ems-dev.net/api/project/1bcc7efc-138c-11e7-93a
 var settings = {
     "async": true,
     "crossDomain": true,
-    "url": "http://emsearch.ryan.ems-dev.net/api/project/1bcc7efc-138c-11e7-93ae-92361f002671/syncTask",
+    "url": "https://emsearch.ryan.ems-dev.net/api/project/1bcc7efc-138c-11e7-93ae-92361f002671/syncTask",
     "method": "GET",
     "headers": {
         "Accept": "application/json",
@@ -2537,7 +2759,7 @@ You can specify a GET parameter `public` to filter results (Only allowed for `De
 > Example request:
 
 ```bash
-curl -X GET "http://emsearch.ryan.ems-dev.net/api/syncTask/8dbfd6e6-2055-11e7-93ae-92361f002671/log?public=1" \
+curl -X GET "https://emsearch.ryan.ems-dev.net/api/syncTask/8dbfd6e6-2055-11e7-93ae-92361f002671/log?public=1" \
 -H "Accept: application/json" \
 -H "Authentication: Bearer xxx"
 
@@ -2547,7 +2769,7 @@ curl -X GET "http://emsearch.ryan.ems-dev.net/api/syncTask/8dbfd6e6-2055-11e7-93
 var settings = {
     "async": true,
     "crossDomain": true,
-    "url": "http://emsearch.ryan.ems-dev.net/api/syncTask/8dbfd6e6-2055-11e7-93ae-92361f002671/log?public=1",
+    "url": "https://emsearch.ryan.ems-dev.net/api/syncTask/8dbfd6e6-2055-11e7-93ae-92361f002671/log?public=1",
     "method": "GET",
     "headers": {
         "Accept": "application/json",
@@ -2620,7 +2842,7 @@ Parameter | Type | Status | Description
 > Example request:
 
 ```bash
-curl -X GET "http://emsearch.ryan.ems-dev.net/api/syncTaskStatus" \
+curl -X GET "https://emsearch.ryan.ems-dev.net/api/syncTaskStatus" \
 -H "Accept: application/json" \
 -H "Authentication: Bearer xxx"
 
@@ -2630,7 +2852,7 @@ curl -X GET "http://emsearch.ryan.ems-dev.net/api/syncTaskStatus" \
 var settings = {
     "async": true,
     "crossDomain": true,
-    "url": "http://emsearch.ryan.ems-dev.net/api/syncTaskStatus",
+    "url": "https://emsearch.ryan.ems-dev.net/api/syncTaskStatus",
     "method": "GET",
     "headers": {
         "Accept": "application/json",
@@ -2685,7 +2907,7 @@ $.ajax(settings).done(function (response) {
 > Example request:
 
 ```bash
-curl -X GET "http://emsearch.ryan.ems-dev.net/api/syncTaskStatus/Planned" \
+curl -X GET "https://emsearch.ryan.ems-dev.net/api/syncTaskStatus/Planned" \
 -H "Accept: application/json" \
 -H "Authentication: Bearer xxx"
 
@@ -2695,7 +2917,7 @@ curl -X GET "http://emsearch.ryan.ems-dev.net/api/syncTaskStatus/Planned" \
 var settings = {
     "async": true,
     "crossDomain": true,
-    "url": "http://emsearch.ryan.ems-dev.net/api/syncTaskStatus/Planned",
+    "url": "https://emsearch.ryan.ems-dev.net/api/syncTaskStatus/Planned",
     "method": "GET",
     "headers": {
         "Accept": "application/json",
@@ -2732,11 +2954,11 @@ $.ajax(settings).done(function (response) {
 > Example request:
 
 ```bash
-curl -X POST "http://emsearch.ryan.ems-dev.net/api/syncTaskStatus" \
+curl -X POST "https://emsearch.ryan.ems-dev.net/api/syncTaskStatus" \
 -H "Accept: application/json" \
 -H "Authentication: Bearer xxx"
  \
-    -d "id"="Omnis porro temporibus" \
+    -d "id"="Quibusdam molestias ratione" \
 
 ```
 
@@ -2744,10 +2966,10 @@ curl -X POST "http://emsearch.ryan.ems-dev.net/api/syncTaskStatus" \
 var settings = {
     "async": true,
     "crossDomain": true,
-    "url": "http://emsearch.ryan.ems-dev.net/api/syncTaskStatus",
+    "url": "https://emsearch.ryan.ems-dev.net/api/syncTaskStatus",
     "method": "POST",
     "data": {
-        "id": "Omnis porro temporibus"
+        "id": "Quibusdam molestias ratione"
 },
     "headers": {
         "Accept": "application/json",
@@ -2778,7 +3000,7 @@ Parameter | Type | Status | Description
 > Example request:
 
 ```bash
-curl -X PUT "http://emsearch.ryan.ems-dev.net/api/syncTaskStatus/Planned" \
+curl -X PUT "https://emsearch.ryan.ems-dev.net/api/syncTaskStatus/Planned" \
 -H "Accept: application/json" \
 -H "Authentication: Bearer xxx"
 
@@ -2788,7 +3010,7 @@ curl -X PUT "http://emsearch.ryan.ems-dev.net/api/syncTaskStatus/Planned" \
 var settings = {
     "async": true,
     "crossDomain": true,
-    "url": "http://emsearch.ryan.ems-dev.net/api/syncTaskStatus/Planned",
+    "url": "https://emsearch.ryan.ems-dev.net/api/syncTaskStatus/Planned",
     "method": "PUT",
     "headers": {
         "Accept": "application/json",
@@ -2819,7 +3041,7 @@ The sync task status versions will be automatically deleted too.<br />
 > Example request:
 
 ```bash
-curl -X DELETE "http://emsearch.ryan.ems-dev.net/api/syncTaskStatus/Planned" \
+curl -X DELETE "https://emsearch.ryan.ems-dev.net/api/syncTaskStatus/Planned" \
 -H "Accept: application/json" \
 -H "Authentication: Bearer xxx"
 
@@ -2829,7 +3051,7 @@ curl -X DELETE "http://emsearch.ryan.ems-dev.net/api/syncTaskStatus/Planned" \
 var settings = {
     "async": true,
     "crossDomain": true,
-    "url": "http://emsearch.ryan.ems-dev.net/api/syncTaskStatus/Planned",
+    "url": "https://emsearch.ryan.ems-dev.net/api/syncTaskStatus/Planned",
     "method": "DELETE",
     "headers": {
         "Accept": "application/json",
@@ -2859,7 +3081,7 @@ $.ajax(settings).done(function (response) {
 > Example request:
 
 ```bash
-curl -X GET "http://emsearch.ryan.ems-dev.net/api/syncTaskStatusVersion" \
+curl -X GET "https://emsearch.ryan.ems-dev.net/api/syncTaskStatusVersion" \
 -H "Accept: application/json" \
 -H "Authentication: Bearer xxx"
 
@@ -2869,7 +3091,7 @@ curl -X GET "http://emsearch.ryan.ems-dev.net/api/syncTaskStatusVersion" \
 var settings = {
     "async": true,
     "crossDomain": true,
-    "url": "http://emsearch.ryan.ems-dev.net/api/syncTaskStatusVersion",
+    "url": "https://emsearch.ryan.ems-dev.net/api/syncTaskStatusVersion",
     "method": "GET",
     "headers": {
         "Accept": "application/json",
@@ -2957,7 +3179,7 @@ $.ajax(settings).done(function (response) {
 > Example request:
 
 ```bash
-curl -X GET "http://emsearch.ryan.ems-dev.net/api/syncTaskStatusVersion/Planned,en_US" \
+curl -X GET "https://emsearch.ryan.ems-dev.net/api/syncTaskStatusVersion/Planned,en_US" \
 -H "Accept: application/json" \
 -H "Authentication: Bearer xxx"
 
@@ -2967,7 +3189,7 @@ curl -X GET "http://emsearch.ryan.ems-dev.net/api/syncTaskStatusVersion/Planned,
 var settings = {
     "async": true,
     "crossDomain": true,
-    "url": "http://emsearch.ryan.ems-dev.net/api/syncTaskStatusVersion/Planned,en_US",
+    "url": "https://emsearch.ryan.ems-dev.net/api/syncTaskStatusVersion/Planned,en_US",
     "method": "GET",
     "headers": {
         "Accept": "application/json",
@@ -3010,13 +3232,13 @@ $.ajax(settings).done(function (response) {
 > Example request:
 
 ```bash
-curl -X POST "http://emsearch.ryan.ems-dev.net/api/syncTaskStatusVersion" \
+curl -X POST "https://emsearch.ryan.ems-dev.net/api/syncTaskStatusVersion" \
 -H "Accept: application/json" \
 -H "Authentication: Bearer xxx"
  \
-    -d "sync_task_status_id"="Quis ut voluptate" \
-    -d "i18n_lang_id"="Neque vel consequatur" \
-    -d "description"="Quisquam eligendi ut" \
+    -d "sync_task_status_id"="Cupiditate doloremque rerum" \
+    -d "i18n_lang_id"="Consequuntur perferendis ullam" \
+    -d "description"="Vero sit molestiae" \
 
 ```
 
@@ -3024,12 +3246,12 @@ curl -X POST "http://emsearch.ryan.ems-dev.net/api/syncTaskStatusVersion" \
 var settings = {
     "async": true,
     "crossDomain": true,
-    "url": "http://emsearch.ryan.ems-dev.net/api/syncTaskStatusVersion",
+    "url": "https://emsearch.ryan.ems-dev.net/api/syncTaskStatusVersion",
     "method": "POST",
     "data": {
-        "sync_task_status_id": "Quis ut voluptate",
-        "i18n_lang_id": "Neque vel consequatur",
-        "description": "Quisquam eligendi ut"
+        "sync_task_status_id": "Cupiditate doloremque rerum",
+        "i18n_lang_id": "Consequuntur perferendis ullam",
+        "description": "Vero sit molestiae"
 },
     "headers": {
         "Accept": "application/json",
@@ -3062,13 +3284,13 @@ Parameter | Type | Status | Description
 > Example request:
 
 ```bash
-curl -X PUT "http://emsearch.ryan.ems-dev.net/api/syncTaskStatusVersion/Planned,en_US" \
+curl -X PUT "https://emsearch.ryan.ems-dev.net/api/syncTaskStatusVersion/Planned,en_US" \
 -H "Accept: application/json" \
 -H "Authentication: Bearer xxx"
  \
-    -d "sync_task_status_id"="Accusamus dolorem cupiditate" \
-    -d "i18n_lang_id"="Culpa aut voluptate" \
-    -d "description"="Omnis debitis dicta" \
+    -d "sync_task_status_id"="Alias qui quis" \
+    -d "i18n_lang_id"="At saepe praesentium" \
+    -d "description"="Natus quibusdam architecto" \
 
 ```
 
@@ -3076,12 +3298,12 @@ curl -X PUT "http://emsearch.ryan.ems-dev.net/api/syncTaskStatusVersion/Planned,
 var settings = {
     "async": true,
     "crossDomain": true,
-    "url": "http://emsearch.ryan.ems-dev.net/api/syncTaskStatusVersion/Planned,en_US",
+    "url": "https://emsearch.ryan.ems-dev.net/api/syncTaskStatusVersion/Planned,en_US",
     "method": "PUT",
     "data": {
-        "sync_task_status_id": "Accusamus dolorem cupiditate",
-        "i18n_lang_id": "Culpa aut voluptate",
-        "description": "Omnis debitis dicta"
+        "sync_task_status_id": "Alias qui quis",
+        "i18n_lang_id": "At saepe praesentium",
+        "description": "Natus quibusdam architecto"
 },
     "headers": {
         "Accept": "application/json",
@@ -3116,7 +3338,7 @@ Parameter | Type | Status | Description
 > Example request:
 
 ```bash
-curl -X DELETE "http://emsearch.ryan.ems-dev.net/api/syncTaskStatusVersion/Planned,en_US" \
+curl -X DELETE "https://emsearch.ryan.ems-dev.net/api/syncTaskStatusVersion/Planned,en_US" \
 -H "Accept: application/json" \
 -H "Authentication: Bearer xxx"
 
@@ -3126,7 +3348,7 @@ curl -X DELETE "http://emsearch.ryan.ems-dev.net/api/syncTaskStatusVersion/Plann
 var settings = {
     "async": true,
     "crossDomain": true,
-    "url": "http://emsearch.ryan.ems-dev.net/api/syncTaskStatusVersion/Planned,en_US",
+    "url": "https://emsearch.ryan.ems-dev.net/api/syncTaskStatusVersion/Planned,en_US",
     "method": "DELETE",
     "headers": {
         "Accept": "application/json",
@@ -3155,7 +3377,7 @@ $.ajax(settings).done(function (response) {
 > Example request:
 
 ```bash
-curl -X GET "http://emsearch.ryan.ems-dev.net/api/syncTaskStatus/Planned/version" \
+curl -X GET "https://emsearch.ryan.ems-dev.net/api/syncTaskStatus/Planned/version" \
 -H "Accept: application/json" \
 -H "Authentication: Bearer xxx"
 
@@ -3165,7 +3387,7 @@ curl -X GET "http://emsearch.ryan.ems-dev.net/api/syncTaskStatus/Planned/version
 var settings = {
     "async": true,
     "crossDomain": true,
-    "url": "http://emsearch.ryan.ems-dev.net/api/syncTaskStatus/Planned/version",
+    "url": "https://emsearch.ryan.ems-dev.net/api/syncTaskStatus/Planned/version",
     "method": "GET",
     "headers": {
         "Accept": "application/json",
@@ -3229,7 +3451,7 @@ $.ajax(settings).done(function (response) {
 > Example request:
 
 ```bash
-curl -X GET "http://emsearch.ryan.ems-dev.net/api/syncTaskType" \
+curl -X GET "https://emsearch.ryan.ems-dev.net/api/syncTaskType" \
 -H "Accept: application/json" \
 -H "Authentication: Bearer xxx"
 
@@ -3239,7 +3461,7 @@ curl -X GET "http://emsearch.ryan.ems-dev.net/api/syncTaskType" \
 var settings = {
     "async": true,
     "crossDomain": true,
-    "url": "http://emsearch.ryan.ems-dev.net/api/syncTaskType",
+    "url": "https://emsearch.ryan.ems-dev.net/api/syncTaskType",
     "method": "GET",
     "headers": {
         "Accept": "application/json",
@@ -3306,7 +3528,7 @@ $.ajax(settings).done(function (response) {
 > Example request:
 
 ```bash
-curl -X GET "http://emsearch.ryan.ems-dev.net/api/syncTaskType/Main" \
+curl -X GET "https://emsearch.ryan.ems-dev.net/api/syncTaskType/Main" \
 -H "Accept: application/json" \
 -H "Authentication: Bearer xxx"
 
@@ -3316,7 +3538,7 @@ curl -X GET "http://emsearch.ryan.ems-dev.net/api/syncTaskType/Main" \
 var settings = {
     "async": true,
     "crossDomain": true,
-    "url": "http://emsearch.ryan.ems-dev.net/api/syncTaskType/Main",
+    "url": "https://emsearch.ryan.ems-dev.net/api/syncTaskType/Main",
     "method": "GET",
     "headers": {
         "Accept": "application/json",
@@ -3353,11 +3575,11 @@ $.ajax(settings).done(function (response) {
 > Example request:
 
 ```bash
-curl -X POST "http://emsearch.ryan.ems-dev.net/api/syncTaskType" \
+curl -X POST "https://emsearch.ryan.ems-dev.net/api/syncTaskType" \
 -H "Accept: application/json" \
 -H "Authentication: Bearer xxx"
  \
-    -d "id"="Occaecati fugiat laboriosam" \
+    -d "id"="Tempore corrupti dolores" \
 
 ```
 
@@ -3365,10 +3587,10 @@ curl -X POST "http://emsearch.ryan.ems-dev.net/api/syncTaskType" \
 var settings = {
     "async": true,
     "crossDomain": true,
-    "url": "http://emsearch.ryan.ems-dev.net/api/syncTaskType",
+    "url": "https://emsearch.ryan.ems-dev.net/api/syncTaskType",
     "method": "POST",
     "data": {
-        "id": "Occaecati fugiat laboriosam"
+        "id": "Tempore corrupti dolores"
 },
     "headers": {
         "Accept": "application/json",
@@ -3399,7 +3621,7 @@ Parameter | Type | Status | Description
 > Example request:
 
 ```bash
-curl -X PUT "http://emsearch.ryan.ems-dev.net/api/syncTaskType/Main" \
+curl -X PUT "https://emsearch.ryan.ems-dev.net/api/syncTaskType/Main" \
 -H "Accept: application/json" \
 -H "Authentication: Bearer xxx"
 
@@ -3409,7 +3631,7 @@ curl -X PUT "http://emsearch.ryan.ems-dev.net/api/syncTaskType/Main" \
 var settings = {
     "async": true,
     "crossDomain": true,
-    "url": "http://emsearch.ryan.ems-dev.net/api/syncTaskType/Main",
+    "url": "https://emsearch.ryan.ems-dev.net/api/syncTaskType/Main",
     "method": "PUT",
     "headers": {
         "Accept": "application/json",
@@ -3440,7 +3662,7 @@ The sync task type versions will be automatically deleted too.<br />
 > Example request:
 
 ```bash
-curl -X DELETE "http://emsearch.ryan.ems-dev.net/api/syncTaskType/Main" \
+curl -X DELETE "https://emsearch.ryan.ems-dev.net/api/syncTaskType/Main" \
 -H "Accept: application/json" \
 -H "Authentication: Bearer xxx"
 
@@ -3450,7 +3672,7 @@ curl -X DELETE "http://emsearch.ryan.ems-dev.net/api/syncTaskType/Main" \
 var settings = {
     "async": true,
     "crossDomain": true,
-    "url": "http://emsearch.ryan.ems-dev.net/api/syncTaskType/Main",
+    "url": "https://emsearch.ryan.ems-dev.net/api/syncTaskType/Main",
     "method": "DELETE",
     "headers": {
         "Accept": "application/json",
@@ -3480,7 +3702,7 @@ $.ajax(settings).done(function (response) {
 > Example request:
 
 ```bash
-curl -X GET "http://emsearch.ryan.ems-dev.net/api/syncTaskTypeVersion" \
+curl -X GET "https://emsearch.ryan.ems-dev.net/api/syncTaskTypeVersion" \
 -H "Accept: application/json" \
 -H "Authentication: Bearer xxx"
 
@@ -3490,7 +3712,7 @@ curl -X GET "http://emsearch.ryan.ems-dev.net/api/syncTaskTypeVersion" \
 var settings = {
     "async": true,
     "crossDomain": true,
-    "url": "http://emsearch.ryan.ems-dev.net/api/syncTaskTypeVersion",
+    "url": "https://emsearch.ryan.ems-dev.net/api/syncTaskTypeVersion",
     "method": "GET",
     "headers": {
         "Accept": "application/json",
@@ -3587,7 +3809,7 @@ $.ajax(settings).done(function (response) {
             "current_page": 1,
             "total_pages": 2,
             "links": {
-                "next": "http:\/\/emsearch.ryan.ems-dev.net\/api\/syncTaskTypeVersion?page=2"
+                "next": "https:\/\/emsearch.ryan.ems-dev.net\/api\/syncTaskTypeVersion?page=2"
             }
         }
     }
@@ -3608,7 +3830,7 @@ $.ajax(settings).done(function (response) {
 > Example request:
 
 ```bash
-curl -X GET "http://emsearch.ryan.ems-dev.net/api/syncTaskTypeVersion/Main,en_US" \
+curl -X GET "https://emsearch.ryan.ems-dev.net/api/syncTaskTypeVersion/Main,en_US" \
 -H "Accept: application/json" \
 -H "Authentication: Bearer xxx"
 
@@ -3618,7 +3840,7 @@ curl -X GET "http://emsearch.ryan.ems-dev.net/api/syncTaskTypeVersion/Main,en_US
 var settings = {
     "async": true,
     "crossDomain": true,
-    "url": "http://emsearch.ryan.ems-dev.net/api/syncTaskTypeVersion/Main,en_US",
+    "url": "https://emsearch.ryan.ems-dev.net/api/syncTaskTypeVersion/Main,en_US",
     "method": "GET",
     "headers": {
         "Accept": "application/json",
@@ -3661,13 +3883,13 @@ $.ajax(settings).done(function (response) {
 > Example request:
 
 ```bash
-curl -X POST "http://emsearch.ryan.ems-dev.net/api/syncTaskTypeVersion" \
+curl -X POST "https://emsearch.ryan.ems-dev.net/api/syncTaskTypeVersion" \
 -H "Accept: application/json" \
 -H "Authentication: Bearer xxx"
  \
-    -d "sync_task_type_id"="Doloremque eligendi ea" \
-    -d "i18n_lang_id"="Doloribus ut ut" \
-    -d "description"="Suscipit unde voluptas" \
+    -d "sync_task_type_id"="Atque eos et" \
+    -d "i18n_lang_id"="Excepturi quas excepturi" \
+    -d "description"="Alias pariatur dolorem" \
 
 ```
 
@@ -3675,12 +3897,12 @@ curl -X POST "http://emsearch.ryan.ems-dev.net/api/syncTaskTypeVersion" \
 var settings = {
     "async": true,
     "crossDomain": true,
-    "url": "http://emsearch.ryan.ems-dev.net/api/syncTaskTypeVersion",
+    "url": "https://emsearch.ryan.ems-dev.net/api/syncTaskTypeVersion",
     "method": "POST",
     "data": {
-        "sync_task_type_id": "Doloremque eligendi ea",
-        "i18n_lang_id": "Doloribus ut ut",
-        "description": "Suscipit unde voluptas"
+        "sync_task_type_id": "Atque eos et",
+        "i18n_lang_id": "Excepturi quas excepturi",
+        "description": "Alias pariatur dolorem"
 },
     "headers": {
         "Accept": "application/json",
@@ -3713,13 +3935,13 @@ Parameter | Type | Status | Description
 > Example request:
 
 ```bash
-curl -X PUT "http://emsearch.ryan.ems-dev.net/api/syncTaskTypeVersion/Main,en_US" \
+curl -X PUT "https://emsearch.ryan.ems-dev.net/api/syncTaskTypeVersion/Main,en_US" \
 -H "Accept: application/json" \
 -H "Authentication: Bearer xxx"
  \
-    -d "sync_task_type_id"="Rerum minima iste" \
-    -d "i18n_lang_id"="Consequatur quis vitae" \
-    -d "description"="Odit ab at" \
+    -d "sync_task_type_id"="Quod facilis et" \
+    -d "i18n_lang_id"="Laudantium autem fuga" \
+    -d "description"="Architecto et doloremque" \
 
 ```
 
@@ -3727,12 +3949,12 @@ curl -X PUT "http://emsearch.ryan.ems-dev.net/api/syncTaskTypeVersion/Main,en_US
 var settings = {
     "async": true,
     "crossDomain": true,
-    "url": "http://emsearch.ryan.ems-dev.net/api/syncTaskTypeVersion/Main,en_US",
+    "url": "https://emsearch.ryan.ems-dev.net/api/syncTaskTypeVersion/Main,en_US",
     "method": "PUT",
     "data": {
-        "sync_task_type_id": "Rerum minima iste",
-        "i18n_lang_id": "Consequatur quis vitae",
-        "description": "Odit ab at"
+        "sync_task_type_id": "Quod facilis et",
+        "i18n_lang_id": "Laudantium autem fuga",
+        "description": "Architecto et doloremque"
 },
     "headers": {
         "Accept": "application/json",
@@ -3767,7 +3989,7 @@ Parameter | Type | Status | Description
 > Example request:
 
 ```bash
-curl -X DELETE "http://emsearch.ryan.ems-dev.net/api/syncTaskTypeVersion/Main,en_US" \
+curl -X DELETE "https://emsearch.ryan.ems-dev.net/api/syncTaskTypeVersion/Main,en_US" \
 -H "Accept: application/json" \
 -H "Authentication: Bearer xxx"
 
@@ -3777,7 +3999,7 @@ curl -X DELETE "http://emsearch.ryan.ems-dev.net/api/syncTaskTypeVersion/Main,en
 var settings = {
     "async": true,
     "crossDomain": true,
-    "url": "http://emsearch.ryan.ems-dev.net/api/syncTaskTypeVersion/Main,en_US",
+    "url": "https://emsearch.ryan.ems-dev.net/api/syncTaskTypeVersion/Main,en_US",
     "method": "DELETE",
     "headers": {
         "Accept": "application/json",
@@ -3806,7 +4028,7 @@ $.ajax(settings).done(function (response) {
 > Example request:
 
 ```bash
-curl -X GET "http://emsearch.ryan.ems-dev.net/api/i18nLang/en_US/syncTaskTypeVersion" \
+curl -X GET "https://emsearch.ryan.ems-dev.net/api/i18nLang/en_US/syncTaskTypeVersion" \
 -H "Accept: application/json" \
 -H "Authentication: Bearer xxx"
 
@@ -3816,7 +4038,7 @@ curl -X GET "http://emsearch.ryan.ems-dev.net/api/i18nLang/en_US/syncTaskTypeVer
 var settings = {
     "async": true,
     "crossDomain": true,
-    "url": "http://emsearch.ryan.ems-dev.net/api/i18nLang/en_US/syncTaskTypeVersion",
+    "url": "https://emsearch.ryan.ems-dev.net/api/i18nLang/en_US/syncTaskTypeVersion",
     "method": "GET",
     "headers": {
         "Accept": "application/json",
@@ -3915,7 +4137,7 @@ $.ajax(settings).done(function (response) {
 > Example request:
 
 ```bash
-curl -X GET "http://emsearch.ryan.ems-dev.net/api/user" \
+curl -X GET "https://emsearch.ryan.ems-dev.net/api/user" \
 -H "Accept: application/json" \
 -H "Authentication: Bearer xxx"
 
@@ -3925,7 +4147,7 @@ curl -X GET "http://emsearch.ryan.ems-dev.net/api/user" \
 var settings = {
     "async": true,
     "crossDomain": true,
-    "url": "http://emsearch.ryan.ems-dev.net/api/user",
+    "url": "https://emsearch.ryan.ems-dev.net/api/user",
     "method": "GET",
     "headers": {
         "Accept": "application/json",
@@ -4003,7 +4225,7 @@ $.ajax(settings).done(function (response) {
 > Example request:
 
 ```bash
-curl -X GET "http://emsearch.ryan.ems-dev.net/api/user/605c7610-1389-11e7-93ae-92361f002671" \
+curl -X GET "https://emsearch.ryan.ems-dev.net/api/user/605c7610-1389-11e7-93ae-92361f002671" \
 -H "Accept: application/json" \
 -H "Authentication: Bearer xxx"
 
@@ -4013,7 +4235,7 @@ curl -X GET "http://emsearch.ryan.ems-dev.net/api/user/605c7610-1389-11e7-93ae-9
 var settings = {
     "async": true,
     "crossDomain": true,
-    "url": "http://emsearch.ryan.ems-dev.net/api/user/605c7610-1389-11e7-93ae-92361f002671",
+    "url": "https://emsearch.ryan.ems-dev.net/api/user/605c7610-1389-11e7-93ae-92361f002671",
     "method": "GET",
     "headers": {
         "Accept": "application/json",
@@ -4055,14 +4277,14 @@ $.ajax(settings).done(function (response) {
 > Example request:
 
 ```bash
-curl -X POST "http://emsearch.ryan.ems-dev.net/api/user" \
+curl -X POST "https://emsearch.ryan.ems-dev.net/api/user" \
 -H "Accept: application/json" \
 -H "Authentication: Bearer xxx"
  \
     -d "user_group_id"="Support" \
-    -d "name"="Quisquam qui qui" \
-    -d "email"="erdman.jacinthe@example.org" \
-    -d "password"="&lt;EeeVHJ" \
+    -d "name"="Omnis quia aspernatur" \
+    -d "email"="daisy.hegmann@example.com" \
+    -d "password"="P{*BlOz[&quot;}pWT9&quot;p" \
 
 ```
 
@@ -4070,13 +4292,13 @@ curl -X POST "http://emsearch.ryan.ems-dev.net/api/user" \
 var settings = {
     "async": true,
     "crossDomain": true,
-    "url": "http://emsearch.ryan.ems-dev.net/api/user",
+    "url": "https://emsearch.ryan.ems-dev.net/api/user",
     "method": "POST",
     "data": {
         "user_group_id": "Support",
-        "name": "Quisquam qui qui",
-        "email": "erdman.jacinthe@example.org",
-        "password": "<EeeVHJ"
+        "name": "Omnis quia aspernatur",
+        "email": "daisy.hegmann@example.com",
+        "password": "P{*BlOz[\"}pWT9\"p"
 },
     "headers": {
         "Accept": "application/json",
@@ -4110,14 +4332,14 @@ Parameter | Type | Status | Description
 > Example request:
 
 ```bash
-curl -X PUT "http://emsearch.ryan.ems-dev.net/api/user/605c7610-1389-11e7-93ae-92361f002671" \
+curl -X PUT "https://emsearch.ryan.ems-dev.net/api/user/605c7610-1389-11e7-93ae-92361f002671" \
 -H "Accept: application/json" \
 -H "Authentication: Bearer xxx"
  \
-    -d "user_group_id"="Support" \
-    -d "name"="Illum numquam quam" \
-    -d "email"="reagan.mante@example.com" \
-    -d "password"=";vC7znrUFL|" \
+    -d "user_group_id"="Developer" \
+    -d "name"="Consequatur aut animi" \
+    -d "email"="fdickens@example.com" \
+    -d "password"="/nbOuvO&amp;" \
 
 ```
 
@@ -4125,13 +4347,13 @@ curl -X PUT "http://emsearch.ryan.ems-dev.net/api/user/605c7610-1389-11e7-93ae-9
 var settings = {
     "async": true,
     "crossDomain": true,
-    "url": "http://emsearch.ryan.ems-dev.net/api/user/605c7610-1389-11e7-93ae-92361f002671",
+    "url": "https://emsearch.ryan.ems-dev.net/api/user/605c7610-1389-11e7-93ae-92361f002671",
     "method": "PUT",
     "data": {
-        "user_group_id": "Support",
-        "name": "Illum numquam quam",
-        "email": "reagan.mante@example.com",
-        "password": ";vC7znrUFL|"
+        "user_group_id": "Developer",
+        "name": "Consequatur aut animi",
+        "email": "fdickens@example.com",
+        "password": "\/nbOuvO&"
 },
     "headers": {
         "Accept": "application/json",
@@ -4170,7 +4392,7 @@ All projects owned by the user will be automatically deleted too.
 > Example request:
 
 ```bash
-curl -X DELETE "http://emsearch.ryan.ems-dev.net/api/user/605c7610-1389-11e7-93ae-92361f002671" \
+curl -X DELETE "https://emsearch.ryan.ems-dev.net/api/user/605c7610-1389-11e7-93ae-92361f002671" \
 -H "Accept: application/json" \
 -H "Authentication: Bearer xxx"
 
@@ -4180,7 +4402,7 @@ curl -X DELETE "http://emsearch.ryan.ems-dev.net/api/user/605c7610-1389-11e7-93a
 var settings = {
     "async": true,
     "crossDomain": true,
-    "url": "http://emsearch.ryan.ems-dev.net/api/user/605c7610-1389-11e7-93ae-92361f002671",
+    "url": "https://emsearch.ryan.ems-dev.net/api/user/605c7610-1389-11e7-93ae-92361f002671",
     "method": "DELETE",
     "headers": {
         "Accept": "application/json",
@@ -4209,7 +4431,7 @@ $.ajax(settings).done(function (response) {
 > Example request:
 
 ```bash
-curl -X GET "http://emsearch.ryan.ems-dev.net/api/userGroup/End-User/user" \
+curl -X GET "https://emsearch.ryan.ems-dev.net/api/userGroup/End-User/user" \
 -H "Accept: application/json" \
 -H "Authentication: Bearer xxx"
 
@@ -4219,7 +4441,7 @@ curl -X GET "http://emsearch.ryan.ems-dev.net/api/userGroup/End-User/user" \
 var settings = {
     "async": true,
     "crossDomain": true,
-    "url": "http://emsearch.ryan.ems-dev.net/api/userGroup/End-User/user",
+    "url": "https://emsearch.ryan.ems-dev.net/api/userGroup/End-User/user",
     "method": "GET",
     "headers": {
         "Accept": "application/json",
@@ -4285,7 +4507,7 @@ $.ajax(settings).done(function (response) {
 > Example request:
 
 ```bash
-curl -X GET "http://emsearch.ryan.ems-dev.net/api/userGroup" \
+curl -X GET "https://emsearch.ryan.ems-dev.net/api/userGroup" \
 -H "Accept: application/json" \
 -H "Authentication: Bearer xxx"
 
@@ -4295,7 +4517,7 @@ curl -X GET "http://emsearch.ryan.ems-dev.net/api/userGroup" \
 var settings = {
     "async": true,
     "crossDomain": true,
-    "url": "http://emsearch.ryan.ems-dev.net/api/userGroup",
+    "url": "https://emsearch.ryan.ems-dev.net/api/userGroup",
     "method": "GET",
     "headers": {
         "Accept": "application/json",
@@ -4353,7 +4575,7 @@ $.ajax(settings).done(function (response) {
 > Example request:
 
 ```bash
-curl -X GET "http://emsearch.ryan.ems-dev.net/api/userGroup/End-User" \
+curl -X GET "https://emsearch.ryan.ems-dev.net/api/userGroup/End-User" \
 -H "Accept: application/json" \
 -H "Authentication: Bearer xxx"
 
@@ -4363,7 +4585,7 @@ curl -X GET "http://emsearch.ryan.ems-dev.net/api/userGroup/End-User" \
 var settings = {
     "async": true,
     "crossDomain": true,
-    "url": "http://emsearch.ryan.ems-dev.net/api/userGroup/End-User",
+    "url": "https://emsearch.ryan.ems-dev.net/api/userGroup/End-User",
     "method": "GET",
     "headers": {
         "Accept": "application/json",
@@ -4397,7 +4619,7 @@ $.ajax(settings).done(function (response) {
 
 #UserHasProject
 <!-- START_6063f50ad85e45e2dded77d1e8c17367 -->
-## User relationship between users and projects project list for a user
+## User relationship between users and projects list
 
 You can specify a GET parameter `user_role_id` to filter results.
 <aside class="notice">Pagination limit must be a value between <code>1</code> and <code>20</code>, default is <code>10</code>.</aside>
@@ -4405,7 +4627,7 @@ You can specify a GET parameter `user_role_id` to filter results.
 > Example request:
 
 ```bash
-curl -X GET "http://emsearch.ryan.ems-dev.net/api/user/605c7610-1389-11e7-93ae-92361f002671/userHasProject?user_role_id=Owner" \
+curl -X GET "https://emsearch.ryan.ems-dev.net/api/user/605c7610-1389-11e7-93ae-92361f002671/userHasProject?user_role_id=Owner" \
 -H "Accept: application/json" \
 -H "Authentication: Bearer xxx"
 
@@ -4415,7 +4637,7 @@ curl -X GET "http://emsearch.ryan.ems-dev.net/api/user/605c7610-1389-11e7-93ae-9
 var settings = {
     "async": true,
     "crossDomain": true,
-    "url": "http://emsearch.ryan.ems-dev.net/api/user/605c7610-1389-11e7-93ae-92361f002671/userHasProject?user_role_id=Owner",
+    "url": "https://emsearch.ryan.ems-dev.net/api/user/605c7610-1389-11e7-93ae-92361f002671/userHasProject?user_role_id=Owner",
     "method": "GET",
     "headers": {
         "Accept": "application/json",
@@ -4481,16 +4703,16 @@ Parameter | Type | Status | Description
 
 <!-- END_6063f50ad85e45e2dded77d1e8c17367 -->
 
-<!-- START_cf0313d53939313429ce6788fa95624c -->
-## List of relationships between users and projects
+<!-- START_a31b5a7f53442631d6ed56032f3c2fce -->
+## Project relationship between users and projects list
 
-
+You can specify a GET parameter `user_role_id` to filter results.
 <aside class="notice">Pagination limit must be a value between <code>1</code> and <code>20</code>, default is <code>10</code>.</aside>
 
 > Example request:
 
 ```bash
-curl -X GET "http://emsearch.ryan.ems-dev.net/api/userHasProject" \
+curl -X GET "https://emsearch.ryan.ems-dev.net/api/project/1bcc7efc-138c-11e7-93ae-92361f002671/userHasProject?user_role_id=Owner" \
 -H "Accept: application/json" \
 -H "Authentication: Bearer xxx"
 
@@ -4500,7 +4722,7 @@ curl -X GET "http://emsearch.ryan.ems-dev.net/api/userHasProject" \
 var settings = {
     "async": true,
     "crossDomain": true,
-    "url": "http://emsearch.ryan.ems-dev.net/api/userHasProject",
+    "url": "https://emsearch.ryan.ems-dev.net/api/project/1bcc7efc-138c-11e7-93ae-92361f002671/userHasProject?user_role_id=Owner",
     "method": "GET",
     "headers": {
         "Accept": "application/json",
@@ -4518,6 +4740,98 @@ $.ajax(settings).done(function (response) {
 ```json
 {
     "data": [
+        {
+            "user_id": "41abdec2-1389-11e7-93ae-92361f002671",
+            "project_id": "1bcc7efc-138c-11e7-93ae-92361f002671",
+            "user_role_id": "Administrator",
+            "created_at": "2017-05-29 09:30:29",
+            "updated_at": "2017-05-29 09:30:29"
+        },
+        {
+            "user_id": "605c7610-1389-11e7-93ae-92361f002671",
+            "project_id": "1bcc7efc-138c-11e7-93ae-92361f002671",
+            "user_role_id": "Owner",
+            "created_at": "2017-05-23 11:16:50",
+            "updated_at": "2017-05-23 11:16:50"
+        },
+        {
+            "user_id": "82b5da82-138c-11e7-93ae-92361f002671",
+            "project_id": "1bcc7efc-138c-11e7-93ae-92361f002671",
+            "user_role_id": "Administrator",
+            "created_at": "2017-05-23 11:16:50",
+            "updated_at": "2017-05-23 11:16:50"
+        }
+    ],
+    "meta": {
+        "pagination": {
+            "total": 3,
+            "count": 3,
+            "per_page": 10,
+            "current_page": 1,
+            "total_pages": 1,
+            "links": []
+        }
+    }
+}
+```
+
+### HTTP Request
+`GET /api/project/{projectId}/userHasProject`
+
+`HEAD /api/project/{projectId}/userHasProject`
+
+#### Parameters
+
+Parameter | Type | Status | Description
+--------- | ------- | ------- | ------- | -----------
+    user_role_id | string |  optional  | Valid user_role id `Owner` or `Administrator`
+
+<!-- END_a31b5a7f53442631d6ed56032f3c2fce -->
+
+<!-- START_cf0313d53939313429ce6788fa95624c -->
+## List of relationships between users and projects
+
+
+<aside class="notice">Pagination limit must be a value between <code>1</code> and <code>20</code>, default is <code>10</code>.</aside>
+
+> Example request:
+
+```bash
+curl -X GET "https://emsearch.ryan.ems-dev.net/api/userHasProject" \
+-H "Accept: application/json" \
+-H "Authentication: Bearer xxx"
+
+```
+
+```javascript
+var settings = {
+    "async": true,
+    "crossDomain": true,
+    "url": "https://emsearch.ryan.ems-dev.net/api/userHasProject",
+    "method": "GET",
+    "headers": {
+        "Accept": "application/json",
+        "Authentication" : "Bearer xxx"
+    }
+}
+
+$.ajax(settings).done(function (response) {
+    console.log(response);
+});
+```
+
+> Example response:
+
+```json
+{
+    "data": [
+        {
+            "user_id": "41abdec2-1389-11e7-93ae-92361f002671",
+            "project_id": "1bcc7efc-138c-11e7-93ae-92361f002671",
+            "user_role_id": "Administrator",
+            "created_at": "2017-05-29 09:30:29",
+            "updated_at": "2017-05-29 09:30:29"
+        },
         {
             "user_id": "605c7610-1389-11e7-93ae-92361f002671",
             "project_id": "1bcc7efc-138c-11e7-93ae-92361f002671",
@@ -4549,15 +4863,15 @@ $.ajax(settings).done(function (response) {
         {
             "user_id": "82b5da82-138c-11e7-93ae-92361f002671",
             "project_id": "c4b5d93c-138c-11e7-93ae-92361f002671",
-            "user_role_id": "Owner",
-            "created_at": "2017-05-23 11:16:50",
-            "updated_at": "2017-05-23 11:16:50"
+            "user_role_id": "Administrator",
+            "created_at": "2017-05-23 14:42:40",
+            "updated_at": "2017-05-23 14:42:40"
         }
     ],
     "meta": {
         "pagination": {
-            "total": 5,
-            "count": 5,
+            "total": 6,
+            "count": 6,
             "per_page": 10,
             "current_page": 1,
             "total_pages": 1,
@@ -4581,7 +4895,7 @@ $.ajax(settings).done(function (response) {
 > Example request:
 
 ```bash
-curl -X GET "http://emsearch.ryan.ems-dev.net/api/userHasProject/605c7610-1389-11e7-93ae-92361f002671,1bcc7efc-138c-11e7-93ae-92361f002671" \
+curl -X GET "https://emsearch.ryan.ems-dev.net/api/userHasProject/605c7610-1389-11e7-93ae-92361f002671,1bcc7efc-138c-11e7-93ae-92361f002671" \
 -H "Accept: application/json" \
 -H "Authentication: Bearer xxx"
 
@@ -4591,7 +4905,7 @@ curl -X GET "http://emsearch.ryan.ems-dev.net/api/userHasProject/605c7610-1389-1
 var settings = {
     "async": true,
     "crossDomain": true,
-    "url": "http://emsearch.ryan.ems-dev.net/api/userHasProject/605c7610-1389-11e7-93ae-92361f002671,1bcc7efc-138c-11e7-93ae-92361f002671",
+    "url": "https://emsearch.ryan.ems-dev.net/api/userHasProject/605c7610-1389-11e7-93ae-92361f002671,1bcc7efc-138c-11e7-93ae-92361f002671",
     "method": "GET",
     "headers": {
         "Accept": "application/json",
@@ -4636,13 +4950,13 @@ $.ajax(settings).done(function (response) {
 > Example request:
 
 ```bash
-curl -X POST "http://emsearch.ryan.ems-dev.net/api/userHasProject" \
+curl -X POST "https://emsearch.ryan.ems-dev.net/api/userHasProject" \
 -H "Accept: application/json" \
 -H "Authentication: Bearer xxx"
  \
-    -d "user_id"="d23acc3c-b66a-30df-9d5a-f6de1b20e247" \
-    -d "project_id"="e088a701-f758-37a9-863d-6581f0080837" \
-    -d "user_role_id"="Owner" \
+    -d "user_id"="2b55aa81-ac97-31e2-9509-74b828737513" \
+    -d "project_id"="4d1f9501-484b-3423-be7d-c83bb79c53b1" \
+    -d "user_role_id"="Administrator" \
 
 ```
 
@@ -4650,12 +4964,12 @@ curl -X POST "http://emsearch.ryan.ems-dev.net/api/userHasProject" \
 var settings = {
     "async": true,
     "crossDomain": true,
-    "url": "http://emsearch.ryan.ems-dev.net/api/userHasProject",
+    "url": "https://emsearch.ryan.ems-dev.net/api/userHasProject",
     "method": "POST",
     "data": {
-        "user_id": "d23acc3c-b66a-30df-9d5a-f6de1b20e247",
-        "project_id": "e088a701-f758-37a9-863d-6581f0080837",
-        "user_role_id": "Owner"
+        "user_id": "2b55aa81-ac97-31e2-9509-74b828737513",
+        "project_id": "4d1f9501-484b-3423-be7d-c83bb79c53b1",
+        "user_role_id": "Administrator"
 },
     "headers": {
         "Accept": "application/json",
@@ -4690,13 +5004,13 @@ Parameter | Type | Status | Description
 > Example request:
 
 ```bash
-curl -X PUT "http://emsearch.ryan.ems-dev.net/api/userHasProject/605c7610-1389-11e7-93ae-92361f002671,1bcc7efc-138c-11e7-93ae-92361f002671" \
+curl -X PUT "https://emsearch.ryan.ems-dev.net/api/userHasProject/605c7610-1389-11e7-93ae-92361f002671,1bcc7efc-138c-11e7-93ae-92361f002671" \
 -H "Accept: application/json" \
 -H "Authentication: Bearer xxx"
  \
-    -d "user_id"="ffd84545-22a0-344d-adff-7561f635b215" \
-    -d "project_id"="ee4a76ef-86bf-30a4-baa1-ca02ceda1525" \
-    -d "user_role_id"="Administrator" \
+    -d "user_id"="0a6a39c8-03ae-3989-9376-cb9f3c1a0478" \
+    -d "project_id"="3ddf9bd6-e830-3b75-8570-f2bcab0e853f" \
+    -d "user_role_id"="Owner" \
 
 ```
 
@@ -4704,12 +5018,12 @@ curl -X PUT "http://emsearch.ryan.ems-dev.net/api/userHasProject/605c7610-1389-1
 var settings = {
     "async": true,
     "crossDomain": true,
-    "url": "http://emsearch.ryan.ems-dev.net/api/userHasProject/605c7610-1389-11e7-93ae-92361f002671,1bcc7efc-138c-11e7-93ae-92361f002671",
+    "url": "https://emsearch.ryan.ems-dev.net/api/userHasProject/605c7610-1389-11e7-93ae-92361f002671,1bcc7efc-138c-11e7-93ae-92361f002671",
     "method": "PUT",
     "data": {
-        "user_id": "ffd84545-22a0-344d-adff-7561f635b215",
-        "project_id": "ee4a76ef-86bf-30a4-baa1-ca02ceda1525",
-        "user_role_id": "Administrator"
+        "user_id": "0a6a39c8-03ae-3989-9376-cb9f3c1a0478",
+        "project_id": "3ddf9bd6-e830-3b75-8570-f2bcab0e853f",
+        "user_role_id": "Owner"
 },
     "headers": {
         "Accept": "application/json",
@@ -4744,7 +5058,7 @@ Parameter | Type | Status | Description
 > Example request:
 
 ```bash
-curl -X DELETE "http://emsearch.ryan.ems-dev.net/api/userHasProject/605c7610-1389-11e7-93ae-92361f002671,1bcc7efc-138c-11e7-93ae-92361f002671" \
+curl -X DELETE "https://emsearch.ryan.ems-dev.net/api/userHasProject/605c7610-1389-11e7-93ae-92361f002671,1bcc7efc-138c-11e7-93ae-92361f002671" \
 -H "Accept: application/json" \
 -H "Authentication: Bearer xxx"
 
@@ -4754,7 +5068,7 @@ curl -X DELETE "http://emsearch.ryan.ems-dev.net/api/userHasProject/605c7610-138
 var settings = {
     "async": true,
     "crossDomain": true,
-    "url": "http://emsearch.ryan.ems-dev.net/api/userHasProject/605c7610-1389-11e7-93ae-92361f002671,1bcc7efc-138c-11e7-93ae-92361f002671",
+    "url": "https://emsearch.ryan.ems-dev.net/api/userHasProject/605c7610-1389-11e7-93ae-92361f002671,1bcc7efc-138c-11e7-93ae-92361f002671",
     "method": "DELETE",
     "headers": {
         "Accept": "application/json",

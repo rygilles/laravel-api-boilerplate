@@ -129,6 +129,12 @@
 						title  : this.$i18n.t('users.user_name'),
 						orderable : true,
 						order_by_field : 'name',
+						routerLink : {
+							routeName : 'user',
+							paramsNames : {
+								'userId' : 'id'
+							}
+						}
 					},
 					{
 						name : 'email',
@@ -256,7 +262,7 @@
 						name : 'password',
 						title : this.$i18n.t('users.user_password'),
 						help : this.$i18n.t('users.user_password_help'),
-						value : '', // @todo rewrite only if not empty !
+						value : '',
 						type : 'password'
 					},
 				];

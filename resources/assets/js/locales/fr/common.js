@@ -32,6 +32,8 @@ export default {
     'delete_btn' : 'Supprimer',
     'unselect_all_btn' : 'Tout désélectionner',
 
+    'empty_message': 'Aucun enregistrement à afficher.',
+
     'delete_message' : 'Êtes-vous sûr de vouloir supprimer cet item ?',
     'mass_delete_message' : 'Êtes-vous sûr de vouloir supprimer ces items ?',
 

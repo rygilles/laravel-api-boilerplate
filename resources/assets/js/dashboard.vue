@@ -44,12 +44,14 @@
 
 		created() {
 			// set laravel data in store
-			this.$store.commit('setLaravel', {
-				csrfToken : window.Laravel.csrfToken,
-				apiDocBaseUrl : window.Laravel.apiDocBaseUrl,
-				apiDocVersionUri : window.Laravel.apiDocVersionUri,
+			this.$store.commit('setState', {
+				stateName: 'laravel',
+				payload: {
+					csrfToken : window.Laravel.csrfToken,
+					apiDocBaseUrl : window.Laravel.apiDocBaseUrl,
+					apiDocVersionUri : window.Laravel.apiDocVersionUri,
+				}
 			});
-
 			this.fetchData();
 		},
 

@@ -29,7 +29,13 @@
 								<b v-html="$t('projects.project_id')"></b> <span class="pull-right" v-html="project.id"></span>
 							</li>
 							<li class="list-group-item">
-								<b v-html="$t('projects.search_engine_name')"></b> <span class="pull-right" v-html="project.searchEngine.data.name"></span>
+								<b v-html="$t('projects.search_engine_name')"></b>
+								<span class="pull-right">
+									<router-link
+										:to="{ name: 'search-engine', params : { 'searchEngineId' : project.search_engine_id }}"
+										v-html="project.searchEngine.data.name">
+									</router-link>
+								</span>
 							</li>
 							<li class="list-group-item">
 								<b v-html="$t('projects.project_name')"></b> <span class="pull-right" v-html="project.name"></span>
@@ -50,31 +56,52 @@
 				</div>
 			</div>
 			<div class="col-md-9">
-				<DataTable
-					ref="projectUserHasProjectsDatatable"
-					:mainTitle="projectUserHasProjectsMainTitle"
-					defaultOrderByColumn="user_role_id"
-					defaultOrderByDirection="desc"
-					:defaultPaginationLimit="20"
-					:paginationLimiting="false"
-					:searching="false"
-					dataStoreStateName="projectUserHasProjects"
-					dataLoadingStoreStateName="projectUserHasProjectsLoading"
-					dataDispatchAction="getProjectUserHasProjects"
-					requestInclude="user,project"
-					:requestExtraParameters="{'projectId' : projectId}"
-					:columns="projectUserHasProjectsColumns"
-					:rowsButtons="projectUserHasProjectsRowsButtons"
-					buttonsColumnClass="col-md-2"
-					:checkboxes="checkboxes"
-					:emptyMessage="projectUserHasProjectsEmptyMessage"
-				>
-					<span slot="top-actions">
-						<a class="action-link pull-right" @click="userHasProjectShowCreateModal">
-							{{ $t('user_has_projects.create_new_user_has_project') }}
-						</a>
-					</span>
-				</DataTable>
+				<div class="nav-tabs-custom">
+					<ul class="nav nav-tabs">
+						<li class="active">
+							<a href="#project-user-has-projects-tab-pane" data-toggle="tab">
+								<i class="fa fa-user fa-fw"></i> <span v-html="$t('users.users')"></span>
+							</a>
+						</li>
+						<li>
+							<a href="#project-sync-items-tab-pane" data-toggle="tab">
+								<i class="fa fa-external-link fa-fw"></i> <span v-html="'Sync Items (TODO)'"></span>
+							</a>
+						</li>
+					</ul>
+					<div class="tab-content">
+						<div class="active tab-pane" id="project-user-has-projects-tab-pane">
+							<DataTable
+								ref="projectUserHasProjectsDatatable"
+								:mainTitle="projectUserHasProjectsMainTitle"
+								defaultOrderByColumn="user_role_id"
+								defaultOrderByDirection="desc"
+								:defaultPaginationLimit="20"
+								:paginationLimiting="false"
+								:searching="false"
+								dataStoreStateName="projectUserHasProjects"
+								dataLoadingStoreStateName="projectUserHasProjectsLoading"
+								dataDispatchAction="getProjectUserHasProjects"
+								requestInclude="user,project"
+								:requestExtraParameters="{'projectId' : projectId}"
+								:columns="projectUserHasProjectsColumns"
+								:rowsButtons="projectUserHasProjectsRowsButtons"
+								buttonsColumnClass="col-md-2"
+								:checkboxes="checkboxes"
+								:emptyMessage="projectUserHasProjectsEmptyMessage"
+							>
+								<span slot="top-actions">
+									<a class="action-link pull-right" @click="userHasProjectShowCreateModal">
+										{{ $t('user_has_projects.create_new_user_has_project') }}
+									</a>
+								</span>
+							</DataTable>
+						</div>
+						<div class="tab-pane" id="project-sync-items-tab-pane">
+							TODO
+						</div>
+					</div>
+				</div>
 			</div>
 		</div>
 		<EditModal
@@ -250,6 +277,12 @@
 						class : 'col-md-4',
 						title : this.$i18n.t('users.user_name'),
 						orderable : false,
+						routerLink : {
+							routeName : 'user',
+							paramsNames : {
+								'userId' : 'user_id'
+							}
+						}
 					},
 					{
 						name : 'user_role_id',

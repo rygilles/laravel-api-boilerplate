@@ -3,6 +3,78 @@ import Vuex from 'vuex'
 
 Vue.use(Vuex);
 
+/**
+ * Dispatch helper : Get basic options and return config object
+ * @param object options
+ * @returns Object
+ */
+function filterOptionsConfig(options) {
+    var config = {
+        params: {
+            page: (options.page ? options.page : 1),
+            limit: (options.limit ? options.limit : 20),
+        }
+    };
+
+    if ('order_by' in options) {
+        config.params.order_by = options.order_by.column + ',' + options.order_by.direction;
+    }
+
+    if ('search' in options) {
+        if (options.search != '') {
+            config.params.search = options.search;
+        }
+    }
+
+    if ('include' in options) {
+        if (Array.isArray(options.include)) {
+            config.params.include = _.join(options.include, ',');
+        } else if (typeof options.include == 'string') {
+            if (options.include != '') {
+                config.params.include = options.include;
+            }
+        }
+    }
+
+    return config;
+}
+
+/**
+ * Dispatch helper : Perform resource get
+ * @param Object state
+ * @param String path
+ * @param Object options
+ * @param String resourceMutation
+ * @param String resourceLoadingMutation
+ * @param Object extraParameters
+ */
+function resourceLoad(state, path, options, resourcesStateName, extraParameters) {
+    state.commit('setState', {
+        stateName: resourcesStateName + 'Loading',
+        payload: true
+    });
+
+    var config = filterOptionsConfig(options);
+
+    if (typeof extraParameters !== 'undefined') {
+        config.params = _.merge(config.params, extraParameters);
+    }
+
+    apiAxios.get(path, config)
+        .then(response => {
+            state.commit('setState', {
+                stateName: resourcesStateName,
+                payload: response.data
+            });
+            state.commit('setState', {
+                stateName: resourcesStateName + 'Loading',
+                payload: false
+            });
+        }).catch(error => {
+        this.$root.axiosError(error);
+    });
+}
+
 var store = new Vuex.Store({
     state: {
         laravel : null,
@@ -178,6 +250,10 @@ var store = new Vuex.Store({
         },
     },
     mutations: {
+        setState(state, data) {
+            state[data.stateName] = data.payload;
+        },
+
         setLaravel(state, laravel) {
             state.laravel = laravel;
         },
@@ -276,330 +352,47 @@ var store = new Vuex.Store({
     },
     actions: {
         getUserOwnerProjects(state, options) {
-            state.commit('setOwnerProjectsLoading', true);
-
-            var config = {
-                params: {
-                    page: (options.page ? options.page : 1),
-                    limit: (options.limit ? options.limit : 20),
-                    user_role_id: 'Owner',
-                }
-            };
-
-            if ('order_by' in options) {
-                config.params.order_by = options.order_by.column + ',' + options.order_by.direction;
-            }
-
-            if ('search' in options) {
-                if (options.search != '') {
-                    config.params.search = options.search;
-                }
-            }
-
-            apiAxios.get('/me/project', config)
-                .then(response => {
-                    state.commit('setOwnerProjects', response.data);
-                    state.commit('setOwnerProjectsLoading', false);
-                }).catch(error => {
-                    this.$root.axiosError(error);
-                });
+            resourceLoad(state, '/me/project', options, 'ownerProjects', {user_role_id: 'Owner'});
         },
 
-        getUserAdminProjects(state) {
-            state.commit('setAdminProjectsLoading', true);
-            apiAxios.get('/me/project?user_role_id=Administrator')
-                .then(response => {
-                    state.commit('setAdminProjects', response.data);
-                    state.commit('setAdminProjectsLoading', false);
-                }).catch(error => {
-                this.$root.axiosError(error);
-            });
+        getUserAdminProjects(state, options) {
+            resourceLoad(state, '/me/project', options, 'adminProjects', {user_role_id: 'Administrator'});
         },
 
         getAllProjects(state, options) {
-            state.commit('setAllProjectsLoading', true);
-
-            var config = {
-                params: {
-                    page: (options.page ? options.page : 1),
-                    limit: (options.limit ? options.limit : 20),
-                }
-            };
-
-            if ('order_by' in options) {
-                config.params.order_by = options.order_by.column + ',' + options.order_by.direction;
-            }
-
-            if ('search' in options) {
-                if (options.search != '') {
-                    config.params.search = options.search;
-                }
-            }
-
-            if ('include' in options) {
-                if (Array.isArray(options.include)) {
-                    config.params.include = _.join(options.include, ',');
-                } else if (typeof options.include == 'string') {
-                    config.params.include = options.include;
-                }
-            }
-
-            apiAxios.get('/project', config)
-                .then(response => {
-                    state.commit('setAllProjects', response.data);
-                    state.commit('setAllProjectsLoading', false);
-                }).catch(error => {
-                this.$root.axiosError(error);
-            });
+            resourceLoad(state, '/project', options, 'allProjects');
         },
 
         getSearchEngines(state, options) {
-            state.commit('setSearchEnginesLoading', true);
-
-            var config = {
-                params: {
-                    page: (options.page ? options.page : 1),
-                    limit: (options.limit ? options.limit : 20),
-                }
-            };
-
-            if ('order_by' in options) {
-                config.params.order_by = options.order_by.column + ',' + options.order_by.direction;
-            }
-            apiAxios.get('/searchEngine', config)
-                .then(response => {
-                    state.commit('setSearchEngines', response.data);
-                    state.commit('setSearchEnginesLoading', false);
-                }).catch(error => {
-                this.$root.axiosError(error);
-            });
+            resourceLoad(state, '/searchEngine', options, 'searchEngines');
         },
 
         getI18nLangs(state, options) {
-            state.commit('setI18nLangsLoading', true);
-
-            var config = {
-                params: {
-                    page: (options.page ? options.page : 1),
-                    limit: (options.limit ? options.limit : 20),
-                }
-            };
-
-            if ('order_by' in options) {
-                config.params.order_by = options.order_by.column + ',' + options.order_by.direction;
-            }
-
-            if ('search' in options) {
-                if (options.search != '') {
-                    config.params.search = options.search;
-                }
-            }
-
-            apiAxios.get('/i18nLang', config)
-                .then(response => {
-                    state.commit('setI18nLangs', response.data);
-                    state.commit('setI18nLangsLoading', false);
-                }).catch(error => {
-                this.$root.axiosError(error);
-            });
+            resourceLoad(state, '/i18nLang', options, 'i18nLangs');
         },
 
         getUsers(state, options) {
-            state.commit('setUsersLoading', true);
-
-            var config = {
-                params: {
-                    page: (options.page ? options.page : 1),
-                    limit: (options.limit ? options.limit : 20),
-                }
-            };
-
-            if ('order_by' in options) {
-                config.params.order_by = options.order_by.column + ',' + options.order_by.direction;
-            }
-
-            if ('search' in options) {
-                if (options.search != '') {
-                    config.params.search = options.search;
-                }
-            }
-
-            apiAxios.get('/user', config)
-                .then(response => {
-                    state.commit('setUsers', response.data);
-                    state.commit('setUsersLoading', false);
-                }).catch(error => {
-                this.$root.axiosError(error);
-            });
+            resourceLoad(state, '/user', options, 'users');
         },
 
         getUserHasProjects(state, options) {
-            state.commit('setUserHasProjectsLoading', true);
-
-            var config = {
-                params: {
-                    page: (options.page ? options.page : 1),
-                    limit: (options.limit ? options.limit : 20),
-                }
-            };
-
-            if ('order_by' in options) {
-                config.params.order_by = options.order_by.column + ',' + options.order_by.direction;
-            }
-
-            if ('search' in options) {
-                if (options.search != '') {
-                    config.params.search = options.search;
-                }
-            }
-
-            if ('include' in options) {
-                if (Array.isArray(options.include)) {
-                    config.params.include = _.join(options.include, ',');
-                } else if (typeof options.include == 'string') {
-                    config.params.include = options.include;
-                }
-            }
-
-            apiAxios.get('/userHasProject', config)
-                .then(response => {
-                    state.commit('setUserHasProjects', response.data);
-                    state.commit('setUserHasProjectsLoading', false);
-                }).catch(error => {
-                this.$root.axiosError(error);
-            });
+            resourceLoad(state, '/userHasProject', options, 'userHasProjects');
         },
 
         getUserUserHasProjects(state, options) {
-            state.commit('setUserUserHasProjectsLoading', true);
-
-            var config = {
-                params: {
-                    page: (options.page ? options.page : 1),
-                    limit: (options.limit ? options.limit : 20),
-                }
-            };
-
-            if ('order_by' in options) {
-                config.params.order_by = options.order_by.column + ',' + options.order_by.direction;
-            }
-
-            if ('search' in options) {
-                if (options.search != '') {
-                    config.params.search = options.search;
-                }
-            }
-
-            if ('include' in options) {
-                if (Array.isArray(options.include)) {
-                    config.params.include = _.join(options.include, ',');
-                } else if (typeof options.include == 'string') {
-                    config.params.include = options.include;
-                }
-            }
-
-            apiAxios.get('/user/' + options.userId + '/userHasProject', config)
-                .then(response => {
-                    state.commit('setUserUserHasProjects', response.data);
-                    state.commit('setUserUserHasProjectsLoading', false);
-                }).catch(error => {
-                this.$root.axiosError(error);
-            });
+            resourceLoad(state, '/user/' + options.userId + '/userHasProject', options, 'userUserHasProjects');
         },
 
         getProjectUserHasProjects(state, options) {
-            state.commit('setProjectUserHasProjectsLoading', true);
-
-            var config = {
-                params: {
-                    page: (options.page ? options.page : 1),
-                    limit: (options.limit ? options.limit : 20),
-                }
-            };
-
-            if ('order_by' in options) {
-                config.params.order_by = options.order_by.column + ',' + options.order_by.direction;
-            }
-
-            if ('search' in options) {
-                if (options.search != '') {
-                    config.params.search = options.search;
-                }
-            }
-
-            if ('include' in options) {
-                if (Array.isArray(options.include)) {
-                    config.params.include = _.join(options.include, ',');
-                } else if (typeof options.include == 'string') {
-                    config.params.include = options.include;
-                }
-            }
-
-            apiAxios.get('/project/' + options.projectId + '/userHasProject', config)
-                .then(response => {
-                    state.commit('setProjectUserHasProjects', response.data);
-                    state.commit('setProjectUserHasProjectsLoading', false);
-                }).catch(error => {
-                this.$root.axiosError(error);
-            });
+            resourceLoad(state, '/project/' + options.projectId + '/userHasProject', options, 'projectUserHasProjects');
         },
 
         getUserGroups(state, options) {
-            state.commit('setUserGroupsLoading', true);
-
-            var config = {
-                params: {
-                    page: (options.page ? options.page : 1),
-                    limit: (options.limit ? options.limit : 20),
-                }
-            };
-
-            if ('order_by' in options) {
-                config.params.order_by = options.order_by.column + ',' + options.order_by.direction;
-            }
-
-            if ('search' in options) {
-                if (options.search != '') {
-                    config.params.search = options.search;
-                }
-            }
-
-            apiAxios.get('/userGroup', config)
-                .then(response => {
-                    state.commit('setUserGroups', response.data);
-                    state.commit('setUserGroupsLoading', false);
-                }).catch(error => {
-                this.$root.axiosError(error);
-            });
+            resourceLoad(state, '/userGroup', options, 'userGroups');
         },
 
         getUserGroupUsers(state, options) {
-            state.commit('setUserGroupUsersLoading', true);
-
-            var config = {
-                params: {
-                    page: (options.page ? options.page : 1),
-                    limit: (options.limit ? options.limit : 20),
-                }
-            };
-
-            if ('order_by' in options) {
-                config.params.order_by = options.order_by.column + ',' + options.order_by.direction;
-            }
-
-            if ('search' in options) {
-                if (options.search != '') {
-                    config.params.search = options.search;
-                }
-            }
-
-            apiAxios.get('/userGroup/' + options.userGroupId + '/user', config)
-                .then(response => {
-                    state.commit('setUserGroupUsers', response.data);
-                    state.commit('setUserGroupUsersLoading', false);
-                }).catch(error => {
-                this.$root.axiosError(error);
-            });
+            resourceLoad(state, '/userGroup/' + options.userGroupId + '/user', options, 'userGroupUsers');
         },
     }
 });

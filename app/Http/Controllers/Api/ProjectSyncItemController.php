@@ -20,7 +20,7 @@ class ProjectSyncItemController extends ApiController
 	 */
 	public function index($projectId)
 	{
-		$project = Project::authorized(['Owner', 'Administrator'])->find($projectId);
+		$project = Project::authorized(['Owner', 'Administrator'])->applyRequestQueryString()->find($projectId);
 
 		if (!$project)
 			return $this->response->errorNotFound();

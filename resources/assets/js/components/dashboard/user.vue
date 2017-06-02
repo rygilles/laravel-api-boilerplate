@@ -54,31 +54,70 @@
 				</div>
 			</div>
 			<div class="col-md-9">
-				<DataTable
-					ref="userUserHasProjectsDatatable"
-					:mainTitle="userUserHasProjectsMainTitle"
-					defaultOrderByColumn="user_role_id"
-					defaultOrderByDirection="desc"
-					:defaultPaginationLimit="20"
-					:paginationLimiting="false"
-					:searching="false"
-					dataStoreStateName="userUserHasProjects"
-					dataLoadingStoreStateName="userUserHasProjectsLoading"
-					dataDispatchAction="getUserUserHasProjects"
-					requestInclude="user,project"
-					:requestExtraParameters="{'userId' : userId}"
-					:columns="userUserHasProjectsColumns"
-					:rowsButtons="userUserHasProjectsRowsButtons"
-					buttonsColumnClass="col-md-2"
-					:checkboxes="checkboxes"
-					:emptyMessage="userUserHasProjectsEmptyMessage"
-				>
-					<span slot="top-actions">
-						<a class="action-link pull-right" @click="userHasProjectShowCreateModal">
-							{{ $t('user_has_projects.create_new_user_has_project') }}
-						</a>
-					</span>
-				</DataTable>
+				<div class="nav-tabs-custom">
+					<ul class="nav nav-tabs">
+						<li class="active">
+							<a href="#user-user-has-projects-tab-pane" data-toggle="tab">
+								<i class="fa fa-sticky-note-o fa-fw"></i> <span v-html="$t('projects.projects')"></span>
+							</a>
+						</li>
+						<li>
+							<a href="#user-notifications-tab-pane" data-toggle="tab">
+								<i class="fa fa-bell-o fa-fw"></i> <span v-html="'Notifications (TODO)'"></span>
+							</a>
+						</li>
+						<li>
+							<a href="#user-api-configuration-tab-pane" data-toggle="tab">
+								<i class="fa fa-cubes fa-fw"></i> <span v-html="'Api (TODO)'"></span>
+							</a>
+						</li>
+					</ul>
+					<div class="tab-content">
+						<div class="active tab-pane" id="user-user-has-projects-tab-pane">
+							<DataTable
+								ref="userUserHasProjectsDatatable"
+								:mainTitle="$t('user_has_projects.user_has_projects')"
+								defaultOrderByColumn="user_role_id"
+								defaultOrderByDirection="desc"
+								:defaultPaginationLimit="20"
+								:paginationLimiting="false"
+								:searching="false"
+								dataStoreStateName="userUserHasProjects"
+								dataLoadingStoreStateName="userUserHasProjectsLoading"
+								dataDispatchAction="getUserUserHasProjects"
+								requestInclude="user,project"
+								:requestExtraParameters="{'userId' : userId}"
+								:columns="userUserHasProjectsColumns"
+								:rowsButtons="userUserHasProjectsRowsButtons"
+								buttonsColumnClass="col-md-2"
+								:checkboxes="checkboxes"
+								:emptyMessage="$t('user_has_projects.no_relation_yet')"
+							>
+								<span slot="top-actions">
+									<a class="action-link pull-right" @click="userHasProjectShowCreateModal">
+										{{ $t('user_has_projects.create_new_user_has_project') }}
+									</a>
+								</span>
+							</DataTable>
+						</div>
+						<div class="tab-pane" id="user-notifications-tab-pane">
+							TODO :
+							<ul>
+								<li>Notifications list</li>
+								<li>Set as read ?</li>
+								<li>Manually create notification ?</li>
+							</ul>
+						</div>
+						<div class="tab-pane" id="user-api-configuration-tab-pane">
+							TODO :
+							<ul>
+								<li>OAuth Clients</li>
+								<li>OAuth Clients</li>
+								<li>OAuth Personal Access Tokens</li>
+							</ul>
+						</div>
+					</div>
+				</div>
 			</div>
 		</div>
 		<EditModal
@@ -91,7 +130,7 @@
 		></EditModal>
 		<CreateModal
 			id="user-has-projects-create-modal"
-			:title="userHasProjectCreateModalTitle"
+			:title="$t('user_has_projects.create_new_user_has_project')"
 			postUri="/userHasProject"
 			:fields="userHasProjectCreateModalFields"
 			:onSuccess="userHasProjectCreateModalSuccess"
@@ -105,18 +144,18 @@
 		></EditModal>
 		<DeleteModal
 			id="user-has-projects-delete-modal"
-			:title="userHasProjectDeleteModalTitle"
+			:title="$t('user_has_projects.delete_user_has_project')"
 			:deleteUri="userHasProjectDeleteModalDeleteUri"
 			:onSuccess="userHasProjectDeleteModalSuccess"
 			:message="userHasProjectDeleteModalMessage"
 		></DeleteModal>
 		<MassDeleteModal
 			id="user-has-projects-mass-delete-modal"
-			:title="userHasProjectMassDeleteModalTitle"
+			:title="$t('user_has_projects.mass_delete_user_has_project')"
 			:rows="userHasProjectMassDeleteRows"
-			:deleteUriTemplate="userHasProjectMassDeleteModalDeleteUriTemplate"
+			:deleteUriTemplate="'/userHasProject/<%- row.user_id %>,<%- row.project_id %>'"
 			:onSuccess="userHasProjectMassDeleteModalSuccess"
-			:messageTemplate="userHasProjectMassDeleteModalMessageTemplate"
+			:messageTemplate="$t('user_has_projects.mass_delete_user_has_project_message_template')"
 		></MassDeleteModal>
 	</section>
 </template>
@@ -248,23 +287,11 @@
 			userUserHasProjectsDataStoreState() {
 				return this.$store.state.userHasProjects;
 			},
-			userUserHasProjectsMainTitle() {
-				return this.$i18n.t('user_has_projects.user_has_projects');
-			},
-			userHasProjectCreateModalTitle() {
-				return this.$i18n.t('user_has_projects.create_new_user_has_project');
-			},
 			userHasProjectEditModalTitle() {
 				return this.$i18n.t('user_has_projects.edit_user_has_project', {
 					'user_name' : this.editModalUserHasProject.user.data.name,
 					'project_name' : this.editModalUserHasProject.project.data.name
 				});
-			},
-			userHasProjectDeleteModalTitle() {
-				return this.$i18n.t('user_has_projects.delete_user_has_project');
-			},
-			userHasProjectMassDeleteModalTitle() {
-				return this.$i18n.t('user_has_projects.mass_delete_user_has_project');
 			},
 			userUserHasProjectsColumns() {
 				return [
@@ -273,6 +300,12 @@
 						class : 'col-md-4',
 						title : this.$i18n.t('projects.project_name'),
 						orderable : false,
+						routerLink : {
+							routeName : 'project',
+							paramsNames : {
+								'projectId' : 'project_id'
+							}
+						}
 					},
 					{
 						name : 'user_role_id',
@@ -476,12 +509,6 @@
 					'project_name' : this.deleteModalUserHasProject.project.data.name
 				});
 			},
-			userHasProjectMassDeleteModalDeleteUriTemplate() {
-				return '/userHasProject/<%- row.user_id %>,<%- row.project_id %>';
-			},
-			userHasProjectMassDeleteModalMessageTemplate() {
-				return this.$i18n.t('user_has_projects.mass_delete_user_has_project_message_template');
-			},
 			checkboxes() {
 				return {
 					'enabled' : true,
@@ -506,9 +533,6 @@
 						}
 					]
 				}
-			},
-			userUserHasProjectsEmptyMessage() {
-				return this.$i18n.t('user_has_projects.no_relation_yet');
 			},
 		},
 		methods: {

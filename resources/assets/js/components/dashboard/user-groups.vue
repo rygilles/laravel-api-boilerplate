@@ -10,70 +10,62 @@
 	<section class="content">
 		<div class="row">
 			<div class="col-xs-12">
-				<DataTable
-					ref="datatable"
-					:mainTitle="mainTitle"
-					:defaultPaginationLimit="20"
-					:paginationLimiting="false"
+				<DataManager
+					:rights="{allowCreate: false, allowEdit: false, allowDelete: false, allowMassDelete: false}"
+					i18nPath="user_groups.data_manager"
+					:resource="dataManagerResource"
+					:defaultOrderBy="{column: 'id', direction: 'asc'}"
+					:pagination="{limiting: false, defaultLimit: 20}"
 					:searching="false"
-					dataStoreStateName="userGroups"
-					dataLoadingStoreStateName="userGroupsLoading"
-					dataDispatchAction="getUserGroups"
-					:columns="columns"
-					:rowsButtons="rowsButtons"
+					:store="{stateName: 'userGroups', loadingStateName: 'userGroupsLoading', dispatchAction: 'getUserGroups'}"
+					:columns="dataManagerColumns"
 					:checkboxes="{enabled: false}"
-				>
-				</DataTable>
+				></DataManager>
 			</div>
 		</div>
 	</section>
 </template>
 
 <script>
-	import DataTable from '../includes/datatable'
+	import DataManager from '../includes/data-manager'
 
 	export default {
 		name: 'UserGroups',
 
-		components: { DataTable },
+		components: { DataManager },
 
 		computed: {
-			mainTitle() {
-				return this.$i18n.t('user_groups.user_groups');
+			dataManagerResource() {
+				return {
+					name: 'userGroup',
+					routePath: 'user-group',
+					routeParamsMap: {
+						'userGroupId': 'id',
+					},
+				}
 			},
-			columns() {
+
+			dataManagerColumns() {
 				return [
 					{
 						name : 'id',
 						class : 'id-column',
-						title : this.$i18n.t('user_groups.user_group_id'),
 						orderable : true,
 						order_by_field : 'id',
+						routerLink : {
+							routeName : 'user-group',
+							paramsNames : {
+								'userGroupId' : 'id'
+							}
+						}
 					},
 					{
 						name : 'users_count',
 						class : 'col-md-2',
-						title : this.$i18n.t('user_groups.users_count'),
 						orderable : true,
 						order_by_field : 'users_count',
 					}
 				];
-			},
-			rowsButtons() {
-				return [
-					{
-						title : this.$i18n.t('common.see_btn'),
-						class : 'btn btn-default',
-						onClick : (userGroup) => {
-							this.$router.push({
-								name: 'user-group',
-								params: {
-									'userGroupId': userGroup.id
-								}
-							});
-						}
-					},
-				]
 			},
 		},
 	}

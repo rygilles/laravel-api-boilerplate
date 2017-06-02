@@ -7,6 +7,10 @@ export default {
         'title': 'My Projects',
         'description': 'Projects owned and/or administrated by me'
     },
+    'user-project': {
+        'title': 'My Projet',
+        'description': 'Project that I created / Own'
+    },
     'api-configuration': {
         'title': 'Api',
         'description': 'Manage your Api authentication here'

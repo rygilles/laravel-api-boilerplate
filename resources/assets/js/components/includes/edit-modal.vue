@@ -19,19 +19,22 @@
 			<div v-for="(field, index) in fields" :class="['form-group', formGroupErrorClassObject(field)]">
 				<label class="col-md-3 control-label">{{ field.title }}</label>
 				<div class="col-md-7">
-					<input v-if="field.type == 'input'" type="text" class="form-control" @keyup.enter="update" v-model="field.value">
-					<input v-if="field.type == 'password'" type="password" class="form-control" @keyup.enter="store" v-model="field.value">
-					<textarea v-if="field.type == 'textarea'" class="form-control" v-model="field.value"></textarea>
-					<Select2
-						v-if="field.type == 'select2'"
-						v-model="field.value"
-						:options="field.select2.options"
-						:feed="field.select2.feed"
-						:labelProp="field.select2.labelProp"
-						:valueProp="field.select2.valueProp"
-						class="form-control"
-					></Select2>
-					<span v-if="'help' in field" class="help-block" v-html="field.help"></span>
+					<input v-if="field.type == 'hidden'" type="hidden" v-model="field.value">
+					<div v-else :class="['form-group', formGroupErrorClassObject(field)]">
+						<input v-if="field.type == 'input'" type="text" class="form-control" @keyup.enter="update" v-model="field.value">
+						<input v-if="field.type == 'password'" type="password" class="form-control" @keyup.enter="store" v-model="field.value">
+						<textarea v-if="field.type == 'textarea'" class="form-control" v-model="field.value"></textarea>
+						<Select2
+							v-if="field.type == 'select2'"
+							v-model="field.value"
+							:options="field.select2.options"
+							:feed="field.select2.feed"
+							:labelProp="field.select2.labelProp"
+							:valueProp="field.select2.valueProp"
+							class="form-control"
+						></Select2>
+						<span v-if="'help' in field" class="help-block" v-html="field.help"></span>
+					</div>
 				</div>
 			</div>
 		</form>

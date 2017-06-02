@@ -1,32 +1,134 @@
 export default {
     'projects': 'Projects',
-
-    'no_project_yet': 'You have not created any project.',
+    'id' : 'Id',
     'project_id': 'Project Id',
-
-    'search_engine_name': 'Search Engine',
-    'search_engine_name_help': 'Only <a href="https://www.algolia.com/">Algolia</a> is supported at this moment.',
-
+    'name' : 'Name',
     'project_name': 'Project Name',
-    'project_name_help': '5 chars min.',
-
-    'create_new_project': 'Create New Project',
-    'edit_project' : 'Edit Project "{name"}',
-
-    'owner_projects': 'Owned projects',
-    'admin_projects': 'Administered projects',
-    'all_projects': 'All projects',
-
-    'delete_project' : 'Delete Project',
-    'delete_project_message' : 'Are you sure you want to delete <strong>{name}</strong> ?',
-
-    'mass_delete_project' : 'Delete a list of Projects',
-    'mass_delete_project_message_template' : 'Are you sure you want to delete this list ?<br /><strong><% _.forEach(rows, function(row) {%><%- row.name %><br /><% }); %></strong>',
-
     'see_project_btn' : 'See Project',
 
-    'edit_btn': 'Edit',
-    'delete_btn': 'Delete',
 
-    'named_project' : '<strong>{name}</strong> project'
+    'data_manager' : {
+        'all_projects' : {
+            'main_title' : 'All Projects',
+            'empty_message' : 'Nothing to display here.',
+            'columns' : {
+                'id' : {
+                    'title' : 'Id',
+                },
+                'name' : {
+                    'title' : 'Name',
+                },
+                'search_engine_id' : {
+                    'title' : 'Search Engine',
+                },
+                'created_at' : {
+                    'title' : 'Created At',
+                },
+                'updated_at' : {
+                    'title' : 'Updated At',
+                }
+            },
+            'modals' : {
+                'create' : {
+                    'show_modal_link' : 'Create New Project',
+                    'title_template' : 'Create New Project',
+                    'fields' : {
+                        'name' : {
+                            'title' : 'Project Name',
+                            'help' : '5 chars min.',
+                        },
+                        'search_engine_id': {
+                            'title' : 'Search Engine',
+                            'help' : 'Only <a href="https://www.algolia.com/">Algolia</a> is supported at this moment.',
+                        },
+                    },
+                },
+                'edit' : {
+                    'title_template' : 'Edit Project "<%- resourceRow.name %>"',
+                    'fields' : {
+                        'name' : {
+                            'title' : 'Project Name',
+                            'help' : '5 chars min.',
+                        },
+                        'search_engine_id': {
+                            'title' : 'Search Engine',
+                            'help' : 'Only <a href="https://www.algolia.com/">Algolia</a> is supported at this moment.',
+                        },
+                    },
+                },
+                'delete' : {
+                    'title_template' : 'Delete Project',
+                    'message_template' : 'Are you sure you want to delete <strong><%- resourceRow.name %></strong> ?',
+                },
+                'mass_delete' : {
+                    'title_template' : 'Delete a list of Projects',
+                    'message_template' : 'Are you sure you want to delete this list ?<br /><strong><% _.forEach(resourceRows, function(row) {%><%- row.name %><br /><% }); %></strong>',
+                }
+            }
+        },
+        'owner_projects' : {
+            'main_title' : 'Owned projects',
+            'empty_message' : 'You have not created any project.',
+            'columns' : {
+                'name' : {
+                    'title' : 'Name',
+                },
+                'created_at' : {
+                    'title' : 'Created At',
+                },
+                'updated_at' : {
+                    'title' : 'Updated At',
+                }
+            },
+            'modals' : {
+                'create' : {
+                    'show_modal_link' : 'Create New Project',
+                    'title_template' : 'Create New Project',
+                },
+                'edit' : {
+                    'title_template' : 'Edit Project "<%- resourceRow.name %>"'
+                },
+                'delete' : {
+                    'title_template' : 'Delete Project',
+                    'message_template' : 'Are you sure you want to delete <strong><%- resourceRow.name %></strong> ?',
+                },
+                'mass_delete' : {
+                    'title_template' : 'Delete a list of Projects',
+                    'message_template' : 'Are you sure you want to delete this list ?<br /><strong><% _.forEach(resourceRows, function(row) {%><%- row.name %><br /><% }); %></strong>',
+                }
+            }
+        },
+        'admin_projects' : {
+            'main_title' : 'Administered projects',
+            'empty_message' : 'Nothing to display here.',
+            'columns' : {
+                'name' : {
+                    'title' : 'Name',
+                },
+                'created_at' : {
+                    'title' : 'Created At',
+                },
+                'updated_at' : {
+                    'title' : 'Updated At',
+                }
+            },
+            'modals' : {
+                'create' : {
+                    'show_modal_link' : 'Create New Project',
+                    'title_template' : 'Create New Project',
+                },
+                'edit' : {
+                    'title_template' : 'Edit Project "<%- resourceRow.name %>"'
+                },
+                'delete' : {
+                    'title_template' : 'Delete Project',
+                    'message_template' : 'Are you sure you want to delete <strong><%- resourceRow.name %></strong> ?',
+                },
+                'mass_delete' : {
+                    'title_template' : 'Delete a list of Projects',
+                    'message_template' : 'Are you sure you want to delete this list ?<br /><strong><% _.forEach(resourceRows, function(row) {%><%- row.name %><br /><% }); %></strong>',
+                }
+            }
+        }
+    }
 };

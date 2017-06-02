@@ -32,6 +32,8 @@ export default {
     'delete_btn' : 'Delete',
     'unselect_all_btn' : 'Unselect all',
 
+    'empty_message': 'Nothing to display here.',
+
     'delete_message' : 'Are you sure you want to delete this item ?',
     'mass_delete_message' : 'Are you sure you want to delete this items ?',
 

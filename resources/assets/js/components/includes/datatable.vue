@@ -457,7 +457,7 @@
 				} catch (e) {
 					return '';
 				}
-			}
+			},
 		},
 	}
 </script>
