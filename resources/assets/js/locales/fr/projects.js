@@ -5,10 +5,12 @@ export default {
     'name' : 'Nom',
     'project_name': 'Nom du projet',
     'see_project_btn' : 'Voir Projet',
+    'owner_name' : 'Propriétaire',
+    'search_engine_name' : 'Moteur de recherche',
 
     'data_manager' : {
         'all_projects' : {
-            'main_title' : 'Tous projets',
+            'main_title' : 'Tous les projets',
             'empty_message' : 'Aucun enregistrement à afficher.',
             'columns' : {
                 'id' : {
@@ -69,8 +71,14 @@ export default {
             'main_title' : 'Projets créés',
             'empty_message' : 'Vous n\'avez pas créé de projets pour le moment.',
             'columns' : {
+                'id' : {
+                    'title' : 'Id',
+                },
                 'name' : {
                     'title' : 'Nom',
+                },
+                'search_engine_id' : {
+                    'title' : 'Moteur de recherche',
                 },
                 'created_at' : {
                     'title' : 'Créé le',
@@ -83,9 +91,29 @@ export default {
                 'create' : {
                     'show_modal_link' : 'Créer un nouveau projet',
                     'title_template' : 'Créer un nouveau projet',
+                    'fields' : {
+                        'name' : {
+                            'title' : 'Nom',
+                            'help' : '5 caractères minimum.',
+                        },
+                        'search_engine_id': {
+                            'title' : 'Moteur de recherche',
+                            'help' : 'Seul <a href="https://www.algolia.com/">Algolia</a> est supporté pour le moment.',
+                        },
+                    },
                 },
                 'edit' : {
                    'title_template' : 'Modifier le projet "<%- resourceRow.name %>"',
+                    'fields' : {
+                        'name' : {
+                            'title' : 'Nom',
+                            'help' : '5 caractères minimum.',
+                        },
+                        'search_engine_id': {
+                            'title' : 'Moteur de recherche',
+                            'help' : 'Seul <a href="https://www.algolia.com/">Algolia</a> est supporté pour le moment.',
+                        },
+                    },
                 },
                 'delete' : {
                     'title_template' : 'Supprimer un projet',
@@ -101,8 +129,14 @@ export default {
             'main_title' : 'Projets administrés',
             'empty_message' : 'Aucun enregistrement à afficher.',
             'columns' : {
+                'id' : {
+                    'title' : 'Id',
+                },
                 'name' : {
                     'title' : 'Nom',
+                },
+                'search_engine_id' : {
+                    'title' : 'Moteur de recherche',
                 },
                 'created_at' : {
                     'title' : 'Créé le',
@@ -118,6 +152,16 @@ export default {
                 },
                 'edit' : {
                     'title_template' : 'Modifier le projet "<%- resourceRow.name %>"',
+                    'fields' : {
+                        'name' : {
+                            'title' : 'Nom',
+                            'help' : '5 caractères minimum.',
+                        },
+                        'search_engine_id': {
+                            'title' : 'Moteur de recherche',
+                            'help' : 'Seul <a href="https://www.algolia.com/">Algolia</a> est supporté pour le moment.',
+                        },
+                    },
                 },
                 'delete' : {
                     'title_template' : 'Supprimer un projet',

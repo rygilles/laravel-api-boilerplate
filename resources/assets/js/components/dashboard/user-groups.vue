@@ -1,10 +1,3 @@
-<style>
-	td.id-column {
-		font-family: monospace;
-		font-weight: bold;
-	}
-</style>
-
 <template>
 	<!-- Main content -->
 	<section class="content">

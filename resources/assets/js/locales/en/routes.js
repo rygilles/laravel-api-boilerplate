@@ -7,10 +7,6 @@ export default {
         'title': 'My Projects',
         'description': 'Projects owned and/or administrated by me'
     },
-    'user-project': {
-        'title': 'My Projet',
-        'description': 'Project that I created / Own'
-    },
     'api-configuration': {
         'title': 'Api',
         'description': 'Manage your Api authentication here'
@@ -24,6 +20,7 @@ export default {
     },
     'project': {
         'title': 'Project',
+        'title_template' : 'Project "<%- data.name %>"',
         'description': '',
     },
     'misc-folder': {
@@ -35,11 +32,17 @@ export default {
     },
     'search-engine': {
         'title': 'Search Engine',
+        'title_template' : 'Search Engine "<%- data.name %>"',
         'description': '',
     },
     'i18n-langs': {
         'title': 'I18n Langs',
         'description': 'System locales'
+    },
+    'i18n-lang': {
+        'title': 'I18n Lang',
+        'title_template' : 'I18n Lang "<%- data.id %>"',
+        'description': 'System locale'
     },
     'users-folder': {
         'title': 'Users',
@@ -48,16 +51,18 @@ export default {
         'title': 'User Groups',
         'description': '',
     },
+    'user-group': {
+        'title': 'User Group',
+        'title_template' : 'User Group "<%- data.userGroupId %>"',
+        'description': '',
+    },
     'users': {
         'title': 'Users',
         'description': '',
     },
     'user': {
         'title': 'User',
-        'description': '',
-    },
-    'user-group': {
-        'title': 'User Group',
+        'title_template' : 'User "<%- data.name %>"',
         'description': '',
     },
 }

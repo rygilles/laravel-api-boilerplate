@@ -26,22 +26,27 @@
 		</DataTable>
 		<CreateModal
 			v-if="realRights.allowCreate"
+			ref="createModal"
 			:id="createModalId"
 			:title="createModalTitle"
 			:postUri="createModalPostUri"
 			:fields="createModalFields"
 			:onSuccess="createModalOnSuccess"
+			:onClose="createModalOnClose"
 		></CreateModal>
 		<EditModal
 			v-if="realRights.allowEdit"
+			ref="editModal"
 			:id="editModalId"
 			:title="editModalTitle"
 			:putUri="editModalPutUri"
 			:fields="editModalFields"
 			:onSuccess="editModalOnSuccess"
+			:onClose="editModalOnClose"
 		></EditModal>
 		<DeleteModal
 			v-if="realRights.allowDelete"
+			ref="deleteModal"
 			:id="deleteModalId"
 			:title="deleteModalTitle"
 			:deleteUri="deleteModalDeleteUri"
@@ -50,6 +55,7 @@
 		></DeleteModal>
 		<MassDeleteModal
 			v-if="realRights.allowMassDelete"
+			ref="massDeleteModal"
 			:id="massDeleteModalId"
 			:title="massDeleteModalTitle"
 			:rows="massDeleteModalResourceRows"
@@ -77,8 +83,10 @@
 			return {
 				createModalPostUri: null,
 				createModalResourceRow: null,
+				createModalFields: null,
 				editModalPutUri: null,
 				editModalResourceRow: null,
+				editModalFields: [],
 				deleteModalDeleteUri: null,
 				deleteModalResourceRow: null,
 				massDeleteModalResourceRows: null,
@@ -193,7 +201,25 @@
 				default: function() {
 					return [];
 				}
-			}
+			},
+			/* Additional buttons before default or replaced "rowsButtons" */
+			rowsButtonsBefore: {
+				type: Array,
+				default: function() {
+					return [];
+				}
+			},
+			/* Additional buttons after default or replaced "rowsButtons" */
+			rowsButtonsAfter: {
+				type: Array,
+				default: function() {
+					return [];
+				}
+			},
+		},
+
+		created() {
+			this.computeCreateModalFields();
 		},
 
 		computed: {
@@ -274,92 +300,6 @@
 				});
 
 				return dataTableColumns;
-			},
-
-			createModalFields() {
-				var modalColumns = [];
-
-				this.columns.forEach((column) => {
-					if ('create' in column) {
-						if (column.create.fillable || column.type == 'hidden') {
-							var modalColumn = {
-								name: column.name,
-								type: column.type,
-							};
-
-							if (this.i18nExist('modals.create.fields.' + column.name + '.title')) {
-								modalColumn.title = this.i18n('modals.create.fields.' + column.name + '.title');
-							} else if (this.i18nExist('columns.' + column.name + '.title'))  {
-								modalColumn.title = this.i18n('columns.' + column.name + '.title');
-							} else {
-								modalColumn.title = modalColumn.name;
-							}
-
-							if (this.i18nExist('modals.create.fields.' + column.name + '.help')) {
-								modalColumn.help = this.i18n('modals.create.fields.' + column.name + '.help');
-							} else if (this.i18nExist('columns.' + column.name + '.help'))  {
-								modalColumn.help = this.i18n('columns.' + column.name + '.help');
-							} else {
-								modalColumn.help = '';
-							}
-
-							if ('defaultValue' in column.create) {
-								modalColumn.value = column.create.defaultValue;
-							}
-
-							if ('select2' in column) {
-								modalColumn.select2 = column.select2;
-							}
-
-							modalColumns.push(modalColumn);
-						}
-					}
-				});
-
-				return modalColumns;
-			},
-
-			editModalFields() {
-				var modalColumns = [];
-
-				this.columns.forEach((column) => {
-					if ('edit' in column) {
-						if (column.edit.fillable || column.type == 'hidden') {
-							var modalColumn = {
-								name: column.name,
-								type: column.type,
-							};
-
-							if (this.i18nExist('modals.edit.fields.' + column.name + '.title')) {
-								modalColumn.title = this.i18n('modals.edit.fields.' + column.name + '.title');
-							} else if (this.i18nExist('columns.' + column.name + '.title'))  {
-								modalColumn.title = this.i18n('columns.' + column.name + '.title');
-							} else {
-								modalColumn.title = modalColumn.name;
-							}
-
-							if (this.i18nExist('modals.edit.fields.' + column.name + '.help')) {
-								modalColumn.help = this.i18n('modals.edit.fields.' + column.name + '.help');
-							} else if (this.i18nExist('columns.' + column.name + '.help'))  {
-								modalColumn.help = this.i18n('columns.' + column.name + '.help');
-							} else {
-								modalColumn.help = '';
-							}
-
-							if (this.editModalResourceRow != null) {
-								modalColumn.value = column.name.split('.').reduce((o,i)=>o[i], this.editModalResourceRow);
-							}
-
-							if ('select2' in column) {
-								modalColumn.select2 = column.select2;
-							}
-
-							modalColumns.push(modalColumn);
-						}
-					}
-				});
-
-				return modalColumns;
 			},
 
 			createModalId() {
@@ -447,7 +387,9 @@
 								class : 'btn btn-danger',
 								onClick : (rows) => {
 									this.massDeleteModalResourceRows = rows;
-									$('#' + this.resource.name + '-mass-delete-modal').modal('show');
+									$(document).ready(() => {
+										$('#' + this.resource.name + '-mass-delete-modal').modal('show');
+									})
 								}
 							}
 						);
@@ -459,18 +401,18 @@
 
 			dataTableRowsButtons() {
 				if (this.rowsButtons.length > 0) {
-					return this.rowsButtons;
+					return _.concat(this.rowsButtonsBefore, this.rowsButtons, this.rowsButtonsAfter);
 				} else {
 					var buttons = [];
 					var see_btn_title, edit_btn_title, delete_btn_title;
 
 					if (this.realRights.allowSee) {
-						if (this.i18nExist('buttons-column.see')) {
-							see_btn_title = this.i18n('buttons-column.see');
+						if (this.i18nExist('buttons_column.see')) {
+							see_btn_title = this.i18n('buttons_column.see');
 						} else {
 							see_btn_title = this.$t('common.see_btn');
 						}
-
+						
 						buttons.push(
 							{
 								title : see_btn_title,
@@ -492,8 +434,8 @@
 					}
 
 					if (this.realRights.allowEdit) {
-						if (this.i18nExist('buttons-column.edit')) {
-							edit_btn_title = this.i18n('buttons-column.edit');
+						if (this.i18nExist('buttons_column.edit')) {
+							edit_btn_title = this.i18n('buttons_column.edit');
 						} else {
 							edit_btn_title = this.$t('common.edit_btn');
 						}
@@ -503,17 +445,20 @@
 								class : 'btn btn-default',
 								onClick : (resourceRow) => {
 									this.editModalResourceRow = resourceRow;
+									this.computeEditModalFields();
 									var compiledPutUriTemplate = _.template(this.resource.edit.putUriTemplate);
 									this.editModalPutUri = compiledPutUriTemplate({'resourceRow' : resourceRow});
-									$('#' + this.resource.name + '-edit-modal').modal('show');
+									$(document).ready(() => {
+										$('#' + this.resource.name + '-edit-modal').modal('show');
+									})
 								}
 							}
 						);
 					}
 
 					if (this.realRights.allowDelete) {
-						if (this.i18nExist('buttons-column.delete')) {
-							delete_btn_title = this.i18n('buttons-column.delete');
+						if (this.i18nExist('buttons_column.delete')) {
+							delete_btn_title = this.i18n('buttons_column.delete');
 						} else {
 							delete_btn_title = this.$t('common.delete_btn');
 						}
@@ -526,18 +471,119 @@
 									this.deleteModalResourceRow = resourceRow;
 									var compiledDeleteUriTemplate = _.template(this.resource.delete.deleteUriTemplate);
 									this.deleteModalDeleteUri = compiledDeleteUriTemplate({'resourceRow' : resourceRow});
-									$('#' + this.resource.name + '-delete-modal').modal('show');
+									$(document).ready(() => {
+										$('#' + this.resource.name + '-delete-modal').modal('show');
+									});
 								}
 							}
 						);
 					}
 
-					return buttons;
+					return _.concat(this.rowsButtonsBefore, buttons, this.rowsButtonsAfter);
 				}
 			},
 		},
 
 		methods: {
+
+			computeCreateModalFields() {
+				var fields = [];
+
+				this.columns.forEach((column) => {
+					if ('create' in column) {
+						if (column.create.fillable || column.type == 'hidden') {
+							var field = {
+								name: column.name,
+								type: column.type,
+							};
+
+							if (this.i18nExist('modals.create.fields.' + column.name + '.title')) {
+								field.title = this.i18n('modals.create.fields.' + column.name + '.title');
+							} else if (this.i18nExist('columns.' + column.name + '.title'))  {
+								field.title = this.i18n('columns.' + column.name + '.title');
+							} else {
+								field.title = field.name;
+							}
+
+							if (this.i18nExist('modals.create.fields.' + column.name + '.help')) {
+								field.help = this.i18n('modals.create.fields.' + column.name + '.help');
+							} else if (this.i18nExist('columns.' + column.name + '.help'))  {
+								field.help = this.i18n('columns.' + column.name + '.help');
+							} else {
+								field.help = '';
+							}
+
+							if ('defaultValue' in column.create) {
+								field.value = column.create.defaultValue;
+							}
+
+							if ('select2' in column) {
+								field.select2 = column.select2;
+							}
+
+							fields.push(field);
+						}
+					}
+				});
+
+				this.createModalFields = fields;
+			},
+
+			computeEditModalFields() {
+				// Update values only ?
+				if (this.editModalFields.length > 0) {
+					this.editModalFields.forEach((field, field_index) => {
+						this.columns.forEach((column, column_index) => {
+							if (column.name == field.name) {
+								this.editModalFields[field_index].value = column.name.split('.').reduce((o,i)=>o[i], this.editModalResourceRow);
+							}
+						});
+					});
+
+					return;
+				}
+
+				var fields = [];
+
+				this.columns.forEach((column) => {
+					if ('edit' in column) {
+						if (column.edit.fillable || column.type == 'hidden') {
+							var field = {
+								name: column.name,
+								type: column.type,
+							};
+
+							if (this.i18nExist('modals.edit.fields.' + column.name + '.title')) {
+								field.title = this.i18n('modals.edit.fields.' + column.name + '.title');
+							} else if (this.i18nExist('columns.' + column.name + '.title'))  {
+								field.title = this.i18n('columns.' + column.name + '.title');
+							} else {
+								field.title = field.name;
+							}
+
+							if (this.i18nExist('modals.edit.fields.' + column.name + '.help')) {
+								field.help = this.i18n('modals.edit.fields.' + column.name + '.help');
+							} else if (this.i18nExist('columns.' + column.name + '.help'))  {
+								field.help = this.i18n('columns.' + column.name + '.help');
+							} else {
+								field.help = '';
+							}
+
+							if (this.editModalResourceRow != null) {
+								field.value = column.name.split('.').reduce((o,i)=>o[i], this.editModalResourceRow);
+							}
+
+							if ('select2' in column) {
+								field.select2 = column.select2;
+							}
+
+							fields.push(field);
+						}
+					}
+				});
+
+				this.editModalFields = fields;
+			},
 
 			showCreateModal() {
 				this.createModalResourceRow = {};
@@ -548,7 +594,9 @@
 
 				this.createModalPostUri = this.resource.create.postUri;
 
-				$('#' + this.resource.name + '-create-modal').modal('show');
+				$(document).ready(() => {
+					$('#' + this.resource.name + '-create-modal').modal('show');
+				})
 			},
 
 			createModalOnSuccess() {
@@ -556,9 +604,21 @@
 				this.$refs.datatable.fetchData();
 			},
 
+			createModalOnClose() {
+				// Reset form fields default values
+				this.computeCreateModalFields();
+				// Clean modal errors
+				this.$refs.createModal.clearErrors();
+			},
+
 			editModalOnSuccess() {
 				// Refresh datatables
 				this.$refs.datatable.fetchData();
+			},
+
+			editModalOnClose() {
+				// Clean modal errors
+				this.$refs.editModal.clearErrors();
 			},
 
 			deleteModalOnSuccess() {

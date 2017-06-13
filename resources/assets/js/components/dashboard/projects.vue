@@ -1,17 +1,9 @@
-<style>
-	td.id-column {
-		font-family: monospace;
-		font-weight: bold;
-	}
-</style>
-
 <template>
 	<!-- Main content -->
 	<section class="content">
 		<div class="row">
 			<div class="col-xs-12">
 				<DataManager
-					:rights="{allowCreate: false}"
 					i18nPath="projects.data_manager.all_projects"
 					:resource="dataManagerResource"
 					:defaultOrderBy="{column: 'name', direction: 'asc'}"
@@ -121,7 +113,7 @@
 
 						create : {
 							fillable: true,
-							defaultValue: '',
+							defaultValue: 'ee87e3b2-1388-11e7-93ae-92361f002671', /* Algolia */
 						},
 
 						edit : {

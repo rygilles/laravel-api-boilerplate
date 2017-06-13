@@ -136,6 +136,18 @@ var store = new Vuex.Store({
         },
         projectUserHasProjectsLoading: true,
 
+        projectOwnerUserHasProjects: {
+            data: [],
+            meta: {}
+        },
+        projectOwnerUserHasProjectsLoading: true,
+
+        projectAdminUserHasProjects: {
+            data: [],
+            meta: {}
+        },
+        projectAdminUserHasProjectsLoading: true,
+
         userGroups: {
             data: [],
             meta: {}
@@ -233,6 +245,20 @@ var store = new Vuex.Store({
         },
         projectUserHasProjectsLoading(state) {
             return state.projectUserHasProjectsLoading;
+        },
+
+        projectOwnerUserHasProjects(state) {
+            return state.projectOwnerUserHasProjects;
+        },
+        projectOwnerUserHasProjectsLoading(state) {
+            return state.projectOwnerUserHasProjectsLoading;
+        },
+
+        projectAdminUserHasProjects(state) {
+            return state.projectAdminUserHasProjects;
+        },
+        projectAdminUserHasProjectsLoading(state) {
+            return state.projectAdminUserHasProjectsLoading;
         },
 
         userGroups(state) {
@@ -336,6 +362,20 @@ var store = new Vuex.Store({
             state.projectUserHasProjectsLoading = loading;
         },
 
+        setProjectOwnerUserHasProjects(state, userHasProjects) {
+            state.projectOwnerUserHasProjects = userHasProjects;
+        },
+        setProjectOwnerUserHasProjectsLoading(state, loading) {
+            state.projectOwnerUserHasProjectsLoading = loading;
+        },
+
+        setProjectAdminUserHasProjects(state, userHasProjects) {
+            state.projectAdminUserHasProjects = userHasProjects;
+        },
+        setProjectAdminUserHasProjectsLoading(state, loading) {
+            state.projectAdminUserHasProjectsLoading = loading;
+        },
+
         setUserGroups(state, userGroups) {
             state.userGroups = userGroups;
         },
@@ -385,6 +425,14 @@ var store = new Vuex.Store({
 
         getProjectUserHasProjects(state, options) {
             resourceLoad(state, '/project/' + options.projectId + '/userHasProject', options, 'projectUserHasProjects');
+        },
+
+        getProjectOwnerUserHasProjects(state, options) {
+            resourceLoad(state, '/project/' + options.projectId + '/userHasProject', options, 'projectOwnerUserHasProjects', {user_role_id: 'Owner'});
+        },
+
+        getProjectAdminUserHasProjects(state, options) {
+            resourceLoad(state, '/project/' + options.projectId + '/userHasProject', options, 'projectAdminUserHasProjects', {user_role_id: 'Administrator'});
         },
 
         getUserGroups(state, options) {

@@ -60,7 +60,7 @@
 				switch (this.notification.type) {
 					case 'App\\Notifications\\AdministeredProject' :
 						this.$router.push({
-							name: 'user-project',
+							name: 'project',
 							params: {
 								'projectId': this.notification.data.project_id
 							}

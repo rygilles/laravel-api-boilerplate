@@ -5,7 +5,7 @@ export default {
     'updated_at' : 'Updated At',
     'updated_at_f' : 'Updated At',
 
-    'datetime_format' : 'YYYY/MM/DD at H\:mm',
+    'datetime_format' : 'YYYY/MM/DD [at] H\:mm',
 
     'axio_error' : 'An error occurred',
 

@@ -1,10 +1,3 @@
-<style>
-	td.id-column {
-		font-family: monospace;
-		font-weight: bold;
-	}
-</style>
-
 <template>
 	<!-- Main content -->
 	<section class="content">
@@ -75,7 +68,7 @@
 			ownerDataManagerResource() {
 				return {
 					name: 'project',
-					routePath: 'user-project',
+					routePath: 'project',
 					routeParamsMap: {
 						'projectId': 'id',
 					},
@@ -94,14 +87,32 @@
 			ownerDataManagerColumns() {
 				return [
 					{
+						name : 'id',
+						class : 'col-md-3 id-column',
+						orderable : true,
+						order_by_field : 'id',
+
+						list: {
+							visible: (['Developer', 'Support'].indexOf(this.$store.getters.me.user_group_id) != -1)
+						},
+
+						create: {
+							fillable: false,
+						},
+
+						edit: {
+							fillable: false,
+						},
+					},
+					{
 						name : 'name',
-						class : 'col-md-6',
+						class : '',
 						orderable : true,
 						order_by_field : 'name',
 						type: 'input',
 
 						routerLink : {
-							routeName : 'user-project',
+							routeName : 'project',
 							paramsNames : {
 								'projectId' : 'id'
 							}
@@ -114,6 +125,44 @@
 
 						edit : {
 							fillable: true,
+						}
+					},
+					{
+						name : 'search_engine_id',
+						displayProp: 'searchEngine.data.name',
+						class : '',
+						orderable : false,
+						routerLink : {
+							routeName : 'search-engine',
+							paramsNames : {
+								'searchEngineId' : 'search_engine_id'
+							}
+						},
+
+						type : 'select2',
+						select2 : {
+							labelProp : 'name',
+							valueProp : 'id',
+							feed : {
+								getUri : '/searchEngine',
+								params : {
+									limit: 10,
+									order_by: 'name,asc',
+								}
+							},
+						},
+
+						list: {
+							visible: (['Developer', 'Support'].indexOf(this.$store.getters.me.user_group_id) != -1)
+						},
+
+						create : {
+							fillable: (['Developer', 'Support'].indexOf(this.$store.getters.me.user_group_id) != -1),
+							defaultValue: 'ee87e3b2-1388-11e7-93ae-92361f002671', /* Algolia */
+						},
+
+						edit : {
+							fillable: (['Developer', 'Support'].indexOf(this.$store.getters.me.user_group_id) != -1),
 						}
 					},
 					{
@@ -156,7 +205,7 @@
 			adminDataManagerResource() {
 				return {
 					name: 'project',
-					routePath: 'user-project',
+					routePath: 'project',
 					routeParamsMap: {
 						'projectId': 'id',
 					},
@@ -175,26 +224,81 @@
 			adminDataManagerColumns() {
 				return [
 					{
+						name : 'id',
+						class : 'col-md-3 id-column',
+						orderable : true,
+						order_by_field : 'id',
+
+						list: {
+							visible: (['Developer', 'Support'].indexOf(this.$store.getters.me.user_group_id) != -1)
+						},
+
+						create: {
+							fillable: false,
+						},
+
+						edit: {
+							fillable: false,
+						},
+					},
+					{
 						name : 'name',
-						class : 'col-md-6',
+						class : '',
 						orderable : true,
 						order_by_field : 'name',
 						type: 'input',
 
 						routerLink : {
-							routeName : 'user-project',
+							routeName : 'project',
 							paramsNames : {
 								'projectId' : 'id'
 							}
 						},
 
 						create : {
-							fillable: true,
+							fillable: false,
 							defaultValue: '',
 						},
 
 						edit : {
-							fillable: true,
+							fillable: false,
+						}
+					},
+					{
+						name : 'search_engine_id',
+						displayProp: 'searchEngine.data.name',
+						class : '',
+						orderable : false,
+						routerLink : {
+							routeName : 'search-engine',
+							paramsNames : {
+								'searchEngineId' : 'search_engine_id'
+							}
+						},
+
+						type : 'select2',
+						select2 : {
+							labelProp : 'name',
+							valueProp : 'id',
+							feed : {
+								getUri : '/searchEngine',
+								params : {
+									limit: 10,
+									order_by: 'name,asc',
+								}
+							},
+						},
+
+						list: {
+							visible: (['Developer', 'Support'].indexOf(this.$store.getters.me.user_group_id) != -1)
+						},
+
+						create : {
+							fillable: false,
+						},
+
+						edit : {
+							fillable: false,
 						}
 					},
 					{

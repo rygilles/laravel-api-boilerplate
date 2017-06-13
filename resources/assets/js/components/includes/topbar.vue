@@ -20,6 +20,8 @@
 			<!-- Navbar Right Menu -->
 			<div class="navbar-custom-menu">
 				<ul class="nav navbar-nav">
+					<!-- Lang switch -->
+					<LangsTabs ref="langTabs" :defaultLang="this.$i18n.locale" :langs="['en', 'fr']" />
 					<!-- User Notifications Menu -->
 					<notifications ref="notifications" />
 					<!-- User Account Menu -->
@@ -77,12 +79,14 @@
 	</header>
 </template>
 <script>
+	import LangsTabs from './langs-tabs.vue';
 	import notifications from './notifications.vue';
 
 	export default {
 		props: ['laravel', 'me'],
 		components: {
-			notifications
+			notifications,
+			LangsTabs,
 		},
 		computed: {
 			memberSince() {

@@ -28,16 +28,6 @@ export default [
         }
     },
     {
-        path : '/user-project/:projectId',
-        name : 'user-project',
-        component : require('./components/dashboard/user-project.vue'),
-        props : true,
-        meta : {
-            breadcrumbIconClass : 'fa fa-sticky-note',
-            parentRouteName : 'user-projects',
-        }
-    },
-    {
         path : '/all-projects',
         name : 'all-projects',
         component : require('./components/dashboard/projects.vue'),
@@ -130,6 +120,15 @@ export default [
         meta : {
             breadcrumbIconClass : 'fa fa-users',
             parentRouteName : 'user-groups',
+        }
+    },
+    {
+        path : '/test',
+        name : 'test',
+        component : require('./components/dashboard/test.vue'),
+        alias : '/',
+        meta : {
+            breadcrumbIconClass : 'fa fa-thumbs-o-down',
         }
     },
 ];

@@ -25,7 +25,9 @@ class UserController extends ApiController
 		parent::__construct();
 
 		// User group restrictions
-		$this->middleware('verifyUserGroup:Developer,Support')->only('index,show,store,update,destroy');
+		// @fixme Middleware not called ?!?!
+		$this->middleware('verifyUserGroup:Developer,Support', ['only' => ['index', 'show', 'store', 'update', 'destroy']]);
+		//$this->middleware('verifyUserGroup:Developer,Support')->only('index,show,store,update,destroy');
 	}
 
 	/**

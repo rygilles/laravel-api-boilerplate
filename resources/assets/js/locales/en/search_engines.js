@@ -1,19 +1,56 @@
 export default {
     'search_engines': 'Search Engines',
 
-    'create_new_search_engine': 'Create a new Search Engine',
-    'edit_search_engine': 'Edit "{name}"',
-
-    'search_engine_id': 'Id',
-
-    'search_engine_name': 'Name',
-    'search_engine_name_help' : 'Specify the version number too.',
-
-    'projects_count' : 'Projects',
-
-    'delete_search_engine' : 'Delete a Search Engine',
-    'delete_search_engine_message' : 'Are you sure you want to delete <strong>{name}</strong> ?',
-
-    'edit_btn': 'Edit',
-    'delete_btn': 'Delete',
+    'data_manager' : {
+        'search_engines': {
+            'main_title': 'Search Engines',
+            'empty_message': 'Nothing to display here.',
+            'columns': {
+                'id': {
+                    'title': 'Id',
+                },
+                'name': {
+                    'title': 'Name',
+                },
+                'projects_count': {
+                    'title': 'Projects'
+                },
+                'created_at' : {
+                    'title' : 'Created At',
+                },
+                'updated_at' : {
+                    'title' : 'Updated At',
+                }
+            },
+            'modals': {
+                'create': {
+                    'show_modal_link': 'Create a new Search Engine',
+                    'title_template': 'Create a new Search Engine',
+                    'fields': {
+                        'name': {
+                            'title': 'Name',
+                            'help': 'Specify the version number too.',
+                        },
+                    },
+                },
+                'edit': {
+                    'title_template': 'Edit "<%- resourceRow.name %>"',
+                    'fields': {
+                        'name': {
+                            'title': 'Name',
+                            'help': 'Specify the version number too.',
+                        },
+                    },
+                },
+                'delete': {
+                    'title_template': 'Delete a Search Engine',
+                    'message_template': 'Are you sure you want to delete <strong><%- resourceRow.name %></strong> ?<br /><br/><strong>Warning : All related projects will be deleted too !!!</strong>',
+                },
+                'mass_delete': {
+                    'title_template': 'Delete a list of Search Engine',
+                    'message_template': 'Are you sure you want to delete this list ?<br /><strong><% _.forEach(resourceRows, function(row) {%><%- row.name %><br /><% }); %></strong><br/><strong>Warning : All related projects will be deleted too !!!</strong>',
+                }
+            }
+        },
+    }
 };

@@ -23,7 +23,7 @@ class ProjectController extends ApiController
 		parent::__construct();
 
 		// User group restrictions
-		$this->middleware('verifyUserGroup:Developer,Support')->only('index');
+		$this->middleware('verifyUserGroup:Developer,Support', ['only' => ['index']]);
 	}
 
 	/**

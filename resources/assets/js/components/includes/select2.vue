@@ -10,28 +10,25 @@
 					return [];
 				}
 			},
-			value : {
+			value : null,
+			labelProp : {
 				type : String,
-				default : '',
+				default : 'text'
+			},
+			valueProp : {
+				type: String,
+				default : 'id'
 			},
 			feed : {
 				default : function() {
 					return {
-						getUri : '',
+						getUri : null,
 						params : {
 							limit: 10,
 							order_by: '',
 						}
 					};
 				}
-			},
-			labelProp : {
-				type : String,
-				default : 'name'
-			},
-			valueProp : {
-				type: String,
-				default : 'value'
 			},
 		},
 		data() {
@@ -41,96 +38,115 @@
 		},
 		watch: {
 			value: function (value) {
-				// Get the current value
-				if (this.value != '') {
-					if (this.labelProp == this.valueProp) {
+				//console.log('trig value watch', value);
+
+				if (this.labelProp == this.valueProp) {
+					if (this.options.length == 0) {
+						this.currentOptions = [{
+							id: value,
+							text: value,
+						}];
+
+						$(this.$el).select2().empty();
 						$(this.$el).select2('destroy');
-						if (this.options.length > 0) {
-							this.currentOptions = [];
-							this.options.forEach((option) => {
-								this.currentOptions.push(option);
-							});
-						} else {
-							this.currentOptions = [];
-							this.currentOptions.push({
-								id: value,
-								text: value,
-							});
-						}
-						this.initializeSelect2();
-						$(this.$el).val(value).trigger('change');
-					} else {
-						if (this.options.length > 0) {
-							this.currentOptions = [];
-							this.options.forEach((option) => {
-								this.currentOptions.push(option);
-							});
-							this.initializeSelect2();
-							$(this.$el).val(value).trigger('change');
-						} else if (this.feed.getUri != '') {
-							apiAxios
-								.get(this.feed.getUri + '/' + value)
-								.then(response => {
-									$(this.$el).select2('destroy');
-									this.currentOptions = [];
-									this.currentOptions.push({
-										id: value,
-										text: response.data.data[this.labelProp]
-									});
-									this.initializeSelect2();
-									$(this.$el).val(value).trigger('change');
-								})
-								.catch(error => {
-									this.$root.axiosError(error);
-								});
-						}
+						$(this.$el).find('option').remove();
+
+						this.init();
 					}
 				} else {
-					$(this.$el).select2('destroy');
-					this.initializeSelect2();
-					$(this.$el).val(value).trigger('change');
+					if (this.feed.getUri != null) {
+						$(this.$el).select2().empty();
+						$(this.$el).select2('destroy');
+						$(this.$el).find('option').remove();
+
+						apiAxios
+							.get(this.feed.getUri + '/' + this.value)
+							.then(response => {
+								this.currentOptions = [{
+									id: this.value,
+									text: response.data.data[this.labelProp],
+								}];
+								this.initWithDefaultValueFromAjax();
+							})
+							.catch(error => {
+								this.$root.axiosError(error);
+							});
+
+						return;
+					}
 				}
+
+				$(this.$el).val(value).trigger('change');
 			},
+
 			options: function (options) {
+				//console.log('trig options watch', options);
+
+				// Initial options
+				var oldValue = this.value;
+				var oldValueFound = false;
 				this.currentOptions = [];
-				options.forEach((option) => {
-					this.currentOptions.push(option);
-				});
-				this.initializeSelect2();
+				if (this.options.length > 0) {
+					this.options.forEach((option) => {
+						if (option[this.valueProp] == oldValue) {
+							oldValueFound = true;
+						}
+						this.currentOptions.push({
+							id: option[this.valueProp],
+							text: option[this.labelProp],
+						})
+					});
+				}
+
+				$(this.$el).select2().empty();
+				$(this.$el).select2('destroy');
+				$(this.$el).find('option').remove();
+
+				// Select first option in this case
+				if (!oldValueFound && (this.currentOptions.length > 0)) {
+					//this.value = this.currentOptions[0].id;
+				}
+
+				this.init();
 			}
 		},
 		mounted() {
-			this.currentOptions = this.options;
-			this.initializeSelect2();
+			//console.log('trig mounted');
 
-			var vm = this;
-			$(this.$el)
-				.val(vm.value)
-				.trigger('change')
-				.on('change', function() {
-					vm.$emit('input', this.value);
-				})
+			// Initial options
+			if (this.options.length > 0) {
+				this.options.forEach((option) => {
+					this.currentOptions.push({
+						id: option[this.valueProp],
+						text: option[this.labelProp],
+					})
+				});
+			}
+
+			this.init();
 		},
 		destroyed() {
-			$(this.$el).off().select2('destroy');
+			//console.log('trig destroyed');
 		},
 		methods : {
-			initializeSelect2() {
-				var vm = this;
+			initWithDefaultValueFromAjax() {
+				//console.log('init with default value form ajax');
+				//console.log(this.currentOptions);
 
-				var config = {
-					data: this.currentOptions,
-				};
+				var config = {};
 
-				if (this.feed.getUri != '') {
+				config.data = this.currentOptions;
+
+				// Ajax feed
+				if (this.feed.getUri != null) {
 					config.ajax = {
 						url: this.feed.getUri,
 						delay : 250,
-						data: function(params) {
+						data: (params) => {
 							var query = {
 								page: 1,
-								limit: vm.feed.limit,
-								order_by: vm.feed.order_by
+								limit: this.feed.limit,
+								order_by: this.feed.order_by
 							}
 
 							if (params.term) {
@@ -143,21 +159,21 @@
 
 							return query;
 						},
-						transport: function (params, success, failure) {
+						transport: (params, success, failure) => {
 							var config = {
 								params: params.data
 							};
 							apiAxios
-								.get(vm.feed.getUri, config)
+								.get(this.feed.getUri, config)
 								.then(success)
 								.catch(failure);
 						},
-						processResults: function (data, params) {
+						processResults: (data, params) => {
 							var results = [];
 							data.data.data.forEach((row) => {
 								results.push({
-									id : row[vm.valueProp],
-									text : row[vm.labelProp],
+									id : row[this.valueProp],
+									text : row[this.labelProp],
 								});
 							});
 							return {
@@ -171,7 +187,117 @@
 					}
 				}
 
+				//console.log('config', config);
+
 				$(this.$el).select2(config);
+
+				// Default value
+				if (this.value != null) {
+					$(this.$el).val(this.value).trigger('change');
+				}
+
+				$(this.$el).on('change', (evt) => {
+					//this.value = evt.target.value;
+					this.$emit('input', evt.target.value);
+				});
+			},
+
+			init() {
+				//console.log('init');
+				var config = {};
+
+				// Default value
+				if (this.value != null) {
+					if (this.labelProp == this.valueProp) {
+						if (this.options.length == 0) {
+							this.currentOptions = [{
+								id: this.value,
+								text: this.value,
+							}];
+						}
+					} else if (this.feed.getUri != null) {
+						apiAxios
+							.get(this.feed.getUri + '/' + this.value)
+							.then(response => {
+								this.currentOptions = [{
+									id: this.value,
+									text: response.data.data[this.labelProp],
+								}];
+								this.initWithDefaultValueFromAjax();
+							})
+							.catch(error => {
+								this.$root.axiosError(error);
+							});
+
+						return;
+					}
+				}
+
+				config.data = this.currentOptions;
+
+				// Ajax feed
+				if (this.feed.getUri != null) {
+					config.ajax = {
+						url: this.feed.getUri,
+						delay : 250,
+						data: (params) => {
+							var query = {
+								page: 1,
+								limit: this.feed.limit,
+								order_by: this.feed.order_by
+							}
+
+							if (params.term) {
+								query.search = params.term + '*';
+							}
+
+							if (params.page) {
+								query.page = params.page;
+							}
+
+							return query;
+						},
+						transport: (params, success, failure) => {
+							var config = {
+								params: params.data
+							};
+							apiAxios
+								.get(this.feed.getUri, config)
+								.then(success)
+								.catch(failure);
+						},
+						processResults: (data, params) => {
+							var results = [];
+							data.data.data.forEach((row) => {
+								results.push({
+									id : row[this.valueProp],
+									text : row[this.labelProp],
+								});
+							});
+							return {
+								results : results,
+								pagination: {
+									more: (data.data.meta.pagination.current_page < data.data.meta.pagination.total_pages)
+								},
+								totals : data.data.meta.pagination.total
+							};
+						}
+					}
+				}
+
+				//console.log('config', config);
+
+				$(this.$el).select2(config);
+
+				// Default value
+				if (this.value != null) {
+					$(this.$el).val(this.value).trigger('change');
+				}
+
+				$(this.$el).on('change', (evt) => {
+					//this.value = evt.target.value;
+					this.$emit('input', evt.target.value);
+				});
 			}
 		}
 	}

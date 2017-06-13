@@ -25,7 +25,7 @@ class I18nLangController extends ApiController
 		parent::__construct();
 		
 		// User group restrictions
-		$this->middleware('verifyUserGroup:Developer')->only('store,update,destroy');
+		$this->middleware('verifyUserGroup:Developer', ['only' => ['store', 'update', 'destroy']]);
 	}
 
 	/**

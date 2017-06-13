@@ -108,7 +108,7 @@
 										:class="[column.class, orderByThClassObject(column)]"
 										v-html="column.title">
 									</th>
-									<th></th>
+									<th v-if="rowsButtons.length > 0"></th>
 								</tr>
 							</thead>
 							<tbody>
@@ -134,7 +134,7 @@
 								</td>
 
 								<!-- Buttons -->
-								<td :class="buttonsColumnClassObject()">
+								<td v-if="rowsButtons.length > 0" :class="buttonsColumnClassObject()">
 									<button v-for="rowButton in rowsButtons"
 											type="button"
 											@click="rowButton.onClick(dataRow)"

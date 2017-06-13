@@ -55,6 +55,7 @@
 					.get('/searchEngine/' + searchEngineId)
 					.then(response => {
 						this.searchEngine = response.data.data;
+						this.$emit('routeTitleDataUpdate', this.searchEngine);
 					}).catch(error => {
 						this.$root.axiosError(error);
 					});

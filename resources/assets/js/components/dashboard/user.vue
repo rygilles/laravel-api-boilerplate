@@ -1,14 +1,3 @@
-<style>
-	.id-column {
-		font-family: monospace;
-		font-weight: bold;
-	}
-
-	.no-right-padding {
-		padding-right: 0 !important;
-	}
-</style>
-
 <template>
 	<!-- Main content -->
 	<section class="content">
@@ -27,7 +16,13 @@
 								<b v-html="$t('users.user_id')"></b> <span class="pull-right" v-html="user.id"></span>
 							</li>
 							<li class="list-group-item">
-								<b v-html="$t('users.user_group_id')"></b> <span class="pull-right" v-html="user.user_group_id"></span>
+								<b v-html="$t('users.user_group_id')"></b>
+								<span class="pull-right">
+									<router-link
+										:to="{ name: 'user-group', params : { 'userGroupId' : user.user_group_id }}"
+										v-html="user.user_group_id">
+									</router-link>
+								</span>
 							</li>
 							<li class="list-group-item">
 								<b v-html="$t('users.user_name')"></b> <span class="pull-right" v-html="user.name"></span>
@@ -47,9 +42,9 @@
 						</ul>
 
 						<button type="button"
-								@click="userShowEditModal"
-								class="btn btn-default"
-								v-html="$t('common.edit_btn')"></button>
+							@click="userShowEditModal"
+							class="btn btn-default"
+							v-html="$t('common.edit_btn')"></button>
 					</div>
 				</div>
 			</div>
@@ -74,31 +69,20 @@
 					</ul>
 					<div class="tab-content">
 						<div class="active tab-pane" id="user-user-has-projects-tab-pane">
-							<DataTable
-								ref="userUserHasProjectsDatatable"
-								:mainTitle="$t('user_has_projects.user_has_projects')"
-								defaultOrderByColumn="user_role_id"
-								defaultOrderByDirection="desc"
-								:defaultPaginationLimit="20"
-								:paginationLimiting="false"
+							<DataManager
+								:rights="{
+									allowEdit: false,
+								}"
+								i18nPath="user_has_projects.data_manager.user_user_has_projects"
+								:resource="userUserHasProjectDataManagerResource"
+								:defaultOrderBy="{column: 'user_role_id', direction: 'desc'}"
+								:pagination="{limiting: false, defaultLimit: 20}"
 								:searching="false"
-								dataStoreStateName="userUserHasProjects"
-								dataLoadingStoreStateName="userUserHasProjectsLoading"
-								dataDispatchAction="getUserUserHasProjects"
-								requestInclude="user,project"
-								:requestExtraParameters="{'userId' : userId}"
-								:columns="userUserHasProjectsColumns"
-								:rowsButtons="userUserHasProjectsRowsButtons"
+								:request="{include: 'user,project', extraParameters: {userId: userId}}"
+								:store="{stateName: 'userUserHasProjects', loadingStateName: 'userUserHasProjectsLoading', dispatchAction: 'getUserUserHasProjects'}"
+								:columns="userUserHasProjectsDataManagerColumns"
 								buttonsColumnClass="col-md-2"
-								:checkboxes="checkboxes"
-								:emptyMessage="$t('user_has_projects.no_relation_yet')"
-							>
-								<span slot="top-actions">
-									<a class="action-link pull-right" @click="userHasProjectShowCreateModal">
-										{{ $t('user_has_projects.create_new_user_has_project') }}
-									</a>
-								</span>
-							</DataTable>
+							></DataManager>
 						</div>
 						<div class="tab-pane" id="user-notifications-tab-pane">
 							TODO :
@@ -128,83 +112,23 @@
 			:fields="userEditModalFields"
 			:onSuccess="userEditModalSuccess"
 		></EditModal>
-		<CreateModal
-			id="user-has-projects-create-modal"
-			:title="$t('user_has_projects.create_new_user_has_project')"
-			postUri="/userHasProject"
-			:fields="userHasProjectCreateModalFields"
-			:onSuccess="userHasProjectCreateModalSuccess"
-		></CreateModal>
-		<EditModal
-			id="user-has-projects-edit-modal"
-			:title="userHasProjectEditModalTitle"
-			:putUri="userHasProjectEditModalPutUri"
-			:fields="userHasProjectEditModalFields"
-			:onSuccess="userHasProjectEditModalSuccess"
-		></EditModal>
-		<DeleteModal
-			id="user-has-projects-delete-modal"
-			:title="$t('user_has_projects.delete_user_has_project')"
-			:deleteUri="userHasProjectDeleteModalDeleteUri"
-			:onSuccess="userHasProjectDeleteModalSuccess"
-			:message="userHasProjectDeleteModalMessage"
-		></DeleteModal>
-		<MassDeleteModal
-			id="user-has-projects-mass-delete-modal"
-			:title="$t('user_has_projects.mass_delete_user_has_project')"
-			:rows="userHasProjectMassDeleteRows"
-			:deleteUriTemplate="'/userHasProject/<%- row.user_id %>,<%- row.project_id %>'"
-			:onSuccess="userHasProjectMassDeleteModalSuccess"
-			:messageTemplate="$t('user_has_projects.mass_delete_user_has_project_message_template')"
-		></MassDeleteModal>
 	</section>
 </template>
 
 <script>
-	import DataTable from '../includes/datatable'
-	import CreateModal from '../includes/create-modal'
+	import DataManager from '../includes/data-manager'
 	import EditModal from '../includes/edit-modal'
-	import DeleteModal from '../includes/delete-modal'
-	import MassDeleteModal from '../includes/mass-delete-modal'
 
 	export default {
 		name: 'User',
 
-		components: { DataTable, CreateModal, EditModal , DeleteModal, MassDeleteModal },
+		components: { DataManager, EditModal },
 
 		data() {
 			return {
 				user : null,
 				userEditModalUser : Object,
 				userEditModalPutUri : String,
-				createModalDefaultUserHasProject : Object,
-				editModalUserHasProject : {
-					user: {
-						data: {
-							name: '',
-						}
-					},
-					project: {
-						data: {
-							name: '',
-						}
-					}
-				},
-				userHasProjectEditModalPutUri : String,
-				userHasProjectDeleteModalDeleteUri : String,
-				deleteModalUserHasProject : {
-					user: {
-						data: {
-							name: '',
-						}
-					},
-					project: {
-						data: {
-							name: '',
-						}
-					}
-				},
-				userHasProjectMassDeleteRows : []
 			}
 		},
 
@@ -284,16 +208,150 @@
 				return fields;
 			},
 
-			userUserHasProjectsDataStoreState() {
-				return this.$store.state.userHasProjects;
+			userUserHasProjectDataManagerResource() {
+				return {
+					name: 'userHasProject',
+					routePath: 'project',
+					routeParamsMap: {
+						'projectId': 'project_id',
+					},
+					create: {
+						postUri: '/userHasProject',
+					},
+					edit: {
+						putUriTemplate: '/userHasProject/<%- resourceRow.user_id %>,<%- resourceRow.project_id %>',
+					},
+					delete: {
+						deleteUriTemplate: '/userHasProject/<%- resourceRow.user_id %>,<%- resourceRow.project_id %>',
+					},
+					createDefaultResourceRow: {}
+				}
 			},
-			userHasProjectEditModalTitle() {
-				return this.$i18n.t('user_has_projects.edit_user_has_project', {
-					'user_name' : this.editModalUserHasProject.user.data.name,
-					'project_name' : this.editModalUserHasProject.project.data.name
-				});
+
+			userUserHasProjectsDataManagerColumns() {
+
+				return [
+					{
+						name : 'project_name',
+						displayProp : 'project.data.name',
+						class : 'col-md-4',
+						orderable : false,
+						type: 'input',
+						routerLink: {
+							routeName: 'project',
+							paramsNames: {
+								'projectId': 'project_id'
+							}
+						},
+						create : {
+							fillable: false,
+						},
+						edit: {
+							fillable: false,
+						},
+					},
+					{
+						name : 'user_id',
+						type : 'select2',
+						select2 : {
+							labelProp : 'name',
+							valueProp : 'id',
+							feed : {
+								getUri : '/user',
+								params : {
+									limit: 10,
+									order_by: 'name,asc',
+								}
+							},
+						},
+						list: {
+							visible: false,
+						},
+						create : {
+							fillable: true,
+							defaultValue: this.user_id,
+						},
+						edit: {
+							fillable: false,
+						},
+					},
+					{
+						name : 'project_id',
+						type : 'select2',
+						select2 : {
+							labelProp : 'name',
+							valueProp : 'id',
+							feed : {
+								getUri : '/project',
+								params : {
+									limit: 10,
+									order_by: 'name,asc',
+								}
+							},
+						},
+						list: {
+							visible: false,
+						},
+						create : {
+							fillable: true,
+							defaultValue: '',
+						},
+						edit: {
+							fillable: false,
+						},
+					},
+					{
+						name : 'user_role_id',
+						displayProp : 'user_role_id',
+						class : 'col-md-2',
+						orderable : true,
+						type : 'select2',
+						select2 : {
+							labelProp : 'label',
+							valueProp : 'id',
+							options : [
+								{
+									id : 'Owner',
+									label : this.$i18n.t('user_has_projects.user_role.Owner'),
+								},
+								{
+									id : 'Administrator',
+									label : this.$i18n.t('user_has_projects.user_role.Administrator'),
+								}
+							]
+						},
+						transformValue : (value) => {
+							return this.$i18n.t('user_has_projects.user_role.' + value);
+						},
+						create : {
+							fillable: true,
+						},
+						edit: {
+							fillable: false,
+						},
+					},
+					{
+						name : 'created_at',
+						class : 'col-md-2',
+						orderable : true,
+						order_by_field : 'created_at',
+						transformValue : (value) => {
+							return this.momentLocalDate(value);
+						},
+
+						create: {
+							fillable: false,
+						},
+
+						edit: {
+							fillable: false,
+						},
+					},
+				];
 			},
-			userUserHasProjectsColumns() {
+
+
+			userUserHasProjectsColumnsTODO() {
 				return [
 					{
 						name : 'project.data.name',
@@ -339,7 +397,7 @@
 					}
 				];
 			},
-			userUserHasProjectsRowsButtons() {
+			userUserHasProjectsRowsButtonsTODO() {
 				return [
 					{
 						title : this.$i18n.t('projects.see_project_btn'),
@@ -373,7 +431,7 @@
 					}
 				]
 			},
-			userHasProjectCreateModalFields() {
+			userHasProjectCreateModalFieldsTODO() {
 				var fields = [];
 
 				fields.push({
@@ -421,7 +479,7 @@
 					value : this.createModalDefaultUserHasProject.user_role_id,
 					type : 'select2',
 					select2 : {
-						labelProp : 'label',
+						labelProp : 'id',
 						valueProp : 'id',
 						options : [
 							{
@@ -438,7 +496,7 @@
 
 				return fields;
 			},
-			userHasProjectEditModalFields() {
+			userHasProjectEditModalFieldsTODO() {
 				var fields = [];
 
 				fields.push({
@@ -491,48 +549,17 @@
 						options : [
 							{
 								id : 'Owner',
-								text : this.$i18n.t('user_has_projects.user_role.Owner'),
+								label : this.$i18n.t('user_has_projects.user_role.Owner'),
 							},
 							{
 								id : 'Administrator',
-								text : this.$i18n.t('user_has_projects.user_role.Administrator'),
+								label : this.$i18n.t('user_has_projects.user_role.Administrator'),
 							}
 						]
 					},
 				});
 
 				return fields;
-			},
-			userHasProjectDeleteModalMessage() {
-				return this.$i18n.t('user_has_projects.delete_user_has_project_message', {
-					'user_name' : this.deleteModalUserHasProject.user.data.name,
-					'project_name' : this.deleteModalUserHasProject.project.data.name
-				});
-			},
-			checkboxes() {
-				return {
-					'enabled' : true,
-					'massButtons' : [
-						{
-							title : this.$i18n.t('common.unselect_all_btn'),
-							class : 'btn btn-default',
-							onClick : function(rows) {
-								var l = rows.length;
-								for (var i  = 0 ; i < l ; i++) {
-									rows.shift();
-								}
-							}
-						},
-						{
-							title : this.$i18n.t('common.delete_btn'),
-							class : 'btn btn-danger',
-							onClick : (rows) => {
-								this.userHasProjectMassDeleteRows = rows;
-								this.userHasProjectShowMassDeleteModal();
-							}
-						}
-					]
-				}
 			},
 		},
 		methods: {
@@ -548,6 +575,7 @@
 					.get('/user/' + userId)
 					.then(response => {
 						this.user = response.data.data;
+						this.$emit('routeTitleDataUpdate', this.user);
 					}).catch(error => {
 						this.$root.axiosError(error);
 					});
@@ -557,12 +585,13 @@
 				this.fetchData();
 			},
 			userShowEditModal() {
+				console.log('allo');
 				this.userEditModalUser = this.user;
 				this.userEditModalPutUri = '/user/' + this.user.id;
 				$('#user-edit-modal').modal('show');
 			},
 
-			userHasProjectShowCreateModal() {
+			userHasProjectShowCreateModalTODO() {
 				this.createModalDefaultUserHasProject = {
 					user_id : this.userId,
 					project_id : '',
@@ -571,31 +600,6 @@
 
 				$('#user-has-projects-create-modal').modal('show');
 			},
-			userHasProjectShowEditModal() {
-				$('#user-has-projects-edit-modal').modal('show');
-			},
-			userHasProjectShowDeleteModal() {
-				$('#user-has-projects-delete-modal').modal('show');
-			},
-			userHasProjectShowMassDeleteModal() {
-				$('#user-has-projects-mass-delete-modal').modal('show');
-			},
-			userHasProjectCreateModalSuccess() {
-				// Refresh datatables
-				this.$refs.userUserHasProjectsDatatable.fetchData();
-			},
-			userHasProjectEditModalSuccess() {
-				// Refresh datatables
-				this.$refs.userUserHasProjectsDatatable.fetchData();
-			},
-			userHasProjectDeleteModalSuccess() {
-				// Refresh datatables
-				this.$refs.userUserHasProjectsDatatable.fetchData();
-			},
-			userHasProjectMassDeleteModalSuccess() {
-				// Refresh datatables
-				this.$refs.userUserHasProjectsDatatable.fetchData();
-			}
 		}
 	}
 </script>

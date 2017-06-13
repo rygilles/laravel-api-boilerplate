@@ -11,6 +11,8 @@ const { mix } = require('laravel-mix');
  |
  */
 
+mix.copy('resources/assets/img/languages.png','public/img/languages.png')
+
 mix.js('resources/assets/js/dashboard.js', 'public/js')
     .js('node_modules/admin-lte/plugins/pace/pace.min.js', 'public/js')
     .sass('resources/assets/sass/app.scss', 'public/css')

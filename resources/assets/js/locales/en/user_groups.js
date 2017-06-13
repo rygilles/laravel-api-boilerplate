@@ -8,6 +8,7 @@ export default {
 
     'data_manager' : {
         'main_title' : 'User Groups',
+        'empty_message': 'Nothing to display here.',
         'columns' : {
             'id' : {
                 'title' : 'Id',

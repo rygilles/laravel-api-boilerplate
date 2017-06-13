@@ -55,6 +55,7 @@
 					.get('/i18nLang/' + i18nLangId)
 					.then(response => {
 						this.i18nLang = response.data.data;
+						this.$emit('routeTitleDataUpdate', this.i18nLang);
 					}).catch(error => {
 						this.$root.axiosError(error);
 					});

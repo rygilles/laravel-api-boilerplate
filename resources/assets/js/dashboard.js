@@ -19,7 +19,8 @@ window.oauthAxios = window.axios.create({
     withCredentials : true,
     headers : {
         'X-CSRF-TOKEN': window.Laravel.csrfToken,
-        'X-REQUESTED-WITH': 'XMLHttpRequest'
+        'X-REQUESTED-WITH': 'XMLHttpRequest',
+        'Accept-Language': document.getElementsByTagName('html')[0].getAttribute('lang'),
     }
 });
 
@@ -31,7 +32,8 @@ window.apiAxios = window.axios.create({
     withCredentials : true,
     headers : {
         'X-CSRF-TOKEN': window.Laravel.csrfToken,
-        'X-REQUESTED-WITH': 'XMLHttpRequest'
+        'X-REQUESTED-WITH': 'XMLHttpRequest',
+        'Accept-Language': document.getElementsByTagName('html')[0].getAttribute('lang'),
     }
 });
 
@@ -84,6 +86,45 @@ window.moment.locale(Vue.config.lang);
 
 // Set bootstrap-datepicker locale
 $.fn.datepicker.defaults.language = Vue.config.lang;
+
+window.changeLang = function(lang) {
+    // Update document lang
+    document.getElementsByTagName('html')[0].setAttribute('lang', lang);
+
+    // Update Vue-I18n lang
+    window.Dashboard.$i18n.locale = lang;
+
+    // Update momentjs lang
+    window.moment.locale(lang);
+
+    // Update datepicket lang
+    $.fn.datepicker.defaults.language = lang;
+
+    /**
+     * Recreate OAuth Axios for token requesting
+     */
+    window.oauthAxios = window.axios.create({
+        withCredentials : true,
+        headers : {
+            'X-CSRF-TOKEN': window.Laravel.csrfToken,
+            'X-REQUESTED-WITH': 'XMLHttpRequest',
+            'Accept-Language': lang,
+        }
+    });
+
+    /**
+     * Recreate Api Axios
+     */
+    window.apiAxios = window.axios.create({
+        baseURL : 'https://emsearch.ryan.ems-dev.net/api',
+        withCredentials : true,
+        headers : {
+            'X-CSRF-TOKEN': window.Laravel.csrfToken,
+            'X-REQUESTED-WITH': 'XMLHttpRequest',
+            'Accept-Language': lang,
+        }
+    });
+};
 
 /**
  * Vue router

@@ -5,7 +5,8 @@ export default {
     'name' : 'Name',
     'project_name': 'Project Name',
     'see_project_btn' : 'See Project',
-
+    'owner_name' : 'Owner',
+    'search_engine_name' : 'Search Engine',
 
     'data_manager' : {
         'all_projects' : {
@@ -70,8 +71,14 @@ export default {
             'main_title' : 'Owned projects',
             'empty_message' : 'You have not created any project.',
             'columns' : {
+                'id' : {
+                    'title' : 'Id',
+                },
                 'name' : {
                     'title' : 'Name',
+                },
+                'search_engine_id' : {
+                    'title' : 'Search Engine',
                 },
                 'created_at' : {
                     'title' : 'Created At',
@@ -84,9 +91,29 @@ export default {
                 'create' : {
                     'show_modal_link' : 'Create New Project',
                     'title_template' : 'Create New Project',
+                    'fields' : {
+                        'name' : {
+                            'title' : 'Project Name',
+                            'help' : '5 chars min.',
+                        },
+                        'search_engine_id': {
+                            'title' : 'Search Engine',
+                            'help' : 'Only <a href="https://www.algolia.com/">Algolia</a> is supported at this moment.',
+                        },
+                    },
                 },
                 'edit' : {
-                    'title_template' : 'Edit Project "<%- resourceRow.name %>"'
+                    'title_template' : 'Edit Project "<%- resourceRow.name %>"',
+                    'fields' : {
+                        'name' : {
+                            'title' : 'Project Name',
+                            'help' : '5 chars min.',
+                        },
+                        'search_engine_id': {
+                            'title' : 'Search Engine',
+                            'help' : 'Only <a href="https://www.algolia.com/">Algolia</a> is supported at this moment.',
+                        },
+                    },
                 },
                 'delete' : {
                     'title_template' : 'Delete Project',
@@ -102,8 +129,14 @@ export default {
             'main_title' : 'Administered projects',
             'empty_message' : 'Nothing to display here.',
             'columns' : {
+                'id' : {
+                    'title' : 'Id',
+                },
                 'name' : {
                     'title' : 'Name',
+                },
+                'search_engine_id' : {
+                    'title' : 'Search Engine',
                 },
                 'created_at' : {
                     'title' : 'Created At',
@@ -118,7 +151,17 @@ export default {
                     'title_template' : 'Create New Project',
                 },
                 'edit' : {
-                    'title_template' : 'Edit Project "<%- resourceRow.name %>"'
+                    'title_template' : 'Edit Project "<%- resourceRow.name %>"',
+                    'fields' : {
+                        'name' : {
+                            'title' : 'Project Name',
+                            'help' : '5 chars min.',
+                        },
+                        'search_engine_id': {
+                            'title' : 'Search Engine',
+                            'help' : 'Only <a href="https://www.algolia.com/">Algolia</a> is supported at this moment.',
+                        },
+                    },
                 },
                 'delete' : {
                     'title_template' : 'Delete Project',

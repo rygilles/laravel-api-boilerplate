@@ -25,8 +25,24 @@
 	export default {
 		name: 'Modal',
 		props: {
-			id : String,
-			title : String,
+			id: String,
+			title: String,
+			onClose: {
+				type : Function,
+				default : function() {}
+			}
 		},
+		watch: {
+			onClose : function(value) {
+				$(document).ready(() => {
+					$('#' + this.id).on('hide.bs.modal', this.onClose);
+				})
+			}
+		},
+		created() {
+			$(document).ready(() => {
+				$('#' + this.id).on('hide.bs.modal', this.onClose);
+			})
+		}
 	}
 </script>

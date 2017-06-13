@@ -23,8 +23,8 @@ class SearchEngineController extends ApiController
 		parent::__construct();
 
 		// User group restrictions
-		$this->middleware('verifyUserGroup:Developer')->only('store,update,delete');
-		$this->middleware('verifyUserGroup:Developer,Support')->only('index,show');
+		$this->middleware('verifyUserGroup:Developer', ['only' => ['store', 'update', 'destroy']]);
+		$this->middleware('verifyUserGroup:Developer,Support', ['only' => ['index', 'show']]);
 	}
 
 	/**

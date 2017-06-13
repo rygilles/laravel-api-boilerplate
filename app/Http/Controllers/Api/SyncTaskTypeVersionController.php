@@ -23,8 +23,8 @@ class SyncTaskTypeVersionController extends ApiController
 		parent::__construct();
 
 		// User group restrictions
-		$this->middleware('verifyUserGroup:Developer')->only('destroy');
-		$this->middleware('verifyUserGroup:Developer,Support')->only('store,update,destroy');
+		$this->middleware('verifyUserGroup:Developer', ['only' => ['destroy']]);
+		$this->middleware('verifyUserGroup:Developer,Support', ['only' => ['store', 'update']]);;
 	}
 
 	/**

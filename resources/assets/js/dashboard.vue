@@ -15,13 +15,13 @@
 						<span v-if="('meta' in $route) && ('breadcrumbIconClass' in $route.meta)">
 							<i :class="['fa-lg', $route.meta.breadcrumbIconClass]"></i>&nbsp;
 						</span>
-						{{ $t('routes.' + $route.name + '.title') }}
-						<small>{{ $t('routes.' + $route.name + '.description') }}</small>
+						<span v-html="routeTitle"></span>
+						<small v-html="$t('routes.' + $route.name + '.description')"></small>
 					</h1>
 
-					<breadcrumb :route="$route"></breadcrumb>
+					<breadcrumb :route="$route" :endRouteTitleData="routeTitleData"></breadcrumb>
 				</section>
-				<router-view :laravel="laravel" :me="me"></router-view>
+				<router-view :laravel="laravel" :me="me" v-on:routeTitleDataUpdate="updateRouteTitleData"></router-view>
 			</div>
 			<!-- /.content-wrapper -->
 
@@ -55,6 +55,12 @@
 			this.fetchData();
 		},
 
+		data() {
+			return {
+				routeTitleData: {}
+			}
+		},
+
 		computed: {
 
 			laravel() {
@@ -63,11 +69,30 @@
 
 			me() {
 				return this.$store.getters.me;
+			},
+
+			routeTitle() {
+				// Use route title template if available
+				if (this.$i18n._exist(this.$i18n.messages[this.$i18n.locale], 'routes.' + this.$route.name + '.title_template')) {
+					// Compute the template with routeTitleData (catched through "routeTitleDataUpdate" event on child <router-view>)
+					var compiledTitleTemplate = _.template(this.$i18n.t('routes.' + this.$route.name + '.title_template'));
+					return compiledTitleTemplate({'data' : this.routeTitleData});
+				} else if (this.$i18n._exist(this.$i18n.messages[this.$i18n.locale], 'routes.' + this.$route.name + '.title')) {
+					// use title insteed if available
+					return this.$i18n.t('routes.' + this.$route.name + '.title');
+				} else {
+					// use the translation path insteed
+					return 'routes.' + this.$route.name + '.title_template | routes.' + this.$route.name + '.title';
+				}
 			}
 
 		},
 
 		methods: {
+
+			updateRouteTitleData(data) {
+				this.routeTitleData = data;
+			},
 
 			fetchData() {
 				this.loadMe();
