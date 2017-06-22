@@ -6,6 +6,22 @@
 	}
 </style>
 
+<style>
+	tr td.selectable-td span {
+		outline: none;
+		text-decoration: none;
+		color: #72afd2;
+		cursor: pointer;
+	}
+	tr td.selectable-td span:hover {
+		color: #23527c;
+		text-decoration: none;
+	}
+	.selected-row {
+		background-color: #ddd !important;
+	}
+</style>
+
 <template>
 	<!-- Main content -->
 	<section class="content">
@@ -69,7 +85,12 @@
 						</li>
 						<li v-if="(['Developer', 'Support'].indexOf(this.$store.getters.me.user_group_id) != -1)">
 							<a href="#project-sync-items-tab-pane" data-toggle="tab">
-								<i class="fa fa-external-link fa-fw"></i> <span v-html="'Sync Items (TODO)'"></span>
+								<i class="fa fa-external-link fa-fw"></i> <span v-html="$t('sync_items.sync_items')"></span>
+							</a>
+						</li>
+						<li v-if="(['Developer', 'Support'].indexOf(this.$store.getters.me.user_group_id) != -1)">
+							<a href="#project-sync-tasks-tab-pane" data-toggle="tab">
+								<i class="fa fa-tasks fa-fw"></i> <span v-html="$t('sync_tasks.sync_tasks')"></span>
 							</a>
 						</li>
 					</ul>
@@ -95,7 +116,66 @@
 							></DataManager>
 						</div>
 						<div v-if="(['Developer', 'Support'].indexOf(this.$store.getters.me.user_group_id) != -1)" class="tab-pane" id="project-sync-items-tab-pane">
-							TODO
+							<DataManager
+								:rights="{
+									allowSee: false,
+									allowCreate: false,
+									allowEdit: false,
+									allowDelete : false,
+								}"
+								i18nPath="sync_items.data_manager.project_sync_items"
+								:resource="projectSyncItemsDataManagerResource"
+								:defaultOrderBy="{column: 'created_at', direction: 'asc'}"
+								:pagination="{limiting: true, defaultLimit: 20, limits: [10, 20, 30, 40, 50]}"
+								:searching="true"
+								:request="{extraParameters: {projectId: projectId}}"
+								:store="{stateName: 'projectSyncItems', loadingStateName: 'projectSyncItemsLoading', dispatchAction: 'getProjectSyncItems'}"
+								:columns="projectSyncItemsColumns"
+								:checkboxes="{enabled: false}"
+								buttonsColumnClass="col-md-2"
+							></DataManager>
+						</div>
+						<div v-if="(['Developer', 'Support'].indexOf(this.$store.getters.me.user_group_id) != -1)" class="tab-pane" id="project-sync-tasks-tab-pane">
+							<DataManager
+								:rights="{
+									allowSee: false,
+									allowCreate: false,
+									allowEdit: false,
+									allowDelete : false,
+								}"
+								i18nPath="sync_tasks.data_manager.project_root_sync_tasks"
+								:resource="projectRootSyncTasksDataManagerResource"
+								:defaultOrderBy="{column: 'created_at', direction: 'desc'}"
+								:pagination="{limiting: true, defaultLimit: 20, limits: [10, 20, 30, 40, 50]}"
+								:searching="true"
+								:request="{include: 'createdByUser', extraParameters: {projectId: projectId}}"
+								:store="{stateName: 'projectRootSyncTasks', loadingStateName: 'projectRootSyncTasksLoading', dispatchAction: 'getProjectRootSyncTasks'}"
+								:columns="projectRootSyncTasksColumns"
+								:checkboxes="{enabled: false}"
+								:rowClasses="projectRootSyncTasksDataManagerRowsClasses"
+								:rowsButtons="projectRootSyncTasksRowsButtons"
+								buttonsColumnClass="col-md-1"
+							></DataManager>
+							<DataManager
+								v-if="selectedProjectSyncTask != null"
+								:rights="{
+									allowSee: false,
+									allowCreate: false,
+									allowEdit: false,
+									allowDelete : false,
+								}"
+								i18nPath="sync_tasks.data_manager.project_children_sync_tasks"
+								:resource="projectChildrenSyncTasksDataManagerResource"
+								:defaultOrderBy="{column: 'created_at', direction: 'desc'}"
+								:pagination="{limiting: true, defaultLimit: 20, limits: [10, 20, 30, 40, 50]}"
+								:searching="true"
+								:request="{include: 'createdByUser', extraParameters: {syncTaskId: selectedProjectSyncTask.id}}"
+								:store="{stateName: 'projectChildrenSyncTasks', loadingStateName: 'projectChildrenSyncTasksLoading', dispatchAction: 'getProjectChildrenSyncTasks'}"
+								:columns="projectChildrenSyncTasksColumns"
+								:checkboxes="{enabled: false}"
+								:rowsButtons="projectChildrenSyncTasksRowsButtons"
+								buttonsColumnClass="col-md-1"
+							></DataManager>
 						</div>
 					</div>
 				</div>
@@ -111,23 +191,81 @@
 			:fields="projectEditModalFields"
 			:onSuccess="projectEditModalSuccess"
 		></EditModal>
+		<Modal
+			v-if="viewModalProjectRootSyncTask != null"
+			:title="projectRootSyncTasksViewLogsModalTitle"
+			id="project-root-sync-task-view-logs-modal"
+			size="large"
+		>
+			<DataManager
+				:hideHeader="true"
+				:rights="{
+					allowSee: false,
+					allowCreate: false,
+					allowEdit: false,
+					allowDelete : false,
+					allowMassDelete : false,
+				}"
+				i18nPath="sync_task_logs.data_manager.sync_tasks_logs"
+				:resource="projectSyncTasksViewLogsDataManagerResource"
+				:defaultOrderBy="{column: 'created_at', direction: 'desc'}"
+				:pagination="{limiting: true, defaultLimit: 10, limits: [5, 10, 20]}"
+				:searching="true"
+				:request="{extraParameters: {syncTaskId: viewModalProjectRootSyncTask.id}}"
+				:store="{stateName: 'projectRootSyncTaskSyncTaskLogs', loadingStateName: 'projectRootSyncTaskSyncTaskLogsLoading', dispatchAction: 'getProjectRootSyncTaskSyncTaskLogs'}"
+				:columns="projectRootSyncTaskSyncTaskLogsColumns"
+				:checkboxes="{enabled: false}"
+			></DataManager>
+		</Modal>
+		<Modal
+			v-if="viewModalProjectChildrenSyncTask != null"
+			:title="projectChildrenSyncTasksViewLogsModalTitle"
+			id="project-children-sync-task-view-logs-modal"
+			size="large"
+		>
+			<DataManager
+				:hideHeader="true"
+				:rights="{
+					allowSee: false,
+					allowCreate: false,
+					allowEdit: false,
+					allowDelete : false,
+					allowMassDelete : false,
+				}"
+				i18nPath="sync_task_logs.data_manager.sync_tasks_logs"
+				:resource="projectSyncTasksViewLogsDataManagerResource"
+				:defaultOrderBy="{column: 'created_at', direction: 'desc'}"
+				:pagination="{limiting: true, defaultLimit: 10, limits: [5, 10, 20]}"
+				:searching="true"
+				:request="{extraParameters: {syncTaskId: viewModalProjectChildrenSyncTask.id}}"
+				:store="{stateName: 'projectChildrenSyncTaskSyncTaskLogs', loadingStateName: 'projectChildrenSyncTaskSyncTaskLogsLoading', dispatchAction: 'getProjectChildrenSyncTaskSyncTaskLogs'}"
+				:columns="projectChildrenSyncTaskSyncTaskLogsColumns"
+				:checkboxes="{enabled: false}"
+			></DataManager>
+		</Modal>
 	</section>
 </template>
 
 <script>
 	import DataManager from '../includes/data-manager'
 	import EditModal from '../includes/edit-modal'
+	import Modal from '../includes/modal'
 
 	export default {
 		name: 'Project',
 
-		components: { DataManager, EditModal , },
+		components: { DataManager, EditModal, Modal },
 
 		data() {
 			return {
 				project : null,
 				projectEditModalProject : Object,
 				projectEditModalPutUri : String,
+
+				viewModalProjectRootSyncTask : null,
+				selectedProjectSyncTask : null,
+
+				viewModalProjectChildrenSyncTask : null,
 			}
 		},
 
@@ -338,6 +476,360 @@
 					},
 				];
 			},
+
+			projectSyncItemsDataManagerResource() {
+				return {
+					name: 'syncItem',
+				}
+			},
+
+			projectSyncItemsColumns() {
+				return [
+					{
+						name : 'item_id',
+						class : '',
+						orderable : true,
+						order_by_field: 'item_id',
+					},
+					{
+						name : 'item_signature',
+						class : '',
+						orderable : true,
+						order_by_field: 'item_signature'
+					},
+					{
+						name : 'created_at',
+						class : 'col-md-2',
+						orderable : true,
+						order_by_field : 'created_at',
+						transformValue : (value) => {
+							return this.momentLocalDate(value);
+						},
+					},
+					{
+						name : 'updated_at',
+						class : 'col-md-2',
+						orderable : true,
+						order_by_field : 'updated_at',
+						transformValue : (value) => {
+							return this.momentLocalDate(value);
+						},
+					},
+				];
+			},
+
+			projectRootSyncTasksDataManagerResource() {
+				return {
+					name: 'syncTask',
+				}
+			},
+
+			projectRootSyncTasksColumns() {
+				return [
+					{
+						name : 'id',
+						class : 'selectable-td',
+						orderable : true,
+						order_by_field: 'id',
+						onClick: (dataRow, column) => {
+							if ((this.selectedProjectSyncTask != null) && (this.selectedProjectSyncTask.id == dataRow.id)) {
+								this.selectedProjectSyncTask = null;
+							} else {
+								this.selectedProjectSyncTask = dataRow;
+							}
+						},
+					},
+					{
+						name : 'sync_task_type_id',
+						class : '',
+						orderable : true,
+						order_by_field: 'sync_task_type_id',
+						routerLink: {
+							routeName: 'sync-task-type',
+							paramsNames: {
+								'syncTaskTypeId': 'sync_task_type_id'
+							}
+						}
+					},
+					{
+						name : 'sync_task_status_id',
+						class : '',
+						orderable : true,
+						order_by_field: 'sync_task_status_id',
+						routerLink: {
+							routeName: 'sync-task-status',
+							paramsNames: {
+								'syncTaskStatusId': 'sync_task_status_id'
+							}
+						}
+					},
+					{
+						name : 'created_by_user_id',
+						displayProp : 'createdByUser.data.name',
+						class : '',
+						orderable : false,
+						routerLink: {
+							routeName: 'user',
+							paramsNames: {
+								'userId': 'created_by_user_id'
+							}
+						}
+					},
+					{
+						name : 'created_at',
+						class : 'col-md-2',
+						orderable : true,
+						order_by_field : 'created_at',
+						transformValue : (value) => {
+							return this.momentLocalDate(value);
+						},
+					},
+					{
+						name : 'updated_at',
+						class : 'col-md-2',
+						orderable : true,
+						order_by_field : 'updated_at',
+						transformValue : (value) => {
+							return this.momentLocalDate(value);
+						},
+					},
+				];
+			},
+
+			projectChildrenSyncTasksDataManagerResource() {
+				return {
+					name: 'syncTask',
+				}
+			},
+
+			projectChildrenSyncTasksColumns() {
+				return [
+					{
+						name : 'id',
+						class : '',
+						orderable : true,
+						order_by_field: 'id',
+					},
+					{
+						name : 'sync_task_type_id',
+						class : '',
+						orderable : true,
+						order_by_field: 'sync_task_type_id',
+						routerLink: {
+							routeName: 'sync-task-type',
+							paramsNames: {
+								'syncTaskTypeId': 'sync_task_type_id'
+							}
+						}
+					},
+					{
+						name : 'sync_task_status_id',
+						class : '',
+						orderable : true,
+						order_by_field: 'sync_task_status_id',
+						routerLink: {
+							routeName: 'sync-task-status',
+							paramsNames: {
+								'syncTaskStatusId': 'sync_task_status_id'
+							}
+						}
+					},
+					{
+						name : 'created_by_user_id',
+						displayProp : 'createdByUser.data.name',
+						class : '',
+						orderable : false,
+						routerLink: {
+							routeName: 'user',
+							paramsNames: {
+								'userId': 'created_by_user_id'
+							}
+						},
+					},
+					{
+						name : 'created_at',
+						class : 'col-md-2',
+						orderable : true,
+						order_by_field : 'created_at',
+						transformValue : (value) => {
+							return this.momentLocalDate(value);
+						},
+					},
+					{
+						name : 'updated_at',
+						class : 'col-md-2',
+						orderable : true,
+						order_by_field : 'updated_at',
+						transformValue : (value) => {
+							return this.momentLocalDate(value);
+						},
+					},
+				];
+			},
+
+			projectRootSyncTasksRowsButtons() {
+				var buttons = [];
+
+				buttons.push(
+					{
+						title : this.$t('sync_tasks.view_logs_btn'),
+						class : 'btn btn-default',
+						onClick : (rowResource) => {
+							this.viewModalProjectRootSyncTask = rowResource;
+							$(document).ready(() => {
+								$('#project-root-sync-task-view-logs-modal').modal('show');
+							})
+						}
+					}
+				);
+
+				return buttons;
+			},
+
+			projectChildrenSyncTasksRowsButtons() {
+				var buttons = [];
+
+				buttons.push(
+					{
+						title : this.$t('sync_tasks.view_logs_btn'),
+						class : 'btn btn-default',
+						onClick : (rowResource) => {
+							this.viewModalProjectChildrenSyncTask = rowResource;
+							$(document).ready(() => {
+								$('#project-children-sync-task-view-logs-modal').modal('show');
+							})
+						}
+					}
+				);
+
+				return buttons;
+			},
+
+			projectRootSyncTasksViewLogsModalTitle() {
+				var compiledTitleTemplate = _.template(this.$t('sync_tasks.view_logs_modal.title_template'));
+				return compiledTitleTemplate({'resourceRow' : this.viewModalProjectRootSyncTask});
+			},
+
+			projectChildrenSyncTasksViewLogsModalTitle() {
+				var compiledTitleTemplate = _.template(this.$t('sync_tasks.view_logs_modal.title_template'));
+				return compiledTitleTemplate({'resourceRow' : this.viewModalProjectChildrenSyncTask});
+			},
+
+			projectSyncTasksViewLogsDataManagerResource() {
+				return {
+					name: 'syncTaskLog',
+				}
+			},
+
+			projectRootSyncTaskSyncTaskLogsColumns() {
+				return [
+					{
+						name : 'id',
+						class : '',
+						orderable : true,
+						order_by_field: 'id',
+					},
+					{
+						name : 'sync_task_status_id',
+						class : '',
+						orderable : true,
+						order_by_field: 'sync_task_status_id',
+						routerLink: {
+							routeName: 'sync-task-status',
+							paramsNames: {
+								'syncTaskStatusId': 'sync_task_status_id'
+							}
+						}
+					},
+					{
+						name : 'entry',
+						orderable : true,
+						order_by_field : 'entry',
+					},
+					{
+						name : 'public',
+						class : 'col-md-1',
+						orderable : true,
+						order_by_field : 'public',
+						transformValue : (value) => {
+							return value ? this.$t('sync_task_logs.visibility.public') : this.$t('sync_task_logs.visibility.private');
+						},
+					},
+					{
+						name : 'created_at',
+						class : 'col-md-2',
+						orderable : true,
+						order_by_field : 'created_at',
+						transformValue : (value) => {
+							return this.momentLocalDate(value);
+						},
+					},
+					{
+						name : 'updated_at',
+						class : 'col-md-2',
+						orderable : true,
+						order_by_field : 'updated_at',
+						transformValue : (value) => {
+							return this.momentLocalDate(value);
+						},
+					},
+				];
+			},
+
+			projectChildrenSyncTaskSyncTaskLogsColumns() {
+				return [
+					{
+						name : 'id',
+						class : '',
+						orderable : true,
+						order_by_field: 'id',
+					},
+					{
+						name : 'sync_task_status_id',
+						class : '',
+						orderable : true,
+						order_by_field: 'sync_task_status_id',
+						routerLink: {
+							routeName: 'sync-task-status',
+							paramsNames: {
+								'syncTaskStatusId': 'sync_task_status_id'
+							}
+						}
+					},
+					{
+						name : 'entry',
+						orderable : true,
+						order_by_field : 'entry',
+					},
+					{
+						name : 'public',
+						class : 'col-md-1',
+						orderable : true,
+						order_by_field : 'public',
+						transformValue : (value) => {
+							return value ? this.$t('sync_task_logs.visibility.public') : this.$t('sync_task_logs.visibility.private');
+						},
+					},
+					{
+						name : 'created_at',
+						class : 'col-md-2',
+						orderable : true,
+						order_by_field : 'created_at',
+						transformValue : (value) => {
+							return this.momentLocalDate(value);
+						},
+					},
+					{
+						name : 'updated_at',
+						class : 'col-md-2',
+						orderable : true,
+						order_by_field : 'updated_at',
+						transformValue : (value) => {
+							return this.momentLocalDate(value);
+						},
+					},
+				];
+			},
 		},
 		methods: {
 			fetchData() {
@@ -371,6 +863,14 @@
 				this.projectEditModalProject = this.project;
 				this.projectEditModalPutUri = '/project/' + this.project.id;
 				$('#project-edit-modal').modal('show');
+			},
+
+			projectRootSyncTasksDataManagerRowsClasses(dataRow) {
+				if ((this.selectedProjectSyncTask != null) && (this.selectedProjectSyncTask.id == dataRow.id)) {
+					return ['selected-row'];
+				} else {
+					return[];
+				}
 			},
 		}
 	}

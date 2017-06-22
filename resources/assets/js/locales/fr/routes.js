@@ -65,4 +65,34 @@ export default {
         'title_template' : 'Utilisateur "<%- data.name %>"',
         'description': '',
     },
+    'sync-task-statuses': {
+        'title': 'Status de synchronisation',
+        'description': '',
+    },
+    'sync-task-status': {
+        'title': 'Status de synchronisation',
+        'title_template' : 'Status de synchronisation "<%- data.id %>"',
+        'description': '',
+    },
+    'sync-task-types': {
+        'title': 'Types de synchronisation',
+        'description': '',
+    },
+    'sync-task-type': {
+        'title': 'Type de synchronisation',
+        'title_template' : 'Type de synchronisation "<%- data.id %>"',
+        'description': '',
+    },
+    'sync-tasks-folder': {
+        'title': 'Tâches de sync.',
+    },
+    'sync-tasks': {
+        'title': 'Tâches de synchronisation',
+        'description': '',
+    },
+    'sync-task': {
+        'title': 'Tâche de synchronisation',
+        'title_template' : 'Tâche de synchronisation "<%- data.id %>"',
+        'description': '',
+    },
 }

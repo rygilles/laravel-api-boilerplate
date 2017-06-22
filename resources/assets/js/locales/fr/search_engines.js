@@ -48,7 +48,7 @@ export default {
                 },
                 'mass_delete': {
                     'title_template': 'Supprimer une liste de moteurs de recherche',
-                    'message_template': 'Êtes-vous sûr de vouloir supprimer ces items ?<br /><strong><% _.forEach(resourceRows, function(row) {%><%- row.name %><br /><% }); %></strong><br /><strong>Attention : Tous les projets associés seront supprimés également !!!</strong>',
+                    'message_template': 'Êtes-vous sûr de vouloir supprimer ces items ?<br /><br /><ul><% _.forEach(resourceRows, function(row) {%><li><strong><%- row.name %><br /></strong></li><% }); %></ul><br /><strong>Attention : Tous les projets associés seront supprimés également !!!</strong>',
                 }
             }
         },

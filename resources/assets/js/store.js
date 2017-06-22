@@ -148,6 +148,12 @@ var store = new Vuex.Store({
         },
         projectAdminUserHasProjectsLoading: true,
 
+        projectSyncItems: {
+            data: [],
+            meta: {}
+        },
+        projectSyncItemsLoading: true,
+
         userGroups: {
             data: [],
             meta: {}
@@ -159,6 +165,72 @@ var store = new Vuex.Store({
             meta: {}
         },
         userGroupUsersLoading: true,
+
+        syncTaskStatuses: {
+            data: [],
+            meta: {}
+        },
+        syncTaskStatusesLoading: true,
+
+        syncTaskStatusSyncTaskStatusVersions: {
+            data: [],
+            meta: {}
+        },
+        syncTaskStatusSyncTaskStatusVersionsLoading: true,
+
+        syncTaskTypes: {
+            data: [],
+            meta: {}
+        },
+        syncTaskTypesLoading: true,
+
+        syncTaskTypeSyncTaskTypeVersions: {
+            data: [],
+            meta: {}
+        },
+        syncTaskTypeSyncTaskTypeVersionsLoading: true,
+
+        projectRootSyncTasks: {
+            data: [],
+            meta: {}
+        },
+        projectRootSyncTasksLoading: true,
+
+        projectChildrenSyncTasks: {
+            data: [],
+            meta: {}
+        },
+        projectChildrenSyncTasksLoading: true,
+
+        projectRootSyncTaskSyncTaskLogs: {
+            data: [],
+            meta: {}
+        },
+        projectRootSyncTaskSyncTaskLogsLoading: true,
+
+        projectChildrenSyncTaskSyncTaskLogs: {
+            data: [],
+            meta: {}
+        },
+        projectChildrenSyncTaskSyncTaskLogsLoading: true,
+
+        rootSyncTasks: {
+            data: [],
+            meta: {}
+        },
+        rootSyncTasksLoading: true,
+
+        syncTaskChildrenSyncTasks: {
+            data: [],
+            meta: {}
+        },
+        syncTaskChildrenSyncTasksLoading: true,
+
+        syncTaskSyncTaskLogs: {
+            data: [],
+            meta: {}
+        },
+        syncTaskSyncTaskLogsLoading: true,
     },
     getters: {
         laravel(state) {
@@ -261,6 +333,13 @@ var store = new Vuex.Store({
             return state.projectAdminUserHasProjectsLoading;
         },
 
+        projectSyncItems(state) {
+            return state.projectSyncItems;
+        },
+        projectSyncItemsLoading(state) {
+            return state.projectSyncItemsLoading;
+        },
+
         userGroups(state) {
             return state.userGroups;
         },
@@ -273,6 +352,83 @@ var store = new Vuex.Store({
         },
         userGroupUsersLoading(state) {
             return state.userGroupUsersLoading;
+        },
+
+        syncTaskStatuses(state) {
+            return state.syncTaskStatuses;
+        },
+        syncTaskStatusesLoading(state) {
+            return state.syncTaskStatusesLoading;
+        },
+
+        syncTaskStatusSyncTaskStatusVersions(state) {
+            return state.syncTaskStatusSyncTaskStatusVersions;
+        },
+        syncTaskStatusSyncTaskStatusVersionsLoading(state) {
+            return state.syncTaskStatusSyncTaskStatusVersionsLoading;
+        },
+
+        syncTaskTypes(state) {
+            return state.syncTaskTypes;
+        },
+        syncTaskTypesLoading(state) {
+            return state.syncTaskTypesLoading;
+        },
+
+        syncTaskTypeSyncTaskTypeVersions(state) {
+            return state.syncTaskTypeSyncTaskTypeVersions;
+        },
+        syncTaskTypeSyncTaskTypeVersionsLoading(state) {
+            return state.syncTaskTypeSyncTaskTypeVersionsLoading;
+        },
+
+        projectRootSyncTasks(state) {
+            return state.projectRootSyncTasks;
+        },
+        projectRootSyncTasksLoading(state) {
+            return state.projectRootSyncTasksLoading;
+        },
+
+        projectChildrenSyncTasks(state) {
+            return state.projectChildrenSyncTasks;
+        },
+        projectChildrenSyncTasksLoading(state) {
+            return state.projectChildrenSyncTasksLoading;
+        },
+
+        projectRootSyncTaskSyncTaskLogs(state) {
+            return state.projectRootSyncTaskSyncTaskLogs
+        },
+        projectRootSyncTaskSyncTaskLogsLoading(state) {
+            return state.projectRootSyncTaskSyncTaskLogsLoading
+        },
+
+        projectChildrenSyncTaskSyncTaskLogs(state) {
+            return state.projectChildrenSyncTaskSyncTaskLogs
+        },
+        projectChildrenSyncTaskSyncTaskLogsLoading(state) {
+            return state.projectChildrenSyncTaskSyncTaskLogsLoading
+        },
+
+        rootSyncTasks(state) {
+            return state.rootSyncTasks;
+        },
+        rootSyncTaskLoading(state) {
+            return state.rootSyncTasksLoading;
+        },
+
+        syncTaskChildrenSyncTasks(state) {
+            return state.syncTaskChildrenSyncTasks;
+        },
+        syncTaskChildrenSyncTasksLoading(state) {
+            return state.syncTaskChildrenSyncTasksLoading;
+        },
+
+        syncTaskSyncTaskLogs(state) {
+            return state.syncTaskSyncTaskLogs;
+        },
+        syncTaskSyncTaskLogsLoading(state) {
+            return state.syncTaskChildrenSyncTasksLoading;
         },
     },
     mutations: {
@@ -376,6 +532,13 @@ var store = new Vuex.Store({
             state.projectAdminUserHasProjectsLoading = loading;
         },
 
+        setProjectSyncItems(state, syncItems) {
+            state.projectSyncItems = syncItems;
+        },
+        setProjectSyncItemsLoading(state, loading) {
+            state.projectSyncItemsLoading = loading;
+        },
+
         setUserGroups(state, userGroups) {
             state.userGroups = userGroups;
         },
@@ -388,6 +551,83 @@ var store = new Vuex.Store({
         },
         setUserGroupUsersLoading(state, loading) {
             state.userGroupUsersLoading = loading;
+        },
+
+        setSyncTaskStatuses(state, syncTaskStatuses) {
+            state.syncTaskStatuses = syncTaskStatuses;
+        },
+        setSyncTaskStatusesLoading(state, loading) {
+            state.syncTaskStatusesLoading = loading;
+        },
+
+        setSyncTaskStatusSyncTaskStatusVersions(state, syncTaskStatusVersions) {
+            state.syncTaskStatusSyncTaskStatusVersions = syncTaskStatusVersions;
+        },
+        setSyncTaskStatusSyncTaskStatusVersionsLoading(state, loading) {
+            state.syncTaskStatusSyncTaskStatusVersionsLoading = loading;
+        },
+
+        setSyncTaskTypes(state, syncTaskTypes) {
+            state.syncTaskTypes = syncTaskTypes;
+        },
+        setSyncTaskTypesLoading(state, loading) {
+            state.syncTaskTypesLoading = loading;
+        },
+
+        setSyncTaskTypeSyncTaskTypeVersions(state, syncTaskTypeVersions) {
+            state.syncTaskStatusSyncTaskStatusVersions = syncTaskTypeVersions;
+        },
+        setSyncTaskTypeSyncTaskTypeVersionsLoading(state, loading) {
+            state.syncTaskTypeSyncTaskTypeVersionsLoading = loading;
+        },
+
+        setProjectRootSyncTasks(state, syncTasks) {
+            state.projectRootSyncTasks = syncTasks;
+        },
+        setProjectRootSyncTasksLoading(state, loading) {
+            state.projectRootSyncTasksLoading = loading;
+        },
+
+        setProjectChildrenSyncTasks(state, syncTasks) {
+            state.projectChildrenSyncTasks = syncTasks;
+        },
+        setProjectChildrenSyncTasksLoading(state, loading) {
+            state.projectChildrenSyncTasksLoading = loading;
+        },
+
+        setProjectRootSyncTaskSyncTaskLogs(state, syncTaskLogs) {
+            state.projectRootSyncTaskSyncTaskLogs = syncTaskLogs;
+        },
+        setProjectRootSyncTaskSyncTaskLogsLoading(state, loading) {
+            state.projectRootSyncTaskSyncTaskLogsLoading = loading;
+        },
+
+        setProjectChildrenSyncTaskSyncTaskLogs(state, syncTaskLogs) {
+            state.projectChildrenSyncTaskSyncTaskLogs = syncTaskLogs;
+        },
+        setProjectChildrenSyncTaskSyncTaskLogsLoading(state, loading) {
+            state.projectChildrenSyncTaskSyncTaskLogsLoading = loading;
+        },
+
+        setRootSyncTasks(state, syncTasks) {
+            state.rootSyncTasks = syncTasks;
+        },
+        setRootSyncTasksLoading(state, loading) {
+            state.rootSyncTasksLoading = loading;
+        },
+
+        setSyncTaskChildrenSyncTasks(state, syncTasks) {
+            state.syncTaskChildrenSyncTasks = syncTasks;
+        },
+        setSyncTaskChildrenSyncTasksLoading(state, loading) {
+            state.syncTaskChildrenSyncTasksLoading = loading;
+        },
+
+        setSyncTaskSyncTaskLogs(state, syncTaskLogs) {
+            state.syncTaskSyncTaskLogs = syncTaskLogs;
+        },
+        setSyncTaskSyncTaskLoadingsLoading(state, loading) {
+            state.syncTaskSyncTaskLogsLoading = loading;
         },
     },
     actions: {
@@ -435,12 +675,60 @@ var store = new Vuex.Store({
             resourceLoad(state, '/project/' + options.projectId + '/userHasProject', options, 'projectAdminUserHasProjects', {user_role_id: 'Administrator'});
         },
 
+        getProjectSyncItems(state, options) {
+            resourceLoad(state, '/project/' + options.projectId + '/syncItem', options, 'projectSyncItems');
+        },
+
         getUserGroups(state, options) {
             resourceLoad(state, '/userGroup', options, 'userGroups');
         },
 
         getUserGroupUsers(state, options) {
             resourceLoad(state, '/userGroup/' + options.userGroupId + '/user', options, 'userGroupUsers');
+        },
+
+        getSyncTaskStatuses(state, options) {
+            resourceLoad(state, '/syncTaskStatus/', options, 'syncTaskStatuses');
+        },
+
+        getSyncTaskStatusSyncTaskStatusVersions(state, options) {
+            resourceLoad(state, '/syncTaskStatus/' + options.syncTaskStatusId + '/version', options, 'syncTaskStatusSyncTaskStatusVersions');
+        },
+
+        getSyncTaskTypes(state, options) {
+            resourceLoad(state, '/syncTaskType/', options, 'syncTaskTypes');
+        },
+
+        getSyncTaskTypeSyncTaskTypeVersions(state, options) {
+            resourceLoad(state, '/syncTaskType/' + options.syncTaskTypeId + '/version', options, 'syncTaskTypeSyncTaskTypeVersions');
+        },
+
+        getProjectRootSyncTasks(state, options) {
+            resourceLoad(state, '/project/' + options.projectId + '/syncTask', options, 'projectRootSyncTasks', { root: 1 });
+        },
+
+        getProjectChildrenSyncTasks(state, options) {
+            resourceLoad(state, '/syncTask/' + options.syncTaskId + '/children', options, 'projectChildrenSyncTasks');
+        },
+
+        getProjectRootSyncTaskSyncTaskLogs(state, options) {
+            resourceLoad(state, '/syncTask/' + options.syncTaskId + '/syncTaskLog', options, 'projectRootSyncTaskSyncTaskLogs');
+        },
+
+        getProjectChildrenSyncTaskSyncTaskLogs(state, options) {
+            resourceLoad(state, '/syncTask/' + options.syncTaskId + '/syncTaskLog', options, 'projectChildrenSyncTaskSyncTaskLogs');
+        },
+
+        getRootSyncTasks(state, options) {
+            resourceLoad(state, '/syncTask', options, 'rootSyncTasks', { root: 1 });
+        },
+
+        getSyncTaskChildrenSyncTasks(state, options) {
+            resourceLoad(state, '/syncTask/' + options.syncTaskId + '/children', options, 'syncTaskChildrenSyncTasks');
+        },
+
+        getSyncTaskSyncTaskLogs(state, options) {
+            resourceLoad(state, '/syncTask/' + options.syncTaskId + '/syncTaskLog', options, 'syncTaskSyncTaskLogs');
         },
     }
 });

@@ -6,6 +6,7 @@ use App\Http\Requests\StoreSyncTaskTypeVersionRequest;
 use App\Http\Requests\UpdateSyncTaskTypeVersionRequest;
 use App\Http\Transformers\Api\SyncTaskTypeVersionTransformer;
 use App\Models\SyncTaskTypeVersion;
+use Illuminate\Support\Facades\Validator;
 use Dingo\Api\Exception\ValidationHttpException;
 
 /**
@@ -99,11 +100,20 @@ class SyncTaskTypeVersionController extends ApiController
 	 */
 	public function update(UpdateSyncTaskTypeVersionRequest $request, $syncTaskTypeId, $i18nLangId)
 	{
-		$syncTaskTypeVersion = SyncTaskTypeVersion::where('sync_task_type_id', $syncTaskTypeId)->where('i18n_lang_id', $i18nLangId)->get();
+		$syncTaskTypeVersion = SyncTaskTypeVersion::where('sync_task_type_id', $syncTaskTypeId)->where('i18n_lang_id', $i18nLangId)->first();
 
 		if (!$syncTaskTypeVersion)
 			return $this->response->errorNotFound();
 
+		// 'unique_with...' in controller method to manage "ignore" parameter.*
+		$validator = Validator::make($request->all(), [
+			'sync_task_type_id' => 'unique_with:sync_task_type_v,i18n_lang_id,ignore:' . $i18nLangId . ' = i18n_lang_id'
+		]);
+
+		if ($validator->fails()) {
+			throw new ValidationHttpException($validator->errors());
+		}
+		
 		$syncTaskTypeVersion->fill($request->all(), $request->getRealMethod());
 		$syncTaskTypeVersion->save();
 

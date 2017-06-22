@@ -15,20 +15,7 @@ export default {
     'user_password': 'Mot de passe',
     'user_password_help': 'Au moins 8 caractères.<br /> Remplissez ce champ pour modifier le mot de passe.',
 
-    'create_new_user': 'Créer un nouvel utilisateur',
     'edit_user' : 'Modifier l\'utilisateur "{name}"',
-
-    'delete_user' : 'Supprimer un utilisateur',
-    'delete_user_message' : 'Êtes-vous sûr de vouloir supprimer <strong>{name}</strong> ?',
-
-    'mass_delete_user' : 'Supprimer une liste d\'utilisateurs',
-    'mass_delete_user_message_template' : 'Êtes-vous sûr de vouloir supprimer ces utilisateurs ?<br /><strong><% _.forEach(rows, function(row) {%><%- row.name %><br /><% }); %></strong>',
-
-    'see_user_btn' : 'Voir Utilisateur',
-    'edit_btn': 'Modifier',
-    'delete_btn': 'Supprimer',
-
-    'named_user' : 'Utilisateur <strong>{name}</strong>',
 
     'data_manager' : {
         'users' : {
@@ -107,7 +94,7 @@ export default {
                 },
                 'mass_delete' : {
                     'title_template' : 'Supprimer une liste d\'utilisateurs',
-                    'message_template' : 'Êtes-vous sûr de vouloir supprimer ces utilisateurs ?<br /><strong><% _.forEach(resourceRows, function(row) {%><%- row.name %><br /><% }); %></strong>',
+                    'message_template' : 'Êtes-vous sûr de vouloir supprimer ces utilisateurs ?<br /><br /><ul><% _.forEach(resourceRows, function(row) {%><li><strong><%- row.name %></strong></li><% }); %></ul>',
                 }
             }
         },
@@ -188,7 +175,7 @@ export default {
                 },
                 'mass_delete' : {
                     'title_template' : 'Supprimer une liste d\'utilisateurs',
-                    'message_template' : 'Êtes-vous sûr de vouloir supprimer ces utilisateurs ?<br /><strong><% _.forEach(resourceRows, function(row) {%><%- row.name %><br /><% }); %></strong>',
+                    'message_template' : 'Êtes-vous sûr de vouloir supprimer ces utilisateurs ?<br /><br /><ul><% _.forEach(resourceRows, function(row) {%><li><strong><%- row.name %></strong></li><% }); %></ul>',
                 }
             }
         },

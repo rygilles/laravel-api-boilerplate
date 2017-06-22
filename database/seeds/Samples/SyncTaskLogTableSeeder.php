@@ -32,5 +32,16 @@ class SyncTaskLogTableSeeder extends Seeder
 		    'entry'                 => 'Synchronization in progress.',
 		    'public'                => true,
 	    ]);
+
+	    // Sleep (created_at will be the same else)
+	    sleep(2);
+
+	    SyncTaskLog::create([
+		    'id'                    => '893902bc-568f-11e7-907b-a6006ad3dba0',
+		    'sync_task_status_id'   => 'InProgress',
+		    'sync_task_id'          => '91bf2f58-2055-11e7-93ae-92361f002671',
+		    'entry'                 => 'Downloading in progress.',
+		    'public'                => true,
+	    ]);
     }
 }

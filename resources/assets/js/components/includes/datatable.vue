@@ -57,11 +57,18 @@
 	.mass-selected .btn:last {
 		margin-right: 0;
 	}
+
+	.empty-message {
+		margin: 0;
+		padding: 5px 0 5px 0;
+		text-align: center;
+		font-style: italic;
+	}
 </style>
 
 <template>
 	<div class="box">
-		<div class="box-header with-border">
+		<div v-if="!hideHeader" class="box-header with-border">
 			<h3 class="box-title">{{ mainTitle }}</h3>
 			<slot name="top-actions"></slot>
 		</div>
@@ -92,8 +99,8 @@
 					</div>
 				</div>
 				<div v-if="(dataStoreState.data.length == 0) && (emptyMessage != '')" class="row">
-					<div class="col-md-8">
-						<p v-html="emptyMessage"></p>
+					<div class="col-md-12">
+						<p class="empty-message" v-html="emptyMessage"></p>
 					</div>
 				</div>
 				<div v-else class="row">
@@ -130,6 +137,7 @@
 										:to="resolveColumnRouterTo(dataRow, column)">
 										<span v-html="resolveColumnDataValue(dataRow, column)"></span>
 									</router-link>
+									<span v-else-if="'onClick' in column" @click="column.onClick(dataRow, column)" v-html="resolveColumnDataValue(dataRow, column)"></span>
 									<span v-else v-html="resolveColumnDataValue(dataRow, column)"></span>
 								</td>
 
@@ -192,6 +200,10 @@
 
 		props: {
 			'mainTitle': String,
+			'hideHeader' : {
+				type: Boolean,
+				default: false
+			},
 			'emptyMessage' : {
 				type: String,
 				default: ''
@@ -284,6 +296,12 @@
 							}
 						]
 					}
+				}
+			},
+			'rowClasses' : {
+				type: Function,
+				default : function(dataRow) {
+					return [];
 				}
 			}
 		},
@@ -399,11 +417,19 @@
 				return classes;
 			},
 			dataRowTrClassObject(index, dataRow) {
-				return {
+				var rowExtraClasses = this.rowClasses(dataRow);
+
+				var classes = {
 					'even' : index % 2 == 0,
 					'odd' : index % 2 != 0,
 					'selected' : (_.indexOf(this.selectedRows, dataRow) != -1)
 				};
+
+				rowExtraClasses.forEach((extraClass) => {
+					classes[extraClass] = true;
+				});
+
+				return classes;
 			},
 			selectRow(dataRow) {
 				var rowIndex = _.indexOf(this.selectedRows, dataRow);
@@ -421,7 +447,7 @@
 				}
 				if ('transformValue' in column) {
 					if (typeof column.transformValue == 'function') {
-						return column.transformValue(column.name.split('.').reduce((o,i)=>o[i], dataRow));
+						return column.transformValue(column.name.split('.').reduce((o,i)=>o[i], dataRow), dataRow);
 					}
 				}
 				return column.name.split('.').reduce((o,i)=>o[i], dataRow);

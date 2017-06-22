@@ -48,7 +48,7 @@ export default {
                 },
                 'mass_delete': {
                     'title_template': 'Delete a list of Search Engine',
-                    'message_template': 'Are you sure you want to delete this list ?<br /><strong><% _.forEach(resourceRows, function(row) {%><%- row.name %><br /><% }); %></strong><br/><strong>Warning : All related projects will be deleted too !!!</strong>',
+                    'message_template': 'Are you sure you want to delete this list ?<br /><br /><ul><% _.forEach(resourceRows, function(row) {%><li><strong><%- row.name %></strong></li><% }); %></ul><br/><strong>Warning : All related projects will be deleted too !!!</strong>',
                 }
             }
         },

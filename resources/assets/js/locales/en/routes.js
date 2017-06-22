@@ -65,4 +65,34 @@ export default {
         'title_template' : 'User "<%- data.name %>"',
         'description': '',
     },
+    'sync-task-statuses': {
+        'title': 'Sync. Task Statuses',
+        'description': '',
+    },
+    'sync-task-status': {
+        'title': 'Sync. Task Status',
+        'title_template' : 'Sync. Task Status "<%- data.id %>"',
+        'description': '',
+    },
+    'sync-task-types': {
+        'title': 'Sync. Task Types',
+        'description': '',
+    },
+    'sync-task-type': {
+        'title': 'Sync. Task Type',
+        'title_template' : 'Sync. Task Type "<%- data.id %>"',
+        'description': '',
+    },
+    'sync-tasks-folder': {
+        'title': 'Sync. Tasks',
+    },
+    'sync-tasks': {
+        'title': 'Sync. Tasks',
+        'description': '',
+    },
+    'sync-task': {
+        'title': 'Sync. Task',
+        'title_template' : 'Sync. Task "<%- data.id %>"',
+        'description': '',
+    },
 }

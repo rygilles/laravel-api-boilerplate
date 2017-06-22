@@ -28,6 +28,13 @@ var files = [
     'user_groups',
     'users',
     'user_has_projects',
+    'sync_items',
+    'sync_tasks',
+    'sync_task_statuses',
+    'sync_task_status_versions',
+    'sync_task_types',
+    'sync_task_type_versions',
+    'sync_task_logs',
 ];
 
 // Create locales from file hierarchy

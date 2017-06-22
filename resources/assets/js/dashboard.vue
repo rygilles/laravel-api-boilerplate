@@ -21,7 +21,7 @@
 
 					<breadcrumb :route="$route" :endRouteTitleData="routeTitleData"></breadcrumb>
 				</section>
-				<router-view :laravel="laravel" :me="me" v-on:routeTitleDataUpdate="updateRouteTitleData"></router-view>
+				<router-view :key="$route.fullPath" :laravel="laravel" :me="me" v-on:routeTitleDataUpdate="updateRouteTitleData"></router-view>
 			</div>
 			<!-- /.content-wrapper -->
 

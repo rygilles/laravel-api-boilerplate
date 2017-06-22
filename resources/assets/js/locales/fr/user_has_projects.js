@@ -16,12 +16,6 @@ export default {
 
     'edit_user_has_project' : 'Modifier la relation entre "{user_name}" et "{project_name}"',
 
-    'delete_user_has_project' : 'Supprimer une relation',
-    'delete_user_has_project_message' : 'Êtes-vous sûr de vouloir supprimer la relation entre <strong>{user_name}</strong> et <strong>{project_name}</strong> ?',
-
-    'mass_delete_user_has_project' : 'Supprimer une liste de relations',
-    'mass_delete_user_has_project_message_template' : 'Êtes-vous sûr de vouloir supprimer ces relations ?<br /><% _.forEach(rows, function(row) {%>Entre <strong><%- row.user.data.name %></strong> et <strong><%- row.project.data.name %></strong><br /><% }); %>',
-
     'user_role' : {
         'Owner' : 'Propriétaire',
         'Administrator' : 'Administrateur',

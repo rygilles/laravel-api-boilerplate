@@ -230,10 +230,17 @@ $api->version('v1', ['middleware' => ['acceptLanguage', /*'cors',*/ 'auth:api']]
 		'App\Http\Controllers\Api\SyncTaskController@destroy'
 	)->name('syncTask.destroy');
 
+	// Sync Task Sync Task
+
+	$api->get(
+		'syncTask/{syncTaskId}/children',
+		'App\Http\Controllers\Api\SyncTaskSyncTaskController@index'
+	)->name('syncTaskSyncTask.index');
+
 	// Sync Task Sync Task Log
 
 	$api->get(
-		'syncTask/{syncTaskId}/log',
+		'syncTask/{syncTaskId}/syncTaskLog',
 		'App\Http\Controllers\Api\SyncTaskSyncTaskLogController@index'
 	)->name('syncTaskSyncTaskLog.index');
 

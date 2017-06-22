@@ -53,11 +53,41 @@ class SyncTaskStatusVersion extends ApiModel
 	public $incrementing = false;
 
 	/**
+	 * Model fillable fields for new items
+	 * @var array
+	 */
+	protected static $storeFillable = [
+		'sync_task_status_id',
+		'i18n_lang_id',
+		'description'
+	];
+
+	/**
+	 * Model fillable fields for item patch
+	 * @var array
+	 */
+	protected static $patchFillable = [
+		'sync_task_status_id',
+		'i18n_lang_id',
+		'description'
+	];
+
+	/**
+	 * Model fillable fields for item replacement
+	 * @var array
+	 */
+	protected static $putFillable = [
+		'sync_task_status_id',
+		'i18n_lang_id',
+		'description'
+	];
+
+	/**
 	 * Model validation rules for new items
 	 * @var array
 	 */
 	protected static $storeRules = [
-		'sync_task_status_id'   => 'required|string|max:50|exists:sync_task_status,id|unique_with:sync_task_status_version,i18n_lang_id',
+		'sync_task_status_id'   => 'required|string|max:50|exists:sync_task_status,id|unique_with:sync_task_status_v,i18n_lang_id',
 		'i18n_lang_id'          => 'required|string|max:30|exists:i18n_lang,id',
 		'description'           => 'required|string'
 	];
@@ -67,9 +97,9 @@ class SyncTaskStatusVersion extends ApiModel
 	 * @var array
 	 */
 	protected static $patchRules = [
-		'sync_task_status_id'   => 'string|max:50|exists:sync_task_status,id|unique_with:sync_task_status_version,i18n_lang_id',
+		'sync_task_status_id'   => 'string|max:50|exists:sync_task_status,id', // Custom composite key validation in controller method to manage "ignore" parameter.
 		'i18n_lang_id'          => 'string|max:30|exists:i18n_lang,id',
-		'description'   => 'string'
+		'description'           => 'string'
 	];
 
 	/**
@@ -77,7 +107,7 @@ class SyncTaskStatusVersion extends ApiModel
 	 * @var array
 	 */
 	protected static $putRules = [
-		'sync_task_status_id'   => 'required|string|max:50|exists:sync_task_status,id|unique_with:sync_task_status_version,i18n_lang_id',
+		'sync_task_status_id'   => 'required|string|max:50|exists:sync_task_status,id',  // Custom composite key validation in controller method to manage "ignore" parameter.
 		'i18n_lang_id'          => 'required|string|max:30|exists:i18n_lang,id',
 		'description'           => 'required|string'
 	];

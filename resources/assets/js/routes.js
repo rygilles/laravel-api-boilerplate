@@ -123,6 +123,63 @@ export default [
         }
     },
     {
+        path : '/sync-task-statuses',
+        name : 'sync-task-statuses',
+        component : require('./components/dashboard/sync-task-statuses.vue'),
+        meta : {
+            breadcrumbIconClass : 'fa fa-tasks',
+            parentRouteName : 'home',
+        }
+    },
+    {
+        path : '/sync-task-status/:syncTaskStatusId',
+        name : 'sync-task-status',
+        component : require('./components/dashboard/sync-task-status.vue'),
+        props : true,
+        meta : {
+            breadcrumbIconClass : 'fa fa-tasks',
+            parentRouteName : 'sync-task-statuses',
+        }
+    },
+    {
+        path : '/sync-task-types',
+        name : 'sync-task-types',
+        component : require('./components/dashboard/sync-task-types.vue'),
+        meta : {
+            breadcrumbIconClass : 'fa fa-tasks',
+            parentRouteName : 'home',
+        }
+    },
+    {
+        path : '/sync-task-type/:syncTaskTypeId',
+        name : 'sync-task-type',
+        component : require('./components/dashboard/sync-task-type.vue'),
+        props : true,
+        meta : {
+            breadcrumbIconClass : 'fa fa-tasks',
+            parentRouteName : 'sync-task-types',
+        }
+    },
+    {
+        path : '/sync-tasks',
+        name : 'sync-tasks',
+        component : require('./components/dashboard/sync-tasks.vue'),
+        meta : {
+            breadcrumbIconClass : 'fa fa-tasks',
+            parentRouteName : 'home',
+        }
+    },
+    {
+        path : '/sync-task/:syncTaskId',
+        name : 'sync-task',
+        component : require('./components/dashboard/sync-task.vue'),
+        props : true,
+        meta : {
+            breadcrumbIconClass : 'fa fa-tasks',
+            parentRouteName : 'sync-tasks',
+        }
+    },
+    {
         path : '/test',
         name : 'test',
         component : require('./components/dashboard/test.vue'),

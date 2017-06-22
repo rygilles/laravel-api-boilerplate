@@ -22,7 +22,7 @@ class SearchEngineTransformer extends ApiTransformer
 				'name'              => $searchEngine->name,
 				'created_at'        => $searchEngine->created_at->toDateTimeString(),
 				'updated_at'        => $searchEngine->updated_at->toDateTimeString(),
-				'projects_count'    => $searchEngine->projects_count,
+				'projects_count'    => (int) $searchEngine->projects_count,
 			]
 		);
 	}

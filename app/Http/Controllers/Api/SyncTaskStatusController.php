@@ -33,7 +33,11 @@ class SyncTaskStatusController extends ApiController
 	 */
 	public function index()
 	{
-		$syncTaskStatuses = SyncTaskStatus::paginate();
+		$syncTaskStatuses = SyncTaskStatus::applyRequestQueryString()
+											->withCount('syncTasks')
+											->withCount('syncTaskLogs')
+											->withCount('syncTaskStatusVersions')
+											->paginate();
 
 		return $this->response->paginator($syncTaskStatuses, new SyncTaskStatusTransformer);
 	}
@@ -46,7 +50,10 @@ class SyncTaskStatusController extends ApiController
 	 */
 	public function show($syncTaskStatusId)
 	{
-		$syncTaskStatus = SyncTaskStatus::find($syncTaskStatusId);
+		$syncTaskStatus = SyncTaskStatus::withCount('syncTasks')
+										  ->withCount('syncTaskLogs')
+										  ->withCount('syncTaskStatusVersions')
+										  ->find($syncTaskStatusId);
 
 		if (!$syncTaskStatus)
 			return $this->response->errorNotFound();

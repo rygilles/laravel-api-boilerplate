@@ -6,6 +6,7 @@ use App\Http\Requests\StoreSyncTaskStatusVersionRequest;
 use App\Http\Requests\UpdateSyncTaskStatusVersionRequest;
 use App\Http\Transformers\Api\SyncTaskStatusVersionTransformer;
 use App\Models\SyncTaskStatusVersion;
+use Illuminate\Support\Facades\Validator;
 use Dingo\Api\Exception\ValidationHttpException;
 
 /**
@@ -34,7 +35,7 @@ class SyncTaskStatusVersionController extends ApiController
 	 */
 	public function index()
 	{
-		$paginator = SyncTaskStatusVersion::paginate();
+		$paginator = SyncTaskStatusVersion::applyRequestQueryString()->paginate();
 
 		return $this->response->paginator($paginator, new SyncTaskStatusVersionTransformer);
 	}
@@ -80,7 +81,7 @@ class SyncTaskStatusVersionController extends ApiController
 			return $this->response->created(
 				app('Dingo\Api\Routing\UrlGenerator')
 					->version('v1')
-					->route('$syncTaskStatusVersion.show', $syncTaskStatusVersion->sync_task_status_id, $syncTaskStatusVersion->i18n_lang_id),
+					->route('syncTaskStatusVersion.show', $syncTaskStatusVersion->sync_task_status_id, $syncTaskStatusVersion->i18n_lang_id),
 				$syncTaskStatusVersion);
 		}
 
@@ -96,13 +97,23 @@ class SyncTaskStatusVersionController extends ApiController
 	 * @param $syncTaskStatusId string Sync Task Status ID
 	 * @param $i18nLangId string I18n Lang Id
 	 * @return \Dingo\Api\Http\Response|void
+	 * @throws ValidationHttpException
 	 */
 	public function update(UpdateSyncTaskStatusVersionRequest $request, $syncTaskStatusId, $i18nLangId)
 	{
-		$syncTaskStatusVersion = SyncTaskStatusVersion::where('sync_task_status_id', $syncTaskStatusId)->where('i18n_lang_id', $i18nLangId)->get();
+		$syncTaskStatusVersion = SyncTaskStatusVersion::where('sync_task_status_id', $syncTaskStatusId)->where('i18n_lang_id', $i18nLangId)->first();
 
 		if (!$syncTaskStatusVersion)
 			return $this->response->errorNotFound();
+
+		// 'unique_with...' in controller method to manage "ignore" parameter.*
+		$validator = Validator::make($request->all(), [
+			'sync_task_status_id' => 'unique_with:sync_task_status_v,i18n_lang_id,ignore:' . $i18nLangId . ' = i18n_lang_id'
+		]);
+
+		if ($validator->fails()) {
+			throw new ValidationHttpException($validator->errors());
+		}
 
 		$syncTaskStatusVersion->fill($request->all(), $request->getRealMethod());
 		$syncTaskStatusVersion->save();

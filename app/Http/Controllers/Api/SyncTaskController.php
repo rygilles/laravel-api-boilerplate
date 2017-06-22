@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Api;
 
+use App\Http\Requests\IndexSyncTaskRequest;
 use App\Http\Requests\StoreSyncTaskRequest;
 use App\Http\Requests\UpdateSyncTaskRequest;
 use App\Http\Transformers\Api\SyncTaskTransformer;
@@ -30,11 +31,40 @@ class SyncTaskController extends ApiController
 	/**
 	 * Sync task list
 	 *
+	 * You can specify a GET parameter `root` (return only root tasks if true, children only if false) to filter results.
+	 *
+	 * @param IndexSyncTaskRequest $request
 	 * @return \Dingo\Api\Http\Response
 	 */
-	public function index()
+	public function index(IndexSyncTaskRequest $request)
 	{
-		$paginator = SyncTask::paginate();
+		$paginator = SyncTask::applyRequestQueryString()
+							   ->withCount('childrenSyncTasks')
+							   ->withCount('syncTaskLogs')
+							   ->paginate();
+
+		if ($request->has('root')) {
+			if ($request->input('root')) {
+				$paginator = SyncTask::parents()
+						               ->applyRequestQueryString()
+						               ->withCount('childrenSyncTasks')
+						               ->withCount('syncTaskLogs')
+									   ->paginate();
+
+			} else {
+				$paginator = SyncTask::children()
+									   ->applyRequestQueryString()
+									   ->withCount('childrenSyncTasks')
+									   ->withCount('syncTaskLogs')
+									   ->paginate();
+
+			}
+		} else {
+			$paginator = SyncTask::applyRequestQueryString()
+								   ->withCount('childrenSyncTasks')
+								   ->withCount('syncTaskLogs')
+								   ->paginate();
+		}
 
 		return $this->response->paginator($paginator, new SyncTaskTransformer);
 	}
@@ -47,7 +77,9 @@ class SyncTaskController extends ApiController
 	 */
 	public function show($syncTaskId)
 	{
-		$syncTask = SyncTask::find($syncTaskId);
+		$syncTask = SyncTask::withCount('childrenSyncTasks')
+							  ->withCount('syncTaskLogs')
+							  ->find($syncTaskId);
 
 		if (!$syncTask)
 			return $this->response->errorNotFound();

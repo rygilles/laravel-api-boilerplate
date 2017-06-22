@@ -43,7 +43,7 @@ export default {
                 },
                 'mass_delete': {
                     'title_template': 'Supprimer une liste de 18n Lang',
-                    'message_template': 'Êtes-vous sûr de vouloir supprimer ces items ?<br /><strong><% _.forEach(rows, function(row) {%><%- row.id %><br /><% }); %></strong>',
+                    'message_template': 'Êtes-vous sûr de vouloir supprimer ces items ?<br /><br /><ul><% _.forEach(resourceRows, function(row) {%><li><strong><%- row.id %></strong></li><% }); %></ul>',
                 }
             }
         },

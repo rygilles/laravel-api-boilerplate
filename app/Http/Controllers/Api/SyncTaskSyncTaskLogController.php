@@ -34,15 +34,15 @@ class SyncTaskSyncTaskLogController extends ApiController
 		if (in_array(Auth::user()->user_group_id, ['Developer', 'Support'])) {
 			if ($request->has('public')) {
 				if ($request->input('public')) {
-					$paginator = $syncTask->syncTaskLogs()->public()->paginate();
+					$paginator = $syncTask->syncTaskLogs()->public()->applyRequestQueryString()->paginate();
 				} else {
-					$paginator = $syncTask->syncTaskLogs()->private()->paginate();
+					$paginator = $syncTask->syncTaskLogs()->private()->applyRequestQueryString()->paginate();
 				}
 			} else {
-				$paginator = $syncTask->syncTaskLogs()->paginate();
+				$paginator = $syncTask->syncTaskLogs()->applyRequestQueryString()->paginate();
 			}
 		} else {
-			$paginator = $syncTask->syncTaskLogs()->public()->paginate();
+			$paginator = $syncTask->syncTaskLogs()->public()->applyRequestQueryString()->paginate();
 		}
 
 		return $this->response->paginator($paginator, new SyncTaskLogTransformer);

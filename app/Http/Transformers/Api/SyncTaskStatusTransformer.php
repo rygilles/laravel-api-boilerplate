@@ -17,7 +17,10 @@ class SyncTaskStatusTransformer extends ApiTransformer
 		return $this->filterWithModelConfiguration(
 			SyncTaskStatus::class,
 			[
-				'id' => $syncTaskStatus->id,
+				'id'                                => $syncTaskStatus->id,
+				'sync_tasks_count'                  => (int) $syncTaskStatus->sync_tasks_count,
+				'sync_task_logs_count'              => (int) $syncTaskStatus->sync_task_logs_count,
+				'sync_task_status_versions_count'   => (int) $syncTaskStatus->sync_task_status_versions_count,
 			]
 		);
 	}

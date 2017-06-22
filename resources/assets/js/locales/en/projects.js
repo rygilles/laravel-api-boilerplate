@@ -63,7 +63,7 @@ export default {
                 },
                 'mass_delete' : {
                     'title_template' : 'Delete a list of Projects',
-                    'message_template' : 'Are you sure you want to delete this list ?<br /><strong><% _.forEach(resourceRows, function(row) {%><%- row.name %><br /><% }); %></strong>',
+                    'message_template' : 'Are you sure you want to delete this list ?<br /><br /><ul><% _.forEach(resourceRows, function(row) {%><li><strong><%- row.name %></strong></li><% }); %></ul>',
                 }
             }
         },
@@ -121,7 +121,7 @@ export default {
                 },
                 'mass_delete' : {
                     'title_template' : 'Delete a list of Projects',
-                    'message_template' : 'Are you sure you want to delete this list ?<br /><strong><% _.forEach(resourceRows, function(row) {%><%- row.name %><br /><% }); %></strong>',
+                    'message_template' : 'Are you sure you want to delete this list ?<br /><br /><ul><% _.forEach(resourceRows, function(row) {%><strong><%- row.name %></strong><% }); %></ul>',
                 }
             }
         },
@@ -169,7 +169,7 @@ export default {
                 },
                 'mass_delete' : {
                     'title_template' : 'Delete a list of Projects',
-                    'message_template' : 'Are you sure you want to delete this list ?<br /><strong><% _.forEach(resourceRows, function(row) {%><%- row.name %><br /><% }); %></strong>',
+                    'message_template' : 'Are you sure you want to delete this list ?<br /><br /><ul><% _.forEach(resourceRows, function(row) {%><strong><%- row.name %></strong><% }); %></ul>',
                 }
             }
         }

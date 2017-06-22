@@ -3,6 +3,7 @@
 		<DataTable
 			ref="datatable"
 			:mainTitle="i18n('main_title')"
+			:hideHeader="hideHeader"
 			:defaultOrderByColumn="defaultOrderBy.column"
 			:defaultOrderByDirection="defaultOrderBy.direction"
 			:paginationLimiting="pagination.limiting"
@@ -19,6 +20,7 @@
 			:buttonsColumnClass="buttonsColumnClass"
 			:checkboxes="dataTableCheckboxes"
 			:emptyMessage="i18n('empty_message')"
+			:rowClasses="rowClasses"
 		>
 			<span slot="top-actions">
 				<a v-if="realRights.allowCreate" class="action-link pull-right" @click="showCreateModal" v-html="this.i18n('modals.create.show_modal_link')"></a>
@@ -106,6 +108,10 @@
 					}
 				}
 			},
+			hideHeader : {
+				type: Boolean,
+				default: false,
+			},
 			i18nPath : {
 				type: String,
 				default: '',
@@ -192,6 +198,12 @@
 					return [];
 				}
 			},
+			rowClasses: {
+				type: Function,
+				default : function(dataRow) {
+					return [];
+				}
+			},
 			buttonsColumnClass: {
 				type: String,
 				default: '',
@@ -267,7 +279,7 @@
 
 						if (this.i18nExist('columns.' + column.name + '.title')) {
 							dataTableColumn.title = this.i18n('columns.' + column.name + '.title');
-						} else if (this.i18nExist('columns.' + column.name + '.title')) {
+						} else {
 							dataTableColumn.title = column.name;
 						}
 
@@ -289,6 +301,10 @@
 
 						if ('routerLink' in column) {
 							dataTableColumn.routerLink = column.routerLink;
+						}
+
+						if ('onClick' in column) {
+							dataTableColumn.onClick = column.onClick;
 						}
 
 						if ('transformValue' in column) {
@@ -412,7 +428,7 @@
 						} else {
 							see_btn_title = this.$t('common.see_btn');
 						}
-						
+
 						buttons.push(
 							{
 								title : see_btn_title,

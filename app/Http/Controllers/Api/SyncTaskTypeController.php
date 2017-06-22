@@ -33,7 +33,10 @@ class SyncTaskTypeController extends ApiController
 	 */
 	public function index()
 	{
-		$syncTaskTypes = SyncTaskType::paginate();
+		$syncTaskTypes = syncTaskType::applyRequestQueryString()
+									   ->withCount('syncTasks')
+									   ->withCount('syncTaskTypeVersions')
+									   ->paginate();
 
 		return $this->response->paginator($syncTaskTypes, new SyncTaskTypeTransformer);
 	}
@@ -46,7 +49,9 @@ class SyncTaskTypeController extends ApiController
 	 */
 	public function show($syncTaskTypeId)
 	{
-		$syncTaskType = SyncTaskType::find($syncTaskTypeId);
+		$syncTaskType = SyncTaskType::withCount('syncTasks')
+									->withCount('syncTaskTypeVersions')
+									->find($syncTaskTypeId);
 
 		if (!$syncTaskType)
 			return $this->response->errorNotFound();

@@ -34,7 +34,9 @@ class SearchEngineController extends ApiController
 	 */
 	public function index()
 	{
-		$searchEngines = SearchEngine::applyRequestQueryString()->withCount('projects')->paginate();
+		$searchEngines = SearchEngine::applyRequestQueryString()
+									   ->withCount('projects')
+									   ->paginate();
 
 		return $this->response->paginator($searchEngines, new SearchEngineTransformer);
 	}
@@ -47,7 +49,8 @@ class SearchEngineController extends ApiController
 	 */
 	public function show($searchEngineId)
 	{
-		$searchEngine = SearchEngine::withCount('projects')->find($searchEngineId);
+		$searchEngine = SearchEngine::withCount('projects')
+									  ->find($searchEngineId);
 
 		if (!$searchEngine)
 			return $this->response->errorNotFound();

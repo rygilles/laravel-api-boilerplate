@@ -45,6 +45,29 @@
 			</li>
 			<li class="treeview">
 				<a href="javascript:;">
+					<i class="fa fa-tasks fa-fw"></i>
+					<span>{{ $t('routes.sync-tasks-folder.title ') }}</span> <i class="fa fa-angle-left pull-right"></i>
+				</a>
+				<ul class="treeview-menu">
+					<li v-on:click="toggleMenu">
+						<router-link :to="{ name: 'sync-tasks' }"><i class="fa fa-tasks fa-fw"></i>
+							<span class="page">{{ $t('routes.sync-tasks.title ') }}</span>
+						</router-link>
+					</li>
+					<li v-on:click="toggleMenu">
+						<router-link :to="{ name: 'sync-task-statuses' }"><i class="fa fa-tasks fa-fw"></i>
+							<span class="page">{{ $t('routes.sync-task-statuses.title ') }}</span>
+						</router-link>
+					</li>
+					<li v-on:click="toggleMenu">
+						<router-link :to="{ name: 'sync-task-types' }"><i class="fa fa-tasks fa-fw"></i>
+							<span class="page">{{ $t('routes.sync-task-types.title ') }}</span>
+						</router-link>
+					</li>
+				</ul>
+			</li>
+			<li class="treeview">
+				<a href="javascript:;">
 					<i class="fa fa-folder fa-fw"></i>
 					<span>{{ $t('routes.misc-folder.title ') }}</span> <i class="fa fa-angle-left pull-right"></i>
 				</a>
@@ -94,6 +117,11 @@
 				</a>
 				<ul class="treeview-menu">
 					<li v-on:click="toggleMenu">
+						<router-link :to="{ name: 'sync-task-statuses' }"><i class="fa fa-tasks fa-fw"></i>
+							<span class="page">{{ $t('routes.sync-task-statuses.title ') }}</span>
+						</router-link>
+					</li>
+					<li v-on:click="toggleMenu">
 						<router-link :to="{ name: 'user-projects' }"><i class="fa fa-sticky-note fa-fw"></i>
 							<span class="page">{{ $t('routes.user-projects.title ') }}</span>
 						</router-link>
@@ -101,6 +129,29 @@
 					<li v-on:click="toggleMenu">
 						<router-link :to="{ name: 'all-projects' }"><i class="fa fa-sticky-note-o fa-fw"></i>
 							<span class="page">{{ $t('routes.all-projects.title ') }}</span>
+						</router-link>
+					</li>
+				</ul>
+			</li>
+			<li class="treeview">
+				<a href="javascript:;">
+					<i class="fa fa-tasks fa-fw"></i>
+					<span>{{ $t('routes.sync-tasks-folder.title ') }}</span> <i class="fa fa-angle-left pull-right"></i>
+				</a>
+				<ul class="treeview-menu">
+					<li v-on:click="toggleMenu">
+						<router-link :to="{ name: 'sync-tasks' }"><i class="fa fa-tasks fa-fw"></i>
+							<span class="page">{{ $t('routes.sync-tasks.title ') }}</span>
+						</router-link>
+					</li>
+					<li v-on:click="toggleMenu">
+						<router-link :to="{ name: 'sync-task-statuses' }"><i class="fa fa-tasks fa-fw"></i>
+							<span class="page">{{ $t('routes.sync-task-statuses.title ') }}</span>
+						</router-link>
+					</li>
+					<li v-on:click="toggleMenu">
+						<router-link :to="{ name: 'sync-task-types' }"><i class="fa fa-tasks fa-fw"></i>
+							<span class="page">{{ $t('routes.sync-task-types.title ') }}</span>
 						</router-link>
 					</li>
 				</ul>

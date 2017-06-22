@@ -63,7 +63,7 @@ export default {
                 },
                 'mass_delete' : {
                     'title_template' : 'Supprimer une liste de projets',
-                    'message_template' : 'Êtes-vous sûr de vouloir supprimer ces projets ?<br /><strong><% _.forEach(resourceRows, function(row) {%><%- row.name %><br /><% }); %></strong>',
+                    'message_template' : 'Êtes-vous sûr de vouloir supprimer ces projets ?<br /><br /><ul><% _.forEach(resourceRows, function(row) {%><li><strong><%- row.name %></strong></li><% }); %></ul>',
                 }
             }
         },
@@ -121,7 +121,7 @@ export default {
                 },
                 'mass_delete' : {
                     'title_template' : 'Supprimer une liste de projets',
-                    'message_template' : 'Êtes-vous sûr de vouloir supprimer ces projets ?<br /><strong><% _.forEach(resourceRows, function(row) {%><%- row.name %><br /><% }); %></strong>',
+                    'message_template' : 'Êtes-vous sûr de vouloir supprimer ces projets ?<br /><br /><ul><% _.forEach(resourceRows, function(row) {%><li><strong><%- row.name %></strong></li><% }); %></ul>',
                 }
             }
         },
@@ -169,7 +169,7 @@ export default {
                 },
                 'mass_delete' : {
                     'title_template' : 'Supprimer une liste de projets',
-                    'message_template' : 'Êtes-vous sûr de vouloir supprimer ces projets ?<br /><strong><% _.forEach(resourceRows, function(row) {%><%- row.name %><br /><% }); %></strong>',
+                    'message_template' : 'Êtes-vous sûr de vouloir supprimer ces projets ?<br /><br /><ul><% _.forEach(resourceRows, function(row) {%><li><strong><%- row.name %></strong></li><% }); %></ul>',
                 }
             }
         }

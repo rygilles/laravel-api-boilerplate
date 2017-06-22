@@ -102,7 +102,7 @@ class SyncTask extends ApiModel
 	 *
 	 * @return \Illuminate\Database\Eloquent\Relations\hasMany
 	 */
-	public function childrenSyncTask()
+	public function childrenSyncTasks()
 	{
 		return $this->hasMany(SyncTask::class, 'sync_task_id');
 	}
@@ -180,4 +180,25 @@ class SyncTask extends ApiModel
 		return $query;
 	}
 
+	/**
+	 * Scope a query to filter parents only
+	 *
+	 * @param \Illuminate\Database\Eloquent\Builder $query
+	 * @return \Illuminate\Database\Eloquent\Builder
+	 */
+	public function scopeParents($query)
+	{
+		return $query->whereNull('sync_task_id');
+	}
+
+	/**
+	 * Scope a query to filter children only
+	 *
+	 * @param \Illuminate\Database\Eloquent\Builder $query
+	 * @return \Illuminate\Database\Eloquent\Builder
+	 */
+	public function scopeChildren($query)
+	{
+		return $query->whereNotNull('sync_task_id');
+	}
 }

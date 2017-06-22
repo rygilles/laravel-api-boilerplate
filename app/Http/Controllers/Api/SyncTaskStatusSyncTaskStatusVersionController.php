@@ -25,7 +25,7 @@ class SyncTaskStatusSyncTaskStatusVersionController extends ApiController
 		if (!$syncTaskStatus)
 			return $this->response->errorNotFound();
 
-		$paginator = $syncTaskStatus->syncTaskStatusVersions()->paginate();
+		$paginator = $syncTaskStatus->syncTaskStatusVersions()->applyRequestQueryString()->paginate();
 
 		return $this->response->paginator($paginator, new SyncTaskStatusVersionTransformer);
 	}

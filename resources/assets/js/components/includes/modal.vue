@@ -1,6 +1,6 @@
 <template>
 	<div class="modal fade" :id="id">
-		<div class="modal-dialog">
+		<div :class="['modal-dialog', modalSizeClass]">
 			<div class="modal-content">
 				<div class="modal-header">
 					<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
@@ -30,6 +30,10 @@
 			onClose: {
 				type : Function,
 				default : function() {}
+			},
+			size: {
+				type : String,
+				default : 'normal'
 			}
 		},
 		watch: {
@@ -43,6 +47,17 @@
 			$(document).ready(() => {
 				$('#' + this.id).on('hide.bs.modal', this.onClose);
 			})
+		},
+		computed: {
+			modalSizeClass() {
+				if (this.size == 'small') {
+					return 'modal-sm';
+				} else if (this.size == 'large') {
+					return 'modal-lg';
+				} else {
+					return '';
+				}
+ 			}
 		}
 	}
 </script>

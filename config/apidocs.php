@@ -72,6 +72,9 @@ return [
 				// Planned
 				'syncTaskStatusId' => 'Planned',
 
+				// Project Sync Task "root"
+				'root' => 1,
+
 			],
 			'routes' => [
 
@@ -116,6 +119,8 @@ return [
 				'syncTask.store',
 				'syncTask.update',
 				'syncTask.destroy',
+
+				'syncTaskSyncTask.index',
 
 				'syncTaskSyncTaskLog.index',
 
@@ -237,6 +242,9 @@ return [
 				// Planned
 				'syncTaskStatusId' => 'Planned',
 
+				// Project Sync Task "root"
+				'root' => 1,
+
 			],
 			'routes' => [
 
@@ -275,6 +283,8 @@ return [
 
 				'syncTask.index',
 				'syncTask.show',
+
+				'syncTaskSyncTask.index',
 
 				'syncTaskSyncTaskLog.index',
 

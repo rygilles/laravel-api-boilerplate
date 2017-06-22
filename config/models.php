@@ -127,4 +127,73 @@ return [
 
 	],
 
+	App\Models\SyncItem::class => [
+
+		'requestQueryStringParameters' => [
+
+			'authorizedOrderByColumns' => 'item_id,item_signature,created_at,updated_at',
+			'authorizedSearchColumns' => 'item_id,item_signature',
+			'defaultSearchColumns' => 'item_id,item_signature',
+
+		]
+
+	],
+
+
+	App\Models\SyncTaskStatus::class => [
+
+		'requestQueryStringParameters' => [
+
+			'authorizedOrderByColumns' => 'id,sync_tasks_count,sync_task_logs_count,sync_task_status_versions_count',
+
+		]
+
+	],
+
+	App\Models\SyncTaskStatusVersion::class => [
+
+		'requestQueryStringParameters' => [
+
+			'authorizedOrderByColumns' => 'sync_task_status_id,i18n_lang_id,description,created_at,updated_at',
+			'authorizedSearchColumns' => 'sync_task_status_id,i18n_lang_id,description',
+			'defaultSearchColumns' => 'sync_task_status_id,i18n_lang_id,description',
+
+		]
+
+	],
+
+	App\Models\SyncTaskType::class => [
+
+		'requestQueryStringParameters' => [
+
+			'authorizedOrderByColumns' => 'id,sync_tasks_count,sync_task_type_versions_count',
+
+		]
+
+	],
+
+	App\Models\SyncTaskTypeVersion::class => [
+
+		'requestQueryStringParameters' => [
+
+			'authorizedOrderByColumns' => 'sync_task_type_id,i18n_lang_id,description,created_at,updated_at',
+			'authorizedSearchColumns' => 'sync_task_type_id,i18n_lang_id,description',
+			'defaultSearchColumns' => 'sync_task_type_id,i18n_lang_id,description',
+
+		]
+
+	],
+
+	App\Models\SyncTaskLog::class => [
+
+		'requestQueryStringParameters' => [
+
+			'authorizedOrderByColumns' => 'id,sync_task_status_id,entry,public,created_at,updated_at',
+			'authorizedSearchColumns' => 'sync_task_status_id,entry',
+			'defaultSearchColumns' => 'sync_task_status_id,entry',
+		]
+
+	],
+
+
 ];

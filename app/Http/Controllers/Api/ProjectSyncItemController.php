@@ -20,12 +20,12 @@ class ProjectSyncItemController extends ApiController
 	 */
 	public function index($projectId)
 	{
-		$project = Project::authorized(['Owner', 'Administrator'])->applyRequestQueryString()->find($projectId);
+		$project = Project::authorized(['Owner', 'Administrator'])->find($projectId);
 
 		if (!$project)
 			return $this->response->errorNotFound();
 
-		$paginator = $project->syncItems()->paginate();
+		$paginator = $project->syncItems()->applyRequestQueryString()->paginate();
 
 		return $this->response->paginator($paginator, new SyncItemTransformer);
 	}

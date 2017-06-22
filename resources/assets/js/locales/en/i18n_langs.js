@@ -43,7 +43,7 @@ export default {
                 },
                 'mass_delete': {
                     'title_template': 'Delete a list of I18n Lang',
-                    'message_template': 'Are you sure you want to delete this list ?<br /><strong><% _.forEach(resourceRows, function(row) {%><%- row.id %><br /><% }); %></strong>',
+                    'message_template': 'Are you sure you want to delete this list ?<br /><br /><ul><% _.forEach(resourceRows, function(row) {%><li><strong><%- row.id %></strong></li><% }); %></ul>',
                 }
             }
         },

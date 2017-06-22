@@ -15,20 +15,7 @@ export default {
     'user_password': 'Password',
     'user_password_help': 'At least 8 chars.<br /> Fill this field to update the password.',
 
-    'create_new_user': 'Create New User',
-    'edit_user' : 'Edit User "{name"}',
-
-    'delete_user' : 'Delete User',
-    'delete_user_message' : 'Are you sure you want to delete <strong>{name}</strong> ?',
-
-    'mass_delete_user' : 'Delete a list of Users',
-    'mass_delete_user_message_template' : 'Are you sure you want to delete this list ?<br /><strong><% _.forEach(rows, function(row) {%><%- row.name %><br /><% }); %></strong>',
-
-    'see_user_btn' : 'See User',
-    'edit_btn': 'Edit',
-    'delete_btn': 'Delete',
-
-    'named_user' : '<strong>{name}</strong> user',
+    'edit_user' : 'Edit User "{name}"',
 
     'data_manager' : {
         'users' : {
@@ -107,7 +94,7 @@ export default {
                 },
                 'mass_delete' : {
                     'title_template' : 'Delete a list of Users',
-                    'message_template' : 'Are you sure you want to delete this list ?<br /><strong><% _.forEach(resourceRows, function(row) {%><%- row.name %><br /><% }); %></strong>',
+                    'message_template' : 'Are you sure you want to delete this list ?<br /><br /><ul><% _.forEach(resourceRows, function(row) {%><li><strong><%- row.name %></strong></li><% }); %></ul>',
                 }
             }
         },
@@ -188,7 +175,7 @@ export default {
                 },
                 'mass_delete' : {
                     'title_template' : 'Delete a list of Users',
-                    'message_template' : 'Are you sure you want to delete this list ?<br /><strong><% _.forEach(resourceRows, function(row) {%><%- row.name %><br /><% }); %></strong>',
+                    'message_template' : 'Are you sure you want to delete this list ?<br /><br /><ul><% _.forEach(resourceRows, function(row) {%><li><strong><%- row.name %></strong></li><% }); %></ul>',
                 }
             }
         },
