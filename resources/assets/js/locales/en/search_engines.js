@@ -12,6 +12,9 @@ export default {
                 'name': {
                     'title': 'Name',
                 },
+                'class_name': {
+                    'title': 'Class Name',
+                },
                 'projects_count': {
                     'title': 'Projects'
                 },
@@ -31,6 +34,10 @@ export default {
                             'title': 'Name',
                             'help': 'Specify the version number too.',
                         },
+                        'class_name': {
+                            'title': 'Class Name',
+                            'help' : 'Name of the class in App\\SearchEngines namespace.',
+                        },
                     },
                 },
                 'edit': {
@@ -39,6 +46,10 @@ export default {
                         'name': {
                             'title': 'Name',
                             'help': 'Specify the version number too.',
+                        },
+                        'class_name': {
+                            'title': 'Class Name',
+                            'help' : 'Name of the class in App\\SearchEngines namespace.',
                         },
                     },
                 },

@@ -1,5 +1,5 @@
 <style scoped>
-	.project-name {
+	.project-name, .project-data-stream-name {
 		font-size: 21px;
 		margin-top: 5px;
 		margin-bottom: 10px;
@@ -45,11 +45,21 @@
 								</span>
 							</li>
 							<li class="list-group-item">
+								<b v-html="$t('projects.data_stream_name')"></b>
+								<span v-if="project.data_stream_id != null" class="pull-right">
+									<router-link
+										:to="{ name: 'data-stream', params : { 'dataStreamId' : project.data_stream_id }}"
+										v-html="project.dataStream.data.name">
+									</router-link>
+								</span>
+								<span v-else class="pull-right">-</span>
+							</li>
+							<li class="list-group-item">
 								<b v-html="$t('projects.project_name')"></b> <span class="pull-right" v-html="project.name"></span>
 							</li>
 							<li class="list-group-item">
 								<b v-html="$t('projects.owner_name')"></b>
-								<span v-if="(['Developer', 'Support'].indexOf(this.$store.getters.me.user_group_id) != -1)" class="pull-right">
+								<span v-if="(['Developer', 'Support'].indexOf(this.$store.getters.me.user_group_id) != -1) && (ownerUserId != '')"  class="pull-right">
 									<router-link
 										:to="{ name: 'user', params : { 'userId' : ownerUserId }}"
 										v-html="ownerUserName"
@@ -72,6 +82,14 @@
 							@click="projectShowEditModal"
 							class="btn btn-default"
 							v-html="$t('common.edit_btn')"></button>
+
+						<button
+							v-if="(['Developer', 'Support'].indexOf(this.$store.getters.me.user_group_id) != -1)
+								  && (projectDataStream == null)"
+							type="button"
+							@click="projectDataStreamShowCreateModal"
+							class="btn btn-default pull-right"
+							v-html="$t('projects.create_project_data_stream_btn')"></button>
 					</div>
 				</div>
 			</div>
@@ -99,7 +117,7 @@
 							<DataManager
 								:rights="{
 									allowSee: (['Developer', 'Support'].indexOf(this.$store.getters.me.user_group_id) != -1),
-									allowCreate: (['Developer', 'Support'].indexOf(this.$store.getters.me.user_group_id) != -1) || this.loggedUserIsProjectOwner,
+									allowCreate: (['Developer', 'Support'].indexOf(this.$store.getters.me.user_group_id) != -1),
 									allowEdit: false,
 									allowDelete : (['Developer', 'Support'].indexOf(this.$store.getters.me.user_group_id) != -1) || this.loggedUserIsProjectOwner,
 								}"
@@ -142,6 +160,7 @@
 									allowCreate: false,
 									allowEdit: false,
 									allowDelete : false,
+									allowMassDelete: false,
 								}"
 								i18nPath="sync_tasks.data_manager.project_root_sync_tasks"
 								:resource="projectRootSyncTasksDataManagerResource"
@@ -163,6 +182,7 @@
 									allowCreate: false,
 									allowEdit: false,
 									allowDelete : false,
+									allowMassDelete: false,
 								}"
 								i18nPath="sync_tasks.data_manager.project_children_sync_tasks"
 								:resource="projectChildrenSyncTasksDataManagerResource"
@@ -243,6 +263,121 @@
 				:checkboxes="{enabled: false}"
 			></DataManager>
 		</Modal>
+		<div class="row">
+			<div v-if="projectDataStream != null" class="col-md-3 no-right-padding">
+				<div class="box box-primary">
+					<div class="box-body">
+						<h3 class="text-center project-data-stream-name" v-html="projectDataStream.name"></h3>
+
+						<ul class="list-group list-group-unbordered">
+							<li v-if="(['Developer', 'Support'].indexOf(this.$store.getters.me.user_group_id) != -1)" class="list-group-item">
+								<b v-html="$t('data_streams.id')"></b> <span class="pull-right" v-html="projectDataStream.id"></span>
+							</li>
+							<li class="list-group-item">
+								<b v-html="$t('data_streams.data_stream_decoder_name')"></b>
+								<span class="pull-right">
+									<router-link
+										:to="{ name: 'data-stream-decoder', params : { 'dataStreamDecoderId' : projectDataStream.data_stream_decoder_id }}"
+										v-html="projectDataStream.dataStreamDecoder.data.name">
+									</router-link>
+								</span>
+							</li>
+							<li class="list-group-item">
+								<b v-html="$t('projects.data_stream_name')"></b>
+								<span v-if="(['Developer', 'Support'].indexOf(this.$store.getters.me.user_group_id) != -1)"  class="pull-right">
+									<router-link
+										:to="{ name: 'data-stream', params : { 'dataStreamId' : projectDataStream.id }}"
+										v-html="projectDataStream.name"
+									></router-link>
+								</span>
+								<span v-else class="pull-right" v-html="projectDataStream.name"></span>
+							</li>
+							<li class="list-group-item">
+								<b v-html="$t('data_streams.feed_url')"></b> <span class="pull-right" v-html="projectDataStream.feed_url"></span>
+							</li>
+							<li class="list-group-item">
+								<b v-html="$t('common.created_at')"></b> <span class="pull-right" v-html="momentLocalDate(projectDataStream.created_at)"></span>
+							</li>
+							<li class="list-group-item">
+								<b v-html="$t('common.updated_at')"></b> <span class="pull-right" v-html="momentLocalDate(projectDataStream.updated_at)"></span>
+							</li>
+						</ul>
+					</div>
+				</div>
+			</div>
+			<div class="col-md-9" v-if="projectDataStream != null">
+				<div class="nav-tabs-custom">
+					<ul class="nav nav-tabs">
+						<li class="active">
+							<a href="#project-data-stream-i18n-langs-tab-pane" data-toggle="tab">
+								<i class="fa fa-language fa-fw"></i> <span v-html="$t('data_streams.i18n_langs')"></span>
+							</a>
+						</li>
+						<li>
+							<a href="#project-data-stream-data-stream-fields-tab-pane" data-toggle="tab">
+								<i class="fa fa-list fa-fw"></i> <span v-html="$t('data_streams.data_stream_fields')"></span>
+							</a>
+						</li>
+					</ul>
+					<div class="tab-content">
+						<div class="active tab-pane" id="project-data-stream-i18n-langs-tab-pane">
+							<DataManager
+								:rights="{
+									allowSee: false,
+									allowCreate: true,
+									allowEdit: false,
+									allowDelete : true,
+									allowMassDelete : true,
+								}"
+								i18nPath="data_stream_has_i18n_langs.data_manager.data_stream_has_i18n_langs"
+								:resource="projectDataStreamDataStreamHasI18nLangsDataManagerResource"
+								:defaultOrderBy="{column: 'i18n_lang_id', direction: 'asc'}"
+								:pagination="{limiting: true, defaultLimit: 10, limits: [5, 10, 20]}"
+								:searching="true"
+								:request="{include: 'dataStream,i18nLang', extraParameters: {dataStreamId: projectDataStream.id}}"
+								:store="{
+									stateName: 'dataStreamDataStreamHasI18nLangs',
+									loadingStateName: 'dataStreamDataStreamHasI18nLangsLoading',
+									dispatchAction: 'getDataStreamDataStreamHasI18nLangs'
+								}"
+								:columns="projectDataStreamDataStreamHasI18nLangsColumns"
+							></DataManager>
+						</div>
+						<div class="tab-pane" id="project-data-stream-data-stream-fields-tab-pane">
+							<DataManager
+								:rights="{
+									allowSee: false,
+									allowCreate: true,
+									allowEdit: true,
+									allowDelete : true,
+									allowMassDelete : true,
+								}"
+								i18nPath="data_stream_fields.data_manager.data_stream_fields"
+								:resource="projectDataStreamDataStreamFieldsDataManagerResource"
+								:defaultOrderBy="{column: 'name', direction: 'asc'}"
+								:pagination="{limiting: true, defaultLimit: 10, limits: [5, 10, 20]}"
+								:searching="true"
+								:request="{include: 'dataStream', extraParameters: {dataStreamId: projectDataStream.id}}"
+								:store="{
+									stateName: 'dataStreamDataStreamFields',
+									loadingStateName: 'dataStreamDataStreamFieldsLoading',
+									dispatchAction: 'getDataStreamDataStreamFields'
+								}"
+								:columns="projectDataStreamDataStreamFieldsColumns"
+							></DataManager>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<CreateModal
+			v-if="(project != null) && (projectDataStream == null)"
+			id="project-data-stream-create-modal"
+			i18nPath="data_streams.data_manager.data_streams.modals.create"
+			:postUri="'/project/' + project.id + '/dataStream'"
+			:fields="projectDataStreamCreateModalFields"
+			:onSuccess="projectDataStreamCreateModalSuccess"
+		></CreateModal>
 	</section>
 </template>
 
@@ -250,11 +385,12 @@
 	import DataManager from '../includes/data-manager'
 	import EditModal from '../includes/edit-modal'
 	import Modal from '../includes/modal'
+	import CreateModal from '../includes/create-modal'
 
 	export default {
 		name: 'Project',
 
-		components: { DataManager, EditModal, Modal },
+		components: { DataManager, EditModal, Modal, CreateModal },
 
 		data() {
 			return {
@@ -266,6 +402,8 @@
 				selectedProjectSyncTask : null,
 
 				viewModalProjectChildrenSyncTask : null,
+
+				projectDataStream : null,
 			}
 		},
 
@@ -306,6 +444,7 @@
 				if (_.has(this.$store.state.projectOwnerUserHasProjects, 'data[0].user_id')) {
 					return this.$store.state.projectOwnerUserHasProjects.data[0].user_id;
 				}
+				return '';
 			},
 			ownerUserName() {
 				if (_.has(this.$store.state.projectOwnerUserHasProjects, 'data[0].user.data.name')) {
@@ -830,6 +969,363 @@
 					},
 				];
 			},
+
+			projectDataStreamCreateModalFields() {
+				return [
+					{
+						name : 'data_stream_decoder_id',
+						value : '',
+						type : 'select2',
+						select2 : {
+							labelProp : 'name',
+							valueProp : 'id',
+							feed : {
+								getUri : '/dataStreamDecoder',
+								params : {
+									limit: 10,
+									order_by: 'name,asc',
+								}
+							},
+						},
+
+					},
+					{
+						name : 'name',
+						value : this.project.name + ' Data Stream',
+						type : 'input'
+					},
+					{
+						name : 'feed_url',
+						value : '',
+						type : 'input'
+					},
+				];
+			},
+
+			projectDataStreamDataStreamFieldsDataManagerResource() {
+				return {
+					name: 'dataStreamField',
+					create: {
+						postUri: '/dataStreamField',
+					},
+					edit: {
+						putUriTemplate: '/dataStreamField/<%- resourceRow.id %>',
+					},
+					delete: {
+						deleteUriTemplate: '/dataStreamField/<%- resourceRow.id %>',
+					},
+					createDefaultResourceRow: {}
+				}
+			},
+
+			projectDataStreamDataStreamFieldsColumns() {
+				return [
+					{
+						name : 'id',
+						class : 'col-md-3 id-column',
+						orderable : true,
+						order_by_field : 'id',
+
+						create: {
+							fillable: false,
+						},
+
+						edit: {
+							fillable: false,
+						}
+					},
+					{
+						name : 'data_stream_id',
+						displayProp : 'dataStream.data.name',
+						orderable : false,
+
+						type : 'select2',
+						select2 : {
+							labelProp : 'name',
+							valueProp : 'id',
+							feed : {
+								getUri : '/dataStream',
+								params : {
+									limit: 10,
+									order_by: 'name,asc',
+								}
+							},
+						},
+
+						routerLink : {
+							routeName : 'data-stream',
+							paramsNames : {
+								'dataStreamId' : 'data_stream_id'
+							}
+						},
+
+						list: {
+							visible: false,
+						},
+
+						create : {
+							fillable: true,
+							defaultValue: this.projectDataStream.id,
+						},
+
+						edit : {
+							fillable: true,
+						}
+					},
+					{
+						name : 'name',
+						class : '',
+						orderable : true,
+						order_by_field : 'name',
+						type : 'input',
+
+						create : {
+							fillable: true,
+							defaultValue: '',
+						},
+
+						edit : {
+							fillable: true,
+						}
+					},
+					{
+						name : 'path',
+						class : '',
+						orderable : true,
+						order_by_field : 'path',
+						type : 'input',
+
+						create : {
+							fillable: true,
+							defaultValue: '',
+						},
+
+						edit : {
+							fillable: true,
+						}
+					},
+					{
+						name : 'versioned',
+						class : '',
+						orderable : true,
+						order_by_field : 'versioned',
+						type : 'boolean',
+
+						transformValue : (value) => {
+							if (value) {
+								return '<span class="fa fa-check"></span>';
+							} else {
+								return '<span class="fa fa-close"></span>';
+							}
+						},
+
+						create : {
+							fillable: true,
+							defaultValue: false,
+						},
+
+						edit : {
+							fillable: true,
+						}
+					},
+					{
+						name : 'searchable',
+						class : '',
+						orderable : true,
+						order_by_field : 'searchable',
+						type : 'boolean',
+
+						transformValue : (value) => {
+							if (value) {
+								return '<span class="fa fa-check"></span>';
+							} else {
+								return '<span class="fa fa-close"></span>';
+							}
+						},
+
+						create : {
+							fillable: true,
+							defaultValue: false,
+						},
+
+						edit : {
+							fillable: true,
+						}
+					},
+					{
+						name : 'to_retrieve',
+						class : '',
+						orderable : true,
+						order_by_field : 'to_retrieve',
+						type : 'boolean',
+
+						transformValue : (value) => {
+							if (value) {
+								return '<span class="fa fa-check"></span>';
+							} else {
+								return '<span class="fa fa-close"></span>';
+							}
+						},
+
+						create : {
+							fillable: true,
+							defaultValue: false,
+						},
+
+						edit : {
+							fillable: true,
+						}
+					},
+					{
+						name : 'created_at',
+						class : '',
+						orderable : true,
+						order_by_field : 'created_at',
+						transformValue : (value) => {
+							return this.momentLocalDate(value);
+						},
+
+						create: {
+							fillable: false,
+						},
+
+						edit: {
+							fillable: false,
+						}
+					},
+					{
+						name : 'updated_at',
+						class : '',
+						orderable : true,
+						order_by_field : 'updated_at',
+						transformValue : (value) => {
+							return this.momentLocalDate(value);
+						},
+
+						create: {
+							fillable: false,
+						},
+
+						edit: {
+							fillable: false,
+						}
+					}
+				];
+			},
+
+			projectDataStreamDataStreamHasI18nLangsDataManagerResource() {
+				return {
+					name: 'dataStreamHasI18nLang',
+					create: {
+						postUri: '/dataStreamHasI18nLang',
+					},
+					edit: {
+						putUriTemplate: '/dataStreamHasI18nLang/<%- resourceRow.data_stream_id %>,<%- resourceRow.i18n_lang_id %>',
+					},
+					delete: {
+						deleteUriTemplate: '/dataStreamHasI18nLang/<%- resourceRow.data_stream_id %>,<%- resourceRow.i18n_lang_id %>',
+					},
+					createDefaultResourceRow: {}
+				}
+			},
+
+			projectDataStreamDataStreamHasI18nLangsColumns() {
+				return [
+					{
+						name : 'data_stream_id',
+						displayProp : 'dataStream.data.name',
+						orderable : false,
+						type : 'select2',
+						select2 : {
+							labelProp : 'name',
+							valueProp : 'id',
+							feed : {
+								getUri : '/dataStream',
+								params : {
+									limit: 10,
+									order_by: 'name,asc',
+								}
+							},
+						},
+
+						routerLink : {
+							routeName : 'data-stream',
+							paramsNames : {
+								'dataStreamId' : 'data_stream_id'
+							}
+						},
+
+						list: {
+							visible: false,
+						},
+
+						create : {
+							fillable: true,
+							defaultValue: this.projectDataStream.id,
+						},
+
+						edit : {
+							fillable: true,
+						}
+					},
+					{
+						name : 'i18n_lang_id',
+						displayProp : 'i18nLang.data.id',
+						orderable : true,
+						order_by_field : 'i18n_lang_id',
+
+						type : 'select2',
+						select2 : {
+							labelProp : 'id',
+							valueProp : 'id',
+							feed : {
+								getUri : '/i18nLang',
+								params : {
+									limit: 10,
+									order_by: 'id,asc',
+								}
+							},
+						},
+
+						routerLink : {
+							routeName : 'i18n-lang',
+							paramsNames : {
+								'i18nLangId' : 'i18n_lang_id'
+							}
+						},
+
+						list: {
+							visible: true,
+						},
+
+						create : {
+							fillable: true,
+							defaultValue: '',
+						},
+
+						edit : {
+							fillable: true,
+						}
+					},
+					{
+						name : 'created_at',
+						class : 'col-md-2',
+						orderable : true,
+						order_by_field : 'created_at',
+						transformValue : (value) => {
+							return this.momentLocalDate(value);
+						},
+
+						create: {
+							fillable: false,
+						},
+
+						edit: {
+							fillable: false,
+						},
+					},
+				];
+			},
 		},
 		methods: {
 			fetchData() {
@@ -842,9 +1338,15 @@
 
 			getProject(projectId) {
 				apiAxios
-					.get('/project/' + projectId, { params : { include : 'searchEngine' } })
+					.get('/project/' + projectId, { params : { include : 'searchEngine,dataStream' } })
 					.then(response => {
 						this.project = response.data.data;
+
+						// Get the data stream only if exists
+						if (this.project.data_stream_id != null) {
+							this.getProjectDataStream(this.project.id);
+						}
+
 						this.$emit('routeTitleDataUpdate', this.project);
 					}).catch(error => {
 						this.$root.axiosError(error);
@@ -853,6 +1355,16 @@
 
 			getProjectOwner(projectId) {
 				this.$store.dispatch('getProjectOwnerUserHasProjects', { projectId: projectId, include: 'user' });
+			},
+
+			getProjectDataStream(projectId) {
+				apiAxios
+					.get('/project/' + projectId + '/dataStream', { params : { include : 'dataStreamDecoder' } })
+					.then(response => {
+						this.projectDataStream = response.data.data;
+					}).catch(error => {
+						this.$root.axiosError(error);
+					});
 			},
 
 			projectEditModalSuccess() {
@@ -872,6 +1384,14 @@
 					return[];
 				}
 			},
+
+			projectDataStreamShowCreateModal() {
+				$('#project-data-stream-create-modal').modal('show');
+			},
+
+			projectDataStreamCreateModalSuccess() {
+				this.fetchData();
+			}
 		}
 	}
 </script>

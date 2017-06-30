@@ -12,7 +12,8 @@ class ProjectTransformer extends ApiTransformer
 	 * @var array
 	 */
 	protected $availableIncludes = [
-		'searchEngine'
+		'searchEngine',
+		'dataStream',
 	];
 
 	/**
@@ -47,5 +48,23 @@ class ProjectTransformer extends ApiTransformer
 		$searchEngine = $project->searchEngine;
 
 		return $this->item($searchEngine, new SearchEngineTransformer);
+	}
+
+	/**
+	 * Include DataStream
+	 *
+	 * @param Project $project
+	 * @return League\Fractal\ItemResource
+	 */
+	public function includeDataStream(Project $project)
+	{
+		// Nullable foreign key
+		if (is_null($project->data_stream_id)) {
+			return $this->null();
+		}
+
+		$dataStream = $project->dataStream;
+
+		return $this->item($dataStream, new DataStreamTransformer);
 	}
 }

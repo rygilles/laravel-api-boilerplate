@@ -95,4 +95,35 @@ export default {
         'title_template' : 'Sync. Task "<%- data.id %>"',
         'description': '',
     },
+    'data-stream-folder': {
+        'title': 'Data Stream',
+        'description': '',
+    },
+    'data-stream-decoders': {
+        'title': 'Data Stream Decoders',
+        'description': '',
+    },
+    'data-stream-decoder': {
+        'title': 'Data Stream Decoder',
+        'title_template' : 'Data Stream Decoder "<%- data.name %>"',
+        'description': '',
+    },
+    'data-stream-presets': {
+        'title': 'Data Stream Presets',
+        'description': '',
+    },
+    'data-stream-preset': {
+        'title': 'Data Stream Preset',
+        'title_template' : 'Data Stream Preset "<%- data.name %>"',
+        'description': '',
+    },
+    'data-streams': {
+        'title': 'Data Streams',
+        'description': '',
+    },
+    'data-stream': {
+        'title': 'Data Stream',
+        'title_template' : 'Data Stream "<%- data.name %>"',
+        'description': '',
+    },
 }

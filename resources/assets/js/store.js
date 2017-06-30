@@ -231,6 +231,42 @@ var store = new Vuex.Store({
             meta: {}
         },
         syncTaskSyncTaskLogsLoading: true,
+
+        dataStreamDecoders: {
+            data: [],
+            meta: {}
+        },
+        dataStreamDecodersLoading: true,
+
+        dataStreamPresets: {
+            data: [],
+            meta: {}
+        },
+        dataStreamPresetsLoading: true,
+
+        dataStreamPresetDataStreamPresetFields: {
+            data: [],
+            meta: {}
+        },
+        dataStreamPresetDataStreamPresetFieldsLoading: true,
+
+        dataStreams: {
+            data: [],
+            meta: {}
+        },
+        dataStreamsLoading: true,
+
+        dataStreamDataStreamFields: {
+            data: [],
+            meta: {}
+        },
+        dataStreamDataStreamFieldsLoading: true,
+
+        dataStreamDataStreamHasI18nLangs: {
+            data: [],
+            meta: {}
+        },
+        dataStreamDataStreamHasI18nLangsLoading: true,
     },
     getters: {
         laravel(state) {
@@ -429,6 +465,48 @@ var store = new Vuex.Store({
         },
         syncTaskSyncTaskLogsLoading(state) {
             return state.syncTaskChildrenSyncTasksLoading;
+        },
+
+        dataStreamDecoders(state) {
+            return state.dataStreamDecoders;
+        },
+        dataStreamDecodersLoading(state) {
+            return state.dataStreamDecodersLoading;
+        },
+
+        dataStreamPresets(state) {
+            return state.dataStreamPresets;
+        },
+        dataStreamPresetsLoading(state) {
+            return state.dataStreamPresetsLoading;
+        },
+
+        dataStreamPresetDataStreamPresetFields(state) {
+            return state.dataStreamPresetDataStreamPresetFields;
+        },
+        dataStreamPresetDataStreamPresetFieldsLoading(state) {
+            return state.dataStreamPresetDataStreamPresetFieldsLoading;
+        },
+
+        dataStreams(state) {
+            return state.dataStreams;
+        },
+        dataStreamsLoading(state) {
+            return state.dataStreamsLoading;
+        },
+
+        dataStreamDataStreamFields(state) {
+            return state.dataStreamDataStreamFields;
+        },
+        dataStreamDataStreamFieldsLoading(state) {
+            return state.dataStreamDataStreamFieldsLoading;
+        },
+
+        dataStreamDataStreamHasI18nLangs(state) {
+            return state.dataStreamDataStreamHasI18nLangs;
+        },
+        dataStreamDataStreamHasI18nLangsLoading(state) {
+            return state.dataStreamDataStreamHasI18nLangsLoading;
         },
     },
     mutations: {
@@ -629,6 +707,48 @@ var store = new Vuex.Store({
         setSyncTaskSyncTaskLoadingsLoading(state, loading) {
             state.syncTaskSyncTaskLogsLoading = loading;
         },
+
+        setDataStreamDecoders(state, dataStreamDecoders) {
+            state.dataStreamDecoders = dataStreamDecoders;
+        },
+        setDataStreamDecodersLoading(state, loading) {
+            state.dataStreamDecodersLoading = loading;
+        },
+
+        setDataStreamPresets(state, dataStreamPresets) {
+            state.dataStreamPresets = dataStreamPresets;
+        },
+        setDataStreamPresetsLoading(state, loading) {
+            state.dataStreamPresetsLoading = loading;
+        },
+
+        setDataStreamPresetDataStreamPresetFields(state, dataStreamPresetFields) {
+            state.dataStreamPresetDataStreamPresetFields = dataStreamPresetFields;
+        },
+        setDataStreamPresetDataStreamPresetFieldsLoading(state, loading) {
+            state.dataStreamPresetDataStreamPresetFieldsLoading = loading;
+        },
+
+        setDataStreams(state, dataStreams) {
+            state.dataStreams = dataStreams;
+        },
+        setDataStreamsLoading(state, loading) {
+            state.dataStreamsLoading = loading;
+        },
+
+        setDataStreamDataStreamFields(state, dataStreamFields) {
+            state.dataStreamDataStreamFields = dataStreamFields;
+        },
+        setDataStreamDataStreamFieldsLoading(state, loading) {
+            state.dataStreamDataStreamFieldsLoading = loading;
+        },
+
+        setDataStreamDataStreamHasI18nLangs(state, dataStreamDataStreamHasI18nLangs) {
+            state.dataStreamDataStreamHasI18nLangs = dataStreamDataStreamHasI18nLangs;
+        },
+        setDataStreamDataStreamHasI18nLangsLoading(state, loading) {
+            state.dataStreamDataStreamFieldsLoading = loading;
+        },
     },
     actions: {
         getUserOwnerProjects(state, options) {
@@ -730,6 +850,31 @@ var store = new Vuex.Store({
         getSyncTaskSyncTaskLogs(state, options) {
             resourceLoad(state, '/syncTask/' + options.syncTaskId + '/syncTaskLog', options, 'syncTaskSyncTaskLogs');
         },
+
+        getDataStreamDecoders(state, options) {
+            resourceLoad(state, '/dataStreamDecoder', options, 'dataStreamDecoders');
+        },
+
+        getDataStreamPresets(state, options) {
+            resourceLoad(state, '/dataStreamPreset', options, 'dataStreamPresets');
+        },
+
+        getDataStreamPresetDataStreamPresetFields(state, options) {
+            resourceLoad(state, '/dataStreamPreset/' + options.dataStreamPresetId + '/dataStreamPresetField', options, 'dataStreamPresetDataStreamPresetFields');
+        },
+        
+        getDataStreams(state, options) {
+            resourceLoad(state, '/dataStream', options, 'dataStreams');
+        },
+
+        getDataStreamDataStreamFields(state, options) {
+            resourceLoad(state, '/dataStream/' + options.dataStreamId + '/dataStreamField', options, 'dataStreamDataStreamFields');
+        },
+
+        getDataStreamDataStreamHasI18nLangs(state, options) {
+            resourceLoad(state, '/dataStream/' + options.dataStreamId + '/dataStreamHasI18nLang', options, 'dataStreamDataStreamHasI18nLangs');
+        },
+
     }
 });
 

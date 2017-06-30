@@ -2,7 +2,6 @@
 
 namespace App\Http\Transformers\Api;
 
-use League\Fractal\TransformerAbstract;
 use App\Models\SearchEngine;
 
 class SearchEngineTransformer extends ApiTransformer
@@ -20,6 +19,7 @@ class SearchEngineTransformer extends ApiTransformer
 				[
 				'id'                => $searchEngine->id,
 				'name'              => $searchEngine->name,
+				'class_name'        => $searchEngine->class_name,
 				'created_at'        => $searchEngine->created_at->toDateTimeString(),
 				'updated_at'        => $searchEngine->updated_at->toDateTimeString(),
 				'projects_count'    => (int) $searchEngine->projects_count,

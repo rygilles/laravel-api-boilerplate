@@ -95,4 +95,35 @@ export default {
         'title_template' : 'Tâche de synchronisation "<%- data.id %>"',
         'description': '',
     },
+    'data-stream-folder': {
+        'title': 'Flux de données',
+        'description': '',
+    },
+    'data-stream-decoders': {
+        'title': 'Décodeurs de flux de données',
+        'description': '',
+    },
+    'data-stream-decoder': {
+        'title': 'Décodeur de flux de données',
+        'title_template' : 'Décodeur de flux de données "<%- data.name %>"',
+        'description': '',
+    },
+    'data-stream-presets': {
+        'title': 'Presets de flux de données',
+        'description': '',
+    },
+    'data-stream-preset': {
+        'title': 'Preset de flux de données',
+        'title_template' : 'Preset de flux de données "<%- data.name %>"',
+        'description': '',
+    },
+    'data-streams': {
+        'title': 'Flux de données',
+        'description': '',
+    },
+    'data-stream': {
+        'title': 'Flux de données',
+        'title_template' : 'Flux de données "<%- data.name %>"',
+        'description': '',
+    },
 }

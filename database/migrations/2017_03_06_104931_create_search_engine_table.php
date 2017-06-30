@@ -16,6 +16,7 @@ class CreateSearchEngineTable extends Migration
         Schema::create('search_engine', function (Blueprint $table) {
             $table->uuid('id');
             $table->string('name', 100);
+	        $table->string('class_name', 100);
             $table->timestamps();
             $table->primary('id');
         });

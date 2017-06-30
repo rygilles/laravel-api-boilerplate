@@ -44,6 +44,8 @@ class AppServiceProvider extends ServiceProvider
         Validator::extend('uppercase_min', 'App\Http\CustomValidator@validateUppercaseMin');
         Validator::extend('lowercase_min', 'App\Http\CustomValidator@validateLowercaseMin');
         Validator::extend('numeric_min', 'App\Http\CustomValidator@validateNumericMin');
+	    Validator::extend('search_engine_class_name', 'App\Http\CustomValidator@validateSearchEngineClassName');
+	    Validator::extend('data_stream_decoder_class_name', 'App\Http\CustomValidator@validateDataStreamDecoderClassName');
 
         // Models observers
 	    User::observe(UserObserver::class);

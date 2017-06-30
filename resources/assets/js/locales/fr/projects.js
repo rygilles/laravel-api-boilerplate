@@ -7,6 +7,9 @@ export default {
     'see_project_btn' : 'Voir Projet',
     'owner_name' : 'Propriétaire',
     'search_engine_name' : 'Moteur de recherche',
+    'data_stream_name' : 'Flux de données',
+
+    'create_project_data_stream_btn' : 'Créer le flux de données (Avancé)',
 
     'data_manager' : {
         'all_projects' : {

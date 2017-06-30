@@ -201,4 +201,14 @@ class SyncTask extends ApiModel
 	{
 		return $query->whereNotNull('sync_task_id');
 	}
+
+	/**
+	 * Get the sync task items
+	 *
+	 * @return \Illuminate\Database\Eloquent\Relations\HasMany
+	 */
+	public function syncTaskItems()
+	{
+		return $this->HasMany(SyncTaskItem::class);
+	}
 }

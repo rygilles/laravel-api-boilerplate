@@ -6,7 +6,7 @@ export default {
     'data_manager' : {
         'sync_tasks_logs': {
             'main_title': 'Sync. Task Logs',
-            'empty_message': 'Nothig to display here.',
+            'empty_message': 'Nothing to display here.',
             'columns': {
                 'id': {
                     'title': 'Id',

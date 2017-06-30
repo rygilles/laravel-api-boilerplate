@@ -12,6 +12,7 @@
     ],
     "require": {
         "php": ">=5.6.4",
+        "algolia/algoliasearch-client-php": "^1.18",
         "alsofronie/eloquent-uuid": "^1.0",
         "barryvdh/laravel-cors": "^0.8.6",
         "barryvdh/laravel-debugbar": "^2.3",

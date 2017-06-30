@@ -36,9 +36,6 @@ return [
 				// John Smith Sample Project 1
 				'projectId' => '1bcc7efc-138c-11e7-93ae-92361f002671',
 
-				// Mickey Mouse Sample Project Data Stream
-				'dataStreamId' => '605d712c-1934-11e7-93ae-92361f002671',
-
 				// John Smith
 				'userId' => '605c7610-1389-11e7-93ae-92361f002671',
 
@@ -74,6 +71,21 @@ return [
 
 				// Project Sync Task "root"
 				'root' => 1,
+
+				// E-monsite | Blog
+				'dataStreamDecoderId' => '53fd5290-5a4c-11e7-907b-a6006ad3dba0',
+
+				// Mickey Mouse Sample Project Data Stream
+				'dataStreamId' => '605d712c-1934-11e7-93ae-92361f002671',
+
+				// Mickey Mouse Sample Project Data Stream - "title" field
+				'dataStreamFieldId' => '36116fa6-5c0d-11e7-907b-a6006ad3dba0',
+
+				// E-monsite | Blog
+				'dataStreamPresetId' => '737441b0-57ea-11e7-907b-a6006ad3dba0',
+
+				// E-monsite | Blog - "title" field
+				'dataStreamPresetFieldId' => 'eb9cb642-5bf3-11e7-907b-a6006ad3dba0',
 
 			],
 			'routes' => [
@@ -156,11 +168,39 @@ return [
 
 				'projectSyncTask.index',
 
+				'dataStreamDecoder.index',
+				'dataStreamDecoder.show',
+				'dataStreamDecoder.store',
+				'dataStreamDecoder.update',
+				'dataStreamDecoder.destroy',
+
 				'dataStream.index',
 				'dataStream.show',
 				'dataStream.store',
 				'dataStream.update',
 				'dataStream.destroy',
+
+				'dataStreamDataStreamField.index',
+
+				'dataStreamField.index',
+				'dataStreamField.show',
+				'dataStreamField.store',
+				'dataStreamField.update',
+				'dataStreamField.destroy',
+
+				'dataStreamPreset.index',
+				'dataStreamPreset.show',
+				'dataStreamPreset.store',
+				'dataStreamPreset.update',
+				'dataStreamPreset.destroy',
+
+				'dataStreamPresetDataStreamPresetField.index',
+
+				'dataStreamPresetField.index',
+				'dataStreamPresetField.show',
+				'dataStreamPresetField.store',
+				'dataStreamPresetField.update',
+				'dataStreamPresetField.destroy',
 
 				'projectDataStream.show',
 				'projectDataStream.store',
@@ -189,6 +229,18 @@ return [
 
 				'i18nLangSyncTaskTypeVersion.index',
 
+				'dataStreamHasI18nLang.index',
+				'dataStreamHasI18nLang.show',
+				'dataStreamHasI18nLang.store',
+				'dataStreamHasI18nLang.update',
+				'dataStreamHasI18nLang.destroy',
+
+				'dataStreamDataStreamHasI18nLang.index',
+
+				'dataStreamI18nLang.index',
+
+				'i18nLangDataStream.index',
+
 			]
 
 		],
@@ -205,9 +257,6 @@ return [
 
 				// John Smith Sample Project 1
 				'projectId' => '1bcc7efc-138c-11e7-93ae-92361f002671',
-
-				// Mickey Mouse Sample Project Data Stream
-				'dataStreamId' => '605d712c-1934-11e7-93ae-92361f002671',
 
 				// John Smith
 				'userId' => '605c7610-1389-11e7-93ae-92361f002671',
@@ -244,6 +293,21 @@ return [
 
 				// Project Sync Task "root"
 				'root' => 1,
+
+				// E-monsite | Blog
+				'dataStreamDecoderId' => '53fd5290-5a4c-11e7-907b-a6006ad3dba0',
+
+				// Mickey Mouse Sample Project Data Stream
+				'dataStreamId' => '605d712c-1934-11e7-93ae-92361f002671',
+
+				// Mickey Mouse Sample Project Data Stream - "title" field
+				'dataStreamFieldId' => '36116fa6-5c0d-11e7-907b-a6006ad3dba0',
+
+				// E-monsite | Blog
+				'dataStreamPresetId' => '737441b0-57ea-11e7-907b-a6006ad3dba0',
+
+				// E-monsite | Blog - "title" field
+				'dataStreamPresetFieldId' => 'eb9cb642-5bf3-11e7-907b-a6006ad3dba0',
 
 			],
 			'routes' => [
@@ -312,16 +376,39 @@ return [
 
 				'projectSyncTask.index',
 
+				'dataStreamDecoder.index',
+				'dataStreamDecoder.show',
+				'dataStreamDecoder.store',
+				'dataStreamDecoder.update',
+				'dataStreamDecoder.destroy',
+
 				'dataStream.index',
 				'dataStream.show',
 				'dataStream.store',
 				'dataStream.update',
 				'dataStream.destroy',
 
-				'projectDataStream.show',
-				'projectDataStream.store',
-				'projectDataStream.update',
-				'projectDataStream.destroy',
+				'dataStreamDataStreamField.index',
+
+				'dataStreamField.index',
+				'dataStreamField.show',
+				'dataStreamField.store',
+				'dataStreamField.update',
+				'dataStreamField.destroy',
+
+				'dataStreamPreset.index',
+				'dataStreamPreset.show',
+				'dataStreamPreset.store',
+				'dataStreamPreset.update',
+				'dataStreamPreset.destroy',
+
+				'dataStreamPresetDataStreamPresetField.index',
+
+				'dataStreamPresetField.index',
+				'dataStreamPresetField.show',
+				'dataStreamPresetField.store',
+				'dataStreamPresetField.update',
+				'dataStreamPresetField.destroy',
 
 				'userHasProject.index',
 				'userHasProject.show',
@@ -338,6 +425,18 @@ return [
 				'searchEngineProject.index',
 
 				'i18nLangSyncTaskTypeVersion.index',
+
+				'dataStreamHasI18nLang.index',
+				'dataStreamHasI18nLang.show',
+				'dataStreamHasI18nLang.store',
+				'dataStreamHasI18nLang.update',
+				'dataStreamHasI18nLang.destroy',
+
+				'dataStreamDataStreamHasI18nLang.index',
+
+				'dataStreamI18nLang.index',
+
+				'i18nLangDataStream.index',
 
 			]
 
@@ -358,9 +457,6 @@ return [
 
 				// John Smith Sample Project 1
 				'projectId' => '1bcc7efc-138c-11e7-93ae-92361f002671',
-
-				// Mickey Mouse Sample Project Data Stream
-				'dataStreamId' => '605d712c-1934-11e7-93ae-92361f002671',
 
 				// John Smith
 				'userId' => '605c7610-1389-11e7-93ae-92361f002671',
@@ -388,6 +484,17 @@ return [
 
 				// Planned
 				'syncTaskStatusId' => 'Planned',
+
+				// E-monsite | Blog
+				'dataStreamDecoderId' => '53fd5290-5a4c-11e7-907b-a6006ad3dba0',
+
+				// Mickey Mouse Sample Project Data Stream
+				'dataStreamId' => '605d712c-1934-11e7-93ae-92361f002671',
+
+				// Mickey Mouse Sample Project Data Stream - "title" field
+				'dataStreamFieldId' => '36116fa6-5c0d-11e7-907b-a6006ad3dba0',
+
+				// todo fields, preset, preset fields, etc
 
 			],
 			'routes' => [
@@ -426,6 +533,9 @@ return [
 				'projectSyncItem.index',
 
 				'projectSyncTask.index',
+
+				'dataStreamDecoder.index',
+				'dataStreamDecoder.show',
 				
 				'projectDataStream.show',
 				'projectDataStream.store',

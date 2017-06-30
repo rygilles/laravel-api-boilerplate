@@ -22,7 +22,7 @@ class DataStreamController extends ApiController
 		parent::__construct();
 		
 		// User group restrictions
-		$this->middleware('verifyUserGroup:Developer,Support',  ['only' => ['index', 'show', 'store', 'update', 'destroy']]);
+		$this->middleware('verifyUserGroup:Developer,Support',  ['only' => ['index', 'store', 'update', 'destroy']]);
 	}
 
 	/**
@@ -32,7 +32,7 @@ class DataStreamController extends ApiController
 	 */
 	public function index()
 	{
-		$dataStreams = DataStream::paginate();
+		$dataStreams = DataStream::applyRequestQueryString()->paginate();
 
 		return $this->response->paginator($dataStreams, new DataStreamTransformer);
 	}

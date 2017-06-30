@@ -170,7 +170,6 @@
 			// call again the method if the route changes
 			'$route' : function(val) {
 				this.fetchData();
-				this.$forceUpdate();
 			}
 		},
 

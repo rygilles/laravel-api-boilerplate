@@ -26,7 +26,8 @@ class SearchEngine extends ApiModel
 	 * @var array
 	 */
 	protected $fillable = [
-		'name'
+		'name',
+		'class_name',
 	];
 
 	/**
@@ -48,7 +49,8 @@ class SearchEngine extends ApiModel
 	 * @var array
 	 */
 	protected static $storeFillable = [
-		'name'
+		'name',
+		'class_name',
 	];
 
 	/**
@@ -56,7 +58,8 @@ class SearchEngine extends ApiModel
 	 * @var array
 	 */
 	protected static $patchFillable = [
-		'name'
+		'name',
+		'class_name',
 	];
 
 	/**
@@ -64,7 +67,8 @@ class SearchEngine extends ApiModel
 	 * @var array
 	 */
 	protected static $putFillable = [
-		'name'
+		'name',
+		'class_name',
 	];
 
 	/**
@@ -72,7 +76,8 @@ class SearchEngine extends ApiModel
 	 * @var string[]
 	 */
 	protected static $storeRules = [
-		'name'              => 'required|string|max:100'
+		'name'              => 'required|string|max:100',
+		'class_name'        => 'required|string|search_engine_class_name',
 	];
 
 	/**
@@ -80,7 +85,8 @@ class SearchEngine extends ApiModel
 	 * @var string[]
 	 */
 	protected static $patchRules = [
-		'name'              => 'string|max:100'
+		'name'              => 'string|max:100',
+		'class_name'        => 'string|search_engine_class_name',
 	];
 
 	/**
@@ -88,7 +94,8 @@ class SearchEngine extends ApiModel
 	 * @var string[]
 	 */
 	protected static $putRules = [
-		'name'              => 'required|string|max:100'
+		'name'              => 'required|string|max:100',
+		'class_name'        => 'required|string|search_engine_class_name',
 	];
 
 	/**

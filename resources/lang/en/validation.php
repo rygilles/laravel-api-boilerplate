@@ -126,5 +126,7 @@ return [
     ],
 
 	'unique_with' => 'This combination of :fields already exists.',
+	'search_engine_class_name' => 'The class name does not exists in App\\SearchEngines namespace.',
+	'data_stream_decoder_class_name' => 'The class name does not exists in App\\DataStreamDecoders namespace.',
 
 ];

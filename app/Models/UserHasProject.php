@@ -2,9 +2,6 @@
 
 namespace App\Models;
 
-use App\Models\Project;
-use App\Models\User;
-use App\Models\UserRole;
 use App\Traits\HasCompositeKey;
 
 /**

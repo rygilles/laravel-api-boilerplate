@@ -2,7 +2,6 @@
 
 namespace App\Http\Transformers\Api;
 
-use League\Fractal\TransformerAbstract;
 use App\Models\I18nLang;
 
 class I18nLangTransformer extends ApiTransformer

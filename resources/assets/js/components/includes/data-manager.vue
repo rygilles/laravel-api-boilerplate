@@ -61,7 +61,7 @@
 			:id="massDeleteModalId"
 			:title="massDeleteModalTitle"
 			:rows="massDeleteModalResourceRows"
-			:deleteUriTemplate="deleteModalDeleteUri"
+			:deleteUriTemplate="massDeleteModalDeleteUriTemplate"
 			:onSuccess="massDeleteModalOnSuccess"
 			:messageTemplate="massDeleteModalMessage"
 		></MassDeleteModal>
@@ -235,6 +235,13 @@
 		},
 
 		computed: {
+			massDeleteModalDeleteUriTemplate() {
+				if (_.has(this.resource, 'delete.deleteUriTemplate')) {
+					return this.resource.delete.deleteUriTemplate;
+				}
+				return '';
+			},
+
 			realRights() {
 				var rights = this.rights;
 

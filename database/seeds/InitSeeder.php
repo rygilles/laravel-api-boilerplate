@@ -21,5 +21,6 @@ class InitSeeder extends Seeder
 	    $this->call(SyncTaskTypeVTableSeeder::class);
 	    $this->call(SyncTaskStatusTableSeeder::class);
 	    $this->call(SyncTaskStatusVTableSeeder::class);
+	    $this->call(DataStreamDecoderTableSeeder::class);
     }
 }

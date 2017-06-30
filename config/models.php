@@ -52,9 +52,7 @@ return [
 
 		'requestQueryStringParameters' => [
 
-			'authorizedOrderByColumns' => 'id,user_role_id,created_at,updated_at',
-			/*'authorizedSearchColumns' => 'id,name',
-			'defaultSearchColumns' => 'id,name',*/
+			'authorizedOrderByColumns' => 'user_id,project_id,user_role_id,created_at,updated_at',
 			'authorizedIncludes' => 'user,project'
 
 		]
@@ -97,7 +95,7 @@ return [
 			'authorizedOrderByColumns' => 'id,name,created_at,updated_at',
 			'authorizedSearchColumns' => 'id,name',
 			'defaultSearchColumns' => 'id,name',
-			'authorizedIncludes' => 'searchEngine'
+			'authorizedIncludes' => 'searchEngine,dataStream'
 
 		]
 
@@ -191,9 +189,72 @@ return [
 			'authorizedOrderByColumns' => 'id,sync_task_status_id,entry,public,created_at,updated_at',
 			'authorizedSearchColumns' => 'sync_task_status_id,entry',
 			'defaultSearchColumns' => 'sync_task_status_id,entry',
+
 		]
 
 	],
 
+	App\Models\DataStream::class => [
+
+		'requestQueryStringParameters' => [
+
+			'authorizedOrderByColumns' => 'id,data_stream_decoder_id,name,feed_url,created_at,updated_at',
+			'authorizedIncludes' => 'project,dataStreamDecoder',
+			'authorizedSearchColumns' => 'name,feed_url',
+			'defaultSearchColumns' => 'name',
+
+		]
+
+	],
+
+	App\Models\DataStreamField::class => [
+
+		'requestQueryStringParameters' => [
+
+			'authorizedOrderByColumns' => 'id,data_stream_id,name,path,versioned,searchable,to_retrieve,created_at,updated_at',
+			'authorizedIncludes' => 'dataStream',
+			'authorizedSearchColumns' => 'name,path',
+			'defaultSearchColumns' => 'name,path',
+
+		]
+
+	],
+
+	App\Models\DataStreamHasI18nLang::class => [
+
+		'requestQueryStringParameters' => [
+
+			'authorizedOrderByColumns' => 'data_stream_id,i18n_lang_id,created_at,updated_at',
+			'authorizedIncludes' => 'dataStream,i18nLang'
+
+		]
+
+	],
+
+	App\Models\DataStreamPreset::class => [
+
+		'requestQueryStringParameters' => [
+
+			'authorizedOrderByColumns' => 'id,data_stream_decoder_id,name,created_at,updated_at',
+			'authorizedIncludes' => 'dataStreamDecoder',
+			'authorizedSearchColumns' => 'name',
+			'defaultSearchColumns' => 'name',
+
+		]
+
+	],
+
+	App\Models\DataStreamPresetField::class => [
+
+		'requestQueryStringParameters' => [
+
+			'authorizedOrderByColumns' => 'id,data_stream_preset_id,name,path,versioned,searchable,to_retrieve,created_at,updated_at',
+			'authorizedIncludes' => 'dataStreamPreset',
+			'authorizedSearchColumns' => 'name,path',
+			'defaultSearchColumns' => 'name,path',
+
+		]
+
+	],
 
 ];

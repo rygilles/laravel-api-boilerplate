@@ -2,8 +2,6 @@
 
 namespace App\Http\Transformers\Api;
 
-use Illuminate\Support\Facades\Auth;
-use League\Fractal\TransformerAbstract;
 use App\Models\User;
 
 class UserTransformer extends ApiTransformer

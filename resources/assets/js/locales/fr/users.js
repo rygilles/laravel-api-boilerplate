@@ -182,7 +182,7 @@ export default {
         
         'administrator_users' : {
             'main_title' : 'Administrateurs du projet',
-            'empty_message' : 'Aucun projet administré.',
+            'empty_message' : 'Aucun administeur.',
             'columns' : {
                 'user_name' : {
                     'title' : 'Nom',

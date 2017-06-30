@@ -21,7 +21,7 @@ class SyncTaskLogTransformer extends ApiTransformer
 				'sync_task_status_id'   => $syncTaskLog->sync_task_status_id,
 				'sync_task_id'          => $syncTaskLog->sync_task_id,
 				'entry'                 => $syncTaskLog->entry,
-				'public'                => $syncTaskLog->public,
+				'public'                => (boolean) $syncTaskLog->public,
 				'created_at'            => $syncTaskLog->created_at->toDateTimeString(),
 				'updated_at'            => $syncTaskLog->updated_at->toDateTimeString()
 			]

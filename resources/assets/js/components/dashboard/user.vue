@@ -379,16 +379,6 @@
 				this.userEditModalPutUri = '/user/' + this.user.id;
 				$('#user-edit-modal').modal('show');
 			},
-
-			userHasProjectShowCreateModalTODO() {
-				this.createModalDefaultUserHasProject = {
-					user_id : this.userId,
-					project_id : '',
-					user_role_id : '',
-				};
-
-				$('#user-has-projects-create-modal').modal('show');
-			},
 		}
 	}
 </script>

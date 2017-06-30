@@ -35,6 +35,12 @@ var files = [
     'sync_task_types',
     'sync_task_type_versions',
     'sync_task_logs',
+    'data_stream_decoders',
+    'data_stream_presets',
+    'data_stream_preset_fields',
+    'data_streams',
+    'data_stream_fields',
+    'data_stream_has_i18n_langs',
 ];
 
 // Create locales from file hierarchy

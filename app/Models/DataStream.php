@@ -26,6 +26,7 @@ class DataStream extends ApiModel
 	 * @var array
 	 */
 	protected $fillable = [
+		'data_stream_decoder_id',
 		'name',
 		'feed_url'
 	];
@@ -45,12 +46,43 @@ class DataStream extends ApiModel
 	public $incrementing = false;
 
 	/**
+	 * Model fillable fields for new items
+	 * @var array
+	 */
+	protected static $storeFillable = [
+		'data_stream_decoder_id',
+		'name',
+		'feed_url'
+	];
+
+	/**
+	 * Model fillable fields for item patch
+	 * @var array
+	 */
+	protected static $patchFillable = [
+		'data_stream_decoder_id',
+		'name',
+		'feed_url'
+	];
+
+	/**
+	 * Model fillable fields for item replacement
+	 * @var array
+	 */
+	protected static $putFillable = [
+		'data_stream_decoder_id',
+		'name',
+		'feed_url'
+	];
+
+	/**
 	 * Model validation rules for new items
 	 * @var string[]
 	 */
 	protected static $storeRules = [
-		'name'      => 'required|string|max:200',
-		'feed_url'  => 'required|url'
+		'data_stream_decoder_id'    => 'required|uuid|exists:data_stream_decoder,id',
+		'name'                      => 'required|string|max:200',
+		'feed_url'                  => 'required|url'
 	];
 
 	/**
@@ -58,8 +90,9 @@ class DataStream extends ApiModel
 	 * @var string[]
 	 */
 	protected static $patchRules = [
-		'name'      => 'string|max:200',
-		'feed_url'  => 'url'
+		'data_stream_decoder_id'    => 'uuid|exists:data_stream_decoder,id',
+		'name'                      => 'string|max:200',
+		'feed_url'                  => 'url'
 	];
 
 	/**
@@ -67,8 +100,9 @@ class DataStream extends ApiModel
 	 * @var string[]
 	 */
 	protected static $putRules = [
-		'name'      => 'required|string|max:200',
-		'feed_url'  => 'required|url'
+		'data_stream_decoder_id'    => 'required|uuid|exists:data_stream_decoder,id',
+		'name'                      => 'required|string|max:200',
+		'feed_url'                  => 'required|url'
 	];
 
 	/**
@@ -79,5 +113,45 @@ class DataStream extends ApiModel
 	public function project()
 	{
 		return $this->hasOne(Project::class);
+	}
+
+	/**
+	 * Get the data stream decoder of this data stream
+	 *
+	 * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
+	 */
+	public function dataStreamDecoder()
+	{
+		return $this->belongsTo(DataStreamDecoder::class);
+	}
+
+	/**
+	 * Get the relationships between this data stream and his i18n langs
+	 *
+	 * @return \Illuminate\Database\Eloquent\Relations\HasMany
+	 */
+	public function dataStreamHasI18nLangs()
+	{
+		return $this->hasMany(DataStreamHasI18nLang::class);
+	}
+
+	/**
+	 * Get the i18n langs of this data stream using relationship table
+	 *
+	 * @return \Illuminate\Database\Eloquent\Relations\BelongsToMany
+	 */
+	public function i18nLangs()
+	{
+		return $this->belongsToMany(I18nLang::class, 'data_stream_has_i18n_lang', 'data_stream_id', 'i18n_lang_id');
+	}
+
+	/**
+	 * Get the data stream fields of this data stream
+	 *
+	 * @return \Illuminate\Database\Eloquent\Relations\HasMany
+	 */
+	public function dataStreamFields()
+	{
+		return $this->hasMany(DataStreamField::class);
 	}
 }

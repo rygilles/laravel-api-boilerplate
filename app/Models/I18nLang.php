@@ -1,7 +1,6 @@
 <?php
 
 namespace App\Models;
-use App\Models\SyncTaskTypeVersion;
 
 /**
  * Class I18nLang
@@ -104,5 +103,35 @@ class I18nLang extends ApiModel
 	public function syncTaskTypeVersions()
 	{
 		return $this->HasMany(SyncTaskTypeVersion::class);
+	}
+
+	/**
+	 * Get the sync task status versions
+	 *
+	 * @return \Illuminate\Database\Eloquent\Relations\HasMany
+	 */
+	public function syncTaskStatusVersions()
+	{
+		return $this->HasMany(SyncTaskStatus::class);
+	}
+
+	/**
+	 * Get the relationships between this i18n lang and his data streams
+	 *
+	 * @return \Illuminate\Database\Eloquent\Relations\HasMany
+	 */
+	public function dataStreamHasI18nLangs()
+	{
+		return $this->hasMany(DataStreamHasI18nLang::class);
+	}
+
+	/**
+	 * Get the data streams of this i18n lang using relationship table
+	 *
+	 * @return \Illuminate\Database\Eloquent\Relations\BelongsToMany
+	 */
+	public function dataStreams()
+	{
+		return $this->belongsToMany(DataStream::class, 'data_stream_has_i18n_lang', 'i18n_lang_id', 'data_stream_id');
 	}
 }

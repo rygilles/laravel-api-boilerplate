@@ -74,7 +74,7 @@
 				this.rowsDoneCount = 0;
 				var compiledDeleteUriTemplate = _.template(this.deleteUriTemplate);
 				this.rows.forEach((row) => {
-					apiAxios.delete(compiledDeleteUriTemplate({'row' : row}))
+					apiAxios.delete(compiledDeleteUriTemplate({'resourceRow' : row}))
 						.then(response => {
 							this.rowsDoneCount++;
 							this.checkProgress();

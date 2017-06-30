@@ -77,17 +77,19 @@ $.ajax(settings).done(function (response) {
     "data": [
         {
             "id": "56278dc8-1934-11e7-93ae-92361f002671",
+            "data_stream_decoder_id": "53fd5290-5a4c-11e7-907b-a6006ad3dba0",
             "name": "John Smith Sample Project Data Stream",
             "feed_url": "http:\/\/domain.tld\/feedJohn.json",
-            "created_at": "2017-06-22 09:32:20",
-            "updated_at": "2017-06-22 09:32:20"
+            "created_at": "2017-06-28 14:26:41",
+            "updated_at": "2017-06-28 14:26:41"
         },
         {
             "id": "605d712c-1934-11e7-93ae-92361f002671",
+            "data_stream_decoder_id": "53fd5290-5a4c-11e7-907b-a6006ad3dba0",
             "name": "Mickey Mouse Sample Project Data Stream",
             "feed_url": "http:\/\/domain.tld\/feedTheMouse.json",
-            "created_at": "2017-06-22 09:32:20",
-            "updated_at": "2017-06-22 09:32:20"
+            "created_at": "2017-06-28 14:26:41",
+            "updated_at": "2017-06-28 14:26:41"
         }
     ],
     "meta": {
@@ -146,10 +148,11 @@ $.ajax(settings).done(function (response) {
 {
     "data": {
         "id": "605d712c-1934-11e7-93ae-92361f002671",
+        "data_stream_decoder_id": "53fd5290-5a4c-11e7-907b-a6006ad3dba0",
         "name": "Mickey Mouse Sample Project Data Stream",
         "feed_url": "http:\/\/domain.tld\/feedTheMouse.json",
-        "created_at": "2017-06-22 09:32:20",
-        "updated_at": "2017-06-22 09:32:20"
+        "created_at": "2017-06-28 14:26:41",
+        "updated_at": "2017-06-28 14:26:41"
     }
 }
 ```
@@ -174,8 +177,9 @@ curl -X POST "https://emsearch.ryan.ems-dev.net/api/dataStream" \
 -H "Accept: application/json" \
 -H "Authentication: Bearer xxx"
  \
-    -d "name"="Sapiente minima excepturi" \
-    -d "feed_url"="http://www.hartmann.net/voluptas-sequi-modi-incidunt-mollitia-et-nihil.html" \
+    -d "data_stream_decoder_id"="7ea1c05c-10f3-3c4b-99eb-d1001fc96fdb" \
+    -d "name"="Sequi neque eos" \
+    -d "feed_url"="http://www.cremin.com/" \
 
 ```
 
@@ -186,8 +190,9 @@ var settings = {
     "url": "https://emsearch.ryan.ems-dev.net/api/dataStream",
     "method": "POST",
     "data": {
-        "name": "Sapiente minima excepturi",
-        "feed_url": "http:\/\/www.hartmann.net\/voluptas-sequi-modi-incidunt-mollitia-et-nihil.html"
+        "data_stream_decoder_id": "7ea1c05c-10f3-3c4b-99eb-d1001fc96fdb",
+        "name": "Sequi neque eos",
+        "feed_url": "http:\/\/www.cremin.com\/"
 },
     "headers": {
         "Accept": "application/json",
@@ -208,6 +213,7 @@ $.ajax(settings).done(function (response) {
 
 Parameter | Type | Status | Description
 --------- | ------- | ------- | ------- | -----------
+    data_stream_decoder_id | string |  required  | UUID Valid data_stream_decoder id
     name | string |  required  | Maximum: `200`
     feed_url | url |  required  | 
 
@@ -223,8 +229,9 @@ curl -X PUT "https://emsearch.ryan.ems-dev.net/api/dataStream/605d712c-1934-11e7
 -H "Accept: application/json" \
 -H "Authentication: Bearer xxx"
  \
-    -d "name"="Voluptas id quis" \
-    -d "feed_url"="http://www.williamson.com/" \
+    -d "data_stream_decoder_id"="0d611b16-9829-347a-a2fa-1d4a6f0ecba8" \
+    -d "name"="Sunt est accusantium" \
+    -d "feed_url"="https://www.roob.com/sapiente-quo-distinctio-soluta-ex" \
 
 ```
 
@@ -235,8 +242,9 @@ var settings = {
     "url": "https://emsearch.ryan.ems-dev.net/api/dataStream/605d712c-1934-11e7-93ae-92361f002671",
     "method": "PUT",
     "data": {
-        "name": "Voluptas id quis",
-        "feed_url": "http:\/\/www.williamson.com\/"
+        "data_stream_decoder_id": "0d611b16-9829-347a-a2fa-1d4a6f0ecba8",
+        "name": "Sunt est accusantium",
+        "feed_url": "https:\/\/www.roob.com\/sapiente-quo-distinctio-soluta-ex"
 },
     "headers": {
         "Accept": "application/json",
@@ -259,6 +267,7 @@ $.ajax(settings).done(function (response) {
 
 Parameter | Type | Status | Description
 --------- | ------- | ------- | ------- | -----------
+    data_stream_decoder_id | string |  required  | UUID Valid data_stream_decoder id
     name | string |  required  | Maximum: `200`
     feed_url | url |  required  | 
 
@@ -335,10 +344,11 @@ $.ajax(settings).done(function (response) {
 {
     "data": {
         "id": "56278dc8-1934-11e7-93ae-92361f002671",
+        "data_stream_decoder_id": "53fd5290-5a4c-11e7-907b-a6006ad3dba0",
         "name": "John Smith Sample Project Data Stream",
         "feed_url": "http:\/\/domain.tld\/feedJohn.json",
-        "created_at": "2017-06-22 09:32:20",
-        "updated_at": "2017-06-22 09:32:20"
+        "created_at": "2017-06-28 14:26:41",
+        "updated_at": "2017-06-28 14:26:41"
     }
 }
 ```
@@ -363,6 +373,7 @@ curl -X POST "https://emsearch.ryan.ems-dev.net/api/project/1bcc7efc-138c-11e7-9
 -H "Accept: application/json" \
 -H "Authentication: Bearer xxx"
  \
+    -d "data_stream_decoder_id"="0017377e-ab34-380b-97cd-4da40c3d9381" \
     -d "name"="Omnis neque laboriosam" \
     -d "feed_url"="http://crooks.com/quas-ut-pariatur-doloremque-impedit-consequatur" \
 
@@ -375,6 +386,7 @@ var settings = {
     "url": "https://emsearch.ryan.ems-dev.net/api/project/1bcc7efc-138c-11e7-93ae-92361f002671/dataStream",
     "method": "POST",
     "data": {
+        "data_stream_decoder_id": "0017377e-ab34-380b-97cd-4da40c3d9381",
         "name": "Omnis neque laboriosam",
         "feed_url": "http:\/\/crooks.com\/quas-ut-pariatur-doloremque-impedit-consequatur"
 },
@@ -397,6 +409,7 @@ $.ajax(settings).done(function (response) {
 
 Parameter | Type | Status | Description
 --------- | ------- | ------- | ------- | -----------
+    data_stream_decoder_id | string |  required  | UUID Valid data_stream_decoder id
     name | string |  required  | Maximum: `200`
     feed_url | url |  required  | 
 
@@ -412,8 +425,9 @@ curl -X PUT "https://emsearch.ryan.ems-dev.net/api/project/1bcc7efc-138c-11e7-93
 -H "Accept: application/json" \
 -H "Authentication: Bearer xxx"
  \
-    -d "name"="In aut molestiae" \
-    -d "feed_url"="http://wilderman.com/" \
+    -d "data_stream_decoder_id"="5f987f4b-19ac-32a3-ae73-2b13b105bea1" \
+    -d "name"="Maxime nesciunt velit" \
+    -d "feed_url"="https://farrell.com/veniam-et-velit-cum.html" \
 
 ```
 
@@ -424,8 +438,9 @@ var settings = {
     "url": "https://emsearch.ryan.ems-dev.net/api/project/1bcc7efc-138c-11e7-93ae-92361f002671/dataStream",
     "method": "PUT",
     "data": {
-        "name": "In aut molestiae",
-        "feed_url": "http:\/\/wilderman.com\/"
+        "data_stream_decoder_id": "5f987f4b-19ac-32a3-ae73-2b13b105bea1",
+        "name": "Maxime nesciunt velit",
+        "feed_url": "https:\/\/farrell.com\/veniam-et-velit-cum.html"
 },
     "headers": {
         "Accept": "application/json",
@@ -448,6 +463,7 @@ $.ajax(settings).done(function (response) {
 
 Parameter | Type | Status | Description
 --------- | ------- | ------- | ------- | -----------
+    data_stream_decoder_id | string |  required  | UUID Valid data_stream_decoder id
     name | string |  required  | Maximum: `200`
     feed_url | url |  required  | 
 
@@ -489,7 +505,1988 @@ $.ajax(settings).done(function (response) {
 
 <!-- END_820f0f614fb757aec7e225d86da8b40d -->
 
+<!-- START_6c118c8a40f2e0a928a0b386584f151b -->
+## I18n lang data streams list
+
+
+<aside class="notice">Pagination limit must be a value between <code>1</code> and <code>20</code>, default is <code>10</code>.</aside>
+
+> Example request:
+
+```bash
+curl -X GET "https://emsearch.ryan.ems-dev.net/api/i18nLang/en_US/dataStream" \
+-H "Accept: application/json" \
+-H "Authentication: Bearer xxx"
+
+```
+
+```javascript
+var settings = {
+    "async": true,
+    "crossDomain": true,
+    "url": "https://emsearch.ryan.ems-dev.net/api/i18nLang/en_US/dataStream",
+    "method": "GET",
+    "headers": {
+        "Accept": "application/json",
+        "Authentication" : "Bearer xxx"
+    }
+}
+
+$.ajax(settings).done(function (response) {
+    console.log(response);
+});
+```
+
+> Example response:
+
+```json
+{
+    "data": [
+        {
+            "id": "605d712c-1934-11e7-93ae-92361f002671",
+            "data_stream_decoder_id": "53fd5290-5a4c-11e7-907b-a6006ad3dba0",
+            "name": "Mickey Mouse Sample Project Data Stream",
+            "feed_url": "http:\/\/domain.tld\/feedTheMouse.json",
+            "created_at": "2017-06-28 14:26:41",
+            "updated_at": "2017-06-28 14:26:41"
+        }
+    ],
+    "meta": {
+        "pagination": {
+            "total": 1,
+            "count": 1,
+            "per_page": 10,
+            "current_page": 1,
+            "total_pages": 1,
+            "links": []
+        }
+    }
+}
+```
+
+### HTTP Request
+`GET /api/i18nLang/{i18nLangId}/dataStream`
+
+`HEAD /api/i18nLang/{i18nLangId}/dataStream`
+
+
+<!-- END_6c118c8a40f2e0a928a0b386584f151b -->
+
+#DataStreamDecoder
+<!-- START_bd915a237dff3bacba3bfa81f74db7a9 -->
+## Show data stream decoder list
+
+
+<aside class="notice">Pagination limit must be a value between <code>1</code> and <code>20</code>, default is <code>10</code>.</aside>
+
+> Example request:
+
+```bash
+curl -X GET "https://emsearch.ryan.ems-dev.net/api/dataStreamDecoder" \
+-H "Accept: application/json" \
+-H "Authentication: Bearer xxx"
+
+```
+
+```javascript
+var settings = {
+    "async": true,
+    "crossDomain": true,
+    "url": "https://emsearch.ryan.ems-dev.net/api/dataStreamDecoder",
+    "method": "GET",
+    "headers": {
+        "Accept": "application/json",
+        "Authentication" : "Bearer xxx"
+    }
+}
+
+$.ajax(settings).done(function (response) {
+    console.log(response);
+});
+```
+
+> Example response:
+
+```json
+{
+    "data": [
+        {
+            "id": "53fd5290-5a4c-11e7-907b-a6006ad3dba0",
+            "name": "Emonsite | Blog",
+            "class_name": "EmonsiteBlog",
+            "file_mime_type": "application\/json",
+            "created_at": "2017-06-28 14:26:40",
+            "updated_at": "2017-06-28 14:26:40"
+        }
+    ],
+    "meta": {
+        "pagination": {
+            "total": 1,
+            "count": 1,
+            "per_page": 10,
+            "current_page": 1,
+            "total_pages": 1,
+            "links": []
+        }
+    }
+}
+```
+
+### HTTP Request
+`GET /api/dataStreamDecoder`
+
+`HEAD /api/dataStreamDecoder`
+
+
+<!-- END_bd915a237dff3bacba3bfa81f74db7a9 -->
+
+<!-- START_049ef8cf901ed40324a483e5d7e5890c -->
+## Get specified data stream decoder
+
+> Example request:
+
+```bash
+curl -X GET "https://emsearch.ryan.ems-dev.net/api/dataStreamDecoder/53fd5290-5a4c-11e7-907b-a6006ad3dba0" \
+-H "Accept: application/json" \
+-H "Authentication: Bearer xxx"
+
+```
+
+```javascript
+var settings = {
+    "async": true,
+    "crossDomain": true,
+    "url": "https://emsearch.ryan.ems-dev.net/api/dataStreamDecoder/53fd5290-5a4c-11e7-907b-a6006ad3dba0",
+    "method": "GET",
+    "headers": {
+        "Accept": "application/json",
+        "Authentication" : "Bearer xxx"
+    }
+}
+
+$.ajax(settings).done(function (response) {
+    console.log(response);
+});
+```
+
+> Example response:
+
+```json
+{
+    "data": {
+        "id": "53fd5290-5a4c-11e7-907b-a6006ad3dba0",
+        "name": "Emonsite | Blog",
+        "class_name": "EmonsiteBlog",
+        "file_mime_type": "application\/json",
+        "created_at": "2017-06-28 14:26:40",
+        "updated_at": "2017-06-28 14:26:40"
+    }
+}
+```
+
+### HTTP Request
+`GET /api/dataStreamDecoder/{dataStreamDecoderId}`
+
+`HEAD /api/dataStreamDecoder/{dataStreamDecoderId}`
+
+
+<!-- END_049ef8cf901ed40324a483e5d7e5890c -->
+
+<!-- START_b50a178d1d8a0de1e81b3256ceeb1215 -->
+## Create and store new data stream decoder
+
+> Example request:
+
+```bash
+curl -X POST "https://emsearch.ryan.ems-dev.net/api/dataStreamDecoder" \
+-H "Accept: application/json" \
+-H "Authentication: Bearer xxx"
+ \
+    -d "name"="Sunt architecto ad" \
+    -d "class_name"="Ea dolor illum" \
+    -d "file_mime_type"="Fugit sit quaerat" \
+
+```
+
+```javascript
+var settings = {
+    "async": true,
+    "crossDomain": true,
+    "url": "https://emsearch.ryan.ems-dev.net/api/dataStreamDecoder",
+    "method": "POST",
+    "data": {
+        "name": "Sunt architecto ad",
+        "class_name": "Ea dolor illum",
+        "file_mime_type": "Fugit sit quaerat"
+},
+    "headers": {
+        "Accept": "application/json",
+        "Authentication" : "Bearer xxx"
+    }
+}
+
+$.ajax(settings).done(function (response) {
+    console.log(response);
+});
+```
+
+
+### HTTP Request
+`POST /api/dataStreamDecoder`
+
+#### Parameters
+
+Parameter | Type | Status | Description
+--------- | ------- | ------- | ------- | -----------
+    name | string |  required  | Minimum: `5` Maximum: `200`
+    class_name | string |  required  | 
+    file_mime_type | string |  required  | 
+
+<!-- END_b50a178d1d8a0de1e81b3256ceeb1215 -->
+
+<!-- START_501935d1e31d5941cd4788c04c355a06 -->
+## Update a data stream decoder
+
+> Example request:
+
+```bash
+curl -X PUT "https://emsearch.ryan.ems-dev.net/api/dataStreamDecoder/53fd5290-5a4c-11e7-907b-a6006ad3dba0" \
+-H "Accept: application/json" \
+-H "Authentication: Bearer xxx"
+ \
+    -d "name"="Ex id rerum" \
+    -d "class_name"="Rem ratione harum" \
+    -d "file_mime_type"="Commodi sint recusandae" \
+
+```
+
+```javascript
+var settings = {
+    "async": true,
+    "crossDomain": true,
+    "url": "https://emsearch.ryan.ems-dev.net/api/dataStreamDecoder/53fd5290-5a4c-11e7-907b-a6006ad3dba0",
+    "method": "PUT",
+    "data": {
+        "name": "Ex id rerum",
+        "class_name": "Rem ratione harum",
+        "file_mime_type": "Commodi sint recusandae"
+},
+    "headers": {
+        "Accept": "application/json",
+        "Authentication" : "Bearer xxx"
+    }
+}
+
+$.ajax(settings).done(function (response) {
+    console.log(response);
+});
+```
+
+
+### HTTP Request
+`PUT /api/dataStreamDecoder/{dataStreamDecoderId}`
+
+`PATCH /api/dataStreamDecoder/{dataStreamDecoderId}`
+
+#### Parameters
+
+Parameter | Type | Status | Description
+--------- | ------- | ------- | ------- | -----------
+    name | string |  required  | Minimum: `5` Maximum: `200`
+    class_name | string |  required  | 
+    file_mime_type | string |  required  | 
+
+<!-- END_501935d1e31d5941cd4788c04c355a06 -->
+
+<!-- START_b90290a79243f48f6887768e82b4ecc5 -->
+## Delete specified data stream decoder
+
+> Example request:
+
+```bash
+curl -X DELETE "https://emsearch.ryan.ems-dev.net/api/dataStreamDecoder/53fd5290-5a4c-11e7-907b-a6006ad3dba0" \
+-H "Accept: application/json" \
+-H "Authentication: Bearer xxx"
+
+```
+
+```javascript
+var settings = {
+    "async": true,
+    "crossDomain": true,
+    "url": "https://emsearch.ryan.ems-dev.net/api/dataStreamDecoder/53fd5290-5a4c-11e7-907b-a6006ad3dba0",
+    "method": "DELETE",
+    "headers": {
+        "Accept": "application/json",
+        "Authentication" : "Bearer xxx"
+    }
+}
+
+$.ajax(settings).done(function (response) {
+    console.log(response);
+});
+```
+
+
+### HTTP Request
+`DELETE /api/dataStreamDecoder/{dataStreamDecoderId}`
+
+
+<!-- END_b90290a79243f48f6887768e82b4ecc5 -->
+
+#DataStreamField
+<!-- START_1f0df6729ce1e819c646e60ae411212b -->
+## Show data stream field list
+
+
+<aside class="notice">Pagination limit must be a value between <code>1</code> and <code>20</code>, default is <code>10</code>.</aside>
+
+> Example request:
+
+```bash
+curl -X GET "https://emsearch.ryan.ems-dev.net/api/dataStreamField" \
+-H "Accept: application/json" \
+-H "Authentication: Bearer xxx"
+
+```
+
+```javascript
+var settings = {
+    "async": true,
+    "crossDomain": true,
+    "url": "https://emsearch.ryan.ems-dev.net/api/dataStreamField",
+    "method": "GET",
+    "headers": {
+        "Accept": "application/json",
+        "Authentication" : "Bearer xxx"
+    }
+}
+
+$.ajax(settings).done(function (response) {
+    console.log(response);
+});
+```
+
+> Example response:
+
+```json
+{
+    "data": [
+        {
+            "id": "36116fa6-5c0d-11e7-907b-a6006ad3dba0",
+            "data_stream_id": "605d712c-1934-11e7-93ae-92361f002671",
+            "name": "title",
+            "path": "title",
+            "versioned": true,
+            "searchable": true,
+            "to_retrieve": true,
+            "created_at": "2017-06-28 14:26:41",
+            "updated_at": "2017-06-28 14:26:41"
+        },
+        {
+            "id": "36117334-5c0d-11e7-907b-a6006ad3dba0",
+            "data_stream_id": "605d712c-1934-11e7-93ae-92361f002671",
+            "name": "content",
+            "path": "content",
+            "versioned": true,
+            "searchable": true,
+            "to_retrieve": true,
+            "created_at": "2017-06-28 14:26:41",
+            "updated_at": "2017-06-28 14:26:41"
+        },
+        {
+            "id": "361174ce-5c0d-11e7-907b-a6006ad3dba0",
+            "data_stream_id": "605d712c-1934-11e7-93ae-92361f002671",
+            "name": "seo_keywords",
+            "path": "seo_keywords",
+            "versioned": true,
+            "searchable": true,
+            "to_retrieve": true,
+            "created_at": "2017-06-28 14:26:41",
+            "updated_at": "2017-06-28 14:26:41"
+        },
+        {
+            "id": "3611764a-5c0d-11e7-907b-a6006ad3dba0",
+            "data_stream_id": "605d712c-1934-11e7-93ae-92361f002671",
+            "name": "seo_description",
+            "path": "seo_description",
+            "versioned": true,
+            "searchable": true,
+            "to_retrieve": true,
+            "created_at": "2017-06-28 14:26:41",
+            "updated_at": "2017-06-28 14:26:41"
+        },
+        {
+            "id": "36117d3e-5c0d-11e7-907b-a6006ad3dba0",
+            "data_stream_id": "605d712c-1934-11e7-93ae-92361f002671",
+            "name": "tags",
+            "path": "tags",
+            "versioned": true,
+            "searchable": true,
+            "to_retrieve": true,
+            "created_at": "2017-06-28 14:26:41",
+            "updated_at": "2017-06-28 14:26:41"
+        },
+        {
+            "id": "36117f14-5c0d-11e7-907b-a6006ad3dba0",
+            "data_stream_id": "605d712c-1934-11e7-93ae-92361f002671",
+            "name": "breadcrumb",
+            "path": "breadcrumb",
+            "versioned": true,
+            "searchable": true,
+            "to_retrieve": true,
+            "created_at": "2017-06-28 14:26:41",
+            "updated_at": "2017-06-28 14:26:41"
+        },
+        {
+            "id": "36118072-5c0d-11e7-907b-a6006ad3dba0",
+            "data_stream_id": "605d712c-1934-11e7-93ae-92361f002671",
+            "name": "url",
+            "path": "url",
+            "versioned": true,
+            "searchable": false,
+            "to_retrieve": true,
+            "created_at": "2017-06-28 14:26:41",
+            "updated_at": "2017-06-28 14:26:41"
+        },
+        {
+            "id": "361181d0-5c0d-11e7-907b-a6006ad3dba0",
+            "data_stream_id": "605d712c-1934-11e7-93ae-92361f002671",
+            "name": "seo_image_url",
+            "path": "seo_image_url",
+            "versioned": true,
+            "searchable": false,
+            "to_retrieve": true,
+            "created_at": "2017-06-28 14:26:41",
+            "updated_at": "2017-06-28 14:26:41"
+        },
+        {
+            "id": "361183ba-5c0d-11e7-907b-a6006ad3dba0",
+            "data_stream_id": "605d712c-1934-11e7-93ae-92361f002671",
+            "name": "author",
+            "path": "author",
+            "versioned": false,
+            "searchable": true,
+            "to_retrieve": true,
+            "created_at": "2017-06-28 14:26:41",
+            "updated_at": "2017-06-28 14:26:41"
+        },
+        {
+            "id": "36118536-5c0d-11e7-907b-a6006ad3dba0",
+            "data_stream_id": "605d712c-1934-11e7-93ae-92361f002671",
+            "name": "rating_count",
+            "path": "rating_count",
+            "versioned": false,
+            "searchable": false,
+            "to_retrieve": true,
+            "created_at": "2017-06-28 14:26:41",
+            "updated_at": "2017-06-28 14:26:41"
+        }
+    ],
+    "meta": {
+        "pagination": {
+            "total": 11,
+            "count": 10,
+            "per_page": 10,
+            "current_page": 1,
+            "total_pages": 2,
+            "links": {
+                "next": "https:\/\/emsearch.ryan.ems-dev.net\/api\/dataStreamField?page=2"
+            }
+        }
+    }
+}
+```
+
+### HTTP Request
+`GET /api/dataStreamField`
+
+`HEAD /api/dataStreamField`
+
+
+<!-- END_1f0df6729ce1e819c646e60ae411212b -->
+
+<!-- START_0c68b59d60b2dcf52f0f70c04fe5189d -->
+## Get specified data stream field
+
+> Example request:
+
+```bash
+curl -X GET "https://emsearch.ryan.ems-dev.net/api/dataStreamField/36116fa6-5c0d-11e7-907b-a6006ad3dba0" \
+-H "Accept: application/json" \
+-H "Authentication: Bearer xxx"
+
+```
+
+```javascript
+var settings = {
+    "async": true,
+    "crossDomain": true,
+    "url": "https://emsearch.ryan.ems-dev.net/api/dataStreamField/36116fa6-5c0d-11e7-907b-a6006ad3dba0",
+    "method": "GET",
+    "headers": {
+        "Accept": "application/json",
+        "Authentication" : "Bearer xxx"
+    }
+}
+
+$.ajax(settings).done(function (response) {
+    console.log(response);
+});
+```
+
+> Example response:
+
+```json
+{
+    "data": {
+        "id": "36116fa6-5c0d-11e7-907b-a6006ad3dba0",
+        "data_stream_id": "605d712c-1934-11e7-93ae-92361f002671",
+        "name": "title",
+        "path": "title",
+        "versioned": true,
+        "searchable": true,
+        "to_retrieve": true,
+        "created_at": "2017-06-28 14:26:41",
+        "updated_at": "2017-06-28 14:26:41"
+    }
+}
+```
+
+### HTTP Request
+`GET /api/dataStreamField/{dataStreamFieldId}`
+
+`HEAD /api/dataStreamField/{dataStreamFieldId}`
+
+
+<!-- END_0c68b59d60b2dcf52f0f70c04fe5189d -->
+
+<!-- START_e4f5a62a1fdf37d9ab9dbf645399ebf4 -->
+## Create and store new data stream field
+
+> Example request:
+
+```bash
+curl -X POST "https://emsearch.ryan.ems-dev.net/api/dataStreamField" \
+-H "Accept: application/json" \
+-H "Authentication: Bearer xxx"
+ \
+    -d "data_stream_id"="65a6976d-9979-31c6-9ab8-0313baa640b2" \
+    -d "name"="Velit et odit" \
+    -d "path"="Aperiam temporibus sed" \
+    -d "versioned"="1" \
+    -d "searchable"="1" \
+    -d "to_retrieve"="1" \
+
+```
+
+```javascript
+var settings = {
+    "async": true,
+    "crossDomain": true,
+    "url": "https://emsearch.ryan.ems-dev.net/api/dataStreamField",
+    "method": "POST",
+    "data": {
+        "data_stream_id": "65a6976d-9979-31c6-9ab8-0313baa640b2",
+        "name": "Velit et odit",
+        "path": "Aperiam temporibus sed",
+        "versioned": true,
+        "searchable": true,
+        "to_retrieve": true
+},
+    "headers": {
+        "Accept": "application/json",
+        "Authentication" : "Bearer xxx"
+    }
+}
+
+$.ajax(settings).done(function (response) {
+    console.log(response);
+});
+```
+
+
+### HTTP Request
+`POST /api/dataStreamField`
+
+#### Parameters
+
+Parameter | Type | Status | Description
+--------- | ------- | ------- | ------- | -----------
+    data_stream_id | string |  required  | UUID Valid data_stream id
+    name | string |  required  | Minimum: `1` Maximum: `200`
+    path | string |  required  | Minimum: `1` Maximum: `1000`
+    versioned | boolean |  required  | 
+    searchable | boolean |  required  | 
+    to_retrieve | boolean |  required  | 
+
+<!-- END_e4f5a62a1fdf37d9ab9dbf645399ebf4 -->
+
+<!-- START_d7b37b405a727213cd116589814ddfbc -->
+## Update a data stream field
+
+> Example request:
+
+```bash
+curl -X PUT "https://emsearch.ryan.ems-dev.net/api/dataStreamField/36116fa6-5c0d-11e7-907b-a6006ad3dba0" \
+-H "Accept: application/json" \
+-H "Authentication: Bearer xxx"
+ \
+    -d "data_stream_id"="7ecf7303-dfbf-3864-a125-d083e035ca20" \
+    -d "name"="Maxime nesciunt velit" \
+    -d "path"="Ut consequatur non" \
+    -d "versioned"="1" \
+    -d "searchable"="1" \
+    -d "to_retrieve"="1" \
+
+```
+
+```javascript
+var settings = {
+    "async": true,
+    "crossDomain": true,
+    "url": "https://emsearch.ryan.ems-dev.net/api/dataStreamField/36116fa6-5c0d-11e7-907b-a6006ad3dba0",
+    "method": "PUT",
+    "data": {
+        "data_stream_id": "7ecf7303-dfbf-3864-a125-d083e035ca20",
+        "name": "Maxime nesciunt velit",
+        "path": "Ut consequatur non",
+        "versioned": true,
+        "searchable": true,
+        "to_retrieve": true
+},
+    "headers": {
+        "Accept": "application/json",
+        "Authentication" : "Bearer xxx"
+    }
+}
+
+$.ajax(settings).done(function (response) {
+    console.log(response);
+});
+```
+
+
+### HTTP Request
+`PUT /api/dataStreamField/{dataStreamFieldId}`
+
+`PATCH /api/dataStreamField/{dataStreamFieldId}`
+
+#### Parameters
+
+Parameter | Type | Status | Description
+--------- | ------- | ------- | ------- | -----------
+    data_stream_id | string |  required  | UUID Valid data_stream id
+    name | string |  required  | Minimum: `1` Maximum: `200`
+    path | string |  required  | Minimum: `1` Maximum: `1000`
+    versioned | boolean |  required  | 
+    searchable | boolean |  required  | 
+    to_retrieve | boolean |  required  | 
+
+<!-- END_d7b37b405a727213cd116589814ddfbc -->
+
+<!-- START_0d343d9925b1c16cb0f8169fcb2daa1b -->
+## Delete specified data stream field
+*
+
+> Example request:
+
+```bash
+curl -X DELETE "https://emsearch.ryan.ems-dev.net/api/dataStreamField/36116fa6-5c0d-11e7-907b-a6006ad3dba0" \
+-H "Accept: application/json" \
+-H "Authentication: Bearer xxx"
+
+```
+
+```javascript
+var settings = {
+    "async": true,
+    "crossDomain": true,
+    "url": "https://emsearch.ryan.ems-dev.net/api/dataStreamField/36116fa6-5c0d-11e7-907b-a6006ad3dba0",
+    "method": "DELETE",
+    "headers": {
+        "Accept": "application/json",
+        "Authentication" : "Bearer xxx"
+    }
+}
+
+$.ajax(settings).done(function (response) {
+    console.log(response);
+});
+```
+
+
+### HTTP Request
+`DELETE /api/dataStreamField/{dataStreamFieldId}`
+
+
+<!-- END_0d343d9925b1c16cb0f8169fcb2daa1b -->
+
+<!-- START_4b156587d4848b382a843ec6a22a2afe -->
+## Data stream data stream field list
+ *
+
+
+<aside class="notice">Pagination limit must be a value between <code>1</code> and <code>20</code>, default is <code>10</code>.</aside>
+
+> Example request:
+
+```bash
+curl -X GET "https://emsearch.ryan.ems-dev.net/api/dataStream/737441b0-57ea-11e7-907b-a6006ad3dba0/dataStreamField" \
+-H "Accept: application/json" \
+-H "Authentication: Bearer xxx"
+
+```
+
+```javascript
+var settings = {
+    "async": true,
+    "crossDomain": true,
+    "url": "https://emsearch.ryan.ems-dev.net/api/dataStream/737441b0-57ea-11e7-907b-a6006ad3dba0/dataStreamField",
+    "method": "GET",
+    "headers": {
+        "Accept": "application/json",
+        "Authentication" : "Bearer xxx"
+    }
+}
+
+$.ajax(settings).done(function (response) {
+    console.log(response);
+});
+```
+
+> Example response:
+
+```json
+null
+```
+
+### HTTP Request
+`GET /api/dataStream/{dataStreamPresetId}/dataStreamField`
+
+`HEAD /api/dataStream/{dataStreamPresetId}/dataStreamField`
+
+
+<!-- END_4b156587d4848b382a843ec6a22a2afe -->
+
+#DataStreamHasI18nLang
+<!-- START_6480b30fcf62aed727b8d054f27d2ba4 -->
+## List of relationships between data streams and i18n langs
+
+
+<aside class="notice">Pagination limit must be a value between <code>1</code> and <code>20</code>, default is <code>10</code>.</aside>
+
+> Example request:
+
+```bash
+curl -X GET "https://emsearch.ryan.ems-dev.net/api/dataStreamHasI18nLang" \
+-H "Accept: application/json" \
+-H "Authentication: Bearer xxx"
+
+```
+
+```javascript
+var settings = {
+    "async": true,
+    "crossDomain": true,
+    "url": "https://emsearch.ryan.ems-dev.net/api/dataStreamHasI18nLang",
+    "method": "GET",
+    "headers": {
+        "Accept": "application/json",
+        "Authentication" : "Bearer xxx"
+    }
+}
+
+$.ajax(settings).done(function (response) {
+    console.log(response);
+});
+```
+
+> Example response:
+
+```json
+{
+    "data": [
+        {
+            "data_stream_id": "605d712c-1934-11e7-93ae-92361f002671",
+            "i18n_lang_id": "en_US",
+            "created_at": "2017-06-28 14:26:53",
+            "updated_at": "2017-06-28 14:26:53"
+        },
+        {
+            "data_stream_id": "605d712c-1934-11e7-93ae-92361f002671",
+            "i18n_lang_id": "fr_FR",
+            "created_at": "2017-06-28 14:26:53",
+            "updated_at": "2017-06-28 14:26:53"
+        }
+    ],
+    "meta": {
+        "pagination": {
+            "total": 2,
+            "count": 2,
+            "per_page": 10,
+            "current_page": 1,
+            "total_pages": 1,
+            "links": []
+        }
+    }
+}
+```
+
+### HTTP Request
+`GET /api/dataStreamHasI18nLang`
+
+`HEAD /api/dataStreamHasI18nLang`
+
+
+<!-- END_6480b30fcf62aed727b8d054f27d2ba4 -->
+
+<!-- START_c8d4458275668d086a4bba4c84949459 -->
+## Get specified relationship between a data stream and a i18n lang
+
+> Example request:
+
+```bash
+curl -X GET "https://emsearch.ryan.ems-dev.net/api/dataStreamHasI18nLang/605d712c-1934-11e7-93ae-92361f002671,en_US" \
+-H "Accept: application/json" \
+-H "Authentication: Bearer xxx"
+
+```
+
+```javascript
+var settings = {
+    "async": true,
+    "crossDomain": true,
+    "url": "https://emsearch.ryan.ems-dev.net/api/dataStreamHasI18nLang/605d712c-1934-11e7-93ae-92361f002671,en_US",
+    "method": "GET",
+    "headers": {
+        "Accept": "application/json",
+        "Authentication" : "Bearer xxx"
+    }
+}
+
+$.ajax(settings).done(function (response) {
+    console.log(response);
+});
+```
+
+> Example response:
+
+```json
+{
+    "data": [
+        {
+            "data_stream_id": "605d712c-1934-11e7-93ae-92361f002671",
+            "i18n_lang_id": "en_US",
+            "created_at": "2017-06-28 14:26:53",
+            "updated_at": "2017-06-28 14:26:53"
+        }
+    ]
+}
+```
+
+### HTTP Request
+`GET /api/dataStreamHasI18nLang/{dataStreamId},{i18nLangId}`
+
+`HEAD /api/dataStreamHasI18nLang/{dataStreamId},{i18nLangId}`
+
+
+<!-- END_c8d4458275668d086a4bba4c84949459 -->
+
+<!-- START_feae1493ce50aede965c560ad5a43044 -->
+## Create and store new relationship between a data stream and a i18n lang
+
+<aside class="notice">Only one relationship per data stream/i18n lang is allowed.</aside>
+
+> Example request:
+
+```bash
+curl -X POST "https://emsearch.ryan.ems-dev.net/api/dataStreamHasI18nLang" \
+-H "Accept: application/json" \
+-H "Authentication: Bearer xxx"
+ \
+    -d "data_stream_id"="6192b11e-d63c-3153-b311-58aa84f0832e" \
+    -d "i18n_lang_id"="Veritatis sed ullam" \
+
+```
+
+```javascript
+var settings = {
+    "async": true,
+    "crossDomain": true,
+    "url": "https://emsearch.ryan.ems-dev.net/api/dataStreamHasI18nLang",
+    "method": "POST",
+    "data": {
+        "data_stream_id": "6192b11e-d63c-3153-b311-58aa84f0832e",
+        "i18n_lang_id": "Veritatis sed ullam"
+},
+    "headers": {
+        "Accept": "application/json",
+        "Authentication" : "Bearer xxx"
+    }
+}
+
+$.ajax(settings).done(function (response) {
+    console.log(response);
+});
+```
+
+
+### HTTP Request
+`POST /api/dataStreamHasI18nLang`
+
+#### Parameters
+
+Parameter | Type | Status | Description
+--------- | ------- | ------- | ------- | -----------
+    data_stream_id | string |  required  | UUID Valid data_stream id
+    i18n_lang_id | string |  required  | Maximum: `30` Valid i18n_lang id
+
+<!-- END_feae1493ce50aede965c560ad5a43044 -->
+
+<!-- START_aaebcb033986fbd8103cec98df10ccbe -->
+## Update a specified relationship between a data stream and a i18n lang
+
+<aside class="notice">Only one relationship per data stream/i18n lang is allowed.</aside>
+
+> Example request:
+
+```bash
+curl -X PUT "https://emsearch.ryan.ems-dev.net/api/dataStreamHasI18nLang/605d712c-1934-11e7-93ae-92361f002671,en_US" \
+-H "Accept: application/json" \
+-H "Authentication: Bearer xxx"
+ \
+    -d "data_stream_id"="877ba7ff-fa90-3249-b820-688711a450d5" \
+    -d "i18n_lang_id"="Alias cumque et" \
+
+```
+
+```javascript
+var settings = {
+    "async": true,
+    "crossDomain": true,
+    "url": "https://emsearch.ryan.ems-dev.net/api/dataStreamHasI18nLang/605d712c-1934-11e7-93ae-92361f002671,en_US",
+    "method": "PUT",
+    "data": {
+        "data_stream_id": "877ba7ff-fa90-3249-b820-688711a450d5",
+        "i18n_lang_id": "Alias cumque et"
+},
+    "headers": {
+        "Accept": "application/json",
+        "Authentication" : "Bearer xxx"
+    }
+}
+
+$.ajax(settings).done(function (response) {
+    console.log(response);
+});
+```
+
+
+### HTTP Request
+`PUT /api/dataStreamHasI18nLang/{dataStreamId},{i18nLangId}`
+
+`PATCH /api/dataStreamHasI18nLang/{dataStreamId},{i18nLangId}`
+
+#### Parameters
+
+Parameter | Type | Status | Description
+--------- | ------- | ------- | ------- | -----------
+    data_stream_id | string |  required  | UUID Valid data_stream id
+    i18n_lang_id | string |  required  | Maximum: `30` Valid i18n_lang id
+
+<!-- END_aaebcb033986fbd8103cec98df10ccbe -->
+
+<!-- START_f2ba37d64397dbbce91ca71158e5fdf1 -->
+## Delete specified relationship between a data stream and a i18n lang
+
+> Example request:
+
+```bash
+curl -X DELETE "https://emsearch.ryan.ems-dev.net/api/dataStreamHasI18nLang/605d712c-1934-11e7-93ae-92361f002671,en_US" \
+-H "Accept: application/json" \
+-H "Authentication: Bearer xxx"
+
+```
+
+```javascript
+var settings = {
+    "async": true,
+    "crossDomain": true,
+    "url": "https://emsearch.ryan.ems-dev.net/api/dataStreamHasI18nLang/605d712c-1934-11e7-93ae-92361f002671,en_US",
+    "method": "DELETE",
+    "headers": {
+        "Accept": "application/json",
+        "Authentication" : "Bearer xxx"
+    }
+}
+
+$.ajax(settings).done(function (response) {
+    console.log(response);
+});
+```
+
+
+### HTTP Request
+`DELETE /api/dataStreamHasI18nLang/{dataStreamId},{i18nLangId}`
+
+
+<!-- END_f2ba37d64397dbbce91ca71158e5fdf1 -->
+
+<!-- START_f477825a313f90bc4ef00fb9d0cf638e -->
+## Data stream relationship between data stream and i18n langs list
+
+
+<aside class="notice">Pagination limit must be a value between <code>1</code> and <code>20</code>, default is <code>10</code>.</aside>
+
+> Example request:
+
+```bash
+curl -X GET "https://emsearch.ryan.ems-dev.net/api/dataStream/605d712c-1934-11e7-93ae-92361f002671/dataStreamHasI18nLang" \
+-H "Accept: application/json" \
+-H "Authentication: Bearer xxx"
+
+```
+
+```javascript
+var settings = {
+    "async": true,
+    "crossDomain": true,
+    "url": "https://emsearch.ryan.ems-dev.net/api/dataStream/605d712c-1934-11e7-93ae-92361f002671/dataStreamHasI18nLang",
+    "method": "GET",
+    "headers": {
+        "Accept": "application/json",
+        "Authentication" : "Bearer xxx"
+    }
+}
+
+$.ajax(settings).done(function (response) {
+    console.log(response);
+});
+```
+
+> Example response:
+
+```json
+{
+    "data": [
+        {
+            "data_stream_id": "605d712c-1934-11e7-93ae-92361f002671",
+            "i18n_lang_id": "en_US",
+            "created_at": "2017-06-28 14:26:53",
+            "updated_at": "2017-06-28 14:26:53"
+        },
+        {
+            "data_stream_id": "605d712c-1934-11e7-93ae-92361f002671",
+            "i18n_lang_id": "fr_FR",
+            "created_at": "2017-06-28 14:26:53",
+            "updated_at": "2017-06-28 14:26:53"
+        }
+    ],
+    "meta": {
+        "pagination": {
+            "total": 2,
+            "count": 2,
+            "per_page": 10,
+            "current_page": 1,
+            "total_pages": 1,
+            "links": []
+        }
+    }
+}
+```
+
+### HTTP Request
+`GET /api/dataStream/{dataStreamId}/dataStreamHasI18nLang`
+
+`HEAD /api/dataStream/{dataStreamId}/dataStreamHasI18nLang`
+
+
+<!-- END_f477825a313f90bc4ef00fb9d0cf638e -->
+
+#DataStreamPreset
+<!-- START_0b4fd875b346dbe345c23d1801f866b3 -->
+## Show data stream preset list
+
+
+<aside class="notice">Pagination limit must be a value between <code>1</code> and <code>20</code>, default is <code>10</code>.</aside>
+
+> Example request:
+
+```bash
+curl -X GET "https://emsearch.ryan.ems-dev.net/api/dataStreamPreset" \
+-H "Accept: application/json" \
+-H "Authentication: Bearer xxx"
+
+```
+
+```javascript
+var settings = {
+    "async": true,
+    "crossDomain": true,
+    "url": "https://emsearch.ryan.ems-dev.net/api/dataStreamPreset",
+    "method": "GET",
+    "headers": {
+        "Accept": "application/json",
+        "Authentication" : "Bearer xxx"
+    }
+}
+
+$.ajax(settings).done(function (response) {
+    console.log(response);
+});
+```
+
+> Example response:
+
+```json
+{
+    "data": [
+        {
+            "id": "737441b0-57ea-11e7-907b-a6006ad3dba0",
+            "data_stream_decoder_id": "53fd5290-5a4c-11e7-907b-a6006ad3dba0",
+            "name": "E-monsite | Blog",
+            "created_at": "2017-06-28 14:26:53",
+            "updated_at": "2017-06-28 14:26:53"
+        }
+    ],
+    "meta": {
+        "pagination": {
+            "total": 1,
+            "count": 1,
+            "per_page": 10,
+            "current_page": 1,
+            "total_pages": 1,
+            "links": []
+        }
+    }
+}
+```
+
+### HTTP Request
+`GET /api/dataStreamPreset`
+
+`HEAD /api/dataStreamPreset`
+
+
+<!-- END_0b4fd875b346dbe345c23d1801f866b3 -->
+
+<!-- START_3dda0a43b3eb27bef79c680ee7482a24 -->
+## Get specified data stream preset
+
+> Example request:
+
+```bash
+curl -X GET "https://emsearch.ryan.ems-dev.net/api/dataStreamPreset/737441b0-57ea-11e7-907b-a6006ad3dba0" \
+-H "Accept: application/json" \
+-H "Authentication: Bearer xxx"
+
+```
+
+```javascript
+var settings = {
+    "async": true,
+    "crossDomain": true,
+    "url": "https://emsearch.ryan.ems-dev.net/api/dataStreamPreset/737441b0-57ea-11e7-907b-a6006ad3dba0",
+    "method": "GET",
+    "headers": {
+        "Accept": "application/json",
+        "Authentication" : "Bearer xxx"
+    }
+}
+
+$.ajax(settings).done(function (response) {
+    console.log(response);
+});
+```
+
+> Example response:
+
+```json
+{
+    "data": {
+        "id": "737441b0-57ea-11e7-907b-a6006ad3dba0",
+        "data_stream_decoder_id": "53fd5290-5a4c-11e7-907b-a6006ad3dba0",
+        "name": "E-monsite | Blog",
+        "created_at": "2017-06-28 14:26:53",
+        "updated_at": "2017-06-28 14:26:53"
+    }
+}
+```
+
+### HTTP Request
+`GET /api/dataStreamPreset/{dataStreamPresetId}`
+
+`HEAD /api/dataStreamPreset/{dataStreamPresetId}`
+
+
+<!-- END_3dda0a43b3eb27bef79c680ee7482a24 -->
+
+<!-- START_fcb8c326abb10a330133ecb6e0c6fb5c -->
+## Create and store new data stream preset
+
+> Example request:
+
+```bash
+curl -X POST "https://emsearch.ryan.ems-dev.net/api/dataStreamPreset" \
+-H "Accept: application/json" \
+-H "Authentication: Bearer xxx"
+ \
+    -d "data_stream_decoder_id"="400e9273-dcad-376a-84f4-77ed7940173d" \
+    -d "name"="Autem quidem minus" \
+
+```
+
+```javascript
+var settings = {
+    "async": true,
+    "crossDomain": true,
+    "url": "https://emsearch.ryan.ems-dev.net/api/dataStreamPreset",
+    "method": "POST",
+    "data": {
+        "data_stream_decoder_id": "400e9273-dcad-376a-84f4-77ed7940173d",
+        "name": "Autem quidem minus"
+},
+    "headers": {
+        "Accept": "application/json",
+        "Authentication" : "Bearer xxx"
+    }
+}
+
+$.ajax(settings).done(function (response) {
+    console.log(response);
+});
+```
+
+
+### HTTP Request
+`POST /api/dataStreamPreset`
+
+#### Parameters
+
+Parameter | Type | Status | Description
+--------- | ------- | ------- | ------- | -----------
+    data_stream_decoder_id | string |  required  | UUID Valid data_stream_decoder id
+    name | string |  required  | Minimum: `5` Maximum: `200`
+
+<!-- END_fcb8c326abb10a330133ecb6e0c6fb5c -->
+
+<!-- START_16ee649a259d09a1980a4bc4af7c80fe -->
+## Update a data stream preset
+
+> Example request:
+
+```bash
+curl -X PUT "https://emsearch.ryan.ems-dev.net/api/dataStreamPreset/737441b0-57ea-11e7-907b-a6006ad3dba0" \
+-H "Accept: application/json" \
+-H "Authentication: Bearer xxx"
+ \
+    -d "data_stream_decoder_id"="427baeb5-9f80-3d2d-8643-eaee41a20e29" \
+    -d "name"="Optio nihil commodi" \
+
+```
+
+```javascript
+var settings = {
+    "async": true,
+    "crossDomain": true,
+    "url": "https://emsearch.ryan.ems-dev.net/api/dataStreamPreset/737441b0-57ea-11e7-907b-a6006ad3dba0",
+    "method": "PUT",
+    "data": {
+        "data_stream_decoder_id": "427baeb5-9f80-3d2d-8643-eaee41a20e29",
+        "name": "Optio nihil commodi"
+},
+    "headers": {
+        "Accept": "application/json",
+        "Authentication" : "Bearer xxx"
+    }
+}
+
+$.ajax(settings).done(function (response) {
+    console.log(response);
+});
+```
+
+
+### HTTP Request
+`PUT /api/dataStreamPreset/{dataStreamPresetId}`
+
+`PATCH /api/dataStreamPreset/{dataStreamPresetId}`
+
+#### Parameters
+
+Parameter | Type | Status | Description
+--------- | ------- | ------- | ------- | -----------
+    data_stream_decoder_id | string |  required  | UUID Valid data_stream_decoder id
+    name | string |  required  | Minimum: `5` Maximum: `200`
+
+<!-- END_16ee649a259d09a1980a4bc4af7c80fe -->
+
+<!-- START_c65fa9da0dc112404e228609c4670716 -->
+## Delete specified data stream preset
+*
+
+> Example request:
+
+```bash
+curl -X DELETE "https://emsearch.ryan.ems-dev.net/api/dataStreamPreset/737441b0-57ea-11e7-907b-a6006ad3dba0" \
+-H "Accept: application/json" \
+-H "Authentication: Bearer xxx"
+
+```
+
+```javascript
+var settings = {
+    "async": true,
+    "crossDomain": true,
+    "url": "https://emsearch.ryan.ems-dev.net/api/dataStreamPreset/737441b0-57ea-11e7-907b-a6006ad3dba0",
+    "method": "DELETE",
+    "headers": {
+        "Accept": "application/json",
+        "Authentication" : "Bearer xxx"
+    }
+}
+
+$.ajax(settings).done(function (response) {
+    console.log(response);
+});
+```
+
+
+### HTTP Request
+`DELETE /api/dataStreamPreset/{dataStreamPresetId}`
+
+
+<!-- END_c65fa9da0dc112404e228609c4670716 -->
+
+#DataStreamPresetField
+<!-- START_75862ed35d114fa77a5e61218c4da260 -->
+## Data stream preset data stream preset field list
+ *
+
+
+<aside class="notice">Pagination limit must be a value between <code>1</code> and <code>20</code>, default is <code>10</code>.</aside>
+
+> Example request:
+
+```bash
+curl -X GET "https://emsearch.ryan.ems-dev.net/api/dataStreamPreset/737441b0-57ea-11e7-907b-a6006ad3dba0/dataStreamPresetField" \
+-H "Accept: application/json" \
+-H "Authentication: Bearer xxx"
+
+```
+
+```javascript
+var settings = {
+    "async": true,
+    "crossDomain": true,
+    "url": "https://emsearch.ryan.ems-dev.net/api/dataStreamPreset/737441b0-57ea-11e7-907b-a6006ad3dba0/dataStreamPresetField",
+    "method": "GET",
+    "headers": {
+        "Accept": "application/json",
+        "Authentication" : "Bearer xxx"
+    }
+}
+
+$.ajax(settings).done(function (response) {
+    console.log(response);
+});
+```
+
+> Example response:
+
+```json
+{
+    "data": [
+        {
+            "id": "76952b58-5bf4-11e7-907b-a6006ad3dba0",
+            "data_stream_preset_id": "737441b0-57ea-11e7-907b-a6006ad3dba0",
+            "name": "rating_avg",
+            "path": "rating_avg",
+            "versioned": false,
+            "searchable": false,
+            "to_retrieve": true,
+            "created_at": "2017-06-28 14:26:53",
+            "updated_at": "2017-06-28 14:26:53"
+        },
+        {
+            "id": "eb9cb642-5bf3-11e7-907b-a6006ad3dba0",
+            "data_stream_preset_id": "737441b0-57ea-11e7-907b-a6006ad3dba0",
+            "name": "title",
+            "path": "title",
+            "versioned": true,
+            "searchable": true,
+            "to_retrieve": true,
+            "created_at": "2017-06-28 14:26:53",
+            "updated_at": "2017-06-28 14:26:53"
+        },
+        {
+            "id": "eb9cba20-5bf3-11e7-907b-a6006ad3dba0",
+            "data_stream_preset_id": "737441b0-57ea-11e7-907b-a6006ad3dba0",
+            "name": "content",
+            "path": "content",
+            "versioned": true,
+            "searchable": true,
+            "to_retrieve": true,
+            "created_at": "2017-06-28 14:26:53",
+            "updated_at": "2017-06-28 14:26:53"
+        },
+        {
+            "id": "eb9cc15a-5bf3-11e7-907b-a6006ad3dba0",
+            "data_stream_preset_id": "737441b0-57ea-11e7-907b-a6006ad3dba0",
+            "name": "seo_keywords",
+            "path": "seo_keywords",
+            "versioned": true,
+            "searchable": true,
+            "to_retrieve": true,
+            "created_at": "2017-06-28 14:26:53",
+            "updated_at": "2017-06-28 14:26:53"
+        },
+        {
+            "id": "eb9cc34e-5bf3-11e7-907b-a6006ad3dba0",
+            "data_stream_preset_id": "737441b0-57ea-11e7-907b-a6006ad3dba0",
+            "name": "seo_description",
+            "path": "seo_description",
+            "versioned": true,
+            "searchable": true,
+            "to_retrieve": true,
+            "created_at": "2017-06-28 14:26:53",
+            "updated_at": "2017-06-28 14:26:53"
+        },
+        {
+            "id": "eb9cc4ca-5bf3-11e7-907b-a6006ad3dba0",
+            "data_stream_preset_id": "737441b0-57ea-11e7-907b-a6006ad3dba0",
+            "name": "tags",
+            "path": "tags",
+            "versioned": true,
+            "searchable": true,
+            "to_retrieve": true,
+            "created_at": "2017-06-28 14:26:53",
+            "updated_at": "2017-06-28 14:26:53"
+        },
+        {
+            "id": "eb9cc650-5bf3-11e7-907b-a6006ad3dba0",
+            "data_stream_preset_id": "737441b0-57ea-11e7-907b-a6006ad3dba0",
+            "name": "breadcrumb",
+            "path": "breadcrumb",
+            "versioned": true,
+            "searchable": true,
+            "to_retrieve": true,
+            "created_at": "2017-06-28 14:26:53",
+            "updated_at": "2017-06-28 14:26:53"
+        },
+        {
+            "id": "eb9cc7c2-5bf3-11e7-907b-a6006ad3dba0",
+            "data_stream_preset_id": "737441b0-57ea-11e7-907b-a6006ad3dba0",
+            "name": "url",
+            "path": "url",
+            "versioned": true,
+            "searchable": false,
+            "to_retrieve": true,
+            "created_at": "2017-06-28 14:26:53",
+            "updated_at": "2017-06-28 14:26:53"
+        },
+        {
+            "id": "eb9cc92a-5bf3-11e7-907b-a6006ad3dba0",
+            "data_stream_preset_id": "737441b0-57ea-11e7-907b-a6006ad3dba0",
+            "name": "seo_image_url",
+            "path": "seo_image_url",
+            "versioned": true,
+            "searchable": false,
+            "to_retrieve": true,
+            "created_at": "2017-06-28 14:26:53",
+            "updated_at": "2017-06-28 14:26:53"
+        },
+        {
+            "id": "eb9ccec0-5bf3-11e7-907b-a6006ad3dba0",
+            "data_stream_preset_id": "737441b0-57ea-11e7-907b-a6006ad3dba0",
+            "name": "author",
+            "path": "author",
+            "versioned": false,
+            "searchable": true,
+            "to_retrieve": true,
+            "created_at": "2017-06-28 14:26:53",
+            "updated_at": "2017-06-28 14:26:53"
+        }
+    ],
+    "meta": {
+        "pagination": {
+            "total": 11,
+            "count": 10,
+            "per_page": 10,
+            "current_page": 1,
+            "total_pages": 2,
+            "links": {
+                "next": "https:\/\/emsearch.ryan.ems-dev.net\/api\/dataStreamPreset\/737441b0-57ea-11e7-907b-a6006ad3dba0\/dataStreamPresetField?page=2"
+            }
+        }
+    }
+}
+```
+
+### HTTP Request
+`GET /api/dataStreamPreset/{dataStreamPresetId}/dataStreamPresetField`
+
+`HEAD /api/dataStreamPreset/{dataStreamPresetId}/dataStreamPresetField`
+
+
+<!-- END_75862ed35d114fa77a5e61218c4da260 -->
+
+<!-- START_6f15b3cda4cc937a021b5fb91f58e027 -->
+## Show data stream preset field list
+
+
+<aside class="notice">Pagination limit must be a value between <code>1</code> and <code>20</code>, default is <code>10</code>.</aside>
+
+> Example request:
+
+```bash
+curl -X GET "https://emsearch.ryan.ems-dev.net/api/dataStreamPresetField" \
+-H "Accept: application/json" \
+-H "Authentication: Bearer xxx"
+
+```
+
+```javascript
+var settings = {
+    "async": true,
+    "crossDomain": true,
+    "url": "https://emsearch.ryan.ems-dev.net/api/dataStreamPresetField",
+    "method": "GET",
+    "headers": {
+        "Accept": "application/json",
+        "Authentication" : "Bearer xxx"
+    }
+}
+
+$.ajax(settings).done(function (response) {
+    console.log(response);
+});
+```
+
+> Example response:
+
+```json
+{
+    "data": [
+        {
+            "id": "76952b58-5bf4-11e7-907b-a6006ad3dba0",
+            "data_stream_preset_id": "737441b0-57ea-11e7-907b-a6006ad3dba0",
+            "name": "rating_avg",
+            "path": "rating_avg",
+            "versioned": false,
+            "searchable": false,
+            "to_retrieve": true,
+            "created_at": "2017-06-28 14:26:53",
+            "updated_at": "2017-06-28 14:26:53"
+        },
+        {
+            "id": "eb9cb642-5bf3-11e7-907b-a6006ad3dba0",
+            "data_stream_preset_id": "737441b0-57ea-11e7-907b-a6006ad3dba0",
+            "name": "title",
+            "path": "title",
+            "versioned": true,
+            "searchable": true,
+            "to_retrieve": true,
+            "created_at": "2017-06-28 14:26:53",
+            "updated_at": "2017-06-28 14:26:53"
+        },
+        {
+            "id": "eb9cba20-5bf3-11e7-907b-a6006ad3dba0",
+            "data_stream_preset_id": "737441b0-57ea-11e7-907b-a6006ad3dba0",
+            "name": "content",
+            "path": "content",
+            "versioned": true,
+            "searchable": true,
+            "to_retrieve": true,
+            "created_at": "2017-06-28 14:26:53",
+            "updated_at": "2017-06-28 14:26:53"
+        },
+        {
+            "id": "eb9cc15a-5bf3-11e7-907b-a6006ad3dba0",
+            "data_stream_preset_id": "737441b0-57ea-11e7-907b-a6006ad3dba0",
+            "name": "seo_keywords",
+            "path": "seo_keywords",
+            "versioned": true,
+            "searchable": true,
+            "to_retrieve": true,
+            "created_at": "2017-06-28 14:26:53",
+            "updated_at": "2017-06-28 14:26:53"
+        },
+        {
+            "id": "eb9cc34e-5bf3-11e7-907b-a6006ad3dba0",
+            "data_stream_preset_id": "737441b0-57ea-11e7-907b-a6006ad3dba0",
+            "name": "seo_description",
+            "path": "seo_description",
+            "versioned": true,
+            "searchable": true,
+            "to_retrieve": true,
+            "created_at": "2017-06-28 14:26:53",
+            "updated_at": "2017-06-28 14:26:53"
+        },
+        {
+            "id": "eb9cc4ca-5bf3-11e7-907b-a6006ad3dba0",
+            "data_stream_preset_id": "737441b0-57ea-11e7-907b-a6006ad3dba0",
+            "name": "tags",
+            "path": "tags",
+            "versioned": true,
+            "searchable": true,
+            "to_retrieve": true,
+            "created_at": "2017-06-28 14:26:53",
+            "updated_at": "2017-06-28 14:26:53"
+        },
+        {
+            "id": "eb9cc650-5bf3-11e7-907b-a6006ad3dba0",
+            "data_stream_preset_id": "737441b0-57ea-11e7-907b-a6006ad3dba0",
+            "name": "breadcrumb",
+            "path": "breadcrumb",
+            "versioned": true,
+            "searchable": true,
+            "to_retrieve": true,
+            "created_at": "2017-06-28 14:26:53",
+            "updated_at": "2017-06-28 14:26:53"
+        },
+        {
+            "id": "eb9cc7c2-5bf3-11e7-907b-a6006ad3dba0",
+            "data_stream_preset_id": "737441b0-57ea-11e7-907b-a6006ad3dba0",
+            "name": "url",
+            "path": "url",
+            "versioned": true,
+            "searchable": false,
+            "to_retrieve": true,
+            "created_at": "2017-06-28 14:26:53",
+            "updated_at": "2017-06-28 14:26:53"
+        },
+        {
+            "id": "eb9cc92a-5bf3-11e7-907b-a6006ad3dba0",
+            "data_stream_preset_id": "737441b0-57ea-11e7-907b-a6006ad3dba0",
+            "name": "seo_image_url",
+            "path": "seo_image_url",
+            "versioned": true,
+            "searchable": false,
+            "to_retrieve": true,
+            "created_at": "2017-06-28 14:26:53",
+            "updated_at": "2017-06-28 14:26:53"
+        },
+        {
+            "id": "eb9ccec0-5bf3-11e7-907b-a6006ad3dba0",
+            "data_stream_preset_id": "737441b0-57ea-11e7-907b-a6006ad3dba0",
+            "name": "author",
+            "path": "author",
+            "versioned": false,
+            "searchable": true,
+            "to_retrieve": true,
+            "created_at": "2017-06-28 14:26:53",
+            "updated_at": "2017-06-28 14:26:53"
+        }
+    ],
+    "meta": {
+        "pagination": {
+            "total": 11,
+            "count": 10,
+            "per_page": 10,
+            "current_page": 1,
+            "total_pages": 2,
+            "links": {
+                "next": "https:\/\/emsearch.ryan.ems-dev.net\/api\/dataStreamPresetField?page=2"
+            }
+        }
+    }
+}
+```
+
+### HTTP Request
+`GET /api/dataStreamPresetField`
+
+`HEAD /api/dataStreamPresetField`
+
+
+<!-- END_6f15b3cda4cc937a021b5fb91f58e027 -->
+
+<!-- START_bc03b2e88441ee42adadace0caf20741 -->
+## Get specified data stream preset field
+
+> Example request:
+
+```bash
+curl -X GET "https://emsearch.ryan.ems-dev.net/api/dataStreamPresetField/eb9cb642-5bf3-11e7-907b-a6006ad3dba0" \
+-H "Accept: application/json" \
+-H "Authentication: Bearer xxx"
+
+```
+
+```javascript
+var settings = {
+    "async": true,
+    "crossDomain": true,
+    "url": "https://emsearch.ryan.ems-dev.net/api/dataStreamPresetField/eb9cb642-5bf3-11e7-907b-a6006ad3dba0",
+    "method": "GET",
+    "headers": {
+        "Accept": "application/json",
+        "Authentication" : "Bearer xxx"
+    }
+}
+
+$.ajax(settings).done(function (response) {
+    console.log(response);
+});
+```
+
+> Example response:
+
+```json
+{
+    "data": {
+        "id": "eb9cb642-5bf3-11e7-907b-a6006ad3dba0",
+        "data_stream_preset_id": "737441b0-57ea-11e7-907b-a6006ad3dba0",
+        "name": "title",
+        "path": "title",
+        "versioned": true,
+        "searchable": true,
+        "to_retrieve": true,
+        "created_at": "2017-06-28 14:26:53",
+        "updated_at": "2017-06-28 14:26:53"
+    }
+}
+```
+
+### HTTP Request
+`GET /api/dataStreamPresetField/{dataStreamPresetFieldId}`
+
+`HEAD /api/dataStreamPresetField/{dataStreamPresetFieldId}`
+
+
+<!-- END_bc03b2e88441ee42adadace0caf20741 -->
+
+<!-- START_c21283e0310a4b81f281adbe1933001b -->
+## Create and store new data stream preset field
+
+> Example request:
+
+```bash
+curl -X POST "https://emsearch.ryan.ems-dev.net/api/dataStreamPresetField" \
+-H "Accept: application/json" \
+-H "Authentication: Bearer xxx"
+ \
+    -d "data_stream_preset_id"="a160dbc3-c004-3e75-a26b-71da4861230f" \
+    -d "name"="Temporibus et quia" \
+    -d "path"="In id officia" \
+    -d "versioned"="1" \
+    -d "searchable"="1" \
+    -d "to_retrieve"="1" \
+
+```
+
+```javascript
+var settings = {
+    "async": true,
+    "crossDomain": true,
+    "url": "https://emsearch.ryan.ems-dev.net/api/dataStreamPresetField",
+    "method": "POST",
+    "data": {
+        "data_stream_preset_id": "a160dbc3-c004-3e75-a26b-71da4861230f",
+        "name": "Temporibus et quia",
+        "path": "In id officia",
+        "versioned": true,
+        "searchable": true,
+        "to_retrieve": true
+},
+    "headers": {
+        "Accept": "application/json",
+        "Authentication" : "Bearer xxx"
+    }
+}
+
+$.ajax(settings).done(function (response) {
+    console.log(response);
+});
+```
+
+
+### HTTP Request
+`POST /api/dataStreamPresetField`
+
+#### Parameters
+
+Parameter | Type | Status | Description
+--------- | ------- | ------- | ------- | -----------
+    data_stream_preset_id | string |  required  | UUID Valid data_stream_preset id
+    name | string |  required  | Minimum: `1` Maximum: `200`
+    path | string |  required  | Minimum: `1` Maximum: `1000`
+    versioned | boolean |  required  | 
+    searchable | boolean |  required  | 
+    to_retrieve | boolean |  required  | 
+
+<!-- END_c21283e0310a4b81f281adbe1933001b -->
+
+<!-- START_f764c10ff69335d8a10eb0ba1d2e41c0 -->
+## Update a data stream preset field
+
+> Example request:
+
+```bash
+curl -X PUT "https://emsearch.ryan.ems-dev.net/api/dataStreamPresetField/eb9cb642-5bf3-11e7-907b-a6006ad3dba0" \
+-H "Accept: application/json" \
+-H "Authentication: Bearer xxx"
+ \
+    -d "data_stream_preset_id"="4cebd7dd-2e22-3a03-b79f-07fd444132fa" \
+    -d "name"="Consequatur nihil et" \
+    -d "path"="Vel minus aut" \
+    -d "versioned"="1" \
+    -d "searchable"="1" \
+    -d "to_retrieve"="1" \
+
+```
+
+```javascript
+var settings = {
+    "async": true,
+    "crossDomain": true,
+    "url": "https://emsearch.ryan.ems-dev.net/api/dataStreamPresetField/eb9cb642-5bf3-11e7-907b-a6006ad3dba0",
+    "method": "PUT",
+    "data": {
+        "data_stream_preset_id": "4cebd7dd-2e22-3a03-b79f-07fd444132fa",
+        "name": "Consequatur nihil et",
+        "path": "Vel minus aut",
+        "versioned": true,
+        "searchable": true,
+        "to_retrieve": true
+},
+    "headers": {
+        "Accept": "application/json",
+        "Authentication" : "Bearer xxx"
+    }
+}
+
+$.ajax(settings).done(function (response) {
+    console.log(response);
+});
+```
+
+
+### HTTP Request
+`PUT /api/dataStreamPresetField/{dataStreamPresetFieldId}`
+
+`PATCH /api/dataStreamPresetField/{dataStreamPresetFieldId}`
+
+#### Parameters
+
+Parameter | Type | Status | Description
+--------- | ------- | ------- | ------- | -----------
+    data_stream_preset_id | string |  required  | UUID Valid data_stream_preset id
+    name | string |  required  | Minimum: `1` Maximum: `200`
+    path | string |  required  | Minimum: `1` Maximum: `1000`
+    versioned | boolean |  required  | 
+    searchable | boolean |  required  | 
+    to_retrieve | boolean |  required  | 
+
+<!-- END_f764c10ff69335d8a10eb0ba1d2e41c0 -->
+
+<!-- START_bcaded0d531e779f9cf880757f234fab -->
+## Delete specified data stream preset field
+*
+
+> Example request:
+
+```bash
+curl -X DELETE "https://emsearch.ryan.ems-dev.net/api/dataStreamPresetField/eb9cb642-5bf3-11e7-907b-a6006ad3dba0" \
+-H "Accept: application/json" \
+-H "Authentication: Bearer xxx"
+
+```
+
+```javascript
+var settings = {
+    "async": true,
+    "crossDomain": true,
+    "url": "https://emsearch.ryan.ems-dev.net/api/dataStreamPresetField/eb9cb642-5bf3-11e7-907b-a6006ad3dba0",
+    "method": "DELETE",
+    "headers": {
+        "Accept": "application/json",
+        "Authentication" : "Bearer xxx"
+    }
+}
+
+$.ajax(settings).done(function (response) {
+    console.log(response);
+});
+```
+
+
+### HTTP Request
+`DELETE /api/dataStreamPresetField/{dataStreamPresetFieldId}`
+
+
+<!-- END_bcaded0d531e779f9cf880757f234fab -->
+
 #I18nLang
+<!-- START_c4cb0bd14e699c53142a32038ed2546c -->
+## Data stream i18n lang list
+
+
+<aside class="notice">Pagination limit must be a value between <code>1</code> and <code>50</code>, default is <code>10</code>.</aside>
+
+> Example request:
+
+```bash
+curl -X GET "https://emsearch.ryan.ems-dev.net/api/dataStream/605d712c-1934-11e7-93ae-92361f002671/i18nLang" \
+-H "Accept: application/json" \
+-H "Authentication: Bearer xxx"
+
+```
+
+```javascript
+var settings = {
+    "async": true,
+    "crossDomain": true,
+    "url": "https://emsearch.ryan.ems-dev.net/api/dataStream/605d712c-1934-11e7-93ae-92361f002671/i18nLang",
+    "method": "GET",
+    "headers": {
+        "Accept": "application/json",
+        "Authentication" : "Bearer xxx"
+    }
+}
+
+$.ajax(settings).done(function (response) {
+    console.log(response);
+});
+```
+
+> Example response:
+
+```json
+{
+    "data": [
+        {
+            "id": "en_US",
+            "description": "English (United States)"
+        },
+        {
+            "id": "fr_FR",
+            "description": "French (France)"
+        }
+    ],
+    "meta": {
+        "pagination": {
+            "total": 2,
+            "count": 2,
+            "per_page": 10,
+            "current_page": 1,
+            "total_pages": 1,
+            "links": []
+        }
+    }
+}
+```
+
+### HTTP Request
+`GET /api/dataStream/{dataStreamId}/i18nLang`
+
+`HEAD /api/dataStream/{dataStreamId}/i18nLang`
+
+
+<!-- END_c4cb0bd14e699c53142a32038ed2546c -->
+
 <!-- START_e1171537de1a9b8e9dfbd90e9ef7c13f -->
 ## Show i18n lang list
 
@@ -649,8 +2646,8 @@ curl -X POST "https://emsearch.ryan.ems-dev.net/api/i18nLang" \
 -H "Accept: application/json" \
 -H "Authentication: Bearer xxx"
  \
-    -d "id"="Ut maxime quis" \
-    -d "description"="Nulla aut debitis" \
+    -d "id"="Consectetur sequi expedita" \
+    -d "description"="Praesentium illo quaerat" \
 
 ```
 
@@ -661,8 +2658,8 @@ var settings = {
     "url": "https://emsearch.ryan.ems-dev.net/api/i18nLang",
     "method": "POST",
     "data": {
-        "id": "Ut maxime quis",
-        "description": "Nulla aut debitis"
+        "id": "Consectetur sequi expedita",
+        "description": "Praesentium illo quaerat"
 },
     "headers": {
         "Accept": "application/json",
@@ -698,7 +2695,7 @@ curl -X PUT "https://emsearch.ryan.ems-dev.net/api/i18nLang/en_US" \
 -H "Accept: application/json" \
 -H "Authentication: Bearer xxx"
  \
-    -d "description"="Quo vel ut" \
+    -d "description"="Et ex quae" \
 
 ```
 
@@ -709,7 +2706,7 @@ var settings = {
     "url": "https://emsearch.ryan.ems-dev.net/api/i18nLang/en_US",
     "method": "PUT",
     "data": {
-        "description": "Quo vel ut"
+        "description": "Et ex quae"
 },
     "headers": {
         "Accept": "application/json",
@@ -859,8 +2856,8 @@ $.ajax(settings).done(function (response) {
         "user_group_id": "Developer",
         "name": "John Doe",
         "email": "john.doe@domain.tld",
-        "created_at": "2017-06-22 09:32:19",
-        "updated_at": "2017-06-22 09:32:19"
+        "created_at": "2017-06-28 14:26:41",
+        "updated_at": "2017-06-28 14:26:41"
     }
 }
 ```
@@ -883,7 +2880,7 @@ You can specify a GET parameter `read_status` to filter results.
 > Example request:
 
 ```bash
-curl -X GET "https://emsearch.ryan.ems-dev.net/api/me/notification?read_status=read" \
+curl -X GET "https://emsearch.ryan.ems-dev.net/api/me/notification?read_status=unread" \
 -H "Accept: application/json" \
 -H "Authentication: Bearer xxx"
 
@@ -893,7 +2890,7 @@ curl -X GET "https://emsearch.ryan.ems-dev.net/api/me/notification?read_status=r
 var settings = {
     "async": true,
     "crossDomain": true,
-    "url": "https://emsearch.ryan.ems-dev.net/api/me/notification?read_status=read",
+    "url": "https://emsearch.ryan.ems-dev.net/api/me/notification?read_status=unread",
     "method": "GET",
     "headers": {
         "Accept": "application/json",
@@ -1082,7 +3079,7 @@ You can specify a GET parameter `user_role_id` to filter results.
 > Example request:
 
 ```bash
-curl -X GET "https://emsearch.ryan.ems-dev.net/api/user/605c7610-1389-11e7-93ae-92361f002671/project?user_role_id=Owner" \
+curl -X GET "https://emsearch.ryan.ems-dev.net/api/user/605c7610-1389-11e7-93ae-92361f002671/project?user_role_id=Administrator" \
 -H "Accept: application/json" \
 -H "Authentication: Bearer xxx"
 
@@ -1092,7 +3089,7 @@ curl -X GET "https://emsearch.ryan.ems-dev.net/api/user/605c7610-1389-11e7-93ae-
 var settings = {
     "async": true,
     "crossDomain": true,
-    "url": "https://emsearch.ryan.ems-dev.net/api/user/605c7610-1389-11e7-93ae-92361f002671/project?user_role_id=Owner",
+    "url": "https://emsearch.ryan.ems-dev.net/api/user/605c7610-1389-11e7-93ae-92361f002671/project?user_role_id=Administrator",
     "method": "GET",
     "headers": {
         "Accept": "application/json",
@@ -1115,24 +3112,24 @@ $.ajax(settings).done(function (response) {
             "search_engine_id": "ee87e3b2-1388-11e7-93ae-92361f002671",
             "data_stream_id": "56278dc8-1934-11e7-93ae-92361f002671",
             "name": "John Smith Sample Project 1",
-            "created_at": "2017-06-22 09:32:20",
-            "updated_at": "2017-06-22 09:32:20"
+            "created_at": "2017-06-28 14:26:41",
+            "updated_at": "2017-06-28 14:26:41"
         },
         {
             "id": "b6860dd2-138c-11e7-93ae-92361f002671",
             "search_engine_id": "ee87e3b2-1388-11e7-93ae-92361f002671",
             "data_stream_id": null,
             "name": "John Smith Sample Project 2",
-            "created_at": "2017-06-22 09:32:20",
-            "updated_at": "2017-06-22 09:32:20"
+            "created_at": "2017-06-28 14:26:41",
+            "updated_at": "2017-06-28 14:26:41"
         },
         {
             "id": "c4b5d93c-138c-11e7-93ae-92361f002671",
             "search_engine_id": "ee87e3b2-1388-11e7-93ae-92361f002671",
             "data_stream_id": "605d712c-1934-11e7-93ae-92361f002671",
             "name": "Mickey Mouse Sample Project",
-            "created_at": "2017-06-22 09:32:20",
-            "updated_at": "2017-06-22 09:32:20"
+            "created_at": "2017-06-28 14:26:41",
+            "updated_at": "2017-06-28 14:26:41"
         }
     ],
     "meta": {
@@ -1203,24 +3200,24 @@ $.ajax(settings).done(function (response) {
             "search_engine_id": "ee87e3b2-1388-11e7-93ae-92361f002671",
             "data_stream_id": "56278dc8-1934-11e7-93ae-92361f002671",
             "name": "John Smith Sample Project 1",
-            "created_at": "2017-06-22 09:32:20",
-            "updated_at": "2017-06-22 09:32:20"
+            "created_at": "2017-06-28 14:26:41",
+            "updated_at": "2017-06-28 14:26:41"
         },
         {
             "id": "b6860dd2-138c-11e7-93ae-92361f002671",
             "search_engine_id": "ee87e3b2-1388-11e7-93ae-92361f002671",
             "data_stream_id": null,
             "name": "John Smith Sample Project 2",
-            "created_at": "2017-06-22 09:32:20",
-            "updated_at": "2017-06-22 09:32:20"
+            "created_at": "2017-06-28 14:26:41",
+            "updated_at": "2017-06-28 14:26:41"
         },
         {
             "id": "c4b5d93c-138c-11e7-93ae-92361f002671",
             "search_engine_id": "ee87e3b2-1388-11e7-93ae-92361f002671",
             "data_stream_id": "605d712c-1934-11e7-93ae-92361f002671",
             "name": "Mickey Mouse Sample Project",
-            "created_at": "2017-06-22 09:32:20",
-            "updated_at": "2017-06-22 09:32:20"
+            "created_at": "2017-06-28 14:26:41",
+            "updated_at": "2017-06-28 14:26:41"
         }
     ],
     "meta": {
@@ -1282,8 +3279,8 @@ $.ajax(settings).done(function (response) {
         "search_engine_id": "ee87e3b2-1388-11e7-93ae-92361f002671",
         "data_stream_id": "56278dc8-1934-11e7-93ae-92361f002671",
         "name": "John Smith Sample Project 1",
-        "created_at": "2017-06-22 09:32:20",
-        "updated_at": "2017-06-22 09:32:20"
+        "created_at": "2017-06-28 14:26:41",
+        "updated_at": "2017-06-28 14:26:41"
     }
 }
 ```
@@ -1306,9 +3303,9 @@ curl -X POST "https://emsearch.ryan.ems-dev.net/api/project" \
 -H "Accept: application/json" \
 -H "Authentication: Bearer xxx"
  \
-    -d "search_engine_id"="50d91231-9733-3f03-9b7d-1af6b25dfb2d" \
-    -d "data_stream_id"="ea669985-1eab-36c1-907f-f0faf69cfe1f" \
-    -d "name"="Est hic eaque" \
+    -d "search_engine_id"="1b1b3e21-70b2-3663-a8c8-7e2103e3b9af" \
+    -d "data_stream_id"="a798c82e-0fa5-353b-b83a-629a9589dede" \
+    -d "name"="Expedita dignissimos architecto" \
 
 ```
 
@@ -1319,9 +3316,9 @@ var settings = {
     "url": "https://emsearch.ryan.ems-dev.net/api/project",
     "method": "POST",
     "data": {
-        "search_engine_id": "50d91231-9733-3f03-9b7d-1af6b25dfb2d",
-        "data_stream_id": "ea669985-1eab-36c1-907f-f0faf69cfe1f",
-        "name": "Est hic eaque"
+        "search_engine_id": "1b1b3e21-70b2-3663-a8c8-7e2103e3b9af",
+        "data_stream_id": "a798c82e-0fa5-353b-b83a-629a9589dede",
+        "name": "Expedita dignissimos architecto"
 },
     "headers": {
         "Accept": "application/json",
@@ -1358,9 +3355,9 @@ curl -X PUT "https://emsearch.ryan.ems-dev.net/api/project/1bcc7efc-138c-11e7-93
 -H "Accept: application/json" \
 -H "Authentication: Bearer xxx"
  \
-    -d "search_engine_id"="528e92e7-6c1b-31ee-8f03-262afacf62a7" \
-    -d "data_stream_id"="6f1c71c9-2897-3199-9525-7ceb2f1f5957" \
-    -d "name"="Non quae est" \
+    -d "search_engine_id"="cd38b0a2-6321-3934-873d-0f0724e574d1" \
+    -d "data_stream_id"="57422f4f-f896-3268-b056-ff0e459aa54d" \
+    -d "name"="Ipsam natus numquam" \
 
 ```
 
@@ -1371,9 +3368,9 @@ var settings = {
     "url": "https://emsearch.ryan.ems-dev.net/api/project/1bcc7efc-138c-11e7-93ae-92361f002671",
     "method": "PUT",
     "data": {
-        "search_engine_id": "528e92e7-6c1b-31ee-8f03-262afacf62a7",
-        "data_stream_id": "6f1c71c9-2897-3199-9525-7ceb2f1f5957",
-        "name": "Non quae est"
+        "search_engine_id": "cd38b0a2-6321-3934-873d-0f0724e574d1",
+        "data_stream_id": "57422f4f-f896-3268-b056-ff0e459aa54d",
+        "name": "Ipsam natus numquam"
 },
     "headers": {
         "Accept": "application/json",
@@ -1485,24 +3482,24 @@ $.ajax(settings).done(function (response) {
             "search_engine_id": "ee87e3b2-1388-11e7-93ae-92361f002671",
             "data_stream_id": "56278dc8-1934-11e7-93ae-92361f002671",
             "name": "John Smith Sample Project 1",
-            "created_at": "2017-06-22 09:32:20",
-            "updated_at": "2017-06-22 09:32:20"
+            "created_at": "2017-06-28 14:26:41",
+            "updated_at": "2017-06-28 14:26:41"
         },
         {
             "id": "b6860dd2-138c-11e7-93ae-92361f002671",
             "search_engine_id": "ee87e3b2-1388-11e7-93ae-92361f002671",
             "data_stream_id": null,
             "name": "John Smith Sample Project 2",
-            "created_at": "2017-06-22 09:32:20",
-            "updated_at": "2017-06-22 09:32:20"
+            "created_at": "2017-06-28 14:26:41",
+            "updated_at": "2017-06-28 14:26:41"
         },
         {
             "id": "c4b5d93c-138c-11e7-93ae-92361f002671",
             "search_engine_id": "ee87e3b2-1388-11e7-93ae-92361f002671",
             "data_stream_id": "605d712c-1934-11e7-93ae-92361f002671",
             "name": "Mickey Mouse Sample Project",
-            "created_at": "2017-06-22 09:32:20",
-            "updated_at": "2017-06-22 09:32:20"
+            "created_at": "2017-06-28 14:26:41",
+            "updated_at": "2017-06-28 14:26:41"
         }
     ],
     "meta": {
@@ -1567,8 +3564,8 @@ $.ajax(settings).done(function (response) {
         {
             "id": "ee87e3b2-1388-11e7-93ae-92361f002671",
             "name": "Algolia",
-            "created_at": "2017-06-22 09:32:15",
-            "updated_at": "2017-06-22 09:32:15",
+            "created_at": "2017-06-28 14:26:40",
+            "updated_at": "2017-06-28 14:26:40",
             "projects_count": 3
         }
     ],
@@ -1629,8 +3626,8 @@ $.ajax(settings).done(function (response) {
     "data": {
         "id": "ee87e3b2-1388-11e7-93ae-92361f002671",
         "name": "Algolia",
-        "created_at": "2017-06-22 09:32:15",
-        "updated_at": "2017-06-22 09:32:15",
+        "created_at": "2017-06-28 14:26:40",
+        "updated_at": "2017-06-28 14:26:40",
         "projects_count": 3
     }
 }
@@ -1654,7 +3651,7 @@ curl -X POST "https://emsearch.ryan.ems-dev.net/api/searchEngine" \
 -H "Accept: application/json" \
 -H "Authentication: Bearer xxx"
  \
-    -d "name"="Iusto aperiam voluptas" \
+    -d "name"="Culpa voluptatem sit" \
 
 ```
 
@@ -1665,7 +3662,7 @@ var settings = {
     "url": "https://emsearch.ryan.ems-dev.net/api/searchEngine",
     "method": "POST",
     "data": {
-        "name": "Iusto aperiam voluptas"
+        "name": "Culpa voluptatem sit"
 },
     "headers": {
         "Accept": "application/json",
@@ -1700,7 +3697,7 @@ curl -X PUT "https://emsearch.ryan.ems-dev.net/api/searchEngine/ee87e3b2-1388-11
 -H "Accept: application/json" \
 -H "Authentication: Bearer xxx"
  \
-    -d "name"="Aut ullam aspernatur" \
+    -d "name"="Odit omnis deserunt" \
 
 ```
 
@@ -1711,7 +3708,7 @@ var settings = {
     "url": "https://emsearch.ryan.ems-dev.net/api/searchEngine/ee87e3b2-1388-11e7-93ae-92361f002671",
     "method": "PUT",
     "data": {
-        "name": "Aut ullam aspernatur"
+        "name": "Odit omnis deserunt"
 },
     "headers": {
         "Accept": "application/json",
@@ -1818,36 +3815,36 @@ $.ajax(settings).done(function (response) {
             "item_id": "a37eda90-1f56-11e7-93ae-92361f002671",
             "project_id": "1bcc7efc-138c-11e7-93ae-92361f002671",
             "item_signature": "f56a6607aee20f0dab169820bda38706",
-            "created_at": "2017-06-22 09:32:28",
-            "updated_at": "2017-06-22 09:32:28"
+            "created_at": "2017-06-28 14:26:49",
+            "updated_at": "2017-06-28 14:26:49"
         },
         {
             "item_id": "b06e221a-1f56-11e7-93ae-92361f002671",
             "project_id": "1bcc7efc-138c-11e7-93ae-92361f002671",
             "item_signature": "d66e8b5e5d17933bdcaf5a03f614e007",
-            "created_at": "2017-06-22 09:32:28",
-            "updated_at": "2017-06-22 09:32:28"
+            "created_at": "2017-06-28 14:26:49",
+            "updated_at": "2017-06-28 14:26:49"
         },
         {
             "item_id": "c07d179c-1f56-11e7-93ae-92361f002671",
             "project_id": "1bcc7efc-138c-11e7-93ae-92361f002671",
             "item_signature": "52864717b0abe4851b74bed750df0144",
-            "created_at": "2017-06-22 09:32:28",
-            "updated_at": "2017-06-22 09:32:28"
+            "created_at": "2017-06-28 14:26:49",
+            "updated_at": "2017-06-28 14:26:49"
         },
         {
             "item_id": "d1040d28-1f56-11e7-93ae-92361f002671",
             "project_id": "1bcc7efc-138c-11e7-93ae-92361f002671",
             "item_signature": "098de3bc3c69ad3e027d9fefc44fa7a5",
-            "created_at": "2017-06-22 09:32:28",
-            "updated_at": "2017-06-22 09:32:28"
+            "created_at": "2017-06-28 14:26:49",
+            "updated_at": "2017-06-28 14:26:49"
         },
         {
             "item_id": "e6b018e2-1f56-11e7-93ae-92361f002671",
             "project_id": "1bcc7efc-138c-11e7-93ae-92361f002671",
             "item_signature": "a18513691f0d1c2a8e3f3ae0c0b8260c",
-            "created_at": "2017-06-22 09:32:28",
-            "updated_at": "2017-06-22 09:32:28"
+            "created_at": "2017-06-28 14:26:49",
+            "updated_at": "2017-06-28 14:26:49"
         }
     ],
     "meta": {
@@ -1909,8 +3906,8 @@ $.ajax(settings).done(function (response) {
             "item_id": "a37eda90-1f56-11e7-93ae-92361f002671",
             "project_id": "1bcc7efc-138c-11e7-93ae-92361f002671",
             "item_signature": "f56a6607aee20f0dab169820bda38706",
-            "created_at": "2017-06-22 09:32:28",
-            "updated_at": "2017-06-22 09:32:28"
+            "created_at": "2017-06-28 14:26:49",
+            "updated_at": "2017-06-28 14:26:49"
         }
     ]
 }
@@ -1934,9 +3931,9 @@ curl -X POST "https://emsearch.ryan.ems-dev.net/api/syncItem" \
 -H "Accept: application/json" \
 -H "Authentication: Bearer xxx"
  \
-    -d "item_id"="Alias vel rerum" \
-    -d "project_id"="7065f012-e8a6-32bc-b39b-7ceffe7dbb99" \
-    -d "item_signature"="187cd561d0bf428c4366d310c5de9bf7" \
+    -d "item_id"="Molestias sed facere" \
+    -d "project_id"="82286353-5687-3e97-989e-390845fc9721" \
+    -d "item_signature"="65f6613b9014576618c173c00741c6d6" \
 
 ```
 
@@ -1947,9 +3944,9 @@ var settings = {
     "url": "https://emsearch.ryan.ems-dev.net/api/syncItem",
     "method": "POST",
     "data": {
-        "item_id": "Alias vel rerum",
-        "project_id": "7065f012-e8a6-32bc-b39b-7ceffe7dbb99",
-        "item_signature": "187cd561d0bf428c4366d310c5de9bf7"
+        "item_id": "Molestias sed facere",
+        "project_id": "82286353-5687-3e97-989e-390845fc9721",
+        "item_signature": "65f6613b9014576618c173c00741c6d6"
 },
     "headers": {
         "Accept": "application/json",
@@ -1986,9 +3983,9 @@ curl -X PUT "https://emsearch.ryan.ems-dev.net/api/syncItem/a37eda90-1f56-11e7-9
 -H "Accept: application/json" \
 -H "Authentication: Bearer xxx"
  \
-    -d "item_id"="Vel suscipit est" \
-    -d "project_id"="fab17a38-b7ed-3f37-8c19-1aad8b8b6d57" \
-    -d "item_signature"="482e81bf4f6b62297bbd17203736c0da" \
+    -d "item_id"="Ullam eveniet rerum" \
+    -d "project_id"="daf8424c-4748-3e97-8f26-92d67d633c9c" \
+    -d "item_signature"="1691573406eae35f0bcd6bacb0c87478" \
 
 ```
 
@@ -1999,9 +3996,9 @@ var settings = {
     "url": "https://emsearch.ryan.ems-dev.net/api/syncItem/a37eda90-1f56-11e7-93ae-92361f002671,1bcc7efc-138c-11e7-93ae-92361f002671",
     "method": "PUT",
     "data": {
-        "item_id": "Vel suscipit est",
-        "project_id": "fab17a38-b7ed-3f37-8c19-1aad8b8b6d57",
-        "item_signature": "482e81bf4f6b62297bbd17203736c0da"
+        "item_id": "Ullam eveniet rerum",
+        "project_id": "daf8424c-4748-3e97-8f26-92d67d633c9c",
+        "item_signature": "1691573406eae35f0bcd6bacb0c87478"
 },
     "headers": {
         "Accept": "application/json",
@@ -2107,36 +4104,36 @@ $.ajax(settings).done(function (response) {
             "item_id": "a37eda90-1f56-11e7-93ae-92361f002671",
             "project_id": "1bcc7efc-138c-11e7-93ae-92361f002671",
             "item_signature": "f56a6607aee20f0dab169820bda38706",
-            "created_at": "2017-06-22 09:32:28",
-            "updated_at": "2017-06-22 09:32:28"
+            "created_at": "2017-06-28 14:26:49",
+            "updated_at": "2017-06-28 14:26:49"
         },
         {
             "item_id": "b06e221a-1f56-11e7-93ae-92361f002671",
             "project_id": "1bcc7efc-138c-11e7-93ae-92361f002671",
             "item_signature": "d66e8b5e5d17933bdcaf5a03f614e007",
-            "created_at": "2017-06-22 09:32:28",
-            "updated_at": "2017-06-22 09:32:28"
+            "created_at": "2017-06-28 14:26:49",
+            "updated_at": "2017-06-28 14:26:49"
         },
         {
             "item_id": "c07d179c-1f56-11e7-93ae-92361f002671",
             "project_id": "1bcc7efc-138c-11e7-93ae-92361f002671",
             "item_signature": "52864717b0abe4851b74bed750df0144",
-            "created_at": "2017-06-22 09:32:28",
-            "updated_at": "2017-06-22 09:32:28"
+            "created_at": "2017-06-28 14:26:49",
+            "updated_at": "2017-06-28 14:26:49"
         },
         {
             "item_id": "d1040d28-1f56-11e7-93ae-92361f002671",
             "project_id": "1bcc7efc-138c-11e7-93ae-92361f002671",
             "item_signature": "098de3bc3c69ad3e027d9fefc44fa7a5",
-            "created_at": "2017-06-22 09:32:28",
-            "updated_at": "2017-06-22 09:32:28"
+            "created_at": "2017-06-28 14:26:49",
+            "updated_at": "2017-06-28 14:26:49"
         },
         {
             "item_id": "e6b018e2-1f56-11e7-93ae-92361f002671",
             "project_id": "1bcc7efc-138c-11e7-93ae-92361f002671",
             "item_signature": "a18513691f0d1c2a8e3f3ae0c0b8260c",
-            "created_at": "2017-06-22 09:32:28",
-            "updated_at": "2017-06-22 09:32:28"
+            "created_at": "2017-06-28 14:26:49",
+            "updated_at": "2017-06-28 14:26:49"
         }
     ],
     "meta": {
@@ -2205,8 +4202,8 @@ $.ajax(settings).done(function (response) {
             "sync_task_status_id": "InProgress",
             "created_by_user_id": "605c7610-1389-11e7-93ae-92361f002671",
             "project_id": "1bcc7efc-138c-11e7-93ae-92361f002671",
-            "created_at": "2017-06-22 09:32:28",
-            "updated_at": "2017-06-22 09:32:28",
+            "created_at": "2017-06-28 14:26:49",
+            "updated_at": "2017-06-28 14:26:49",
             "sync_task_logs_count": 2,
             "children_sync_tasks_count": 1
         },
@@ -2217,8 +4214,8 @@ $.ajax(settings).done(function (response) {
             "sync_task_status_id": "InProgress",
             "created_by_user_id": null,
             "project_id": "1bcc7efc-138c-11e7-93ae-92361f002671",
-            "created_at": "2017-06-22 09:32:28",
-            "updated_at": "2017-06-22 09:32:28",
+            "created_at": "2017-06-28 14:26:49",
+            "updated_at": "2017-06-28 14:26:49",
             "sync_task_logs_count": 1,
             "children_sync_tasks_count": 0
         }
@@ -2289,8 +4286,8 @@ $.ajax(settings).done(function (response) {
         "sync_task_status_id": "InProgress",
         "created_by_user_id": "605c7610-1389-11e7-93ae-92361f002671",
         "project_id": "1bcc7efc-138c-11e7-93ae-92361f002671",
-        "created_at": "2017-06-22 09:32:28",
-        "updated_at": "2017-06-22 09:32:28",
+        "created_at": "2017-06-28 14:26:49",
+        "updated_at": "2017-06-28 14:26:49",
         "sync_task_logs_count": 2,
         "children_sync_tasks_count": 1
     }
@@ -2315,11 +4312,11 @@ curl -X POST "https://emsearch.ryan.ems-dev.net/api/syncTask" \
 -H "Accept: application/json" \
 -H "Authentication: Bearer xxx"
  \
-    -d "sync_task_id"="a373aa21-b24d-31ad-8865-fe14dea547f5" \
-    -d "sync_task_type_id"="Praesentium cupiditate ab" \
-    -d "sync_task_status_id"="Id aliquam deserunt" \
-    -d "created_by_user_id"="0d3a3e8e-9590-3ec2-aeac-39d1c4f6ba68" \
-    -d "project_id"="6090e8ea-bfde-3320-afc4-8f714b6f48da" \
+    -d "sync_task_id"="65c612b4-6e3a-3117-9677-4e5d6de18f17" \
+    -d "sync_task_type_id"="Harum animi officia" \
+    -d "sync_task_status_id"="Quia officiis occaecati" \
+    -d "created_by_user_id"="29ab4902-342f-3dea-ad7d-0de44b3c99f1" \
+    -d "project_id"="fb9ee8b0-2589-3b7d-bec5-1054d3eb0f3d" \
 
 ```
 
@@ -2330,11 +4327,11 @@ var settings = {
     "url": "https://emsearch.ryan.ems-dev.net/api/syncTask",
     "method": "POST",
     "data": {
-        "sync_task_id": "a373aa21-b24d-31ad-8865-fe14dea547f5",
-        "sync_task_type_id": "Praesentium cupiditate ab",
-        "sync_task_status_id": "Id aliquam deserunt",
-        "created_by_user_id": "0d3a3e8e-9590-3ec2-aeac-39d1c4f6ba68",
-        "project_id": "6090e8ea-bfde-3320-afc4-8f714b6f48da"
+        "sync_task_id": "65c612b4-6e3a-3117-9677-4e5d6de18f17",
+        "sync_task_type_id": "Harum animi officia",
+        "sync_task_status_id": "Quia officiis occaecati",
+        "created_by_user_id": "29ab4902-342f-3dea-ad7d-0de44b3c99f1",
+        "project_id": "fb9ee8b0-2589-3b7d-bec5-1054d3eb0f3d"
 },
     "headers": {
         "Accept": "application/json",
@@ -2373,11 +4370,11 @@ curl -X PUT "https://emsearch.ryan.ems-dev.net/api/syncTask/8dbfd6e6-2055-11e7-9
 -H "Accept: application/json" \
 -H "Authentication: Bearer xxx"
  \
-    -d "sync_task_id"="6b863d76-ba21-3c45-9fab-65b5f5f8f3cf" \
-    -d "sync_task_type_id"="Voluptatem qui maiores" \
-    -d "sync_task_status_id"="Voluptas asperiores repellat" \
-    -d "created_by_user_id"="df21357a-7d2b-30d6-a9c4-85ae2d6f0ab9" \
-    -d "project_id"="e5d0bfee-94f6-3256-9b0e-80fad2ea80a9" \
+    -d "sync_task_id"="f3cd0a08-b159-3b2f-8cc5-fc3f741e3a37" \
+    -d "sync_task_type_id"="Blanditiis odit maiores" \
+    -d "sync_task_status_id"="Sapiente voluptate impedit" \
+    -d "created_by_user_id"="215ec06e-ffa0-3812-b020-3a06df64c9d3" \
+    -d "project_id"="940ca9ed-5d29-3087-b90b-40991edd2329" \
 
 ```
 
@@ -2388,11 +4385,11 @@ var settings = {
     "url": "https://emsearch.ryan.ems-dev.net/api/syncTask/8dbfd6e6-2055-11e7-93ae-92361f002671",
     "method": "PUT",
     "data": {
-        "sync_task_id": "6b863d76-ba21-3c45-9fab-65b5f5f8f3cf",
-        "sync_task_type_id": "Voluptatem qui maiores",
-        "sync_task_status_id": "Voluptas asperiores repellat",
-        "created_by_user_id": "df21357a-7d2b-30d6-a9c4-85ae2d6f0ab9",
-        "project_id": "e5d0bfee-94f6-3256-9b0e-80fad2ea80a9"
+        "sync_task_id": "f3cd0a08-b159-3b2f-8cc5-fc3f741e3a37",
+        "sync_task_type_id": "Blanditiis odit maiores",
+        "sync_task_status_id": "Sapiente voluptate impedit",
+        "created_by_user_id": "215ec06e-ffa0-3812-b020-3a06df64c9d3",
+        "project_id": "940ca9ed-5d29-3087-b90b-40991edd2329"
 },
     "headers": {
         "Accept": "application/json",
@@ -2503,8 +4500,8 @@ $.ajax(settings).done(function (response) {
             "sync_task_status_id": "InProgress",
             "created_by_user_id": null,
             "project_id": "1bcc7efc-138c-11e7-93ae-92361f002671",
-            "created_at": "2017-06-22 09:32:28",
-            "updated_at": "2017-06-22 09:32:28",
+            "created_at": "2017-06-28 14:26:49",
+            "updated_at": "2017-06-28 14:26:49",
             "sync_task_logs_count": 1,
             "children_sync_tasks_count": 0
         }
@@ -2574,8 +4571,8 @@ $.ajax(settings).done(function (response) {
             "sync_task_status_id": "InProgress",
             "created_by_user_id": "605c7610-1389-11e7-93ae-92361f002671",
             "project_id": "1bcc7efc-138c-11e7-93ae-92361f002671",
-            "created_at": "2017-06-22 09:32:28",
-            "updated_at": "2017-06-22 09:32:28",
+            "created_at": "2017-06-28 14:26:49",
+            "updated_at": "2017-06-28 14:26:49",
             "sync_task_logs_count": 2,
             "children_sync_tasks_count": 1
         },
@@ -2586,8 +4583,8 @@ $.ajax(settings).done(function (response) {
             "sync_task_status_id": "InProgress",
             "created_by_user_id": null,
             "project_id": "1bcc7efc-138c-11e7-93ae-92361f002671",
-            "created_at": "2017-06-22 09:32:28",
-            "updated_at": "2017-06-22 09:32:28",
+            "created_at": "2017-06-28 14:26:49",
+            "updated_at": "2017-06-28 14:26:49",
             "sync_task_logs_count": 1,
             "children_sync_tasks_count": 0
         }
@@ -2661,18 +4658,18 @@ $.ajax(settings).done(function (response) {
             "sync_task_status_id": "Planned",
             "sync_task_id": "8dbfd6e6-2055-11e7-93ae-92361f002671",
             "entry": "Synchronization planned.",
-            "public": "1",
-            "created_at": "2017-06-22 09:32:28",
-            "updated_at": "2017-06-22 09:32:28"
+            "public": true,
+            "created_at": "2017-06-28 14:26:49",
+            "updated_at": "2017-06-28 14:26:49"
         },
         {
             "id": "c8fd9a1e-210d-11e7-93ae-92361f002671",
             "sync_task_status_id": "InProgress",
             "sync_task_id": "8dbfd6e6-2055-11e7-93ae-92361f002671",
             "entry": "Synchronization in progress.",
-            "public": "1",
-            "created_at": "2017-06-22 09:32:30",
-            "updated_at": "2017-06-22 09:32:30"
+            "public": true,
+            "created_at": "2017-06-28 14:26:51",
+            "updated_at": "2017-06-28 14:26:51"
         }
     ],
     "meta": {
@@ -2839,7 +4836,7 @@ curl -X POST "https://emsearch.ryan.ems-dev.net/api/syncTaskStatus" \
 -H "Accept: application/json" \
 -H "Authentication: Bearer xxx"
  \
-    -d "id"="Sunt quibusdam et" \
+    -d "id"="Nesciunt sit qui" \
 
 ```
 
@@ -2850,7 +4847,7 @@ var settings = {
     "url": "https://emsearch.ryan.ems-dev.net/api/syncTaskStatus",
     "method": "POST",
     "data": {
-        "id": "Sunt quibusdam et"
+        "id": "Nesciunt sit qui"
 },
     "headers": {
         "Accept": "application/json",
@@ -2994,43 +4991,43 @@ $.ajax(settings).done(function (response) {
             "sync_task_status_id": "Complete",
             "i18n_lang_id": "en_US",
             "description": "Items synchronization is complete.",
-            "created_at": "2017-06-22 09:32:15",
-            "updated_at": "2017-06-22 09:32:15"
+            "created_at": "2017-06-28 14:26:40",
+            "updated_at": "2017-06-28 14:26:40"
         },
         {
             "sync_task_status_id": "Complete",
             "i18n_lang_id": "fr_FR",
             "description": "La synchronisation des items est terminée",
-            "created_at": "2017-06-22 09:32:15",
-            "updated_at": "2017-06-22 09:32:15"
+            "created_at": "2017-06-28 14:26:40",
+            "updated_at": "2017-06-28 14:26:40"
         },
         {
             "sync_task_status_id": "InProgress",
             "i18n_lang_id": "en_US",
             "description": "Items synchronization is in progress.",
-            "created_at": "2017-06-22 09:32:15",
-            "updated_at": "2017-06-22 09:32:15"
+            "created_at": "2017-06-28 14:26:40",
+            "updated_at": "2017-06-28 14:26:40"
         },
         {
             "sync_task_status_id": "InProgress",
             "i18n_lang_id": "fr_FR",
             "description": "La synchronisation des items est en cours.",
-            "created_at": "2017-06-22 09:32:15",
-            "updated_at": "2017-06-22 09:32:15"
+            "created_at": "2017-06-28 14:26:40",
+            "updated_at": "2017-06-28 14:26:40"
         },
         {
             "sync_task_status_id": "Planned",
             "i18n_lang_id": "en_US",
             "description": "Items synchronization is planned.",
-            "created_at": "2017-06-22 09:32:15",
-            "updated_at": "2017-06-22 09:32:15"
+            "created_at": "2017-06-28 14:26:40",
+            "updated_at": "2017-06-28 14:26:40"
         },
         {
             "sync_task_status_id": "Planned",
             "i18n_lang_id": "fr_FR",
             "description": "La synchronisation des items est plannifiée",
-            "created_at": "2017-06-22 09:32:15",
-            "updated_at": "2017-06-22 09:32:15"
+            "created_at": "2017-06-28 14:26:40",
+            "updated_at": "2017-06-28 14:26:40"
         }
     ],
     "meta": {
@@ -3092,8 +5089,8 @@ $.ajax(settings).done(function (response) {
             "sync_task_status_id": "Planned",
             "i18n_lang_id": "en_US",
             "description": "Items synchronization is planned.",
-            "created_at": "2017-06-22 09:32:15",
-            "updated_at": "2017-06-22 09:32:15"
+            "created_at": "2017-06-28 14:26:40",
+            "updated_at": "2017-06-28 14:26:40"
         }
     ]
 }
@@ -3117,9 +5114,9 @@ curl -X POST "https://emsearch.ryan.ems-dev.net/api/syncTaskStatusVersion" \
 -H "Accept: application/json" \
 -H "Authentication: Bearer xxx"
  \
-    -d "sync_task_status_id"="Repellat voluptate et" \
-    -d "i18n_lang_id"="Optio officiis laudantium" \
-    -d "description"="Consequatur laboriosam repellendus" \
+    -d "sync_task_status_id"="Dolorem inventore omnis" \
+    -d "i18n_lang_id"="Inventore id laborum" \
+    -d "description"="Qui explicabo aut" \
 
 ```
 
@@ -3130,9 +5127,9 @@ var settings = {
     "url": "https://emsearch.ryan.ems-dev.net/api/syncTaskStatusVersion",
     "method": "POST",
     "data": {
-        "sync_task_status_id": "Repellat voluptate et",
-        "i18n_lang_id": "Optio officiis laudantium",
-        "description": "Consequatur laboriosam repellendus"
+        "sync_task_status_id": "Dolorem inventore omnis",
+        "i18n_lang_id": "Inventore id laborum",
+        "description": "Qui explicabo aut"
 },
     "headers": {
         "Accept": "application/json",
@@ -3169,9 +5166,9 @@ curl -X PUT "https://emsearch.ryan.ems-dev.net/api/syncTaskStatusVersion/Planned
 -H "Accept: application/json" \
 -H "Authentication: Bearer xxx"
  \
-    -d "sync_task_status_id"="Reiciendis maxime voluptatem" \
-    -d "i18n_lang_id"="Ab dolor vel" \
-    -d "description"="Sit aspernatur cum" \
+    -d "sync_task_status_id"="Voluptas asperiores repellat" \
+    -d "i18n_lang_id"="Non omnis nam" \
+    -d "description"="Reprehenderit provident dignissimos" \
 
 ```
 
@@ -3182,9 +5179,9 @@ var settings = {
     "url": "https://emsearch.ryan.ems-dev.net/api/syncTaskStatusVersion/Planned,en_US",
     "method": "PUT",
     "data": {
-        "sync_task_status_id": "Reiciendis maxime voluptatem",
-        "i18n_lang_id": "Ab dolor vel",
-        "description": "Sit aspernatur cum"
+        "sync_task_status_id": "Voluptas asperiores repellat",
+        "i18n_lang_id": "Non omnis nam",
+        "description": "Reprehenderit provident dignissimos"
 },
     "headers": {
         "Accept": "application/json",
@@ -3290,15 +5287,15 @@ $.ajax(settings).done(function (response) {
             "sync_task_status_id": "Planned",
             "i18n_lang_id": "en_US",
             "description": "Items synchronization is planned.",
-            "created_at": "2017-06-22 09:32:15",
-            "updated_at": "2017-06-22 09:32:15"
+            "created_at": "2017-06-28 14:26:40",
+            "updated_at": "2017-06-28 14:26:40"
         },
         {
             "sync_task_status_id": "Planned",
             "i18n_lang_id": "fr_FR",
             "description": "La synchronisation des items est plannifiée",
-            "created_at": "2017-06-22 09:32:15",
-            "updated_at": "2017-06-22 09:32:15"
+            "created_at": "2017-06-28 14:26:40",
+            "updated_at": "2017-06-28 14:26:40"
         }
     ],
     "meta": {
@@ -3476,7 +5473,7 @@ curl -X POST "https://emsearch.ryan.ems-dev.net/api/syncTaskType" \
 -H "Accept: application/json" \
 -H "Authentication: Bearer xxx"
  \
-    -d "id"="Dolorum officiis dolorum" \
+    -d "id"="Atque minus doloremque" \
 
 ```
 
@@ -3487,7 +5484,7 @@ var settings = {
     "url": "https://emsearch.ryan.ems-dev.net/api/syncTaskType",
     "method": "POST",
     "data": {
-        "id": "Dolorum officiis dolorum"
+        "id": "Atque minus doloremque"
 },
     "headers": {
         "Accept": "application/json",
@@ -3631,71 +5628,71 @@ $.ajax(settings).done(function (response) {
             "sync_task_type_id": "DataStreamCheck",
             "i18n_lang_id": "en_US",
             "description": "Comparison and verification of downloaded data.",
-            "created_at": "2017-06-22 09:32:15",
-            "updated_at": "2017-06-22 09:32:15"
+            "created_at": "2017-06-28 14:26:40",
+            "updated_at": "2017-06-28 14:26:40"
         },
         {
             "sync_task_type_id": "DataStreamCheck",
             "i18n_lang_id": "fr_FR",
             "description": "Comparaison et vérification des données téléchargées.",
-            "created_at": "2017-06-22 09:32:15",
-            "updated_at": "2017-06-22 09:32:15"
+            "created_at": "2017-06-28 14:26:40",
+            "updated_at": "2017-06-28 14:26:40"
         },
         {
             "sync_task_type_id": "DataStreamDownload",
             "i18n_lang_id": "en_US",
             "description": "Downloading the provided data feed url of the data stream.",
-            "created_at": "2017-06-22 09:32:15",
-            "updated_at": "2017-06-22 09:32:15"
+            "created_at": "2017-06-28 14:26:40",
+            "updated_at": "2017-06-28 14:26:40"
         },
         {
             "sync_task_type_id": "DataStreamDownload",
             "i18n_lang_id": "fr_FR",
             "description": "Téléchargement des données fournies par l'url du flux de données.",
-            "created_at": "2017-06-22 09:32:15",
-            "updated_at": "2017-06-22 09:32:15"
+            "created_at": "2017-06-28 14:26:40",
+            "updated_at": "2017-06-28 14:26:40"
         },
         {
             "sync_task_type_id": "DataStreamPrepare",
             "i18n_lang_id": "en_US",
             "description": "Data breakdown for creation, edition or deletion.",
-            "created_at": "2017-06-22 09:32:15",
-            "updated_at": "2017-06-22 09:32:15"
+            "created_at": "2017-06-28 14:26:40",
+            "updated_at": "2017-06-28 14:26:40"
         },
         {
             "sync_task_type_id": "DataStreamPrepare",
             "i18n_lang_id": "fr_FR",
             "description": "Ventilation des données pour la création, modification ou suppression.",
-            "created_at": "2017-06-22 09:32:15",
-            "updated_at": "2017-06-22 09:32:15"
+            "created_at": "2017-06-28 14:26:40",
+            "updated_at": "2017-06-28 14:26:40"
         },
         {
             "sync_task_type_id": "ItemsDelete",
             "i18n_lang_id": "en_US",
             "description": "Deleting records.",
-            "created_at": "2017-06-22 09:32:15",
-            "updated_at": "2017-06-22 09:32:15"
+            "created_at": "2017-06-28 14:26:40",
+            "updated_at": "2017-06-28 14:26:40"
         },
         {
             "sync_task_type_id": "ItemsDelete",
             "i18n_lang_id": "fr_FR",
             "description": "Suppression d'enregistrements.",
-            "created_at": "2017-06-22 09:32:15",
-            "updated_at": "2017-06-22 09:32:15"
+            "created_at": "2017-06-28 14:26:40",
+            "updated_at": "2017-06-28 14:26:40"
         },
         {
             "sync_task_type_id": "ItemsInsertion",
             "i18n_lang_id": "en_US",
             "description": "Creating new records.",
-            "created_at": "2017-06-22 09:32:15",
-            "updated_at": "2017-06-22 09:32:15"
+            "created_at": "2017-06-28 14:26:40",
+            "updated_at": "2017-06-28 14:26:40"
         },
         {
             "sync_task_type_id": "ItemsInsertion",
             "i18n_lang_id": "fr_FR",
             "description": "Création des nouveaux enregistrements.",
-            "created_at": "2017-06-22 09:32:15",
-            "updated_at": "2017-06-22 09:32:15"
+            "created_at": "2017-06-28 14:26:40",
+            "updated_at": "2017-06-28 14:26:40"
         }
     ],
     "meta": {
@@ -3759,8 +5756,8 @@ $.ajax(settings).done(function (response) {
             "sync_task_type_id": "Main",
             "i18n_lang_id": "en_US",
             "description": "Main task who rules and manage subtasks.",
-            "created_at": "2017-06-22 09:32:15",
-            "updated_at": "2017-06-22 09:32:15"
+            "created_at": "2017-06-28 14:26:40",
+            "updated_at": "2017-06-28 14:26:40"
         }
     ]
 }
@@ -3784,9 +5781,9 @@ curl -X POST "https://emsearch.ryan.ems-dev.net/api/syncTaskTypeVersion" \
 -H "Accept: application/json" \
 -H "Authentication: Bearer xxx"
  \
-    -d "sync_task_type_id"="Fugit non sunt" \
-    -d "i18n_lang_id"="Sint eius et" \
-    -d "description"="Assumenda et culpa" \
+    -d "sync_task_type_id"="Est nulla inventore" \
+    -d "i18n_lang_id"="Ut soluta earum" \
+    -d "description"="Laboriosam excepturi sed" \
 
 ```
 
@@ -3797,9 +5794,9 @@ var settings = {
     "url": "https://emsearch.ryan.ems-dev.net/api/syncTaskTypeVersion",
     "method": "POST",
     "data": {
-        "sync_task_type_id": "Fugit non sunt",
-        "i18n_lang_id": "Sint eius et",
-        "description": "Assumenda et culpa"
+        "sync_task_type_id": "Est nulla inventore",
+        "i18n_lang_id": "Ut soluta earum",
+        "description": "Laboriosam excepturi sed"
 },
     "headers": {
         "Accept": "application/json",
@@ -3836,9 +5833,9 @@ curl -X PUT "https://emsearch.ryan.ems-dev.net/api/syncTaskTypeVersion/Main,en_U
 -H "Accept: application/json" \
 -H "Authentication: Bearer xxx"
  \
-    -d "sync_task_type_id"="Doloribus a ullam" \
-    -d "i18n_lang_id"="Mollitia accusantium alias" \
-    -d "description"="Incidunt atque et" \
+    -d "sync_task_type_id"="Dolores esse quo" \
+    -d "i18n_lang_id"="At quas aut" \
+    -d "description"="Temporibus et quia" \
 
 ```
 
@@ -3849,9 +5846,9 @@ var settings = {
     "url": "https://emsearch.ryan.ems-dev.net/api/syncTaskTypeVersion/Main,en_US",
     "method": "PUT",
     "data": {
-        "sync_task_type_id": "Doloribus a ullam",
-        "i18n_lang_id": "Mollitia accusantium alias",
-        "description": "Incidunt atque et"
+        "sync_task_type_id": "Dolores esse quo",
+        "i18n_lang_id": "At quas aut",
+        "description": "Temporibus et quia"
 },
     "headers": {
         "Accept": "application/json",
@@ -3957,50 +5954,50 @@ $.ajax(settings).done(function (response) {
             "sync_task_type_id": "DataStreamCheck",
             "i18n_lang_id": "en_US",
             "description": "Comparison and verification of downloaded data.",
-            "created_at": "2017-06-22 09:32:15",
-            "updated_at": "2017-06-22 09:32:15"
+            "created_at": "2017-06-28 14:26:40",
+            "updated_at": "2017-06-28 14:26:40"
         },
         {
             "sync_task_type_id": "DataStreamDownload",
             "i18n_lang_id": "en_US",
             "description": "Downloading the provided data feed url of the data stream.",
-            "created_at": "2017-06-22 09:32:15",
-            "updated_at": "2017-06-22 09:32:15"
+            "created_at": "2017-06-28 14:26:40",
+            "updated_at": "2017-06-28 14:26:40"
         },
         {
             "sync_task_type_id": "DataStreamPrepare",
             "i18n_lang_id": "en_US",
             "description": "Data breakdown for creation, edition or deletion.",
-            "created_at": "2017-06-22 09:32:15",
-            "updated_at": "2017-06-22 09:32:15"
+            "created_at": "2017-06-28 14:26:40",
+            "updated_at": "2017-06-28 14:26:40"
         },
         {
             "sync_task_type_id": "ItemsDelete",
             "i18n_lang_id": "en_US",
             "description": "Deleting records.",
-            "created_at": "2017-06-22 09:32:15",
-            "updated_at": "2017-06-22 09:32:15"
+            "created_at": "2017-06-28 14:26:40",
+            "updated_at": "2017-06-28 14:26:40"
         },
         {
             "sync_task_type_id": "ItemsInsertion",
             "i18n_lang_id": "en_US",
             "description": "Creating new records.",
-            "created_at": "2017-06-22 09:32:15",
-            "updated_at": "2017-06-22 09:32:15"
+            "created_at": "2017-06-28 14:26:40",
+            "updated_at": "2017-06-28 14:26:40"
         },
         {
             "sync_task_type_id": "ItemsUpdate",
             "i18n_lang_id": "en_US",
             "description": "Updating records.",
-            "created_at": "2017-06-22 09:32:15",
-            "updated_at": "2017-06-22 09:32:15"
+            "created_at": "2017-06-28 14:26:40",
+            "updated_at": "2017-06-28 14:26:40"
         },
         {
             "sync_task_type_id": "Main",
             "i18n_lang_id": "en_US",
             "description": "Main task who rules and manage subtasks.",
-            "created_at": "2017-06-22 09:32:15",
-            "updated_at": "2017-06-22 09:32:15"
+            "created_at": "2017-06-28 14:26:40",
+            "updated_at": "2017-06-28 14:26:40"
         }
     ],
     "meta": {
@@ -4067,32 +6064,32 @@ $.ajax(settings).done(function (response) {
             "user_group_id": "Developer",
             "name": "John Doe",
             "email": "john.doe@domain.tld",
-            "created_at": "2017-06-22 09:32:19",
-            "updated_at": "2017-06-22 09:32:19"
+            "created_at": "2017-06-28 14:26:41",
+            "updated_at": "2017-06-28 14:26:41"
         },
         {
             "id": "509dd5c0-1389-11e7-93ae-92361f002671",
             "user_group_id": "Support",
             "name": "Alan Smithee",
             "email": "alan.smithee@domain.tld",
-            "created_at": "2017-06-22 09:32:19",
-            "updated_at": "2017-06-22 09:32:19"
+            "created_at": "2017-06-28 14:26:41",
+            "updated_at": "2017-06-28 14:26:41"
         },
         {
             "id": "605c7610-1389-11e7-93ae-92361f002671",
             "user_group_id": "End-User",
             "name": "John Smith",
             "email": "john.smith@domain.tld",
-            "created_at": "2017-06-22 09:32:19",
-            "updated_at": "2017-06-22 09:32:19"
+            "created_at": "2017-06-28 14:26:41",
+            "updated_at": "2017-06-28 14:26:41"
         },
         {
             "id": "82b5da82-138c-11e7-93ae-92361f002671",
             "user_group_id": "End-User",
             "name": "Mickey Mouse",
             "email": "mickey.mouse@domain.tld",
-            "created_at": "2017-06-22 09:32:20",
-            "updated_at": "2017-06-22 09:32:20"
+            "created_at": "2017-06-28 14:26:41",
+            "updated_at": "2017-06-28 14:26:41"
         }
     ],
     "meta": {
@@ -4154,8 +6151,8 @@ $.ajax(settings).done(function (response) {
         "user_group_id": "End-User",
         "name": "John Smith",
         "email": "john.smith@domain.tld",
-        "created_at": "2017-06-22 09:32:19",
-        "updated_at": "2017-06-22 09:32:19"
+        "created_at": "2017-06-28 14:26:41",
+        "updated_at": "2017-06-28 14:26:41"
     }
 }
 ```
@@ -4178,10 +6175,10 @@ curl -X POST "https://emsearch.ryan.ems-dev.net/api/user" \
 -H "Accept: application/json" \
 -H "Authentication: Bearer xxx"
  \
-    -d "user_group_id"="Support" \
-    -d "name"="Qui doloremque nesciunt" \
-    -d "email"="lynn70@example.com" \
-    -d "password"="ZpOYcy&amp;" \
+    -d "user_group_id"="Developer" \
+    -d "name"="Quisquam enim velit" \
+    -d "email"="jake30@example.org" \
+    -d "password"="!`&gt;FI&lt;-m-,@v" \
 
 ```
 
@@ -4192,10 +6189,10 @@ var settings = {
     "url": "https://emsearch.ryan.ems-dev.net/api/user",
     "method": "POST",
     "data": {
-        "user_group_id": "Support",
-        "name": "Qui doloremque nesciunt",
-        "email": "lynn70@example.com",
-        "password": "ZpOYcy&"
+        "user_group_id": "Developer",
+        "name": "Quisquam enim velit",
+        "email": "jake30@example.org",
+        "password": "!`>FI<-m-,@v"
 },
     "headers": {
         "Accept": "application/json",
@@ -4233,10 +6230,10 @@ curl -X PUT "https://emsearch.ryan.ems-dev.net/api/user/605c7610-1389-11e7-93ae-
 -H "Accept: application/json" \
 -H "Authentication: Bearer xxx"
  \
-    -d "user_group_id"="Developer" \
-    -d "name"="Ut rerum fuga" \
-    -d "email"="rokeefe@example.com" \
-    -d "password"="{$P.H}i&#039;NtKfWw^tQ{Df" \
+    -d "user_group_id"="Support" \
+    -d "name"="Ut occaecati voluptatem" \
+    -d "email"="concepcion96@example.net" \
+    -d "password"="9Ct)7R4Cg`|}~" \
 
 ```
 
@@ -4247,10 +6244,10 @@ var settings = {
     "url": "https://emsearch.ryan.ems-dev.net/api/user/605c7610-1389-11e7-93ae-92361f002671",
     "method": "PUT",
     "data": {
-        "user_group_id": "Developer",
-        "name": "Ut rerum fuga",
-        "email": "rokeefe@example.com",
-        "password": "{$P.H}i'NtKfWw^tQ{Df"
+        "user_group_id": "Support",
+        "name": "Ut occaecati voluptatem",
+        "email": "concepcion96@example.net",
+        "password": "9Ct)7R4Cg`|}~"
 },
     "headers": {
         "Accept": "application/json",
@@ -4361,16 +6358,16 @@ $.ajax(settings).done(function (response) {
             "user_group_id": "End-User",
             "name": "John Smith",
             "email": "john.smith@domain.tld",
-            "created_at": "2017-06-22 09:32:19",
-            "updated_at": "2017-06-22 09:32:19"
+            "created_at": "2017-06-28 14:26:41",
+            "updated_at": "2017-06-28 14:26:41"
         },
         {
             "id": "82b5da82-138c-11e7-93ae-92361f002671",
             "user_group_id": "End-User",
             "name": "Mickey Mouse",
             "email": "mickey.mouse@domain.tld",
-            "created_at": "2017-06-22 09:32:20",
-            "updated_at": "2017-06-22 09:32:20"
+            "created_at": "2017-06-28 14:26:41",
+            "updated_at": "2017-06-28 14:26:41"
         }
     ],
     "meta": {
@@ -4524,7 +6521,7 @@ You can specify a GET parameter `user_role_id` to filter results.
 > Example request:
 
 ```bash
-curl -X GET "https://emsearch.ryan.ems-dev.net/api/user/605c7610-1389-11e7-93ae-92361f002671/userHasProject?user_role_id=Owner" \
+curl -X GET "https://emsearch.ryan.ems-dev.net/api/user/605c7610-1389-11e7-93ae-92361f002671/userHasProject?user_role_id=Administrator" \
 -H "Accept: application/json" \
 -H "Authentication: Bearer xxx"
 
@@ -4534,7 +6531,7 @@ curl -X GET "https://emsearch.ryan.ems-dev.net/api/user/605c7610-1389-11e7-93ae-
 var settings = {
     "async": true,
     "crossDomain": true,
-    "url": "https://emsearch.ryan.ems-dev.net/api/user/605c7610-1389-11e7-93ae-92361f002671/userHasProject?user_role_id=Owner",
+    "url": "https://emsearch.ryan.ems-dev.net/api/user/605c7610-1389-11e7-93ae-92361f002671/userHasProject?user_role_id=Administrator",
     "method": "GET",
     "headers": {
         "Accept": "application/json",
@@ -4556,22 +6553,22 @@ $.ajax(settings).done(function (response) {
             "user_id": "605c7610-1389-11e7-93ae-92361f002671",
             "project_id": "1bcc7efc-138c-11e7-93ae-92361f002671",
             "user_role_id": "Owner",
-            "created_at": "2017-06-22 09:32:20",
-            "updated_at": "2017-06-22 09:32:20"
+            "created_at": "2017-06-28 14:26:41",
+            "updated_at": "2017-06-28 14:26:41"
         },
         {
             "user_id": "605c7610-1389-11e7-93ae-92361f002671",
             "project_id": "b6860dd2-138c-11e7-93ae-92361f002671",
             "user_role_id": "Owner",
-            "created_at": "2017-06-22 09:32:22",
-            "updated_at": "2017-06-22 09:32:22"
+            "created_at": "2017-06-28 14:26:43",
+            "updated_at": "2017-06-28 14:26:43"
         },
         {
             "user_id": "605c7610-1389-11e7-93ae-92361f002671",
             "project_id": "c4b5d93c-138c-11e7-93ae-92361f002671",
             "user_role_id": "Administrator",
-            "created_at": "2017-06-22 09:32:28",
-            "updated_at": "2017-06-22 09:32:28"
+            "created_at": "2017-06-28 14:26:49",
+            "updated_at": "2017-06-28 14:26:49"
         }
     ],
     "meta": {
@@ -4609,7 +6606,7 @@ You can specify a GET parameter `user_role_id` to filter results.
 > Example request:
 
 ```bash
-curl -X GET "https://emsearch.ryan.ems-dev.net/api/project/1bcc7efc-138c-11e7-93ae-92361f002671/userHasProject?user_role_id=Owner" \
+curl -X GET "https://emsearch.ryan.ems-dev.net/api/project/1bcc7efc-138c-11e7-93ae-92361f002671/userHasProject?user_role_id=Administrator" \
 -H "Accept: application/json" \
 -H "Authentication: Bearer xxx"
 
@@ -4619,7 +6616,7 @@ curl -X GET "https://emsearch.ryan.ems-dev.net/api/project/1bcc7efc-138c-11e7-93
 var settings = {
     "async": true,
     "crossDomain": true,
-    "url": "https://emsearch.ryan.ems-dev.net/api/project/1bcc7efc-138c-11e7-93ae-92361f002671/userHasProject?user_role_id=Owner",
+    "url": "https://emsearch.ryan.ems-dev.net/api/project/1bcc7efc-138c-11e7-93ae-92361f002671/userHasProject?user_role_id=Administrator",
     "method": "GET",
     "headers": {
         "Accept": "application/json",
@@ -4641,15 +6638,15 @@ $.ajax(settings).done(function (response) {
             "user_id": "605c7610-1389-11e7-93ae-92361f002671",
             "project_id": "1bcc7efc-138c-11e7-93ae-92361f002671",
             "user_role_id": "Owner",
-            "created_at": "2017-06-22 09:32:20",
-            "updated_at": "2017-06-22 09:32:20"
+            "created_at": "2017-06-28 14:26:41",
+            "updated_at": "2017-06-28 14:26:41"
         },
         {
             "user_id": "82b5da82-138c-11e7-93ae-92361f002671",
             "project_id": "1bcc7efc-138c-11e7-93ae-92361f002671",
             "user_role_id": "Administrator",
-            "created_at": "2017-06-22 09:32:26",
-            "updated_at": "2017-06-22 09:32:26"
+            "created_at": "2017-06-28 14:26:47",
+            "updated_at": "2017-06-28 14:26:47"
         }
     ],
     "meta": {
@@ -4719,36 +6716,36 @@ $.ajax(settings).done(function (response) {
             "user_id": "605c7610-1389-11e7-93ae-92361f002671",
             "project_id": "1bcc7efc-138c-11e7-93ae-92361f002671",
             "user_role_id": "Owner",
-            "created_at": "2017-06-22 09:32:20",
-            "updated_at": "2017-06-22 09:32:20"
+            "created_at": "2017-06-28 14:26:41",
+            "updated_at": "2017-06-28 14:26:41"
         },
         {
             "user_id": "605c7610-1389-11e7-93ae-92361f002671",
             "project_id": "b6860dd2-138c-11e7-93ae-92361f002671",
             "user_role_id": "Owner",
-            "created_at": "2017-06-22 09:32:22",
-            "updated_at": "2017-06-22 09:32:22"
+            "created_at": "2017-06-28 14:26:43",
+            "updated_at": "2017-06-28 14:26:43"
         },
         {
             "user_id": "605c7610-1389-11e7-93ae-92361f002671",
             "project_id": "c4b5d93c-138c-11e7-93ae-92361f002671",
             "user_role_id": "Administrator",
-            "created_at": "2017-06-22 09:32:28",
-            "updated_at": "2017-06-22 09:32:28"
+            "created_at": "2017-06-28 14:26:49",
+            "updated_at": "2017-06-28 14:26:49"
         },
         {
             "user_id": "82b5da82-138c-11e7-93ae-92361f002671",
             "project_id": "1bcc7efc-138c-11e7-93ae-92361f002671",
             "user_role_id": "Administrator",
-            "created_at": "2017-06-22 09:32:26",
-            "updated_at": "2017-06-22 09:32:26"
+            "created_at": "2017-06-28 14:26:47",
+            "updated_at": "2017-06-28 14:26:47"
         },
         {
             "user_id": "82b5da82-138c-11e7-93ae-92361f002671",
             "project_id": "c4b5d93c-138c-11e7-93ae-92361f002671",
             "user_role_id": "Owner",
-            "created_at": "2017-06-22 09:32:24",
-            "updated_at": "2017-06-22 09:32:24"
+            "created_at": "2017-06-28 14:26:45",
+            "updated_at": "2017-06-28 14:26:45"
         }
     ],
     "meta": {
@@ -4810,8 +6807,8 @@ $.ajax(settings).done(function (response) {
             "user_id": "605c7610-1389-11e7-93ae-92361f002671",
             "project_id": "1bcc7efc-138c-11e7-93ae-92361f002671",
             "user_role_id": "Owner",
-            "created_at": "2017-06-22 09:32:20",
-            "updated_at": "2017-06-22 09:32:20"
+            "created_at": "2017-06-28 14:26:41",
+            "updated_at": "2017-06-28 14:26:41"
         }
     ]
 }
@@ -4837,9 +6834,9 @@ curl -X POST "https://emsearch.ryan.ems-dev.net/api/userHasProject" \
 -H "Accept: application/json" \
 -H "Authentication: Bearer xxx"
  \
-    -d "user_id"="18d0e70b-3261-3fba-bca3-4f9c5f3a50bd" \
-    -d "project_id"="02323579-cd7e-3c0d-88a6-ef6e201d6de2" \
-    -d "user_role_id"="Administrator" \
+    -d "user_id"="98c25091-fec5-31bb-a265-c2f9423c1802" \
+    -d "project_id"="db7a9b41-9ad7-3184-a40f-1aa3c5513bc1" \
+    -d "user_role_id"="Owner" \
 
 ```
 
@@ -4850,9 +6847,9 @@ var settings = {
     "url": "https://emsearch.ryan.ems-dev.net/api/userHasProject",
     "method": "POST",
     "data": {
-        "user_id": "18d0e70b-3261-3fba-bca3-4f9c5f3a50bd",
-        "project_id": "02323579-cd7e-3c0d-88a6-ef6e201d6de2",
-        "user_role_id": "Administrator"
+        "user_id": "98c25091-fec5-31bb-a265-c2f9423c1802",
+        "project_id": "db7a9b41-9ad7-3184-a40f-1aa3c5513bc1",
+        "user_role_id": "Owner"
 },
     "headers": {
         "Accept": "application/json",
@@ -4891,9 +6888,9 @@ curl -X PUT "https://emsearch.ryan.ems-dev.net/api/userHasProject/605c7610-1389-
 -H "Accept: application/json" \
 -H "Authentication: Bearer xxx"
  \
-    -d "user_id"="a4cff44c-81eb-3a28-9f0d-b8114c3fdc70" \
-    -d "project_id"="e437a39e-0c9b-3ba8-b1fb-f9e09d865d65" \
-    -d "user_role_id"="Owner" \
+    -d "user_id"="a3b14074-2767-3a7a-808f-d95f81c0eb20" \
+    -d "project_id"="8b970ab8-39af-3af5-b758-9218ce6ba69a" \
+    -d "user_role_id"="Administrator" \
 
 ```
 
@@ -4904,9 +6901,9 @@ var settings = {
     "url": "https://emsearch.ryan.ems-dev.net/api/userHasProject/605c7610-1389-11e7-93ae-92361f002671,1bcc7efc-138c-11e7-93ae-92361f002671",
     "method": "PUT",
     "data": {
-        "user_id": "a4cff44c-81eb-3a28-9f0d-b8114c3fdc70",
-        "project_id": "e437a39e-0c9b-3ba8-b1fb-f9e09d865d65",
-        "user_role_id": "Owner"
+        "user_id": "a3b14074-2767-3a7a-808f-d95f81c0eb20",
+        "project_id": "8b970ab8-39af-3af5-b758-9218ce6ba69a",
+        "user_role_id": "Administrator"
 },
     "headers": {
         "Accept": "application/json",

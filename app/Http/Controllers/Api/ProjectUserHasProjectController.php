@@ -19,9 +19,6 @@ class ProjectUserHasProjectController extends ApiController
 	public function __construct()
 	{
 		parent::__construct();
-
-		// User group restrictions
-		$this->middleware('verifyUserGroup:Developer,Support', ['only' => ['index', 'show']]);
 	}
 
 	/**
@@ -35,7 +32,7 @@ class ProjectUserHasProjectController extends ApiController
 	 */
 	public function index(IndexProjectUserHasProjectRequest $request, $projectId)
 	{
-		$project = Project::find($projectId);
+		$project = Project::authorized(['Owner', 'Administrator'])->find($projectId);
 
 		if (!$project)
 			return $this->response->errorNotFound();

@@ -80,6 +80,22 @@
 						}
 					},
 					{
+						name : 'class_name',
+						class : 'col-md-2',
+						orderable : true,
+						order_by_field : 'class_name',
+						type: 'input',
+
+						create : {
+							fillable: true,
+							defaultValue: '',
+						},
+
+						edit : {
+							fillable: true,
+						}
+					},
+					{
 						name : 'projects_count',
 						class : '',
 						orderable : true,

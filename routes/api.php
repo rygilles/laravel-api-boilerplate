@@ -88,17 +88,6 @@ $api->version('v1', ['middleware' => ['acceptLanguage', /*'cors',*/ 'auth:api']]
 		'App\Http\Controllers\Api\UserController@destroy'
 	)->name('user.destroy');
 
-	/*
-	$api->resource(
-		'user',
-		'App\Http\Controllers\Api\UserController',
-		[
-			'only' => ['index', 'show', 'store'],
-			'parameters' => ['user' => 'userId']
-		]
-	);
-	*/
-
 	// User Group User
 
 	$api->get(
@@ -155,17 +144,6 @@ $api->version('v1', ['middleware' => ['acceptLanguage', /*'cors',*/ 'auth:api']]
 		'project/{projectId}',
 		'App\Http\Controllers\Api\ProjectController@destroy'
 	)->name('project.destroy');
-
-	/*
-	$api->resource(
-		'project',
-		'App\Http\Controllers\Api\ProjectController',
-		[
-			'only' => ['index', 'store', 'show', 'update'],
-			'parameters' => ['project' => 'projectId']
-		]
-	);
-	*/
 
 	// Sync Item
 
@@ -405,6 +383,41 @@ $api->version('v1', ['middleware' => ['acceptLanguage', /*'cors',*/ 'auth:api']]
 		'App\Http\Controllers\Api\DataStreamController@destroy'
 	)->name('dataStream.destroy');
 
+	// Data Stream Field
+
+	$api->get(
+		'dataStreamField',
+		'App\Http\Controllers\Api\DataStreamFieldController@index'
+	)->name('dataStreamField.index');
+
+	$api->get(
+		'dataStreamField/{dataStreamFieldId}',
+		'App\Http\Controllers\Api\DataStreamFieldController@show'
+	)->name('dataStreamField.show');
+
+	$api->post(
+		'dataStreamField',
+		'App\Http\Controllers\Api\DataStreamFieldController@store'
+	)->name('dataStreamField.store');
+
+	$api->match(
+		['put', 'patch'],
+		'dataStreamField/{dataStreamFieldId}',
+		'App\Http\Controllers\Api\DataStreamFieldController@update'
+	)->name('dataStreamField.update');
+
+	$api->delete(
+		'dataStreamField/{dataStreamFieldId}',
+		'App\Http\Controllers\Api\DataStreamFieldController@destroy'
+	)->name('dataStreamField.destroy');
+
+	// Data Stream Data Stream Field
+
+	$api->get(
+		'dataStream/{dataStreamPresetId}/dataStreamField',
+		'App\Http\Controllers\Api\DataStreamDataStreamFieldController@index'
+	)->name('dataStreamDataStreamField.index');
+
 	// Project Data Stream
 
 	$api->get(
@@ -427,6 +440,55 @@ $api->version('v1', ['middleware' => ['acceptLanguage', /*'cors',*/ 'auth:api']]
 		'project/{projectId}/dataStream',
 		'App\Http\Controllers\Api\ProjectDataStreamController@destroy'
 	)->name('projectDataStream.destroy');
+
+	// Data Stream Has I18n Lang
+
+	$api->get(
+		'dataStreamHasI18nLang',
+		'App\Http\Controllers\Api\DataStreamHasI18nLangController@index'
+	)->name('dataStreamHasI18nLang.index');
+
+	$api->get(
+		'dataStreamHasI18nLang/{dataStreamId},{i18nLangId}',
+		'App\Http\Controllers\Api\DataStreamHasI18nLangController@show'
+	)->name('dataStreamHasI18nLang.show');
+
+	$api->post(
+		'dataStreamHasI18nLang',
+		'App\Http\Controllers\Api\DataStreamHasI18nLangController@store'
+	)->name('dataStreamHasI18nLang.store');
+
+	$api->match(
+		['put', 'patch'],
+		'dataStreamHasI18nLang/{dataStreamId},{i18nLangId}',
+		'App\Http\Controllers\Api\DataStreamHasI18nLangController@update'
+	)->name('dataStreamHasI18nLang.update');
+
+	$api->delete(
+		'dataStreamHasI18nLang/{dataStreamId},{i18nLangId}',
+		'App\Http\Controllers\Api\DataStreamHasI18nLangController@destroy'
+	)->name('dataStreamHasI18nLang.destroy');
+
+	// Data Stream Data Stream Has I8n Lang
+
+	$api->get(
+		'dataStream/{dataStreamId}/dataStreamHasI18nLang',
+		'App\Http\Controllers\Api\DataStreamDataStreamHasI18nLangController@index'
+	)->name('dataStreamDataStreamHasI18nLang.index');
+
+	// Data Stream I18n Lang
+
+	$api->get(
+		'dataStream/{dataStreamId}/i18nLang',
+		'App\Http\Controllers\Api\DataStreamI18nLangController@index'
+	)->name('dataStreamI18nLang.index');
+
+	// I18n Lang Data Stream
+
+	$api->get(
+		'i18nLang/{i18nLangId}/dataStream',
+		'App\Http\Controllers\Api\I18nLangDataStreamController@index'
+	)->name('i18nLangDataStream.index');
 
 	// User Has Project
 
@@ -455,6 +517,97 @@ $api->version('v1', ['middleware' => ['acceptLanguage', /*'cors',*/ 'auth:api']]
 		'userHasProject/{userId},{projectId}',
 		'App\Http\Controllers\Api\UserHasProjectController@destroy'
 	)->name('userHasProject.destroy');
+
+	// Data Stream Decoder
+
+	$api->get(
+		'dataStreamDecoder',
+		'App\Http\Controllers\Api\DataStreamDecoderController@index'
+	)->name('dataStreamDecoder.index');
+
+	$api->get(
+		'dataStreamDecoder/{dataStreamDecoderId}',
+		'App\Http\Controllers\Api\DataStreamDecoderController@show'
+	)->name('dataStreamDecoder.show');
+
+	$api->post(
+		'dataStreamDecoder',
+		'App\Http\Controllers\Api\DataStreamDecoderController@store'
+	)->name('dataStreamDecoder.store');
+
+	$api->match(
+		['put', 'patch'],
+		'dataStreamDecoder/{dataStreamDecoderId}',
+		'App\Http\Controllers\Api\DataStreamDecoderController@update'
+	)->name('dataStreamDecoder.update');
+
+	$api->delete(
+		'dataStreamDecoder/{dataStreamDecoderId}',
+		'App\Http\Controllers\Api\DataStreamDecoderController@destroy'
+	)->name('dataStreamDecoder.destroy');
+
+	// Data Stream Preset
+
+	$api->get(
+		'dataStreamPreset',
+		'App\Http\Controllers\Api\DataStreamPresetController@index'
+	)->name('dataStreamPreset.index');
+
+	$api->get(
+		'dataStreamPreset/{dataStreamPresetId}',
+		'App\Http\Controllers\Api\DataStreamPresetController@show'
+	)->name('dataStreamPreset.show');
+
+	$api->post(
+		'dataStreamPreset',
+		'App\Http\Controllers\Api\DataStreamPresetController@store'
+	)->name('dataStreamPreset.store');
+
+	$api->match(
+		['put', 'patch'],
+		'dataStreamPreset/{dataStreamPresetId}',
+		'App\Http\Controllers\Api\DataStreamPresetController@update'
+	)->name('dataStreamPreset.update');
+
+	$api->delete(
+		'dataStreamPreset/{dataStreamPresetId}',
+		'App\Http\Controllers\Api\DataStreamPresetController@destroy'
+	)->name('dataStreamPreset.destroy');
+
+	// Data Stream Preset Data Stream Preset Field
+
+	$api->get(
+		'dataStreamPreset/{dataStreamPresetId}/dataStreamPresetField',
+		'App\Http\Controllers\Api\DataStreamPresetDataStreamPresetFieldController@index'
+	)->name('dataStreamPresetDataStreamPresetField.index');
+
+	// Data Stream Preset Field
+
+	$api->get(
+		'dataStreamPresetField',
+		'App\Http\Controllers\Api\DataStreamPresetFieldController@index'
+	)->name('dataStreamPresetField.index');
+
+	$api->get(
+		'dataStreamPresetField/{dataStreamPresetFieldId}',
+		'App\Http\Controllers\Api\DataStreamPresetFieldController@show'
+	)->name('dataStreamPresetField.show');
+
+	$api->post(
+		'dataStreamPresetField',
+		'App\Http\Controllers\Api\DataStreamPresetFieldController@store'
+	)->name('dataStreamPresetField.store');
+
+	$api->match(
+		['put', 'patch'],
+		'dataStreamPresetField/{dataStreamPresetFieldId}',
+		'App\Http\Controllers\Api\DataStreamPresetFieldController@update'
+	)->name('dataStreamPresetField.update');
+
+	$api->delete(
+		'dataStreamPresetField/{dataStreamPresetFieldId}',
+		'App\Http\Controllers\Api\DataStreamPresetFieldController@destroy'
+	)->name('dataStreamPresetField.destroy');
 
 	// I18n Lang
 

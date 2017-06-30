@@ -180,6 +180,63 @@ export default [
         }
     },
     {
+        path : '/data-stream-decoders',
+        name : 'data-stream-decoders',
+        component : require('./components/dashboard/data-stream-decoders.vue'),
+        meta : {
+            breadcrumbIconClass : 'fa fa-filter',
+            parentRouteName : 'home',
+        }
+    },
+    {
+        path : '/data-stream-decoder/:dataStreamDecoderId',
+        name : 'data-stream-decoder',
+        component : require('./components/dashboard/data-stream-decoder.vue'),
+        props : true,
+        meta : {
+            breadcrumbIconClass : 'fa fa-filter',
+            parentRouteName : 'data-stream-decoders',
+        }
+    },
+    {
+        path : '/data-stream-presets',
+        name : 'data-stream-presets',
+        component : require('./components/dashboard/data-stream-presets.vue'),
+        meta : {
+            breadcrumbIconClass : 'fa fa-database',
+            parentRouteName : 'home',
+        }
+    },
+    {
+        path : '/data-stream-preset/:dataStreamPresetId',
+        name : 'data-stream-preset',
+        component : require('./components/dashboard/data-stream-preset.vue'),
+        props : true,
+        meta : {
+            breadcrumbIconClass : 'fa fa-database',
+            parentRouteName : 'data-stream-presets',
+        }
+    },
+    {
+        path : '/data-streams',
+        name : 'data-streams',
+        component : require('./components/dashboard/data-streams.vue'),
+        meta : {
+            breadcrumbIconClass : 'fa fa-database',
+            parentRouteName : 'home',
+        }
+    },
+    {
+        path : '/data-stream/:dataStreamId',
+        name : 'data-stream',
+        component : require('./components/dashboard/data-stream.vue'),
+        props : true,
+        meta : {
+            breadcrumbIconClass : 'fa fa-database',
+            parentRouteName : 'data-streams',
+        }
+    },
+    {
         path : '/test',
         name : 'test',
         component : require('./components/dashboard/test.vue'),

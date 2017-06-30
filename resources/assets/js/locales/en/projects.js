@@ -7,6 +7,9 @@ export default {
     'see_project_btn' : 'See Project',
     'owner_name' : 'Owner',
     'search_engine_name' : 'Search Engine',
+    'data_stream_name' : 'Data Stream',
+
+    'create_project_data_stream_btn' : 'Create Data Stream (Advanced)',
 
     'data_manager' : {
         'all_projects' : {

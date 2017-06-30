@@ -154,5 +154,6 @@ return [
 	],
 
 	'unique_with' => 'Une relation entre :fields existe déjà.',
-	
+	'search_engine_class_name' => 'Aucune classe avec le nom indiqué n\'existe dans le namespace App\\SearchEngines namespace.',
+	'data_stream_decoder_class_name' => 'Aucune classe avec le nom indiqué n\'existe dans le namespace App\\DataStreamDecoders.',
 ];
