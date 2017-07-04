@@ -22,6 +22,7 @@ class SyncTaskLogTableSeeder extends Seeder
 		    'public'                => true,
 	    ]);
 
+	    /*
 	    // Sleep (created_at will be the same else)
 	    sleep(2);
 
@@ -43,5 +44,6 @@ class SyncTaskLogTableSeeder extends Seeder
 		    'entry'                 => 'Downloading in progress.',
 		    'public'                => true,
 	    ]);
+	    */
     }
 }

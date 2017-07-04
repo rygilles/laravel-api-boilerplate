@@ -14,8 +14,8 @@ class DataStreamDecoderTableSeeder extends Seeder
     {
         DataStreamDecoder::create([
             'id'                => '53fd5290-5a4c-11e7-907b-a6006ad3dba0',
-            'name'              => 'Emonsite | Blog',
-	        'class_name'        => 'EmonsiteBlog',
+            'name'              => 'Emonsite',
+	        'class_name'        => 'EmonsiteDecoder',
             'file_mime_type'    => 'application/json',
         ]);
     }

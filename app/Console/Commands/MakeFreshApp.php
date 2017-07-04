@@ -49,6 +49,10 @@ class MakeFreshApp extends Command
 
         if ($this->confirm('Do you wish to continue ?', false)) {
 	        $this->info('Refresh migrations');
+
+	        // Turn down the app (to prevent cron/jobs execution)
+	        Artisan::call('down', [], $this->getOutput());
+
 	        Artisan::call('migrate:refresh', [], $this->getOutput());
 
 	        // Initialize with required data
@@ -64,6 +68,9 @@ class MakeFreshApp extends Command
 	            $this->info('Seed with samples data');
 	            Artisan::call('db:seed', ['--class' => 'SamplesSeeder'], $this->getOutput());
             }
+
+	        // Turn up back the app
+	        Artisan::call('up', [], $this->getOutput());
 
 	        $this->info('Your application is ready now.');
         } else {

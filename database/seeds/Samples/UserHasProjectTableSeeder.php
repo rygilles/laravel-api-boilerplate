@@ -20,7 +20,7 @@ class UserHasProjectTableSeeder extends Seeder
         ]);
 
 	    // Sleep (created_at will be the same else)
-	    sleep(2);
+	    //sleep(2);
 
 	    // John Smith -> (Owner) -> John Smith Sample Project 2
 	    UserHasProject::create([
@@ -30,7 +30,7 @@ class UserHasProjectTableSeeder extends Seeder
 	    ]);
 
 	    // Sleep (created_at will be the same else)
-	    sleep(2);
+	    //sleep(2);
 
 	    // Mickey Mouse -> (Owner) -> Mickey Mouse Sample Project
 	    UserHasProject::create([
@@ -40,7 +40,7 @@ class UserHasProjectTableSeeder extends Seeder
 	    ]);
 
 	    // Sleep (created_at will be the same else)
-	    sleep(2);
+	    //sleep(2);
 
 	    // Mickey Mouse -> (Administrator) -> John Smith Sample Project 1
 	    UserHasProject::create([
@@ -50,7 +50,7 @@ class UserHasProjectTableSeeder extends Seeder
 	    ]);
 
 	    // Sleep (created_at will be the same else)
-	    sleep(2);
+	    //sleep(2);
 
 	    // John Smith -> (Administrator) -> Mickey Mouse Sample Project
 	    UserHasProject::create([

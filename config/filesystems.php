@@ -48,6 +48,11 @@ return [
             'root' => storage_path('app'),
         ],
 
+	    'syncTasksTempFolder' => [
+		    'driver' => 'local',
+		    'root' => storage_path('app') . DIRECTORY_SEPARATOR . 'feed_temp',
+	    ],
+
         'public' => [
             'driver' => 'local',
             'root' => storage_path('app/public'),

@@ -46,6 +46,7 @@ class AppServiceProvider extends ServiceProvider
         Validator::extend('numeric_min', 'App\Http\CustomValidator@validateNumericMin');
 	    Validator::extend('search_engine_class_name', 'App\Http\CustomValidator@validateSearchEngineClassName');
 	    Validator::extend('data_stream_decoder_class_name', 'App\Http\CustomValidator@validateDataStreamDecoderClassName');
+	    Validator::extend('hex', 'App\Http\CustomValidator@validateHex');
 
         // Models observers
 	    User::observe(UserObserver::class);

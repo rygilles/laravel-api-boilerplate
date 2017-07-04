@@ -2,6 +2,7 @@
 
 namespace App\SearchEngines;
 
+use AlgoliaSearch\Index;
 use App\Models\DataStream;
 use App\Models\I18nLang;
 use App\Models\Project;
@@ -68,18 +69,18 @@ class AlgoliaSearchEngine implements SearchEngine
 	 */
 	public function __construct(Project $project) {
 		$this->project = $project;
-		$this->searchEngineModel = $project->searchEngine()->get();
-		$this->dataStream = $project->dataStream()->get();
+		$this->searchEngineModel = $project->searchEngine()->first();
+		$this->dataStream = $project->dataStream()->first();
 	}
 
 	/**
 	 * Initialize the search engine client
 	 */
 	public function initClient() {
-		// @todo Use stored configuration inside $searchEngine insteed of using static constants.
+		// @todo Use stored configuration inside $searchEngine instead of using static constants.
 
 		// Only if not initiated yet
-		if (!is_null($this->client)) {
+		if (is_null($this->client)) {
 			$this->client = new \AlgoliaSearch\Client(static::$applicationID, static::$adminAPIKey);
 		}
 	}
@@ -91,7 +92,7 @@ class AlgoliaSearchEngine implements SearchEngine
 	public function initProjectContainer() {
 		// Init Algolia Index
 
-		/** @var TYPE_NAME $index */
+		/** @var Index $index */
 		$this->index = $this->client->initIndex($this->getClientContainerName($this->dataStream));
 
 		/** @var DataStreamField[] $dataStreamFields */
@@ -199,6 +200,14 @@ class AlgoliaSearchEngine implements SearchEngine
 	}
 
 	/**
+	 * Prepare items for the next sub-tasks
+	 * @param Collection $syncTaskItems
+	 */
+	public function prepareItems(Collection $syncTaskItems) {
+
+	}
+
+	/**
 	 * Create new items
 	 * @param Collection $syncTaskItems
 	 */
@@ -220,6 +229,10 @@ class AlgoliaSearchEngine implements SearchEngine
 			$algoliaItems[] = $algoliaItem;
 		}
 
+		// Insert algolia items
+
+		$this->index->addObjects($algoliaItems);
+
 		// Insert or update items signature
 
 		foreach ($syncTaskItems as $syncTaskItem) {
@@ -235,7 +248,35 @@ class AlgoliaSearchEngine implements SearchEngine
 	 * @param Collection $syncTaskItems
 	 */
 	public function updateItems(Collection $syncTaskItems) {
-		
+		// Make Algolia items
+
+		$algoliaItems = [];
+
+		foreach ($syncTaskItems as $syncTaskItem) {
+			$algoliaItem = [];
+			$algoliaItem['objectID'] = $syncTaskItem->item_id;
+
+			$data = $syncTaskItem->data;
+
+			foreach ($data as $dataFieldId => $dataFieldValue) {
+				$algoliaItem[$dataFieldId] = $dataFieldValue;
+			}
+
+			$algoliaItems[] = $algoliaItem;
+		}
+
+		// Insert algolia items
+
+		$this->index->saveObject($algoliaItems);
+
+		// Insert or update items signature
+
+		foreach ($syncTaskItems as $syncTaskItem) {
+			$syncItem = $this->project->syncItems()->firstOrNew(['item_id' => $syncTaskItem->item_id]);
+			$syncItem->item_signature = $syncTaskItem->item_signature;
+			$syncItem->save();
+			// @todo when to remove temp sync task items ? now or after computing items to delete !!!
+		}
 	}
 
 	/**
@@ -243,6 +284,8 @@ class AlgoliaSearchEngine implements SearchEngine
 	 * @param Collection $syncTaskItems
 	 */
 	public function deleteItems(Collection $syncTaskItems) {
-		
+		$syncTaskItemsIds = $syncTaskItems->keyBy('item_id')->keys();
+
+		$this->index->deleteObjects($syncTaskItemsIds);
 	}
 }

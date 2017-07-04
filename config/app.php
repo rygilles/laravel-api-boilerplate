@@ -97,11 +97,35 @@ return [
     | Application Possible Locales
     |--------------------------------------------------------------------------
     |
-    | List of session possible locales
+    | List of session possible locales.
     |
     */
 
 	'locales' => explode(',', env('APP_LOCALES', 'en')),
+
+	/*
+    |--------------------------------------------------------------------------
+    | Application Sync Task
+    |--------------------------------------------------------------------------
+    |
+    | Configuration of the cron/jobs of the projects synchronization tasks.
+    |
+    */
+
+	'syncTasksScheduling' => [
+
+		// Max count of tasks with "InProgress" status at the same time, per sync. type id.
+		'maxInProgress' => [
+			'Main'                  => 10,
+			'DataStreamDownload'    => 10,
+			'DataStreamCheck'       => 10,
+			'DataStreamPrepare'     => 10,
+			'ItemsInsertion'        => 10,
+			'ItemsUpdate'           => 10,
+			'ItemsDelete'           => 10
+		],
+
+	],
 
     /*
     |--------------------------------------------------------------------------

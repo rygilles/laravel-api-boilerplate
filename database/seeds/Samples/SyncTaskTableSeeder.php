@@ -18,11 +18,12 @@ class SyncTaskTableSeeder extends Seeder
 		    'id'                    => '8dbfd6e6-2055-11e7-93ae-92361f002671',
 		    'sync_task_id'          => null,
 		    'sync_task_type_id'     => 'Main',
-		    'sync_task_status_id'   => 'InProgress',
+		    'sync_task_status_id'   => 'Planned',
 		    'created_by_user_id'    => '605c7610-1389-11e7-93ae-92361f002671',
 		    'project_id'            => '1bcc7efc-138c-11e7-93ae-92361f002671',
 	    ]);
 
+	    /*
 	    SyncTask::create([
 		    'id'                    => '91bf2f58-2055-11e7-93ae-92361f002671',
 		    'sync_task_id'          => '8dbfd6e6-2055-11e7-93ae-92361f002671',
@@ -31,5 +32,6 @@ class SyncTaskTableSeeder extends Seeder
 		    'created_by_user_id'    => null,
 		    'project_id'            => '1bcc7efc-138c-11e7-93ae-92361f002671',
 	    ]);
+	    */
     }
 }

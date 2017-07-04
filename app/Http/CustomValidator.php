@@ -158,4 +158,18 @@ class CustomValidator
 	{
 		return class_exists('App\\DataStreamDecoders\\' . $value);
 	}
+
+	/**
+	 * Custom validation : Hexadecimal
+	 *
+	 * @param string $attribute
+	 * @param mixed $value
+	 * @param array $parameters
+	 * @param \Illuminate\Validation\Validator $validator
+	 * @return bool
+	 */
+	public function validateHex($attribute, $value, $parameters, $validator)
+	{
+		return (preg_match('/^[0-9a-fA-F]+$/i', $value));
+	}
 }

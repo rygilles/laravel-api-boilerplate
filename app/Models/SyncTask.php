@@ -211,4 +211,38 @@ class SyncTask extends ApiModel
 	{
 		return $this->HasMany(SyncTaskItem::class);
 	}
+
+	/**
+	 * Create a new log entry on this sync.task
+	 *
+	 * @param string $entry Message to log
+	 * @param boolean $public Visibility
+	 * @return SyncTaskLog
+	 */
+	public function createLog($entry, $public)
+	{
+		return SyncTaskLog::create([
+			'sync_task_status_id'   => $this->sync_task_status_id,
+			'sync_task_id'          => $this->id,
+			'entry'                 => $entry,
+			'public'                => $public,
+		]);
+	}
+
+	/**
+	 * Create a new sub task on this sync. task
+	 *
+	 * @param $sync_task_type_id
+	 * @param string $sync_task_status_id
+	 * @return SyncTask
+	 */
+	public function createSubTask($sync_task_type_id, $sync_task_status_id = 'Planned')
+	{
+		return SyncTask::create([
+			'sync_task_id'          => $this->id,
+			'sync_task_type_id'     => $sync_task_type_id,
+			'sync_task_status_id'   => $sync_task_status_id,
+			'project_id'            => $this->project_id,
+		]);
+	}
 }
