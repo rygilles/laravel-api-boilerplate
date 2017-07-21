@@ -50,6 +50,27 @@ Generate API documentation using current database resources.
 
 *Make sure you've configured all in [config/apidocs.php](https://bitbucket.org/emonsite/emsearch/src/master/config/apidocs.php) file.*
 
+## Laravel Echo Server ##
+
+Real-time notifications and events are send by a local Node.js server, using redis and Socket.io
+
+*Make sure you've configured all in :*
+*[.env](https://bitbucket.org/emonsite/emsearch/src/master/.env) file.*
+*[laravel-echo-server.json](https://bitbucket.org/emonsite/emsearch/src/master/laravel-echo-server.json) file.*
+*And Redis & PM2 are installed properly*
+
+
+Use PM2 for auto-restart feature
+*Make sure you've configured all in [laravel-echo-server.ecosystem.config.json](https://bitbucket.org/emonsite/emsearch/src/master/laravel-echo-server.ecosystem.config.json) file.* :
+```bash
+pm2 start laravel-echo-server.ecosystem.config.json
+```
+
+Or use this command to manually start the server :
+```bash
+laravel-echo-server start
+```
+
 
 ## emsearch.ryan.ems-dev.net VM ##
 

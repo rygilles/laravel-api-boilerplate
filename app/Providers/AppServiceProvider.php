@@ -4,9 +4,11 @@ namespace App\Providers;
 
 use App\Models\ApiModel;
 use App\Models\SyncTask;
+use App\Models\SyncTaskLog;
 use App\Models\SyncTaskStatus;
 use App\Models\SyncTaskType;
 use App\Models\UserHasProject;
+use App\Observers\SyncTaskLogObserver;
 use App\Observers\SyncTaskObserver;
 use App\Observers\UserHasProjectObserver;
 use Illuminate\Support\ServiceProvider;
@@ -55,6 +57,7 @@ class AppServiceProvider extends ServiceProvider
 	    SyncTask::observe(SyncTaskObserver::class);
 	    SyncTaskType::observe(SyncTaskTypeObserver::class);
 	    SyncTaskStatus::observe(SyncTaskStatusObserver::class);
+	    SyncTaskLog::observe(SyncTaskLogObserver::class);
     }
 
     /**

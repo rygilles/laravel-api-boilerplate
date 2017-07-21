@@ -43,6 +43,9 @@ window.apiAxios = window.axios.create({
  * allows your team to easily build robust real-time web applications.
  */
 
+// No pusher anymore : Redis instead (socket.io)
+
+/*
 import Pusher from 'pusher-js';
 import Echo from "laravel-echo";
 
@@ -51,6 +54,16 @@ window.Echo = new Echo({
     key: window.Laravel.pusher.appKey,
     cluster: window.Laravel.pusher.cluster,
     encrypted: window.Laravel.pusher.encrypted,
+});
+*/
+
+import Echo from "laravel-echo";
+
+window.io = require('socket.io-client');
+
+window.Echo = new Echo({
+    broadcaster: 'socket.io',
+    host: window.location.hostname + ':6001'
 });
 
 /**

@@ -1,0 +1,13 @@
+{
+	"apps": [
+		{
+			"name": "echo.emsearch",
+			"script": "laravel-echo-server",
+			"args" : "start",
+			"autorestart": true,
+			"restart_delay": 1000,
+			"out_file": "/var/www/emsearch/storage/logs/pm2.laravel-echo-server.out.log",
+			"error_file": "/var/www/emsearch/storage/logs/pm2.laravel-echo-server.err.log"
+		}
+	]
+}
