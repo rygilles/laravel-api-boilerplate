@@ -99,6 +99,9 @@ export default {
                 'project_id': {
                     'title': 'Projet',
                 },
+                'sync_task_type_id': {
+                    'title': 'Type',
+                },
                 'sync_task_status_id': {
                     'title': 'Status',
                 },

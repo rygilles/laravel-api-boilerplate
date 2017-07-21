@@ -17776,6 +17776,9 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
                 'project_id': {
                     'title': 'Project'
                 },
+                'sync_task_type_id': {
+                    'title': 'Type'
+                },
                 'sync_task_status_id': {
                     'title': 'Status'
                 },
@@ -19703,6 +19706,9 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
                 },
                 'project_id': {
                     'title': 'Projet'
+                },
+                'sync_task_type_id': {
+                    'title': 'Type'
                 },
                 'sync_task_status_id': {
                     'title': 'Status'
@@ -88229,6 +88235,17 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 					routeName: 'project',
 					paramsNames: {
 						'projectId': 'project_id'
+					}
+				}
+			}, {
+				name: 'sync_task_type_id',
+				class: '',
+				orderable: true,
+				order_by_field: 'sync_task_type_id',
+				routerLink: {
+					routeName: 'sync-task-type',
+					paramsNames: {
+						'syncTaskTypeId': 'sync_task_type_id'
 					}
 				}
 			}, {

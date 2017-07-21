@@ -42,8 +42,8 @@ class ManageSyncTasks extends Command
      */
     public function handle()
     {
-	    // Start main sync. tasks planned
-	    $this->manageMainSyncTasks();
+	    // Start planned main sync. tasks
+	    $this->startPlannedMainSyncTasks();
 
 	    // Start/Manage all kind of sub-tasks
 
@@ -59,12 +59,15 @@ class ManageSyncTasks extends Command
 	    foreach ($subSyncTaskTypesIds as $subSyncTaskTypeId) {
 		    $this->manageSubSyncTasks($subSyncTaskTypeId);
 	    }
+
+	    // Check "InProgress" main sync. tasks
+	    $this->checkInProgressMainSyncTasks();
     }
 
 	/**
-	 * Start main sync. tasks planned
+	 * Start planned main sync. tasks
 	 */
-	public function manageMainSyncTasks()
+	public function startPlannedMainSyncTasks()
 	{
 		// Get the count of main sync. tasks "InProgress"
 	    $inProgressMainSyncTasksCount = SyncTask::where('sync_task_type_id', 'Main')
@@ -87,8 +90,6 @@ class ManageSyncTasks extends Command
 			    $this->startPlannedMainSyncTask($plannedMainSyncTask);
 		    }
 	    }
-
-		// Check in progress main sync. tasks
 	}
 
 	/**
@@ -115,6 +116,81 @@ class ManageSyncTasks extends Command
 
 		// Create the first sub-task of the process : "DataStreamDownload"
 		$plannedMainSyncTask->createSubTask('DataStreamDownload');
+	}
+
+	/**
+	 * Check "InProgress" main sync. tasks
+	 */
+	public function checkInProgressMainSyncTasks()
+	{
+		// Get the current "InProgress" main sync. tasks
+		$inProgressMainSyncTasks = SyncTask::where('sync_task_type_id', 'Main')
+			->where('sync_task_status_id', 'InProgress')
+			->orderBy('created_at', 'ASC')
+			->get();
+
+		// Check the "InProgress" main sync. tasks
+		foreach ($inProgressMainSyncTasks as $inProgressMainSyncTask) {
+			$this->checkInProgressMainSyncTask($inProgressMainSyncTask);
+		}
+	}
+
+	/**
+	 * Check a "InProgress" main sync. task
+	 *
+	 * Set the main sync. task status to "Complete" if all the sub tasks are finished.
+	 * "DataStreamPrepare" sub task and the next sub task. ("ItemsInsertion", "ItemsUpdate", "ItemsDelete") must be complete.
+	 *
+	 * @param SyncTask $inProgressMainSyncTask
+	 * @return bool
+	 */
+	private function checkInProgressMainSyncTask(SyncTask $inProgressMainSyncTask)
+	{
+		$this->info('Checking in progress "Main" sync task [' . $inProgressMainSyncTask->id . ']');
+
+		$this->info("\t" . 'Checking if "DataStreamPrepare" sync. sub-task exists and is complete.');
+
+		$dataStreamPrepareComplete = $inProgressMainSyncTask->childrenSyncTasks()
+															->where('sync_task_type_id', 'DataStreamPrepare')
+															->where('sync_task_status_id', 'Complete')
+															->exists();
+
+		if (!$dataStreamPrepareComplete) {
+			$this->info("\t" . 'No, so the main sync. task is still in progress.');
+			return false;
+		}
+
+		$this->info("\t" . '"DataStreamPrepare" sync. sub-task exists and is complete.');
+
+		$this->info("\t" . 'Checking if the next sync. sub-tasks ("ItemsInsertion", "ItemsUpdate", "ItemsDelete") exists and are complete.');
+
+		$nextSubSyncTasks = $inProgressMainSyncTask->childrenSyncTasks()
+												   ->whereIn('sync_task_type_id', ['ItemsInsertion', 'ItemsUpdate', 'ItemsDelete'])
+												   ->get();
+
+		if (count($nextSubSyncTasks) == 0) {
+			$this->info("\t" . 'There are no sync. sub-task.');
+		} else {
+			foreach ($nextSubSyncTasks as $nextSubSyncTask) {
+				$this->info("\t\t" . 'Sync. sub-task [' . $nextSubSyncTask->id . '] "' . $nextSubSyncTask->sync_task_type_id . '" : "' . $nextSubSyncTask->sync_task_status_id . '"');
+
+				if ($nextSubSyncTask->sync_task_status_id != 'Complete') {
+					$this->info("\t" . 'Sync. sub-task not complete.');
+					return false;
+				}
+			}
+		}
+
+		// Set this task to "InProgress" status
+		$inProgressMainSyncTask->sync_task_status_id = 'Complete';
+		$inProgressMainSyncTask->save();
+
+		// Log
+		$inProgressMainSyncTask->createLog('Sync. task complete', true);
+
+		$this->info("\t" . 'Sync. task complete');
+
+		return true;
 	}
 
 	/**
