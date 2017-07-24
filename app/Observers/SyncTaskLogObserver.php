@@ -2,6 +2,7 @@
 
 namespace App\Observers;
 
+use App\Events\SyncTaskLogCreatedEvent;
 use App\Models\SyncTaskLog;
 
 class SyncTaskLogObserver
@@ -14,6 +15,7 @@ class SyncTaskLogObserver
 	 */
 	public function created(SyncTaskLog $syncTaskLog)
 	{
-		// @todo Emit event to broadcast
+		broadcast(new SyncTaskLogCreatedEvent($syncTaskLog));
+
 	}
 }

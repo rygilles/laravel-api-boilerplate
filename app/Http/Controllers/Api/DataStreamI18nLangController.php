@@ -18,9 +18,6 @@ class DataStreamI18nLangController extends ApiController
 	public function __construct()
 	{
 		parent::__construct();
-
-		// User group restrictions
-		$this->middleware('verifyUserGroup:Developer,Support', ['only' => ['index']]);
 	}
 
 	/**
@@ -31,7 +28,7 @@ class DataStreamI18nLangController extends ApiController
 	 */
 	public function index($dataStreamId)
 	{
-		$dataStream = DataStream::find($dataStreamId);
+		$dataStream = DataStream::authorized(['Owner', 'Administrator'])->find($dataStreamId);
 
 		if (!$dataStream)
 			return $this->response->errorNotFound();

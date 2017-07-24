@@ -2,6 +2,7 @@
 
 namespace App\Libs;
 
+use Carbon\Carbon;
 use Dingo\Api\Exception\ValidationHttpException;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Collection;
@@ -60,12 +61,13 @@ class ApiEloquentBuilder extends Builder
 
 		// Basic searching
 
-		$request_search = Request::input('search');
+		if (Request::has('search')) {
 
-		if (!is_null($request_search)) {
-			if (!isset($params['defaultSearchColumns'])) {
+			if (!isset($params['authorizeSearch']) || (isset($params['authorizeSearch']) && ($params['authorizeSearch'] == false))) {
 				throw new ValidationHttpException(['No search parameter is allowed on this route.']);
 			}
+
+			$request_search = Request::input('search');
 
 			// Replace '*' char by '%' in here clause
 			$request_search = str_replace('*', '%', $request_search);
@@ -84,15 +86,52 @@ class ApiEloquentBuilder extends Builder
 			});
 		}
 
+		// Creation date bounding
+
+		if (Request::has('created_before') || Request::has('created_after')) {
+
+			if (!isset($params['authorizeCreationDateBounding']) || (isset($params['authorizeCreationDateBounding']) && ($params['authorizeCreationDateBounding'] == false))) {
+				throw new ValidationHttpException(['No creation date bounding parameter is allowed on this route.']);
+			}
+
+			if (Request::has('created_before')) {
+				$request_created_before = Request::input('created_before');
+
+				$validator = Validator::make(['created_before' => $request_created_before], [
+					'created_before' => 'date',
+				]);
+
+				if ($validator->fails()) {
+					throw new ValidationHttpException($validator->errors());
+				}
+
+				$this->where('created_at', '<', $request_created_before);
+			}
+
+			if (Request::has('created_after')) {
+				$request_created_after = Request::input('created_after');
+
+				$validator = Validator::make(['created_after' => $request_created_after], [
+					'created_after' => 'date',
+				]);
+
+				if ($validator->fails()) {
+					throw new ValidationHttpException($validator->errors());
+				}
+
+				$this->where('created_at', '>', $request_created_after);
+			}
+		}
+
 		// Order by
 
-		$request_order_by = Request::input('order_by');
-
-		if (!is_null($request_order_by)) {
+		if (Request::has('order_by')) {
 
 			if (!isset($params['authorizedOrderByColumns'])) {
 				throw new ValidationHttpException(['No order_by parameter is allowed on this route.']);
 			}
+
+			$request_order_by = Request::input('order_by');
 
 			$conditions = explode('|', $request_order_by);
 			foreach ($conditions as $condition) {
@@ -119,13 +158,13 @@ class ApiEloquentBuilder extends Builder
 
 		// Include
 
-		$request_include = Request::input('include');
-
-		if (!is_null($request_include)) {
+		if (Request::has('include')) {
 
 			if (!isset($params['authorizedIncludes'])) {
 				throw new ValidationHttpException(['No include parameter is allowed on this route.']);
 			}
+
+			$request_include = Request::input('include');
 
 			$includes = explode(',', $request_include);
 			foreach ($includes as $include) {

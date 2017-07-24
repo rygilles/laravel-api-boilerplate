@@ -40,6 +40,7 @@ return [
 
 		'requestQueryStringParameters' => [
 
+			'authorizeSearch' => true,
 			'authorizedOrderByColumns' => 'id,user_group_id,name,email,created_at,updated_at',
 			'authorizedSearchColumns' => 'name,email',
 			'defaultSearchColumns' => 'name,email',
@@ -52,6 +53,7 @@ return [
 
 		'requestQueryStringParameters' => [
 
+			'authorizeSearch' => true,
 			'authorizedOrderByColumns' => 'user_id,project_id,user_role_id,created_at,updated_at',
 			'authorizedIncludes' => 'user,project'
 
@@ -92,6 +94,7 @@ return [
 
 		'requestQueryStringParameters' => [
 
+			'authorizeSearch' => true,
 			'authorizedOrderByColumns' => 'id,name,created_at,updated_at',
 			'authorizedSearchColumns' => 'id,name',
 			'defaultSearchColumns' => 'id,name',
@@ -105,6 +108,7 @@ return [
 
 		'requestQueryStringParameters' => [
 
+			'authorizeSearch' => true,
 			'authorizedOrderByColumns' => 'id,description',
 			'authorizedSearchColumns' => 'id,description',
 			'defaultSearchColumns' => 'id,description',
@@ -117,6 +121,7 @@ return [
 
 		'requestQueryStringParameters' => [
 
+			'authorizeSearch' => true,
 			'authorizedOrderByColumns' => 'id,name,created_at,updated_at,projects_count',
 			'authorizedSearchColumns' => 'name',
 			'defaultSearchColumns' => 'name',
@@ -129,9 +134,22 @@ return [
 
 		'requestQueryStringParameters' => [
 
+			'authorizeSearch' => true,
 			'authorizedOrderByColumns' => 'item_id,item_signature,created_at,updated_at',
 			'authorizedSearchColumns' => 'item_id,item_signature',
 			'defaultSearchColumns' => 'item_id,item_signature',
+
+		]
+
+	],
+
+	App\Models\SyncTask::class => [
+
+		'requestQueryStringParameters' => [
+
+			'authorizedOrderByColumns' => 'id,sync_task_id,sync_task_type_id,sync_task_status_id,created_by_user_id,project_id,created_at,updated_at',
+			'authorizedIncludes' => 'createdByUser,project',
+			'authorizeCreationDateBounding' => true,
 
 		]
 
@@ -152,6 +170,7 @@ return [
 
 		'requestQueryStringParameters' => [
 
+			'authorizeSearch' => true,
 			'authorizedOrderByColumns' => 'sync_task_status_id,i18n_lang_id,description,created_at,updated_at',
 			'authorizedSearchColumns' => 'sync_task_status_id,i18n_lang_id,description',
 			'defaultSearchColumns' => 'sync_task_status_id,i18n_lang_id,description',
@@ -174,6 +193,7 @@ return [
 
 		'requestQueryStringParameters' => [
 
+			'authorizeSearch' => true,
 			'authorizedOrderByColumns' => 'sync_task_type_id,i18n_lang_id,description,created_at,updated_at',
 			'authorizedSearchColumns' => 'sync_task_type_id,i18n_lang_id,description',
 			'defaultSearchColumns' => 'sync_task_type_id,i18n_lang_id,description',
@@ -186,6 +206,7 @@ return [
 
 		'requestQueryStringParameters' => [
 
+			'authorizeSearch' => true,
 			'authorizedOrderByColumns' => 'id,sync_task_status_id,entry,public,created_at,updated_at',
 			'authorizedSearchColumns' => 'sync_task_status_id,entry',
 			'defaultSearchColumns' => 'sync_task_status_id,entry',
@@ -198,6 +219,7 @@ return [
 
 		'requestQueryStringParameters' => [
 
+			'authorizeSearch' => true,
 			'authorizedOrderByColumns' => 'id,data_stream_decoder_id,name,feed_url,created_at,updated_at',
 			'authorizedIncludes' => 'project,dataStreamDecoder',
 			'authorizedSearchColumns' => 'name,feed_url',
@@ -211,6 +233,7 @@ return [
 
 		'requestQueryStringParameters' => [
 
+			'authorizeSearch' => true,
 			'authorizedOrderByColumns' => 'id,data_stream_id,name,path,versioned,searchable,to_retrieve,created_at,updated_at',
 			'authorizedIncludes' => 'dataStream',
 			'authorizedSearchColumns' => 'name,path',
@@ -235,6 +258,7 @@ return [
 
 		'requestQueryStringParameters' => [
 
+			'authorizeSearch' => true,
 			'authorizedOrderByColumns' => 'id,data_stream_decoder_id,name,created_at,updated_at',
 			'authorizedIncludes' => 'dataStreamDecoder',
 			'authorizedSearchColumns' => 'name',
@@ -248,6 +272,7 @@ return [
 
 		'requestQueryStringParameters' => [
 
+			'authorizeSearch' => true,
 			'authorizedOrderByColumns' => 'id,data_stream_preset_id,name,path,versioned,searchable,to_retrieve,created_at,updated_at',
 			'authorizedIncludes' => 'dataStreamPreset',
 			'authorizedSearchColumns' => 'name,path',

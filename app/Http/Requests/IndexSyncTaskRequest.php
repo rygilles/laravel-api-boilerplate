@@ -12,7 +12,8 @@ class IndexSyncTaskRequest extends ApiRequest
 	public function rules()
 	{
 		return [
-			'root' => 'boolean'
+			'root'                  => 'boolean',
+			'sync_task_status_id'   => 'exists:sync_task_status,id|in:Planned,InProgress,Complete',
 		];
 	}
 }

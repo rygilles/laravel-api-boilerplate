@@ -30,6 +30,9 @@ export default {
                 'sync_task_status_id': {
                     'title': 'Status',
                 },
+                'project_name': {
+                    'title': 'Projet',
+                },
                 'created_by_user_id': {
                     'title': 'Créé par'
                 },

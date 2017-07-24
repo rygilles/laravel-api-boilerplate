@@ -31,40 +31,33 @@ class SyncTaskController extends ApiController
 	/**
 	 * Sync task list
 	 *
-	 * You can specify a GET parameter `root` (return only root tasks if true, children only if false) to filter results.
+	 * You can specify a GET parameter `root` (return only root tasks if true, children only if false) to filter results.<br />
+	 * Filter results with `sync_task_status_id` GET parameter.
 	 *
 	 * @param IndexSyncTaskRequest $request
 	 * @return \Dingo\Api\Http\Response
 	 */
 	public function index(IndexSyncTaskRequest $request)
 	{
-		$paginator = SyncTask::applyRequestQueryString()
-							   ->withCount('childrenSyncTasks')
-							   ->withCount('syncTaskLogs')
-							   ->paginate();
-
 		if ($request->has('root')) {
 			if ($request->input('root')) {
-				$paginator = SyncTask::parents()
-						               ->applyRequestQueryString()
-						               ->withCount('childrenSyncTasks')
-						               ->withCount('syncTaskLogs')
-									   ->paginate();
-
+				$query = SyncTask::parents()->applyRequestQueryString();
 			} else {
-				$paginator = SyncTask::children()
-									   ->applyRequestQueryString()
-									   ->withCount('childrenSyncTasks')
-									   ->withCount('syncTaskLogs')
-									   ->paginate();
-
+				$query = SyncTask::children()->applyRequestQueryString();
 			}
 		} else {
-			$paginator = SyncTask::applyRequestQueryString()
-								   ->withCount('childrenSyncTasks')
-								   ->withCount('syncTaskLogs')
-								   ->paginate();
+			$query = SyncTask::applyRequestQueryString();
 		}
+
+		if ($request->has('sync_task_status_id')) {
+			$query = $query->where('sync_task_status_id', $request->input('sync_task_status_id'));
+		}
+
+		$paginator = $query->withCount('childrenSyncTasks')
+						   ->withCount('syncTaskLogs')
+						   ->paginate();
+
+		// sync_task_status_id
 
 		return $this->response->paginator($paginator, new SyncTaskTransformer);
 	}

@@ -16,7 +16,7 @@
 					:defaultOrderBy="{column: 'created_at', direction: 'asc'}"
 					:pagination="{limiting: true, defaultLimit: 20, limits: [5, 10, 20]}"
 					:searching="true"
-					:request="{include: 'createdByUser'}"
+					:request="{include: 'createdByUser,project'}"
 					:store="{stateName: 'rootSyncTasks', loadingStateName: 'rootSyncTasksLoading', dispatchAction: 'getRootSyncTasks'}"
 					:columns="rootSyncTasksDataManagerColumns"
 					:checkboxes="{enabled: false}"
@@ -56,6 +56,26 @@
 							paramsNames: {
 								'syncTaskId': 'id'
 							}
+						}
+					},
+					{
+						name : 'project_name',
+						displayProp : 'project.data.name',
+						class : '',
+						orderable : false,
+						routerLink : {
+							routeName : 'project',
+							paramsNames : {
+								'projectId' : 'project.data.id'
+							}
+						},
+
+						create: {
+							fillable: false,
+						},
+
+						edit: {
+							fillable: false,
 						}
 					},
 					{
