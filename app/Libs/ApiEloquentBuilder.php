@@ -123,6 +123,43 @@ class ApiEloquentBuilder extends Builder
 			}
 		}
 
+		// Update date bounding
+
+		if (Request::has('updated_before') || Request::has('updated_after')) {
+
+			if (!isset($params['authorizeUpdateDateBounding']) || (isset($params['authorizeUpdateDateBounding']) && ($params['authorizeUpdateDateBounding'] == false))) {
+				throw new ValidationHttpException(['No update date bounding parameter is allowed on this route.']);
+			}
+
+			if (Request::has('updated_before')) {
+				$request_updated_before = Request::input('updated_before');
+
+				$validator = Validator::make(['updated_before' => $request_updated_before], [
+					'updated_before' => 'date',
+				]);
+
+				if ($validator->fails()) {
+					throw new ValidationHttpException($validator->errors());
+				}
+
+				$this->where('updated_at', '<', $request_updated_before);
+			}
+
+			if (Request::has('updated_after')) {
+				$request_updated_after = Request::input('updated_after');
+
+				$validator = Validator::make(['updated_after' => $request_updated_after], [
+					'updated_after' => 'date',
+				]);
+
+				if ($validator->fails()) {
+					throw new ValidationHttpException($validator->errors());
+				}
+
+				$this->where('updated_at', '>', $request_updated_after);
+			}
+		}
+
 		// Order by
 
 		if (Request::has('order_by')) {

@@ -16,6 +16,5 @@ class SyncTaskLogObserver
 	public function created(SyncTaskLog $syncTaskLog)
 	{
 		broadcast(new SyncTaskLogCreatedEvent($syncTaskLog));
-
 	}
 }

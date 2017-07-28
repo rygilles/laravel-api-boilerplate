@@ -282,4 +282,32 @@ return [
 
 	],
 
+	App\Models\SearchUseCase::class => [
+
+		'requestQueryStringParameters' => [
+
+			'authorizeSearch' => true,
+			'authorizedSearchColumns' => 'name',
+			'defaultSearchColumns' => 'name',
+			'authorizedOrderByColumns' => 'id,project_id,name,created_at,updated_at',
+			'authorizedIncludes' => 'project',
+
+		]
+
+	],
+
+	App\Models\SearchUseCaseField::class => [
+
+		'requestQueryStringParameters' => [
+
+			'authorizeSearch' => true,
+			'authorizedSearchColumns' => 'name',
+			'defaultSearchColumns' => 'name',
+			'authorizedOrderByColumns' => 'search_use_case_id,data_stream_field_id,name,searchable,to_retrieve,created_at,updated_at',
+			'authorizedIncludes' => 'project',
+
+		]
+
+	],
+
 ];

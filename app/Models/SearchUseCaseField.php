@@ -6,7 +6,6 @@ use App\Traits\HasCompositeKey;
 
 /**
  * Class SearchUseCaseField
- * @todo API Controllers, routes, docs, etc.
  * @package App\Models
  */
 class SearchUseCaseField extends ApiModel

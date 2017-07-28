@@ -10,6 +10,11 @@ use App\Models\SearchEngine as SearchEngineModel;
 use App\Models\DataStreamField;
 use AlgoliaSearch\Client as AlgoliaSearchClient;
 use AlgoliaSearch\Index as AlgoliaSearchIndex;
+use App\Models\SearchResult;
+use App\Models\SearchResultCollection;
+use App\Models\SearchResultResponse;
+use App\Models\SearchUseCase;
+use App\Models\SearchUseCaseField;
 use App\Models\SyncItem;
 use Illuminate\Database\Eloquent\Collection;
 
@@ -121,15 +126,13 @@ class AlgoliaSearchEngine implements SearchEngine
 					}
 				}
 			} else {
-				if ($dataStreamField->searchable) {
-					$field_name = $this->getClientContainerFieldName($dataStreamField);
+				$field_name = $this->getClientContainerFieldName($dataStreamField);
 
-					if ($dataStreamField->searchable) {
-						$searchableAttributes[] = $field_name;
-					}
-					if ($dataStreamField->to_retrieve) {
-						$attributesToRetrieve[] = $field_name;
-					}
+				if ($dataStreamField->searchable) {
+					$searchableAttributes[] = $field_name;
+				}
+				if ($dataStreamField->to_retrieve) {
+					$attributesToRetrieve[] = $field_name;
 				}
 			}
 		}
@@ -197,14 +200,6 @@ class AlgoliaSearchEngine implements SearchEngine
 		list($field_id, $i18n_lang_id) = explode('.', $field_name);
 
 		return $i18n_lang_id;
-	}
-
-	/**
-	 * Prepare items for the next sub-tasks
-	 * @param Collection $syncTaskItems
-	 */
-	public function prepareItems(Collection $syncTaskItems) {
-
 	}
 
 	/**
@@ -287,5 +282,130 @@ class AlgoliaSearchEngine implements SearchEngine
 		$syncTaskItemsIds = $syncTaskItems->keyBy('item_id')->keys();
 
 		$this->index->deleteObjects($syncTaskItemsIds);
+	}
+
+	/**
+	 * Perform search
+	 * @param SearchUseCase $searchUseCase
+	 * @param string $query_string
+	 * @param I18nLang|null $i18nLang
+	 * @param int $page
+	 * @param int $limit
+	 * @return SearchResultResponse
+	 * @throws \AlgoliaSearch\AlgoliaException
+	 * @throws \Exception
+	 */
+	public function performSearch(SearchUseCase $searchUseCase, $query_string, I18nLang $i18nLang = null, $page = 1, $limit = 20)
+	{
+		// Init Algolia Index
+
+		/** @var Index $index */
+		$this->index = $this->client->initIndex($this->getClientContainerName($this->dataStream));
+
+		/** @var SearchUseCaseField[] $searchUseCaseFields */
+		$searchUseCaseFields = $searchUseCase->searchUseCaseFields()->get();
+
+		// Make "searchableAttributes", "attributesToRetrieve" fields
+
+		/** @var string[] $searchableAttributes */
+		$searchableAttributes = [];
+
+		/** @var string[] $attributesToRetrieve */
+		$attributesToRetrieve = [];
+
+		foreach ($searchUseCaseFields as $searchUseCaseField) {
+
+			// Get the data stream field
+
+			/** @var DataStreamField $dataStreamField */
+			$dataStreamField = $searchUseCaseField->dataStreamField()->first();
+
+			if ($dataStreamField->versioned) {
+				if (is_null($i18nLang)) {
+					throw new \Exception('Versionned search use case field requested without i18n lang specified');
+				}
+
+				$client_container_field_name = $this->getClientContainerFieldName($dataStreamField, $i18nLang->id);
+				if ($searchUseCaseField->searchable) {
+					$searchableAttributes[] = $client_container_field_name;
+				}
+				if ($searchUseCaseField->to_retrieve) {
+					$attributesToRetrieve[] = $client_container_field_name;
+				}
+			} else {
+				$client_container_field_name = $this->getClientContainerFieldName($dataStreamField);
+
+				if ($searchUseCaseField->searchable) {
+					$searchableAttributes[] = $client_container_field_name;
+				}
+				if ($searchUseCaseField->to_retrieve) {
+					$attributesToRetrieve[] = $client_container_field_name;
+				}
+			}
+		}
+
+		// @todo customRanking
+
+		/**/
+
+		$algoliaResult = $this->index->search($query_string, [
+			'attributesToRetrieve' => $attributesToRetrieve,
+			'restrictSearchableAttributes' => $searchableAttributes,
+			'attributesToHighlight' => $attributesToRetrieve,
+			'page' => $page,
+			'hitsPerPage' => $limit,
+		]);
+
+		$searchResultCollection = new SearchResultCollection();
+
+		foreach ($algoliaResult['hits'] as $hit) {
+			$attributes = [];
+
+			$attributes['item_id'] = $hit['objectID'];
+
+			foreach ($searchUseCaseFields as $searchUseCaseField) {
+
+				// Get the data stream field
+
+				/** @var DataStreamField $dataStreamField */
+				$dataStreamField = $searchUseCaseField->dataStreamField()->first();
+
+				if ($dataStreamField->versioned) {
+					$client_container_field_name = $this->getClientContainerFieldName($dataStreamField, $i18nLang->id);
+
+					if ($searchUseCaseField->to_retrieve) {
+						$attributes[$searchUseCaseField->name . '_' . $i18nLang->id] = $hit[$client_container_field_name];
+					}
+				} else {
+					$client_container_field_name = $this->getClientContainerFieldName($dataStreamField);
+
+					if ($searchUseCaseField->to_retrieve) {
+						$attributes[$searchUseCaseField->name] = $hit[$client_container_field_name];
+					}
+				}
+			}
+
+			$searchResult = new SearchResult($attributes);
+			$searchResultCollection->push($searchResult);
+		}
+
+		$content = [
+			'data' => $searchResultCollection,
+			'meta' => [
+				'pagination' => [
+					'total' => $algoliaResult['nbHits'],
+					'count' => $searchResultCollection->count(),
+					'per_page' => $algoliaResult['hitsPerPage'],
+					'current_page' => $algoliaResult['page'],
+					'total_pages' => $algoliaResult['nbPages'],
+				]
+			]
+		];
+
+		//dd($algoliaResult);
+
+		$searchResultResponse = new SearchResultResponse($content);
+
+		return $searchResultResponse;
 	}
 }

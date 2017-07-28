@@ -41,6 +41,8 @@ var files = [
     'data_streams',
     'data_stream_fields',
     'data_stream_has_i18n_langs',
+    'search_use_cases',
+    'project_create_wizard',
 ];
 
 // Create locales from file hierarchy

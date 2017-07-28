@@ -87,6 +87,24 @@ return [
 				// E-monsite | Blog - "title" field
 				'dataStreamPresetFieldId' => 'eb9cb642-5bf3-11e7-907b-a6006ad3dba0',
 
+				// Mickey Mouse Sample Project Data Stream Use Case
+				'searchUseCaseId' => 'dc5bfd4c-711e-11e7-8cf7-a6006ad3dba0',
+
+				// Mickey Mouse Sample Project Data Stream - "title" field
+				'searchUseCaseFieldId' => '36116fa6-5c0d-11e7-907b-a6006ad3dba0',
+
+				// Search Use Case search query string
+				'query_string' => 'site internet',
+
+				// Search Use Case search i18n lang id
+				'i18n_lang_id' => 'fr',
+
+				// Search Use Case search page
+				'page' => 1,
+
+				// Search Use Case search limit
+				'limit' => 5,
+
 			],
 			'routes' => [
 
@@ -241,6 +259,23 @@ return [
 
 				'i18nLangDataStream.index',
 
+				'projectSearchUseCase.index',
+
+				'searchUseCase.index',
+				'searchUseCase.show',
+				'searchUseCase.store',
+				'searchUseCase.update',
+				'searchUseCase.destroy',
+
+				'searchUseCase.search',
+
+				'searchUseCaseField.index',
+				'searchUseCaseField.show',
+				'searchUseCaseField.store',
+				'searchUseCaseField.update',
+				'searchUseCaseField.destroy',
+
+				'searchUseCaseSearchUseCaseField.index',
 			]
 
 		],
@@ -309,6 +344,23 @@ return [
 				// E-monsite | Blog - "title" field
 				'dataStreamPresetFieldId' => 'eb9cb642-5bf3-11e7-907b-a6006ad3dba0',
 
+				// Mickey Mouse Sample Project Data Stream Use Case
+				'searchUseCaseId' => 'dc5bfd4c-711e-11e7-8cf7-a6006ad3dba0',
+
+				// Mickey Mouse Sample Project Data Stream - "title" field
+				'searchUseCaseFieldId' => '36116fa6-5c0d-11e7-907b-a6006ad3dba0',
+
+				// Search Use Case search query string
+				'query_string' => 'site',
+
+				// Search Use Case search i18n lang id
+				'i18n_lang_id' => 'fr',
+
+				// Search Use Case search page
+				'page' => 1,
+
+				// Search Use Case search limit
+				'limit' => 5,
 			],
 			'routes' => [
 
@@ -438,6 +490,24 @@ return [
 
 				'i18nLangDataStream.index',
 
+				'projectSearchUseCase.index',
+
+				'searchUseCase.index',
+				'searchUseCase.show',
+				'searchUseCase.store',
+				'searchUseCase.update',
+				'searchUseCase.destroy',
+
+				'searchUseCase.search',
+
+				'searchUseCaseField.index',
+				'searchUseCaseField.show',
+				'searchUseCaseField.store',
+				'searchUseCaseField.update',
+				'searchUseCaseField.destroy',
+
+				'searchUseCaseSearchUseCaseField.index',
+
 			]
 
 		],
@@ -494,7 +564,11 @@ return [
 				// Mickey Mouse Sample Project Data Stream - "title" field
 				'dataStreamFieldId' => '36116fa6-5c0d-11e7-907b-a6006ad3dba0',
 
-				// todo fields, preset, preset fields, etc
+				// Mickey Mouse Sample Project Data Stream Use Case
+				'searchUseCaseId' => 'dc5bfd4c-711e-11e7-8cf7-a6006ad3dba0',
+
+				// Mickey Mouse Sample Project Data Stream - "title" field
+				'searchUseCaseFieldId' => '36116fa6-5c0d-11e7-907b-a6006ad3dba0',
 
 			],
 			'routes' => [
@@ -541,6 +615,8 @@ return [
 				'projectDataStream.store',
 				'projectDataStream.update',
 				'projectDataStream.destroy',
+
+				'dataStream.show',
 
 				'i18nLang.index',
 				'i18nLang.show',

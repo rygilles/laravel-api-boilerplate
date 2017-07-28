@@ -13,6 +13,8 @@ class SyncItemTableSeeder extends Seeder
     public function run()
     {
         // John Smith Sample Project 1 sync items
+
+	    /*
         
         SyncItem::create([
             'item_id'           => 'a37eda90-1f56-11e7-93ae-92361f002671',
@@ -43,5 +45,7 @@ class SyncItemTableSeeder extends Seeder
 		    'project_id'        => '1bcc7efc-138c-11e7-93ae-92361f002671',
 		    'item_signature'    => md5('e6b018e2-1f56-11e7-93ae-92361f002671'),
 	    ]);
+
+	    */
     }
 }

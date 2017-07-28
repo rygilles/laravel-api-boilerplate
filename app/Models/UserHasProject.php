@@ -3,6 +3,7 @@
 namespace App\Models;
 
 use App\Traits\HasCompositeKey;
+use Illuminate\Support\Facades\Auth;
 
 /**
  * Class UserHasProject
@@ -109,5 +110,26 @@ class UserHasProject extends ApiModel
 	public function userRole()
 	{
 		return $this->belongsTo(UserRole::class);
+	}
+
+	/**
+	 * Scope a query to include authorized access
+	 *
+	 * @param \Illuminate\Database\Eloquent\Builder $query
+	 * @param string[] $authorizedUserRolesIds User roles ids authorized to access to this route/resource
+	 * @param string[] $exceptUserGroupsIds User groups ids authorized to access to this route
+	 * @return \Illuminate\Database\Eloquent\Builder
+	 */
+	public function scopeAuthorized($query, $authorizedUserRolesIds = ['Owner', 'Administrator'], $exceptUserGroupsIds = ['Developer', 'Support'])
+	{
+		// Apply query scope if user group id isn't authorized
+		if (!in_array(Auth::user()->user_group_id, $exceptUserGroupsIds)) {
+			return $query->whereHas('project.hasUserProjects', function ($query) use ($authorizedUserRolesIds) {
+				$query->where('user_id', Auth::user()->id)
+					->whereIn('user_role_id', $authorizedUserRolesIds);
+			});
+		}
+
+		return $query;
 	}
 }

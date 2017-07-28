@@ -11,7 +11,7 @@ use Illuminate\Support\Facades\Lang;
 
 /**
  * @resource UserHasProject
- * @todo Security ?
+ * @todo Security on admin add ? Make invitation system !
  * @package App\Http\Controllers\Api
  */
 class UserHasProjectController extends ApiController
@@ -24,7 +24,7 @@ class UserHasProjectController extends ApiController
 		parent::__construct();
 
 		// User group restrictions
-		$this->middleware('verifyUserGroup:Developer,Support', ['only' => ['index', 'show', 'store', 'update', 'destroy']]);
+		$this->middleware('verifyUserGroup:Developer,Support', ['only' => ['index']]);
 	}
 
 	/**
@@ -34,7 +34,8 @@ class UserHasProjectController extends ApiController
 	 */
 	public function index()
 	{
-		$paginator = UserHasProject::paginate();
+		$paginator = UserHasProject::authorized(['Owner', 'Administrator'])
+								   ->paginate();
 
 		return $this->response->paginator($paginator, new UserHasProjectTransformer);
 	}
@@ -48,7 +49,9 @@ class UserHasProjectController extends ApiController
 	 */
 	public function show($userId, $projectId)
 	{
-		$userHasProject = UserHasProject::where('user_id', $userId)->where('project_id', $projectId)->get();
+		$userHasProject = UserHasProject::authorized(['Owner', 'Administrator'])
+										->where('user_id', $userId)
+										->where('project_id', $projectId)->get();
 
 		if (!$userHasProject)
 			return $this->response->errorNotFound();
@@ -69,6 +72,8 @@ class UserHasProjectController extends ApiController
 	 */
 	public function store(StoreUserHasProjectRequest $request)
 	{
+		// @todo authorized(['Owner', 'Administrator'])
+
 		// Check if a relationship between the specified user and project already exists.
 		if (UserHasProject::where('user_id', $request->input('user_id'))->where('project_id', $request->input('project_id'))->exists()) {
 			return $this->response->errorBadRequest(Lang::get('errors.user_project_relationship_exists'));
@@ -81,7 +86,8 @@ class UserHasProjectController extends ApiController
 			}
 		}
 
-		$userHasProject = UserHasProject::create($request->all(), $request->getRealMethod());
+		$userHasProject = UserHasProject::authorized(['Owner', 'Administrator'])
+										->create($request->all(), $request->getRealMethod());
 
 		if ($userHasProject) {
 			// Register model transformer for created/accepted responses
@@ -115,6 +121,8 @@ class UserHasProjectController extends ApiController
 	 */
 	public function update(UpdateUserHasProjectRequest $request, $userId, $projectId)
 	{
+		// @todo authorized(['Owner', 'Administrator'])
+
 		$userHasProject = UserHasProject::where('user_id', $userId)->where('project_id', $projectId)->first();
 
 		if (!$userHasProject)
@@ -139,7 +147,8 @@ class UserHasProjectController extends ApiController
 
 		//$userHasProject->fill($request->all());
 		//$userHasProject->save();
-		UserHasProject::where('user_id', $userId)->where('project_id', $projectId)->update([
+		UserHasProject::authorized(['Owner', 'Administrator'])
+					  ->where('user_id', $userId)->where('project_id', $projectId)->update([
 			'user_id'       => $request->input('user_id'),
 			'project_id'    => $request->input('project_id'),
 			'user_role_id'  => $request->input('user_role_id')
@@ -161,11 +170,13 @@ class UserHasProjectController extends ApiController
 	 */
 	public function destroy($userId, $projectId)
 	{
-		if (!UserHasProject::where('user_id', $userId)->where('project_id', $projectId)->exists()) {
+		if (!UserHasProject::authorized(['Owner', 'Administrator'])
+						   ->where('user_id', $userId)->where('project_id', $projectId)->exists()) {
 			return $this->response->errorNotFound();
 		}
 
-		UserHasProject::where('user_id', $userId)->where('project_id', $projectId)->delete();
+		UserHasProject::where('user_id', $userId)
+					  ->where('project_id', $projectId)->delete();
 
 		return $this->response->noContent();
 	}

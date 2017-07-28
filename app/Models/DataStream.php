@@ -3,7 +3,6 @@
 namespace App\Models;
 
 use Alsofronie\Uuid\UuidModelTrait;
-use App\Models\Project;
 use Illuminate\Support\Facades\Auth;
 
 /**

@@ -9,80 +9,44 @@
 					</div>
 					<div class="box-body">
 						<p>{{ $t('home.welcome', { name : $root.me.name }) }}</p>
-						<div class="dropdown">
-							<button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown">Dropdown Example
-								<span class="caret"></span></button>
-							<ul class="dropdown-menu">
-								<li><a href="#">HTML</a></li>
-								<li><a href="#">CSS</a></li>
-								<li><a href="#">JavaScript</a></li>
-							</ul>
+					</div>
+				</div>
+			</div>
+		</div>
+		<ProjectCreateWizard></ProjectCreateWizard>
+		<div v-if="(['Developer', 'Support'].indexOf(this.$store.getters.me.user_group_id) != -1)" class="row">
+			<div class="col-xs-12">
+				<div class="box">
+					<div class="box-header with-border">
+						<h3 class="box-title">Sync. Tasks Logs Created Events in Real Time ! (WIP)</h3>
+					</div>
+					<div class="box-body">
+						<div class="form-group">
+							<textarea class="form-control" rows="15" readonly style="font-family: 'Courier New',Monospace; font-size: 12px" v-html="syncTaskLogCreatedEventsEntries"></textarea>
 						</div>
 					</div>
 				</div>
 			</div>
 		</div>
-		<div v-if="(['Developer', 'Support'].indexOf(this.$store.getters.me.user_group_id) != -1)" class="row">
-			TODO : (fake pour le moment)
-			<div class="col-md-4 col-sm-8 col-xs-16">
-				<div class="info-box">
-					<span class="info-box-icon bg-aqua"><i class="fa fa-tasks"></i></span>
-
-					<div class="info-box-content">
-						<span class="info-box-text">Sync. Tasks Planned</span>
-						<span class="info-box-number">5</span>
-					</div>
-					<!-- /.info-box-content -->
-				</div>
-				<!-- /.info-box -->
-			</div>
-			<!-- /.col -->
-			<div class="col-md-4 col-sm-8 col-xs-16">
-				<div class="info-box">
-					<span class="info-box-icon bg-red"><i class="fa fa-cog fa-spin"></i></span>
-
-					<div class="info-box-content">
-						<span class="info-box-text">Sync. Tasks In Progress</span>
-						<span class="info-box-number">2</span>
-					</div>
-					<!-- /.info-box-content -->
-				</div>
-				<!-- /.info-box -->
-			</div>
-			<!-- /.col -->
-
-			<!-- fix for small devices only -->
-			<div class="clearfix visible-sm-block"></div>
-
-			<div class="col-md-4 col-sm-8 col-xs-16">
-				<div class="info-box">
-					<span class="info-box-icon bg-green"><i class="fa fa-check"></i></span>
-
-					<div class="info-box-content">
-						<span class="info-box-text">Sync. Tasks Finished</span>
-						<span class="info-box-number">5</span>
-					</div>
-					<!-- /.info-box-content -->
-				</div>
-				<!-- /.info-box -->
-			</div>
-			<!-- /.col -->
-		</div>
 	</section>
 </template>
 
 <script>
+	import ProjectCreateWizard from '../includes/project-create-wizard'
+
 	export default {
 		name: 'Home',
 
+		components: { ProjectCreateWizard },
+
 		data() {
 			return {
-
+				'syncTaskLogCreatedEvents': []
 			}
 		},
 
 		props: {
-			'projectId': String
+
 		},
 
 		/**
@@ -104,19 +68,29 @@
 
 		methods: {
 			fetchData() {
-				if (['Developer', 'Support'].indexOf(this.$store.getters.me.user_group_id) != -1) {
-					this.listenForAdminEvents();
-				}
+				this.listenForAdminEvents();
 			},
 
 			listenForAdminEvents() {
-				console.log('Listening events on admin channel.');
-
 				Echo.private('AdminChan')
 					.listen('SyncTaskLogCreatedEvent', (e) => {
-						console.log(e);
+						this.syncTaskLogCreatedEvents.push(e);
 					});
 			},
 		},
+
+		computed: {
+			syncTaskLogCreatedEventsEntries() {
+				var lines = '';
+				this.syncTaskLogCreatedEvents.forEach((e, index) => {
+					if (e.sync_task_type_id == 'Main') {
+						lines += '[Main Task "' + e.sync_task_id +  '"] : "' + e.sync_task_type_id + '" : ' + e.entry + "\n";
+					} else {
+						lines += '[Main Task "' + e.main_sync_task_id +  '" - Sub Task "' + e.sync_task_id + '"] : "' + e.sync_task_type_id + '" : ' + e.entry + "\n";
+					}
+				});
+				return lines;
+			}
+		}
 	}
 </script>

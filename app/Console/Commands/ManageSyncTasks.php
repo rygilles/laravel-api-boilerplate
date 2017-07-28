@@ -8,6 +8,7 @@ use App\Models\DataStreamDecoder;
 use App\Models\Project;
 use App\Models\SyncTask;
 use App\SearchEngines\SearchEngine;
+use Carbon\Carbon;
 use Illuminate\Console\Command;
 use Illuminate\Support\Facades\Storage;
 
@@ -80,7 +81,11 @@ class ManageSyncTasks extends Command
 
 		    // Get oldest main sync. tasks planned, limited by the max allowed "InProgress" task at the same time
 		    $plannedMainSyncTasks = SyncTask::where('sync_task_type_id', 'Main')
-										    ->where('sync_task_status_id', 'Planned')
+			                                ->where('sync_task_status_id', 'Planned')
+			                                ->where(function($query) {
+				                                $query->where('planned_at', '<=', Carbon::now()->toDateTimeString())
+					                                  ->orWhereNull('planned_at');
+			                                })
 			                                ->take(config('app.syncTasksScheduling.maxInProgress.Main') - $inProgressMainSyncTasksCount)
 			                                ->orderBy('created_at', 'ASC')
 										    ->get();
@@ -398,7 +403,7 @@ class ManageSyncTasks extends Command
 
 				// Get the data stream project search engine model
 
-				/** @var DataStreamDecoder $dataStreamDecoder */
+				/** @var \App\Models\SearchEngine $searchEngineModel */
 				$searchEngineModel = $project->searchEngine()->first();
 
 				// Check the search engine class
@@ -476,6 +481,12 @@ class ManageSyncTasks extends Command
 
 					$itemsDeleteSubSyncTask->delete();
 				}
+
+				// Log
+				$plannedSubSyncTask->createLog('Deleting local file "' . $localFileName . '"', false);
+				$this->info("\t" . 'Deleting local file "' . $localFileName . '"');
+
+				Storage::disk('syncTasksTempFolder')->delete($localFileName);
 
 				// Set this task to "Complete" status
 				$plannedSubSyncTask->sync_task_status_id = 'Complete';

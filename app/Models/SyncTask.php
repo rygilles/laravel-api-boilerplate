@@ -26,6 +26,17 @@ class SyncTask extends ApiModel
 	protected $table = 'sync_task';
 
 	/**
+	 * The attributes that should be mutated to dates.
+	 *
+	 * @var array
+	 */
+	protected $dates = [
+		'planned_at',
+		'created_at',
+		'updated_at',
+	];
+
+	/**
 	 * The attributes that are mass assignable.
 	 *
 	 * @var array
@@ -34,7 +45,8 @@ class SyncTask extends ApiModel
 		'sync_task_id',
 		'sync_task_type_id',
 		'sync_task_status_id',
-		'project_id'
+		'project_id',
+		'planned_at'
 	];
 
 	/**
@@ -61,6 +73,7 @@ class SyncTask extends ApiModel
 		'sync_task_status_id'   => 'required|string|max:50|exists:sync_task_status,id',
 		'created_by_user_id'    => 'required|uuid|exists:user,id',
 		'project_id'            => 'required|uuid|exists:project,id',
+		'planned_at'            => 'date|after:now',
 	];
 
 	/**
@@ -73,6 +86,7 @@ class SyncTask extends ApiModel
 		'sync_task_status_id'   => 'string|max:50|exists:sync_task_status,id',
 		'created_by_user_id'    => 'uuid|exists:user,id',
 		'project_id'            => 'uuid|exists:project,id',
+		'planned_at'            => 'date|after:now',
 	];
 
 	/**
@@ -85,6 +99,7 @@ class SyncTask extends ApiModel
 		'sync_task_status_id'   => 'required|string|max:50|exists:sync_task_status,id',
 		'created_by_user_id'    => 'required|uuid|exists:user,id',
 		'project_id'            => 'required|uuid|exists:project,id',
+		'planned_at'            => 'date|after:now',
 	];
 
 	/**

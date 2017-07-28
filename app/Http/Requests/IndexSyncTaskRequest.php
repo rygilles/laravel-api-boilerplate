@@ -14,6 +14,8 @@ class IndexSyncTaskRequest extends ApiRequest
 		return [
 			'root'                  => 'boolean',
 			'sync_task_status_id'   => 'exists:sync_task_status,id|in:Planned,InProgress,Complete',
+			'planned_before'        => 'date',
+			'planned_after'         => 'date',
 		];
 	}
 }

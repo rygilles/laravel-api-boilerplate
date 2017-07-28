@@ -101,16 +101,22 @@
 								<i class="fa fa-user fa-fw"></i> <span v-html="$t('users.users')"></span>
 							</a>
 						</li>
-						<li v-if="(['Developer', 'Support'].indexOf(this.$store.getters.me.user_group_id) != -1)">
+						<li>
 							<a href="#project-sync-items-tab-pane" data-toggle="tab">
 								<i class="fa fa-external-link fa-fw"></i> <span v-html="$t('sync_items.sync_items')"></span>
 							</a>
 						</li>
-						<li v-if="(['Developer', 'Support'].indexOf(this.$store.getters.me.user_group_id) != -1)">
+						<li>
 							<a href="#project-sync-tasks-tab-pane" data-toggle="tab">
 								<i class="fa fa-tasks fa-fw"></i> <span v-html="$t('sync_tasks.sync_tasks')"></span>
 							</a>
 						</li>
+						<li>
+							<a href="#project-search-use-cases-tab-pane" data-toggle="tab">
+								<i class="fa fa-tasks fa-fw"></i> <span v-html="$t('search_use_cases.search_use_cases')"></span>
+							</a>
+						</li>
+
 					</ul>
 					<div class="tab-content">
 						<div class="active tab-pane" id="project-user-has-projects-tab-pane">
@@ -133,7 +139,7 @@
 								buttonsColumnClass="col-md-2"
 							></DataManager>
 						</div>
-						<div v-if="(['Developer', 'Support'].indexOf(this.$store.getters.me.user_group_id) != -1)" class="tab-pane" id="project-sync-items-tab-pane">
+						<div class="tab-pane" id="project-sync-items-tab-pane">
 							<DataManager
 								:rights="{
 									allowSee: false,
@@ -153,7 +159,7 @@
 								buttonsColumnClass="col-md-2"
 							></DataManager>
 						</div>
-						<div v-if="(['Developer', 'Support'].indexOf(this.$store.getters.me.user_group_id) != -1)" class="tab-pane" id="project-sync-tasks-tab-pane">
+						<div class="tab-pane" id="project-sync-tasks-tab-pane">
 							<DataManager
 								:rights="{
 									allowSee: false,
@@ -166,7 +172,7 @@
 								:resource="projectRootSyncTasksDataManagerResource"
 								:defaultOrderBy="{column: 'created_at', direction: 'desc'}"
 								:pagination="{limiting: true, defaultLimit: 20, limits: [10, 20, 30, 40, 50]}"
-								:searching="true"
+								:searching="false"
 								:request="{include: 'createdByUser', extraParameters: {projectId: projectId}}"
 								:store="{stateName: 'projectRootSyncTasks', loadingStateName: 'projectRootSyncTasksLoading', dispatchAction: 'getProjectRootSyncTasks'}"
 								:columns="projectRootSyncTasksColumns"
@@ -188,13 +194,35 @@
 								:resource="projectChildrenSyncTasksDataManagerResource"
 								:defaultOrderBy="{column: 'created_at', direction: 'desc'}"
 								:pagination="{limiting: true, defaultLimit: 20, limits: [10, 20, 30, 40, 50]}"
-								:searching="true"
+								:searching="false"
 								:request="{include: 'createdByUser', extraParameters: {syncTaskId: selectedProjectSyncTask.id}}"
 								:store="{stateName: 'projectChildrenSyncTasks', loadingStateName: 'projectChildrenSyncTasksLoading', dispatchAction: 'getProjectChildrenSyncTasks'}"
 								:columns="projectChildrenSyncTasksColumns"
 								:checkboxes="{enabled: false}"
 								:rowsButtons="projectChildrenSyncTasksRowsButtons"
 								buttonsColumnClass="col-md-1"
+							></DataManager>
+						</div>
+						<div class="tab-pane" id="project-search-use-cases-tab-pane">
+							<DataManager
+								v-if="(project != null)"
+								:rights="{
+									allowSee: false,
+									allowCreate: true,
+									allowEdit: true,
+									allowDelete : true,
+									allowMassDelete: false,
+								}"
+								i18nPath="search_use_cases.data_manager.project_search_use_cases"
+								:resource="projectSearchUseCasesDataManagerResource"
+								:defaultOrderBy="{column: 'created_at', direction: 'asc'}"
+								:pagination="{limiting: true, defaultLimit: 20, limits: [10, 20, 30, 40, 50]}"
+								:searching="true"
+								:request="{extraParameters: {projectId: projectId}}"
+								:store="{stateName: 'projectSearchUseCases', loadingStateName: 'projectSearchUseCasesLoading', dispatchAction: 'getProjectSearchUseCases'}"
+								:columns="projectSearchUseCasesColumns"
+								:checkboxes="{enabled: false}"
+								buttonsColumnClass="col-md-2"
 							></DataManager>
 						</div>
 					</div>
@@ -333,7 +361,7 @@
 								:resource="projectDataStreamDataStreamHasI18nLangsDataManagerResource"
 								:defaultOrderBy="{column: 'i18n_lang_id', direction: 'asc'}"
 								:pagination="{limiting: true, defaultLimit: 10, limits: [5, 10, 20]}"
-								:searching="true"
+								:searching="false"
 								:request="{include: 'dataStream,i18nLang', extraParameters: {dataStreamId: projectDataStream.id}}"
 								:store="{
 									stateName: 'dataStreamDataStreamHasI18nLangs',
@@ -678,6 +706,7 @@
 							}
 						},
 					},
+					/*
 					{
 						name : 'sync_task_type_id',
 						class : '',
@@ -689,7 +718,7 @@
 								'syncTaskTypeId': 'sync_task_type_id'
 							}
 						}
-					},
+					},*/
 					{
 						name : 'sync_task_status_id',
 						class : '',
@@ -723,6 +752,7 @@
 							return this.momentLocalDate(value);
 						},
 					},
+					/*
 					{
 						name : 'updated_at',
 						class : 'col-md-2',
@@ -732,6 +762,7 @@
 							return this.momentLocalDate(value);
 						},
 					},
+					*/
 				];
 			},
 
@@ -794,6 +825,7 @@
 							return this.momentLocalDate(value);
 						},
 					},
+					/*
 					{
 						name : 'updated_at',
 						class : 'col-md-2',
@@ -803,6 +835,7 @@
 							return this.momentLocalDate(value);
 						},
 					},
+					*/
 				];
 			},
 
@@ -967,6 +1000,106 @@
 							return this.momentLocalDate(value);
 						},
 					},
+				];
+			},
+
+			projectSearchUseCasesDataManagerResource() {
+				return {
+					name: 'searchUseCase',
+					routePath: 'searchUseCase',
+					routeParamsMap: {
+						'searchUseCaseId': 'id',
+					},
+					create: {
+						postUri: '/searchUseCase',
+					},
+					edit: {
+						putUriTemplate: '/searchUseCase/<%- resourceRow.id %>',
+					},
+					delete: {
+						deleteUriTemplate: '/searchUseCase/<%- resourceRow.id %>',
+					},
+					createDefaultResourceRow: {}
+				}
+			},
+
+			projectSearchUseCasesColumns() {
+				return [
+					{
+						name : 'id',
+						class : 'col-md-3 id-column',
+						orderable : true,
+						order_by_field : 'id',
+
+						create: {
+							fillable: false,
+						},
+
+						edit: {
+							fillable: false,
+						}
+					},
+					{
+						name: 'project_id',
+						type: 'hidden',
+
+						list: {
+							visible: false,
+						},
+						create: {
+							defaultValue: this.projectId
+						}
+					},
+					{
+						name : 'name',
+						class : '',
+						orderable : true,
+						order_by_field : 'name',
+						type : 'input',
+
+						create : {
+							fillable: true,
+							defaultValue: '',
+						},
+
+						edit : {
+							fillable: true,
+						}
+					},
+					{
+						name : 'created_at',
+						class : '',
+						orderable : true,
+						order_by_field : 'created_at',
+						transformValue : (value) => {
+							return this.momentLocalDate(value);
+						},
+
+						create: {
+							fillable: false,
+						},
+
+						edit: {
+							fillable: false,
+						}
+					},
+					{
+						name : 'updated_at',
+						class : '',
+						orderable : true,
+						order_by_field : 'updated_at',
+						transformValue : (value) => {
+							return this.momentLocalDate(value);
+						},
+
+						create: {
+							fillable: false,
+						},
+
+						edit: {
+							fillable: false,
+						}
+					}
 				];
 			},
 
@@ -1329,8 +1462,6 @@
 		},
 		methods: {
 			fetchData() {
-				this.user = null;
-
 				var propsData = this.$options.propsData;
 				this.getProject(propsData.projectId);
 				this.getProjectOwner(propsData.projectId);

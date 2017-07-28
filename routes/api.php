@@ -683,5 +683,80 @@ $api->version('v1', ['middleware' => ['acceptLanguage', /*'cors',*/ 'auth:api']]
 		'searchEngine/{searchEngineId}/project',
 		'App\Http\Controllers\Api\SearchEngineProjectController@index'
 	)->name('searchEngineProject.index');
-	
+
+	// Project Search Use Case
+
+	$api->get(
+		'project/{projectId}/searchUseCase',
+		'App\Http\Controllers\Api\ProjectSearchUseCaseController@index'
+	)->name('projectSearchUseCase.index');
+
+	// Search Use Case
+
+	$api->get(
+		'searchUseCase',
+		'App\Http\Controllers\Api\SearchUseCaseController@index'
+	)->name('searchUseCase.index');
+
+	$api->get(
+		'searchUseCase/{searchUseCaseId}',
+		'App\Http\Controllers\Api\SearchUseCaseController@show'
+	)->name('searchUseCase.show');
+
+	$api->post(
+		'searchUseCase',
+		'App\Http\Controllers\Api\SearchUseCaseController@store'
+	)->name('searchUseCase.store');
+
+	$api->match(
+		['put', 'patch'],
+		'searchUseCase/{searchUseCaseId}',
+		'App\Http\Controllers\Api\SearchUseCaseController@update'
+	)->name('searchUseCase.update');
+
+	$api->delete(
+		'searchUseCase/{searchUseCaseId}',
+		'App\Http\Controllers\Api\SearchUseCaseController@destroy'
+	)->name('searchUseCase.destroy');
+
+	$api->get(
+		'searchUseCase/{searchUseCaseId}/search',
+		'App\Http\Controllers\Api\SearchUseCaseController@search'
+	)->name('searchUseCase.search');
+
+	// Search Use Case Field
+
+	$api->get(
+		'searchUseCaseField',
+		'App\Http\Controllers\Api\SearchUseCaseFieldController@index'
+	)->name('searchUseCaseField.index');
+
+	$api->get(
+		'searchUseCaseField/{searchUseCaseId},{dataStreamFieldId}',
+		'App\Http\Controllers\Api\SearchUseCaseFieldController@show'
+	)->name('searchUseCaseField.show');
+
+	$api->post(
+		'searchUseCaseField',
+		'App\Http\Controllers\Api\SearchUseCaseFieldController@store'
+	)->name('searchUseCaseField.store');
+
+	$api->match(
+		['put', 'patch'],
+		'searchUseCaseField/{searchUseCaseId},{dataStreamFieldId}',
+		'App\Http\Controllers\Api\SearchUseCaseFieldController@update'
+	)->name('searchUseCaseField.update');
+
+	$api->delete(
+		'searchUseCaseField/{searchUseCaseId},{dataStreamFieldId}',
+		'App\Http\Controllers\Api\SearchUseCaseFieldController@destroy'
+	)->name('searchUseCaseField.destroy');
+
+	// Search Use Case Search Use Case Field
+
+	$api->get(
+		'searchUseCase/{searchUseCaseId}/searchUseCaseField',
+		'App\Http\Controllers\Api\SearchUseCaseSearchUseCaseFieldController@index'
+	)->name('searchUseCaseSearchUseCaseField.index');
+
 });

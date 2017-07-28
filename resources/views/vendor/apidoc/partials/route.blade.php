@@ -10,10 +10,7 @@
 > Example request:
 
 ```bash
-curl -X {{$parsedRoute['methods'][0]}} "{{config('app.url')}}{{$parsedRoute['bindedUri']}}@if($parsedRoute['methods'][0] == 'GET' && count($parsedRoute['parameters']))
-@foreach($parsedRoute['parameters'] as $attribute => $parameter)
-@if($loop->first)?@endif{{$attribute}}={{$parameter['value']}}@endforeach
-@endif" \
+curl -X {{$parsedRoute['methods'][0]}} "{{config('app.url')}}{!!$parsedRoute['bindedUri']!!}" \
 -H "Accept: application/json" \
 -H "Authentication: Bearer xxx"
 @if(count($parsedRoute['parameters']) && $parsedRoute['methods'][0] != 'GET') \

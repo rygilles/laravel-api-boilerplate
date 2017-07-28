@@ -99,7 +99,7 @@
 			},
 
 			listenForNotifications() {
-				console.log('Listening on private channel :', 'App.Models.User.' + this.$store.getters.me.id);
+				//console.log('Listening on private channel :', 'App.Models.User.' + this.$store.getters.me.id);
 				// listen to notifications events
 				Echo.private('App.Models.User.' + this.$store.getters.me.id)
 					.notification((notification) => {

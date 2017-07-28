@@ -39,6 +39,8 @@ class SyncTaskController extends ApiController
 	 */
 	public function index(IndexSyncTaskRequest $request)
 	{
+		// Root items filtering
+
 		if ($request->has('root')) {
 			if ($request->input('root')) {
 				$query = SyncTask::parents()->applyRequestQueryString();
@@ -49,8 +51,21 @@ class SyncTaskController extends ApiController
 			$query = SyncTask::applyRequestQueryString();
 		}
 
+		// Sync Task Status Id filtering
+
 		if ($request->has('sync_task_status_id')) {
 			$query = $query->where('sync_task_status_id', $request->input('sync_task_status_id'));
+		}
+
+		// Planned date bounding filtering
+
+		if ($request->has('planned_before') || $request->has('planned_after')) {
+			if ($request->has('planned_before')) {
+				$this->where('planned_at', '<', $request->input('planned_before'));
+			}
+			if ($request->has('planned_after')) {
+				$this->where('planned_at', '>', $request->input('planned_after'));
+			}
 		}
 
 		$paginator = $query->withCount('childrenSyncTasks')
@@ -70,7 +85,10 @@ class SyncTaskController extends ApiController
 	 */
 	public function show($syncTaskId)
 	{
-		$syncTask = SyncTask::withCount('childrenSyncTasks')
+		// @todo extend "authorized" everywhere
+		
+		$syncTask = SyncTask::authorized(['Owner', 'Administrator'])
+							  ->withCount('childrenSyncTasks')
 							  ->withCount('syncTaskLogs')
 							  ->find($syncTaskId);
 

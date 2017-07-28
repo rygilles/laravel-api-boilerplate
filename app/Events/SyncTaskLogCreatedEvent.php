@@ -2,6 +2,7 @@
 
 namespace App\Events;
 
+use App\Models\SyncTask;
 use App\Models\SyncTaskLog;
 use Illuminate\Broadcasting\Channel;
 use Illuminate\Queue\SerializesModels;
@@ -18,7 +19,7 @@ class SyncTaskLogCreatedEvent implements ShouldBroadcast
 	/**
 	 * @var SyncTaskLog
 	 */
-	public $syncTaskLog;
+	private $syncTaskLog;
 
 	/**
 	 * Create a new event instance.
@@ -39,4 +40,25 @@ class SyncTaskLogCreatedEvent implements ShouldBroadcast
     {
         return new PrivateChannel('AdminChan');
     }
+
+	/**
+	 * Get the data to broadcast.
+	 *
+	 * @return array
+	 */
+	public function broadcastWith()
+	{
+		$syncTask = $this->syncTaskLog->syncTask()->first();
+
+		return [
+			'id'                    => $this->syncTaskLog->id,
+			'main_sync_task_id'     => $syncTask->sync_task_id,
+			'sync_task_id'          => $this->syncTaskLog->sync_task_id,
+			'sync_task_type_id'     => $syncTask->sync_task_type_id,
+			'entry'                 => $this->syncTaskLog->entry,
+			'public'                => $this->syncTaskLog->public,
+			'sync_task_status_id'   => $this->syncTaskLog->sync_task_status_id,
+			'created_at'            => $this->syncTaskLog->created_at,
+		];
+	}
 }

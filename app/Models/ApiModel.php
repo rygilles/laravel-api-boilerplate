@@ -9,7 +9,7 @@ use App\Libs\ApiEloquentBuilder;
  * Api Model class with custom Eloquent query builder for api resources
  * @package App\Models
  */
-class ApiModel extends Model
+abstract class ApiModel extends Model
 {
 	/**
 	 * Default pagination limit

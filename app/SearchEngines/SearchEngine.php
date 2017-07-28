@@ -2,8 +2,11 @@
 
 namespace App\SearchEngines;
 
+use App\Models\I18nLang;
 use App\Models\Project;
 use App\Models\DataStreamField;
+use App\Models\SearchResultCollection;
+use App\Models\SearchUseCase;
 use Illuminate\Database\Eloquent\Collection;
 
 /**
@@ -73,4 +76,15 @@ interface SearchEngine
 	 * @param Collection $syncTaskItems
 	 */
 	public function deleteItems(Collection $syncTaskItems);
+
+	/**
+	 * Perform search
+	 * @param SearchUseCase $searchUseCase
+	 * @param string $query_string
+	 * @param I18nLang|null $i18nLang
+	 * @param int $page
+	 * @param int $limit
+	 * @return SearchResultResponse
+	 */
+	public function performSearch(SearchUseCase $searchUseCase, $query_string, I18nLang $i18nLang = null, $page = 1, $limit = 20);
 }

@@ -15,4 +15,6 @@ return [
 
 	'data_stream_i18n_lang_relationship_exists' => 'A relationship between this data stream/i18n lang already exists.',
 
+	'search_use_case_field_exists' => 'A search use case field between this search use case/data stream field already exists.',
+
 ];

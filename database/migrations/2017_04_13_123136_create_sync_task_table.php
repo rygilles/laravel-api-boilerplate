@@ -20,6 +20,7 @@ class CreateSyncTaskTable extends Migration
 	        $table->string('sync_task_status_id', 50)->index();
             $table->uuid('created_by_user_id')->nullable()->index();
 	        $table->uuid('project_id')->index();
+	        $table->timestamp('planned_at')->nullable();
             $table->timestamps();
             $table->primary('id');
         });

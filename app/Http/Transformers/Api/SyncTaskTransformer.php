@@ -25,7 +25,7 @@ class SyncTaskTransformer extends ApiTransformer
 	public function transform(SyncTask $syncTask)
 	{
 		return $this->filterWithModelConfiguration(
-			Project::class,
+			SyncTask::class,
 			[
 				'id'                        => $syncTask->id,
 				'sync_task_id'              => $syncTask->sync_task_id,
@@ -33,6 +33,7 @@ class SyncTaskTransformer extends ApiTransformer
 				'sync_task_status_id'       => $syncTask->sync_task_status_id,
 				'created_by_user_id'        => $syncTask->created_by_user_id,
 				'project_id'                => $syncTask->project_id,
+				'planned_at'                => (!is_null($syncTask->planned_at) ? $syncTask->planned_at->toDateTimeString() : null),
 				'created_at'                => $syncTask->created_at->toDateTimeString(),
 				'updated_at'                => $syncTask->updated_at->toDateTimeString(),
 				'sync_task_logs_count'      => (int) $syncTask->sync_task_logs_count,

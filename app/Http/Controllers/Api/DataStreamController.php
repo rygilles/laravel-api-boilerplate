@@ -45,7 +45,7 @@ class DataStreamController extends ApiController
 	 */
 	public function show($dataStreamId)
 	{
-		$dataStream = DataStream::find($dataStreamId);
+		$dataStream = DataStream::authorized(['Owner', 'Administrator'])->find($dataStreamId);
 
 		if (!$dataStream)
 			return $this->response->errorNotFound();

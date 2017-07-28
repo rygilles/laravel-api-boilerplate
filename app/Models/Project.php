@@ -195,6 +195,16 @@ class Project extends ApiModel
 	}
 
 	/**
+	 * Get the search use cases
+	 *
+	 * @return \Illuminate\Database\Eloquent\Relations\HasMany
+	 */
+	public function searchUseCases()
+	{
+		return $this->HasMany(SearchUseCase::class);
+	}
+
+	/**
 	 * Scope a query to include authorized access
 	 *
 	 * @param \Illuminate\Database\Eloquent\Builder $query

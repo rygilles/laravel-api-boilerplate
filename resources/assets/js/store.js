@@ -267,6 +267,13 @@ var store = new Vuex.Store({
             meta: {}
         },
         dataStreamDataStreamHasI18nLangsLoading: true,
+
+        projectSearchUseCases: {
+            data: [],
+            meta: {}
+        },
+        projectSearchUseCasesLoading: true,
+
     },
     getters: {
         laravel(state) {
@@ -508,6 +515,14 @@ var store = new Vuex.Store({
         dataStreamDataStreamHasI18nLangsLoading(state) {
             return state.dataStreamDataStreamHasI18nLangsLoading;
         },
+
+        projectSearchUseCases(state) {
+            return state.projectSearchUseCases;
+        },
+        projectSearchUseCasesLoading(state) {
+            return state.projectSearchUseCasesLoading;
+        },
+
     },
     mutations: {
         setState(state, data) {
@@ -749,6 +764,14 @@ var store = new Vuex.Store({
         setDataStreamDataStreamHasI18nLangsLoading(state, loading) {
             state.dataStreamDataStreamFieldsLoading = loading;
         },
+
+        setProjectSearchUseCases(state, projectSearchUseCases) {
+            state.projectSearchUseCases = projectSearchUseCases;
+        },
+        setProjectSearchUseCasesLoading(state, loading) {
+            state.projectSearchUseCasesLoading = loading;
+        },
+
     },
     actions: {
         getUserOwnerProjects(state, options) {
@@ -873,6 +896,10 @@ var store = new Vuex.Store({
 
         getDataStreamDataStreamHasI18nLangs(state, options) {
             resourceLoad(state, '/dataStream/' + options.dataStreamId + '/dataStreamHasI18nLang', options, 'dataStreamDataStreamHasI18nLangs');
+        },
+
+        getProjectSearchUseCases(state, options) {
+            resourceLoad(state, '/project/' + options.projectId + '/searchUseCase', options, 'projectSearchUseCases');
         },
 
     }
