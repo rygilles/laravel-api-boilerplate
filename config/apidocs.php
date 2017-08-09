@@ -105,6 +105,15 @@ return [
 				// Search Use Case search limit
 				'limit' => 5,
 
+				// E-monsite | Blog - Summary
+				'searchUseCasePresetId' => '516f0252-7767-11e7-b5a5-be2e44b06b34',
+
+				// Mickey Mouse Sample Project Default Search Use Case - E-monsite | Blog - Photo Widget
+				'widgetId' => 'b070b438-781d-11e7-b5a5-be2e44b06b34',
+
+				// E-monsite | Blog - Summary widget preset
+				'widgetPresetId' => '6be0a102-7769-11e7-b5a5-be2e44b06b34',
+
 			],
 			'routes' => [
 
@@ -276,6 +285,41 @@ return [
 				'searchUseCaseField.destroy',
 
 				'searchUseCaseSearchUseCaseField.index',
+
+				'searchUseCasePreset.index',
+				'searchUseCasePreset.show',
+				'searchUseCasePreset.store',
+				'searchUseCasePreset.update',
+				'searchUseCasePreset.destroy',
+
+				'searchUseCasePresetField.index',
+				'searchUseCasePresetField.show',
+				'searchUseCasePresetField.store',
+				'searchUseCasePresetField.update',
+				'searchUseCasePresetField.destroy',
+
+				'searchUseCasePresetSearchUseCasePresetField.index',
+
+				'widget.index',
+				'widget.show',
+				'widget.store',
+				'widget.update',
+				'widget.destroy',
+
+				'searchUseCaseWidget.index',
+
+				'widgetPreset.index',
+				'widgetPreset.show',
+				'widgetPreset.store',
+				'widgetPreset.update',
+				'widgetPreset.destroy',
+
+				'searchUseCasePresetWidgetPreset.index',
+
+				'dataStreamPresetSearchUseCasePreset.index',
+
+				'dataStreamPresetWidgetPreset.index',
+
 			]
 
 		],
@@ -361,6 +405,15 @@ return [
 
 				// Search Use Case search limit
 				'limit' => 5,
+
+				// E-monsite | Blog - Summary
+				'searchUseCasePresetId' => '516f0252-7767-11e7-b5a5-be2e44b06b34',
+
+				// Mickey Mouse Sample Project Default Search Use Case - E-monsite | Blog - Photo Widget
+				'widgetId' => 'b070b438-781d-11e7-b5a5-be2e44b06b34',
+
+				// E-monsite | Blog - Summary widget preset
+				'widgetPresetId' => '6be0a102-7769-11e7-b5a5-be2e44b06b34',
 			],
 			'routes' => [
 
@@ -508,6 +561,40 @@ return [
 
 				'searchUseCaseSearchUseCaseField.index',
 
+				'searchUseCasePreset.index',
+				'searchUseCasePreset.show',
+				'searchUseCasePreset.store',
+				'searchUseCasePreset.update',
+				'searchUseCasePreset.destroy',
+
+				'searchUseCasePresetField.index',
+				'searchUseCasePresetField.show',
+				'searchUseCasePresetField.store',
+				'searchUseCasePresetField.update',
+				'searchUseCasePresetField.destroy',
+
+				'searchUseCasePresetSearchUseCasePresetField.index',
+
+				'widget.index',
+				'widget.show',
+				'widget.store',
+				'widget.update',
+				'widget.destroy',
+
+				'searchUseCaseWidget.index',
+
+				'widgetPreset.index',
+				'widgetPreset.show',
+				'widgetPreset.store',
+				'widgetPreset.update',
+				'widgetPreset.destroy',
+
+				'searchUseCasePresetWidgetPreset.index',
+
+				'dataStreamPresetSearchUseCasePreset.index',
+
+				'dataStreamPresetWidgetPreset.index',
+
 			]
 
 		],
@@ -564,11 +651,38 @@ return [
 				// Mickey Mouse Sample Project Data Stream - "title" field
 				'dataStreamFieldId' => '36116fa6-5c0d-11e7-907b-a6006ad3dba0',
 
+				// E-monsite | Blog
+				'dataStreamPresetId' => '737441b0-57ea-11e7-907b-a6006ad3dba0',
+
+				// E-monsite | Blog - "title" field
+				'dataStreamPresetFieldId' => 'eb9cb642-5bf3-11e7-907b-a6006ad3dba0',
+
 				// Mickey Mouse Sample Project Data Stream Use Case
 				'searchUseCaseId' => 'dc5bfd4c-711e-11e7-8cf7-a6006ad3dba0',
 
 				// Mickey Mouse Sample Project Data Stream - "title" field
 				'searchUseCaseFieldId' => '36116fa6-5c0d-11e7-907b-a6006ad3dba0',
+
+				// E-monsite | Blog - Summary
+				'searchUseCasePresetId' => '516f0252-7767-11e7-b5a5-be2e44b06b34',
+
+				// Search Use Case search query string
+				'query_string' => 'site internet',
+
+				// Search Use Case search i18n lang id
+				'i18n_lang_id' => 'fr',
+
+				// Search Use Case search page
+				'page' => 1,
+
+				// Search Use Case search limit
+				'limit' => 5,
+
+				// Mickey Mouse Sample Project Default Search Use Case - E-monsite | Blog - Photo Widget
+				'widgetId' => 'b070b438-781d-11e7-b5a5-be2e44b06b34',
+
+				// E-monsite | Blog - Summary widget preset
+				'widgetPresetId' => '6be0a102-7769-11e7-b5a5-be2e44b06b34',
 
 			],
 			'routes' => [
@@ -622,6 +736,46 @@ return [
 				'i18nLang.show',
 
 				'i18nLangSyncTaskTypeVersion.index',
+
+				'projectSearchUseCase.index',
+
+				'searchUseCase.show',
+				'searchUseCase.store',
+				'searchUseCase.update',
+				'searchUseCase.destroy',
+
+				'searchUseCase.search',
+
+				'searchUseCaseField.show',
+				'searchUseCaseField.store',
+				'searchUseCaseField.update',
+				'searchUseCaseField.destroy',
+
+				'searchUseCaseSearchUseCaseField.index',
+
+				'searchUseCasePreset.index',
+				'searchUseCasePreset.show',
+
+				'searchUseCasePresetField.index',
+				'searchUseCasePresetField.show',
+
+				'searchUseCasePresetSearchUseCasePresetField.index',
+
+				'widget.show',
+				'widget.store',
+				'widget.update',
+				'widget.destroy',
+
+				'searchUseCaseWidget.index',
+
+				'widgetPreset.index',
+				'widgetPreset.show',
+
+				'searchUseCasePresetWidgetPreset.index',
+
+				'dataStreamPresetSearchUseCasePreset.index',
+
+				'dataStreamPresetWidgetPreset.index',
 
 			]
 

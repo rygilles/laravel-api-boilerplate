@@ -11,7 +11,12 @@ export default {
     'fields': {
         'projectName': {
             'label': 'Nom du projet',
+            'placeholder': 'Mon Projet',
             'help': '',
+        },
+        'projectSearchEngineId': {
+            'label': 'Moteur de recherche (interne)',
+            'help': 'Seul les utilisateurs du support et les développeurs peuvent voir/définir la valeur de ce champ.',
         },
         'dataStreamFeedUrl': {
             'label': 'Url du flux de données',
@@ -20,6 +25,14 @@ export default {
         'dataStreamPresetId': {
             'label': 'Preset de flux de données',
             'help': 'Choisissez le preset correspondant à votre flux de données.',
+        },
+        'i18nLangsIds': {
+            'label': 'I18n Langues',
+            'help': 'Choisissez les langues disponibles dans votre flux de données.',
+        },
+        'widgetPresetId': {
+            'label': 'Preset de Widget',
+            'help': 'Choisissez un preset de widget correspondant à vos besoins.',
         },
     },
     'buttons': {

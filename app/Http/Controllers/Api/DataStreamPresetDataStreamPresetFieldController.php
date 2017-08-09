@@ -18,9 +18,6 @@ class DataStreamPresetDataStreamPresetFieldController extends ApiController
 	public function __construct()
 	{
 		parent::__construct();
-
-		// User group restrictions
-		$this->middleware('verifyUserGroup:Developer,Support', ['only' => ['index']]);
 	}
 
 	/**

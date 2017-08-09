@@ -22,7 +22,7 @@ class SearchUseCaseFieldController extends ApiController
 		parent::__construct();
 
 		// User group restrictions
-		$this->middleware('verifyUserGroup:Developer,Support',  ['only' => ['index', 'show', 'store', 'update', 'destroy']]);
+		$this->middleware('verifyUserGroup:Developer,Support',  ['only' => ['index']]);
 	}
 
 	/**
@@ -47,8 +47,9 @@ class SearchUseCaseFieldController extends ApiController
 	 */
 	public function show($searchUseCaseId, $dataStreamFieldId)
 	{
-		$searchUseCaseField = SearchUseCaseField::where('search_use_case_id', $searchUseCaseId)
-												->where('data_stream_field_id', $dataStreamFieldId)->get();
+		$searchUseCaseField = SearchUseCaseField::authorized(['Owner', 'Administrator'])
+												->where('search_use_case_id', $searchUseCaseId)
+												->where('data_stream_field_id', $dataStreamFieldId)->first();
 
 		if (!$searchUseCaseField)
 			return $this->response->errorNotFound();
@@ -68,12 +69,14 @@ class SearchUseCaseFieldController extends ApiController
 	public function store(StoreSearchUseCaseFieldRequest $request)
 	{
 		// Check if a relationship between the specified search use case and data stream field already exists.
-		if (SearchUseCaseField::where('search_use_case_id', $request->input('search_use_case_id'))
+		if (SearchUseCaseField::authorized(['Owner', 'Administrator'])
+							  ->where('search_use_case_id', $request->input('search_use_case_id'))
 							  ->where('data_stream_field_id', $request->input('data_stream_field_id'))->exists()) {
 			return $this->response->errorBadRequest(Lang::get('errors.search_use_case_field_exists'));
 		}
 
-		$searchUseCaseField = SearchUseCaseField::create($request->all(), $request->getRealMethod());
+		$searchUseCaseField = SearchUseCaseField::authorized(['Owner', 'Administrator'])
+												->create($request->all(), $request->getRealMethod());
 
 		if ($searchUseCaseField) {
 			// Register model transformer for created/accepted responses
@@ -106,31 +109,40 @@ class SearchUseCaseFieldController extends ApiController
 	 */
 	public function update(UpdateSearchUseCaseFieldRequest $request, $searchUseCaseId, $dataStreamFieldId)
 	{
-		$searchUseCaseField = SearchUseCaseField::where('search_use_case_id', $searchUseCaseId)
+		$searchUseCaseField = SearchUseCaseField::authorized(['Owner', 'Administrator'])
+												->where('search_use_case_id', $searchUseCaseId)
 												->where('data_stream_field_id', $dataStreamFieldId)->get();
 
 		if (!$searchUseCaseField)
 			return $this->response->errorNotFound();
 
-		// Check if a relationship between the specified user and project already exists (ignoring the current if not changed).
+		// Check if a relationship between the specified search use case and data stream field already exists. (ignoring the current if not changed).
 		if (($searchUseCaseId != $request->input('search_use_case_id')) || ($dataStreamFieldId != $request->input('data_stream_field_id'))) {
-			if (SearchUseCaseField::where('search_use_case_id', $request->input('search_use_case_id'))
+			if (SearchUseCaseField::authorized(['Owner', 'Administrator'])
+								  ->where('search_use_case_id', $request->input('search_use_case_id'))
 								  ->where('data_stream_field_id', $request->input('data_stream_field_id'))->exists()) {
 				return $this->response->errorBadRequest(Lang::get('errors.search_use_case_field_exists'));
 			}
 		}
 
-		SearchUseCaseField::where('search_use_case_id', $searchUseCaseId)->where('data_stream_field_id', $dataStreamFieldId)->update([
-			'search_use_case_id'      => $request->input('search_use_case_id'),
-			'data_stream_field_id'    => $request->input('data_stream_field_id'),
-			'name'                    => $request->input('name'),
-			'searchable'              => $request->input('searchable'),
-			'to_retrieve'             => $request->input('to_retrieve'),
+		$search_use_case_id     = ($request->has('search_use_case_id') ? $request->input('search_use_case_id') : $searchUseCaseId);
+		$data_stream_field_id   = ($request->has('data_stream_field_id') ? $request->input('data_stream_field_id') : $dataStreamFieldId);
+		$name                   = ($request->has('name') ? $request->input('name') : $searchUseCaseField->name);
+		$searchable             = ($request->has('searchable') ? $request->input('searchable') : $searchUseCaseField->name);
+		$to_retrieve            = ($request->has('to_retrieve') ? $request->input('to_retrieve') : $searchUseCaseField->name);
+
+		SearchUseCaseField::authorized(['Owner', 'Administrator'])
+						  ->where('search_use_case_id', $searchUseCaseId)->where('data_stream_field_id', $dataStreamFieldId)->update([
+			'search_use_case_id'      => $search_use_case_id,
+			'data_stream_field_id'    => $data_stream_field_id,
+			'name'                    => $name,
+			'searchable'              => $searchable,
+			'to_retrieve'             => $to_retrieve,
 		]);
 
-		$searchUseCaseField = SearchUseCaseField::where('search_use_case_id', $searchUseCaseId)
-												->where('data_stream_field_id', $dataStreamFieldId)->first();
-
+		$searchUseCaseField = SearchUseCaseField::where('search_use_case_id', $search_use_case_id)
+												->where('data_stream_field_id', $data_stream_field_id)->first();
+		
 		return $this->response->item($searchUseCaseField, new SearchUseCaseFieldTransformer);
 	}
 
@@ -145,7 +157,8 @@ class SearchUseCaseFieldController extends ApiController
 	 */
 	public function destroy($searchUseCaseId, $dataStreamFieldId)
 	{
-		if (!SearchUseCaseField::where('search_use_case_id', $searchUseCaseId)
+		if (!SearchUseCaseField::authorized(['Owner', 'Administrator'])
+							   ->where('search_use_case_id', $searchUseCaseId)
 					           ->where('data_stream_field_id', $dataStreamFieldId)->exists()) {
 			return $this->response->errorNotFound();
 		}

@@ -96,8 +96,6 @@ class DataStreamPreset extends ApiModel
 		'name'                      => 'required|string|min:5|max:200',
 	];
 
-	// @todo widgetPresets relationship
-
 	/**
 	 * Get the data stream decoder of this data stream
 	 *
@@ -116,5 +114,27 @@ class DataStreamPreset extends ApiModel
 	public function dataStreamPresetFields()
 	{
 		return $this->hasMany(DataStreamPresetField::class);
+	}
+
+	/**
+	 * Get the search use case presets of this data stream preset
+	 *
+	 * @return \Illuminate\Database\Eloquent\Relations\HasMany
+	 */
+	public function searchUseCasePresets()
+	{
+		return $this->hasMany(SearchUseCasePreset::class);
+	}
+
+	/**
+	 * Get the widget presets of this data stream preset
+	 *
+	 * (Through the related search use case presets)
+	 *
+	 * @return \Illuminate\Database\Eloquent\Relations\HasMany
+	 */
+	public function widgetPresets()
+	{
+		return $this->hasManyThrough(WidgetPreset::class, SearchUseCasePreset::class);
 	}
 }

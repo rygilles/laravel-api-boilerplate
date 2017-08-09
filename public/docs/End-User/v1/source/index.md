@@ -76,8 +76,8 @@ $.ajax(settings).done(function (response) {
         "data_stream_decoder_id": "53fd5290-5a4c-11e7-907b-a6006ad3dba0",
         "name": "Mickey Mouse Sample Project Data Stream",
         "feed_url": "https:\/\/www.e-monsite.com\/blog\/do\/datastream\/",
-        "created_at": "2017-07-28 10:10:27",
-        "updated_at": "2017-07-28 10:10:27"
+        "created_at": "2017-08-07 13:27:06",
+        "updated_at": "2017-08-07 13:27:06"
     }
 }
 ```
@@ -128,8 +128,8 @@ $.ajax(settings).done(function (response) {
         "data_stream_decoder_id": "53fd5290-5a4c-11e7-907b-a6006ad3dba0",
         "name": "John Smith Sample Project Data Stream",
         "feed_url": "https:\/\/www.e-monsite.com\/blog\/do\/datastream\/",
-        "created_at": "2017-07-28 10:10:27",
-        "updated_at": "2017-07-28 10:10:27"
+        "created_at": "2017-08-07 13:27:06",
+        "updated_at": "2017-08-07 13:27:06"
     }
 }
 ```
@@ -206,9 +206,9 @@ curl -X PUT "https://emsearch.ryan.ems-dev.net/api/project/1bcc7efc-138c-11e7-93
 -H "Accept: application/json" \
 -H "Authentication: Bearer xxx"
  \
-    -d "data_stream_decoder_id"="b5cd7c6d-3b58-30f8-a518-8d240f94dedc" \
-    -d "name"="Ut sed vero" \
-    -d "feed_url"="http://dickens.com/" \
+    -d "data_stream_decoder_id"="194ad9e7-2168-3fbf-9551-f96b4a9d8a85" \
+    -d "name"="Hic earum eius" \
+    -d "feed_url"="http://kling.com/" \
 
 ```
 
@@ -219,9 +219,9 @@ var settings = {
     "url": "https://emsearch.ryan.ems-dev.net/api/project/1bcc7efc-138c-11e7-93ae-92361f002671/dataStream",
     "method": "PUT",
     "data": {
-        "data_stream_decoder_id": "b5cd7c6d-3b58-30f8-a518-8d240f94dedc",
-        "name": "Ut sed vero",
-        "feed_url": "http:\/\/dickens.com\/"
+        "data_stream_decoder_id": "194ad9e7-2168-3fbf-9551-f96b4a9d8a85",
+        "name": "Hic earum eius",
+        "feed_url": "http:\/\/kling.com\/"
 },
     "headers": {
         "Accept": "application/json",
@@ -329,8 +329,8 @@ $.ajax(settings).done(function (response) {
             "name": "Emonsite",
             "class_name": "EmonsiteDecoder",
             "file_mime_type": "application\/json",
-            "created_at": "2017-07-28 10:10:24",
-            "updated_at": "2017-07-28 10:10:24"
+            "created_at": "2017-08-07 13:27:05",
+            "updated_at": "2017-08-07 13:27:05"
         }
     ],
     "meta": {
@@ -392,8 +392,8 @@ $.ajax(settings).done(function (response) {
         "name": "Emonsite",
         "class_name": "EmonsiteDecoder",
         "file_mime_type": "application\/json",
-        "created_at": "2017-07-28 10:10:24",
-        "updated_at": "2017-07-28 10:10:24"
+        "created_at": "2017-08-07 13:27:05",
+        "updated_at": "2017-08-07 13:27:05"
     }
 }
 ```
@@ -641,8 +641,8 @@ $.ajax(settings).done(function (response) {
         "user_group_id": "End-User",
         "name": "John Smith",
         "email": "john.smith@domain.tld",
-        "created_at": "2017-07-28 10:10:27",
-        "updated_at": "2017-07-28 10:10:27"
+        "created_at": "2017-08-07 13:27:06",
+        "updated_at": "2017-08-07 13:27:06"
     }
 }
 ```
@@ -694,7 +694,7 @@ $.ajax(settings).done(function (response) {
 {
     "data": [
         {
-            "id": "4d40cf2e-3d03-4a9b-9839-e61898c51878",
+            "id": "612535d9-115e-4e25-b3c2-1320d13c9183",
             "type": "App\\Notifications\\AdministeredProject",
             "notifiable_id": "605c7610-1389-11e7-93ae-92361f002671",
             "notifiable_type": "App\\Models\\User",
@@ -711,8 +711,8 @@ $.ajax(settings).done(function (response) {
                 }
             },
             "read_at": null,
-            "created_at": "2017-07-28 10:10:27",
-            "updated_at": "2017-07-28 10:10:27"
+            "created_at": "2017-08-07 13:27:07",
+            "updated_at": "2017-08-07 13:27:07"
         }
     ],
     "meta": {
@@ -855,15 +855,15 @@ $.ajax(settings).done(function (response) {
             "id": "1bcc7efc-138c-11e7-93ae-92361f002671",
             "data_stream_id": "56278dc8-1934-11e7-93ae-92361f002671",
             "name": "John Smith Sample Project 1",
-            "created_at": "2017-07-28 10:10:27",
-            "updated_at": "2017-07-28 10:10:27"
+            "created_at": "2017-08-07 13:27:06",
+            "updated_at": "2017-08-07 13:27:06"
         },
         {
             "id": "b6860dd2-138c-11e7-93ae-92361f002671",
             "data_stream_id": null,
             "name": "John Smith Sample Project 2",
-            "created_at": "2017-07-28 10:10:27",
-            "updated_at": "2017-07-28 10:10:27"
+            "created_at": "2017-08-07 13:27:06",
+            "updated_at": "2017-08-07 13:27:06"
         }
     ],
     "meta": {
@@ -929,8 +929,8 @@ $.ajax(settings).done(function (response) {
         "id": "1bcc7efc-138c-11e7-93ae-92361f002671",
         "data_stream_id": "56278dc8-1934-11e7-93ae-92361f002671",
         "name": "John Smith Sample Project 1",
-        "created_at": "2017-07-28 10:10:27",
-        "updated_at": "2017-07-28 10:10:27"
+        "created_at": "2017-08-07 13:27:06",
+        "updated_at": "2017-08-07 13:27:06"
     }
 }
 ```
@@ -953,7 +953,7 @@ curl -X POST "https://emsearch.ryan.ems-dev.net/api/project" \
 -H "Accept: application/json" \
 -H "Authentication: Bearer xxx"
  \
-    -d "name"="Voluptatibus odit temporibus" \
+    -d "name"="Dolor quo dignissimos" \
 
 ```
 
@@ -964,7 +964,7 @@ var settings = {
     "url": "https://emsearch.ryan.ems-dev.net/api/project",
     "method": "POST",
     "data": {
-        "name": "Voluptatibus odit temporibus"
+        "name": "Dolor quo dignissimos"
 },
     "headers": {
         "Accept": "application/json",
@@ -999,7 +999,7 @@ curl -X PUT "https://emsearch.ryan.ems-dev.net/api/project/1bcc7efc-138c-11e7-93
 -H "Accept: application/json" \
 -H "Authentication: Bearer xxx"
  \
-    -d "name"="Temporibus magnam ut" \
+    -d "name"="Quis eligendi et" \
 
 ```
 
@@ -1010,7 +1010,7 @@ var settings = {
     "url": "https://emsearch.ryan.ems-dev.net/api/project/1bcc7efc-138c-11e7-93ae-92361f002671",
     "method": "PUT",
     "data": {
-        "name": "Temporibus magnam ut"
+        "name": "Quis eligendi et"
 },
     "headers": {
         "Accept": "application/json",
@@ -1078,6 +1078,1082 @@ $.ajax(settings).done(function (response) {
 
 <!-- END_9e2aafbf3cd214246c2f0fe7511ec6ea -->
 
+#SearchUseCase
+<!-- START_24b7252ad8c658bdd88296027322fed8 -->
+## Project search use case list
+
+
+<aside class="notice">Pagination limit must be a value between <code>1</code> and <code>50</code>, default is <code>10</code>.</aside>
+
+> Example request:
+
+```bash
+curl -X GET "https://emsearch.ryan.ems-dev.net/api/project/1bcc7efc-138c-11e7-93ae-92361f002671/searchUseCase" \
+-H "Accept: application/json" \
+-H "Authentication: Bearer xxx"
+
+```
+
+```javascript
+var settings = {
+    "async": true,
+    "crossDomain": true,
+    "url": "https://emsearch.ryan.ems-dev.net/api/project/1bcc7efc-138c-11e7-93ae-92361f002671/searchUseCase",
+    "method": "GET",
+    "headers": {
+        "Accept": "application/json",
+        "Authentication" : "Bearer xxx"
+    }
+}
+
+$.ajax(settings).done(function (response) {
+    console.log(response);
+});
+```
+
+> Example response:
+
+```json
+{
+    "data": [
+        {
+            "id": "37f79df8-707c-11e7-8cf7-a6006ad3dba0",
+            "project_id": "1bcc7efc-138c-11e7-93ae-92361f002671",
+            "name": "John Smith Sample Project Default Search Use Case",
+            "created_at": "2017-08-07 13:27:07",
+            "updated_at": "2017-08-07 13:27:07",
+            "search_use_case_fields_count": 0
+        }
+    ],
+    "meta": {
+        "pagination": {
+            "total": 1,
+            "count": 1,
+            "per_page": 10,
+            "current_page": 1,
+            "total_pages": 1,
+            "links": []
+        }
+    }
+}
+```
+
+### HTTP Request
+`GET /api/project/{projectId}/searchUseCase`
+
+`HEAD /api/project/{projectId}/searchUseCase`
+
+
+<!-- END_24b7252ad8c658bdd88296027322fed8 -->
+
+<!-- START_55883498511e97641171546b4cb45d24 -->
+## Get specified search use case
+
+> Example request:
+
+```bash
+curl -X GET "https://emsearch.ryan.ems-dev.net/api/searchUseCase/dc5bfd4c-711e-11e7-8cf7-a6006ad3dba0" \
+-H "Accept: application/json" \
+-H "Authentication: Bearer xxx"
+
+```
+
+```javascript
+var settings = {
+    "async": true,
+    "crossDomain": true,
+    "url": "https://emsearch.ryan.ems-dev.net/api/searchUseCase/dc5bfd4c-711e-11e7-8cf7-a6006ad3dba0",
+    "method": "GET",
+    "headers": {
+        "Accept": "application/json",
+        "Authentication" : "Bearer xxx"
+    }
+}
+
+$.ajax(settings).done(function (response) {
+    console.log(response);
+});
+```
+
+> Example response:
+
+```json
+{
+    "data": {
+        "id": "dc5bfd4c-711e-11e7-8cf7-a6006ad3dba0",
+        "project_id": "c4b5d93c-138c-11e7-93ae-92361f002671",
+        "name": "Mickey Mouse Sample Project Default Search Use Case",
+        "created_at": "2017-08-07 13:27:07",
+        "updated_at": "2017-08-07 13:27:07",
+        "search_use_case_fields_count": 2
+    }
+}
+```
+
+### HTTP Request
+`GET /api/searchUseCase/{searchUseCaseId}`
+
+`HEAD /api/searchUseCase/{searchUseCaseId}`
+
+
+<!-- END_55883498511e97641171546b4cb45d24 -->
+
+<!-- START_bef7073a5985de0158499e05875ea492 -->
+## Create and store new search use case
+
+> Example request:
+
+```bash
+curl -X POST "https://emsearch.ryan.ems-dev.net/api/searchUseCase" \
+-H "Accept: application/json" \
+-H "Authentication: Bearer xxx"
+ \
+    -d "project_id"="8f7be844-6012-3a91-9cec-3a1065104408" \
+    -d "name"="Aliquid ut natus" \
+
+```
+
+```javascript
+var settings = {
+    "async": true,
+    "crossDomain": true,
+    "url": "https://emsearch.ryan.ems-dev.net/api/searchUseCase",
+    "method": "POST",
+    "data": {
+        "project_id": "8f7be844-6012-3a91-9cec-3a1065104408",
+        "name": "Aliquid ut natus"
+},
+    "headers": {
+        "Accept": "application/json",
+        "Authentication" : "Bearer xxx"
+    }
+}
+
+$.ajax(settings).done(function (response) {
+    console.log(response);
+});
+```
+
+
+### HTTP Request
+`POST /api/searchUseCase`
+
+#### Parameters
+
+Parameter | Type | Status | Description
+--------- | ------- | ------- | ------- | -----------
+    project_id | string |  required  | UUID Valid project id
+    name | string |  required  | Minimum: `5` Maximum: `200`
+
+<!-- END_bef7073a5985de0158499e05875ea492 -->
+
+<!-- START_9d5c89968be5399f2e3005a3b3bc7359 -->
+## Update a search use case
+
+> Example request:
+
+```bash
+curl -X PUT "https://emsearch.ryan.ems-dev.net/api/searchUseCase/dc5bfd4c-711e-11e7-8cf7-a6006ad3dba0" \
+-H "Accept: application/json" \
+-H "Authentication: Bearer xxx"
+ \
+    -d "project_id"="4d1a4106-99a7-34ef-8978-c0f45a6cec4e" \
+    -d "name"="Non enim hic" \
+
+```
+
+```javascript
+var settings = {
+    "async": true,
+    "crossDomain": true,
+    "url": "https://emsearch.ryan.ems-dev.net/api/searchUseCase/dc5bfd4c-711e-11e7-8cf7-a6006ad3dba0",
+    "method": "PUT",
+    "data": {
+        "project_id": "4d1a4106-99a7-34ef-8978-c0f45a6cec4e",
+        "name": "Non enim hic"
+},
+    "headers": {
+        "Accept": "application/json",
+        "Authentication" : "Bearer xxx"
+    }
+}
+
+$.ajax(settings).done(function (response) {
+    console.log(response);
+});
+```
+
+
+### HTTP Request
+`PUT /api/searchUseCase/{searchUseCaseId}`
+
+`PATCH /api/searchUseCase/{searchUseCaseId}`
+
+#### Parameters
+
+Parameter | Type | Status | Description
+--------- | ------- | ------- | ------- | -----------
+    project_id | string |  required  | UUID Valid project id
+    name | string |  required  | Minimum: `5` Maximum: `200`
+
+<!-- END_9d5c89968be5399f2e3005a3b3bc7359 -->
+
+<!-- START_4416daa71a27a4bded05ac5404e53e9e -->
+## Delete specified search use case
+
+> Example request:
+
+```bash
+curl -X DELETE "https://emsearch.ryan.ems-dev.net/api/searchUseCase/dc5bfd4c-711e-11e7-8cf7-a6006ad3dba0" \
+-H "Accept: application/json" \
+-H "Authentication: Bearer xxx"
+
+```
+
+```javascript
+var settings = {
+    "async": true,
+    "crossDomain": true,
+    "url": "https://emsearch.ryan.ems-dev.net/api/searchUseCase/dc5bfd4c-711e-11e7-8cf7-a6006ad3dba0",
+    "method": "DELETE",
+    "headers": {
+        "Accept": "application/json",
+        "Authentication" : "Bearer xxx"
+    }
+}
+
+$.ajax(settings).done(function (response) {
+    console.log(response);
+});
+```
+
+
+### HTTP Request
+`DELETE /api/searchUseCase/{searchUseCaseId}`
+
+
+<!-- END_4416daa71a27a4bded05ac5404e53e9e -->
+
+<!-- START_4b5e9ae73571f33c511b43a1f61a4ec0 -->
+## Perform search with the specified search use case
+
+> Example request:
+
+```bash
+curl -X GET "https://emsearch.ryan.ems-dev.net/api/searchUseCase/dc5bfd4c-711e-11e7-8cf7-a6006ad3dba0/search?query_string=site internet&i18n_lang_id=fr&page=1&limit=5" \
+-H "Accept: application/json" \
+-H "Authentication: Bearer xxx"
+
+```
+
+```javascript
+var settings = {
+    "async": true,
+    "crossDomain": true,
+    "url": "https://emsearch.ryan.ems-dev.net/api/searchUseCase/dc5bfd4c-711e-11e7-8cf7-a6006ad3dba0/search?query_string=site internet&amp;i18n_lang_id=fr&amp;page=1&amp;limit=5?query_string=Iusto explicabo molestiaei18n_lang_id=Aliquid natus explicabopage=315593limit=3",
+    "method": "GET",
+    "headers": {
+        "Accept": "application/json",
+        "Authentication" : "Bearer xxx"
+    }
+}
+
+$.ajax(settings).done(function (response) {
+    console.log(response);
+});
+```
+
+> Example response:
+
+```json
+{
+    "data": [
+        {
+            "item_id": "4f72bc79df6d0000000082b0",
+            "title_fr": "Le site du Mercredi ou comment créer un site internet avec E-monsite",
+            "content_fr": "Ce billet inaugure une série d&#39;articles mettant en avant le meilleur de la création de site web sur E-monsite.com. Tous les mercredis, nous présenterons un site réalisé grâce aux outils pour créer un site internet sur E-monsite, l&#39;équipe E-monsite en profitera pour donner son avis d&#39; \"expert\". Ici point de copinages ou d&#39;hypocrisie, mais simplement les coups de cœur de l&#39;équipe E-monsite.\r\n\r\n\r\n\r\nComme précisé sur la page facebook E-monsite, nous ne faisons pas de discriminations entre un site web gratuit, un site internet pro ou une boutique en ligne. Tout le monde a sa chance, les sites sélectionnés auront brillé par leurs designs, leurs contenus (ou les deux) ou encore par l&#39;originalité de leur concept.\r\n\r\nC&#39;est le Blog informatique Willside.net qui inaugure l&#39;opération. Nous avons découvert ce site grâce à un commentaire de l&#39;utilisateur sur notre page facebook et avons été agréablement surpris par la qualité du travail réalisé par le Webmaster. Florian développeur E-monsite nous donne son avis :\r\n\r\nPoints forts :\r\n- Sobriété\r\n- Contenu clair\r\n- Menu fonctionnel\r\n- Header bien mis en avant\r\n- La petite intro dans le post-it\r\n- Footer clair\r\n\r\nEléments à améliorer :\r\n- Couleur des liens du menu\r\n- Le style des liens lorsque l&#39;on passe dessus\r\n\r\nConclusion :\r\nStyle propre et clair, il ne faut pas aller dans le bling-bling pour avoir un site de très très bonne qualité ! C&#39;est le genre de site qui donne envie de lire et d&#39;y passer un petit moment. Félicitation au webmaster !\r\n\r\nCet E-monsitien à vraiment mis à profit les outils pour créer un site internet facilement, nous espérons que ce site vous plaira aussi et qu&#39;il restera dans vos favoris si vous êtes intéressés par l&#39;actualité informatique. A vous de jouer maintenant, le prochain site du mercredi c&#39;est la semaine prochaine !\r\n\r\nEdito du 1er Avril 2010 pour ajouter la petite interview du site du Mercredi.\r\n\r\n1. Quand et Comment avez vous découvert E-monsite ?\r\n\r\nJ&#39;ai découvert E-monsite alors que je cherchais via Google un moyen de me créer un petit site web sympathique facilement. Je pense que c&#39;était il y a un peu moins d&#39;un an. J&#39;ai choisis E-monsite car cette plateforme m&#39;a tout de suite semblé sûre, fiable, fonctionnelle, et de qualité, et je n&#39;ai pas eu tord. J&#39;ai parfois même eu l&#39;occasion de tester d&#39;autres plateformes, sans succès.\r\n\r\n2. Quel niveau de développement web aviez vous au moment où vous avez créé Willside.net ?\r\n\r\nLorsque j&#39;ai créé WillSide.net, le mot \"HTML\" était pour moi totalement étranger de mon vocabulaire. Depuis le temps, il est incroyable de constater tout ce que j&#39;ai pu comprendre et apprendre concernant le développement web, et ce grandement grâce à E-monsite.\r\n\r\n3. Quels conseils pourriez vous donner aux personnes qui découvrent l&#39;outil ?\r\n\r\nPersonnellement, je conseille de vraiment essayer d&#39;exploiter toutes les possibilités de la plateforme. Au premier coup d&#39;oeil, on ne soupçonnerait même pas tout ce qu&#39;il est possible de réaliser. Pourtant, il suffit d&#39;un second coup d&#39;oeil plus approfondi et on se rends compte qu&#39;on va facilement très loin. Plus l&#39;on commence à maîtriser le html, le javascript, le css etc... plus l&#39;on va loin. E-monsite convient à tout le monde, que l&#39;on ait des connaissances ou non sur le développement web."
+        },
+        {
+            "item_id": "4f72bc7b1dab0000000081ca",
+            "title_fr": "Le site du Mercredi #4 ou comment créer un site internet avec E-monsite",
+            "content_fr": "Le 4ème site du Mercredi a été sélectionné, et même si c&#39;est le premier ce mois-ci, ce n&#39;est pas un poisson d&#39;avril !  C&#39;est  donc le site peggylurton.com, un site web consacré à l&#39;Art-thérapie qui a retenu notre attention cette semaine. Ici c&#39;est le design sobre et la bonne utilisation des outils de création de site qui ont fait la différence.\r\n\r\n\r\n\r\nPas besoin d&#39;être un crack en informatique pour créer un site internet, et Peggy nous le prouve, car c&#39;est à peine un mois après son inscription qu&#39;elle est arrivée à ce résultat : une vitrine efficace pour son activité, qui permet de trouver rapidement toutes les informations que ses visiteurs pourraient rechercher. C&#39;est Florian, Web-développeur E-monsite qui nous donne son avis d&#39;expert sur le travail du Webmaster du site du mercredi #4 : L&#39;art d&#39;être soi.\r\n\r\nPoints forts :\r\n\r\n- Style sobre et couleurs en harmonie (ce qui donne un côté reposant)\r\n- Bonne utilisation d&#39;un thème (et modifié de façon ingénieuse)\r\n- Menus légers contenant des informations pertinentes\r\n- Utilisation parfaite de l&#39;agenda (brève description qui force à aller voir le contenu détaillé)\r\n\r\nPoints à améliorer :\r\n\r\n- Il manque peut être un footer (pied de page) pour éviter une \"fin brutale\" de la page. Il permettrait notamment d&#39;ajouter d&#39;autres liens vers les pages de contenu (utile tant pour la navigation que pour le référencement).\r\n- Les polices différentes dans une même page (dans l&#39;agenda par exemple) qui sont sûrement dues à des copier-coller depuis un éditeur de texte logiciel.\r\n\r\nConclusion :\r\n\r\nUn site agréable à visiter avec du contenu clair et intéressant. Très bonne utilisation des outils mis à disposition par E-monsite. Un bel exemple de personne n&#39;ayant pas de connaissances en développement web et qui a construit un bien joli site avec les outils de personnalisation. Ses compétences graphiques l&#39;aident pour l&#39;harmonie du contenu et des couleurs. En bref, une belle réussite, bravo !\r\n\r\nLorsqu&#39;elle maîtrisera un peu plus les outils de création web, nul doute que le site de Peggy Lurton nous surprendra à nouveau, mais nous voyons ici que la sobriété du design et des contenus facilement accessibles et cohérents sont les premières clés pour réaliser un bon site internet. Je vous laisse découvrir les réponses de Peggy Lurton aux questions du Mercredi, en espérant que ces différents exemples de sites créés avec E-monsite.com vous encouragent et vous donnent des idées pour votre Site.\r\n\r\n1. Quand et Comment avez vous découvert E-monsite ?\r\n\r\nJ&#39;ai découvert  E-monsite il y a un mois environ en cherchant par hasard sur google comment faire un site simple et efficace. E-monsite faisait la différence par sa simplicité et sa convivialité.\r\n\r\n2. Quel niveau de développement web aviez vous au moment où vous avez créé votre site ?\r\n\r\nZéro au niveau du développement web ! Par contre, je suis graphiste et cela aide un peu.\r\n\r\n3. Quels conseils pourriez vous donner aux personnes qui découvrent l&#39;outil ?\r\n\r\nAllez-y les yeux fermés !!! On est vraiment pris en main et il y a toujours de l&#39;aide si on a des problèmes ou des doutes. La version pro est super ainsi que le nom de domaine (rapide en plus), je ne regrette pas !!! Petit à petit , le site s&#39;améliore, change, car c&#39;est très simple de le manipuler."
+        },
+        {
+            "item_id": "4f72bc7ad9a4000000003a06",
+            "title_fr": "Le site du Mercredi #3, ou comment créer un site internet avec E-monsite",
+            "content_fr": "Le traditionnel rendez-vous du mercredi est arrivé ! Installez vous dans votre fauteuil, chaise, canapé ou quel que soit l&#39;endroit où vous vous installez pour créer un site internet et suivre l&#39;évolution des outils e-monsite sur le blog, sur Facebook etc... C&#39;est le travail de Sylvie, webmaster du site Almahfrance.com, un site internet consacré à Almah un groupe de Métal brésilien, qui est mis en avant cette semaine.\r\n\r\n\r\n\r\nSite du groupe de Métal brésilien Almah\r\n\r\n\r\n\r\nLe Webmaster administre 4 sites au total, tous liés au groupe Almah, que ce soit le site du chanteur : Edu Falaschi ou les différents sites dédiés aux fans d&#39;Almah. Mais avant de laisser la parole à Tony qui nous donnera son avis d&#39;expert E-monsite sur ce site web, laissez moi vous parler des différentes nouveautés qui font leur apparition dans la rubrique cette semaine.\r\n\r\nTout d&#39;abord, une partie \"interview\" fait son apparition dans l&#39;article, elle est constituée des réponses donnés par le webmaster du site sélectionné à une série de 3 questions qui seront les mêmes chaque semaine.\r\n\r\nEnsuite, notre Web-designer en chef, Pascal, a réalisé un petit logo du site du Mercredi, que les webmasters peuvent intégrer sur leur site ( s&#39;ils le souhaitent bien sûr). Cela leur permettra par exemple de renvoyer directement vers l&#39;article ou une page de leur choix.\r\n\r\nEn sachant que parallèlement, nous réfléchissons à une autre manière de mettre en avant les sites sélectionnés sur le portail d&#39;E-monsite.com. Une autre façon de féliciter les webmasters pour leur travail et de leur apporter certainement une source de trafic non négligeable. C&#39;est donc le moment de contacter Jeremy et Benoît via le support en ligne pour demander comment créer un site internet, ou comment l&#39;améliorer.\r\n\r\nVoici donc l&#39;avis de Tony sur le site.\r\n\r\nPoints forts :\r\n\r\n- Design cohérent dans son ensemble entre les différents supports internet et visuels (pochettes etc...), en phase avec l&#39;identité du groupe.\r\n- Taille d&#39;écriture identique et styles d&#39;écriture cohérents sur toutes les pages :  contenu bien lisible\r\n- Contenu bien organisé (navigation sur plusieurs niveaux)\r\n- Pas de fioritures inutiles (gifs animés, bannières, effets javascript...)\r\n- Très bonne utilisation des fonctionnalités proposées par E-monsite \r\n\r\nPoints à améliorer :\r\n\r\n- Image d&#39;entête trop haute : sur une résolution 1024x768 on ne voit que l&#39;entête\r\n- Des images qui touchent le texte (vignettes sur la page biographies par exemple)\r\n- Liens internes et externes similaires : on ne sait pas quand on quitte le site\r\n- Agenda : le lien dans le menu en haut est une page, et le lien dans le menu du bas est le module agenda.\r\n- La page d&#39;introduction n&#39;est pas forcément nécessaire.\r\n\r\nConclusion\r\n\r\nLe site est graphiquement bien ficelé et est cohérent avec le graphisme du site officiel. Les points à améliorer sont l&#39;image d&#39;entête trop haute (494px de hauteur) qui peut perdre l&#39;internaute qui peut ne pas voir le contenu du site (par exemple après avoir cliqué sur la page d&#39;introduction, il peut penser être resté sur la même page étant donné que l&#39;image d&#39;intro et d&#39;entête sont identiques) et les liens vers les pages externes ne sont pas assez bien signalés (de même, par exemple, en s&#39;abonnant à la newsletter on atterrit, sans avoir été prévenu, sur un autre site). En conclusion, ce site utilise parfaitement les possibilités de E-monsite en matière de design et de gestion de contenu et ne nécessite que quelques petites améliorations mineures qui lui permettront d&#39;éviter de perdre les internautes.\r\n\r\nEncore bravo à Sylvie pour tout le travail réalisé, voici ses réponses aux trois questions du mercredi qui sont assez élogieuses et que l&#39;on pourrait presque utiliser telles quelles dans les futures plaquettes E-monsite ! Nous vous assurons que nous n&#39;avons exercé aucune menace à son encontre au moment où elle a tapé ces lignes... ;)\r\n\r\n1. Quand et Comment avez vous découvert E-monsite ?\r\n\r\nJ&#39;ai découvert E-monsite il y a un an et demi, en cherchant sur le web un moyen simple et efficace de créer un site pour un groupe de musique métal Brésilien, Almah. J&#39;ai essayé plusieurs interfaces, mais je trouve que celle d&#39;E-monsite est vraiment la meilleure et la plus conviviale aussi ! Le service est en plus génial : entre le forum d&#39;E-monsite et la hotline, on trouve toujours de l&#39;aide !\r\n\r\n\r\n2. Quel niveau de développement web aviez vous au moment où vous avez créé Almahfrance.com.\r\n\r\nAucun ... Je suis autodidacte, j&#39;essaye toujours d&#39;apprendre de nouvelles choses ! Je dois aussi avouer que je suis conseillée par mes frères qui sont des professionnels du web.\r\n\r\n\r\n3. Quels conseils pourriez vous donner aux personnes qui découvrent l&#39;outil ?\r\n\r\nL&#39;explorer au maximum ! E-monsite est pour moi un outil vraiment génial, car il s&#39;adapte à notre degré de connaissances web ! Au début, si l&#39;on ne s&#39;y connaît pas du tout, on peut choisir un design proposé par E-monsite et suivre tout simplement les instructions très claires, données pour créer son site ! Si on évolue et que l&#39;on commence à coder en HTML, à maîtriser le Javascript et que l&#39;on touche un peu au design, on peut améliorer son site de manière plus autonome ! E-monsite est très flexible de ce point de vue ! En plus, E-monsite propose régulièrement des nouveautés qui sont excellentes (comme par exemple la gestion avancée des menus verticaux etc ...). Et surtout, ne pas hésiter à poser des questions sur le forum d&#39;E-monsite : les membres de la communauté essaient toujours de donner des conseils, échangent leurs expériences, c&#39;est vraiment un moyen sympathique d&#39;apprendre ! Mon dernier conseil ... essayer la version Pro d&#39;E-monsite ! Elle offre de nombreuses possibilités et permet de faire de très beaux sites, sans pub !\r\n\r\nMerci Sylvie et bravo pour votre travail ! Avis aux E-monsitiens, n&#39;hésitez pas à laisser un commentaire ou à lui demander directement comment elle est arrivée à ce résultat."
+        },
+        {
+            "item_id": "4f72bc7a3a910000000051e0",
+            "title_fr": "Le site du Mercredi #2 ou comment créer un site internet avec E-monsite",
+            "content_fr": "Voilà donc le deuxième billet mettant en avant un internaute qui a utilisé E-monsite pour faire un site internet, et un beau s&#39;il vous plait ! Cette semaine c&#39;est le webmaster de fan-fortboyard.fr qui a été sélectionné. Nous espérons que vous aurez la même réaction que toute l&#39;équipe en surfant sur ce site dédié aux fans de fort Boyard.\r\n\r\n\r\n\r\nC&#39;est aussi bientôt une date anniversaire car le 28 mars, cela fera 4 ans jour pour jour que cet utilisateur utilise les outils E-monsite et c&#39;est aussi en 2006 qu&#39;il a choisi de créer un site professionnel. C&#39;est peut être ce qui explique sa maîtrise des outils, mais il vous suffit de suivre les conseils de nos deux génies du support, j&#39;ai nommé Jeremy et Benoît, ou encore d&#39;utiliser les nombreuses ressources en ligne pour améliorer votre site internet.\r\n\r\nCette semaine c&#39;est Nicolas qui travaille d&#39;arrache-pied pour concevoir et améliorer les outils pour créer une boutique en ligne qui a pour mission de donner son point de vue d&#39;expert en création de site. Voici ses commentaires:\r\n\r\nPoints forts :\r\n\r\n- Un site très fourni, qui donne une impression d&#39;abondance sans tomber dans l&#39;écueil du fouillis.\r\n- Un design homogène, pas bling-bling, sans fioritures graphiques et effets inutiles.\r\n- Une arborescence structurée, une mise en page claire et soignée.\r\n- Une utilisation raisonnée des menus verticaux.\r\n\r\nPoints à améliorer :\r\n\r\n- Beaucoup d&#39;erreurs de validation, dues à certaines balises HTML \"obsolètes\". Par exemple le cadre \"Dernière Minutes\" avec le texte qui défile.\r\n- Une page d&#39;accueil peut-être un peu trop dense.\r\n\r\nConclusion :\r\n\r\nUn sentiment de confiance se dégage de ce site dès l&#39;arrivée sur la page d&#39;accueil, sans doute grâce à une organisation réfléchie des éléments de contenu et de navigation, et à une utilisation parcimonieuse des potentiels graphiques offerts par la plateforme.\r\n\r\nIl est vrai que ce site inspire confiance et fait très pro, nul doute que c&#39;est une référence incontournable pour tous les amateurs de l&#39;émission télévisée. La constance que l&#39;on retrouve sur les sites professionnels, c&#39;est certes l&#39;implication du webmaster, mais aussi la sobriété et la non-profusion d&#39;éléments clignotants qui peuvent gêner la lecture du contenu et augmenter le temps de chargement de la page. Encore bravo au webmaster et à mercredi prochain pour la présentation du nouveau site réussi. N&#39;hésitez pas à donner votre avis sur le site !\r\n\r\nEdito du 1er avril pour ajouter la mini \"interview\" de Sebastien le webmaster de fan-frotboyard.fr.\r\n\r\n1. Quand et Comment avez vous découvert E-monsite ?\r\n\r\nEt bien j&#39;ai découvert E-Monsite il y a déjà 4 ans, début 2006 en cherchant simplement sur Google ! Après avoir fait le tour de plusieurs autres supports, c&#39;est E-Monsite qui a attiré mon attention. Je n&#39;ai donc pas hésité à m&#39;inscrire dans la foulée !\r\n\r\n2. Quel niveau de développement web aviez vous au moment où vous avez créé fan-fortboyard.fr\r\n\r\nEn fait, je ne connaissais rien ! Auparavant j&#39;avais eu des forums ou des blogs pour d&#39;autres passions que Fort Boyard, mais pas de site. En 2005, j&#39;ai donc ouvert un blog pour l&#39;été 2005 de Fort Boyard, mais j&#39;ai vite vu que ça ne pourrai pas continuer ainsi. J&#39;ai donc décidé de passer à l&#39;étape au-dessus en créant un site rapidement, sans pour autant me compliquer la vie.\r\n\r\n3. Quels conseils pourriez vous donner aux personnes qui découvrent l&#39;outil ?\r\n\r\nDe s&#39;inscrire de suite et de profiter de toutes les possibilités qu&#39;offrent E-Monsite. Tout est clair et toujours expliqué correctement, y a pas d&#39;informations cachées ou de mauvaises surprises.\r\nIl y a des nouveautés très souvent, on peut donc améliorer son site régulièrement, sans aucun effort. Je dirai aussi qu&#39;il ne faut pas avoir peur des tarifs pour la version Pro ou le nom de domaine, car quand on voit toutes les options et les avantages que ça apporte, cela vaut vraiment le coup.\r\nEt puis de toute façon dès qu&#39;un souci se présente ; entre la hotline, le forum ou le support en ligne, l&#39;équipe d&#39;E-monsite est toujours là pour aider !"
+        },
+        {
+            "item_id": "51a7164a0d666d16c1b08c67",
+            "title_fr": "Afficher l'agenda culturel d'un artiste, d'une ville ou d'un lieu sur son site Internet",
+            "content_fr": "En partenariat avec AgendaCulturel.fr, un des principaux sites d&#39;information culturelle en France, nous avons le plaisir de vous proposer un nouveau widget permettant d&#39;afficher l&#39;agenda culturel d&#39;un artiste, d&#39;une ville ou d&#39;un lieu de diffusion culturelle.\nLe widget Agenda Culturel\nCe widget permet donc d&#39;afficher les prochaines dates d&#39;événements culturels :\n\td&#39;une ville en France ; vous pourrez en plus définir un rayon en kilomètres pour élargir la recherche et choisir parmi les différentes catégories d&#39;événements celles à afficher : théâtre, concerts, arts du spectacle, danse, spectacles jeune public, festivals, expositions. Il est ainsi facile, par exemple, d&#39;afficher les concerts à Nantes en y incluant toutes les communes alentours !\n\td&#39;un artiste (groupe de musique, compagnie de théâtre...) ; petits ou gros artistes, la base de données d&#39;artistes d&#39;agendaculturel est très complète. Ainsi, par exemple, afficher les prochains concerts de C2C ou les spectacles de Gad Elmaleh sur son site web est possible !\n\td&#39;un lieu (théâtre, salle de concerts...) ; vous pourrez par exemple afficher la programmation de l&#39;Olympia ou du Zénith de Lille ! De plus, pour les lieux, vous pourrez choisir d&#39;afficher tous les événements du lieu ou seulement ceux des catégories souhaités (théâtre, concerts...)\nUn agenda culturel sur son site Internet, pour qui ?\n\tCe widget peut être utile pour la création de site de chambre d&#39;hôtes ou de gîtes, afin de proposer les prochains événements culturels à proximité de la location de vacances . \n\tIl peut être aussi utile pour créer un site de commune et y proposer l&#39;agenda de la ville facilement. \n\tIl peut être aussi utile dans le cadre de création de site de compagnie de théâtre, de groupe de musique ou pour tout type de site d&#39;artiste ; les artistes peuvent ainsi récupérer directement leur agenda depuis agenda culturel. Si leurs dates ne sont pas présentes sur AgendaCutlurel.fr, ils peuvent annoncer gratuitement leurs événements sur le site ; ainsi, ils font la promotion de leurs événements et n&#39;ont pas à les ressaisir sur leur site.\n\tEnfin, ce widget peut être utile à tout type de site souhaitant proposer une information culturelle localisée !\nComment intégrer le widget Agenda Culturel sur son site ?\nCe widget peut être inséré indifféremment sur une page ou dans un menu vertical. Il se trouve dans les Gadgets :\n\tSur les pages, dans une colonne vide, allez sur \"Autres widgets\".\n\tSur les menus, dans un menu vertical cliquez sur \"Ajouter un widget\".\nVous pourrez ensuite taper le nom d&#39;une ville, d&#39;un artiste ou d&#39;un lieu et choisir les réglages du widget.\nVous avez désormais un joli agenda culturel personnalisé sur votre site web !"
+        }
+    ],
+    "meta": {
+        "pagination": {
+            "total": 11,
+            "count": 5,
+            "per_page": 5,
+            "current_page": 1,
+            "total_pages": 3
+        }
+    }
+}
+```
+
+### HTTP Request
+`GET /api/searchUseCase/{searchUseCaseId}/search`
+
+`HEAD /api/searchUseCase/{searchUseCaseId}/search`
+
+#### Parameters
+
+Parameter | Type | Status | Description
+--------- | ------- | ------- | ------- | -----------
+    query_string | string |  required  | Minimum: `1`
+    i18n_lang_id | string |  optional  | Maximum: `30` Valid i18n_lang id
+    page | integer |  optional  | 
+    limit | integer |  optional  | 
+
+<!-- END_4b5e9ae73571f33c511b43a1f61a4ec0 -->
+
+#SearchUseCaseField
+<!-- START_e7515d6903905405d52dd827faca1ad3 -->
+## Get specified search use case field
+
+> Example request:
+
+```bash
+curl -X GET "https://emsearch.ryan.ems-dev.net/api/searchUseCaseField/dc5bfd4c-711e-11e7-8cf7-a6006ad3dba0,36116fa6-5c0d-11e7-907b-a6006ad3dba0" \
+-H "Accept: application/json" \
+-H "Authentication: Bearer xxx"
+
+```
+
+```javascript
+var settings = {
+    "async": true,
+    "crossDomain": true,
+    "url": "https://emsearch.ryan.ems-dev.net/api/searchUseCaseField/dc5bfd4c-711e-11e7-8cf7-a6006ad3dba0,36116fa6-5c0d-11e7-907b-a6006ad3dba0",
+    "method": "GET",
+    "headers": {
+        "Accept": "application/json",
+        "Authentication" : "Bearer xxx"
+    }
+}
+
+$.ajax(settings).done(function (response) {
+    console.log(response);
+});
+```
+
+> Example response:
+
+```json
+{
+    "data": {
+        "search_use_case_id": "dc5bfd4c-711e-11e7-8cf7-a6006ad3dba0",
+        "data_stream_field_id": "36116fa6-5c0d-11e7-907b-a6006ad3dba0",
+        "name": "title",
+        "searchable": "1",
+        "to_retrieve": "1",
+        "created_at": "2017-08-07 13:27:07",
+        "updated_at": "2017-08-07 13:27:07"
+    }
+}
+```
+
+### HTTP Request
+`GET /api/searchUseCaseField/{searchUseCaseId},{dataStreamFieldId}`
+
+`HEAD /api/searchUseCaseField/{searchUseCaseId},{dataStreamFieldId}`
+
+
+<!-- END_e7515d6903905405d52dd827faca1ad3 -->
+
+<!-- START_8914a823c5cd0a8548590dd616ec14f8 -->
+## Create and store new search use case field
+
+> Example request:
+
+```bash
+curl -X POST "https://emsearch.ryan.ems-dev.net/api/searchUseCaseField" \
+-H "Accept: application/json" \
+-H "Authentication: Bearer xxx"
+ \
+    -d "search_use_case_id"="dbe31dff-f92f-3b88-9f30-a586f6a50f11" \
+    -d "data_stream_field_id"="20bf291d-98f6-38d2-bfd3-3275bde6f791" \
+    -d "name"="Corrupti ipsa dolores" \
+    -d "searchable"="1" \
+    -d "to_retrieve"="1" \
+
+```
+
+```javascript
+var settings = {
+    "async": true,
+    "crossDomain": true,
+    "url": "https://emsearch.ryan.ems-dev.net/api/searchUseCaseField",
+    "method": "POST",
+    "data": {
+        "search_use_case_id": "dbe31dff-f92f-3b88-9f30-a586f6a50f11",
+        "data_stream_field_id": "20bf291d-98f6-38d2-bfd3-3275bde6f791",
+        "name": "Corrupti ipsa dolores",
+        "searchable": true,
+        "to_retrieve": true
+},
+    "headers": {
+        "Accept": "application/json",
+        "Authentication" : "Bearer xxx"
+    }
+}
+
+$.ajax(settings).done(function (response) {
+    console.log(response);
+});
+```
+
+
+### HTTP Request
+`POST /api/searchUseCaseField`
+
+#### Parameters
+
+Parameter | Type | Status | Description
+--------- | ------- | ------- | ------- | -----------
+    search_use_case_id | string |  required  | UUID Valid search_use_case id
+    data_stream_field_id | string |  required  | UUID Valid data_stream_field id
+    name | string |  required  | Minimum: `1` Maximum: `200`
+    searchable | boolean |  required  | 
+    to_retrieve | boolean |  required  | 
+
+<!-- END_8914a823c5cd0a8548590dd616ec14f8 -->
+
+<!-- START_a12d8c1d71593d39d1691dd3f83888be -->
+## Update a specified search use case field
+
+> Example request:
+
+```bash
+curl -X PUT "https://emsearch.ryan.ems-dev.net/api/searchUseCaseField/dc5bfd4c-711e-11e7-8cf7-a6006ad3dba0,36116fa6-5c0d-11e7-907b-a6006ad3dba0" \
+-H "Accept: application/json" \
+-H "Authentication: Bearer xxx"
+ \
+    -d "search_use_case_id"="f4776274-6913-3c45-bc1f-78f8ab1eb3f1" \
+    -d "data_stream_field_id"="b355aa34-4bd4-3d4a-9fcb-d5cd32158b12" \
+    -d "name"="Praesentium ullam id" \
+    -d "searchable"="1" \
+    -d "to_retrieve"="1" \
+
+```
+
+```javascript
+var settings = {
+    "async": true,
+    "crossDomain": true,
+    "url": "https://emsearch.ryan.ems-dev.net/api/searchUseCaseField/dc5bfd4c-711e-11e7-8cf7-a6006ad3dba0,36116fa6-5c0d-11e7-907b-a6006ad3dba0",
+    "method": "PUT",
+    "data": {
+        "search_use_case_id": "f4776274-6913-3c45-bc1f-78f8ab1eb3f1",
+        "data_stream_field_id": "b355aa34-4bd4-3d4a-9fcb-d5cd32158b12",
+        "name": "Praesentium ullam id",
+        "searchable": true,
+        "to_retrieve": true
+},
+    "headers": {
+        "Accept": "application/json",
+        "Authentication" : "Bearer xxx"
+    }
+}
+
+$.ajax(settings).done(function (response) {
+    console.log(response);
+});
+```
+
+
+### HTTP Request
+`PUT /api/searchUseCaseField/{searchUseCaseId},{dataStreamFieldId}`
+
+`PATCH /api/searchUseCaseField/{searchUseCaseId},{dataStreamFieldId}`
+
+#### Parameters
+
+Parameter | Type | Status | Description
+--------- | ------- | ------- | ------- | -----------
+    search_use_case_id | string |  required  | UUID Valid search_use_case id
+    data_stream_field_id | string |  required  | UUID Valid data_stream_field id
+    name | string |  required  | Minimum: `1` Maximum: `200`
+    searchable | boolean |  required  | 
+    to_retrieve | boolean |  required  | 
+
+<!-- END_a12d8c1d71593d39d1691dd3f83888be -->
+
+<!-- START_f5b1f12e424f832740a0b7cda38ed9b5 -->
+## Delete specified search use case field
+
+> Example request:
+
+```bash
+curl -X DELETE "https://emsearch.ryan.ems-dev.net/api/searchUseCaseField/dc5bfd4c-711e-11e7-8cf7-a6006ad3dba0,36116fa6-5c0d-11e7-907b-a6006ad3dba0" \
+-H "Accept: application/json" \
+-H "Authentication: Bearer xxx"
+
+```
+
+```javascript
+var settings = {
+    "async": true,
+    "crossDomain": true,
+    "url": "https://emsearch.ryan.ems-dev.net/api/searchUseCaseField/dc5bfd4c-711e-11e7-8cf7-a6006ad3dba0,36116fa6-5c0d-11e7-907b-a6006ad3dba0",
+    "method": "DELETE",
+    "headers": {
+        "Accept": "application/json",
+        "Authentication" : "Bearer xxx"
+    }
+}
+
+$.ajax(settings).done(function (response) {
+    console.log(response);
+});
+```
+
+
+### HTTP Request
+`DELETE /api/searchUseCaseField/{searchUseCaseId},{dataStreamFieldId}`
+
+
+<!-- END_f5b1f12e424f832740a0b7cda38ed9b5 -->
+
+<!-- START_45565b55352b2e882c2dd42eedec0caa -->
+## Search use case search use case fields list
+
+
+<aside class="notice">Pagination limit must be a value between <code>1</code> and <code>50</code>, default is <code>10</code>.</aside>
+
+> Example request:
+
+```bash
+curl -X GET "https://emsearch.ryan.ems-dev.net/api/searchUseCase/dc5bfd4c-711e-11e7-8cf7-a6006ad3dba0/searchUseCaseField" \
+-H "Accept: application/json" \
+-H "Authentication: Bearer xxx"
+
+```
+
+```javascript
+var settings = {
+    "async": true,
+    "crossDomain": true,
+    "url": "https://emsearch.ryan.ems-dev.net/api/searchUseCase/dc5bfd4c-711e-11e7-8cf7-a6006ad3dba0/searchUseCaseField",
+    "method": "GET",
+    "headers": {
+        "Accept": "application/json",
+        "Authentication" : "Bearer xxx"
+    }
+}
+
+$.ajax(settings).done(function (response) {
+    console.log(response);
+});
+```
+
+> Example response:
+
+```json
+{
+    "data": [
+        {
+            "search_use_case_id": "dc5bfd4c-711e-11e7-8cf7-a6006ad3dba0",
+            "data_stream_field_id": "36116fa6-5c0d-11e7-907b-a6006ad3dba0",
+            "name": "title",
+            "searchable": "1",
+            "to_retrieve": "1",
+            "created_at": "2017-08-07 13:27:07",
+            "updated_at": "2017-08-07 13:27:07"
+        },
+        {
+            "search_use_case_id": "dc5bfd4c-711e-11e7-8cf7-a6006ad3dba0",
+            "data_stream_field_id": "36117334-5c0d-11e7-907b-a6006ad3dba0",
+            "name": "content",
+            "searchable": "0",
+            "to_retrieve": "1",
+            "created_at": "2017-08-07 13:27:07",
+            "updated_at": "2017-08-07 13:27:07"
+        }
+    ],
+    "meta": {
+        "pagination": {
+            "total": 2,
+            "count": 2,
+            "per_page": 10,
+            "current_page": 1,
+            "total_pages": 1,
+            "links": []
+        }
+    }
+}
+```
+
+### HTTP Request
+`GET /api/searchUseCase/{searchUseCaseId}/searchUseCaseField`
+
+`HEAD /api/searchUseCase/{searchUseCaseId}/searchUseCaseField`
+
+
+<!-- END_45565b55352b2e882c2dd42eedec0caa -->
+
+#SearchUseCasePreset
+<!-- START_66c2dac2b73afb901f892e71bf96b0ac -->
+## Show search use case preset list
+
+
+<aside class="notice">Pagination limit must be a value between <code>1</code> and <code>50</code>, default is <code>10</code>.</aside>
+
+> Example request:
+
+```bash
+curl -X GET "https://emsearch.ryan.ems-dev.net/api/searchUseCasePreset" \
+-H "Accept: application/json" \
+-H "Authentication: Bearer xxx"
+
+```
+
+```javascript
+var settings = {
+    "async": true,
+    "crossDomain": true,
+    "url": "https://emsearch.ryan.ems-dev.net/api/searchUseCasePreset",
+    "method": "GET",
+    "headers": {
+        "Accept": "application/json",
+        "Authentication" : "Bearer xxx"
+    }
+}
+
+$.ajax(settings).done(function (response) {
+    console.log(response);
+});
+```
+
+> Example response:
+
+```json
+{
+    "data": [
+        {
+            "id": "516f0252-7767-11e7-b5a5-be2e44b06b34",
+            "data_stream_preset_id": "737441b0-57ea-11e7-907b-a6006ad3dba0",
+            "name": "E-monsite | Blog - Summary",
+            "created_at": "2017-08-07 13:27:07",
+            "updated_at": "2017-08-07 13:27:07",
+            "search_use_case_preset_fields_count": 3
+        },
+        {
+            "id": "d3c73a6c-7767-11e7-b5a5-be2e44b06b34",
+            "data_stream_preset_id": "737441b0-57ea-11e7-907b-a6006ad3dba0",
+            "name": "E-monsite | Blog - Photo",
+            "created_at": "2017-08-07 13:27:07",
+            "updated_at": "2017-08-07 13:27:07",
+            "search_use_case_preset_fields_count": 2
+        }
+    ],
+    "meta": {
+        "pagination": {
+            "total": 2,
+            "count": 2,
+            "per_page": 10,
+            "current_page": 1,
+            "total_pages": 1,
+            "links": []
+        }
+    }
+}
+```
+
+### HTTP Request
+`GET /api/searchUseCasePreset`
+
+`HEAD /api/searchUseCasePreset`
+
+
+<!-- END_66c2dac2b73afb901f892e71bf96b0ac -->
+
+<!-- START_8ebcce24204dfb4e69f2beb73bdda1e9 -->
+## Get specified search use case preset
+
+> Example request:
+
+```bash
+curl -X GET "https://emsearch.ryan.ems-dev.net/api/searchUseCasePreset/516f0252-7767-11e7-b5a5-be2e44b06b34" \
+-H "Accept: application/json" \
+-H "Authentication: Bearer xxx"
+
+```
+
+```javascript
+var settings = {
+    "async": true,
+    "crossDomain": true,
+    "url": "https://emsearch.ryan.ems-dev.net/api/searchUseCasePreset/516f0252-7767-11e7-b5a5-be2e44b06b34",
+    "method": "GET",
+    "headers": {
+        "Accept": "application/json",
+        "Authentication" : "Bearer xxx"
+    }
+}
+
+$.ajax(settings).done(function (response) {
+    console.log(response);
+});
+```
+
+> Example response:
+
+```json
+{
+    "data": {
+        "id": "516f0252-7767-11e7-b5a5-be2e44b06b34",
+        "data_stream_preset_id": "737441b0-57ea-11e7-907b-a6006ad3dba0",
+        "name": "E-monsite | Blog - Summary",
+        "created_at": "2017-08-07 13:27:07",
+        "updated_at": "2017-08-07 13:27:07",
+        "search_use_case_preset_fields_count": 3
+    }
+}
+```
+
+### HTTP Request
+`GET /api/searchUseCasePreset/{searchUseCasePresetId}`
+
+`HEAD /api/searchUseCasePreset/{searchUseCasePresetId}`
+
+
+<!-- END_8ebcce24204dfb4e69f2beb73bdda1e9 -->
+
+<!-- START_bc098d76633b8ac3afdd6c0c2a85b443 -->
+## Data stream preset search use case preset list
+
+
+<aside class="notice">Pagination limit must be a value between <code>1</code> and <code>50</code>, default is <code>10</code>.</aside>
+
+> Example request:
+
+```bash
+curl -X GET "https://emsearch.ryan.ems-dev.net/api/dataStreamPreset/737441b0-57ea-11e7-907b-a6006ad3dba0/searchUseCasePreset" \
+-H "Accept: application/json" \
+-H "Authentication: Bearer xxx"
+
+```
+
+```javascript
+var settings = {
+    "async": true,
+    "crossDomain": true,
+    "url": "https://emsearch.ryan.ems-dev.net/api/dataStreamPreset/737441b0-57ea-11e7-907b-a6006ad3dba0/searchUseCasePreset",
+    "method": "GET",
+    "headers": {
+        "Accept": "application/json",
+        "Authentication" : "Bearer xxx"
+    }
+}
+
+$.ajax(settings).done(function (response) {
+    console.log(response);
+});
+```
+
+> Example response:
+
+```json
+{
+    "data": [
+        {
+            "id": "516f0252-7767-11e7-b5a5-be2e44b06b34",
+            "data_stream_preset_id": "737441b0-57ea-11e7-907b-a6006ad3dba0",
+            "name": "E-monsite | Blog - Summary",
+            "created_at": "2017-08-07 13:27:07",
+            "updated_at": "2017-08-07 13:27:07",
+            "search_use_case_preset_fields_count": 0
+        },
+        {
+            "id": "d3c73a6c-7767-11e7-b5a5-be2e44b06b34",
+            "data_stream_preset_id": "737441b0-57ea-11e7-907b-a6006ad3dba0",
+            "name": "E-monsite | Blog - Photo",
+            "created_at": "2017-08-07 13:27:07",
+            "updated_at": "2017-08-07 13:27:07",
+            "search_use_case_preset_fields_count": 0
+        }
+    ],
+    "meta": {
+        "pagination": {
+            "total": 2,
+            "count": 2,
+            "per_page": 10,
+            "current_page": 1,
+            "total_pages": 1,
+            "links": []
+        }
+    }
+}
+```
+
+### HTTP Request
+`GET /api/dataStreamPreset/{dataStreamPresetId}/searchUseCasePreset`
+
+`HEAD /api/dataStreamPreset/{dataStreamPresetId}/searchUseCasePreset`
+
+
+<!-- END_bc098d76633b8ac3afdd6c0c2a85b443 -->
+
+#SearchUseCasePresetField
+<!-- START_7c4b231376235131e97a5bffc85481f6 -->
+## Show search use case preset field list
+
+
+<aside class="notice">Pagination limit must be a value between <code>1</code> and <code>50</code>, default is <code>10</code>.</aside>
+
+> Example request:
+
+```bash
+curl -X GET "https://emsearch.ryan.ems-dev.net/api/searchUseCasePresetField" \
+-H "Accept: application/json" \
+-H "Authentication: Bearer xxx"
+
+```
+
+```javascript
+var settings = {
+    "async": true,
+    "crossDomain": true,
+    "url": "https://emsearch.ryan.ems-dev.net/api/searchUseCasePresetField",
+    "method": "GET",
+    "headers": {
+        "Accept": "application/json",
+        "Authentication" : "Bearer xxx"
+    }
+}
+
+$.ajax(settings).done(function (response) {
+    console.log(response);
+});
+```
+
+> Example response:
+
+```json
+{
+    "data": [
+        {
+            "search_use_case_preset_id": "516f0252-7767-11e7-b5a5-be2e44b06b34",
+            "data_stream_preset_field_id": "eb9cb642-5bf3-11e7-907b-a6006ad3dba0",
+            "name": "title",
+            "searchable": "1",
+            "to_retrieve": "1",
+            "created_at": "2017-08-07 13:27:07",
+            "updated_at": "2017-08-07 13:27:07"
+        },
+        {
+            "search_use_case_preset_id": "516f0252-7767-11e7-b5a5-be2e44b06b34",
+            "data_stream_preset_field_id": "eb9cc4ca-5bf3-11e7-907b-a6006ad3dba0",
+            "name": "tags",
+            "searchable": "1",
+            "to_retrieve": "1",
+            "created_at": "2017-08-07 13:27:07",
+            "updated_at": "2017-08-07 13:27:07"
+        },
+        {
+            "search_use_case_preset_id": "516f0252-7767-11e7-b5a5-be2e44b06b34",
+            "data_stream_preset_field_id": "eb9cc7c2-5bf3-11e7-907b-a6006ad3dba0",
+            "name": "url",
+            "searchable": "0",
+            "to_retrieve": "1",
+            "created_at": "2017-08-07 13:27:07",
+            "updated_at": "2017-08-07 13:27:07"
+        },
+        {
+            "search_use_case_preset_id": "d3c73a6c-7767-11e7-b5a5-be2e44b06b34",
+            "data_stream_preset_field_id": "eb9cb642-5bf3-11e7-907b-a6006ad3dba0",
+            "name": "title",
+            "searchable": "1",
+            "to_retrieve": "1",
+            "created_at": "2017-08-07 13:27:07",
+            "updated_at": "2017-08-07 13:27:07"
+        },
+        {
+            "search_use_case_preset_id": "d3c73a6c-7767-11e7-b5a5-be2e44b06b34",
+            "data_stream_preset_field_id": "eb9cc92a-5bf3-11e7-907b-a6006ad3dba0",
+            "name": "image_url",
+            "searchable": "0",
+            "to_retrieve": "1",
+            "created_at": "2017-08-07 13:27:07",
+            "updated_at": "2017-08-07 13:27:07"
+        }
+    ],
+    "meta": {
+        "pagination": {
+            "total": 5,
+            "count": 5,
+            "per_page": 10,
+            "current_page": 1,
+            "total_pages": 1,
+            "links": []
+        }
+    }
+}
+```
+
+### HTTP Request
+`GET /api/searchUseCasePresetField`
+
+`HEAD /api/searchUseCasePresetField`
+
+
+<!-- END_7c4b231376235131e97a5bffc85481f6 -->
+
+<!-- START_6814d4579253211626d4f9e34d697b18 -->
+## Get specified search use case preset field
+
+> Example request:
+
+```bash
+curl -X GET "https://emsearch.ryan.ems-dev.net/api/searchUseCasePresetField/516f0252-7767-11e7-b5a5-be2e44b06b34,eb9cb642-5bf3-11e7-907b-a6006ad3dba0" \
+-H "Accept: application/json" \
+-H "Authentication: Bearer xxx"
+
+```
+
+```javascript
+var settings = {
+    "async": true,
+    "crossDomain": true,
+    "url": "https://emsearch.ryan.ems-dev.net/api/searchUseCasePresetField/516f0252-7767-11e7-b5a5-be2e44b06b34,eb9cb642-5bf3-11e7-907b-a6006ad3dba0",
+    "method": "GET",
+    "headers": {
+        "Accept": "application/json",
+        "Authentication" : "Bearer xxx"
+    }
+}
+
+$.ajax(settings).done(function (response) {
+    console.log(response);
+});
+```
+
+> Example response:
+
+```json
+{
+    "data": {
+        "search_use_case_preset_id": "516f0252-7767-11e7-b5a5-be2e44b06b34",
+        "data_stream_preset_field_id": "eb9cb642-5bf3-11e7-907b-a6006ad3dba0",
+        "name": "title",
+        "searchable": "1",
+        "to_retrieve": "1",
+        "created_at": "2017-08-07 13:27:07",
+        "updated_at": "2017-08-07 13:27:07"
+    }
+}
+```
+
+### HTTP Request
+`GET /api/searchUseCasePresetField/{searchUseCasePresetId},{dataStreamPresetFieldId}`
+
+`HEAD /api/searchUseCasePresetField/{searchUseCasePresetId},{dataStreamPresetFieldId}`
+
+
+<!-- END_6814d4579253211626d4f9e34d697b18 -->
+
+<!-- START_4e87a3c1dcd147706d05b545269985b2 -->
+## Search use case preset search use case preset fields list
+
+
+<aside class="notice">Pagination limit must be a value between <code>1</code> and <code>50</code>, default is <code>10</code>.</aside>
+
+> Example request:
+
+```bash
+curl -X GET "https://emsearch.ryan.ems-dev.net/api/searchUseCasePreset/516f0252-7767-11e7-b5a5-be2e44b06b34/searchUseCasePresetField" \
+-H "Accept: application/json" \
+-H "Authentication: Bearer xxx"
+
+```
+
+```javascript
+var settings = {
+    "async": true,
+    "crossDomain": true,
+    "url": "https://emsearch.ryan.ems-dev.net/api/searchUseCasePreset/516f0252-7767-11e7-b5a5-be2e44b06b34/searchUseCasePresetField",
+    "method": "GET",
+    "headers": {
+        "Accept": "application/json",
+        "Authentication" : "Bearer xxx"
+    }
+}
+
+$.ajax(settings).done(function (response) {
+    console.log(response);
+});
+```
+
+> Example response:
+
+```json
+{
+    "data": [
+        {
+            "search_use_case_preset_id": "516f0252-7767-11e7-b5a5-be2e44b06b34",
+            "data_stream_preset_field_id": "eb9cb642-5bf3-11e7-907b-a6006ad3dba0",
+            "name": "title",
+            "searchable": "1",
+            "to_retrieve": "1",
+            "created_at": "2017-08-07 13:27:07",
+            "updated_at": "2017-08-07 13:27:07"
+        },
+        {
+            "search_use_case_preset_id": "516f0252-7767-11e7-b5a5-be2e44b06b34",
+            "data_stream_preset_field_id": "eb9cc4ca-5bf3-11e7-907b-a6006ad3dba0",
+            "name": "tags",
+            "searchable": "1",
+            "to_retrieve": "1",
+            "created_at": "2017-08-07 13:27:07",
+            "updated_at": "2017-08-07 13:27:07"
+        },
+        {
+            "search_use_case_preset_id": "516f0252-7767-11e7-b5a5-be2e44b06b34",
+            "data_stream_preset_field_id": "eb9cc7c2-5bf3-11e7-907b-a6006ad3dba0",
+            "name": "url",
+            "searchable": "0",
+            "to_retrieve": "1",
+            "created_at": "2017-08-07 13:27:07",
+            "updated_at": "2017-08-07 13:27:07"
+        }
+    ],
+    "meta": {
+        "pagination": {
+            "total": 3,
+            "count": 3,
+            "per_page": 10,
+            "current_page": 1,
+            "total_pages": 1,
+            "links": []
+        }
+    }
+}
+```
+
+### HTTP Request
+`GET /api/searchUseCasePreset/{searchUseCasePresetId}/searchUseCasePresetField`
+
+`HEAD /api/searchUseCasePreset/{searchUseCasePresetId}/searchUseCasePresetField`
+
+
+<!-- END_4e87a3c1dcd147706d05b545269985b2 -->
+
 #SyncItem
 <!-- START_6dc95e6a9c747452ea9b21a9e5cbcbee -->
 ## Project sync item list
@@ -1115,88 +2191,15 @@ $.ajax(settings).done(function (response) {
 
 ```json
 {
-    "data": [
-        {
-            "item_id": "4f72bc631fdb000000005224",
-            "project_id": "1bcc7efc-138c-11e7-93ae-92361f002671",
-            "item_signature": "80bce7901713e6ce067b458b3cd6fedc",
-            "created_at": "2017-07-28 10:22:46",
-            "updated_at": "2017-07-28 10:22:46"
-        },
-        {
-            "item_id": "4f72bc63f307000000002fc7",
-            "project_id": "1bcc7efc-138c-11e7-93ae-92361f002671",
-            "item_signature": "a105ea325f43bed324be09412d9c84a6",
-            "created_at": "2017-07-28 10:22:46",
-            "updated_at": "2017-07-28 10:22:46"
-        },
-        {
-            "item_id": "4f72bc640e6800000000aa73",
-            "project_id": "1bcc7efc-138c-11e7-93ae-92361f002671",
-            "item_signature": "6b72932de7dda8f1dc8cd643364893e1",
-            "created_at": "2017-07-28 10:22:46",
-            "updated_at": "2017-07-28 10:22:46"
-        },
-        {
-            "item_id": "4f72bc641f5f00000000ab92",
-            "project_id": "1bcc7efc-138c-11e7-93ae-92361f002671",
-            "item_signature": "2832ee61c4da00a50b1b40088b8b5f1e",
-            "created_at": "2017-07-28 10:22:46",
-            "updated_at": "2017-07-28 10:22:46"
-        },
-        {
-            "item_id": "4f72bc643160000000000cea",
-            "project_id": "1bcc7efc-138c-11e7-93ae-92361f002671",
-            "item_signature": "1e66e961fe69f7b35c230ce0be26e869",
-            "created_at": "2017-07-28 10:22:46",
-            "updated_at": "2017-07-28 10:22:46"
-        },
-        {
-            "item_id": "4f72bc6afc5000000000fe1f",
-            "project_id": "1bcc7efc-138c-11e7-93ae-92361f002671",
-            "item_signature": "7c28d4099ac14c9726c6115766ae0a77",
-            "created_at": "2017-07-28 10:22:46",
-            "updated_at": "2017-07-28 10:22:46"
-        },
-        {
-            "item_id": "4f72bc6b00ce00000000c233",
-            "project_id": "1bcc7efc-138c-11e7-93ae-92361f002671",
-            "item_signature": "7218e40ac31ebc2b480391dd6b33fe33",
-            "created_at": "2017-07-28 10:22:46",
-            "updated_at": "2017-07-28 10:22:46"
-        },
-        {
-            "item_id": "4f72bc6b2303000000002949",
-            "project_id": "1bcc7efc-138c-11e7-93ae-92361f002671",
-            "item_signature": "5d3a4ec490d42fef155d4576f96a8f3d",
-            "created_at": "2017-07-28 10:22:46",
-            "updated_at": "2017-07-28 10:22:46"
-        },
-        {
-            "item_id": "4f72bc6b3d3e000000006ca1",
-            "project_id": "1bcc7efc-138c-11e7-93ae-92361f002671",
-            "item_signature": "85180bc33703520dff63edd261052370",
-            "created_at": "2017-07-28 10:22:46",
-            "updated_at": "2017-07-28 10:22:46"
-        },
-        {
-            "item_id": "4f72bc6b4914000000008380",
-            "project_id": "1bcc7efc-138c-11e7-93ae-92361f002671",
-            "item_signature": "48e0e365ef7463b0ef9b12a7195f89aa",
-            "created_at": "2017-07-28 10:22:46",
-            "updated_at": "2017-07-28 10:22:46"
-        }
-    ],
+    "data": [],
     "meta": {
         "pagination": {
-            "total": 733,
-            "count": 10,
+            "total": 0,
+            "count": 0,
             "per_page": 10,
             "current_page": 1,
-            "total_pages": 74,
-            "links": {
-                "next": "https:\/\/emsearch.ryan.ems-dev.net\/api\/project\/1bcc7efc-138c-11e7-93ae-92361f002671\/syncItem?page=2"
-            }
+            "total_pages": 0,
+            "links": []
         }
     }
 }
@@ -1249,75 +2252,23 @@ $.ajax(settings).done(function (response) {
 {
     "data": [
         {
-            "id": "44fa8d59-dd24-4729-99ef-dfa8186ce509",
-            "sync_task_id": "8dbfd6e6-2055-11e7-93ae-92361f002671",
-            "sync_task_type_id": "DataStreamDownload",
-            "sync_task_status_id": "Complete",
-            "created_by_user_id": null,
-            "project_id": "1bcc7efc-138c-11e7-93ae-92361f002671",
-            "planned_at": null,
-            "created_at": "2017-07-28 10:22:32",
-            "updated_at": "2017-07-28 10:22:44",
-            "sync_task_logs_count": 4,
-            "children_sync_tasks_count": 0
-        },
-        {
-            "id": "4a9cebba-478f-454a-b295-1d4cde08b612",
-            "sync_task_id": "8dbfd6e6-2055-11e7-93ae-92361f002671",
-            "sync_task_type_id": "DataStreamPrepare",
-            "sync_task_status_id": "Complete",
-            "created_by_user_id": null,
-            "project_id": "1bcc7efc-138c-11e7-93ae-92361f002671",
-            "planned_at": null,
-            "created_at": "2017-07-28 10:22:44",
-            "updated_at": "2017-07-28 10:22:45",
-            "sync_task_logs_count": 9,
-            "children_sync_tasks_count": 0
-        },
-        {
-            "id": "63cd40b8-bb04-443b-a5aa-fe85e33aa6ff",
-            "sync_task_id": "8dbfd6e6-2055-11e7-93ae-92361f002671",
-            "sync_task_type_id": "DataStreamCheck",
-            "sync_task_status_id": "Complete",
-            "created_by_user_id": null,
-            "project_id": "1bcc7efc-138c-11e7-93ae-92361f002671",
-            "planned_at": null,
-            "created_at": "2017-07-28 10:22:44",
-            "updated_at": "2017-07-28 10:22:44",
-            "sync_task_logs_count": 3,
-            "children_sync_tasks_count": 0
-        },
-        {
             "id": "8dbfd6e6-2055-11e7-93ae-92361f002671",
             "sync_task_id": null,
             "sync_task_type_id": "Main",
-            "sync_task_status_id": "Complete",
+            "sync_task_status_id": "Planned",
             "created_by_user_id": "605c7610-1389-11e7-93ae-92361f002671",
             "project_id": "1bcc7efc-138c-11e7-93ae-92361f002671",
-            "planned_at": "2017-07-28 10:20:27",
-            "created_at": "2017-07-28 10:10:27",
-            "updated_at": "2017-07-28 10:22:48",
-            "sync_task_logs_count": 3,
-            "children_sync_tasks_count": 4
-        },
-        {
-            "id": "db965a8b-9d95-4a89-9a79-dee1c62cd1e3",
-            "sync_task_id": "8dbfd6e6-2055-11e7-93ae-92361f002671",
-            "sync_task_type_id": "ItemsInsertion",
-            "sync_task_status_id": "Complete",
-            "created_by_user_id": null,
-            "project_id": "1bcc7efc-138c-11e7-93ae-92361f002671",
-            "planned_at": null,
-            "created_at": "2017-07-28 10:22:44",
-            "updated_at": "2017-07-28 10:22:47",
-            "sync_task_logs_count": 7,
+            "planned_at": "2017-08-07 13:37:07",
+            "created_at": "2017-08-07 13:27:07",
+            "updated_at": "2017-08-07 13:27:07",
+            "sync_task_logs_count": 1,
             "children_sync_tasks_count": 0
         }
     ],
     "meta": {
         "pagination": {
-            "total": 5,
-            "count": 5,
+            "total": 1,
+            "count": 1,
             "per_page": 10,
             "current_page": 1,
             "total_pages": 1,
@@ -1379,37 +2330,19 @@ $.ajax(settings).done(function (response) {
 {
     "data": [
         {
-            "id": "53dd5304-4dac-4ca2-8ae7-c7c90f852f58",
-            "sync_task_status_id": "InProgress",
-            "sync_task_id": "8dbfd6e6-2055-11e7-93ae-92361f002671",
-            "entry": "Sync. task started",
-            "public": true,
-            "created_at": "2017-07-28 10:22:32",
-            "updated_at": "2017-07-28 10:22:32"
-        },
-        {
             "id": "bfbf48da-210d-11e7-93ae-92361f002671",
             "sync_task_status_id": "Planned",
             "sync_task_id": "8dbfd6e6-2055-11e7-93ae-92361f002671",
             "entry": "Synchronization planned.",
             "public": true,
-            "created_at": "2017-07-28 10:10:27",
-            "updated_at": "2017-07-28 10:10:27"
-        },
-        {
-            "id": "c0d3f8ae-740f-42f4-8c90-8f1546b0ded9",
-            "sync_task_status_id": "Complete",
-            "sync_task_id": "8dbfd6e6-2055-11e7-93ae-92361f002671",
-            "entry": "Sync. task complete",
-            "public": true,
-            "created_at": "2017-07-28 10:22:48",
-            "updated_at": "2017-07-28 10:22:48"
+            "created_at": "2017-08-07 13:27:07",
+            "updated_at": "2017-08-07 13:27:07"
         }
     ],
     "meta": {
         "pagination": {
-            "total": 3,
-            "count": 3,
+            "total": 1,
+            "count": 1,
             "per_page": 10,
             "current_page": 1,
             "total_pages": 1,
@@ -1472,19 +2405,19 @@ $.ajax(settings).done(function (response) {
     "data": [
         {
             "id": "Complete",
-            "sync_tasks_count": 5,
-            "sync_task_logs_count": 5,
+            "sync_tasks_count": 0,
+            "sync_task_logs_count": 0,
             "sync_task_status_versions_count": 2
         },
         {
             "id": "InProgress",
             "sync_tasks_count": 0,
-            "sync_task_logs_count": 20,
+            "sync_task_logs_count": 0,
             "sync_task_status_versions_count": 2
         },
         {
             "id": "Planned",
-            "sync_tasks_count": 1,
+            "sync_tasks_count": 2,
             "sync_task_logs_count": 1,
             "sync_task_status_versions_count": 2
         }
@@ -1545,7 +2478,7 @@ $.ajax(settings).done(function (response) {
 {
     "data": {
         "id": "Planned",
-        "sync_tasks_count": 1,
+        "sync_tasks_count": 2,
         "sync_task_logs_count": 1,
         "sync_task_status_versions_count": 2
     }
@@ -1602,43 +2535,43 @@ $.ajax(settings).done(function (response) {
             "sync_task_status_id": "Complete",
             "i18n_lang_id": "en_US",
             "description": "Items synchronization is complete.",
-            "created_at": "2017-07-28 10:10:24",
-            "updated_at": "2017-07-28 10:10:24"
+            "created_at": "2017-08-07 13:27:05",
+            "updated_at": "2017-08-07 13:27:05"
         },
         {
             "sync_task_status_id": "Complete",
             "i18n_lang_id": "fr_FR",
             "description": "La synchronisation des items est terminée",
-            "created_at": "2017-07-28 10:10:24",
-            "updated_at": "2017-07-28 10:10:24"
+            "created_at": "2017-08-07 13:27:05",
+            "updated_at": "2017-08-07 13:27:05"
         },
         {
             "sync_task_status_id": "InProgress",
             "i18n_lang_id": "en_US",
             "description": "Items synchronization is in progress.",
-            "created_at": "2017-07-28 10:10:24",
-            "updated_at": "2017-07-28 10:10:24"
+            "created_at": "2017-08-07 13:27:05",
+            "updated_at": "2017-08-07 13:27:05"
         },
         {
             "sync_task_status_id": "InProgress",
             "i18n_lang_id": "fr_FR",
             "description": "La synchronisation des items est en cours.",
-            "created_at": "2017-07-28 10:10:24",
-            "updated_at": "2017-07-28 10:10:24"
+            "created_at": "2017-08-07 13:27:05",
+            "updated_at": "2017-08-07 13:27:05"
         },
         {
             "sync_task_status_id": "Planned",
             "i18n_lang_id": "en_US",
             "description": "Items synchronization is planned.",
-            "created_at": "2017-07-28 10:10:24",
-            "updated_at": "2017-07-28 10:10:24"
+            "created_at": "2017-08-07 13:27:05",
+            "updated_at": "2017-08-07 13:27:05"
         },
         {
             "sync_task_status_id": "Planned",
             "i18n_lang_id": "fr_FR",
             "description": "La synchronisation des items est plannifiée",
-            "created_at": "2017-07-28 10:10:24",
-            "updated_at": "2017-07-28 10:10:24"
+            "created_at": "2017-08-07 13:27:05",
+            "updated_at": "2017-08-07 13:27:05"
         }
     ],
     "meta": {
@@ -1700,8 +2633,8 @@ $.ajax(settings).done(function (response) {
             "sync_task_status_id": "Planned",
             "i18n_lang_id": "en_US",
             "description": "Items synchronization is planned.",
-            "created_at": "2017-07-28 10:10:24",
-            "updated_at": "2017-07-28 10:10:24"
+            "created_at": "2017-08-07 13:27:05",
+            "updated_at": "2017-08-07 13:27:05"
         }
     ]
 }
@@ -1756,15 +2689,15 @@ $.ajax(settings).done(function (response) {
             "sync_task_status_id": "Planned",
             "i18n_lang_id": "en_US",
             "description": "Items synchronization is planned.",
-            "created_at": "2017-07-28 10:10:24",
-            "updated_at": "2017-07-28 10:10:24"
+            "created_at": "2017-08-07 13:27:05",
+            "updated_at": "2017-08-07 13:27:05"
         },
         {
             "sync_task_status_id": "Planned",
             "i18n_lang_id": "fr_FR",
             "description": "La synchronisation des items est plannifiée",
-            "created_at": "2017-07-28 10:10:24",
-            "updated_at": "2017-07-28 10:10:24"
+            "created_at": "2017-08-07 13:27:05",
+            "updated_at": "2017-08-07 13:27:05"
         }
     ],
     "meta": {
@@ -1828,17 +2761,17 @@ $.ajax(settings).done(function (response) {
     "data": [
         {
             "id": "DataStreamCheck",
-            "sync_tasks_count": 1,
+            "sync_tasks_count": 0,
             "sync_task_type_versions_count": 2
         },
         {
             "id": "DataStreamDownload",
-            "sync_tasks_count": 1,
+            "sync_tasks_count": 0,
             "sync_task_type_versions_count": 2
         },
         {
             "id": "DataStreamPrepare",
-            "sync_tasks_count": 1,
+            "sync_tasks_count": 0,
             "sync_task_type_versions_count": 2
         },
         {
@@ -1848,7 +2781,7 @@ $.ajax(settings).done(function (response) {
         },
         {
             "id": "ItemsInsertion",
-            "sync_tasks_count": 1,
+            "sync_tasks_count": 0,
             "sync_task_type_versions_count": 2
         },
         {
@@ -1974,71 +2907,71 @@ $.ajax(settings).done(function (response) {
             "sync_task_type_id": "DataStreamCheck",
             "i18n_lang_id": "en_US",
             "description": "Comparison and verification of downloaded data.",
-            "created_at": "2017-07-28 10:10:24",
-            "updated_at": "2017-07-28 10:10:24"
+            "created_at": "2017-08-07 13:27:05",
+            "updated_at": "2017-08-07 13:27:05"
         },
         {
             "sync_task_type_id": "DataStreamCheck",
             "i18n_lang_id": "fr_FR",
             "description": "Comparaison et vérification des données téléchargées.",
-            "created_at": "2017-07-28 10:10:24",
-            "updated_at": "2017-07-28 10:10:24"
+            "created_at": "2017-08-07 13:27:05",
+            "updated_at": "2017-08-07 13:27:05"
         },
         {
             "sync_task_type_id": "DataStreamDownload",
             "i18n_lang_id": "en_US",
             "description": "Downloading the provided data feed url of the data stream.",
-            "created_at": "2017-07-28 10:10:24",
-            "updated_at": "2017-07-28 10:10:24"
+            "created_at": "2017-08-07 13:27:05",
+            "updated_at": "2017-08-07 13:27:05"
         },
         {
             "sync_task_type_id": "DataStreamDownload",
             "i18n_lang_id": "fr_FR",
             "description": "Téléchargement des données fournies par l'url du flux de données.",
-            "created_at": "2017-07-28 10:10:24",
-            "updated_at": "2017-07-28 10:10:24"
+            "created_at": "2017-08-07 13:27:05",
+            "updated_at": "2017-08-07 13:27:05"
         },
         {
             "sync_task_type_id": "DataStreamPrepare",
             "i18n_lang_id": "en_US",
             "description": "Data breakdown for creation, edition or deletion.",
-            "created_at": "2017-07-28 10:10:24",
-            "updated_at": "2017-07-28 10:10:24"
+            "created_at": "2017-08-07 13:27:05",
+            "updated_at": "2017-08-07 13:27:05"
         },
         {
             "sync_task_type_id": "DataStreamPrepare",
             "i18n_lang_id": "fr_FR",
             "description": "Ventilation des données pour la création, modification ou suppression.",
-            "created_at": "2017-07-28 10:10:24",
-            "updated_at": "2017-07-28 10:10:24"
+            "created_at": "2017-08-07 13:27:05",
+            "updated_at": "2017-08-07 13:27:05"
         },
         {
             "sync_task_type_id": "ItemsDelete",
             "i18n_lang_id": "en_US",
             "description": "Deleting records.",
-            "created_at": "2017-07-28 10:10:24",
-            "updated_at": "2017-07-28 10:10:24"
+            "created_at": "2017-08-07 13:27:05",
+            "updated_at": "2017-08-07 13:27:05"
         },
         {
             "sync_task_type_id": "ItemsDelete",
             "i18n_lang_id": "fr_FR",
             "description": "Suppression d'enregistrements.",
-            "created_at": "2017-07-28 10:10:24",
-            "updated_at": "2017-07-28 10:10:24"
+            "created_at": "2017-08-07 13:27:05",
+            "updated_at": "2017-08-07 13:27:05"
         },
         {
             "sync_task_type_id": "ItemsInsertion",
             "i18n_lang_id": "en_US",
             "description": "Creating new records.",
-            "created_at": "2017-07-28 10:10:24",
-            "updated_at": "2017-07-28 10:10:24"
+            "created_at": "2017-08-07 13:27:05",
+            "updated_at": "2017-08-07 13:27:05"
         },
         {
             "sync_task_type_id": "ItemsInsertion",
             "i18n_lang_id": "fr_FR",
             "description": "Création des nouveaux enregistrements.",
-            "created_at": "2017-07-28 10:10:24",
-            "updated_at": "2017-07-28 10:10:24"
+            "created_at": "2017-08-07 13:27:05",
+            "updated_at": "2017-08-07 13:27:05"
         }
     ],
     "meta": {
@@ -2102,8 +3035,8 @@ $.ajax(settings).done(function (response) {
             "sync_task_type_id": "Main",
             "i18n_lang_id": "en_US",
             "description": "Main task who rules and manage subtasks.",
-            "created_at": "2017-07-28 10:10:24",
-            "updated_at": "2017-07-28 10:10:24"
+            "created_at": "2017-08-07 13:27:05",
+            "updated_at": "2017-08-07 13:27:05"
         }
     ]
 }
@@ -2158,50 +3091,50 @@ $.ajax(settings).done(function (response) {
             "sync_task_type_id": "DataStreamCheck",
             "i18n_lang_id": "en_US",
             "description": "Comparison and verification of downloaded data.",
-            "created_at": "2017-07-28 10:10:24",
-            "updated_at": "2017-07-28 10:10:24"
+            "created_at": "2017-08-07 13:27:05",
+            "updated_at": "2017-08-07 13:27:05"
         },
         {
             "sync_task_type_id": "DataStreamDownload",
             "i18n_lang_id": "en_US",
             "description": "Downloading the provided data feed url of the data stream.",
-            "created_at": "2017-07-28 10:10:24",
-            "updated_at": "2017-07-28 10:10:24"
+            "created_at": "2017-08-07 13:27:05",
+            "updated_at": "2017-08-07 13:27:05"
         },
         {
             "sync_task_type_id": "DataStreamPrepare",
             "i18n_lang_id": "en_US",
             "description": "Data breakdown for creation, edition or deletion.",
-            "created_at": "2017-07-28 10:10:24",
-            "updated_at": "2017-07-28 10:10:24"
+            "created_at": "2017-08-07 13:27:05",
+            "updated_at": "2017-08-07 13:27:05"
         },
         {
             "sync_task_type_id": "ItemsDelete",
             "i18n_lang_id": "en_US",
             "description": "Deleting records.",
-            "created_at": "2017-07-28 10:10:24",
-            "updated_at": "2017-07-28 10:10:24"
+            "created_at": "2017-08-07 13:27:05",
+            "updated_at": "2017-08-07 13:27:05"
         },
         {
             "sync_task_type_id": "ItemsInsertion",
             "i18n_lang_id": "en_US",
             "description": "Creating new records.",
-            "created_at": "2017-07-28 10:10:24",
-            "updated_at": "2017-07-28 10:10:24"
+            "created_at": "2017-08-07 13:27:05",
+            "updated_at": "2017-08-07 13:27:05"
         },
         {
             "sync_task_type_id": "ItemsUpdate",
             "i18n_lang_id": "en_US",
             "description": "Updating records.",
-            "created_at": "2017-07-28 10:10:24",
-            "updated_at": "2017-07-28 10:10:24"
+            "created_at": "2017-08-07 13:27:05",
+            "updated_at": "2017-08-07 13:27:05"
         },
         {
             "sync_task_type_id": "Main",
             "i18n_lang_id": "en_US",
             "description": "Main task who rules and manage subtasks.",
-            "created_at": "2017-07-28 10:10:24",
-            "updated_at": "2017-07-28 10:10:24"
+            "created_at": "2017-08-07 13:27:05",
+            "updated_at": "2017-08-07 13:27:05"
         }
     ],
     "meta": {
@@ -2224,4 +3157,522 @@ $.ajax(settings).done(function (response) {
 
 
 <!-- END_23d45485a9001240593300c466ec2b0c -->
+
+#Widget
+<!-- START_b2dd13b0d6ee24e0e54c9a96a4614770 -->
+## Get specified widget
+
+> Example request:
+
+```bash
+curl -X GET "https://emsearch.ryan.ems-dev.net/api/widget/b070b438-781d-11e7-b5a5-be2e44b06b34" \
+-H "Accept: application/json" \
+-H "Authentication: Bearer xxx"
+
+```
+
+```javascript
+var settings = {
+    "async": true,
+    "crossDomain": true,
+    "url": "https://emsearch.ryan.ems-dev.net/api/widget/b070b438-781d-11e7-b5a5-be2e44b06b34",
+    "method": "GET",
+    "headers": {
+        "Accept": "application/json",
+        "Authentication" : "Bearer xxx"
+    }
+}
+
+$.ajax(settings).done(function (response) {
+    console.log(response);
+});
+```
+
+> Example response:
+
+```json
+{
+    "data": {
+        "id": "b070b438-781d-11e7-b5a5-be2e44b06b34",
+        "search_use_case_id": "dc5bfd4c-711e-11e7-8cf7-a6006ad3dba0",
+        "name": "E-monsite | Blog - Photo Widget",
+        "created_at": "2017-08-07 13:27:07",
+        "updated_at": "2017-08-07 13:27:07"
+    }
+}
+```
+
+### HTTP Request
+`GET /api/widget/{widgetId}`
+
+`HEAD /api/widget/{widgetId}`
+
+
+<!-- END_b2dd13b0d6ee24e0e54c9a96a4614770 -->
+
+<!-- START_5eb7f4f27d5cdc5690d10c932be8d8d3 -->
+## Create and store new widget
+
+> Example request:
+
+```bash
+curl -X POST "https://emsearch.ryan.ems-dev.net/api/widget" \
+-H "Accept: application/json" \
+-H "Authentication: Bearer xxx"
+ \
+    -d "search_use_case_id"="7759a980-cbe8-3075-a3dd-b3fc3013041b" \
+    -d "name"="Est hic eaque" \
+
+```
+
+```javascript
+var settings = {
+    "async": true,
+    "crossDomain": true,
+    "url": "https://emsearch.ryan.ems-dev.net/api/widget",
+    "method": "POST",
+    "data": {
+        "search_use_case_id": "7759a980-cbe8-3075-a3dd-b3fc3013041b",
+        "name": "Est hic eaque"
+},
+    "headers": {
+        "Accept": "application/json",
+        "Authentication" : "Bearer xxx"
+    }
+}
+
+$.ajax(settings).done(function (response) {
+    console.log(response);
+});
+```
+
+
+### HTTP Request
+`POST /api/widget`
+
+#### Parameters
+
+Parameter | Type | Status | Description
+--------- | ------- | ------- | ------- | -----------
+    search_use_case_id | string |  required  | UUID Valid search_use_case id
+    name | string |  required  | Minimum: `5` Maximum: `200`
+
+<!-- END_5eb7f4f27d5cdc5690d10c932be8d8d3 -->
+
+<!-- START_f9bfda230eb6676fcdcc3dba62802c78 -->
+## Update a widget
+
+> Example request:
+
+```bash
+curl -X PUT "https://emsearch.ryan.ems-dev.net/api/widget/b070b438-781d-11e7-b5a5-be2e44b06b34" \
+-H "Accept: application/json" \
+-H "Authentication: Bearer xxx"
+ \
+    -d "search_use_case_id"="01a0f0d0-165a-3345-96af-a2f53285520b" \
+    -d "name"="Officiis ut quisquam" \
+
+```
+
+```javascript
+var settings = {
+    "async": true,
+    "crossDomain": true,
+    "url": "https://emsearch.ryan.ems-dev.net/api/widget/b070b438-781d-11e7-b5a5-be2e44b06b34",
+    "method": "PUT",
+    "data": {
+        "search_use_case_id": "01a0f0d0-165a-3345-96af-a2f53285520b",
+        "name": "Officiis ut quisquam"
+},
+    "headers": {
+        "Accept": "application/json",
+        "Authentication" : "Bearer xxx"
+    }
+}
+
+$.ajax(settings).done(function (response) {
+    console.log(response);
+});
+```
+
+
+### HTTP Request
+`PUT /api/widget/{widgetId}`
+
+`PATCH /api/widget/{widgetId}`
+
+#### Parameters
+
+Parameter | Type | Status | Description
+--------- | ------- | ------- | ------- | -----------
+    search_use_case_id | string |  required  | UUID Valid search_use_case id
+    name | string |  required  | Minimum: `5` Maximum: `200`
+
+<!-- END_f9bfda230eb6676fcdcc3dba62802c78 -->
+
+<!-- START_a1d66c11d4282c18663bc1bd7fd3cc06 -->
+## Delete specified widget
+
+> Example request:
+
+```bash
+curl -X DELETE "https://emsearch.ryan.ems-dev.net/api/widget/b070b438-781d-11e7-b5a5-be2e44b06b34" \
+-H "Accept: application/json" \
+-H "Authentication: Bearer xxx"
+
+```
+
+```javascript
+var settings = {
+    "async": true,
+    "crossDomain": true,
+    "url": "https://emsearch.ryan.ems-dev.net/api/widget/b070b438-781d-11e7-b5a5-be2e44b06b34",
+    "method": "DELETE",
+    "headers": {
+        "Accept": "application/json",
+        "Authentication" : "Bearer xxx"
+    }
+}
+
+$.ajax(settings).done(function (response) {
+    console.log(response);
+});
+```
+
+
+### HTTP Request
+`DELETE /api/widget/{widgetId}`
+
+
+<!-- END_a1d66c11d4282c18663bc1bd7fd3cc06 -->
+
+<!-- START_35485bc693c4215a20193030b843e99b -->
+## Search use case widget list
+
+
+<aside class="notice">Pagination limit must be a value between <code>1</code> and <code>50</code>, default is <code>10</code>.</aside>
+
+> Example request:
+
+```bash
+curl -X GET "https://emsearch.ryan.ems-dev.net/api/searchUseCase/dc5bfd4c-711e-11e7-8cf7-a6006ad3dba0/widget" \
+-H "Accept: application/json" \
+-H "Authentication: Bearer xxx"
+
+```
+
+```javascript
+var settings = {
+    "async": true,
+    "crossDomain": true,
+    "url": "https://emsearch.ryan.ems-dev.net/api/searchUseCase/dc5bfd4c-711e-11e7-8cf7-a6006ad3dba0/widget",
+    "method": "GET",
+    "headers": {
+        "Accept": "application/json",
+        "Authentication" : "Bearer xxx"
+    }
+}
+
+$.ajax(settings).done(function (response) {
+    console.log(response);
+});
+```
+
+> Example response:
+
+```json
+{
+    "data": [
+        {
+            "id": "b070b438-781d-11e7-b5a5-be2e44b06b34",
+            "search_use_case_id": "dc5bfd4c-711e-11e7-8cf7-a6006ad3dba0",
+            "name": "E-monsite | Blog - Photo Widget",
+            "created_at": "2017-08-07 13:27:07",
+            "updated_at": "2017-08-07 13:27:07"
+        }
+    ],
+    "meta": {
+        "pagination": {
+            "total": 1,
+            "count": 1,
+            "per_page": 10,
+            "current_page": 1,
+            "total_pages": 1,
+            "links": []
+        }
+    }
+}
+```
+
+### HTTP Request
+`GET /api/searchUseCase/{searchUseCaseId}/widget`
+
+`HEAD /api/searchUseCase/{searchUseCaseId}/widget`
+
+
+<!-- END_35485bc693c4215a20193030b843e99b -->
+
+#WidgetPreset
+<!-- START_c514d31fc60ba92e4e6e76dfc255405a -->
+## Show widget preset list
+
+
+<aside class="notice">Pagination limit must be a value between <code>1</code> and <code>50</code>, default is <code>10</code>.</aside>
+
+> Example request:
+
+```bash
+curl -X GET "https://emsearch.ryan.ems-dev.net/api/widgetPreset" \
+-H "Accept: application/json" \
+-H "Authentication: Bearer xxx"
+
+```
+
+```javascript
+var settings = {
+    "async": true,
+    "crossDomain": true,
+    "url": "https://emsearch.ryan.ems-dev.net/api/widgetPreset",
+    "method": "GET",
+    "headers": {
+        "Accept": "application/json",
+        "Authentication" : "Bearer xxx"
+    }
+}
+
+$.ajax(settings).done(function (response) {
+    console.log(response);
+});
+```
+
+> Example response:
+
+```json
+{
+    "data": [
+        {
+            "id": "0f85eb82-776a-11e7-b5a5-be2e44b06b34",
+            "search_use_case_preset_id": "d3c73a6c-7767-11e7-b5a5-be2e44b06b34",
+            "name": "E-monsite | Blog - Photo Widget",
+            "created_at": "2017-08-07 13:27:07",
+            "updated_at": "2017-08-07 13:27:07"
+        },
+        {
+            "id": "6be0a102-7769-11e7-b5a5-be2e44b06b34",
+            "search_use_case_preset_id": "516f0252-7767-11e7-b5a5-be2e44b06b34",
+            "name": "E-monsite | Blog - Summary Widget",
+            "created_at": "2017-08-07 13:27:07",
+            "updated_at": "2017-08-07 13:27:07"
+        }
+    ],
+    "meta": {
+        "pagination": {
+            "total": 2,
+            "count": 2,
+            "per_page": 10,
+            "current_page": 1,
+            "total_pages": 1,
+            "links": []
+        }
+    }
+}
+```
+
+### HTTP Request
+`GET /api/widgetPreset`
+
+`HEAD /api/widgetPreset`
+
+
+<!-- END_c514d31fc60ba92e4e6e76dfc255405a -->
+
+<!-- START_fcd0c7112a22c2f60070949c9c1ca609 -->
+## Get specified widget preset
+
+> Example request:
+
+```bash
+curl -X GET "https://emsearch.ryan.ems-dev.net/api/widgetPreset/6be0a102-7769-11e7-b5a5-be2e44b06b34" \
+-H "Accept: application/json" \
+-H "Authentication: Bearer xxx"
+
+```
+
+```javascript
+var settings = {
+    "async": true,
+    "crossDomain": true,
+    "url": "https://emsearch.ryan.ems-dev.net/api/widgetPreset/6be0a102-7769-11e7-b5a5-be2e44b06b34",
+    "method": "GET",
+    "headers": {
+        "Accept": "application/json",
+        "Authentication" : "Bearer xxx"
+    }
+}
+
+$.ajax(settings).done(function (response) {
+    console.log(response);
+});
+```
+
+> Example response:
+
+```json
+{
+    "data": {
+        "id": "6be0a102-7769-11e7-b5a5-be2e44b06b34",
+        "search_use_case_preset_id": "516f0252-7767-11e7-b5a5-be2e44b06b34",
+        "name": "E-monsite | Blog - Summary Widget",
+        "created_at": "2017-08-07 13:27:07",
+        "updated_at": "2017-08-07 13:27:07"
+    }
+}
+```
+
+### HTTP Request
+`GET /api/widgetPreset/{widgetPresetId}`
+
+`HEAD /api/widgetPreset/{widgetPresetId}`
+
+
+<!-- END_fcd0c7112a22c2f60070949c9c1ca609 -->
+
+<!-- START_2b3702d640866ae1858bbc97f220a7fa -->
+## Search use case preset widget presets list
+
+
+<aside class="notice">Pagination limit must be a value between <code>1</code> and <code>50</code>, default is <code>10</code>.</aside>
+
+> Example request:
+
+```bash
+curl -X GET "https://emsearch.ryan.ems-dev.net/api/searchUseCasePreset/516f0252-7767-11e7-b5a5-be2e44b06b34/widgetPreset" \
+-H "Accept: application/json" \
+-H "Authentication: Bearer xxx"
+
+```
+
+```javascript
+var settings = {
+    "async": true,
+    "crossDomain": true,
+    "url": "https://emsearch.ryan.ems-dev.net/api/searchUseCasePreset/516f0252-7767-11e7-b5a5-be2e44b06b34/widgetPreset",
+    "method": "GET",
+    "headers": {
+        "Accept": "application/json",
+        "Authentication" : "Bearer xxx"
+    }
+}
+
+$.ajax(settings).done(function (response) {
+    console.log(response);
+});
+```
+
+> Example response:
+
+```json
+{
+    "data": [
+        {
+            "id": "6be0a102-7769-11e7-b5a5-be2e44b06b34",
+            "search_use_case_preset_id": "516f0252-7767-11e7-b5a5-be2e44b06b34",
+            "name": "E-monsite | Blog - Summary Widget",
+            "created_at": "2017-08-07 13:27:07",
+            "updated_at": "2017-08-07 13:27:07"
+        }
+    ],
+    "meta": {
+        "pagination": {
+            "total": 1,
+            "count": 1,
+            "per_page": 10,
+            "current_page": 1,
+            "total_pages": 1,
+            "links": []
+        }
+    }
+}
+```
+
+### HTTP Request
+`GET /api/searchUseCasePreset/{searchUseCasePresetId}/widgetPreset`
+
+`HEAD /api/searchUseCasePreset/{searchUseCasePresetId}/widgetPreset`
+
+
+<!-- END_2b3702d640866ae1858bbc97f220a7fa -->
+
+<!-- START_91c5599d9f3148be8af11c702acba433 -->
+## Data stream preset widget preset list
+
+(Through the related search use case presets)
+<aside class="notice">Pagination limit must be a value between <code>1</code> and <code>50</code>, default is <code>10</code>.</aside>
+
+> Example request:
+
+```bash
+curl -X GET "https://emsearch.ryan.ems-dev.net/api/dataStreamPreset/737441b0-57ea-11e7-907b-a6006ad3dba0/widgetPreset" \
+-H "Accept: application/json" \
+-H "Authentication: Bearer xxx"
+
+```
+
+```javascript
+var settings = {
+    "async": true,
+    "crossDomain": true,
+    "url": "https://emsearch.ryan.ems-dev.net/api/dataStreamPreset/737441b0-57ea-11e7-907b-a6006ad3dba0/widgetPreset",
+    "method": "GET",
+    "headers": {
+        "Accept": "application/json",
+        "Authentication" : "Bearer xxx"
+    }
+}
+
+$.ajax(settings).done(function (response) {
+    console.log(response);
+});
+```
+
+> Example response:
+
+```json
+{
+    "data": [
+        {
+            "id": "0f85eb82-776a-11e7-b5a5-be2e44b06b34",
+            "search_use_case_preset_id": "d3c73a6c-7767-11e7-b5a5-be2e44b06b34",
+            "name": "E-monsite | Blog - Photo Widget",
+            "created_at": "2017-08-07 13:27:07",
+            "updated_at": "2017-08-07 13:27:07"
+        },
+        {
+            "id": "6be0a102-7769-11e7-b5a5-be2e44b06b34",
+            "search_use_case_preset_id": "516f0252-7767-11e7-b5a5-be2e44b06b34",
+            "name": "E-monsite | Blog - Summary Widget",
+            "created_at": "2017-08-07 13:27:07",
+            "updated_at": "2017-08-07 13:27:07"
+        }
+    ],
+    "meta": {
+        "pagination": {
+            "total": 2,
+            "count": 2,
+            "per_page": 10,
+            "current_page": 1,
+            "total_pages": 1,
+            "links": []
+        }
+    }
+}
+```
+
+### HTTP Request
+`GET /api/dataStreamPreset/{dataStreamPresetId}/widgetPreset`
+
+`HEAD /api/dataStreamPreset/{dataStreamPresetId}/widgetPreset`
+
+
+<!-- END_91c5599d9f3148be8af11c702acba433 -->
 

@@ -120,12 +120,16 @@ class DataStreamHasI18nLangController extends ApiController
 			}
 		}
 
+		$data_stream_id = ($request->has('data_stream_id') ? $request->input('data_stream_id') : $dataStreamId);
+		$i18n_lang_id =  ($request->has('i18n_lang_id') ? $request->input('i18n_lang_id') : $i18nLangId);
+
 		DataStreamHasI18nLang::where('data_stream_id', $dataStreamId)->where('i18n_lang_id', $i18nLangId)->update([
-			'data_stream_id'  => $request->input('data_stream_id'),
-			'i18n_lang_id'    => $request->input('i18n_lang_id'),
+			'data_stream_id'  => $data_stream_id,
+			'i18n_lang_id'    => $i18n_lang_id,
 		]);
 
-		$dataStreamHasI18nLang = DataStreamHasI18nLang::where('data_stream_id', $dataStreamId)->where('i18n_lang_id', $i18nLangId)->first();
+		$dataStreamHasI18nLang = DataStreamHasI18nLang::where('data_stream_id', $data_stream_id)
+													  ->where('i18n_lang_id', $i18n_lang_id)->first();
 
 		return $this->response->item($dataStreamHasI18nLang, new DataStreamHasI18nLangTransformer);
 	}

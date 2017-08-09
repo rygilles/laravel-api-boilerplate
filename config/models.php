@@ -304,7 +304,63 @@ return [
 			'authorizedSearchColumns' => 'name',
 			'defaultSearchColumns' => 'name',
 			'authorizedOrderByColumns' => 'search_use_case_id,data_stream_field_id,name,searchable,to_retrieve,created_at,updated_at',
-			'authorizedIncludes' => 'project',
+			'authorizedIncludes' => 'searchUseCase,dataStreamField',
+
+		]
+
+	],
+
+	App\Models\SearchUseCasePreset::class => [
+
+		'requestQueryStringParameters' => [
+
+			'authorizeSearch' => true,
+			'authorizedSearchColumns' => 'name',
+			'defaultSearchColumns' => 'name',
+			'authorizedOrderByColumns' => 'id,data_stream_preset_id,name,created_at,updated_at',
+			'authorizedIncludes' => 'dataStreamPreset',
+
+		]
+
+	],
+
+	App\Models\SearchUseCasePresetField::class => [
+
+		'requestQueryStringParameters' => [
+
+			'authorizeSearch' => true,
+			'authorizedSearchColumns' => 'name',
+			'defaultSearchColumns' => 'name',
+			'authorizedOrderByColumns' => 'search_use_case_preset_id,data_stream_preset_field_id,name,searchable,to_retrieve,created_at,updated_at',
+			'authorizedIncludes' => 'searchUseCasePreset,dataStreamPresetField',
+
+		]
+
+	],
+
+	App\Models\Widget::class => [
+
+		'requestQueryStringParameters' => [
+
+			'authorizeSearch' => true,
+			'authorizedSearchColumns' => 'name',
+			'defaultSearchColumns' => 'name',
+			'authorizedOrderByColumns' => 'id,search_use_case_id,name,created_at,updated_at',
+			'authorizedIncludes' => 'searchUseCase',
+
+		]
+
+	],
+
+	App\Models\WidgetPreset::class => [
+
+		'requestQueryStringParameters' => [
+
+			'authorizeSearch' => true,
+			'authorizedSearchColumns' => 'name',
+			'defaultSearchColumns' => 'name',
+			'authorizedOrderByColumns' => 'id,search_use_case_preset_id,name,created_at,updated_at',
+			'authorizedIncludes' => 'searchUseCasePreset',
 
 		]
 

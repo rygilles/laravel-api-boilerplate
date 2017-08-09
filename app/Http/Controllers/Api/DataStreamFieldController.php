@@ -23,10 +23,8 @@ class DataStreamFieldController extends ApiController
 	{
 		parent::__construct();
 
-		// @todo authorize End-User via owned/administerd projects !
-
 		// User group restrictions
-		$this->middleware('verifyUserGroup:Developer,Support', ['only' => ['index', 'show', 'store', 'update', 'destroy']]);
+		$this->middleware('verifyUserGroup:Developer,Support', ['only' => ['index']]);
 	}
 
 	/**
@@ -49,7 +47,8 @@ class DataStreamFieldController extends ApiController
 	 */
 	public function show($dataStreamFieldId)
 	{
-		$dataStreamField = DataStreamField::find($dataStreamFieldId);
+		$dataStreamField = DataStreamField::authorized(['Owner', 'Administrator'])
+										  ->find($dataStreamFieldId);
 
 		if (!$dataStreamField)
 			return $this->response->errorNotFound();
@@ -68,7 +67,8 @@ class DataStreamFieldController extends ApiController
 	 */
 	public function store(StoreDataStreamFieldRequest $request)
 	{
-		$dataStreamField = DataStreamField::create($request->all(), $request->getRealMethod());
+		$dataStreamField = DataStreamField::authorized(['Owner', 'Administrator'])
+										  ->create($request->all(), $request->getRealMethod());
 
 		if ($dataStreamField) {
 			// Register model transformer for created/accepted responses
@@ -99,7 +99,8 @@ class DataStreamFieldController extends ApiController
 	 */
 	public function update(UpdateDataStreamFieldRequest $request, $dataStreamFieldId)
 	{
-		$dataStreamField = DataStreamField::find($dataStreamFieldId);
+		$dataStreamField = DataStreamField::authorized(['Owner', 'Administrator'])
+										  ->find($dataStreamFieldId);
 
 		if (!$dataStreamField)
 			return $this->response->errorNotFound();
@@ -120,7 +121,8 @@ class DataStreamFieldController extends ApiController
 	 */
 	public function destroy($dataStreamFieldId)
 	{
-		$dataStreamField = DataStreamField::find($dataStreamFieldId);
+		$dataStreamField = DataStreamField::authorized(['Owner', 'Administrator'])
+										  ->find($dataStreamFieldId);
 
 		if (!$dataStreamField)
 			return $this->response->errorNotFound();

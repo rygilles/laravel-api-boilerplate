@@ -61,6 +61,70 @@
 					<button class="btn btn-default" @click="select2case3value = select2case3SetToInput">Set to</button>
 					: <input type="text" v-model="select2case3SetToInput" />
 				</div>
+				<h4>Select 2 with Ajax feed (valueProp != labelProp) and multiple values</h4>
+				<Select2
+					:feed="{
+						getUri : '/user',
+						params : {
+							limit: 10,
+							order_by: 'id,asc',
+						}
+					}"
+					labelProp="name"
+					valueProp="id"
+					v-model="select2case4value"
+					:multiple="true"
+				></Select2>
+				<div style="margin-top: 10px">
+					<p>
+						Current outside component value = <span v-html="select2case4value"></span>
+					</p>
+				</div>
+				<h4>Select 2 with Ajax feed (valueProp = labelProp) and multiple values</h4>
+				<Select2
+					:feed="{
+						getUri : '/i18nLang',
+						params : {
+							limit: 10,
+							order_by: 'id,asc',
+						}
+					}"
+					labelProp="id"
+					valueProp="id"
+					v-model="select2case5value"
+					:multiple="true"
+				></Select2>
+				<div style="margin-top: 10px">
+					<p>
+						Current outside component value = <span v-html="select2case5value"></span>
+					</p>
+				</div>
+				<h4>Select 2 with init options (valueProp != labelProp) and multiple values</h4>
+				<Select2
+					:options="select2case6options"
+					labelProp="lab"
+					valueProp="id"
+					v-model="select2case6value"
+					:multiple="true"
+				></Select2>
+				<div style="margin-top: 10px">
+					<p>
+						Current outside component value = <span v-html="select2case6value"></span>
+					</p>
+				</div>
+				<h4>Select 2 with init options (valueProp = labelProp) and multiple values</h4>
+				<Select2
+					:options="select2case7options"
+					labelProp="id"
+					valueProp="id"
+					v-model="select2case7value"
+					:multiple="true"
+				></Select2>
+				<div style="margin-top: 10px">
+					<p>
+						Current outside component value = <span v-html="select2case7value"></span>
+					</p>
+				</div>
 			</div>
 		</div>
 	</section>
@@ -98,6 +162,42 @@
 
 				select2case3value: '509dd5c0-1389-11e7-93ae-92361f002671',
 				select2case3SetToInput: '605c7610-1389-11e7-93ae-92361f002671',
+
+				select2case4value: ['605c7610-1389-11e7-93ae-92361f002671', '509dd5c0-1389-11e7-93ae-92361f002671'],
+
+				select2case5value: ['en', 'fr'],
+
+				select2case6options: [
+					{
+						id: 'Id1',
+						lab : 'Label1',
+					},
+					{
+						id: 'Id2',
+						lab : 'Label2',
+					},
+					{
+						id : 'Id3',
+						lab : 'Label3',
+					},
+				],
+				select2case6value: ['Id1', 'Id2'],
+
+				select2case7options: [
+					{
+						id: 'Id1',
+						lab : 'Id1',
+					},
+					{
+						id: 'Id2',
+						lab : 'Id2',
+					},
+					{
+						id : 'Id3',
+						lab : 'Id3',
+					},
+				],
+				select2case7value: ['Id1', 'Id2'],
 			};
 		},
 

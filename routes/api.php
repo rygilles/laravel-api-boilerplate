@@ -759,4 +759,151 @@ $api->version('v1', ['middleware' => ['acceptLanguage', /*'cors',*/ 'auth:api']]
 		'App\Http\Controllers\Api\SearchUseCaseSearchUseCaseFieldController@index'
 	)->name('searchUseCaseSearchUseCaseField.index');
 
+	// Search Use Case Preset
+
+	$api->get(
+		'searchUseCasePreset',
+		'App\Http\Controllers\Api\SearchUseCasePresetController@index'
+	)->name('searchUseCasePreset.index');
+
+	$api->get(
+		'searchUseCasePreset/{searchUseCasePresetId}',
+		'App\Http\Controllers\Api\SearchUseCasePresetController@show'
+	)->name('searchUseCasePreset.show');
+
+	$api->post(
+		'searchUseCasePreset',
+		'App\Http\Controllers\Api\SearchUseCasePresetController@store'
+	)->name('searchUseCasePreset.store');
+
+	$api->match(
+		['put', 'patch'],
+		'searchUseCasePreset/{searchUseCasePresetId}',
+		'App\Http\Controllers\Api\SearchUseCasePresetController@update'
+	)->name('searchUseCasePreset.update');
+
+	$api->delete(
+		'searchUseCasePreset/{searchUseCasePresetId}',
+		'App\Http\Controllers\Api\SearchUseCasePresetController@destroy'
+	)->name('searchUseCasePreset.destroy');
+
+	// Search Use Case Preset Field
+
+	$api->get(
+		'searchUseCasePresetField',
+		'App\Http\Controllers\Api\SearchUseCasePresetFieldController@index'
+	)->name('searchUseCasePresetField.index');
+
+	$api->get(
+		'searchUseCasePresetField/{searchUseCasePresetId},{dataStreamPresetFieldId}',
+		'App\Http\Controllers\Api\SearchUseCasePresetFieldController@show'
+	)->name('searchUseCasePresetField.show');
+
+	$api->post(
+		'searchUseCasePresetField',
+		'App\Http\Controllers\Api\SearchUseCasePresetFieldController@store'
+	)->name('searchUseCasePresetField.store');
+
+	$api->match(
+		['put', 'patch'],
+		'searchUseCasePresetField/{searchUseCasePresetId},{dataStreamPresetFieldId}',
+		'App\Http\Controllers\Api\SearchUseCasePresetFieldController@update'
+	)->name('searchUseCasePresetField.update');
+
+	$api->delete(
+		'searchUseCasePresetField/{searchUseCasePresetId},{dataStreamPresetFieldId}',
+		'App\Http\Controllers\Api\SearchUseCasePresetFieldController@destroy'
+	)->name('searchUseCasePresetField.destroy');
+
+	// Search Use Case Preset Search Use Case Preset Field
+
+	$api->get(
+		'searchUseCasePreset/{searchUseCasePresetId}/searchUseCasePresetField',
+		'App\Http\Controllers\Api\SearchUseCasePresetSearchUseCasePresetFieldController@index'
+	)->name('searchUseCasePresetSearchUseCasePresetField.index');
+
+	// Widget
+
+	$api->get(
+		'widget',
+		'App\Http\Controllers\Api\WidgetController@index'
+	)->name('widget.index');
+
+	$api->get(
+		'widget/{widgetId}',
+		'App\Http\Controllers\Api\WidgetController@show'
+	)->name('widget.show');
+
+	$api->post(
+		'widget',
+		'App\Http\Controllers\Api\WidgetController@store'
+	)->name('widget.store');
+
+	$api->match(
+		['put', 'patch'],
+		'widget/{widgetId}',
+		'App\Http\Controllers\Api\WidgetController@update'
+	)->name('widget.update');
+
+	$api->delete(
+		'widget/{widgetId}',
+		'App\Http\Controllers\Api\WidgetController@destroy'
+	)->name('widget.destroy');
+
+	// Search Use Case Widget
+
+	$api->get(
+		'searchUseCase/{searchUseCaseId}/widget',
+		'App\Http\Controllers\Api\SearchUseCaseWidgetController@index'
+	)->name('searchUseCaseWidget.index');
+
+	// Widget Preset
+
+	$api->get(
+		'widgetPreset',
+		'App\Http\Controllers\Api\WidgetPresetController@index'
+	)->name('widgetPreset.index');
+
+	$api->get(
+		'widgetPreset/{widgetPresetId}',
+		'App\Http\Controllers\Api\WidgetPresetController@show'
+	)->name('widgetPreset.show');
+
+	$api->post(
+		'widgetPreset',
+		'App\Http\Controllers\Api\WidgetPresetController@store'
+	)->name('widgetPreset.store');
+
+	$api->match(
+		['put', 'patch'],
+		'widgetPreset/{widgetPresetId}',
+		'App\Http\Controllers\Api\WidgetPresetController@update'
+	)->name('widgetPreset.update');
+
+	$api->delete(
+		'widgetPreset/{widgetPresetId}',
+		'App\Http\Controllers\Api\WidgetPresetController@destroy'
+	)->name('widgetPreset.destroy');
+
+	// Search Use Case Preset Widget Preset
+
+	$api->get(
+		'searchUseCasePreset/{searchUseCasePresetId}/widgetPreset',
+		'App\Http\Controllers\Api\SearchUseCasePresetWidgetPresetController@index'
+	)->name('searchUseCasePresetWidgetPreset.index');
+
+	// Data Stream Preset Search Use Case Preset
+
+	$api->get(
+		'dataStreamPreset/{dataStreamPresetId}/searchUseCasePreset',
+		'App\Http\Controllers\Api\DataStreamPresetSearchUseCasePresetController@index'
+	)->name('dataStreamPresetSearchUseCasePreset.index');
+
+	// Data Stream Preset Widget Preset
+
+	$api->get(
+		'dataStreamPreset/{dataStreamPresetId}/widgetPreset',
+		'App\Http\Controllers\Api\DataStreamPresetWidgetPresetController@index'
+	)->name('dataStreamPresetWidgetPreset.index');
+
 });

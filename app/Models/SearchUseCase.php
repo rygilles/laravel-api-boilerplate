@@ -105,7 +105,7 @@ class SearchUseCase extends ApiModel
 	];
 
 	/**
-	 * Get the project of this sync item
+	 * Get the project of this search use case
 	 *
 	 * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
 	 */
@@ -122,6 +122,16 @@ class SearchUseCase extends ApiModel
 	public function searchUseCaseFields()
 	{
 		return $this->hasMany(SearchUseCaseField::class);
+	}
+
+	/**
+	 * Get the widgets of this search use case
+	 *
+	 * @return \Illuminate\Database\Eloquent\Relations\HasMany
+	 */
+	public function widgets()
+	{
+		return $this->hasMany(Widget::class);
 	}
 
 	/**

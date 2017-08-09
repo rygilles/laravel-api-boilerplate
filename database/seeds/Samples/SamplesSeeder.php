@@ -26,5 +26,9 @@ class SamplesSeeder extends Seeder
 	    $this->call(DataStreamPresetFieldTableSeeder::class);
 	    $this->call(SearchUseCaseTableSeeder::class);
 	    $this->call(SearchUseCaseFieldTableSeeder::class);
+	    $this->call(SearchUseCasePresetTableSeeder::class);
+	    $this->call(SearchUseCasePresetFieldTableSeeder::class);
+	    $this->call(WidgetPresetTableSeeder::class);
+	    $this->call(WidgetTableSeeder::class);
     }
 }

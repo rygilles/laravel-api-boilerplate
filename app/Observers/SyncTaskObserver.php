@@ -18,6 +18,7 @@ class SyncTaskObserver
 		foreach ($syncTask->childrenSyncTasks()->get() as $childrenSyncTask) {
 			$childrenSyncTask->parentSyncTask()->dissociate();
 			$childrenSyncTask->save();
+			$childrenSyncTask->delete();
 		}
 	}
 }

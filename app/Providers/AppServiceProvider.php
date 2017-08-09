@@ -3,11 +3,14 @@
 namespace App\Providers;
 
 use App\Models\ApiModel;
+use App\Models\DataStream;
+use App\Models\SearchUseCase;
 use App\Models\SyncTask;
 use App\Models\SyncTaskLog;
 use App\Models\SyncTaskStatus;
 use App\Models\SyncTaskType;
 use App\Models\UserHasProject;
+use App\Observers\SearchUseCaseObserver;
 use App\Observers\SyncTaskLogObserver;
 use App\Observers\SyncTaskObserver;
 use App\Observers\UserHasProjectObserver;
@@ -53,11 +56,13 @@ class AppServiceProvider extends ServiceProvider
         // Models observers
 	    User::observe(UserObserver::class);
 	    Project::observe(ProjectObserver::class);
+	    DataStream::observe(DataStreamObserver::class);
 	    UserHasProject::observe(UserHasProjectObserver::class);
 	    SyncTask::observe(SyncTaskObserver::class);
 	    SyncTaskType::observe(SyncTaskTypeObserver::class);
 	    SyncTaskStatus::observe(SyncTaskStatusObserver::class);
 	    SyncTaskLog::observe(SyncTaskLogObserver::class);
+	    SearchUseCase::observe(SearchUseCaseObserver::class);
     }
 
     /**

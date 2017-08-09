@@ -17,4 +17,6 @@ return [
 
 	'search_use_case_field_exists' => 'Un champ de cas d\'utilisation de recherche entre ce cas d\'utilisation de recherche/champ de flux de données existe déjà.',
 
+	'search_use_case_preset_field_exists' => 'Un champ de preset de cas d\'utilisation de recherche entre ce preset de cas d\'utilisation de recherche/champ de preset de flux de données existe déjà.',
+
 ];

@@ -26,10 +26,19 @@
 						params : {
 							limit: 10,
 							order_by: '',
-						}
+						},
+						getSingleResourceUri : null,
 					};
 				}
 			},
+			multiple : {
+				type : Boolean,
+				default : false,
+			},
+			disabled : {
+				type : Boolean,
+				default : false,
+			}
 		},
 		data() {
 			return {
@@ -42,10 +51,19 @@
 
 				if (this.labelProp == this.valueProp) {
 					if (this.options.length == 0) {
-						this.currentOptions = [{
-							id: value,
-							text: value,
-						}];
+						if (this.multiple) {
+							_.forEach(value, (v) => {
+								this.currentOptions = [{
+									id: v,
+									text: v,
+								}];
+							});
+						} else {
+							this.currentOptions = [{
+								id: value,
+								text: value,
+							}];
+						}
 
 						$(this.$el).select2().empty();
 						$(this.$el).select2('destroy');
@@ -54,24 +72,49 @@
 						this.init();
 					}
 				} else {
-					if (this.feed.getUri != null) {
+					if ((this.feed.getUri != null) || (('getSingleResourceUri' in this.feed) && (this.feed.getSingleResourceUri != null))) {
 						$(this.$el).select2().empty();
 						$(this.$el).select2('destroy');
 						$(this.$el).find('option').remove();
 
-						apiAxios
-							.get(this.feed.getUri + '/' + this.value)
-							.then(response => {
-								this.currentOptions = [{
-									id: this.value,
-									text: response.data.data[this.labelProp],
-								}];
-								this.initWithDefaultValueFromAjax();
-							})
-							.catch(error => {
-								this.$root.axiosError(error);
-							});
+						var baseUri = this.feed.getUri;
+						if (('getSingleResourceUri' in this.feed) && (this.feed.getSingleResourceUri != null)) {
+							baseUri = this.feed.getSingleResourceUri;
+						}
 
+						if (this.multiple) {
+							let callArray = this.value;
+
+							let promiseArray = callArray.map((v) => apiAxios.get(baseUri + '/' + v));
+
+							Promise.all(promiseArray)
+									.then((results) => {
+										this.currentOptions = []
+										_.forEach(results, (response) => {
+											this.currentOptions.push({
+												id: response.data.data[this.valueProp],
+												text: response.data.data[this.labelProp],
+											});
+										});
+										this.initWithDefaultValueFromAjax();
+									})
+									.catch(error => {
+										this.$root.axiosError(error);
+									});
+						} else {
+							apiAxios
+								.get(baseUri + '/' + this.value)
+								.then(response => {
+									this.currentOptions = [{
+										id: this.value,
+										text: response.data.data[this.labelProp],
+									}];
+									this.initWithDefaultValueFromAjax();
+								})
+								.catch(error => {
+									this.$root.axiosError(error);
+								});
+						}
 						return;
 					}
 				}
@@ -126,7 +169,7 @@
 			this.init();
 		},
 		destroyed() {
-			//console.log('trig destroyed');
+			$(this.$el).off().select2('destroy');
 		},
 		methods : {
 			initWithDefaultValueFromAjax() {
@@ -137,6 +180,10 @@
 
 				config.data = this.currentOptions;
 
+				config.multiple = this.multiple;
+
+				config.disabled = this.disabled;
+
 				// Ajax feed
 				if (this.feed.getUri != null) {
 					config.ajax = {
@@ -147,7 +194,7 @@
 								page: 1,
 								limit: this.feed.limit,
 								order_by: this.feed.order_by
-							}
+							};
 
 							if (params.term) {
 								query.search = params.term + '*';
@@ -196,44 +243,88 @@
 					$(this.$el).val(this.value).trigger('change');
 				}
 
-				$(this.$el).on('change', (evt) => {
-					//this.value = evt.target.value;
-					this.$emit('input', evt.target.value);
+				$(this.$el).unbind('select2:select').on('select2:select', (evt) => {
+					console.log($(this.$el).val());
+					this.$emit('input', $(this.$el).val());
+				});
+
+				$(this.$el).unbind('select2:unselect').on('select2:unselect', (evt) => {
+					console.log($(this.$el).val());
+					this.$emit('input', $(this.$el).val());
 				});
 			},
 
 			init() {
-				//console.log('init');
 				var config = {};
 
 				// Default value
 				if (this.value != null) {
 					if (this.labelProp == this.valueProp) {
 						if (this.options.length == 0) {
-							this.currentOptions = [{
-								id: this.value,
-								text: this.value,
-							}];
-						}
-					} else if (this.feed.getUri != null) {
-						apiAxios
-							.get(this.feed.getUri + '/' + this.value)
-							.then(response => {
+							if (this.multiple) {
+								this.currentOptions = [];
+								_.forEach(this.value, (v) => {
+									this.currentOptions.push({
+										id: v,
+										text: v,
+									});
+								});
+							} else {
 								this.currentOptions = [{
 									id: this.value,
-									text: response.data.data[this.labelProp],
+									text: this.value,
 								}];
-								this.initWithDefaultValueFromAjax();
-							})
-							.catch(error => {
-								this.$root.axiosError(error);
-							});
+							}
+						}
+					} else if ((this.feed.getUri != null) || (('getSingleResourceUri' in this.feed) && (this.feed.getSingleResourceUri != null))) {
 
+						var baseUri = this.feed.getUri;
+						if (('getSingleResourceUri' in this.feed) && (this.feed.getSingleResourceUri != null)) {
+							baseUri = this.feed.getSingleResourceUri;
+						}
+
+						if (this.multiple) {
+							let callArray = this.value;
+
+							let promiseArray = callArray.map((v) => apiAxios.get(baseUri + '/' + v));
+
+							Promise.all(promiseArray)
+									.then((results) => {
+										this.currentOptions = []
+										_.forEach(results, (response) => {
+											this.currentOptions.push({
+												id: response.data.data[this.valueProp],
+												text: response.data.data[this.labelProp],
+											});
+										});
+										this.initWithDefaultValueFromAjax();
+									})
+									.catch(error => {
+										this.$root.axiosError(error);
+									});
+						} else {
+							apiAxios
+								.get(baseUri + '/' + this.value)
+								.then(response => {
+									this.currentOptions = [{
+										id: this.value,
+										text: response.data.data[this.labelProp],
+									}];
+									this.initWithDefaultValueFromAjax();
+								})
+								.catch(error => {
+									this.$root.axiosError(error);
+								});
+						}
 						return;
 					}
 				}
 
 				config.data = this.currentOptions;
+
+				config.multiple = this.multiple;
+
+				config.disabled = this.disabled;
 
 				// Ajax feed
 				if (this.feed.getUri != null) {
@@ -294,9 +385,11 @@
 					$(this.$el).val(this.value).trigger('change');
 				}
 
-				$(this.$el).on('change', (evt) => {
-					//this.value = evt.target.value;
-					this.$emit('input', evt.target.value);
+				$(this.$el).unbind('select2:select').on('select2:select', (evt) => {
+					this.$emit('input', $(this.$el).val());
+				});
+				$(this.$el).unbind('select2:unselect').on('select2:unselect', (evt) => {
+					this.$emit('input', $(this.$el).val());
 				});
 			}
 		}

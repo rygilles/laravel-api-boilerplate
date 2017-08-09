@@ -37,8 +37,34 @@ class ProjectObserver
 		echo('deleting project "' . $project->name . '"' . "\n");
 
 		// Delete project data stream
-		$dataStream = $project->dataStream();
+		$dataStream = $project->dataStream()->first();
+
+		// Delete project search use cases
+		foreach ($project->searchUseCases()->get() as $searchUseCase) {
+			// Delete search use case fields
+			foreach ($searchUseCase->searchUseCaseFields()->get() as $searchUseCaseField) {
+				$searchUseCaseField->delete();
+			}
+
+			// Delete widgets
+			foreach ($searchUseCase->widgets()->get() as $widget) {
+				$widget->delete();
+			}
+
+			$searchUseCase->delete();
+		}
+
 		if ($dataStream) {
+			// Delete project data stream data stream has i18n langs
+			foreach ($dataStream->dataStreamHasI18nLangs()->get() as $dataStreamHasI18nLang) {
+				$dataStreamHasI18nLang->delete();
+			}
+
+			// Delete project data stream fields
+			foreach ($dataStream->dataStreamFields()->get() as $dataStreamField) {
+				$dataStreamField->delete();
+			}
+
 			// Dissociate data stream with the parent project
 			$project->dataStream()->dissociate();
 			$project->save();
