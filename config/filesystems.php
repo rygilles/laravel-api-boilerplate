@@ -50,15 +50,29 @@ return [
 
 	    'syncTasksTempFolder' => [
 		    'driver' => 'local',
-		    'root' => storage_path('app') . DIRECTORY_SEPARATOR . 'feed_temp',
+		    'root' => storage_path('app') . '/feed_temp',
 	    ],
 
+	    /*
         'public' => [
             'driver' => 'local',
             'root' => storage_path('app/public'),
             'url' => env('APP_URL').'/storage',
             'visibility' => 'public',
         ],
+		*/
+
+	    'widgets_public' => [
+		    'driver' => 'local',
+		    'root' => storage_path('/widgets/public'),
+		    'url' => env('APP_URL').'/widgets',
+		    'visibility' => 'public',
+	    ],
+
+	    'widgets_presets' => [
+		    'driver' => 'local',
+		    'root' => storage_path('app') . '/widgets/presets',
+	    ],
 
         's3' => [
             'driver' => 's3',

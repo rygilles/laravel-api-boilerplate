@@ -32,9 +32,3 @@ mix.combine([
 if (mix.config.inProduction) {
     mix.version();
 }
-
-/* OLD */
-/*
-mix.js('resources/assets/js/dashboard.js', 'public/js')
-   .sass('resources/assets/sass/app.scss', 'public/css');
-*/

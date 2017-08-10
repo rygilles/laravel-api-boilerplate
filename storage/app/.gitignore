@@ -1,3 +1,7 @@
 *
+!assets/
+!preset_stubs/
+!feed_temp/
 !public/
+!widgets/
 !.gitignore
