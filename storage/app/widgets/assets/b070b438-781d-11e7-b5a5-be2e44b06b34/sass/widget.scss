@@ -1,0 +1,7 @@
+$background: #DDD;
+
+body {
+  background: $background;
+  background-image: url(../img/dummy.png);
+  transform: translateX(20px);
+}

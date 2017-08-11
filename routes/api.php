@@ -15,6 +15,13 @@ use Dingo\Api\Routing\Router;
 
 $api = app('Dingo\Api\Routing\Router');
 
+$api->version('v1', ['middleware' => ['acceptLanguage', /*'cors',*/]], function (Router $api) {
+	$api->get(
+		'searchUseCase/{searchUseCaseId}/search',
+		'App\Http\Controllers\Api\SearchUseCaseController@search'
+	)->name('searchUseCase.search');
+});
+
 $api->version('v1', ['middleware' => ['acceptLanguage', /*'cors',*/ 'auth:api']], function (Router $api) {
 
 	// Me
@@ -719,10 +726,13 @@ $api->version('v1', ['middleware' => ['acceptLanguage', /*'cors',*/ 'auth:api']]
 		'App\Http\Controllers\Api\SearchUseCaseController@destroy'
 	)->name('searchUseCase.destroy');
 
+	/*
+	 * ? public ?
 	$api->get(
 		'searchUseCase/{searchUseCaseId}/search',
 		'App\Http\Controllers\Api\SearchUseCaseController@search'
 	)->name('searchUseCase.search');
+	*/
 
 	// Search Use Case Field
 

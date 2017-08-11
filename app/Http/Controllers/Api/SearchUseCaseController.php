@@ -143,8 +143,12 @@ class SearchUseCaseController extends ApiController
 	public function search(SearchSearchUseCaseRequest $request, $searchUseCaseId)
 	{
 		/** @var SearchUseCase $searchUseCase */
+		/*
 		$searchUseCase = SearchUseCase::authorized(['Owner', 'Administrator'])
 									  ->find($searchUseCaseId);
+		*/
+		// TEMP : AUTHORIZED FOR ANYONE !!!
+		$searchUseCase = SearchUseCase::find($searchUseCaseId);
 
 		if (!$searchUseCase)
 			return $this->response->errorNotFound();
