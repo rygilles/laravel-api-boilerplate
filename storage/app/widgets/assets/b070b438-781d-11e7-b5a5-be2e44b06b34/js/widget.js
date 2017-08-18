@@ -1,14 +1,19 @@
+import jQuery from 'jquery'
+window.$ = window.jQuery = jQuery
+require('bootstrap-sass')
+require('font-awesome-webpack')
+
 import Vue from 'vue'
 import Widget from './widget.vue'
 
 window.axios = require('axios');
 
 window.apiAxios = window.axios.create({
-    baseURL : 'https://emsearch.ryan.ems-dev.net/api',
+    baseURL : '<!-- @widget_setting(api_base_url) -->',
     withCredentials : true,
     headers : {
         'X-REQUESTED-WITH': 'XMLHttpRequest',
-        'Accept-Language': 'fr'
+        'Accept-Language': '<!-- @widget_setting(request_lang) -->'
     }
 });
 

@@ -1,0 +1,13 @@
+{
+	"build": {
+		"widget_id": "b070b438-781d-11e7-b5a5-be2e44b06b34",
+		"widget_public_root_path": "https://emsearch.ryan.ems-dev.net/widgets/b070b438-781d-11e7-b5a5-be2e44b06b34/"
+	},
+	"js": {
+		"api_base_url": "https://emsearch.ryan.ems-dev.net/api",
+		"request_lang": "fr",
+		"widget_id": "b070b438-781d-11e7-b5a5-be2e44b06b34",
+		"search_use_case_id": "dc5bfd4c-711e-11e7-8cf7-a6006ad3dba0",
+		"widget_public_root_path": "https://emsearch.ryan.ems-dev.net/widgets/b070b438-781d-11e7-b5a5-be2e44b06b34/"
+	}
+}

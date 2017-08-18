@@ -14,7 +14,6 @@ class Kernel extends ConsoleKernel
      */
     protected $commands = [
         Commands\MakeFreshApp::class,
-        Commands\ResetApp::class,
         Commands\GenerateApiDocs::class,
 	    Commands\ManageSyncTasks::class
     ];

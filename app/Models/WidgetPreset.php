@@ -113,5 +113,5 @@ class WidgetPreset extends ApiModel
 		return $this->belongsTo(searchUseCasePreset::class);
 	}
 
-	// @todo widgetIntegrationPresets
+	// @todo widgetPresetIntegrations
 }

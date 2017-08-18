@@ -34,16 +34,6 @@ class PagesController extends Controller
 	 */
 	public function dashboard()
 	{
-		// @todo Remove this test...
-		/*
-		$user = Auth::user();
-
-		$userHasProject = UserHasProject::where('user_id', '82b5da82-138c-11e7-93ae-92361f002671')
-			->where('project_id', '1bcc7efc-138c-11e7-93ae-92361f002671')
-			->first();
-
-		$user->notify(new AdministeredProject($userHasProject->user()->first(), $userHasProject->project()->first(), $user));
-		*/
 		return view('dashboard');
 	}
 }

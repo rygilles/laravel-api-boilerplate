@@ -36,12 +36,6 @@ re-create required database data and (optionally)
 create a fresh app with samples data.
 
 
-```bash
-php artisan app:reset
-```
-This command will reset all your database data and (optionally)
-seed your app with samples data.
-
 
 ```bash
 php artisan app:generateApiDocs

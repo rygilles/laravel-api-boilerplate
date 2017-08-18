@@ -135,5 +135,5 @@ class Widget extends ApiModel
 		return $query;
 	}
 
-	// @todo widgetPresetIntegrations
+	// @todo widgetIntegrations
 }

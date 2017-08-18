@@ -21,4 +21,6 @@ Route::group(['domain' => env('APP_DOMAIN')], function () {
 
 	Route::get('/dashboard', 'PagesController@dashboard')->name('dashboard');
 
+	Route::get('/widgets/{path}', 'WidgetFilesController@getFile')->where('path', '.*');
+
 });
