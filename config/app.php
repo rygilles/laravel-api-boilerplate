@@ -236,6 +236,9 @@ return [
 	    // Unique with rule validation
 	    Felixkiss\UniqueWithValidator\ServiceProvider::class,
 
+	    // WIP
+	    Rygilles\OpenApiGenerator\OpenApiSchemaGeneratorServiceProvider::class,
+
     ],
 
     /*

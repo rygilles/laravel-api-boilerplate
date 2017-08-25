@@ -29,6 +29,9 @@ class ProjectController extends ApiController
 	/**
 	 * Project list
 	 *
+	 * @ApiProfileResponseSchemaRef #/components/schemas/ProjectList
+	 * @ApiProfileResponseDescription A Project list
+	 *
 	 * @return \Dingo\Api\Http\Response
 	 */
 	public function index()
@@ -40,6 +43,9 @@ class ProjectController extends ApiController
 
 	/**
 	 * Get specified project
+	 *
+	 * @ApiProfileResponseSchemaRef #/components/schemas/Project
+	 * @ApiProfileResponseDescription A Project
 	 *
 	 * @param $projectId string Project UUID
 	 * @return \Dingo\Api\Http\Response|void
@@ -58,6 +64,8 @@ class ProjectController extends ApiController
 	 * Create and store new project
 	 *
 	 * @ApiDocsNoCall
+	 * @ApiProfileResponseSchemaRef #/components/schemas/Project
+	 * @ApiProfileResponseDescription The created Project
 	 *
 	 * @param StoreProjectRequest $request
 	 * @return \Dingo\Api\Http\Response|void
@@ -89,6 +97,8 @@ class ProjectController extends ApiController
 	 * Update a specified project
 	 *
 	 * @ApiDocsNoCall
+	 * @ApiProfileResponseSchemaRef #/components/schemas/Project
+	 * @ApiProfileResponseDescription The updated Project
 	 *
 	 * @param UpdateProjectRequest $request
 	 * @param $projectId string Project UUID
@@ -116,6 +126,7 @@ class ProjectController extends ApiController
 	 * <aside class="notice">Only <code>Owner</code> of project is allowed to delete it.</aside>
 	 *
 	 * @ApiDocsNoCall
+	 * @ApiProfileResponseDescription Empty response
 	 *
 	 * @param $projectId string Project UUID
 	 * @return \Dingo\Api\Http\Response|void

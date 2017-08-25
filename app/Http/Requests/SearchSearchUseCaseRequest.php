@@ -14,8 +14,8 @@ class SearchSearchUseCaseRequest extends ApiRequest
 		return [
 			'query_string'  => 'required|string|min:1',
 			'i18n_lang_id'  => 'string|max:30|exists:i18n_lang,id',
-			'page'          => 'int:min:1',
-			'limit'         => 'int:min:1',
+			'page'          => 'integer|min:1',
+			'limit'         => 'integer|min:1',
 		];
 	}
 }

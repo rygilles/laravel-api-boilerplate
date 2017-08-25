@@ -109,8 +109,8 @@ $.ajax(settings).done(function (response) {
         "data_stream_decoder_id": "53fd5290-5a4c-11e7-907b-a6006ad3dba0",
         "name": "Mickey Mouse Sample Project Data Stream",
         "feed_url": "https:\/\/www.e-monsite.com\/blog\/do\/datastream\/",
-        "created_at": "2017-08-07 13:27:06",
-        "updated_at": "2017-08-07 13:27:06"
+        "created_at": "2017-08-18 10:22:00",
+        "updated_at": "2017-08-18 10:22:00"
     }
 }</code></pre>
 <h3>HTTP Request</h3>
@@ -149,8 +149,8 @@ $.ajax(settings).done(function (response) {
         "data_stream_decoder_id": "53fd5290-5a4c-11e7-907b-a6006ad3dba0",
         "name": "John Smith Sample Project Data Stream",
         "feed_url": "https:\/\/www.e-monsite.com\/blog\/do\/datastream\/",
-        "created_at": "2017-08-07 13:27:06",
-        "updated_at": "2017-08-07 13:27:06"
+        "created_at": "2017-08-18 10:22:00",
+        "updated_at": "2017-08-18 10:22:00"
     }
 }</code></pre>
 <h3>HTTP Request</h3>
@@ -232,9 +232,9 @@ $.ajax(settings).done(function (response) {
 -H "Accept: application/json" \
 -H "Authentication: Bearer xxx"
  \
-    -d "data_stream_decoder_id"="194ad9e7-2168-3fbf-9551-f96b4a9d8a85" \
-    -d "name"="Hic earum eius" \
-    -d "feed_url"="http://kling.com/" \
+    -d "data_stream_decoder_id"="92dba4be-7fd9-3c86-9eb3-fbfc24724c3b" \
+    -d "name"="In aspernatur autem" \
+    -d "feed_url"="http://heidenreich.com/" \
 </code></pre>
 <pre><code class="language-javascript">var settings = {
     "async": true,
@@ -242,9 +242,9 @@ $.ajax(settings).done(function (response) {
     "url": "https://emsearch.ryan.ems-dev.net/api/project/1bcc7efc-138c-11e7-93ae-92361f002671/dataStream",
     "method": "PUT",
     "data": {
-        "data_stream_decoder_id": "194ad9e7-2168-3fbf-9551-f96b4a9d8a85",
-        "name": "Hic earum eius",
-        "feed_url": "http:\/\/kling.com\/"
+        "data_stream_decoder_id": "92dba4be-7fd9-3c86-9eb3-fbfc24724c3b",
+        "name": "In aspernatur autem",
+        "feed_url": "http:\/\/heidenreich.com\/"
 },
     "headers": {
         "Accept": "application/json",
@@ -350,8 +350,8 @@ $.ajax(settings).done(function (response) {
             "name": "Emonsite",
             "class_name": "EmonsiteDecoder",
             "file_mime_type": "application\/json",
-            "created_at": "2017-08-07 13:27:05",
-            "updated_at": "2017-08-07 13:27:05"
+            "created_at": "2017-08-18 10:21:56",
+            "updated_at": "2017-08-18 10:21:56"
         }
     ],
     "meta": {
@@ -401,8 +401,8 @@ $.ajax(settings).done(function (response) {
         "name": "Emonsite",
         "class_name": "EmonsiteDecoder",
         "file_mime_type": "application\/json",
-        "created_at": "2017-08-07 13:27:05",
-        "updated_at": "2017-08-07 13:27:05"
+        "created_at": "2017-08-18 10:21:56",
+        "updated_at": "2017-08-18 10:21:56"
     }
 }</code></pre>
 <h3>HTTP Request</h3>
@@ -598,8 +598,8 @@ $.ajax(settings).done(function (response) {
         "user_group_id": "End-User",
         "name": "John Smith",
         "email": "john.smith@domain.tld",
-        "created_at": "2017-08-07 13:27:06",
-        "updated_at": "2017-08-07 13:27:06"
+        "created_at": "2017-08-18 10:21:59",
+        "updated_at": "2017-08-18 10:21:59"
     }
 }</code></pre>
 <h3>HTTP Request</h3>
@@ -621,7 +621,7 @@ $.ajax(settings).done(function (response) {
 <pre><code class="language-javascript">var settings = {
     "async": true,
     "crossDomain": true,
-    "url": "https://emsearch.ryan.ems-dev.net/api/me/notification?read_status=unread?read_status=read",
+    "url": "https://emsearch.ryan.ems-dev.net/api/me/notification?read_status=unread?read_status=unread",
     "method": "GET",
     "headers": {
         "Accept": "application/json",
@@ -638,7 +638,7 @@ $.ajax(settings).done(function (response) {
 <pre><code class="language-json">{
     "data": [
         {
-            "id": "612535d9-115e-4e25-b3c2-1320d13c9183",
+            "id": "da36a1e8-65ef-4d6b-a687-0956e29027fd",
             "type": "App\\Notifications\\AdministeredProject",
             "notifiable_id": "605c7610-1389-11e7-93ae-92361f002671",
             "notifiable_type": "App\\Models\\User",
@@ -655,8 +655,8 @@ $.ajax(settings).done(function (response) {
                 }
             },
             "read_at": null,
-            "created_at": "2017-08-07 13:27:07",
-            "updated_at": "2017-08-07 13:27:07"
+            "created_at": "2017-08-18 10:22:00",
+            "updated_at": "2017-08-18 10:22:00"
         }
     ],
     "meta": {
@@ -780,15 +780,15 @@ $.ajax(settings).done(function (response) {
             "id": "1bcc7efc-138c-11e7-93ae-92361f002671",
             "data_stream_id": "56278dc8-1934-11e7-93ae-92361f002671",
             "name": "John Smith Sample Project 1",
-            "created_at": "2017-08-07 13:27:06",
-            "updated_at": "2017-08-07 13:27:06"
+            "created_at": "2017-08-18 10:22:00",
+            "updated_at": "2017-08-18 10:22:00"
         },
         {
             "id": "b6860dd2-138c-11e7-93ae-92361f002671",
             "data_stream_id": null,
             "name": "John Smith Sample Project 2",
-            "created_at": "2017-08-07 13:27:06",
-            "updated_at": "2017-08-07 13:27:06"
+            "created_at": "2017-08-18 10:22:00",
+            "updated_at": "2017-08-18 10:22:00"
         }
     ],
     "meta": {
@@ -856,8 +856,8 @@ $.ajax(settings).done(function (response) {
         "id": "1bcc7efc-138c-11e7-93ae-92361f002671",
         "data_stream_id": "56278dc8-1934-11e7-93ae-92361f002671",
         "name": "John Smith Sample Project 1",
-        "created_at": "2017-08-07 13:27:06",
-        "updated_at": "2017-08-07 13:27:06"
+        "created_at": "2017-08-18 10:22:00",
+        "updated_at": "2017-08-18 10:22:00"
     }
 }</code></pre>
 <h3>HTTP Request</h3>
@@ -873,7 +873,7 @@ $.ajax(settings).done(function (response) {
 -H "Accept: application/json" \
 -H "Authentication: Bearer xxx"
  \
-    -d "name"="Dolor quo dignissimos" \
+    -d "name"="Eos aliquid voluptatem" \
 </code></pre>
 <pre><code class="language-javascript">var settings = {
     "async": true,
@@ -881,7 +881,7 @@ $.ajax(settings).done(function (response) {
     "url": "https://emsearch.ryan.ems-dev.net/api/project",
     "method": "POST",
     "data": {
-        "name": "Dolor quo dignissimos"
+        "name": "Eos aliquid voluptatem"
 },
     "headers": {
         "Accept": "application/json",
@@ -923,7 +923,7 @@ $.ajax(settings).done(function (response) {
 -H "Accept: application/json" \
 -H "Authentication: Bearer xxx"
  \
-    -d "name"="Quis eligendi et" \
+    -d "name"="Dolor aperiam autem" \
 </code></pre>
 <pre><code class="language-javascript">var settings = {
     "async": true,
@@ -931,7 +931,7 @@ $.ajax(settings).done(function (response) {
     "url": "https://emsearch.ryan.ems-dev.net/api/project/1bcc7efc-138c-11e7-93ae-92361f002671",
     "method": "PUT",
     "data": {
-        "name": "Quis eligendi et"
+        "name": "Dolor aperiam autem"
 },
     "headers": {
         "Accept": "application/json",
@@ -996,6 +996,114 @@ $.ajax(settings).done(function (response) {
 <p><code>DELETE /api/project/{projectId}</code></p>
 <!-- END_9e2aafbf3cd214246c2f0fe7511ec6ea -->
 <h1>SearchUseCase</h1>
+<!-- START_4b5e9ae73571f33c511b43a1f61a4ec0 -->
+<h2>Perform search with the specified search use case</h2>
+<blockquote>
+<p>Example request:</p>
+</blockquote>
+<pre><code class="language-bash">curl -X GET "https://emsearch.ryan.ems-dev.net/api/searchUseCase/dc5bfd4c-711e-11e7-8cf7-a6006ad3dba0/search?query_string=site internet&amp;i18n_lang_id=fr&amp;page=1&amp;limit=5" \
+-H "Accept: application/json" \
+-H "Authentication: Bearer xxx"
+</code></pre>
+<pre><code class="language-javascript">var settings = {
+    "async": true,
+    "crossDomain": true,
+    "url": "https://emsearch.ryan.ems-dev.net/api/searchUseCase/dc5bfd4c-711e-11e7-8cf7-a6006ad3dba0/search?query_string=site internet&amp;amp;i18n_lang_id=fr&amp;amp;page=1&amp;amp;limit=5?query_string=Earum nemo dignissimosi18n_lang_id=Eum temporibus consequaturpage=656871limit=647197982",
+    "method": "GET",
+    "headers": {
+        "Accept": "application/json",
+        "Authentication" : "Bearer xxx"
+    }
+}
+
+$.ajax(settings).done(function (response) {
+    console.log(response);
+});</code></pre>
+<blockquote>
+<p>Example response:</p>
+</blockquote>
+<pre><code class="language-json">{
+    "data": [
+        {
+            "item_id": "4f72bc79df6d0000000082b0",
+            "title_fr": "Le site du Mercredi ou comment créer un site internet avec E-monsite",
+            "content_fr": "Ce billet inaugure une série d&amp;#39;articles mettant en avant le meilleur de la création de site web sur E-monsite.com. Tous les mercredis, nous présenterons un site réalisé grâce aux outils pour créer un site internet sur E-monsite, l&amp;#39;équipe E-monsite en profitera pour donner son avis d&amp;#39; \"expert\". Ici point de copinages ou d&amp;#39;hypocrisie, mais simplement les coups de cœur de l&amp;#39;équipe E-monsite.\r\n\r\n\r\n\r\nComme précisé sur la page facebook E-monsite, nous ne faisons pas de discriminations entre un site web gratuit, un site internet pro ou une boutique en ligne. Tout le monde a sa chance, les sites sélectionnés auront brillé par leurs designs, leurs contenus (ou les deux) ou encore par l&amp;#39;originalité de leur concept.\r\n\r\nC&amp;#39;est le Blog informatique Willside.net qui inaugure l&amp;#39;opération. Nous avons découvert ce site grâce à un commentaire de l&amp;#39;utilisateur sur notre page facebook et avons été agréablement surpris par la qualité du travail réalisé par le Webmaster. Florian développeur E-monsite nous donne son avis :\r\n\r\nPoints forts :\r\n- Sobriété\r\n- Contenu clair\r\n- Menu fonctionnel\r\n- Header bien mis en avant\r\n- La petite intro dans le post-it\r\n- Footer clair\r\n\r\nEléments à améliorer :\r\n- Couleur des liens du menu\r\n- Le style des liens lorsque l&amp;#39;on passe dessus\r\n\r\nConclusion :\r\nStyle propre et clair, il ne faut pas aller dans le bling-bling pour avoir un site de très très bonne qualité ! C&amp;#39;est le genre de site qui donne envie de lire et d&amp;#39;y passer un petit moment. Félicitation au webmaster !\r\n\r\nCet E-monsitien à vraiment mis à profit les outils pour créer un site internet facilement, nous espérons que ce site vous plaira aussi et qu&amp;#39;il restera dans vos favoris si vous êtes intéressés par l&amp;#39;actualité informatique. A vous de jouer maintenant, le prochain site du mercredi c&amp;#39;est la semaine prochaine !\r\n\r\nEdito du 1er Avril 2010 pour ajouter la petite interview du site du Mercredi.\r\n\r\n1. Quand et Comment avez vous découvert E-monsite ?\r\n\r\nJ&amp;#39;ai découvert E-monsite alors que je cherchais via Google un moyen de me créer un petit site web sympathique facilement. Je pense que c&amp;#39;était il y a un peu moins d&amp;#39;un an. J&amp;#39;ai choisis E-monsite car cette plateforme m&amp;#39;a tout de suite semblé sûre, fiable, fonctionnelle, et de qualité, et je n&amp;#39;ai pas eu tord. J&amp;#39;ai parfois même eu l&amp;#39;occasion de tester d&amp;#39;autres plateformes, sans succès.\r\n\r\n2. Quel niveau de développement web aviez vous au moment où vous avez créé Willside.net ?\r\n\r\nLorsque j&amp;#39;ai créé WillSide.net, le mot \"HTML\" était pour moi totalement étranger de mon vocabulaire. Depuis le temps, il est incroyable de constater tout ce que j&amp;#39;ai pu comprendre et apprendre concernant le développement web, et ce grandement grâce à E-monsite.\r\n\r\n3. Quels conseils pourriez vous donner aux personnes qui découvrent l&amp;#39;outil ?\r\n\r\nPersonnellement, je conseille de vraiment essayer d&amp;#39;exploiter toutes les possibilités de la plateforme. Au premier coup d&amp;#39;oeil, on ne soupçonnerait même pas tout ce qu&amp;#39;il est possible de réaliser. Pourtant, il suffit d&amp;#39;un second coup d&amp;#39;oeil plus approfondi et on se rends compte qu&amp;#39;on va facilement très loin. Plus l&amp;#39;on commence à maîtriser le html, le javascript, le css etc... plus l&amp;#39;on va loin. E-monsite convient à tout le monde, que l&amp;#39;on ait des connaissances ou non sur le développement web.",
+            "url_fr": "https:\/\/www.e-monsite.com\/blog\/sites-crees-avec-e-monsite\/le-site-du-mercredi-ou-comment-creer-un-site-internet-avec-e-monsite.html"
+        },
+        {
+            "item_id": "4f72bc7b1dab0000000081ca",
+            "title_fr": "Le site du Mercredi #4 ou comment créer un site internet avec E-monsite",
+            "content_fr": "Le 4ème site du Mercredi a été sélectionné, et même si c&amp;#39;est le premier ce mois-ci, ce n&amp;#39;est pas un poisson d&amp;#39;avril !  C&amp;#39;est  donc le site peggylurton.com, un site web consacré à l&amp;#39;Art-thérapie qui a retenu notre attention cette semaine. Ici c&amp;#39;est le design sobre et la bonne utilisation des outils de création de site qui ont fait la différence.\r\n\r\n\r\n\r\nPas besoin d&amp;#39;être un crack en informatique pour créer un site internet, et Peggy nous le prouve, car c&amp;#39;est à peine un mois après son inscription qu&amp;#39;elle est arrivée à ce résultat : une vitrine efficace pour son activité, qui permet de trouver rapidement toutes les informations que ses visiteurs pourraient rechercher. C&amp;#39;est Florian, Web-développeur E-monsite qui nous donne son avis d&amp;#39;expert sur le travail du Webmaster du site du mercredi #4 : L&amp;#39;art d&amp;#39;être soi.\r\n\r\nPoints forts :\r\n\r\n- Style sobre et couleurs en harmonie (ce qui donne un côté reposant)\r\n- Bonne utilisation d&amp;#39;un thème (et modifié de façon ingénieuse)\r\n- Menus légers contenant des informations pertinentes\r\n- Utilisation parfaite de l&amp;#39;agenda (brève description qui force à aller voir le contenu détaillé)\r\n\r\nPoints à améliorer :\r\n\r\n- Il manque peut être un footer (pied de page) pour éviter une \"fin brutale\" de la page. Il permettrait notamment d&amp;#39;ajouter d&amp;#39;autres liens vers les pages de contenu (utile tant pour la navigation que pour le référencement).\r\n- Les polices différentes dans une même page (dans l&amp;#39;agenda par exemple) qui sont sûrement dues à des copier-coller depuis un éditeur de texte logiciel.\r\n\r\nConclusion :\r\n\r\nUn site agréable à visiter avec du contenu clair et intéressant. Très bonne utilisation des outils mis à disposition par E-monsite. Un bel exemple de personne n&amp;#39;ayant pas de connaissances en développement web et qui a construit un bien joli site avec les outils de personnalisation. Ses compétences graphiques l&amp;#39;aident pour l&amp;#39;harmonie du contenu et des couleurs. En bref, une belle réussite, bravo !\r\n\r\nLorsqu&amp;#39;elle maîtrisera un peu plus les outils de création web, nul doute que le site de Peggy Lurton nous surprendra à nouveau, mais nous voyons ici que la sobriété du design et des contenus facilement accessibles et cohérents sont les premières clés pour réaliser un bon site internet. Je vous laisse découvrir les réponses de Peggy Lurton aux questions du Mercredi, en espérant que ces différents exemples de sites créés avec E-monsite.com vous encouragent et vous donnent des idées pour votre Site.\r\n\r\n1. Quand et Comment avez vous découvert E-monsite ?\r\n\r\nJ&amp;#39;ai découvert  E-monsite il y a un mois environ en cherchant par hasard sur google comment faire un site simple et efficace. E-monsite faisait la différence par sa simplicité et sa convivialité.\r\n\r\n2. Quel niveau de développement web aviez vous au moment où vous avez créé votre site ?\r\n\r\nZéro au niveau du développement web ! Par contre, je suis graphiste et cela aide un peu.\r\n\r\n3. Quels conseils pourriez vous donner aux personnes qui découvrent l&amp;#39;outil ?\r\n\r\nAllez-y les yeux fermés !!! On est vraiment pris en main et il y a toujours de l&amp;#39;aide si on a des problèmes ou des doutes. La version pro est super ainsi que le nom de domaine (rapide en plus), je ne regrette pas !!! Petit à petit , le site s&amp;#39;améliore, change, car c&amp;#39;est très simple de le manipuler.",
+            "url_fr": "https:\/\/www.e-monsite.com\/blog\/sites-crees-avec-e-monsite\/le-site-du-mercredi-4-ou-comment-creer-un-site-internet-avec-e-monsite.html"
+        },
+        {
+            "item_id": "4f72bc7ad9a4000000003a06",
+            "title_fr": "Le site du Mercredi #3, ou comment créer un site internet avec E-monsite",
+            "content_fr": "Le traditionnel rendez-vous du mercredi est arrivé ! Installez vous dans votre fauteuil, chaise, canapé ou quel que soit l&amp;#39;endroit où vous vous installez pour créer un site internet et suivre l&amp;#39;évolution des outils e-monsite sur le blog, sur Facebook etc... C&amp;#39;est le travail de Sylvie, webmaster du site Almahfrance.com, un site internet consacré à Almah un groupe de Métal brésilien, qui est mis en avant cette semaine.\r\n\r\n\r\n\r\nSite du groupe de Métal brésilien Almah\r\n\r\n\r\n\r\nLe Webmaster administre 4 sites au total, tous liés au groupe Almah, que ce soit le site du chanteur : Edu Falaschi ou les différents sites dédiés aux fans d&amp;#39;Almah. Mais avant de laisser la parole à Tony qui nous donnera son avis d&amp;#39;expert E-monsite sur ce site web, laissez moi vous parler des différentes nouveautés qui font leur apparition dans la rubrique cette semaine.\r\n\r\nTout d&amp;#39;abord, une partie \"interview\" fait son apparition dans l&amp;#39;article, elle est constituée des réponses donnés par le webmaster du site sélectionné à une série de 3 questions qui seront les mêmes chaque semaine.\r\n\r\nEnsuite, notre Web-designer en chef, Pascal, a réalisé un petit logo du site du Mercredi, que les webmasters peuvent intégrer sur leur site ( s&amp;#39;ils le souhaitent bien sûr). Cela leur permettra par exemple de renvoyer directement vers l&amp;#39;article ou une page de leur choix.\r\n\r\nEn sachant que parallèlement, nous réfléchissons à une autre manière de mettre en avant les sites sélectionnés sur le portail d&amp;#39;E-monsite.com. Une autre façon de féliciter les webmasters pour leur travail et de leur apporter certainement une source de trafic non négligeable. C&amp;#39;est donc le moment de contacter Jeremy et Benoît via le support en ligne pour demander comment créer un site internet, ou comment l&amp;#39;améliorer.\r\n\r\nVoici donc l&amp;#39;avis de Tony sur le site.\r\n\r\nPoints forts :\r\n\r\n- Design cohérent dans son ensemble entre les différents supports internet et visuels (pochettes etc...), en phase avec l&amp;#39;identité du groupe.\r\n- Taille d&amp;#39;écriture identique et styles d&amp;#39;écriture cohérents sur toutes les pages :  contenu bien lisible\r\n- Contenu bien organisé (navigation sur plusieurs niveaux)\r\n- Pas de fioritures inutiles (gifs animés, bannières, effets javascript...)\r\n- Très bonne utilisation des fonctionnalités proposées par E-monsite \r\n\r\nPoints à améliorer :\r\n\r\n- Image d&amp;#39;entête trop haute : sur une résolution 1024x768 on ne voit que l&amp;#39;entête\r\n- Des images qui touchent le texte (vignettes sur la page biographies par exemple)\r\n- Liens internes et externes similaires : on ne sait pas quand on quitte le site\r\n- Agenda : le lien dans le menu en haut est une page, et le lien dans le menu du bas est le module agenda.\r\n- La page d&amp;#39;introduction n&amp;#39;est pas forcément nécessaire.\r\n\r\nConclusion\r\n\r\nLe site est graphiquement bien ficelé et est cohérent avec le graphisme du site officiel. Les points à améliorer sont l&amp;#39;image d&amp;#39;entête trop haute (494px de hauteur) qui peut perdre l&amp;#39;internaute qui peut ne pas voir le contenu du site (par exemple après avoir cliqué sur la page d&amp;#39;introduction, il peut penser être resté sur la même page étant donné que l&amp;#39;image d&amp;#39;intro et d&amp;#39;entête sont identiques) et les liens vers les pages externes ne sont pas assez bien signalés (de même, par exemple, en s&amp;#39;abonnant à la newsletter on atterrit, sans avoir été prévenu, sur un autre site). En conclusion, ce site utilise parfaitement les possibilités de E-monsite en matière de design et de gestion de contenu et ne nécessite que quelques petites améliorations mineures qui lui permettront d&amp;#39;éviter de perdre les internautes.\r\n\r\nEncore bravo à Sylvie pour tout le travail réalisé, voici ses réponses aux trois questions du mercredi qui sont assez élogieuses et que l&amp;#39;on pourrait presque utiliser telles quelles dans les futures plaquettes E-monsite ! Nous vous assurons que nous n&amp;#39;avons exercé aucune menace à son encontre au moment où elle a tapé ces lignes... ;)\r\n\r\n1. Quand et Comment avez vous découvert E-monsite ?\r\n\r\nJ&amp;#39;ai découvert E-monsite il y a un an et demi, en cherchant sur le web un moyen simple et efficace de créer un site pour un groupe de musique métal Brésilien, Almah. J&amp;#39;ai essayé plusieurs interfaces, mais je trouve que celle d&amp;#39;E-monsite est vraiment la meilleure et la plus conviviale aussi ! Le service est en plus génial : entre le forum d&amp;#39;E-monsite et la hotline, on trouve toujours de l&amp;#39;aide !\r\n\r\n\r\n2. Quel niveau de développement web aviez vous au moment où vous avez créé Almahfrance.com.\r\n\r\nAucun ... Je suis autodidacte, j&amp;#39;essaye toujours d&amp;#39;apprendre de nouvelles choses ! Je dois aussi avouer que je suis conseillée par mes frères qui sont des professionnels du web.\r\n\r\n\r\n3. Quels conseils pourriez vous donner aux personnes qui découvrent l&amp;#39;outil ?\r\n\r\nL&amp;#39;explorer au maximum ! E-monsite est pour moi un outil vraiment génial, car il s&amp;#39;adapte à notre degré de connaissances web ! Au début, si l&amp;#39;on ne s&amp;#39;y connaît pas du tout, on peut choisir un design proposé par E-monsite et suivre tout simplement les instructions très claires, données pour créer son site ! Si on évolue et que l&amp;#39;on commence à coder en HTML, à maîtriser le Javascript et que l&amp;#39;on touche un peu au design, on peut améliorer son site de manière plus autonome ! E-monsite est très flexible de ce point de vue ! En plus, E-monsite propose régulièrement des nouveautés qui sont excellentes (comme par exemple la gestion avancée des menus verticaux etc ...). Et surtout, ne pas hésiter à poser des questions sur le forum d&amp;#39;E-monsite : les membres de la communauté essaient toujours de donner des conseils, échangent leurs expériences, c&amp;#39;est vraiment un moyen sympathique d&amp;#39;apprendre ! Mon dernier conseil ... essayer la version Pro d&amp;#39;E-monsite ! Elle offre de nombreuses possibilités et permet de faire de très beaux sites, sans pub !\r\n\r\nMerci Sylvie et bravo pour votre travail ! Avis aux E-monsitiens, n&amp;#39;hésitez pas à laisser un commentaire ou à lui demander directement comment elle est arrivée à ce résultat.",
+            "url_fr": "https:\/\/www.e-monsite.com\/blog\/sites-crees-avec-e-monsite\/le-site-du-mercredi-3-ou-comment-creer-un-site-internet-avec-e-monsite.html"
+        },
+        {
+            "item_id": "4f72bc7a3a910000000051e0",
+            "title_fr": "Le site du Mercredi #2 ou comment créer un site internet avec E-monsite",
+            "content_fr": "Voilà donc le deuxième billet mettant en avant un internaute qui a utilisé E-monsite pour faire un site internet, et un beau s&amp;#39;il vous plait ! Cette semaine c&amp;#39;est le webmaster de fan-fortboyard.fr qui a été sélectionné. Nous espérons que vous aurez la même réaction que toute l&amp;#39;équipe en surfant sur ce site dédié aux fans de fort Boyard.\r\n\r\n\r\n\r\nC&amp;#39;est aussi bientôt une date anniversaire car le 28 mars, cela fera 4 ans jour pour jour que cet utilisateur utilise les outils E-monsite et c&amp;#39;est aussi en 2006 qu&amp;#39;il a choisi de créer un site professionnel. C&amp;#39;est peut être ce qui explique sa maîtrise des outils, mais il vous suffit de suivre les conseils de nos deux génies du support, j&amp;#39;ai nommé Jeremy et Benoît, ou encore d&amp;#39;utiliser les nombreuses ressources en ligne pour améliorer votre site internet.\r\n\r\nCette semaine c&amp;#39;est Nicolas qui travaille d&amp;#39;arrache-pied pour concevoir et améliorer les outils pour créer une boutique en ligne qui a pour mission de donner son point de vue d&amp;#39;expert en création de site. Voici ses commentaires:\r\n\r\nPoints forts :\r\n\r\n- Un site très fourni, qui donne une impression d&amp;#39;abondance sans tomber dans l&amp;#39;écueil du fouillis.\r\n- Un design homogène, pas bling-bling, sans fioritures graphiques et effets inutiles.\r\n- Une arborescence structurée, une mise en page claire et soignée.\r\n- Une utilisation raisonnée des menus verticaux.\r\n\r\nPoints à améliorer :\r\n\r\n- Beaucoup d&amp;#39;erreurs de validation, dues à certaines balises HTML \"obsolètes\". Par exemple le cadre \"Dernière Minutes\" avec le texte qui défile.\r\n- Une page d&amp;#39;accueil peut-être un peu trop dense.\r\n\r\nConclusion :\r\n\r\nUn sentiment de confiance se dégage de ce site dès l&amp;#39;arrivée sur la page d&amp;#39;accueil, sans doute grâce à une organisation réfléchie des éléments de contenu et de navigation, et à une utilisation parcimonieuse des potentiels graphiques offerts par la plateforme.\r\n\r\nIl est vrai que ce site inspire confiance et fait très pro, nul doute que c&amp;#39;est une référence incontournable pour tous les amateurs de l&amp;#39;émission télévisée. La constance que l&amp;#39;on retrouve sur les sites professionnels, c&amp;#39;est certes l&amp;#39;implication du webmaster, mais aussi la sobriété et la non-profusion d&amp;#39;éléments clignotants qui peuvent gêner la lecture du contenu et augmenter le temps de chargement de la page. Encore bravo au webmaster et à mercredi prochain pour la présentation du nouveau site réussi. N&amp;#39;hésitez pas à donner votre avis sur le site !\r\n\r\nEdito du 1er avril pour ajouter la mini \"interview\" de Sebastien le webmaster de fan-frotboyard.fr.\r\n\r\n1. Quand et Comment avez vous découvert E-monsite ?\r\n\r\nEt bien j&amp;#39;ai découvert E-Monsite il y a déjà 4 ans, début 2006 en cherchant simplement sur Google ! Après avoir fait le tour de plusieurs autres supports, c&amp;#39;est E-Monsite qui a attiré mon attention. Je n&amp;#39;ai donc pas hésité à m&amp;#39;inscrire dans la foulée !\r\n\r\n2. Quel niveau de développement web aviez vous au moment où vous avez créé fan-fortboyard.fr\r\n\r\nEn fait, je ne connaissais rien ! Auparavant j&amp;#39;avais eu des forums ou des blogs pour d&amp;#39;autres passions que Fort Boyard, mais pas de site. En 2005, j&amp;#39;ai donc ouvert un blog pour l&amp;#39;été 2005 de Fort Boyard, mais j&amp;#39;ai vite vu que ça ne pourrai pas continuer ainsi. J&amp;#39;ai donc décidé de passer à l&amp;#39;étape au-dessus en créant un site rapidement, sans pour autant me compliquer la vie.\r\n\r\n3. Quels conseils pourriez vous donner aux personnes qui découvrent l&amp;#39;outil ?\r\n\r\nDe s&amp;#39;inscrire de suite et de profiter de toutes les possibilités qu&amp;#39;offrent E-Monsite. Tout est clair et toujours expliqué correctement, y a pas d&amp;#39;informations cachées ou de mauvaises surprises.\r\nIl y a des nouveautés très souvent, on peut donc améliorer son site régulièrement, sans aucun effort. Je dirai aussi qu&amp;#39;il ne faut pas avoir peur des tarifs pour la version Pro ou le nom de domaine, car quand on voit toutes les options et les avantages que ça apporte, cela vaut vraiment le coup.\r\nEt puis de toute façon dès qu&amp;#39;un souci se présente ; entre la hotline, le forum ou le support en ligne, l&amp;#39;équipe d&amp;#39;E-monsite est toujours là pour aider !",
+            "url_fr": "https:\/\/www.e-monsite.com\/blog\/sites-crees-avec-e-monsite\/le-site-du-mercredi-2-ou-comment-creer-un-site-internet-avec-e-monsite.html"
+        },
+        {
+            "item_id": "51a7164a0d666d16c1b08c67",
+            "title_fr": "Afficher l'agenda culturel d'un artiste, d'une ville ou d'un lieu sur son site Internet",
+            "content_fr": "En partenariat avec AgendaCulturel.fr, un des principaux sites d&amp;#39;information culturelle en France, nous avons le plaisir de vous proposer un nouveau widget permettant d&amp;#39;afficher l&amp;#39;agenda culturel d&amp;#39;un artiste, d&amp;#39;une ville ou d&amp;#39;un lieu de diffusion culturelle.\nLe widget Agenda Culturel\nCe widget permet donc d&amp;#39;afficher les prochaines dates d&amp;#39;événements culturels :\n\td&amp;#39;une ville en France ; vous pourrez en plus définir un rayon en kilomètres pour élargir la recherche et choisir parmi les différentes catégories d&amp;#39;événements celles à afficher : théâtre, concerts, arts du spectacle, danse, spectacles jeune public, festivals, expositions. Il est ainsi facile, par exemple, d&amp;#39;afficher les concerts à Nantes en y incluant toutes les communes alentours !\n\td&amp;#39;un artiste (groupe de musique, compagnie de théâtre...) ; petits ou gros artistes, la base de données d&amp;#39;artistes d&amp;#39;agendaculturel est très complète. Ainsi, par exemple, afficher les prochains concerts de C2C ou les spectacles de Gad Elmaleh sur son site web est possible !\n\td&amp;#39;un lieu (théâtre, salle de concerts...) ; vous pourrez par exemple afficher la programmation de l&amp;#39;Olympia ou du Zénith de Lille ! De plus, pour les lieux, vous pourrez choisir d&amp;#39;afficher tous les événements du lieu ou seulement ceux des catégories souhaités (théâtre, concerts...)\nUn agenda culturel sur son site Internet, pour qui ?\n\tCe widget peut être utile pour la création de site de chambre d&amp;#39;hôtes ou de gîtes, afin de proposer les prochains événements culturels à proximité de la location de vacances . \n\tIl peut être aussi utile pour créer un site de commune et y proposer l&amp;#39;agenda de la ville facilement. \n\tIl peut être aussi utile dans le cadre de création de site de compagnie de théâtre, de groupe de musique ou pour tout type de site d&amp;#39;artiste ; les artistes peuvent ainsi récupérer directement leur agenda depuis agenda culturel. Si leurs dates ne sont pas présentes sur AgendaCutlurel.fr, ils peuvent annoncer gratuitement leurs événements sur le site ; ainsi, ils font la promotion de leurs événements et n&amp;#39;ont pas à les ressaisir sur leur site.\n\tEnfin, ce widget peut être utile à tout type de site souhaitant proposer une information culturelle localisée !\nComment intégrer le widget Agenda Culturel sur son site ?\nCe widget peut être inséré indifféremment sur une page ou dans un menu vertical. Il se trouve dans les Gadgets :\n\tSur les pages, dans une colonne vide, allez sur \"Autres widgets\".\n\tSur les menus, dans un menu vertical cliquez sur \"Ajouter un widget\".\nVous pourrez ensuite taper le nom d&amp;#39;une ville, d&amp;#39;un artiste ou d&amp;#39;un lieu et choisir les réglages du widget.\nVous avez désormais un joli agenda culturel personnalisé sur votre site web !",
+            "url_fr": "https:\/\/www.e-monsite.com\/blog\/nouveaute\/afficher-l-agenda-culturel-d-un-artiste-d-une-ville-ou-d-un-lieu-sur-son-site-internet.html"
+        }
+    ],
+    "meta": {
+        "pagination": {
+            "total": 11,
+            "count": 5,
+            "per_page": 5,
+            "current_page": 1,
+            "total_pages": 3
+        }
+    }
+}</code></pre>
+<h3>HTTP Request</h3>
+<p><code>GET /api/searchUseCase/{searchUseCaseId}/search</code></p>
+<p><code>HEAD /api/searchUseCase/{searchUseCaseId}/search</code></p>
+<h4>Parameters</h4>
+<table>
+<thead>
+<tr>
+<th>Parameter</th>
+<th>Type</th>
+<th>Status</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>query_string</td>
+<td>string</td>
+<td>required</td>
+<td>Minimum: <code>1</code></td>
+</tr>
+<tr>
+<td>i18n_lang_id</td>
+<td>string</td>
+<td>optional</td>
+<td>Maximum: <code>30</code> Valid i18n_lang id</td>
+</tr>
+<tr>
+<td>page</td>
+<td>integer</td>
+<td>optional</td>
+</tr>
+<tr>
+<td>limit</td>
+<td>integer</td>
+<td>optional</td>
+</tr>
+</tbody>
+</table>
+<!-- END_4b5e9ae73571f33c511b43a1f61a4ec0 -->
 <!-- START_24b7252ad8c658bdd88296027322fed8 -->
 <h2>Project search use case list</h2>
 <aside class="notice">Pagination limit must be a value between <code>1</code> and <code>50</code>, default is <code>10</code>.</aside>
@@ -1029,8 +1137,8 @@ $.ajax(settings).done(function (response) {
             "id": "37f79df8-707c-11e7-8cf7-a6006ad3dba0",
             "project_id": "1bcc7efc-138c-11e7-93ae-92361f002671",
             "name": "John Smith Sample Project Default Search Use Case",
-            "created_at": "2017-08-07 13:27:07",
-            "updated_at": "2017-08-07 13:27:07",
+            "created_at": "2017-08-18 10:22:00",
+            "updated_at": "2017-08-18 10:22:00",
             "search_use_case_fields_count": 0
         }
     ],
@@ -1080,9 +1188,9 @@ $.ajax(settings).done(function (response) {
         "id": "dc5bfd4c-711e-11e7-8cf7-a6006ad3dba0",
         "project_id": "c4b5d93c-138c-11e7-93ae-92361f002671",
         "name": "Mickey Mouse Sample Project Default Search Use Case",
-        "created_at": "2017-08-07 13:27:07",
-        "updated_at": "2017-08-07 13:27:07",
-        "search_use_case_fields_count": 2
+        "created_at": "2017-08-18 10:22:00",
+        "updated_at": "2017-08-18 10:22:00",
+        "search_use_case_fields_count": 3
     }
 }</code></pre>
 <h3>HTTP Request</h3>
@@ -1098,8 +1206,8 @@ $.ajax(settings).done(function (response) {
 -H "Accept: application/json" \
 -H "Authentication: Bearer xxx"
  \
-    -d "project_id"="8f7be844-6012-3a91-9cec-3a1065104408" \
-    -d "name"="Aliquid ut natus" \
+    -d "project_id"="52e014c7-bed9-373a-8cba-2a3ec255c1e3" \
+    -d "name"="Temporibus magnam ut" \
 </code></pre>
 <pre><code class="language-javascript">var settings = {
     "async": true,
@@ -1107,8 +1215,8 @@ $.ajax(settings).done(function (response) {
     "url": "https://emsearch.ryan.ems-dev.net/api/searchUseCase",
     "method": "POST",
     "data": {
-        "project_id": "8f7be844-6012-3a91-9cec-3a1065104408",
-        "name": "Aliquid ut natus"
+        "project_id": "52e014c7-bed9-373a-8cba-2a3ec255c1e3",
+        "name": "Temporibus magnam ut"
 },
     "headers": {
         "Accept": "application/json",
@@ -1156,8 +1264,8 @@ $.ajax(settings).done(function (response) {
 -H "Accept: application/json" \
 -H "Authentication: Bearer xxx"
  \
-    -d "project_id"="4d1a4106-99a7-34ef-8978-c0f45a6cec4e" \
-    -d "name"="Non enim hic" \
+    -d "project_id"="b23d9019-6423-3d32-a633-96f62b9a8837" \
+    -d "name"="Laborum laboriosam perferendis" \
 </code></pre>
 <pre><code class="language-javascript">var settings = {
     "async": true,
@@ -1165,8 +1273,8 @@ $.ajax(settings).done(function (response) {
     "url": "https://emsearch.ryan.ems-dev.net/api/searchUseCase/dc5bfd4c-711e-11e7-8cf7-a6006ad3dba0",
     "method": "PUT",
     "data": {
-        "project_id": "4d1a4106-99a7-34ef-8978-c0f45a6cec4e",
-        "name": "Non enim hic"
+        "project_id": "b23d9019-6423-3d32-a633-96f62b9a8837",
+        "name": "Laborum laboriosam perferendis"
 },
     "headers": {
         "Accept": "application/json",
@@ -1232,109 +1340,6 @@ $.ajax(settings).done(function (response) {
 <h3>HTTP Request</h3>
 <p><code>DELETE /api/searchUseCase/{searchUseCaseId}</code></p>
 <!-- END_4416daa71a27a4bded05ac5404e53e9e -->
-<!-- START_4b5e9ae73571f33c511b43a1f61a4ec0 -->
-<h2>Perform search with the specified search use case</h2>
-<blockquote>
-<p>Example request:</p>
-</blockquote>
-<pre><code class="language-bash">curl -X GET "https://emsearch.ryan.ems-dev.net/api/searchUseCase/dc5bfd4c-711e-11e7-8cf7-a6006ad3dba0/search?query_string=site internet&amp;i18n_lang_id=fr&amp;page=1&amp;limit=5" \
--H "Accept: application/json" \
--H "Authentication: Bearer xxx"
-</code></pre>
-<pre><code class="language-javascript">var settings = {
-    "async": true,
-    "crossDomain": true,
-    "url": "https://emsearch.ryan.ems-dev.net/api/searchUseCase/dc5bfd4c-711e-11e7-8cf7-a6006ad3dba0/search?query_string=site internet&amp;amp;i18n_lang_id=fr&amp;amp;page=1&amp;amp;limit=5?query_string=Iusto explicabo molestiaei18n_lang_id=Aliquid natus explicabopage=315593limit=3",
-    "method": "GET",
-    "headers": {
-        "Accept": "application/json",
-        "Authentication" : "Bearer xxx"
-    }
-}
-
-$.ajax(settings).done(function (response) {
-    console.log(response);
-});</code></pre>
-<blockquote>
-<p>Example response:</p>
-</blockquote>
-<pre><code class="language-json">{
-    "data": [
-        {
-            "item_id": "4f72bc79df6d0000000082b0",
-            "title_fr": "Le site du Mercredi ou comment créer un site internet avec E-monsite",
-            "content_fr": "Ce billet inaugure une série d&amp;#39;articles mettant en avant le meilleur de la création de site web sur E-monsite.com. Tous les mercredis, nous présenterons un site réalisé grâce aux outils pour créer un site internet sur E-monsite, l&amp;#39;équipe E-monsite en profitera pour donner son avis d&amp;#39; \"expert\". Ici point de copinages ou d&amp;#39;hypocrisie, mais simplement les coups de cœur de l&amp;#39;équipe E-monsite.\r\n\r\n\r\n\r\nComme précisé sur la page facebook E-monsite, nous ne faisons pas de discriminations entre un site web gratuit, un site internet pro ou une boutique en ligne. Tout le monde a sa chance, les sites sélectionnés auront brillé par leurs designs, leurs contenus (ou les deux) ou encore par l&amp;#39;originalité de leur concept.\r\n\r\nC&amp;#39;est le Blog informatique Willside.net qui inaugure l&amp;#39;opération. Nous avons découvert ce site grâce à un commentaire de l&amp;#39;utilisateur sur notre page facebook et avons été agréablement surpris par la qualité du travail réalisé par le Webmaster. Florian développeur E-monsite nous donne son avis :\r\n\r\nPoints forts :\r\n- Sobriété\r\n- Contenu clair\r\n- Menu fonctionnel\r\n- Header bien mis en avant\r\n- La petite intro dans le post-it\r\n- Footer clair\r\n\r\nEléments à améliorer :\r\n- Couleur des liens du menu\r\n- Le style des liens lorsque l&amp;#39;on passe dessus\r\n\r\nConclusion :\r\nStyle propre et clair, il ne faut pas aller dans le bling-bling pour avoir un site de très très bonne qualité ! C&amp;#39;est le genre de site qui donne envie de lire et d&amp;#39;y passer un petit moment. Félicitation au webmaster !\r\n\r\nCet E-monsitien à vraiment mis à profit les outils pour créer un site internet facilement, nous espérons que ce site vous plaira aussi et qu&amp;#39;il restera dans vos favoris si vous êtes intéressés par l&amp;#39;actualité informatique. A vous de jouer maintenant, le prochain site du mercredi c&amp;#39;est la semaine prochaine !\r\n\r\nEdito du 1er Avril 2010 pour ajouter la petite interview du site du Mercredi.\r\n\r\n1. Quand et Comment avez vous découvert E-monsite ?\r\n\r\nJ&amp;#39;ai découvert E-monsite alors que je cherchais via Google un moyen de me créer un petit site web sympathique facilement. Je pense que c&amp;#39;était il y a un peu moins d&amp;#39;un an. J&amp;#39;ai choisis E-monsite car cette plateforme m&amp;#39;a tout de suite semblé sûre, fiable, fonctionnelle, et de qualité, et je n&amp;#39;ai pas eu tord. J&amp;#39;ai parfois même eu l&amp;#39;occasion de tester d&amp;#39;autres plateformes, sans succès.\r\n\r\n2. Quel niveau de développement web aviez vous au moment où vous avez créé Willside.net ?\r\n\r\nLorsque j&amp;#39;ai créé WillSide.net, le mot \"HTML\" était pour moi totalement étranger de mon vocabulaire. Depuis le temps, il est incroyable de constater tout ce que j&amp;#39;ai pu comprendre et apprendre concernant le développement web, et ce grandement grâce à E-monsite.\r\n\r\n3. Quels conseils pourriez vous donner aux personnes qui découvrent l&amp;#39;outil ?\r\n\r\nPersonnellement, je conseille de vraiment essayer d&amp;#39;exploiter toutes les possibilités de la plateforme. Au premier coup d&amp;#39;oeil, on ne soupçonnerait même pas tout ce qu&amp;#39;il est possible de réaliser. Pourtant, il suffit d&amp;#39;un second coup d&amp;#39;oeil plus approfondi et on se rends compte qu&amp;#39;on va facilement très loin. Plus l&amp;#39;on commence à maîtriser le html, le javascript, le css etc... plus l&amp;#39;on va loin. E-monsite convient à tout le monde, que l&amp;#39;on ait des connaissances ou non sur le développement web."
-        },
-        {
-            "item_id": "4f72bc7b1dab0000000081ca",
-            "title_fr": "Le site du Mercredi #4 ou comment créer un site internet avec E-monsite",
-            "content_fr": "Le 4ème site du Mercredi a été sélectionné, et même si c&amp;#39;est le premier ce mois-ci, ce n&amp;#39;est pas un poisson d&amp;#39;avril !  C&amp;#39;est  donc le site peggylurton.com, un site web consacré à l&amp;#39;Art-thérapie qui a retenu notre attention cette semaine. Ici c&amp;#39;est le design sobre et la bonne utilisation des outils de création de site qui ont fait la différence.\r\n\r\n\r\n\r\nPas besoin d&amp;#39;être un crack en informatique pour créer un site internet, et Peggy nous le prouve, car c&amp;#39;est à peine un mois après son inscription qu&amp;#39;elle est arrivée à ce résultat : une vitrine efficace pour son activité, qui permet de trouver rapidement toutes les informations que ses visiteurs pourraient rechercher. C&amp;#39;est Florian, Web-développeur E-monsite qui nous donne son avis d&amp;#39;expert sur le travail du Webmaster du site du mercredi #4 : L&amp;#39;art d&amp;#39;être soi.\r\n\r\nPoints forts :\r\n\r\n- Style sobre et couleurs en harmonie (ce qui donne un côté reposant)\r\n- Bonne utilisation d&amp;#39;un thème (et modifié de façon ingénieuse)\r\n- Menus légers contenant des informations pertinentes\r\n- Utilisation parfaite de l&amp;#39;agenda (brève description qui force à aller voir le contenu détaillé)\r\n\r\nPoints à améliorer :\r\n\r\n- Il manque peut être un footer (pied de page) pour éviter une \"fin brutale\" de la page. Il permettrait notamment d&amp;#39;ajouter d&amp;#39;autres liens vers les pages de contenu (utile tant pour la navigation que pour le référencement).\r\n- Les polices différentes dans une même page (dans l&amp;#39;agenda par exemple) qui sont sûrement dues à des copier-coller depuis un éditeur de texte logiciel.\r\n\r\nConclusion :\r\n\r\nUn site agréable à visiter avec du contenu clair et intéressant. Très bonne utilisation des outils mis à disposition par E-monsite. Un bel exemple de personne n&amp;#39;ayant pas de connaissances en développement web et qui a construit un bien joli site avec les outils de personnalisation. Ses compétences graphiques l&amp;#39;aident pour l&amp;#39;harmonie du contenu et des couleurs. En bref, une belle réussite, bravo !\r\n\r\nLorsqu&amp;#39;elle maîtrisera un peu plus les outils de création web, nul doute que le site de Peggy Lurton nous surprendra à nouveau, mais nous voyons ici que la sobriété du design et des contenus facilement accessibles et cohérents sont les premières clés pour réaliser un bon site internet. Je vous laisse découvrir les réponses de Peggy Lurton aux questions du Mercredi, en espérant que ces différents exemples de sites créés avec E-monsite.com vous encouragent et vous donnent des idées pour votre Site.\r\n\r\n1. Quand et Comment avez vous découvert E-monsite ?\r\n\r\nJ&amp;#39;ai découvert  E-monsite il y a un mois environ en cherchant par hasard sur google comment faire un site simple et efficace. E-monsite faisait la différence par sa simplicité et sa convivialité.\r\n\r\n2. Quel niveau de développement web aviez vous au moment où vous avez créé votre site ?\r\n\r\nZéro au niveau du développement web ! Par contre, je suis graphiste et cela aide un peu.\r\n\r\n3. Quels conseils pourriez vous donner aux personnes qui découvrent l&amp;#39;outil ?\r\n\r\nAllez-y les yeux fermés !!! On est vraiment pris en main et il y a toujours de l&amp;#39;aide si on a des problèmes ou des doutes. La version pro est super ainsi que le nom de domaine (rapide en plus), je ne regrette pas !!! Petit à petit , le site s&amp;#39;améliore, change, car c&amp;#39;est très simple de le manipuler."
-        },
-        {
-            "item_id": "4f72bc7ad9a4000000003a06",
-            "title_fr": "Le site du Mercredi #3, ou comment créer un site internet avec E-monsite",
-            "content_fr": "Le traditionnel rendez-vous du mercredi est arrivé ! Installez vous dans votre fauteuil, chaise, canapé ou quel que soit l&amp;#39;endroit où vous vous installez pour créer un site internet et suivre l&amp;#39;évolution des outils e-monsite sur le blog, sur Facebook etc... C&amp;#39;est le travail de Sylvie, webmaster du site Almahfrance.com, un site internet consacré à Almah un groupe de Métal brésilien, qui est mis en avant cette semaine.\r\n\r\n\r\n\r\nSite du groupe de Métal brésilien Almah\r\n\r\n\r\n\r\nLe Webmaster administre 4 sites au total, tous liés au groupe Almah, que ce soit le site du chanteur : Edu Falaschi ou les différents sites dédiés aux fans d&amp;#39;Almah. Mais avant de laisser la parole à Tony qui nous donnera son avis d&amp;#39;expert E-monsite sur ce site web, laissez moi vous parler des différentes nouveautés qui font leur apparition dans la rubrique cette semaine.\r\n\r\nTout d&amp;#39;abord, une partie \"interview\" fait son apparition dans l&amp;#39;article, elle est constituée des réponses donnés par le webmaster du site sélectionné à une série de 3 questions qui seront les mêmes chaque semaine.\r\n\r\nEnsuite, notre Web-designer en chef, Pascal, a réalisé un petit logo du site du Mercredi, que les webmasters peuvent intégrer sur leur site ( s&amp;#39;ils le souhaitent bien sûr). Cela leur permettra par exemple de renvoyer directement vers l&amp;#39;article ou une page de leur choix.\r\n\r\nEn sachant que parallèlement, nous réfléchissons à une autre manière de mettre en avant les sites sélectionnés sur le portail d&amp;#39;E-monsite.com. Une autre façon de féliciter les webmasters pour leur travail et de leur apporter certainement une source de trafic non négligeable. C&amp;#39;est donc le moment de contacter Jeremy et Benoît via le support en ligne pour demander comment créer un site internet, ou comment l&amp;#39;améliorer.\r\n\r\nVoici donc l&amp;#39;avis de Tony sur le site.\r\n\r\nPoints forts :\r\n\r\n- Design cohérent dans son ensemble entre les différents supports internet et visuels (pochettes etc...), en phase avec l&amp;#39;identité du groupe.\r\n- Taille d&amp;#39;écriture identique et styles d&amp;#39;écriture cohérents sur toutes les pages :  contenu bien lisible\r\n- Contenu bien organisé (navigation sur plusieurs niveaux)\r\n- Pas de fioritures inutiles (gifs animés, bannières, effets javascript...)\r\n- Très bonne utilisation des fonctionnalités proposées par E-monsite \r\n\r\nPoints à améliorer :\r\n\r\n- Image d&amp;#39;entête trop haute : sur une résolution 1024x768 on ne voit que l&amp;#39;entête\r\n- Des images qui touchent le texte (vignettes sur la page biographies par exemple)\r\n- Liens internes et externes similaires : on ne sait pas quand on quitte le site\r\n- Agenda : le lien dans le menu en haut est une page, et le lien dans le menu du bas est le module agenda.\r\n- La page d&amp;#39;introduction n&amp;#39;est pas forcément nécessaire.\r\n\r\nConclusion\r\n\r\nLe site est graphiquement bien ficelé et est cohérent avec le graphisme du site officiel. Les points à améliorer sont l&amp;#39;image d&amp;#39;entête trop haute (494px de hauteur) qui peut perdre l&amp;#39;internaute qui peut ne pas voir le contenu du site (par exemple après avoir cliqué sur la page d&amp;#39;introduction, il peut penser être resté sur la même page étant donné que l&amp;#39;image d&amp;#39;intro et d&amp;#39;entête sont identiques) et les liens vers les pages externes ne sont pas assez bien signalés (de même, par exemple, en s&amp;#39;abonnant à la newsletter on atterrit, sans avoir été prévenu, sur un autre site). En conclusion, ce site utilise parfaitement les possibilités de E-monsite en matière de design et de gestion de contenu et ne nécessite que quelques petites améliorations mineures qui lui permettront d&amp;#39;éviter de perdre les internautes.\r\n\r\nEncore bravo à Sylvie pour tout le travail réalisé, voici ses réponses aux trois questions du mercredi qui sont assez élogieuses et que l&amp;#39;on pourrait presque utiliser telles quelles dans les futures plaquettes E-monsite ! Nous vous assurons que nous n&amp;#39;avons exercé aucune menace à son encontre au moment où elle a tapé ces lignes... ;)\r\n\r\n1. Quand et Comment avez vous découvert E-monsite ?\r\n\r\nJ&amp;#39;ai découvert E-monsite il y a un an et demi, en cherchant sur le web un moyen simple et efficace de créer un site pour un groupe de musique métal Brésilien, Almah. J&amp;#39;ai essayé plusieurs interfaces, mais je trouve que celle d&amp;#39;E-monsite est vraiment la meilleure et la plus conviviale aussi ! Le service est en plus génial : entre le forum d&amp;#39;E-monsite et la hotline, on trouve toujours de l&amp;#39;aide !\r\n\r\n\r\n2. Quel niveau de développement web aviez vous au moment où vous avez créé Almahfrance.com.\r\n\r\nAucun ... Je suis autodidacte, j&amp;#39;essaye toujours d&amp;#39;apprendre de nouvelles choses ! Je dois aussi avouer que je suis conseillée par mes frères qui sont des professionnels du web.\r\n\r\n\r\n3. Quels conseils pourriez vous donner aux personnes qui découvrent l&amp;#39;outil ?\r\n\r\nL&amp;#39;explorer au maximum ! E-monsite est pour moi un outil vraiment génial, car il s&amp;#39;adapte à notre degré de connaissances web ! Au début, si l&amp;#39;on ne s&amp;#39;y connaît pas du tout, on peut choisir un design proposé par E-monsite et suivre tout simplement les instructions très claires, données pour créer son site ! Si on évolue et que l&amp;#39;on commence à coder en HTML, à maîtriser le Javascript et que l&amp;#39;on touche un peu au design, on peut améliorer son site de manière plus autonome ! E-monsite est très flexible de ce point de vue ! En plus, E-monsite propose régulièrement des nouveautés qui sont excellentes (comme par exemple la gestion avancée des menus verticaux etc ...). Et surtout, ne pas hésiter à poser des questions sur le forum d&amp;#39;E-monsite : les membres de la communauté essaient toujours de donner des conseils, échangent leurs expériences, c&amp;#39;est vraiment un moyen sympathique d&amp;#39;apprendre ! Mon dernier conseil ... essayer la version Pro d&amp;#39;E-monsite ! Elle offre de nombreuses possibilités et permet de faire de très beaux sites, sans pub !\r\n\r\nMerci Sylvie et bravo pour votre travail ! Avis aux E-monsitiens, n&amp;#39;hésitez pas à laisser un commentaire ou à lui demander directement comment elle est arrivée à ce résultat."
-        },
-        {
-            "item_id": "4f72bc7a3a910000000051e0",
-            "title_fr": "Le site du Mercredi #2 ou comment créer un site internet avec E-monsite",
-            "content_fr": "Voilà donc le deuxième billet mettant en avant un internaute qui a utilisé E-monsite pour faire un site internet, et un beau s&amp;#39;il vous plait ! Cette semaine c&amp;#39;est le webmaster de fan-fortboyard.fr qui a été sélectionné. Nous espérons que vous aurez la même réaction que toute l&amp;#39;équipe en surfant sur ce site dédié aux fans de fort Boyard.\r\n\r\n\r\n\r\nC&amp;#39;est aussi bientôt une date anniversaire car le 28 mars, cela fera 4 ans jour pour jour que cet utilisateur utilise les outils E-monsite et c&amp;#39;est aussi en 2006 qu&amp;#39;il a choisi de créer un site professionnel. C&amp;#39;est peut être ce qui explique sa maîtrise des outils, mais il vous suffit de suivre les conseils de nos deux génies du support, j&amp;#39;ai nommé Jeremy et Benoît, ou encore d&amp;#39;utiliser les nombreuses ressources en ligne pour améliorer votre site internet.\r\n\r\nCette semaine c&amp;#39;est Nicolas qui travaille d&amp;#39;arrache-pied pour concevoir et améliorer les outils pour créer une boutique en ligne qui a pour mission de donner son point de vue d&amp;#39;expert en création de site. Voici ses commentaires:\r\n\r\nPoints forts :\r\n\r\n- Un site très fourni, qui donne une impression d&amp;#39;abondance sans tomber dans l&amp;#39;écueil du fouillis.\r\n- Un design homogène, pas bling-bling, sans fioritures graphiques et effets inutiles.\r\n- Une arborescence structurée, une mise en page claire et soignée.\r\n- Une utilisation raisonnée des menus verticaux.\r\n\r\nPoints à améliorer :\r\n\r\n- Beaucoup d&amp;#39;erreurs de validation, dues à certaines balises HTML \"obsolètes\". Par exemple le cadre \"Dernière Minutes\" avec le texte qui défile.\r\n- Une page d&amp;#39;accueil peut-être un peu trop dense.\r\n\r\nConclusion :\r\n\r\nUn sentiment de confiance se dégage de ce site dès l&amp;#39;arrivée sur la page d&amp;#39;accueil, sans doute grâce à une organisation réfléchie des éléments de contenu et de navigation, et à une utilisation parcimonieuse des potentiels graphiques offerts par la plateforme.\r\n\r\nIl est vrai que ce site inspire confiance et fait très pro, nul doute que c&amp;#39;est une référence incontournable pour tous les amateurs de l&amp;#39;émission télévisée. La constance que l&amp;#39;on retrouve sur les sites professionnels, c&amp;#39;est certes l&amp;#39;implication du webmaster, mais aussi la sobriété et la non-profusion d&amp;#39;éléments clignotants qui peuvent gêner la lecture du contenu et augmenter le temps de chargement de la page. Encore bravo au webmaster et à mercredi prochain pour la présentation du nouveau site réussi. N&amp;#39;hésitez pas à donner votre avis sur le site !\r\n\r\nEdito du 1er avril pour ajouter la mini \"interview\" de Sebastien le webmaster de fan-frotboyard.fr.\r\n\r\n1. Quand et Comment avez vous découvert E-monsite ?\r\n\r\nEt bien j&amp;#39;ai découvert E-Monsite il y a déjà 4 ans, début 2006 en cherchant simplement sur Google ! Après avoir fait le tour de plusieurs autres supports, c&amp;#39;est E-Monsite qui a attiré mon attention. Je n&amp;#39;ai donc pas hésité à m&amp;#39;inscrire dans la foulée !\r\n\r\n2. Quel niveau de développement web aviez vous au moment où vous avez créé fan-fortboyard.fr\r\n\r\nEn fait, je ne connaissais rien ! Auparavant j&amp;#39;avais eu des forums ou des blogs pour d&amp;#39;autres passions que Fort Boyard, mais pas de site. En 2005, j&amp;#39;ai donc ouvert un blog pour l&amp;#39;été 2005 de Fort Boyard, mais j&amp;#39;ai vite vu que ça ne pourrai pas continuer ainsi. J&amp;#39;ai donc décidé de passer à l&amp;#39;étape au-dessus en créant un site rapidement, sans pour autant me compliquer la vie.\r\n\r\n3. Quels conseils pourriez vous donner aux personnes qui découvrent l&amp;#39;outil ?\r\n\r\nDe s&amp;#39;inscrire de suite et de profiter de toutes les possibilités qu&amp;#39;offrent E-Monsite. Tout est clair et toujours expliqué correctement, y a pas d&amp;#39;informations cachées ou de mauvaises surprises.\r\nIl y a des nouveautés très souvent, on peut donc améliorer son site régulièrement, sans aucun effort. Je dirai aussi qu&amp;#39;il ne faut pas avoir peur des tarifs pour la version Pro ou le nom de domaine, car quand on voit toutes les options et les avantages que ça apporte, cela vaut vraiment le coup.\r\nEt puis de toute façon dès qu&amp;#39;un souci se présente ; entre la hotline, le forum ou le support en ligne, l&amp;#39;équipe d&amp;#39;E-monsite est toujours là pour aider !"
-        },
-        {
-            "item_id": "51a7164a0d666d16c1b08c67",
-            "title_fr": "Afficher l'agenda culturel d'un artiste, d'une ville ou d'un lieu sur son site Internet",
-            "content_fr": "En partenariat avec AgendaCulturel.fr, un des principaux sites d&amp;#39;information culturelle en France, nous avons le plaisir de vous proposer un nouveau widget permettant d&amp;#39;afficher l&amp;#39;agenda culturel d&amp;#39;un artiste, d&amp;#39;une ville ou d&amp;#39;un lieu de diffusion culturelle.\nLe widget Agenda Culturel\nCe widget permet donc d&amp;#39;afficher les prochaines dates d&amp;#39;événements culturels :\n\td&amp;#39;une ville en France ; vous pourrez en plus définir un rayon en kilomètres pour élargir la recherche et choisir parmi les différentes catégories d&amp;#39;événements celles à afficher : théâtre, concerts, arts du spectacle, danse, spectacles jeune public, festivals, expositions. Il est ainsi facile, par exemple, d&amp;#39;afficher les concerts à Nantes en y incluant toutes les communes alentours !\n\td&amp;#39;un artiste (groupe de musique, compagnie de théâtre...) ; petits ou gros artistes, la base de données d&amp;#39;artistes d&amp;#39;agendaculturel est très complète. Ainsi, par exemple, afficher les prochains concerts de C2C ou les spectacles de Gad Elmaleh sur son site web est possible !\n\td&amp;#39;un lieu (théâtre, salle de concerts...) ; vous pourrez par exemple afficher la programmation de l&amp;#39;Olympia ou du Zénith de Lille ! De plus, pour les lieux, vous pourrez choisir d&amp;#39;afficher tous les événements du lieu ou seulement ceux des catégories souhaités (théâtre, concerts...)\nUn agenda culturel sur son site Internet, pour qui ?\n\tCe widget peut être utile pour la création de site de chambre d&amp;#39;hôtes ou de gîtes, afin de proposer les prochains événements culturels à proximité de la location de vacances . \n\tIl peut être aussi utile pour créer un site de commune et y proposer l&amp;#39;agenda de la ville facilement. \n\tIl peut être aussi utile dans le cadre de création de site de compagnie de théâtre, de groupe de musique ou pour tout type de site d&amp;#39;artiste ; les artistes peuvent ainsi récupérer directement leur agenda depuis agenda culturel. Si leurs dates ne sont pas présentes sur AgendaCutlurel.fr, ils peuvent annoncer gratuitement leurs événements sur le site ; ainsi, ils font la promotion de leurs événements et n&amp;#39;ont pas à les ressaisir sur leur site.\n\tEnfin, ce widget peut être utile à tout type de site souhaitant proposer une information culturelle localisée !\nComment intégrer le widget Agenda Culturel sur son site ?\nCe widget peut être inséré indifféremment sur une page ou dans un menu vertical. Il se trouve dans les Gadgets :\n\tSur les pages, dans une colonne vide, allez sur \"Autres widgets\".\n\tSur les menus, dans un menu vertical cliquez sur \"Ajouter un widget\".\nVous pourrez ensuite taper le nom d&amp;#39;une ville, d&amp;#39;un artiste ou d&amp;#39;un lieu et choisir les réglages du widget.\nVous avez désormais un joli agenda culturel personnalisé sur votre site web !"
-        }
-    ],
-    "meta": {
-        "pagination": {
-            "total": 11,
-            "count": 5,
-            "per_page": 5,
-            "current_page": 1,
-            "total_pages": 3
-        }
-    }
-}</code></pre>
-<h3>HTTP Request</h3>
-<p><code>GET /api/searchUseCase/{searchUseCaseId}/search</code></p>
-<p><code>HEAD /api/searchUseCase/{searchUseCaseId}/search</code></p>
-<h4>Parameters</h4>
-<table>
-<thead>
-<tr>
-<th>Parameter</th>
-<th>Type</th>
-<th>Status</th>
-<th>Description</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>query_string</td>
-<td>string</td>
-<td>required</td>
-<td>Minimum: <code>1</code></td>
-</tr>
-<tr>
-<td>i18n_lang_id</td>
-<td>string</td>
-<td>optional</td>
-<td>Maximum: <code>30</code> Valid i18n_lang id</td>
-</tr>
-<tr>
-<td>page</td>
-<td>integer</td>
-<td>optional</td>
-</tr>
-<tr>
-<td>limit</td>
-<td>integer</td>
-<td>optional</td>
-</tr>
-</tbody>
-</table>
-<!-- END_4b5e9ae73571f33c511b43a1f61a4ec0 -->
 <h1>SearchUseCaseField</h1>
 <!-- START_e7515d6903905405d52dd827faca1ad3 -->
 <h2>Get specified search use case field</h2>
@@ -1369,8 +1374,8 @@ $.ajax(settings).done(function (response) {
         "name": "title",
         "searchable": "1",
         "to_retrieve": "1",
-        "created_at": "2017-08-07 13:27:07",
-        "updated_at": "2017-08-07 13:27:07"
+        "created_at": "2017-08-18 10:22:00",
+        "updated_at": "2017-08-18 10:22:00"
     }
 }</code></pre>
 <h3>HTTP Request</h3>
@@ -1386,9 +1391,9 @@ $.ajax(settings).done(function (response) {
 -H "Accept: application/json" \
 -H "Authentication: Bearer xxx"
  \
-    -d "search_use_case_id"="dbe31dff-f92f-3b88-9f30-a586f6a50f11" \
-    -d "data_stream_field_id"="20bf291d-98f6-38d2-bfd3-3275bde6f791" \
-    -d "name"="Corrupti ipsa dolores" \
+    -d "search_use_case_id"="2c180a76-99f9-3559-9e45-8c1e9c07ee03" \
+    -d "data_stream_field_id"="f1c8fd8e-fb80-3835-bcc4-5c827e315335" \
+    -d "name"="Enim omnis hic" \
     -d "searchable"="1" \
     -d "to_retrieve"="1" \
 </code></pre>
@@ -1398,9 +1403,9 @@ $.ajax(settings).done(function (response) {
     "url": "https://emsearch.ryan.ems-dev.net/api/searchUseCaseField",
     "method": "POST",
     "data": {
-        "search_use_case_id": "dbe31dff-f92f-3b88-9f30-a586f6a50f11",
-        "data_stream_field_id": "20bf291d-98f6-38d2-bfd3-3275bde6f791",
-        "name": "Corrupti ipsa dolores",
+        "search_use_case_id": "2c180a76-99f9-3559-9e45-8c1e9c07ee03",
+        "data_stream_field_id": "f1c8fd8e-fb80-3835-bcc4-5c827e315335",
+        "name": "Enim omnis hic",
         "searchable": true,
         "to_retrieve": true
 },
@@ -1466,9 +1471,9 @@ $.ajax(settings).done(function (response) {
 -H "Accept: application/json" \
 -H "Authentication: Bearer xxx"
  \
-    -d "search_use_case_id"="f4776274-6913-3c45-bc1f-78f8ab1eb3f1" \
-    -d "data_stream_field_id"="b355aa34-4bd4-3d4a-9fcb-d5cd32158b12" \
-    -d "name"="Praesentium ullam id" \
+    -d "search_use_case_id"="29e08e21-4477-35a9-ac75-72095e21dac9" \
+    -d "data_stream_field_id"="6f8bd76a-ad60-3478-9ae3-a035af9c1d55" \
+    -d "name"="Quia amet commodi" \
     -d "searchable"="1" \
     -d "to_retrieve"="1" \
 </code></pre>
@@ -1478,9 +1483,9 @@ $.ajax(settings).done(function (response) {
     "url": "https://emsearch.ryan.ems-dev.net/api/searchUseCaseField/dc5bfd4c-711e-11e7-8cf7-a6006ad3dba0,36116fa6-5c0d-11e7-907b-a6006ad3dba0",
     "method": "PUT",
     "data": {
-        "search_use_case_id": "f4776274-6913-3c45-bc1f-78f8ab1eb3f1",
-        "data_stream_field_id": "b355aa34-4bd4-3d4a-9fcb-d5cd32158b12",
-        "name": "Praesentium ullam id",
+        "search_use_case_id": "29e08e21-4477-35a9-ac75-72095e21dac9",
+        "data_stream_field_id": "6f8bd76a-ad60-3478-9ae3-a035af9c1d55",
+        "name": "Quia amet commodi",
         "searchable": true,
         "to_retrieve": true
 },
@@ -1599,8 +1604,8 @@ $.ajax(settings).done(function (response) {
             "name": "title",
             "searchable": "1",
             "to_retrieve": "1",
-            "created_at": "2017-08-07 13:27:07",
-            "updated_at": "2017-08-07 13:27:07"
+            "created_at": "2017-08-18 10:22:00",
+            "updated_at": "2017-08-18 10:22:00"
         },
         {
             "search_use_case_id": "dc5bfd4c-711e-11e7-8cf7-a6006ad3dba0",
@@ -1608,14 +1613,23 @@ $.ajax(settings).done(function (response) {
             "name": "content",
             "searchable": "0",
             "to_retrieve": "1",
-            "created_at": "2017-08-07 13:27:07",
-            "updated_at": "2017-08-07 13:27:07"
+            "created_at": "2017-08-18 10:22:00",
+            "updated_at": "2017-08-18 10:22:00"
+        },
+        {
+            "search_use_case_id": "dc5bfd4c-711e-11e7-8cf7-a6006ad3dba0",
+            "data_stream_field_id": "36118072-5c0d-11e7-907b-a6006ad3dba0",
+            "name": "url",
+            "searchable": "0",
+            "to_retrieve": "1",
+            "created_at": "2017-08-18 10:22:00",
+            "updated_at": "2017-08-18 10:22:00"
         }
     ],
     "meta": {
         "pagination": {
-            "total": 2,
-            "count": 2,
+            "total": 3,
+            "count": 3,
             "per_page": 10,
             "current_page": 1,
             "total_pages": 1,
@@ -1661,16 +1675,16 @@ $.ajax(settings).done(function (response) {
             "id": "516f0252-7767-11e7-b5a5-be2e44b06b34",
             "data_stream_preset_id": "737441b0-57ea-11e7-907b-a6006ad3dba0",
             "name": "E-monsite | Blog - Summary",
-            "created_at": "2017-08-07 13:27:07",
-            "updated_at": "2017-08-07 13:27:07",
+            "created_at": "2017-08-18 10:22:00",
+            "updated_at": "2017-08-18 10:22:00",
             "search_use_case_preset_fields_count": 3
         },
         {
             "id": "d3c73a6c-7767-11e7-b5a5-be2e44b06b34",
             "data_stream_preset_id": "737441b0-57ea-11e7-907b-a6006ad3dba0",
             "name": "E-monsite | Blog - Photo",
-            "created_at": "2017-08-07 13:27:07",
-            "updated_at": "2017-08-07 13:27:07",
+            "created_at": "2017-08-18 10:22:00",
+            "updated_at": "2017-08-18 10:22:00",
             "search_use_case_preset_fields_count": 2
         }
     ],
@@ -1720,8 +1734,8 @@ $.ajax(settings).done(function (response) {
         "id": "516f0252-7767-11e7-b5a5-be2e44b06b34",
         "data_stream_preset_id": "737441b0-57ea-11e7-907b-a6006ad3dba0",
         "name": "E-monsite | Blog - Summary",
-        "created_at": "2017-08-07 13:27:07",
-        "updated_at": "2017-08-07 13:27:07",
+        "created_at": "2017-08-18 10:22:00",
+        "updated_at": "2017-08-18 10:22:00",
         "search_use_case_preset_fields_count": 3
     }
 }</code></pre>
@@ -1762,16 +1776,16 @@ $.ajax(settings).done(function (response) {
             "id": "516f0252-7767-11e7-b5a5-be2e44b06b34",
             "data_stream_preset_id": "737441b0-57ea-11e7-907b-a6006ad3dba0",
             "name": "E-monsite | Blog - Summary",
-            "created_at": "2017-08-07 13:27:07",
-            "updated_at": "2017-08-07 13:27:07",
+            "created_at": "2017-08-18 10:22:00",
+            "updated_at": "2017-08-18 10:22:00",
             "search_use_case_preset_fields_count": 0
         },
         {
             "id": "d3c73a6c-7767-11e7-b5a5-be2e44b06b34",
             "data_stream_preset_id": "737441b0-57ea-11e7-907b-a6006ad3dba0",
             "name": "E-monsite | Blog - Photo",
-            "created_at": "2017-08-07 13:27:07",
-            "updated_at": "2017-08-07 13:27:07",
+            "created_at": "2017-08-18 10:22:00",
+            "updated_at": "2017-08-18 10:22:00",
             "search_use_case_preset_fields_count": 0
         }
     ],
@@ -1826,8 +1840,8 @@ $.ajax(settings).done(function (response) {
             "name": "title",
             "searchable": "1",
             "to_retrieve": "1",
-            "created_at": "2017-08-07 13:27:07",
-            "updated_at": "2017-08-07 13:27:07"
+            "created_at": "2017-08-18 10:22:00",
+            "updated_at": "2017-08-18 10:22:00"
         },
         {
             "search_use_case_preset_id": "516f0252-7767-11e7-b5a5-be2e44b06b34",
@@ -1835,8 +1849,8 @@ $.ajax(settings).done(function (response) {
             "name": "tags",
             "searchable": "1",
             "to_retrieve": "1",
-            "created_at": "2017-08-07 13:27:07",
-            "updated_at": "2017-08-07 13:27:07"
+            "created_at": "2017-08-18 10:22:00",
+            "updated_at": "2017-08-18 10:22:00"
         },
         {
             "search_use_case_preset_id": "516f0252-7767-11e7-b5a5-be2e44b06b34",
@@ -1844,8 +1858,8 @@ $.ajax(settings).done(function (response) {
             "name": "url",
             "searchable": "0",
             "to_retrieve": "1",
-            "created_at": "2017-08-07 13:27:07",
-            "updated_at": "2017-08-07 13:27:07"
+            "created_at": "2017-08-18 10:22:00",
+            "updated_at": "2017-08-18 10:22:00"
         },
         {
             "search_use_case_preset_id": "d3c73a6c-7767-11e7-b5a5-be2e44b06b34",
@@ -1853,8 +1867,8 @@ $.ajax(settings).done(function (response) {
             "name": "title",
             "searchable": "1",
             "to_retrieve": "1",
-            "created_at": "2017-08-07 13:27:07",
-            "updated_at": "2017-08-07 13:27:07"
+            "created_at": "2017-08-18 10:22:00",
+            "updated_at": "2017-08-18 10:22:00"
         },
         {
             "search_use_case_preset_id": "d3c73a6c-7767-11e7-b5a5-be2e44b06b34",
@@ -1862,8 +1876,8 @@ $.ajax(settings).done(function (response) {
             "name": "image_url",
             "searchable": "0",
             "to_retrieve": "1",
-            "created_at": "2017-08-07 13:27:07",
-            "updated_at": "2017-08-07 13:27:07"
+            "created_at": "2017-08-18 10:22:00",
+            "updated_at": "2017-08-18 10:22:00"
         }
     ],
     "meta": {
@@ -1914,8 +1928,8 @@ $.ajax(settings).done(function (response) {
         "name": "title",
         "searchable": "1",
         "to_retrieve": "1",
-        "created_at": "2017-08-07 13:27:07",
-        "updated_at": "2017-08-07 13:27:07"
+        "created_at": "2017-08-18 10:22:00",
+        "updated_at": "2017-08-18 10:22:00"
     }
 }</code></pre>
 <h3>HTTP Request</h3>
@@ -1957,8 +1971,8 @@ $.ajax(settings).done(function (response) {
             "name": "title",
             "searchable": "1",
             "to_retrieve": "1",
-            "created_at": "2017-08-07 13:27:07",
-            "updated_at": "2017-08-07 13:27:07"
+            "created_at": "2017-08-18 10:22:00",
+            "updated_at": "2017-08-18 10:22:00"
         },
         {
             "search_use_case_preset_id": "516f0252-7767-11e7-b5a5-be2e44b06b34",
@@ -1966,8 +1980,8 @@ $.ajax(settings).done(function (response) {
             "name": "tags",
             "searchable": "1",
             "to_retrieve": "1",
-            "created_at": "2017-08-07 13:27:07",
-            "updated_at": "2017-08-07 13:27:07"
+            "created_at": "2017-08-18 10:22:00",
+            "updated_at": "2017-08-18 10:22:00"
         },
         {
             "search_use_case_preset_id": "516f0252-7767-11e7-b5a5-be2e44b06b34",
@@ -1975,8 +1989,8 @@ $.ajax(settings).done(function (response) {
             "name": "url",
             "searchable": "0",
             "to_retrieve": "1",
-            "created_at": "2017-08-07 13:27:07",
-            "updated_at": "2017-08-07 13:27:07"
+            "created_at": "2017-08-18 10:22:00",
+            "updated_at": "2017-08-18 10:22:00"
         }
     ],
     "meta": {
@@ -2077,9 +2091,9 @@ $.ajax(settings).done(function (response) {
             "sync_task_status_id": "Planned",
             "created_by_user_id": "605c7610-1389-11e7-93ae-92361f002671",
             "project_id": "1bcc7efc-138c-11e7-93ae-92361f002671",
-            "planned_at": "2017-08-07 13:37:07",
-            "created_at": "2017-08-07 13:27:07",
-            "updated_at": "2017-08-07 13:27:07",
+            "planned_at": "2017-08-18 10:32:00",
+            "created_at": "2017-08-18 10:22:00",
+            "updated_at": "2017-08-18 10:22:00",
             "sync_task_logs_count": 1,
             "children_sync_tasks_count": 0
         }
@@ -2154,8 +2168,8 @@ $.ajax(settings).done(function (response) {
             "sync_task_id": "8dbfd6e6-2055-11e7-93ae-92361f002671",
             "entry": "Synchronization planned.",
             "public": true,
-            "created_at": "2017-08-07 13:27:07",
-            "updated_at": "2017-08-07 13:27:07"
+            "created_at": "2017-08-18 10:22:00",
+            "updated_at": "2017-08-18 10:22:00"
         }
     ],
     "meta": {
@@ -2327,43 +2341,43 @@ $.ajax(settings).done(function (response) {
             "sync_task_status_id": "Complete",
             "i18n_lang_id": "en_US",
             "description": "Items synchronization is complete.",
-            "created_at": "2017-08-07 13:27:05",
-            "updated_at": "2017-08-07 13:27:05"
+            "created_at": "2017-08-18 10:21:56",
+            "updated_at": "2017-08-18 10:21:56"
         },
         {
             "sync_task_status_id": "Complete",
             "i18n_lang_id": "fr_FR",
             "description": "La synchronisation des items est terminée",
-            "created_at": "2017-08-07 13:27:05",
-            "updated_at": "2017-08-07 13:27:05"
+            "created_at": "2017-08-18 10:21:56",
+            "updated_at": "2017-08-18 10:21:56"
         },
         {
             "sync_task_status_id": "InProgress",
             "i18n_lang_id": "en_US",
             "description": "Items synchronization is in progress.",
-            "created_at": "2017-08-07 13:27:05",
-            "updated_at": "2017-08-07 13:27:05"
+            "created_at": "2017-08-18 10:21:56",
+            "updated_at": "2017-08-18 10:21:56"
         },
         {
             "sync_task_status_id": "InProgress",
             "i18n_lang_id": "fr_FR",
             "description": "La synchronisation des items est en cours.",
-            "created_at": "2017-08-07 13:27:05",
-            "updated_at": "2017-08-07 13:27:05"
+            "created_at": "2017-08-18 10:21:56",
+            "updated_at": "2017-08-18 10:21:56"
         },
         {
             "sync_task_status_id": "Planned",
             "i18n_lang_id": "en_US",
             "description": "Items synchronization is planned.",
-            "created_at": "2017-08-07 13:27:05",
-            "updated_at": "2017-08-07 13:27:05"
+            "created_at": "2017-08-18 10:21:56",
+            "updated_at": "2017-08-18 10:21:56"
         },
         {
             "sync_task_status_id": "Planned",
             "i18n_lang_id": "fr_FR",
             "description": "La synchronisation des items est plannifiée",
-            "created_at": "2017-08-07 13:27:05",
-            "updated_at": "2017-08-07 13:27:05"
+            "created_at": "2017-08-18 10:21:56",
+            "updated_at": "2017-08-18 10:21:56"
         }
     ],
     "meta": {
@@ -2413,8 +2427,8 @@ $.ajax(settings).done(function (response) {
             "sync_task_status_id": "Planned",
             "i18n_lang_id": "en_US",
             "description": "Items synchronization is planned.",
-            "created_at": "2017-08-07 13:27:05",
-            "updated_at": "2017-08-07 13:27:05"
+            "created_at": "2017-08-18 10:21:56",
+            "updated_at": "2017-08-18 10:21:56"
         }
     ]
 }</code></pre>
@@ -2455,15 +2469,15 @@ $.ajax(settings).done(function (response) {
             "sync_task_status_id": "Planned",
             "i18n_lang_id": "en_US",
             "description": "Items synchronization is planned.",
-            "created_at": "2017-08-07 13:27:05",
-            "updated_at": "2017-08-07 13:27:05"
+            "created_at": "2017-08-18 10:21:56",
+            "updated_at": "2017-08-18 10:21:56"
         },
         {
             "sync_task_status_id": "Planned",
             "i18n_lang_id": "fr_FR",
             "description": "La synchronisation des items est plannifiée",
-            "created_at": "2017-08-07 13:27:05",
-            "updated_at": "2017-08-07 13:27:05"
+            "created_at": "2017-08-18 10:21:56",
+            "updated_at": "2017-08-18 10:21:56"
         }
     ],
     "meta": {
@@ -2633,71 +2647,71 @@ $.ajax(settings).done(function (response) {
             "sync_task_type_id": "DataStreamCheck",
             "i18n_lang_id": "en_US",
             "description": "Comparison and verification of downloaded data.",
-            "created_at": "2017-08-07 13:27:05",
-            "updated_at": "2017-08-07 13:27:05"
+            "created_at": "2017-08-18 10:21:56",
+            "updated_at": "2017-08-18 10:21:56"
         },
         {
             "sync_task_type_id": "DataStreamCheck",
             "i18n_lang_id": "fr_FR",
             "description": "Comparaison et vérification des données téléchargées.",
-            "created_at": "2017-08-07 13:27:05",
-            "updated_at": "2017-08-07 13:27:05"
+            "created_at": "2017-08-18 10:21:56",
+            "updated_at": "2017-08-18 10:21:56"
         },
         {
             "sync_task_type_id": "DataStreamDownload",
             "i18n_lang_id": "en_US",
             "description": "Downloading the provided data feed url of the data stream.",
-            "created_at": "2017-08-07 13:27:05",
-            "updated_at": "2017-08-07 13:27:05"
+            "created_at": "2017-08-18 10:21:56",
+            "updated_at": "2017-08-18 10:21:56"
         },
         {
             "sync_task_type_id": "DataStreamDownload",
             "i18n_lang_id": "fr_FR",
             "description": "Téléchargement des données fournies par l'url du flux de données.",
-            "created_at": "2017-08-07 13:27:05",
-            "updated_at": "2017-08-07 13:27:05"
+            "created_at": "2017-08-18 10:21:56",
+            "updated_at": "2017-08-18 10:21:56"
         },
         {
             "sync_task_type_id": "DataStreamPrepare",
             "i18n_lang_id": "en_US",
             "description": "Data breakdown for creation, edition or deletion.",
-            "created_at": "2017-08-07 13:27:05",
-            "updated_at": "2017-08-07 13:27:05"
+            "created_at": "2017-08-18 10:21:56",
+            "updated_at": "2017-08-18 10:21:56"
         },
         {
             "sync_task_type_id": "DataStreamPrepare",
             "i18n_lang_id": "fr_FR",
             "description": "Ventilation des données pour la création, modification ou suppression.",
-            "created_at": "2017-08-07 13:27:05",
-            "updated_at": "2017-08-07 13:27:05"
+            "created_at": "2017-08-18 10:21:56",
+            "updated_at": "2017-08-18 10:21:56"
         },
         {
             "sync_task_type_id": "ItemsDelete",
             "i18n_lang_id": "en_US",
             "description": "Deleting records.",
-            "created_at": "2017-08-07 13:27:05",
-            "updated_at": "2017-08-07 13:27:05"
+            "created_at": "2017-08-18 10:21:56",
+            "updated_at": "2017-08-18 10:21:56"
         },
         {
             "sync_task_type_id": "ItemsDelete",
             "i18n_lang_id": "fr_FR",
             "description": "Suppression d'enregistrements.",
-            "created_at": "2017-08-07 13:27:05",
-            "updated_at": "2017-08-07 13:27:05"
+            "created_at": "2017-08-18 10:21:56",
+            "updated_at": "2017-08-18 10:21:56"
         },
         {
             "sync_task_type_id": "ItemsInsertion",
             "i18n_lang_id": "en_US",
             "description": "Creating new records.",
-            "created_at": "2017-08-07 13:27:05",
-            "updated_at": "2017-08-07 13:27:05"
+            "created_at": "2017-08-18 10:21:56",
+            "updated_at": "2017-08-18 10:21:56"
         },
         {
             "sync_task_type_id": "ItemsInsertion",
             "i18n_lang_id": "fr_FR",
             "description": "Création des nouveaux enregistrements.",
-            "created_at": "2017-08-07 13:27:05",
-            "updated_at": "2017-08-07 13:27:05"
+            "created_at": "2017-08-18 10:21:56",
+            "updated_at": "2017-08-18 10:21:56"
         }
     ],
     "meta": {
@@ -2749,8 +2763,8 @@ $.ajax(settings).done(function (response) {
             "sync_task_type_id": "Main",
             "i18n_lang_id": "en_US",
             "description": "Main task who rules and manage subtasks.",
-            "created_at": "2017-08-07 13:27:05",
-            "updated_at": "2017-08-07 13:27:05"
+            "created_at": "2017-08-18 10:21:56",
+            "updated_at": "2017-08-18 10:21:56"
         }
     ]
 }</code></pre>
@@ -2791,50 +2805,50 @@ $.ajax(settings).done(function (response) {
             "sync_task_type_id": "DataStreamCheck",
             "i18n_lang_id": "en_US",
             "description": "Comparison and verification of downloaded data.",
-            "created_at": "2017-08-07 13:27:05",
-            "updated_at": "2017-08-07 13:27:05"
+            "created_at": "2017-08-18 10:21:56",
+            "updated_at": "2017-08-18 10:21:56"
         },
         {
             "sync_task_type_id": "DataStreamDownload",
             "i18n_lang_id": "en_US",
             "description": "Downloading the provided data feed url of the data stream.",
-            "created_at": "2017-08-07 13:27:05",
-            "updated_at": "2017-08-07 13:27:05"
+            "created_at": "2017-08-18 10:21:56",
+            "updated_at": "2017-08-18 10:21:56"
         },
         {
             "sync_task_type_id": "DataStreamPrepare",
             "i18n_lang_id": "en_US",
             "description": "Data breakdown for creation, edition or deletion.",
-            "created_at": "2017-08-07 13:27:05",
-            "updated_at": "2017-08-07 13:27:05"
+            "created_at": "2017-08-18 10:21:56",
+            "updated_at": "2017-08-18 10:21:56"
         },
         {
             "sync_task_type_id": "ItemsDelete",
             "i18n_lang_id": "en_US",
             "description": "Deleting records.",
-            "created_at": "2017-08-07 13:27:05",
-            "updated_at": "2017-08-07 13:27:05"
+            "created_at": "2017-08-18 10:21:56",
+            "updated_at": "2017-08-18 10:21:56"
         },
         {
             "sync_task_type_id": "ItemsInsertion",
             "i18n_lang_id": "en_US",
             "description": "Creating new records.",
-            "created_at": "2017-08-07 13:27:05",
-            "updated_at": "2017-08-07 13:27:05"
+            "created_at": "2017-08-18 10:21:56",
+            "updated_at": "2017-08-18 10:21:56"
         },
         {
             "sync_task_type_id": "ItemsUpdate",
             "i18n_lang_id": "en_US",
             "description": "Updating records.",
-            "created_at": "2017-08-07 13:27:05",
-            "updated_at": "2017-08-07 13:27:05"
+            "created_at": "2017-08-18 10:21:56",
+            "updated_at": "2017-08-18 10:21:56"
         },
         {
             "sync_task_type_id": "Main",
             "i18n_lang_id": "en_US",
             "description": "Main task who rules and manage subtasks.",
-            "created_at": "2017-08-07 13:27:05",
-            "updated_at": "2017-08-07 13:27:05"
+            "created_at": "2017-08-18 10:21:56",
+            "updated_at": "2017-08-18 10:21:56"
         }
     ],
     "meta": {
@@ -2884,8 +2898,8 @@ $.ajax(settings).done(function (response) {
         "id": "b070b438-781d-11e7-b5a5-be2e44b06b34",
         "search_use_case_id": "dc5bfd4c-711e-11e7-8cf7-a6006ad3dba0",
         "name": "E-monsite | Blog - Photo Widget",
-        "created_at": "2017-08-07 13:27:07",
-        "updated_at": "2017-08-07 13:27:07"
+        "created_at": "2017-08-18 10:22:00",
+        "updated_at": "2017-08-18 10:22:00"
     }
 }</code></pre>
 <h3>HTTP Request</h3>
@@ -2901,8 +2915,8 @@ $.ajax(settings).done(function (response) {
 -H "Accept: application/json" \
 -H "Authentication: Bearer xxx"
  \
-    -d "search_use_case_id"="7759a980-cbe8-3075-a3dd-b3fc3013041b" \
-    -d "name"="Est hic eaque" \
+    -d "search_use_case_id"="cdd0584f-f363-309b-b834-28ac8f763fe8" \
+    -d "name"="Hic provident reiciendis" \
 </code></pre>
 <pre><code class="language-javascript">var settings = {
     "async": true,
@@ -2910,8 +2924,8 @@ $.ajax(settings).done(function (response) {
     "url": "https://emsearch.ryan.ems-dev.net/api/widget",
     "method": "POST",
     "data": {
-        "search_use_case_id": "7759a980-cbe8-3075-a3dd-b3fc3013041b",
-        "name": "Est hic eaque"
+        "search_use_case_id": "cdd0584f-f363-309b-b834-28ac8f763fe8",
+        "name": "Hic provident reiciendis"
 },
     "headers": {
         "Accept": "application/json",
@@ -2959,8 +2973,8 @@ $.ajax(settings).done(function (response) {
 -H "Accept: application/json" \
 -H "Authentication: Bearer xxx"
  \
-    -d "search_use_case_id"="01a0f0d0-165a-3345-96af-a2f53285520b" \
-    -d "name"="Officiis ut quisquam" \
+    -d "search_use_case_id"="1ee031c8-cbab-3a87-899a-89c5a1f605ab" \
+    -d "name"="Eveniet rerum illo" \
 </code></pre>
 <pre><code class="language-javascript">var settings = {
     "async": true,
@@ -2968,8 +2982,8 @@ $.ajax(settings).done(function (response) {
     "url": "https://emsearch.ryan.ems-dev.net/api/widget/b070b438-781d-11e7-b5a5-be2e44b06b34",
     "method": "PUT",
     "data": {
-        "search_use_case_id": "01a0f0d0-165a-3345-96af-a2f53285520b",
-        "name": "Officiis ut quisquam"
+        "search_use_case_id": "1ee031c8-cbab-3a87-899a-89c5a1f605ab",
+        "name": "Eveniet rerum illo"
 },
     "headers": {
         "Accept": "application/json",
@@ -3068,8 +3082,8 @@ $.ajax(settings).done(function (response) {
             "id": "b070b438-781d-11e7-b5a5-be2e44b06b34",
             "search_use_case_id": "dc5bfd4c-711e-11e7-8cf7-a6006ad3dba0",
             "name": "E-monsite | Blog - Photo Widget",
-            "created_at": "2017-08-07 13:27:07",
-            "updated_at": "2017-08-07 13:27:07"
+            "created_at": "2017-08-18 10:22:00",
+            "updated_at": "2017-08-18 10:22:00"
         }
     ],
     "meta": {
@@ -3121,15 +3135,15 @@ $.ajax(settings).done(function (response) {
             "id": "0f85eb82-776a-11e7-b5a5-be2e44b06b34",
             "search_use_case_preset_id": "d3c73a6c-7767-11e7-b5a5-be2e44b06b34",
             "name": "E-monsite | Blog - Photo Widget",
-            "created_at": "2017-08-07 13:27:07",
-            "updated_at": "2017-08-07 13:27:07"
+            "created_at": "2017-08-18 10:22:00",
+            "updated_at": "2017-08-18 10:22:00"
         },
         {
             "id": "6be0a102-7769-11e7-b5a5-be2e44b06b34",
             "search_use_case_preset_id": "516f0252-7767-11e7-b5a5-be2e44b06b34",
             "name": "E-monsite | Blog - Summary Widget",
-            "created_at": "2017-08-07 13:27:07",
-            "updated_at": "2017-08-07 13:27:07"
+            "created_at": "2017-08-18 10:22:00",
+            "updated_at": "2017-08-18 10:22:00"
         }
     ],
     "meta": {
@@ -3178,8 +3192,8 @@ $.ajax(settings).done(function (response) {
         "id": "6be0a102-7769-11e7-b5a5-be2e44b06b34",
         "search_use_case_preset_id": "516f0252-7767-11e7-b5a5-be2e44b06b34",
         "name": "E-monsite | Blog - Summary Widget",
-        "created_at": "2017-08-07 13:27:07",
-        "updated_at": "2017-08-07 13:27:07"
+        "created_at": "2017-08-18 10:22:00",
+        "updated_at": "2017-08-18 10:22:00"
     }
 }</code></pre>
 <h3>HTTP Request</h3>
@@ -3219,8 +3233,8 @@ $.ajax(settings).done(function (response) {
             "id": "6be0a102-7769-11e7-b5a5-be2e44b06b34",
             "search_use_case_preset_id": "516f0252-7767-11e7-b5a5-be2e44b06b34",
             "name": "E-monsite | Blog - Summary Widget",
-            "created_at": "2017-08-07 13:27:07",
-            "updated_at": "2017-08-07 13:27:07"
+            "created_at": "2017-08-18 10:22:00",
+            "updated_at": "2017-08-18 10:22:00"
         }
     ],
     "meta": {
@@ -3272,15 +3286,15 @@ $.ajax(settings).done(function (response) {
             "id": "0f85eb82-776a-11e7-b5a5-be2e44b06b34",
             "search_use_case_preset_id": "d3c73a6c-7767-11e7-b5a5-be2e44b06b34",
             "name": "E-monsite | Blog - Photo Widget",
-            "created_at": "2017-08-07 13:27:07",
-            "updated_at": "2017-08-07 13:27:07"
+            "created_at": "2017-08-18 10:22:00",
+            "updated_at": "2017-08-18 10:22:00"
         },
         {
             "id": "6be0a102-7769-11e7-b5a5-be2e44b06b34",
             "search_use_case_preset_id": "516f0252-7767-11e7-b5a5-be2e44b06b34",
             "name": "E-monsite | Blog - Summary Widget",
-            "created_at": "2017-08-07 13:27:07",
-            "updated_at": "2017-08-07 13:27:07"
+            "created_at": "2017-08-18 10:22:00",
+            "updated_at": "2017-08-18 10:22:00"
         }
     ],
     "meta": {

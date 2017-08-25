@@ -8,6 +8,10 @@
         {
             "type": "vcs",
             "url": "/home/dev/rygilles/laravel-apidoc-generator"
+        },
+        {
+            "type": "vcs",
+            "url": "/home/dev/rygilles/laravel-openapi-schema-generator"
         }
     ],
     "require": {
@@ -27,7 +31,8 @@
         "laravel/tinker": "~1.0",
         "predis/predis": "^1.1",
         "pusher/pusher-php-server": "^2.6",
-        "rygilles/laravel-apidoc-generator": "@dev"
+        "rygilles/laravel-apidoc-generator": "@dev",
+        "rygilles/laravel-openapi-schema-generator": "@dev"
     },
     "require-dev": {
         "fzaninotto/faker": "~1.4",

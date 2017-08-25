@@ -21,19 +21,6 @@ class GenerateApiDocs extends Command
      */
     protected $description = 'Generate API documentation using current database resources.';
 
-	protected $actAsUserId = '';
-	
-	/**
-	 * Bindings.
-	 *
-	 * @see SamplesSeeder
-	 * @var string[]
-	 */
-	protected $bindings = [
-		// John Smith Sample Project 1
-		'project' => '1bcc7efc-138c-11e7-93ae-92361f002671'
-	];
-
 	/**
 	 * Create a new command instance.
 	 */

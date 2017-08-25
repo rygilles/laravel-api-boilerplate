@@ -49,6 +49,22 @@ class SyncTaskType extends ApiModel
 	];
 
 	/**
+	 * Model validation rules for item patch
+	 * @var string[]
+	 */
+	protected static $patchRules = [
+		'id' => 'string|max:50|unique:sync_task_type,id',
+	];
+
+	/**
+	 * Model validation rules for item replacement
+	 * @var string[]
+	 */
+	protected static $putRules = [
+		'id' => 'required|string|max:50|unique:sync_task_type,id',
+	];
+
+	/**
 	 * Get the sync tasks
 	 *
 	 * @return \Illuminate\Database\Eloquent\Relations\HasMany
