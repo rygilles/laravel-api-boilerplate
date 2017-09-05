@@ -113,7 +113,7 @@ class WidgetPresetController extends ApiController
 	 *
 	 * @ApiDocsNoCall
 	 *
-	 * @param string $widgetId Widget preset UUID
+	 * @param string $widgetPresetId Widget preset UUID
 	 * @return \Dingo\Api\Http\Response|void
 	 */
 	public function destroy($widgetPresetId)

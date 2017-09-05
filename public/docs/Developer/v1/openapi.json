@@ -18,10 +18,10 @@
                     {
                         "name": "searchUseCaseId",
                         "in": "path",
-                        "description": "use case UUID",
+                        "description": "Search use case UUID",
                         "required": true,
                         "schema": {
-                            "type": "Search"
+                            "type": "string"
                         }
                     },
                     {
@@ -159,6 +159,17 @@
             "post": {
                 "summary": "Mark the specified user notification as read",
                 "operationId": "updateRead",
+                "parameters": [
+                    {
+                        "name": "notificationId",
+                        "in": "path",
+                        "description": "Notification UUID",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
                 "responses": {
                     "201": {
                         "description": ""
@@ -170,6 +181,17 @@
             "post": {
                 "summary": "Mark the specified user notification as unread",
                 "operationId": "updateUnread",
+                "parameters": [
+                    {
+                        "name": "notificationId",
+                        "in": "path",
+                        "description": "Notification UUID",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
                 "responses": {
                     "201": {
                         "description": ""
@@ -199,6 +221,17 @@
             "get": {
                 "summary": "Get specified User group",
                 "operationId": "show",
+                "parameters": [
+                    {
+                        "name": "userGroupId",
+                        "in": "path",
+                        "description": "User Group Id",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
                 "responses": {
                     "200": {
                         "description": ""
@@ -274,6 +307,17 @@
             "get": {
                 "summary": "Get specified user",
                 "operationId": "show",
+                "parameters": [
+                    {
+                        "name": "userId",
+                        "in": "path",
+                        "description": "User UUID",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
                 "responses": {
                     "200": {
                         "description": ""
@@ -283,6 +327,17 @@
             "put": {
                 "summary": "Update a specified user",
                 "operationId": "putUpdate",
+                "parameters": [
+                    {
+                        "name": "userId",
+                        "in": "path",
+                        "description": "User UUID",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
                 "requestBody": {
                     "content": {
                         "application\/json": {
@@ -330,6 +385,17 @@
                 "summary": "Delete specified user",
                 "description": "All relationships between the user and his projects will be automatically deleted too.<br \/>\nAll projects owned by the user will be automatically deleted too.",
                 "operationId": "destroy",
+                "parameters": [
+                    {
+                        "name": "userId",
+                        "in": "path",
+                        "description": "User UUID",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
                 "responses": {
                     "204": {
                         "description": ""
@@ -339,6 +405,17 @@
             "patch": {
                 "summary": "Update a specified user",
                 "operationId": "patchUpdate",
+                "parameters": [
+                    {
+                        "name": "userId",
+                        "in": "path",
+                        "description": "User UUID",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
                 "requestBody": {
                     "content": {
                         "application\/json": {
@@ -387,6 +464,17 @@
             "get": {
                 "summary": "User group user list",
                 "operationId": "index",
+                "parameters": [
+                    {
+                        "name": "userGroupId",
+                        "in": "path",
+                        "description": "User Group ID",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
                 "responses": {
                     "200": {
                         "description": ""
@@ -403,10 +491,10 @@
                     {
                         "name": "userId",
                         "in": "path",
-                        "description": "UUID",
+                        "description": "User UUID",
                         "required": true,
                         "schema": {
-                            "type": "User"
+                            "type": "string"
                         }
                     },
                     {
@@ -438,10 +526,10 @@
                     {
                         "name": "projectId",
                         "in": "path",
-                        "description": "UUID",
+                        "description": "Project UUID",
                         "required": true,
                         "schema": {
-                            "type": "Project"
+                            "type": "string"
                         }
                     },
                     {
@@ -473,10 +561,10 @@
                     {
                         "name": "userId",
                         "in": "path",
-                        "description": "UUID",
+                        "description": "User UUID",
                         "required": true,
                         "schema": {
-                            "type": "User"
+                            "type": "string"
                         }
                     },
                     {
@@ -584,6 +672,17 @@
                 ],
                 "summary": "Get specified project",
                 "operationId": "get",
+                "parameters": [
+                    {
+                        "name": "projectId",
+                        "in": "path",
+                        "description": "Project UUID",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
                 "responses": {
                     "200": {
                         "description": "A Project",
@@ -607,6 +706,17 @@
                 ],
                 "summary": "Update a specified project",
                 "operationId": "update",
+                "parameters": [
+                    {
+                        "name": "projectId",
+                        "in": "path",
+                        "description": "Project UUID",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
                 "requestBody": {
                     "content": {
                         "application\/json": {
@@ -655,6 +765,17 @@
                 "summary": "Delete specified project",
                 "description": "All relationships between the project and his users will be automatically deleted too.<br \/>\nThe project sync items will be automatically deleted too.<br \/>\nThe project data stream will be automatically deleted too, if exists.\n<aside class=\"notice\">Only <code>Owner<\/code> of project is allowed to delete it.<\/aside>",
                 "operationId": "delete",
+                "parameters": [
+                    {
+                        "name": "projectId",
+                        "in": "path",
+                        "description": "Project UUID",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
                 "responses": {
                     "204": {
                         "description": "Empty response"
@@ -668,6 +789,17 @@
                 ],
                 "summary": "Update a specified project",
                 "operationId": "update",
+                "parameters": [
+                    {
+                        "name": "projectId",
+                        "in": "path",
+                        "description": "Project UUID",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
                 "requestBody": {
                     "content": {
                         "application\/json": {
@@ -765,6 +897,26 @@
             "get": {
                 "summary": "Get specified sync item",
                 "operationId": "show",
+                "parameters": [
+                    {
+                        "name": "syncItemId",
+                        "in": "path",
+                        "description": "Sync Item ID",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "projectId",
+                        "in": "path",
+                        "description": "Project UUID",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
                 "responses": {
                     "200": {
                         "description": "",
@@ -781,6 +933,26 @@
             "put": {
                 "summary": "Update a specified sync item",
                 "operationId": "putUpdate",
+                "parameters": [
+                    {
+                        "name": "syncItemId",
+                        "in": "path",
+                        "description": "Sync Item ID",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "projectId",
+                        "in": "path",
+                        "description": "Project UUID",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
                 "requestBody": {
                     "content": {
                         "application\/json": {
@@ -815,6 +987,26 @@
             "delete": {
                 "summary": "Delete specified sync item",
                 "operationId": "destroy",
+                "parameters": [
+                    {
+                        "name": "syncItemId",
+                        "in": "path",
+                        "description": "Sync Item ID",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "projectId",
+                        "in": "path",
+                        "description": "Project UUID",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
                 "responses": {
                     "204": {
                         "description": ""
@@ -824,6 +1016,26 @@
             "patch": {
                 "summary": "Update a specified sync item",
                 "operationId": "patchUpdate",
+                "parameters": [
+                    {
+                        "name": "syncItemId",
+                        "in": "path",
+                        "description": "Sync Item ID",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "projectId",
+                        "in": "path",
+                        "description": "Project UUID",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
                 "requestBody": {
                     "content": {
                         "application\/json": {
@@ -860,6 +1072,17 @@
             "get": {
                 "summary": "Project sync item list",
                 "operationId": "index",
+                "parameters": [
+                    {
+                        "name": "projectId",
+                        "in": "path",
+                        "description": "Project UUID",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
                 "responses": {
                     "200": {
                         "description": ""
@@ -980,6 +1203,17 @@
             "get": {
                 "summary": "Get specified sync task",
                 "operationId": "show",
+                "parameters": [
+                    {
+                        "name": "syncTaskId",
+                        "in": "path",
+                        "description": "Sync Task ID",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
                 "responses": {
                     "200": {
                         "description": ""
@@ -989,6 +1223,17 @@
             "put": {
                 "summary": "Update a specified sync task",
                 "operationId": "putUpdate",
+                "parameters": [
+                    {
+                        "name": "syncTaskId",
+                        "in": "path",
+                        "description": "Sync Task ID",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
                 "requestBody": {
                     "content": {
                         "application\/json": {
@@ -1038,6 +1283,17 @@
             "delete": {
                 "summary": "Delete specified sync task",
                 "operationId": "destroy",
+                "parameters": [
+                    {
+                        "name": "syncTaskId",
+                        "in": "path",
+                        "description": "Sync Task ID",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
                 "responses": {
                     "204": {
                         "description": ""
@@ -1047,6 +1303,17 @@
             "patch": {
                 "summary": "Update a specified sync task",
                 "operationId": "patchUpdate",
+                "parameters": [
+                    {
+                        "name": "syncTaskId",
+                        "in": "path",
+                        "description": "Sync Task ID",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
                 "requestBody": {
                     "content": {
                         "application\/json": {
@@ -1098,6 +1365,17 @@
             "get": {
                 "summary": "Sync task sync task children list",
                 "operationId": "index",
+                "parameters": [
+                    {
+                        "name": "syncTaskId",
+                        "in": "path",
+                        "description": "Sync Task ID",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
                 "responses": {
                     "200": {
                         "description": ""
@@ -1114,10 +1392,10 @@
                     {
                         "name": "syncTaskId",
                         "in": "path",
-                        "description": "Task ID",
+                        "description": "Sync Task ID",
                         "required": true,
                         "schema": {
-                            "type": "Sync"
+                            "type": "string"
                         }
                     },
                     {
@@ -1145,10 +1423,10 @@
                     {
                         "name": "projectId",
                         "in": "path",
-                        "description": "UUID",
+                        "description": "Project UUID",
                         "required": true,
                         "schema": {
-                            "type": "Project"
+                            "type": "string"
                         }
                     },
                     {
@@ -1215,6 +1493,17 @@
             "get": {
                 "summary": "Get specified sync task type",
                 "operationId": "show",
+                "parameters": [
+                    {
+                        "name": "syncTaskTypeId",
+                        "in": "path",
+                        "description": "Sync task type ID",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
                 "responses": {
                     "200": {
                         "description": ""
@@ -1224,6 +1513,17 @@
             "put": {
                 "summary": "Update a sync task type",
                 "operationId": "putUpdate",
+                "parameters": [
+                    {
+                        "name": "syncTaskTypeId",
+                        "in": "path",
+                        "description": "Sync task type ID",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
                 "requestBody": {
                     "content": {
                         "application\/json": {
@@ -1251,6 +1551,17 @@
                 "summary": "Delete specified sync task type",
                 "description": "The sync task type versions will be automatically deleted too.<br \/>\n<aside class=\"warning\">Avoid using this feature ! Check foreign keys constraints to remove dependent resources properly before.<\/aside>",
                 "operationId": "destroy",
+                "parameters": [
+                    {
+                        "name": "syncTaskTypeId",
+                        "in": "path",
+                        "description": "Sync task type ID",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
                 "responses": {
                     "204": {
                         "description": ""
@@ -1260,6 +1571,17 @@
             "patch": {
                 "summary": "Update a sync task type",
                 "operationId": "patchUpdate",
+                "parameters": [
+                    {
+                        "name": "syncTaskTypeId",
+                        "in": "path",
+                        "description": "Sync task type ID",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
                 "requestBody": {
                     "content": {
                         "application\/json": {
@@ -1341,6 +1663,26 @@
             "get": {
                 "summary": "Get specified sync task type version",
                 "operationId": "show",
+                "parameters": [
+                    {
+                        "name": "syncTaskTypeId",
+                        "in": "path",
+                        "description": "Sync Task Type ID",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "i18nLangId",
+                        "in": "path",
+                        "description": "I18n Lang Id",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
                 "responses": {
                     "200": {
                         "description": "",
@@ -1357,6 +1699,26 @@
             "put": {
                 "summary": "Update a specified sync task type version",
                 "operationId": "putUpdate",
+                "parameters": [
+                    {
+                        "name": "syncTaskTypeId",
+                        "in": "path",
+                        "description": "Sync Task Type ID",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "i18nLangId",
+                        "in": "path",
+                        "description": "I18n Lang Id",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
                 "requestBody": {
                     "content": {
                         "application\/json": {
@@ -1392,6 +1754,26 @@
             "delete": {
                 "summary": "Delete specified sync task type version",
                 "operationId": "destroy",
+                "parameters": [
+                    {
+                        "name": "syncTaskTypeId",
+                        "in": "path",
+                        "description": "Sync Task Type ID",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "i18nLangId",
+                        "in": "path",
+                        "description": "I18n Lang Id",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
                 "responses": {
                     "204": {
                         "description": ""
@@ -1401,6 +1783,26 @@
             "patch": {
                 "summary": "Update a specified sync task type version",
                 "operationId": "patchUpdate",
+                "parameters": [
+                    {
+                        "name": "syncTaskTypeId",
+                        "in": "path",
+                        "description": "Sync Task Type ID",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "i18nLangId",
+                        "in": "path",
+                        "description": "I18n Lang Id",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
                 "requestBody": {
                     "content": {
                         "application\/json": {
@@ -1438,6 +1840,17 @@
             "get": {
                 "summary": "Sync task type sync task type versions list",
                 "operationId": "index",
+                "parameters": [
+                    {
+                        "name": "syncTaskTypeId",
+                        "in": "path",
+                        "description": "Sync Task Type ID",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
                 "responses": {
                     "200": {
                         "description": ""
@@ -1493,6 +1906,17 @@
             "get": {
                 "summary": "Get specified sync task status",
                 "operationId": "show",
+                "parameters": [
+                    {
+                        "name": "syncTaskStatusId",
+                        "in": "path",
+                        "description": "Sync task type ID",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
                 "responses": {
                     "200": {
                         "description": ""
@@ -1502,6 +1926,17 @@
             "put": {
                 "summary": "Update a sync task status",
                 "operationId": "putUpdate",
+                "parameters": [
+                    {
+                        "name": "syncTaskStatusId",
+                        "in": "path",
+                        "description": "Sync task status ID",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
                 "requestBody": {
                     "content": {
                         "application\/json": {
@@ -1529,6 +1964,17 @@
                 "summary": "Delete specified sync task status",
                 "description": "The sync task status versions will be automatically deleted too.<br \/>\n<aside class=\"warning\">Avoid using this feature ! Check foreign keys constraints to remove dependent resources properly before.<\/aside>",
                 "operationId": "destroy",
+                "parameters": [
+                    {
+                        "name": "syncTaskStatusId",
+                        "in": "path",
+                        "description": "Sync task status ID",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
                 "responses": {
                     "204": {
                         "description": ""
@@ -1538,6 +1984,17 @@
             "patch": {
                 "summary": "Update a sync task status",
                 "operationId": "patchUpdate",
+                "parameters": [
+                    {
+                        "name": "syncTaskStatusId",
+                        "in": "path",
+                        "description": "Sync task status ID",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
                 "requestBody": {
                     "content": {
                         "application\/json": {
@@ -1619,6 +2076,26 @@
             "get": {
                 "summary": "Get specified sync task status version",
                 "operationId": "show",
+                "parameters": [
+                    {
+                        "name": "syncTaskStatusId",
+                        "in": "path",
+                        "description": "Sync Task Status ID",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "i18nLangId",
+                        "in": "path",
+                        "description": "I18n Lang Id",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
                 "responses": {
                     "200": {
                         "description": "",
@@ -1635,6 +2112,26 @@
             "put": {
                 "summary": "Update a specified sync task status version",
                 "operationId": "putUpdate",
+                "parameters": [
+                    {
+                        "name": "syncTaskStatusId",
+                        "in": "path",
+                        "description": "Sync Task Status ID",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "i18nLangId",
+                        "in": "path",
+                        "description": "I18n Lang Id",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
                 "requestBody": {
                     "content": {
                         "application\/json": {
@@ -1670,6 +2167,26 @@
             "delete": {
                 "summary": "Delete specified sync task status version",
                 "operationId": "destroy",
+                "parameters": [
+                    {
+                        "name": "syncTaskStatusId",
+                        "in": "path",
+                        "description": "Sync Task Status ID",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "i18nLangId",
+                        "in": "path",
+                        "description": "I18n Lang Id",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
                 "responses": {
                     "204": {
                         "description": ""
@@ -1679,6 +2196,26 @@
             "patch": {
                 "summary": "Update a specified sync task status version",
                 "operationId": "patchUpdate",
+                "parameters": [
+                    {
+                        "name": "syncTaskStatusId",
+                        "in": "path",
+                        "description": "Sync Task Status ID",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "i18nLangId",
+                        "in": "path",
+                        "description": "I18n Lang Id",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
                 "requestBody": {
                     "content": {
                         "application\/json": {
@@ -1716,6 +2253,17 @@
             "get": {
                 "summary": "Sync task status sync task status versions list",
                 "operationId": "index",
+                "parameters": [
+                    {
+                        "name": "syncTaskStatusId",
+                        "in": "path",
+                        "description": "Sync Task Status ID",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
                 "responses": {
                     "200": {
                         "description": ""
@@ -1792,6 +2340,17 @@
             "get": {
                 "summary": "Get specified data stream",
                 "operationId": "show",
+                "parameters": [
+                    {
+                        "name": "dataStreamId",
+                        "in": "path",
+                        "description": "Data stream UUID",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
                 "responses": {
                     "200": {
                         "description": "A DataStream",
@@ -1808,6 +2367,17 @@
             "put": {
                 "summary": "Update a data stream",
                 "operationId": "putUpdate",
+                "parameters": [
+                    {
+                        "name": "dataStreamId",
+                        "in": "path",
+                        "description": "Data stream UUID",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
                 "requestBody": {
                     "content": {
                         "application\/json": {
@@ -1851,6 +2421,17 @@
             "delete": {
                 "summary": "Delete specified data stream",
                 "operationId": "destroy",
+                "parameters": [
+                    {
+                        "name": "dataStreamId",
+                        "in": "path",
+                        "description": "Data stream UUID",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
                 "responses": {
                     "204": {
                         "description": "Empty response"
@@ -1860,6 +2441,17 @@
             "patch": {
                 "summary": "Update a data stream",
                 "operationId": "patchUpdate",
+                "parameters": [
+                    {
+                        "name": "dataStreamId",
+                        "in": "path",
+                        "description": "Data stream UUID",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
                 "requestBody": {
                     "content": {
                         "application\/json": {
@@ -1973,6 +2565,17 @@
             "get": {
                 "summary": "Get specified data stream field",
                 "operationId": "show",
+                "parameters": [
+                    {
+                        "name": "dataStreamFieldId",
+                        "in": "path",
+                        "description": "Data stream field UUID",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
                 "responses": {
                     "200": {
                         "description": ""
@@ -1982,6 +2585,17 @@
             "put": {
                 "summary": "Update a data stream field",
                 "operationId": "putUpdate",
+                "parameters": [
+                    {
+                        "name": "dataStreamFieldId",
+                        "in": "path",
+                        "description": "Data stream field UUID",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
                 "requestBody": {
                     "content": {
                         "application\/json": {
@@ -2032,6 +2646,17 @@
             "delete": {
                 "summary": "Delete specified data stream field\n*",
                 "operationId": "destroy",
+                "parameters": [
+                    {
+                        "name": "dataStreamFieldId",
+                        "in": "path",
+                        "description": "Data stream field UUID",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
                 "responses": {
                     "204": {
                         "description": ""
@@ -2041,6 +2666,17 @@
             "patch": {
                 "summary": "Update a data stream field",
                 "operationId": "patchUpdate",
+                "parameters": [
+                    {
+                        "name": "dataStreamFieldId",
+                        "in": "path",
+                        "description": "Data stream field UUID",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
                 "requestBody": {
                     "content": {
                         "application\/json": {
@@ -2093,6 +2729,17 @@
             "get": {
                 "summary": "Data stream data stream field list\n *",
                 "operationId": "index",
+                "parameters": [
+                    {
+                        "name": "dataStreamId",
+                        "in": "path",
+                        "description": "Data stream UUID",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
                 "responses": {
                     "200": {
                         "description": ""
@@ -2104,6 +2751,17 @@
             "get": {
                 "summary": "Show project data stream",
                 "operationId": "show",
+                "parameters": [
+                    {
+                        "name": "projectId",
+                        "in": "path",
+                        "description": "Project UUID",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
                 "responses": {
                     "200": {
                         "description": "A DataStream",
@@ -2120,6 +2778,17 @@
             "put": {
                 "summary": "Update the project data stream",
                 "operationId": "putUpdate",
+                "parameters": [
+                    {
+                        "name": "projectId",
+                        "in": "path",
+                        "description": "Project UUID",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
                 "requestBody": {
                     "content": {
                         "application\/json": {
@@ -2164,6 +2833,17 @@
                 "summary": "Create and store the project data stream",
                 "description": "Only one data stream per project is allowed.",
                 "operationId": "store",
+                "parameters": [
+                    {
+                        "name": "projectId",
+                        "in": "path",
+                        "description": "Project UUID",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
                 "requestBody": {
                     "content": {
                         "application\/json": {
@@ -2207,6 +2887,17 @@
             "delete": {
                 "summary": "Delete the project data stream",
                 "operationId": "destroy",
+                "parameters": [
+                    {
+                        "name": "projectId",
+                        "in": "path",
+                        "description": "Project UUID",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
                 "responses": {
                     "204": {
                         "description": "Empty response"
@@ -2216,6 +2907,17 @@
             "patch": {
                 "summary": "Update the project data stream",
                 "operationId": "patchUpdate",
+                "parameters": [
+                    {
+                        "name": "projectId",
+                        "in": "path",
+                        "description": "Project UUID",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
                 "requestBody": {
                     "content": {
                         "application\/json": {
@@ -2311,6 +3013,26 @@
             "get": {
                 "summary": "Get specified relationship between a data stream and a i18n lang",
                 "operationId": "show",
+                "parameters": [
+                    {
+                        "name": "dataStreamId",
+                        "in": "path",
+                        "description": "Data Stream UUID",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "i18nLangId",
+                        "in": "path",
+                        "description": "I18n Land Id",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
                 "responses": {
                     "200": {
                         "description": "",
@@ -2328,6 +3050,26 @@
                 "summary": "Update a specified relationship between a data stream and a i18n lang",
                 "description": "<aside class=\"notice\">Only one relationship per data stream\/i18n lang is allowed.<\/aside>",
                 "operationId": "putUpdate",
+                "parameters": [
+                    {
+                        "name": "dataStreamId",
+                        "in": "path",
+                        "description": "Data Stream UUID",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "i18nLangId",
+                        "in": "path",
+                        "description": "I18n Land Id",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
                 "requestBody": {
                     "content": {
                         "application\/json": {
@@ -2359,6 +3101,26 @@
             "delete": {
                 "summary": "Delete specified relationship between a data stream and a i18n lang",
                 "operationId": "destroy",
+                "parameters": [
+                    {
+                        "name": "dataStreamId",
+                        "in": "path",
+                        "description": "Data Stream UUID",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "i18nLangId",
+                        "in": "path",
+                        "description": "I18n Land Id",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
                 "responses": {
                     "204": {
                         "description": ""
@@ -2369,6 +3131,26 @@
                 "summary": "Update a specified relationship between a data stream and a i18n lang",
                 "description": "<aside class=\"notice\">Only one relationship per data stream\/i18n lang is allowed.<\/aside>",
                 "operationId": "patchUpdate",
+                "parameters": [
+                    {
+                        "name": "dataStreamId",
+                        "in": "path",
+                        "description": "Data Stream UUID",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "i18nLangId",
+                        "in": "path",
+                        "description": "I18n Land Id",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
                 "requestBody": {
                     "content": {
                         "application\/json": {
@@ -2402,6 +3184,17 @@
             "get": {
                 "summary": "Data stream relationship between data stream and i18n langs list",
                 "operationId": "index",
+                "parameters": [
+                    {
+                        "name": "dataStreamId",
+                        "in": "path",
+                        "description": "Data Stream UUID",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
                 "responses": {
                     "200": {
                         "description": ""
@@ -2413,6 +3206,17 @@
             "get": {
                 "summary": "Data stream i18n lang list",
                 "operationId": "index",
+                "parameters": [
+                    {
+                        "name": "dataStreamId",
+                        "in": "path",
+                        "description": "Data Stream UUID",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
                 "responses": {
                     "200": {
                         "description": ""
@@ -2424,6 +3228,17 @@
             "get": {
                 "summary": "I18n lang data streams list",
                 "operationId": "index",
+                "parameters": [
+                    {
+                        "name": "i18nLangId",
+                        "in": "path",
+                        "description": "I18n Lang ID",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
                 "responses": {
                     "200": {
                         "description": "A DataStream list",
@@ -2500,6 +3315,26 @@
             "get": {
                 "summary": "Get specified relationship between a user and a project",
                 "operationId": "show",
+                "parameters": [
+                    {
+                        "name": "userId",
+                        "in": "path",
+                        "description": "User UUID",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "projectId",
+                        "in": "path",
+                        "description": "Project UUID",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
                 "responses": {
                     "200": {
                         "description": "",
@@ -2517,6 +3352,26 @@
                 "summary": "Update a specified relationship between a user and a project",
                 "description": "<aside class=\"notice\">Only one relationship per user\/project is allowed and only one user can be <code>Owner<\/code>of a project.<\/aside>",
                 "operationId": "putUpdate",
+                "parameters": [
+                    {
+                        "name": "userId",
+                        "in": "path",
+                        "description": "User UUID",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "projectId",
+                        "in": "path",
+                        "description": "Project UUID",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
                 "requestBody": {
                     "content": {
                         "application\/json": {
@@ -2556,6 +3411,26 @@
             "delete": {
                 "summary": "Delete specified relationship between a user and a project",
                 "operationId": "destroy",
+                "parameters": [
+                    {
+                        "name": "userId",
+                        "in": "path",
+                        "description": "User UUID",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "projectId",
+                        "in": "path",
+                        "description": "Project UUID",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
                 "responses": {
                     "204": {
                         "description": ""
@@ -2566,6 +3441,26 @@
                 "summary": "Update a specified relationship between a user and a project",
                 "description": "<aside class=\"notice\">Only one relationship per user\/project is allowed and only one user can be <code>Owner<\/code>of a project.<\/aside>",
                 "operationId": "patchUpdate",
+                "parameters": [
+                    {
+                        "name": "userId",
+                        "in": "path",
+                        "description": "User UUID",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "projectId",
+                        "in": "path",
+                        "description": "Project UUID",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
                 "requestBody": {
                     "content": {
                         "application\/json": {
@@ -2660,6 +3555,17 @@
             "get": {
                 "summary": "Get specified data stream decoder",
                 "operationId": "show",
+                "parameters": [
+                    {
+                        "name": "dataStreamDecoderId",
+                        "in": "path",
+                        "description": "Data stream decoder UUID",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
                 "responses": {
                     "200": {
                         "description": ""
@@ -2669,6 +3575,17 @@
             "put": {
                 "summary": "Update a data stream decoder",
                 "operationId": "putUpdate",
+                "parameters": [
+                    {
+                        "name": "dataStreamDecoderId",
+                        "in": "path",
+                        "description": "Data stream decoder UUID",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
                 "requestBody": {
                     "content": {
                         "application\/json": {
@@ -2704,6 +3621,17 @@
             "delete": {
                 "summary": "Delete specified data stream decoder",
                 "operationId": "destroy",
+                "parameters": [
+                    {
+                        "name": "dataStreamDecoderId",
+                        "in": "path",
+                        "description": "Data stream decoder UUID",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
                 "responses": {
                     "204": {
                         "description": ""
@@ -2713,6 +3641,17 @@
             "patch": {
                 "summary": "Update a data stream decoder",
                 "operationId": "patchUpdate",
+                "parameters": [
+                    {
+                        "name": "dataStreamDecoderId",
+                        "in": "path",
+                        "description": "Data stream decoder UUID",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
                 "requestBody": {
                     "content": {
                         "application\/json": {
@@ -2800,6 +3739,17 @@
             "get": {
                 "summary": "Get specified data stream preset",
                 "operationId": "show",
+                "parameters": [
+                    {
+                        "name": "dataStreamPresetId",
+                        "in": "path",
+                        "description": "Data stream preset UUID",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
                 "responses": {
                     "200": {
                         "description": ""
@@ -2809,6 +3759,17 @@
             "put": {
                 "summary": "Update a data stream preset",
                 "operationId": "putUpdate",
+                "parameters": [
+                    {
+                        "name": "dataStreamPresetId",
+                        "in": "path",
+                        "description": "Data stream preset UUID",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
                 "requestBody": {
                     "content": {
                         "application\/json": {
@@ -2841,6 +3802,17 @@
             "delete": {
                 "summary": "Delete specified data stream preset\n*",
                 "operationId": "destroy",
+                "parameters": [
+                    {
+                        "name": "dataStreamPresetId",
+                        "in": "path",
+                        "description": "Data stream preset UUID",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
                 "responses": {
                     "204": {
                         "description": ""
@@ -2850,6 +3822,17 @@
             "patch": {
                 "summary": "Update a data stream preset",
                 "operationId": "patchUpdate",
+                "parameters": [
+                    {
+                        "name": "dataStreamPresetId",
+                        "in": "path",
+                        "description": "Data stream preset UUID",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
                 "requestBody": {
                     "content": {
                         "application\/json": {
@@ -2884,6 +3867,17 @@
             "get": {
                 "summary": "Data stream preset data stream preset field list\n *",
                 "operationId": "index",
+                "parameters": [
+                    {
+                        "name": "dataStreamPresetId",
+                        "in": "path",
+                        "description": "Data stream preset UUID",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
                 "responses": {
                     "200": {
                         "description": ""
@@ -2963,6 +3957,17 @@
             "get": {
                 "summary": "Get specified data stream preset field",
                 "operationId": "show",
+                "parameters": [
+                    {
+                        "name": "dataStreamPresetFieldId",
+                        "in": "path",
+                        "description": "Data stream preset field UUID",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
                 "responses": {
                     "200": {
                         "description": ""
@@ -2972,6 +3977,17 @@
             "put": {
                 "summary": "Update a data stream preset field",
                 "operationId": "putUpdate",
+                "parameters": [
+                    {
+                        "name": "dataStreamPresetFieldId",
+                        "in": "path",
+                        "description": "Data stream preset field UUID",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
                 "requestBody": {
                     "content": {
                         "application\/json": {
@@ -3022,6 +4038,17 @@
             "delete": {
                 "summary": "Delete specified data stream preset field\n*",
                 "operationId": "destroy",
+                "parameters": [
+                    {
+                        "name": "dataStreamPresetFieldId",
+                        "in": "path",
+                        "description": "Data stream preset field UUID",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
                 "responses": {
                     "204": {
                         "description": ""
@@ -3031,6 +4058,17 @@
             "patch": {
                 "summary": "Update a data stream preset field",
                 "operationId": "patchUpdate",
+                "parameters": [
+                    {
+                        "name": "dataStreamPresetFieldId",
+                        "in": "path",
+                        "description": "Data stream preset field UUID",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
                 "requestBody": {
                     "content": {
                         "application\/json": {
@@ -3131,6 +4169,17 @@
             "get": {
                 "summary": "Get specified i18n lang",
                 "operationId": "show",
+                "parameters": [
+                    {
+                        "name": "i18nLangId",
+                        "in": "path",
+                        "description": "I18n lang UUID",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
                 "responses": {
                     "200": {
                         "description": ""
@@ -3140,6 +4189,17 @@
             "put": {
                 "summary": "Update a i18n lang",
                 "operationId": "putUpdate",
+                "parameters": [
+                    {
+                        "name": "i18nLangId",
+                        "in": "path",
+                        "description": "I18n lang UUID",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
                 "requestBody": {
                     "content": {
                         "application\/json": {
@@ -3166,6 +4226,17 @@
                 "summary": "Delete specified i18n Lang",
                 "description": "<aside class=\"warning\">Avoid using this feature ! Check foreign keys constraints to remove dependent resources properly before.<\/aside>",
                 "operationId": "destroy",
+                "parameters": [
+                    {
+                        "name": "i18nLangId",
+                        "in": "path",
+                        "description": "I18n lang UUID",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
                 "responses": {
                     "204": {
                         "description": ""
@@ -3175,6 +4246,17 @@
             "patch": {
                 "summary": "Update a i18n lang",
                 "operationId": "patchUpdate",
+                "parameters": [
+                    {
+                        "name": "i18nLangId",
+                        "in": "path",
+                        "description": "I18n lang UUID",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
                 "requestBody": {
                     "content": {
                         "application\/json": {
@@ -3213,6 +4295,17 @@
             "get": {
                 "summary": "I18n lang sync task type versions list",
                 "operationId": "index",
+                "parameters": [
+                    {
+                        "name": "i18nLangId",
+                        "in": "path",
+                        "description": "I18n Lang ID",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
                 "responses": {
                     "200": {
                         "description": ""
@@ -3272,6 +4365,17 @@
             "get": {
                 "summary": "Get specified search engine",
                 "operationId": "show",
+                "parameters": [
+                    {
+                        "name": "searchEngineId",
+                        "in": "path",
+                        "description": "Search Engine UUID",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
                 "responses": {
                     "200": {
                         "description": ""
@@ -3281,6 +4385,17 @@
             "put": {
                 "summary": "Update a search engine",
                 "operationId": "putUpdate",
+                "parameters": [
+                    {
+                        "name": "searchEngineId",
+                        "in": "path",
+                        "description": "User UUID",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
                 "requestBody": {
                     "content": {
                         "application\/json": {
@@ -3312,6 +4427,17 @@
                 "summary": "Delete specified search engine",
                 "description": "<aside class=\"warning\">Avoid using this feature ! Check foreign keys constraints to remove dependent resources properly before.<\/aside>",
                 "operationId": "destroy",
+                "parameters": [
+                    {
+                        "name": "searchEngineId",
+                        "in": "path",
+                        "description": "Search Engine UUID",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
                 "responses": {
                     "204": {
                         "description": ""
@@ -3321,6 +4447,17 @@
             "patch": {
                 "summary": "Update a search engine",
                 "operationId": "patchUpdate",
+                "parameters": [
+                    {
+                        "name": "searchEngineId",
+                        "in": "path",
+                        "description": "User UUID",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
                 "requestBody": {
                     "content": {
                         "application\/json": {
@@ -3353,6 +4490,17 @@
             "get": {
                 "summary": "Search engine project list",
                 "operationId": "index",
+                "parameters": [
+                    {
+                        "name": "searchEngineId",
+                        "in": "path",
+                        "description": "Search Engine UUID",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
                 "responses": {
                     "200": {
                         "description": "A Project list",
@@ -3371,6 +4519,17 @@
             "get": {
                 "summary": "Project search use case list",
                 "operationId": "index",
+                "parameters": [
+                    {
+                        "name": "projectId",
+                        "in": "path",
+                        "description": "Project UUID",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
                 "responses": {
                     "200": {
                         "description": ""
@@ -3432,6 +4591,17 @@
             "get": {
                 "summary": "Get specified search use case",
                 "operationId": "show",
+                "parameters": [
+                    {
+                        "name": "searchUseCaseId",
+                        "in": "path",
+                        "description": "Search use case UUID",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
                 "responses": {
                     "200": {
                         "description": ""
@@ -3441,6 +4611,17 @@
             "put": {
                 "summary": "Update a search use case",
                 "operationId": "putUpdate",
+                "parameters": [
+                    {
+                        "name": "searchUseCaseId",
+                        "in": "path",
+                        "description": "Search use case UUID",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
                 "requestBody": {
                     "content": {
                         "application\/json": {
@@ -3473,6 +4654,17 @@
             "delete": {
                 "summary": "Delete specified search use case",
                 "operationId": "destroy",
+                "parameters": [
+                    {
+                        "name": "searchUseCaseId",
+                        "in": "path",
+                        "description": "Search use case UUID",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
                 "responses": {
                     "204": {
                         "description": ""
@@ -3482,6 +4674,17 @@
             "patch": {
                 "summary": "Update a search use case",
                 "operationId": "patchUpdate",
+                "parameters": [
+                    {
+                        "name": "searchUseCaseId",
+                        "in": "path",
+                        "description": "Search use case UUID",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
                 "requestBody": {
                     "content": {
                         "application\/json": {
@@ -3579,6 +4782,26 @@
             "get": {
                 "summary": "Get specified search use case field",
                 "operationId": "show",
+                "parameters": [
+                    {
+                        "name": "searchUseCaseId",
+                        "in": "path",
+                        "description": "Search use case UUID",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "dataStreamFieldId",
+                        "in": "path",
+                        "description": "Data stream field UUID",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
                 "responses": {
                     "200": {
                         "description": ""
@@ -3588,6 +4811,26 @@
             "put": {
                 "summary": "Update a specified search use case field",
                 "operationId": "putUpdate",
+                "parameters": [
+                    {
+                        "name": "searchUseCaseId",
+                        "in": "path",
+                        "description": "Search use case UUID",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "dataStreamFieldId",
+                        "in": "path",
+                        "description": "Data stream field UUID",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
                 "requestBody": {
                     "content": {
                         "application\/json": {
@@ -3633,6 +4876,26 @@
             "delete": {
                 "summary": "Delete specified search use case field",
                 "operationId": "destroy",
+                "parameters": [
+                    {
+                        "name": "searchUseCaseId",
+                        "in": "path",
+                        "description": "Search use case UUID",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "dataStreamFieldId",
+                        "in": "path",
+                        "description": "Data stream field UUID",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
                 "responses": {
                     "204": {
                         "description": ""
@@ -3642,6 +4905,26 @@
             "patch": {
                 "summary": "Update a specified search use case field",
                 "operationId": "patchUpdate",
+                "parameters": [
+                    {
+                        "name": "searchUseCaseId",
+                        "in": "path",
+                        "description": "Search use case UUID",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "dataStreamFieldId",
+                        "in": "path",
+                        "description": "Data stream field UUID",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
                 "requestBody": {
                     "content": {
                         "application\/json": {
@@ -3689,6 +4972,17 @@
             "get": {
                 "summary": "Search use case search use case fields list",
                 "operationId": "index",
+                "parameters": [
+                    {
+                        "name": "searchUseCaseId",
+                        "in": "path",
+                        "description": "Search use case UUID",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
                 "responses": {
                     "200": {
                         "description": ""
@@ -3750,6 +5044,17 @@
             "get": {
                 "summary": "Get specified search use case preset",
                 "operationId": "show",
+                "parameters": [
+                    {
+                        "name": "searchUseCasePresetId",
+                        "in": "path",
+                        "description": "Search use case preset UUID",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
                 "responses": {
                     "200": {
                         "description": ""
@@ -3759,6 +5064,17 @@
             "put": {
                 "summary": "Update a search use case preset",
                 "operationId": "putUpdate",
+                "parameters": [
+                    {
+                        "name": "searchUseCasePresetId",
+                        "in": "path",
+                        "description": "Search use case preset UUID",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
                 "requestBody": {
                     "content": {
                         "application\/json": {
@@ -3791,6 +5107,17 @@
             "delete": {
                 "summary": "Delete specified search use case preset",
                 "operationId": "destroy",
+                "parameters": [
+                    {
+                        "name": "searchUseCasePresetId",
+                        "in": "path",
+                        "description": "Search use case preset UUID",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
                 "responses": {
                     "204": {
                         "description": ""
@@ -3800,6 +5127,17 @@
             "patch": {
                 "summary": "Update a search use case preset",
                 "operationId": "patchUpdate",
+                "parameters": [
+                    {
+                        "name": "searchUseCasePresetId",
+                        "in": "path",
+                        "description": "Search use case preset UUID",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
                 "requestBody": {
                     "content": {
                         "application\/json": {
@@ -3897,6 +5235,26 @@
             "get": {
                 "summary": "Get specified search use case preset field",
                 "operationId": "show",
+                "parameters": [
+                    {
+                        "name": "searchUseCasePresetId",
+                        "in": "path",
+                        "description": "Search use case preset UUID",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "dataStreamPresetFieldId",
+                        "in": "path",
+                        "description": "Data stream preset field UUID",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
                 "responses": {
                     "200": {
                         "description": ""
@@ -3906,6 +5264,26 @@
             "put": {
                 "summary": "Update a specified search use case preset field",
                 "operationId": "putUpdate",
+                "parameters": [
+                    {
+                        "name": "searchUseCasePresetId",
+                        "in": "path",
+                        "description": "Search use case preset UUID",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "dataStreamPresetFieldId",
+                        "in": "path",
+                        "description": "Data stream preset field UUID",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
                 "requestBody": {
                     "content": {
                         "application\/json": {
@@ -3951,6 +5329,26 @@
             "delete": {
                 "summary": "Delete specified search use case preset field",
                 "operationId": "destroy",
+                "parameters": [
+                    {
+                        "name": "searchUseCasePresetId",
+                        "in": "path",
+                        "description": "Search use case preset UUID",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "dataStreamPresetFieldId",
+                        "in": "path",
+                        "description": "Data stream preset field UUID",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
                 "responses": {
                     "204": {
                         "description": ""
@@ -3960,6 +5358,26 @@
             "patch": {
                 "summary": "Update a specified search use case preset field",
                 "operationId": "patchUpdate",
+                "parameters": [
+                    {
+                        "name": "searchUseCasePresetId",
+                        "in": "path",
+                        "description": "Search use case preset UUID",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "dataStreamPresetFieldId",
+                        "in": "path",
+                        "description": "Data stream preset field UUID",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
                 "requestBody": {
                     "content": {
                         "application\/json": {
@@ -4007,6 +5425,17 @@
             "get": {
                 "summary": "Search use case preset search use case preset fields list",
                 "operationId": "index",
+                "parameters": [
+                    {
+                        "name": "searchUseCasePresetId",
+                        "in": "path",
+                        "description": "Search use case preset UUID",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
                 "responses": {
                     "200": {
                         "description": ""
@@ -4068,6 +5497,17 @@
             "get": {
                 "summary": "Get specified widget",
                 "operationId": "show",
+                "parameters": [
+                    {
+                        "name": "widgetId",
+                        "in": "path",
+                        "description": "Widget UUID",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
                 "responses": {
                     "200": {
                         "description": ""
@@ -4077,6 +5517,17 @@
             "put": {
                 "summary": "Update a widget",
                 "operationId": "putUpdate",
+                "parameters": [
+                    {
+                        "name": "widgetId",
+                        "in": "path",
+                        "description": "Widget UUID",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
                 "requestBody": {
                     "content": {
                         "application\/json": {
@@ -4109,6 +5560,17 @@
             "delete": {
                 "summary": "Delete specified widget",
                 "operationId": "destroy",
+                "parameters": [
+                    {
+                        "name": "widgetId",
+                        "in": "path",
+                        "description": "Widget UUID",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
                 "responses": {
                     "204": {
                         "description": ""
@@ -4118,6 +5580,17 @@
             "patch": {
                 "summary": "Update a widget",
                 "operationId": "patchUpdate",
+                "parameters": [
+                    {
+                        "name": "widgetId",
+                        "in": "path",
+                        "description": "Widget UUID",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
                 "requestBody": {
                     "content": {
                         "application\/json": {
@@ -4152,6 +5625,17 @@
             "get": {
                 "summary": "Search use case widget list",
                 "operationId": "index",
+                "parameters": [
+                    {
+                        "name": "searchUseCaseId",
+                        "in": "path",
+                        "description": "Search use case UUID",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
                 "responses": {
                     "200": {
                         "description": ""
@@ -4213,6 +5697,17 @@
             "get": {
                 "summary": "Get specified widget preset",
                 "operationId": "show",
+                "parameters": [
+                    {
+                        "name": "widgetPresetId",
+                        "in": "path",
+                        "description": "Widget preset UUID",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
                 "responses": {
                     "200": {
                         "description": ""
@@ -4222,6 +5717,17 @@
             "put": {
                 "summary": "Update a widget preset",
                 "operationId": "putUpdate",
+                "parameters": [
+                    {
+                        "name": "widgetPresetId",
+                        "in": "path",
+                        "description": "Widget preset UUID",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
                 "requestBody": {
                     "content": {
                         "application\/json": {
@@ -4254,6 +5760,13 @@
             "delete": {
                 "summary": "Delete specified widget preset",
                 "operationId": "destroy",
+                "parameters": [
+                    {
+                        "name": "widgetPresetId",
+                        "in": "path",
+                        "required": true
+                    }
+                ],
                 "responses": {
                     "204": {
                         "description": ""
@@ -4263,6 +5776,17 @@
             "patch": {
                 "summary": "Update a widget preset",
                 "operationId": "patchUpdate",
+                "parameters": [
+                    {
+                        "name": "widgetPresetId",
+                        "in": "path",
+                        "description": "Widget preset UUID",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
                 "requestBody": {
                     "content": {
                         "application\/json": {
@@ -4297,6 +5821,17 @@
             "get": {
                 "summary": "Search use case preset widget presets list",
                 "operationId": "index",
+                "parameters": [
+                    {
+                        "name": "searchUseCasePresetId",
+                        "in": "path",
+                        "description": "Search use case preset UUID",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
                 "responses": {
                     "200": {
                         "description": ""
@@ -4308,6 +5843,17 @@
             "get": {
                 "summary": "Data stream preset search use case preset list",
                 "operationId": "index",
+                "parameters": [
+                    {
+                        "name": "dataStreamPresetId",
+                        "in": "path",
+                        "description": "Data stream preset UUID",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
                 "responses": {
                     "200": {
                         "description": ""
@@ -4320,6 +5866,17 @@
                 "summary": "Data stream preset widget preset list",
                 "description": "(Through the related search use case presets)",
                 "operationId": "index",
+                "parameters": [
+                    {
+                        "name": "dataStreamPresetId",
+                        "in": "path",
+                        "description": "Data stream preset UUID",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
                 "responses": {
                     "200": {
                         "description": ""
