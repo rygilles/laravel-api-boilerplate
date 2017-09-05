@@ -18,6 +18,9 @@ class ProjectDataStreamController extends ApiController
 	/**
 	 * Show project data stream
 	 *
+	 * @OpenApiResponseSchemaRef #/components/schemas/DataStreamResponse
+	 * @OpenApiResponseDescription A DataStream
+	 *
 	 * @param string $projectId Project UUID
 	 * @return \Dingo\Api\Http\Response
 	 */
@@ -42,6 +45,8 @@ class ProjectDataStreamController extends ApiController
 	 * Only one data stream per project is allowed.
 	 *
 	 * @ApiDocsNoCall
+	 * @OpenApiResponseSchemaRef #/components/schemas/DataStream
+	 * @OpenApiResponseDescription A DataStreamResponse
 	 *
 	 * @param StoreProjectDataStreamRequest $request
 	 * @param string $projectId Project UUID
@@ -85,6 +90,8 @@ class ProjectDataStreamController extends ApiController
 	 * Update the project data stream
 	 *
 	 * @ApiDocsNoCall
+	 * @OpenApiResponseSchemaRef #/components/schemas/DataStream
+	 * @OpenApiResponseDescription A DataStreamResponse
 	 *
 	 * @param UpdateProjectDataStreamRequest $request
 	 * @param string $projectId Project UUID
@@ -112,6 +119,7 @@ class ProjectDataStreamController extends ApiController
 	 * Delete the project data stream
 	 *
 	 * @ApiDocsNoCall
+	 * @OpenApiResponseDescription Empty response
 	 *
 	 * @param string $projectId Project UUID
 	 * @return \Dingo\Api\Http\Response|void

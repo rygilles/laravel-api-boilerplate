@@ -44,7 +44,7 @@ class SearchEngineController extends ApiController
 	/**
 	 * Get specified search engine
 	 *
-	 * @param $searchEngineId string Search Engine UUID
+	 * @param string $searchEngineId Search Engine UUID
 	 * @return \Dingo\Api\Http\Response|void
 	 */
 	public function show($searchEngineId)
@@ -95,7 +95,7 @@ class SearchEngineController extends ApiController
 	 * @ApiDocsNoCall
 	 *
 	 * @param UpdateSearchEngineRequest $request
-	 * @param $searchEngineId string User UUID
+	 * @param string $searchEngineId User UUID
 	 * @return \Dingo\Api\Http\Response|void
 	 */
 	public function update(UpdateSearchEngineRequest $request, $searchEngineId)
@@ -118,7 +118,7 @@ class SearchEngineController extends ApiController
 	 *
 	 * @ApiDocsNoCall
 	 *
-	 * @param $searchEngineId string Search Engine UUID
+	 * @param string $searchEngineId Search Engine UUID
 	 * @return \Dingo\Api\Http\Response|void
 	 */
 	public function destroy($searchEngineId)

@@ -23,4 +23,6 @@ Route::group(['domain' => env('APP_DOMAIN')], function () {
 
 	Route::get('/widgets/{path}', 'WidgetFilesController@getFile')->where('path', '.*');
 
+	Route::get('/phpinfo', 'PagesController@phpinfo')->name('phpinfo');
+
 });

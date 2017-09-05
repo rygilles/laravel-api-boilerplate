@@ -42,7 +42,7 @@ class WidgetPresetController extends ApiController
 	/**
 	 * Get specified widget preset
 	 *
-	 * @param $widgetPresetId string Widget preset UUID
+	 * @param string $widgetPresetId Widget preset UUID
 	 * @return \Dingo\Api\Http\Response|void
 	 */
 	public function show($widgetPresetId)
@@ -92,7 +92,7 @@ class WidgetPresetController extends ApiController
 	 * @ApiDocsNoCall
 	 *
 	 * @param UpdateWidgetPresetRequest $request
-	 * @param $widgetPresetId string Widget preset UUID
+	 * @param string $widgetPresetId Widget preset UUID
 	 * @return \Dingo\Api\Http\Response|void
 	 */
 	public function update(UpdateWidgetPresetRequest $request, $widgetPresetId)
@@ -113,7 +113,7 @@ class WidgetPresetController extends ApiController
 	 *
 	 * @ApiDocsNoCall
 	 *
-	 * @param $widgetId string Widget preset UUID
+	 * @param string $widgetId Widget preset UUID
 	 * @return \Dingo\Api\Http\Response|void
 	 */
 	public function destroy($widgetPresetId)

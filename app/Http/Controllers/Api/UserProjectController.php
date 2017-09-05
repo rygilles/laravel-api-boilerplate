@@ -29,6 +29,9 @@ class UserProjectController extends ApiController
 	 *
 	 * You can specify a GET parameter `user_role_id` to filter results.
 	 *
+	 * @OpenApiResponseSchemaRef #/components/schemas/ProjectListResponse
+	 * @OpenApiResponseDescription A Project list
+	 *
 	 * @param IndexUserProjectRequest $request
 	 * @param string $userId User UUID
 	 * @return \Dingo\Api\Http\Response

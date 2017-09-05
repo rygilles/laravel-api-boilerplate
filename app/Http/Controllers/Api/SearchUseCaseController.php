@@ -43,7 +43,7 @@ class SearchUseCaseController extends ApiController
 	/**
 	 * Get specified search use case
 	 *
-	 * @param $searchUseCaseId string Search use case UUID
+	 * @param string $searchUseCaseId Search use case UUID
 	 * @return \Dingo\Api\Http\Response|void
 	 */
 	public function show($searchUseCaseId)
@@ -95,7 +95,7 @@ class SearchUseCaseController extends ApiController
 	 * @ApiDocsNoCall
 	 *
 	 * @param UpdateSearchUseCaseRequest $request
-	 * @param $searchUseCaseId string Search use case UUID
+	 * @param string $searchUseCaseId Search use case UUID
 	 * @return \Dingo\Api\Http\Response|void
 	 */
 	public function update(UpdateSearchUseCaseRequest $request, $searchUseCaseId)
@@ -117,7 +117,7 @@ class SearchUseCaseController extends ApiController
 	 *
 	 * @ApiDocsNoCall
 	 *
-	 * @param $searchUseCaseId string Search use case UUID
+	 * @param string $searchUseCaseId Search use case UUID
 	 * @return \Dingo\Api\Http\Response|void
 	 */
 	public function destroy($searchUseCaseId)
@@ -137,7 +137,7 @@ class SearchUseCaseController extends ApiController
 	 * Perform search with the specified search use case
 	 *
 	 * @param SearchSearchUseCaseRequest $request
-	 * @param $searchUseCaseId string Search use case UUID
+	 * @param string $searchUseCaseId Search use case UUID
 	 * @return \Dingo\Api\Http\Response|void
 	 */
 	public function search(SearchSearchUseCaseRequest $request, $searchUseCaseId)

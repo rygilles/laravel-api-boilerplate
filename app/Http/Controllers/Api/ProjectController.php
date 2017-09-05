@@ -10,6 +10,7 @@ use Dingo\Api\Exception\ValidationHttpException;
 
 /**
  * @resource Project
+ * @OpenApiOperationTag Manager:Project
  *
  * @package App\Http\Controllers\Api
  */
@@ -29,8 +30,9 @@ class ProjectController extends ApiController
 	/**
 	 * Project list
 	 *
-	 * @ApiProfileResponseSchemaRef #/components/schemas/ProjectList
-	 * @ApiProfileResponseDescription A Project list
+	 * @OpenApiOperationId all
+	 * @OpenApiResponseSchemaRef #/components/schemas/ProjectListResponse
+	 * @OpenApiResponseDescription A Project list
 	 *
 	 * @return \Dingo\Api\Http\Response
 	 */
@@ -44,10 +46,11 @@ class ProjectController extends ApiController
 	/**
 	 * Get specified project
 	 *
-	 * @ApiProfileResponseSchemaRef #/components/schemas/Project
-	 * @ApiProfileResponseDescription A Project
+	 * @OpenApiOperationId get
+	 * @OpenApiResponseSchemaRef #/components/schemas/ProjectResponse
+	 * @OpenApiResponseDescription A Project
 	 *
-	 * @param $projectId string Project UUID
+	 * @param string $projectId Project UUID
 	 * @return \Dingo\Api\Http\Response|void
 	 */
 	public function show($projectId)
@@ -64,8 +67,11 @@ class ProjectController extends ApiController
 	 * Create and store new project
 	 *
 	 * @ApiDocsNoCall
-	 * @ApiProfileResponseSchemaRef #/components/schemas/Project
-	 * @ApiProfileResponseDescription The created Project
+	 *
+	 * @OpenApiOperationId create
+	 * @OpenApiOperationTag Resource:Project
+	 * @OpenApiResponseSchemaRef #/components/schemas/ProjectResponse
+	 * @OpenApiResponseDescription The created Project
 	 *
 	 * @param StoreProjectRequest $request
 	 * @return \Dingo\Api\Http\Response|void
@@ -97,11 +103,14 @@ class ProjectController extends ApiController
 	 * Update a specified project
 	 *
 	 * @ApiDocsNoCall
-	 * @ApiProfileResponseSchemaRef #/components/schemas/Project
-	 * @ApiProfileResponseDescription The updated Project
+	 *
+	 * @OpenApiOperationId update
+	 * @OpenApiOperationTag Resource:Project
+	 * @OpenApiResponseSchemaRef #/components/schemas/ProjectResponse
+	 * @OpenApiResponseDescription The updated Project
 	 *
 	 * @param UpdateProjectRequest $request
-	 * @param $projectId string Project UUID
+	 * @param string $projectId Project UUID
 	 * @return \Dingo\Api\Http\Response|void
 	 */
 	public function update(UpdateProjectRequest $request, $projectId)
@@ -125,10 +134,13 @@ class ProjectController extends ApiController
 	 * The project data stream will be automatically deleted too, if exists.
 	 * <aside class="notice">Only <code>Owner</code> of project is allowed to delete it.</aside>
 	 *
-	 * @ApiDocsNoCall
-	 * @ApiProfileResponseDescription Empty response
+	 * @OpenApiOperationId delete
+	 * @OpenApiOperationTag Resource:Project
 	 *
-	 * @param $projectId string Project UUID
+	 * @ApiDocsNoCall
+	 * @OpenApiResponseDescription Empty response
+	 *
+	 * @param string $projectId Project UUID
 	 * @return \Dingo\Api\Http\Response|void
 	 */
 	public function destroy($projectId)

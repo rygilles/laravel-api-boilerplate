@@ -42,8 +42,8 @@ class SyncItemController extends ApiController
 	/**
 	 * Get specified sync item
 	 *
-	 * @param $syncItemId string Sync Item ID
-	 * @param $projectId string Project UUID
+	 * @param string $syncItemId Sync Item ID
+	 * @param string $projectId Project UUID
 	 * @return \Dingo\Api\Http\Response|void
 	 */
 	public function show($syncItemId, $projectId)
@@ -93,8 +93,8 @@ class SyncItemController extends ApiController
 	 * @ApiDocsNoCall
 	 *
 	 * @param UpdateSyncItemRequest $request
-	 * @param $syncItemId string Sync Item ID
-	 * @param $projectId string Project UUID
+	 * @param string $syncItemId Sync Item ID
+	 * @param string $projectId Project UUID
 	 * @return \Dingo\Api\Http\Response|void
 	 */
 	public function update(UpdateSyncItemRequest $request, $syncItemId, $projectId)
@@ -115,8 +115,8 @@ class SyncItemController extends ApiController
 	 *
 	 * @ApiDocsNoCall
 	 *
-	 * @param $syncItemId string Sync Item ID
-	 * @param $projectId string Project UUID
+	 * @param string $syncItemId Sync Item ID
+	 * @param string $projectId Project UUID
 	 * @return \Dingo\Api\Http\Response|void
 	 */
 	public function destroy($syncItemId, $projectId)

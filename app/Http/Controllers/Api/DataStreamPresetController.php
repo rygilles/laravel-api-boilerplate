@@ -43,7 +43,7 @@ class DataStreamPresetController extends ApiController
 	/**
 	 * Get specified data stream preset
 	 *
-	 * @param $dataStreamPresetId string Data stream preset UUID
+	 * @param string $dataStreamPresetId Data stream preset UUID
 	 * @return \Dingo\Api\Http\Response|void
 	 */
 	public function show($dataStreamPresetId)
@@ -93,7 +93,7 @@ class DataStreamPresetController extends ApiController
 	 * @ApiDocsNoCall
 	 *
 	 * @param UpdateDataStreamPresetRequest $request
-	 * @param $dataStreamPresetId string Data stream preset UUID
+	 * @param string $dataStreamPresetId Data stream preset UUID
 	 * @return \Dingo\Api\Http\Response|void
 	 */
 	public function update(UpdateDataStreamPresetRequest $request, $dataStreamPresetId)
@@ -114,7 +114,7 @@ class DataStreamPresetController extends ApiController
 	 **
 	 * @ApiDocsNoCall
 	 *
-	 * @param $dataStreamPresetId string Data stream preset UUID
+	 * @param string $dataStreamPresetId Data stream preset UUID
 	 * @return \Dingo\Api\Http\Response|void
 	 */
 	public function destroy($dataStreamPresetId)

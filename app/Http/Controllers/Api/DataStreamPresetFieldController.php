@@ -43,7 +43,7 @@ class DataStreamPresetFieldController extends ApiController
 	/**
 	 * Get specified data stream preset field
 	 *
-	 * @param $dataStreamPresetFieldId string Data stream preset field UUID
+	 * @param string $dataStreamPresetFieldId Data stream preset field UUID
 	 * @return \Dingo\Api\Http\Response|void
 	 */
 	public function show($dataStreamPresetFieldId)
@@ -93,7 +93,7 @@ class DataStreamPresetFieldController extends ApiController
 	 * @ApiDocsNoCall
 	 *
 	 * @param UpdateDataStreamPresetFieldRequest $request
-	 * @param $dataStreamPresetFieldId string Data stream preset field UUID
+	 * @param string $dataStreamPresetFieldId Data stream preset field UUID
 	 * @return \Dingo\Api\Http\Response|void
 	 */
 	public function update(UpdateDataStreamPresetFieldRequest $request, $dataStreamPresetFieldId)
@@ -114,7 +114,7 @@ class DataStreamPresetFieldController extends ApiController
 	 **
 	 * @ApiDocsNoCall
 	 *
-	 * @param $dataStreamPresetFieldId string Data stream preset field UUID
+	 * @param string $dataStreamPresetFieldId Data stream preset field UUID
 	 * @return \Dingo\Api\Http\Response|void
 	 */
 	public function destroy($dataStreamPresetFieldId)

@@ -43,7 +43,7 @@ class I18nLangController extends ApiController
 	/**
 	 * Get specified i18n lang
 	 *
-	 * @param $i18nLangId string I18n lang UUID
+	 * @param string $i18nLangId I18n lang UUID
 	 * @return \Dingo\Api\Http\Response|void
 	 */
 	public function show($i18nLangId)
@@ -93,7 +93,7 @@ class I18nLangController extends ApiController
 	 * @ApiDocsNoCall
 	 *
 	 * @param UpdateI18nLangRequest $request
-	 * @param $i18nLangId string I18n lang UUID
+	 * @param string $i18nLangId I18n lang UUID
 	 * @return \Dingo\Api\Http\Response|void
 	 */
 	public function update(UpdateI18nLangRequest $request, $i18nLangId)
@@ -116,7 +116,7 @@ class I18nLangController extends ApiController
 	 *
 	 * @ApiDocsNoCall
 	 *
-	 * @param $i18nLangId string I18n lang UUID
+	 * @param string $i18nLangId I18n lang UUID
 	 * @return \Dingo\Api\Http\Response|void
 	 */
 	public function destroy($i18nLangId)

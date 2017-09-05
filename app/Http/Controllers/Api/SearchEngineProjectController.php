@@ -25,6 +25,9 @@ class SearchEngineProjectController extends ApiController
 
 	/**
 	 * Search engine project list
+	 *
+	 * @OpenApiResponseSchemaRef #/components/schemas/ProjectListResponse
+	 * @OpenApiResponseDescription A Project list
 	 * 
 	 * @param string $searchEngineId Search Engine UUID
 	 * @return \Dingo\Api\Http\Response

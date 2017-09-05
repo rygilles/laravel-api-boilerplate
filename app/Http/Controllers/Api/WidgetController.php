@@ -42,7 +42,7 @@ class WidgetController extends ApiController
 	/**
 	 * Get specified widget
 	 *
-	 * @param $widgetId string Widget UUID
+	 * @param string $widgetId Widget UUID
 	 * @return \Dingo\Api\Http\Response|void
 	 */
 	public function show($widgetId)
@@ -94,7 +94,7 @@ class WidgetController extends ApiController
 	 * @ApiDocsNoCall
 	 *
 	 * @param UpdateWidgetRequest $request
-	 * @param $widgetId string Widget UUID
+	 * @param string $widgetId Widget UUID
 	 * @return \Dingo\Api\Http\Response|void
 	 */
 	public function update(UpdateWidgetRequest $request, $widgetId)
@@ -116,7 +116,7 @@ class WidgetController extends ApiController
 	 *
 	 * @ApiDocsNoCall
 	 *
-	 * @param $widgetId string Widget UUID
+	 * @param string $widgetId Widget UUID
 	 * @return \Dingo\Api\Http\Response|void
 	 */
 	public function destroy($widgetId)

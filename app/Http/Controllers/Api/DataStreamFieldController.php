@@ -42,7 +42,7 @@ class DataStreamFieldController extends ApiController
 	/**
 	 * Get specified data stream field
 	 *
-	 * @param $dataStreamFieldId string Data stream field UUID
+	 * @param string $dataStreamFieldId Data stream field UUID
 	 * @return \Dingo\Api\Http\Response|void
 	 */
 	public function show($dataStreamFieldId)
@@ -94,7 +94,7 @@ class DataStreamFieldController extends ApiController
 	 * @ApiDocsNoCall
 	 *
 	 * @param UpdateDataStreamFieldRequest $request
-	 * @param $dataStreamFieldId string Data stream field UUID
+	 * @param string $dataStreamFieldId Data stream field UUID
 	 * @return \Dingo\Api\Http\Response|void
 	 */
 	public function update(UpdateDataStreamFieldRequest $request, $dataStreamFieldId)
@@ -116,7 +116,7 @@ class DataStreamFieldController extends ApiController
 	 **
 	 * @ApiDocsNoCall
 	 *
-	 * @param $dataStreamFieldId string Data stream field UUID
+	 * @param string $dataStreamFieldId Data stream field UUID
 	 * @return \Dingo\Api\Http\Response|void
 	 */
 	public function destroy($dataStreamFieldId)

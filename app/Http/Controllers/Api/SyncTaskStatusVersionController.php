@@ -43,8 +43,8 @@ class SyncTaskStatusVersionController extends ApiController
 	/**
 	 * Get specified sync task status version
 	 *
-	 * @param $syncTaskStatusId string Sync Task Status ID
-	 * @param $i18nLangId string I18n Lang Id
+	 * @param string $syncTaskStatusId Sync Task Status ID
+	 * @param string $i18nLangId I18n Lang Id
 	 * @return \Dingo\Api\Http\Response|void
 	 */
 	public function show($syncTaskStatusId, $i18nLangId)
@@ -94,8 +94,8 @@ class SyncTaskStatusVersionController extends ApiController
 	 * @ApiDocsNoCall
 	 *
 	 * @param UpdateSyncTaskStatusVersionRequest $request
-	 * @param $syncTaskStatusId string Sync Task Status ID
-	 * @param $i18nLangId string I18n Lang Id
+	 * @param string $syncTaskStatusId Sync Task Status ID
+	 * @param string $i18nLangId I18n Lang Id
 	 * @return \Dingo\Api\Http\Response|void
 	 * @throws ValidationHttpException
 	 */
@@ -126,8 +126,8 @@ class SyncTaskStatusVersionController extends ApiController
 	 *
 	 * @ApiDocsNoCall
 	 *
-	 * @param $syncTaskStatusId string Sync Task Status ID
-	 * @param $i18nLangId string I18n Lang Id
+	 * @param string $syncTaskStatusId Sync Task Status ID
+	 * @param string $i18nLangId I18n Lang Id
 	 * @return \Dingo\Api\Http\Response|void
 	 */
 	public function destroy($syncTaskStatusId, $i18nLangId)

@@ -44,7 +44,7 @@ class UserController extends ApiController
 	/**
 	 * Get specified user
 	 *
-	 * @param $userId string User UUID
+	 * @param string $userId User UUID
 	 * @return \Dingo\Api\Http\Response|void
 	 */
 	public function show($userId)
@@ -94,7 +94,7 @@ class UserController extends ApiController
 	 * @ApiDocsNoCall
 	 *
 	 * @param UpdateUserRequest $request
-	 * @param $userId string User UUID
+	 * @param string $userId User UUID
 	 * @return \Dingo\Api\Http\Response|void
 	 * @throws ValidationHttpException
 	 */
@@ -128,7 +128,7 @@ class UserController extends ApiController
 	 *
 	 * @ApiDocsNoCall
 	 *
-	 * @param $userId string User UUID
+	 * @param string $userId User UUID
 	 * @return \Dingo\Api\Http\Response|void
 	 */
 	public function destroy($userId)

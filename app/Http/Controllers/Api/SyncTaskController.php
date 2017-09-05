@@ -80,7 +80,7 @@ class SyncTaskController extends ApiController
 	/**
 	 * Get specified sync task
 	 *
-	 * @param $syncTaskId string Sync Task ID
+	 * @param string $syncTaskId Sync Task ID
 	 * @return \Dingo\Api\Http\Response|void
 	 */
 	public function show($syncTaskId)
@@ -135,7 +135,7 @@ class SyncTaskController extends ApiController
 	 * @ApiDocsNoCall
 	 *
 	 * @param UpdateSyncTaskRequest $request
-	 * @param $syncTaskId string Sync Task ID
+	 * @param string $syncTaskId Sync Task ID
 	 * @return \Dingo\Api\Http\Response|void
 	 */
 	public function update(UpdateSyncTaskRequest $request, $syncTaskId)
@@ -156,7 +156,7 @@ class SyncTaskController extends ApiController
 	 *
 	 * @ApiDocsNoCall
 	 *
-	 * @param $syncTaskId string Sync Task ID
+	 * @param string $syncTaskId Sync Task ID
 	 * @return \Dingo\Api\Http\Response|void
 	 */
 	public function destroy($syncTaskId)

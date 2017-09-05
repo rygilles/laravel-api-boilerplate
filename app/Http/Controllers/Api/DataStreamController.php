@@ -28,6 +28,9 @@ class DataStreamController extends ApiController
 	/**
 	 * Show data stream list
 	 *
+	 * @OpenApiResponseSchemaRef #/components/schemas/DataStreamListResponse
+	 * @OpenApiResponseDescription A DataStream list
+	 *
 	 * @return \Dingo\Api\Http\Response
 	 */
 	public function index()
@@ -40,7 +43,10 @@ class DataStreamController extends ApiController
 	/**
 	 * Get specified data stream
 	 *
-	 * @param $dataStreamId string Data stream UUID
+	 * @OpenApiResponseSchemaRef #/components/schemas/DataStreamResponse
+	 * @OpenApiResponseDescription A DataStream
+	 *
+	 * @param string $dataStreamId Data stream UUID
 	 * @return \Dingo\Api\Http\Response|void
 	 */
 	public function show($dataStreamId)
@@ -59,6 +65,8 @@ class DataStreamController extends ApiController
 	 * Only one data stream per project is allowed.
 	 *
 	 * @ApiDocsNoCall
+	 * @OpenApiResponseSchemaRef #/components/schemas/DataStream
+	 * @OpenApiResponseDescription A DataStreamResponse
 	 *
 	 * @param StoreDataStreamRequest $request
 	 * @return \Dingo\Api\Http\Response|void
@@ -89,9 +97,11 @@ class DataStreamController extends ApiController
 	 * Update a data stream
 	 *
 	 * @ApiDocsNoCall
+	 * @OpenApiResponseSchemaRef #/components/schemas/DataStream
+	 * @OpenApiResponseDescription A DataStreamResponse
 	 *
 	 * @param UpdateDataStreamRequest $request
-	 * @param $dataStreamId string Data stream UUID
+	 * @param string $dataStreamId Data stream UUID
 	 * @return \Dingo\Api\Http\Response|void
 	 */
 	public function update(UpdateDataStreamRequest $request, $dataStreamId)
@@ -111,8 +121,9 @@ class DataStreamController extends ApiController
 	 * Delete specified data stream
 	 *
 	 * @ApiDocsNoCall
+	 * @OpenApiResponseDescription Empty response
 	 *
-	 * @param $dataStreamId string Data stream UUID
+	 * @param string $dataStreamId Data stream UUID
 	 * @return \Dingo\Api\Http\Response|void
 	 */
 	public function destroy($dataStreamId)

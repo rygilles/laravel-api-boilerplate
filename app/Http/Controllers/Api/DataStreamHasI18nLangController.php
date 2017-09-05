@@ -42,8 +42,8 @@ class DataStreamHasI18nLangController extends ApiController
 	/**
 	 * Get specified relationship between a data stream and a i18n lang
 	 *
-	 * @param $dataStreamId string Data Stream UUID
-	 * @param $i18nLangId string I18n Land Id
+	 * @param string $dataStreamId Data Stream UUID
+	 * @param string $i18nLangId I18n Land Id
 	 * @return \Dingo\Api\Http\Response|void
 	 */
 	public function show($dataStreamId, $i18nLangId)
@@ -102,8 +102,8 @@ class DataStreamHasI18nLangController extends ApiController
 	 * @ApiDocsNoCall
 	 *
 	 * @param UpdateDataStreamHasI18nLangRequest $request
-	 * @param $dataStreamId string Data Stream UUID
-	 * @param $i18nLangId string I18n Land Id
+	 * @param string $dataStreamId Data Stream UUID
+	 * @param string $i18nLangId I18n Land Id
 	 * @return \Dingo\Api\Http\Response|void
 	 */
 	public function update(UpdateDataStreamHasI18nLangRequest $request, $dataStreamId, $i18nLangId)
@@ -139,8 +139,8 @@ class DataStreamHasI18nLangController extends ApiController
 	 *
 	 * @ApiDocsNoCall
 	 *
-	 * @param $dataStreamId string Data Stream UUID
-	 * @param $i18nLangId string I18n Land Id
+	 * @param string $dataStreamId Data Stream UUID
+	 * @param string $i18nLangId I18n Land Id
 	 * @return \Dingo\Api\Http\Response|void
 	 */
 	public function destroy($dataStreamId, $i18nLangId)

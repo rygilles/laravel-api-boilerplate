@@ -41,8 +41,8 @@ class SearchUseCaseFieldController extends ApiController
 	/**
 	 * Get specified search use case field
 	 *
-	 * @param $searchUseCaseId string Search use case UUID
-	 * @param $dataStreamFieldId string Data stream field UUID
+	 * @param string $searchUseCaseId Search use case UUID
+	 * @param string $dataStreamFieldId Data stream field UUID
 	 * @return \Dingo\Api\Http\Response|void
 	 */
 	public function show($searchUseCaseId, $dataStreamFieldId)
@@ -103,8 +103,8 @@ class SearchUseCaseFieldController extends ApiController
 	 * @ApiDocsNoCall
 	 *
 	 * @param UpdateSearchUseCaseFieldRequest $request
-	 * @param $searchUseCaseId string Search use case UUID
-	 * @param $dataStreamFieldId string Data stream field UUID
+	 * @param string $searchUseCaseId Search use case UUID
+	 * @param string $dataStreamFieldId Data stream field UUID
 	 * @return \Dingo\Api\Http\Response|void
 	 */
 	public function update(UpdateSearchUseCaseFieldRequest $request, $searchUseCaseId, $dataStreamFieldId)
@@ -151,8 +151,8 @@ class SearchUseCaseFieldController extends ApiController
 	 *
 	 * @ApiDocsNoCall
 	 *
-	 * @param $searchUseCaseId string Search use case UUID
-	 * @param $dataStreamFieldId string Data stream field UUID
+	 * @param string $searchUseCaseId Search use case UUID
+	 * @param string $dataStreamFieldId Data stream field UUID
 	 * @return \Dingo\Api\Http\Response|void
 	 */
 	public function destroy($searchUseCaseId, $dataStreamFieldId)

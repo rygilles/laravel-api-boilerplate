@@ -36,4 +36,10 @@ class PagesController extends Controller
 	{
 		return view('dashboard');
 	}
+
+	public function phpinfo()
+	{
+		phpinfo();
+		die();
+	}
 }

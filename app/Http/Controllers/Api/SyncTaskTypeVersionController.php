@@ -43,8 +43,8 @@ class SyncTaskTypeVersionController extends ApiController
 	/**
 	 * Get specified sync task type version
 	 *
-	 * @param $syncTaskTypeId string Sync Task Type ID
-	 * @param $i18nLangId string I18n Lang Id
+	 * @param string $syncTaskTypeId Sync Task Type ID
+	 * @param string $i18nLangId I18n Lang Id
 	 * @return \Dingo\Api\Http\Response|void
 	 */
 	public function show($syncTaskTypeId, $i18nLangId)
@@ -94,8 +94,8 @@ class SyncTaskTypeVersionController extends ApiController
 	 * @ApiDocsNoCall
 	 *
 	 * @param UpdateSyncTaskTypeVersionRequest $request
-	 * @param $syncTaskTypeId string Sync Task Type ID
-	 * @param $i18nLangId string I18n Lang Id
+	 * @param string $syncTaskTypeId Sync Task Type ID
+	 * @param string $i18nLangId I18n Lang Id
 	 * @return \Dingo\Api\Http\Response|void
 	 */
 	public function update(UpdateSyncTaskTypeVersionRequest $request, $syncTaskTypeId, $i18nLangId)
@@ -125,8 +125,8 @@ class SyncTaskTypeVersionController extends ApiController
 	 *
 	 * @ApiDocsNoCall
 	 *
-	 * @param $syncTaskTypeId string Sync Task Type ID
-	 * @param $i18nLangId string I18n Lang Id
+	 * @param string $syncTaskTypeId Sync Task Type ID
+	 * @param string $i18nLangId I18n Lang Id
 	 * @return \Dingo\Api\Http\Response|void
 	 */
 	public function destroy($syncTaskTypeId, $i18nLangId)

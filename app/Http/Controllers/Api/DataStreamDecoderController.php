@@ -40,7 +40,7 @@ class DataStreamDecoderController extends ApiController
 	/**
 	 * Get specified data stream decoder
 	 *
-	 * @param $dataStreamDecoderId string Data stream decoder UUID
+	 * @param string $dataStreamDecoderId Data stream decoder UUID
 	 * @return \Dingo\Api\Http\Response|void
 	 */
 	public function show($dataStreamDecoderId)
@@ -89,7 +89,7 @@ class DataStreamDecoderController extends ApiController
 	 * @ApiDocsNoCall
 	 *
 	 * @param UpdateDataStreamDecoderRequest $request
-	 * @param $dataStreamDecoderId string Data stream decoder UUID
+	 * @param string $dataStreamDecoderId Data stream decoder UUID
 	 * @return \Dingo\Api\Http\Response|void
 	 */
 	public function update(UpdateDataStreamDecoderRequest $request, $dataStreamDecoderId)
@@ -110,7 +110,7 @@ class DataStreamDecoderController extends ApiController
 	 *
 	 * @ApiDocsNoCall
 	 *
-	 * @param $dataStreamDecoderId string Data stream decoder UUID
+	 * @param string $dataStreamDecoderId Data stream decoder UUID
 	 * @return \Dingo\Api\Http\Response|void
 	 */
 	public function destroy($dataStreamDecoderId)

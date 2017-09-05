@@ -42,7 +42,7 @@ class SearchUseCasePresetController extends ApiController
 	/**
 	 * Get specified search use case preset
 	 *
-	 * @param $searchUseCasePresetId string Search use case preset UUID
+	 * @param string $searchUseCasePresetId Search use case preset UUID
 	 * @return \Dingo\Api\Http\Response|void
 	 */
 	public function show($searchUseCasePresetId)
@@ -92,7 +92,7 @@ class SearchUseCasePresetController extends ApiController
 	 * @ApiDocsNoCall
 	 *
 	 * @param UpdateSearchUseCasePresetRequest $request
-	 * @param $searchUseCasePresetId string Search use case preset UUID
+	 * @param string $searchUseCasePresetId Search use case preset UUID
 	 * @return \Dingo\Api\Http\Response|void
 	 */
 	public function update(UpdateSearchUseCasePresetRequest $request, $searchUseCasePresetId)
@@ -113,7 +113,7 @@ class SearchUseCasePresetController extends ApiController
 	 *
 	 * @ApiDocsNoCall
 	 *
-	 * @param $searchUseCasePresetId string Search use case preset UUID
+	 * @param string $searchUseCasePresetId Search use case preset UUID
 	 * @return \Dingo\Api\Http\Response|void
 	 */
 	public function destroy($searchUseCasePresetId)

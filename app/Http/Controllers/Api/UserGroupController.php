@@ -38,7 +38,7 @@ class UserGroupController extends ApiController
 	/**
 	 * Get specified User group
 	 *
-	 * @param $userGroupId string User Group Id
+	 * @param string $userGroupId User Group Id
 	 * @return \Dingo\Api\Http\Response|void
 	 */
 	public function show($userGroupId)

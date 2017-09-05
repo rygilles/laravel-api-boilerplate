@@ -41,8 +41,8 @@ class SearchUseCasePresetFieldController extends ApiController
 	/**
 	 * Get specified search use case preset field
 	 *
-	 * @param $searchUseCasePresetId string Search use case preset UUID
-	 * @param $dataStreamPresetFieldId string Data stream preset field UUID
+	 * @param string $searchUseCasePresetId Search use case preset UUID
+	 * @param string $dataStreamPresetFieldId Data stream preset field UUID
 	 * @return \Dingo\Api\Http\Response|void
 	 */
 	public function show($searchUseCasePresetId, $dataStreamPresetFieldId)
@@ -100,8 +100,8 @@ class SearchUseCasePresetFieldController extends ApiController
 	 * @ApiDocsNoCall
 	 *
 	 * @param UpdateSearchUseCasePresetFieldRequest $request
-	 * @param $searchUseCasePresetId string Search use case preset UUID
-	 * @param $dataStreamPresetFieldId string Data stream preset field UUID
+	 * @param string $searchUseCasePresetId Search use case preset UUID
+	 * @param string $dataStreamPresetFieldId Data stream preset field UUID
 	 * @return \Dingo\Api\Http\Response|void
 	 */
 	public function update(UpdateSearchUseCasePresetFieldRequest $request, $searchUseCasePresetId, $dataStreamPresetFieldId)
@@ -145,8 +145,8 @@ class SearchUseCasePresetFieldController extends ApiController
 	 *
 	 * @ApiDocsNoCall
 	 *
-	 * @param $searchUseCasePresetId string Search use case preset UUID
-	 * @param $dataStreamPresetFieldId string Data stream preset field UUID
+	 * @param string $searchUseCasePresetId Search use case preset UUID
+	 * @param string $dataStreamPresetFieldId Data stream preset field UUID
 	 * @return \Dingo\Api\Http\Response|void
 	 */
 	public function destroy($searchUseCasePresetId, $dataStreamPresetFieldId)

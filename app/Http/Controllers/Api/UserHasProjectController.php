@@ -43,8 +43,8 @@ class UserHasProjectController extends ApiController
 	/**
 	 * Get specified relationship between a user and a project
 	 *
-	 * @param $userId string User UUID
-	 * @param $projectId string Project UUID
+	 * @param string $userId User UUID
+	 * @param string $projectId Project UUID
 	 * @return \Dingo\Api\Http\Response|void
 	 */
 	public function show($userId, $projectId)
@@ -115,8 +115,8 @@ class UserHasProjectController extends ApiController
 	 * @ApiDocsNoCall
 	 *
 	 * @param UpdateUserHasProjectRequest $request
-	 * @param $userId string User UUID
-	 * @param $projectId string Project UUID
+	 * @param string $userId User UUID
+	 * @param string $projectId Project UUID
 	 * @return \Dingo\Api\Http\Response|void
 	 */
 	public function update(UpdateUserHasProjectRequest $request, $userId, $projectId)
@@ -164,8 +164,8 @@ class UserHasProjectController extends ApiController
 	 *
 	 * @ApiDocsNoCall
 	 *
-	 * @param $userId string User UUID
-	 * @param $projectId string Project UUID
+	 * @param string $userId User UUID
+	 * @param string $projectId Project UUID
 	 * @return \Dingo\Api\Http\Response|void
 	 */
 	public function destroy($userId, $projectId)

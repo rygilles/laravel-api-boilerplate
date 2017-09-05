@@ -15,6 +15,9 @@ class I18nLangDataStreamController extends ApiController
 	/**
 	 * I18n lang data streams list
 	 *
+	 * @OpenApiResponseSchemaRef #/components/schemas/DataStreamListResponse
+	 * @OpenApiResponseDescription A DataStream list
+	 *
 	 * @param string $i18nLangId I18n Lang ID
 	 * @return \Dingo\Api\Http\Response
 	 */
