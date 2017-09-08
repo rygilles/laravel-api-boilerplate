@@ -10,6 +10,7 @@ use Illuminate\Support\Facades\Auth;
 
 /**
  * @resource Project
+ * @OpenApiOperationTag Manager:Me
  *
  * @package App\Http\Controllers\Api
  */
@@ -20,6 +21,7 @@ class MeProjectController extends ApiController
 	 *
 	 * You can specify a GET parameter `user_role_id` to filter results.
 	 *
+	 * @OpenApiOperationId getProjects
 	 * @OpenApiResponseSchemaRef #/components/schemas/ProjectListResponse
 	 * @OpenApiResponseDescription A Project list
 	 * 

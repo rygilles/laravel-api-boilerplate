@@ -65,7 +65,7 @@ class DataStreamController extends ApiController
 	 * Only one data stream per project is allowed.
 	 *
 	 * @ApiDocsNoCall
-	 * @OpenApiResponseSchemaRef #/components/schemas/DataStream
+	 * @OpenApiResponseSchemaRef #/components/schemas/DataStreamResponse
 	 * @OpenApiResponseDescription A DataStreamResponse
 	 *
 	 * @param StoreDataStreamRequest $request
@@ -97,7 +97,7 @@ class DataStreamController extends ApiController
 	 * Update a data stream
 	 *
 	 * @ApiDocsNoCall
-	 * @OpenApiResponseSchemaRef #/components/schemas/DataStream
+	 * @OpenApiResponseSchemaRef #/components/schemas/DataStreamResponse
 	 * @OpenApiResponseDescription A DataStreamResponse
 	 *
 	 * @param UpdateDataStreamRequest $request

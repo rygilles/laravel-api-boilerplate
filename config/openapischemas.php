@@ -283,16 +283,13 @@ return [
 								]),
 							])
 						]),
-						'ProjectList' => new Schema([
-							'type' => 'array',
-							'items' => new Reference([
-								'ref' => '#/components/schemas/Project',
-							])
-						]),
 						'ProjectListResponse' => new Schema([
 							'properties' => ([
-								'data' => new Reference([
-									'ref' => '#/components/schemas/Project',
+								'data' => new Schema([
+									'type' => 'array',
+									'items' => new Reference([
+										'ref' => '#/components/schemas/Project',
+									])
 								]),
 								'meta' => new Reference([
 									'ref' => '#/components/schemas/Meta',
@@ -365,15 +362,15 @@ return [
 							'type' => 'oauth2',
 							'flows' => new OAuthFlows([
 								'implicit' => new ImplicitOAuthFlow([
-									'authorizationUrl' => env('APP_URL') . '/oauth/authorize',
+									'authorizationUrl' => '/oauth/authorize',
 									'scopes' => [
 										'*' => 'Access to anything'
 									]
 								]),
 								'authorizationCode' => new AuthorizationCodeOAuthFlow([
-									'authorizationUrl' => env('APP_URL') . '/oauth/authorize',
-									'tokenUrl' => env('APP_URL') . '/oauth/token',
-									'refreshUrl' => env('APP_URL') . '/oauth/token/refresh',
+									'authorizationUrl' => '/oauth/authorize',
+									'tokenUrl' => '/oauth/token',
+									'refreshUrl' => '/oauth/token/refresh',
 									'scopes' => [
 										'*' => 'Access to anything'
 									]

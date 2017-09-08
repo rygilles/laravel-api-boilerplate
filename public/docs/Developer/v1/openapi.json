@@ -70,11 +70,14 @@
         },
         "\/api\/me": {
             "get": {
+                "tags": [
+                    "Manager:Me"
+                ],
                 "summary": "Get current user",
-                "operationId": "index",
+                "operationId": "getUser",
                 "responses": {
                     "200": {
-                        "description": "",
+                        "description": "A User",
                         "content": {
                             "application\/json": {
                                 "example": {
@@ -88,9 +91,12 @@
         },
         "\/api\/me\/project": {
             "get": {
+                "tags": [
+                    "Manager:Me"
+                ],
                 "summary": "Current user project list",
                 "description": "You can specify a GET parameter `user_role_id` to filter results.",
-                "operationId": "index",
+                "operationId": "getProjects",
                 "parameters": [
                     {
                         "name": "user_role_id",
@@ -619,8 +625,7 @@
             },
             "post": {
                 "tags": [
-                    "Manager:Project",
-                    "Resource:Project"
+                    "Manager:Project"
                 ],
                 "summary": "Create and store new project",
                 "operationId": "create",
@@ -2328,7 +2333,7 @@
                         "content": {
                             "application\/json": {
                                 "schema": {
-                                    "$ref": "#\/components\/schemas\/DataStream"
+                                    "$ref": "#\/components\/schemas\/DataStreamResponse"
                                 }
                             }
                         }
@@ -2411,7 +2416,7 @@
                         "content": {
                             "application\/json": {
                                 "schema": {
-                                    "$ref": "#\/components\/schemas\/DataStream"
+                                    "$ref": "#\/components\/schemas\/DataStreamResponse"
                                 }
                             }
                         }
@@ -2485,7 +2490,7 @@
                         "content": {
                             "application\/json": {
                                 "schema": {
-                                    "$ref": "#\/components\/schemas\/DataStream"
+                                    "$ref": "#\/components\/schemas\/DataStreamResponse"
                                 }
                             }
                         }
@@ -2749,8 +2754,11 @@
         },
         "\/api\/project\/{projectId}\/dataStream": {
             "get": {
+                "tags": [
+                    "Resource:Project"
+                ],
                 "summary": "Show project data stream",
-                "operationId": "show",
+                "operationId": "getDataStream",
                 "parameters": [
                     {
                         "name": "projectId",
@@ -2776,8 +2784,11 @@
                 }
             },
             "put": {
+                "tags": [
+                    "Resource:Project"
+                ],
                 "summary": "Update the project data stream",
-                "operationId": "putUpdate",
+                "operationId": "updateDataStream",
                 "parameters": [
                     {
                         "name": "projectId",
@@ -2822,7 +2833,7 @@
                         "content": {
                             "application\/json": {
                                 "schema": {
-                                    "$ref": "#\/components\/schemas\/DataStream"
+                                    "$ref": "#\/components\/schemas\/DataStreamResponse"
                                 }
                             }
                         }
@@ -2830,9 +2841,12 @@
                 }
             },
             "post": {
+                "tags": [
+                    "Resource:Project"
+                ],
                 "summary": "Create and store the project data stream",
                 "description": "Only one data stream per project is allowed.",
-                "operationId": "store",
+                "operationId": "createDataStream",
                 "parameters": [
                     {
                         "name": "projectId",
@@ -2877,7 +2891,7 @@
                         "content": {
                             "application\/json": {
                                 "schema": {
-                                    "$ref": "#\/components\/schemas\/DataStream"
+                                    "$ref": "#\/components\/schemas\/DataStreamResponse"
                                 }
                             }
                         }
@@ -2885,8 +2899,11 @@
                 }
             },
             "delete": {
+                "tags": [
+                    "Resource:Project"
+                ],
                 "summary": "Delete the project data stream",
-                "operationId": "destroy",
+                "operationId": "deleteDataStream",
                 "parameters": [
                     {
                         "name": "projectId",
@@ -2905,8 +2922,11 @@
                 }
             },
             "patch": {
+                "tags": [
+                    "Resource:Project"
+                ],
                 "summary": "Update the project data stream",
-                "operationId": "patchUpdate",
+                "operationId": "updateDataStream",
                 "parameters": [
                     {
                         "name": "projectId",
@@ -2951,7 +2971,7 @@
                         "content": {
                             "application\/json": {
                                 "schema": {
-                                    "$ref": "#\/components\/schemas\/DataStream"
+                                    "$ref": "#\/components\/schemas\/DataStreamResponse"
                                 }
                             }
                         }
@@ -5764,7 +5784,11 @@
                     {
                         "name": "widgetPresetId",
                         "in": "path",
-                        "required": true
+                        "description": "Widget preset UUID",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
                     }
                 ],
                 "responses": {
@@ -5974,16 +5998,13 @@
                     }
                 }
             },
-            "ProjectList": {
-                "type": "array",
-                "items": {
-                    "$ref": "#\/components\/schemas\/Project"
-                }
-            },
             "ProjectListResponse": {
                 "properties": {
                     "data": {
-                        "$ref": "#\/components\/schemas\/Project"
+                        "type": "array",
+                        "items": {
+                            "$ref": "#\/components\/schemas\/Project"
+                        }
                     },
                     "meta": {
                         "$ref": "#\/components\/schemas\/Meta"
@@ -7298,15 +7319,15 @@
                 "type": "oauth2",
                 "flows": {
                     "implicit": {
-                        "authorizationUrl": "https:\/\/emsearch.ryan.ems-dev.net\/oauth\/authorize",
+                        "authorizationUrl": "\/oauth\/authorize",
                         "scopes": {
                             "*": "Access to anything"
                         }
                     },
                     "authorizationCode": {
-                        "authorizationUrl": "https:\/\/emsearch.ryan.ems-dev.net\/oauth\/authorize",
-                        "tokenUrl": "https:\/\/emsearch.ryan.ems-dev.net\/oauth\/token",
-                        "refreshUrl": "https:\/\/emsearch.ryan.ems-dev.net\/oauth\/token\/refresh",
+                        "authorizationUrl": "\/oauth\/authorize",
+                        "tokenUrl": "\/oauth\/token",
+                        "refreshUrl": "\/oauth\/token\/refresh",
                         "scopes": {
                             "*": "Access to anything"
                         }

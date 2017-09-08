@@ -69,7 +69,6 @@ class ProjectController extends ApiController
 	 * @ApiDocsNoCall
 	 *
 	 * @OpenApiOperationId create
-	 * @OpenApiOperationTag Resource:Project
 	 * @OpenApiResponseSchemaRef #/components/schemas/ProjectResponse
 	 * @OpenApiResponseDescription The created Project
 	 *

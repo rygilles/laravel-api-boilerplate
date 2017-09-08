@@ -10,6 +10,7 @@ use App\Models\Project;
 
 /**
  * @resource DataStream
+ * @OpenApiOperationTag Resource:Project
  *
  * @package App\Http\Controllers\Api
  */
@@ -18,6 +19,7 @@ class ProjectDataStreamController extends ApiController
 	/**
 	 * Show project data stream
 	 *
+	 * @OpenApiOperationId getDataStream
 	 * @OpenApiResponseSchemaRef #/components/schemas/DataStreamResponse
 	 * @OpenApiResponseDescription A DataStream
 	 *
@@ -45,7 +47,9 @@ class ProjectDataStreamController extends ApiController
 	 * Only one data stream per project is allowed.
 	 *
 	 * @ApiDocsNoCall
-	 * @OpenApiResponseSchemaRef #/components/schemas/DataStream
+	 *
+	 * @OpenApiOperationId createDataStream
+	 * @OpenApiResponseSchemaRef #/components/schemas/DataStreamResponse
 	 * @OpenApiResponseDescription A DataStreamResponse
 	 *
 	 * @param StoreProjectDataStreamRequest $request
@@ -90,7 +94,9 @@ class ProjectDataStreamController extends ApiController
 	 * Update the project data stream
 	 *
 	 * @ApiDocsNoCall
-	 * @OpenApiResponseSchemaRef #/components/schemas/DataStream
+	 *
+	 * @OpenApiOperationId updateDataStream
+	 * @OpenApiResponseSchemaRef #/components/schemas/DataStreamResponse
 	 * @OpenApiResponseDescription A DataStreamResponse
 	 *
 	 * @param UpdateProjectDataStreamRequest $request
@@ -119,6 +125,8 @@ class ProjectDataStreamController extends ApiController
 	 * Delete the project data stream
 	 *
 	 * @ApiDocsNoCall
+	 *
+	 * @OpenApiOperationId deleteDataStream
 	 * @OpenApiResponseDescription Empty response
 	 *
 	 * @param string $projectId Project UUID

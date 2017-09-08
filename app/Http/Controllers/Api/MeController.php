@@ -8,6 +8,7 @@ use Illuminate\Support\Facades\Auth;
 
 /**
  * @resource Me
+ * @OpenApiOperationTag Manager:Me
  *
  * @package App\Http\Controllers\Api
  */
@@ -15,6 +16,9 @@ class MeController extends ApiController
 {
 	/**
 	 * Get current user
+	 *
+	 * @OpenApiOperationId getUser
+	 * @OpenApiResponseDescription A User
 	 *
 	 * @return \Dingo\Api\Http\Response|void
 	 */
