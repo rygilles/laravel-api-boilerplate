@@ -9,6 +9,7 @@ use App\Models\Widget;
 
 /**
  * @resource Widget
+ * @OpenApiOperationTag Manager:Widget
  *
  * @package App\Http\Controllers\Api
  */
@@ -28,6 +29,16 @@ class WidgetController extends ApiController
 	/**
 	 * Show widget list
 	 *
+	 * @OpenApiOperationId all
+	 * @OpenApiResponseSchemaRef #/components/schemas/WidgetListResponse
+	 * @OpenApiDefaultResponseSchemaRef #/components/schemas/ErrorResponse
+	 * @OpenApiResponseDescription A Widget list
+	 * @OpenApiExtraParameterRef #/components/parameters/Include
+	 * @OpenApiExtraParameterRef #/components/parameters/Search
+	 * @OpenApiExtraParameterRef #/components/parameters/PaginationPage
+	 * @OpenApiExtraParameterRef #/components/parameters/PaginationLimit
+	 * @OpenApiExtraParameterRef #/components/parameters/OrderBy
+	 *
 	 * @return \Dingo\Api\Http\Response
 	 */
 	public function index()
@@ -41,6 +52,12 @@ class WidgetController extends ApiController
 
 	/**
 	 * Get specified widget
+	 *
+	 * @OpenApiOperationId get
+	 * @OpenApiResponseSchemaRef #/components/schemas/WidgetResponse
+	 * @OpenApiDefaultResponseSchemaRef #/components/schemas/ErrorResponse
+	 * @OpenApiResponseDescription A Widget
+	 * @OpenApiExtraParameterRef #/components/parameters/Include
 	 *
 	 * @param string $widgetId Widget UUID
 	 * @return \Dingo\Api\Http\Response|void
@@ -61,6 +78,11 @@ class WidgetController extends ApiController
 	 * Create and store new widget
 	 *
 	 * @ApiDocsNoCall
+	 *
+	 * @OpenApiOperationId create
+	 * @OpenApiResponseSchemaRef #/components/schemas/WidgetResponse
+	 * @OpenApiDefaultResponseSchemaRef #/components/schemas/ErrorResponse
+	 * @OpenApiResponseDescription A Widget
 	 *
 	 * @param StoreWidgetRequest $request
 	 * @return \Dingo\Api\Http\Response|void
@@ -93,6 +115,12 @@ class WidgetController extends ApiController
 	 *
 	 * @ApiDocsNoCall
 	 *
+	 * @OpenApiOperationId update
+	 * @OpenApiOperationTag Resource:Widget
+	 * @OpenApiResponseSchemaRef #/components/schemas/WidgetResponse
+	 * @OpenApiDefaultResponseSchemaRef #/components/schemas/ErrorResponse
+	 * @OpenApiResponseDescription The updated Widget
+	 *
 	 * @param UpdateWidgetRequest $request
 	 * @param string $widgetId Widget UUID
 	 * @return \Dingo\Api\Http\Response|void
@@ -115,6 +143,11 @@ class WidgetController extends ApiController
 	 * Delete specified widget
 	 *
 	 * @ApiDocsNoCall
+	 *
+	 * @OpenApiOperationId delete
+	 * @OpenApiOperationTag Resource:Widget
+	 * @OpenApiResponseDescription Empty response
+	 * @OpenApiDefaultResponseSchemaRef #/components/schemas/ErrorResponse
 	 *
 	 * @param string $widgetId Widget UUID
 	 * @return \Dingo\Api\Http\Response|void

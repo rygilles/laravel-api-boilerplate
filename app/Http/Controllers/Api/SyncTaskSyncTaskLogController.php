@@ -9,6 +9,7 @@ use Illuminate\Support\Facades\Auth;
 
 /**
  * @resource SyncTaskLog
+ * @OpenApiOperationTag Resource:SyncTask
  *
  * @package App\Http\Controllers\Api
  */
@@ -18,6 +19,15 @@ class SyncTaskSyncTaskLogController extends ApiController
 	 * Sync task sync task logs list
 	 *
 	 * You can specify a GET parameter `public` to filter results (Only allowed for `Developer` and `Support` users).
+	 *
+	 * @OpenApiOperationId getLogs
+	 * @OpenApiResponseSchemaRef #/components/schemas/SyncTaskLogListResponse
+	 * @OpenApiDefaultResponseSchemaRef #/components/schemas/ErrorResponse
+	 * @OpenApiResponseDescription A SyncTaskLog list
+	 * @OpenApiExtraParameterRef #/components/parameters/Search
+	 * @OpenApiExtraParameterRef #/components/parameters/PaginationPage
+	 * @OpenApiExtraParameterRef #/components/parameters/PaginationLimit
+	 * @OpenApiExtraParameterRef #/components/parameters/OrderBy 
 	 *
 	 * @param IndexSyncTaskSyncTaskLogRequest $request
 	 * @param string $syncTaskId Sync Task ID

@@ -7,6 +7,7 @@ use App\Models\DataStream;
 
 /**
  * @resource DataStreamField
+ * @OpenApiOperationTag Resource:DataStream
  *
  * @package App\Http\Controllers\Api
  */
@@ -22,7 +23,17 @@ class DataStreamDataStreamFieldController extends ApiController
 
 	/**
 	 * Data stream data stream field list
-	 *	 *
+	 *
+	 * @OpenApiOperationId getFields
+	 * @OpenApiResponseSchemaRef #/components/schemas/DataStreamFieldListResponse
+	 * @OpenApiDefaultResponseSchemaRef #/components/schemas/ErrorResponse
+	 * @OpenApiResponseDescription A DataStreamField list
+	 * @OpenApiExtraParameterRef #/components/parameters/Include
+	 * @OpenApiExtraParameterRef #/components/parameters/Search
+	 * @OpenApiExtraParameterRef #/components/parameters/PaginationPage
+	 * @OpenApiExtraParameterRef #/components/parameters/PaginationLimit
+	 * @OpenApiExtraParameterRef #/components/parameters/OrderBy
+	 *
 	 * @param string $dataStreamId Data stream UUID
 	 * @return \Dingo\Api\Http\Response
 	 */

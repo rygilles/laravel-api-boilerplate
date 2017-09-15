@@ -10,6 +10,7 @@ use Dingo\Api\Exception\ValidationHttpException;
 
 /**
  * @resource SyncItem
+ * @OpenApiOperationTag Manager:SyncItem
  *
  * @package App\Http\Controllers\Api
  */
@@ -30,6 +31,15 @@ class SyncItemController extends ApiController
 	/**
 	 * Sync item list
 	 *
+	 * @OpenApiOperationId all
+	 * @OpenApiResponseSchemaRef #/components/schemas/SyncItemListResponse
+	 * @OpenApiDefaultResponseSchemaRef #/components/schemas/ErrorResponse
+	 * @OpenApiResponseDescription A SyncItem list
+	 * @OpenApiExtraParameterRef #/components/parameters/Search
+	 * @OpenApiExtraParameterRef #/components/parameters/PaginationPage
+	 * @OpenApiExtraParameterRef #/components/parameters/PaginationLimit
+	 * @OpenApiExtraParameterRef #/components/parameters/OrderBy
+	 *
 	 * @return \Dingo\Api\Http\Response
 	 */
 	public function index()
@@ -41,6 +51,11 @@ class SyncItemController extends ApiController
 
 	/**
 	 * Get specified sync item
+	 *
+	 * @OpenApiOperationId get
+	 * @OpenApiResponseSchemaRef #/components/schemas/SyncItemResponse
+	 * @OpenApiDefaultResponseSchemaRef #/components/schemas/ErrorResponse
+	 * @OpenApiResponseDescription A SyncItem
 	 *
 	 * @param string $syncItemId Sync Item ID
 	 * @param string $projectId Project UUID
@@ -60,6 +75,11 @@ class SyncItemController extends ApiController
 	 * Create and store new sync item
 	 *
 	 * @ApiDocsNoCall
+	 *
+	 * @OpenApiOperationId create
+	 * @OpenApiResponseSchemaRef #/components/schemas/SyncItemResponse
+	 * @OpenApiDefaultResponseSchemaRef #/components/schemas/ErrorResponse
+	 * @OpenApiResponseDescription The created SyncItem
 	 *
 	 * @param StoreSyncItemRequest $request
 	 * @return \Dingo\Api\Http\Response|void
@@ -92,6 +112,12 @@ class SyncItemController extends ApiController
 	 *
 	 * @ApiDocsNoCall
 	 *
+	 * @OpenApiOperationId update
+	 * @OpenApiOperationTag Resource:SyncItem
+	 * @OpenApiResponseSchemaRef #/components/schemas/SyncItemResponse
+	 * @OpenApiDefaultResponseSchemaRef #/components/schemas/ErrorResponse
+	 * @OpenApiResponseDescription The updated SyncItem
+	 *
 	 * @param UpdateSyncItemRequest $request
 	 * @param string $syncItemId Sync Item ID
 	 * @param string $projectId Project UUID
@@ -114,6 +140,11 @@ class SyncItemController extends ApiController
 	 * Delete specified sync item
 	 *
 	 * @ApiDocsNoCall
+	 *
+	 * @OpenApiOperationId delete
+	 * @OpenApiOperationTag Resource:SyncItem
+	 * @OpenApiResponseDescription Empty response
+	 * @OpenApiDefaultResponseSchemaRef #/components/schemas/ErrorResponse
 	 *
 	 * @param string $syncItemId Sync Item ID
 	 * @param string $projectId Project UUID

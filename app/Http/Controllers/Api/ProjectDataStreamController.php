@@ -21,7 +21,9 @@ class ProjectDataStreamController extends ApiController
 	 *
 	 * @OpenApiOperationId getDataStream
 	 * @OpenApiResponseSchemaRef #/components/schemas/DataStreamResponse
+	 * @OpenApiDefaultResponseSchemaRef #/components/schemas/ErrorResponse
 	 * @OpenApiResponseDescription A DataStream
+	 * @OpenApiExtraParameterRef #/components/parameters/Include
 	 *
 	 * @param string $projectId Project UUID
 	 * @return \Dingo\Api\Http\Response
@@ -50,6 +52,7 @@ class ProjectDataStreamController extends ApiController
 	 *
 	 * @OpenApiOperationId createDataStream
 	 * @OpenApiResponseSchemaRef #/components/schemas/DataStreamResponse
+	 * @OpenApiDefaultResponseSchemaRef #/components/schemas/ErrorResponse
 	 * @OpenApiResponseDescription A DataStreamResponse
 	 *
 	 * @param StoreProjectDataStreamRequest $request
@@ -97,6 +100,7 @@ class ProjectDataStreamController extends ApiController
 	 *
 	 * @OpenApiOperationId updateDataStream
 	 * @OpenApiResponseSchemaRef #/components/schemas/DataStreamResponse
+	 * @OpenApiDefaultResponseSchemaRef #/components/schemas/ErrorResponse
 	 * @OpenApiResponseDescription A DataStreamResponse
 	 *
 	 * @param UpdateProjectDataStreamRequest $request
@@ -128,6 +132,7 @@ class ProjectDataStreamController extends ApiController
 	 *
 	 * @OpenApiOperationId deleteDataStream
 	 * @OpenApiResponseDescription Empty response
+	 * @OpenApiDefaultResponseSchemaRef #/components/schemas/ErrorResponse
 	 *
 	 * @param string $projectId Project UUID
 	 * @return \Dingo\Api\Http\Response|void

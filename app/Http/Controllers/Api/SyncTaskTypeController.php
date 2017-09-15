@@ -10,6 +10,7 @@ use Dingo\Api\Exception\ValidationHttpException;
 
 /**
  * @resource SyncTaskType
+ * @OpenApiOperationTag Manager:SyncTaskType
  *
  * @package App\Http\Controllers\Api
  */
@@ -29,6 +30,15 @@ class SyncTaskTypeController extends ApiController
 	/**
 	 * Show sync task type list
 	 *
+	 * @OpenApiOperationId all
+	 * @OpenApiResponseSchemaRef #/components/schemas/SyncTaskTypeListResponse
+	 * @OpenApiDefaultResponseSchemaRef #/components/schemas/ErrorResponse
+	 * @OpenApiResponseDescription A SyncTaskType list
+	 * @OpenApiExtraParameterRef #/components/parameters/Search
+	 * @OpenApiExtraParameterRef #/components/parameters/PaginationPage
+	 * @OpenApiExtraParameterRef #/components/parameters/PaginationLimit
+	 * @OpenApiExtraParameterRef #/components/parameters/OrderBy
+	 *
 	 * @return \Dingo\Api\Http\Response
 	 */
 	public function index()
@@ -43,6 +53,11 @@ class SyncTaskTypeController extends ApiController
 
 	/**
 	 * Get specified sync task type
+	 *
+	 * @OpenApiOperationId get
+	 * @OpenApiResponseSchemaRef #/components/schemas/SyncTaskTypeResponse
+	 * @OpenApiDefaultResponseSchemaRef #/components/schemas/ErrorResponse
+	 * @OpenApiResponseDescription A SyncTaskType
 	 *
 	 * @param string $syncTaskTypeId Sync task type ID
 	 * @return \Dingo\Api\Http\Response|void
@@ -63,6 +78,11 @@ class SyncTaskTypeController extends ApiController
 	 * Create and store new sync task type
 	 *
 	 * @ApiDocsNoCall
+	 *
+	 * @OpenApiOperationId create
+	 * @OpenApiResponseSchemaRef #/components/schemas/SyncTaskTypeResponse
+	 * @OpenApiDefaultResponseSchemaRef #/components/schemas/ErrorResponse
+	 * @OpenApiResponseDescription A SyncTaskType
 	 *
 	 * @param StoreSyncTaskTypeRequest $request
 	 * @return \Dingo\Api\Http\Response|void
@@ -95,6 +115,12 @@ class SyncTaskTypeController extends ApiController
 	 *
 	 * @ApiDocsNoCall
 	 *
+	 * @OpenApiOperationId update
+	 * @OpenApiOperationTag Resource:SyncTaskType
+	 * @OpenApiResponseSchemaRef #/components/schemas/SyncTaskTypeResponse
+	 * @OpenApiDefaultResponseSchemaRef #/components/schemas/ErrorResponse
+	 * @OpenApiResponseDescription The updated SyncTaskType
+	 *
 	 * @param UpdateSyncTaskTypeRequest $request
 	 * @param string $syncTaskTypeId Sync task type ID
 	 * @return \Dingo\Api\Http\Response|void
@@ -119,6 +145,11 @@ class SyncTaskTypeController extends ApiController
 	 * <aside class="warning">Avoid using this feature ! Check foreign keys constraints to remove dependent resources properly before.</aside>
 	 *
 	 * @ApiDocsNoCall
+	 *
+	 * @OpenApiOperationId delete
+	 * @OpenApiOperationTag Resource:SyncTaskType
+	 * @OpenApiResponseDescription Empty response
+	 * @OpenApiDefaultResponseSchemaRef #/components/schemas/ErrorResponse
 	 *
 	 * @param string $syncTaskTypeId Sync task type ID
 	 * @return \Dingo\Api\Http\Response|void

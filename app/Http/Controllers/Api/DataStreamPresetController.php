@@ -12,6 +12,7 @@ use Dingo\Api\Transformer\Factory;
 
 /**
  * @resource DataStreamPreset
+ * @OpenApiOperationTag Manager:DataStreamPreset
  *
  * @package App\Http\Controllers\Api
  */
@@ -31,6 +32,16 @@ class DataStreamPresetController extends ApiController
 	/**
 	 * Show data stream preset list
 	 *
+	 * @OpenApiOperationId all
+	 * @OpenApiResponseSchemaRef #/components/schemas/DataStreamPresetListResponse
+	 * @OpenApiDefaultResponseSchemaRef #/components/schemas/ErrorResponse
+	 * @OpenApiResponseDescription A DataStreamPreset list
+	 * @OpenApiExtraParameterRef #/components/parameters/Include
+	 * @OpenApiExtraParameterRef #/components/parameters/Search
+	 * @OpenApiExtraParameterRef #/components/parameters/PaginationPage
+	 * @OpenApiExtraParameterRef #/components/parameters/PaginationLimit
+	 * @OpenApiExtraParameterRef #/components/parameters/OrderBy
+	 *
 	 * @return \Dingo\Api\Http\Response
 	 */
 	public function index()
@@ -42,6 +53,12 @@ class DataStreamPresetController extends ApiController
 
 	/**
 	 * Get specified data stream preset
+	 *
+	 * @OpenApiOperationId get
+	 * @OpenApiResponseSchemaRef #/components/schemas/DataStreamPresetResponse
+	 * @OpenApiDefaultResponseSchemaRef #/components/schemas/ErrorResponse
+	 * @OpenApiResponseDescription A DataStreamPreset
+	 * @OpenApiExtraParameterRef #/components/parameters/Include
 	 *
 	 * @param string $dataStreamPresetId Data stream preset UUID
 	 * @return \Dingo\Api\Http\Response|void
@@ -60,6 +77,11 @@ class DataStreamPresetController extends ApiController
 	 * Create and store new data stream preset
 	 *
 	 * @ApiDocsNoCall
+	 *
+	 * @OpenApiOperationId create
+	 * @OpenApiResponseSchemaRef #/components/schemas/DataStreamPresetResponse
+	 * @OpenApiDefaultResponseSchemaRef #/components/schemas/ErrorResponse
+	 * @OpenApiResponseDescription A DataStreamPresetResponse
 	 *
 	 * @param StoreDataStreamPresetRequest $request
 	 * @return \Dingo\Api\Http\Response|void
@@ -92,6 +114,12 @@ class DataStreamPresetController extends ApiController
 	 *
 	 * @ApiDocsNoCall
 	 *
+	 * @OpenApiOperationId update
+	 * @OpenApiOperationTag Resource:DataStreamPreset
+	 * @OpenApiResponseSchemaRef #/components/schemas/DataStreamPresetResponse
+	 * @OpenApiDefaultResponseSchemaRef #/components/schemas/ErrorResponse
+	 * @OpenApiResponseDescription The updated DataStreamPreset
+	 *
 	 * @param UpdateDataStreamPresetRequest $request
 	 * @param string $dataStreamPresetId Data stream preset UUID
 	 * @return \Dingo\Api\Http\Response|void
@@ -111,8 +139,13 @@ class DataStreamPresetController extends ApiController
 
 	/**
 	 * Delete specified data stream preset
-	 **
+	 *
 	 * @ApiDocsNoCall
+	 *
+	 * @OpenApiOperationId delete
+	 * @OpenApiOperationTag Resource:DataStreamPreset
+	 * @OpenApiResponseDescription Empty response
+	 * @OpenApiDefaultResponseSchemaRef #/components/schemas/ErrorResponse
 	 *
 	 * @param string $dataStreamPresetId Data stream preset UUID
 	 * @return \Dingo\Api\Http\Response|void

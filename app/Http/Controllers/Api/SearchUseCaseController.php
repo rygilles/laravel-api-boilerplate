@@ -10,6 +10,7 @@ use App\Models\SearchUseCase;
 
 /**
  * @resource SearchUseCase
+ * @OpenApiOperationTag Manager:SearchUseCase
  *
  * @package App\Http\Controllers\Api
  */
@@ -29,6 +30,16 @@ class SearchUseCaseController extends ApiController
 	/**
 	 * Show search use case list
 	 *
+	 * @OpenApiOperationId all
+	 * @OpenApiResponseSchemaRef #/components/schemas/SearchUseCaseListResponse
+	 * @OpenApiDefaultResponseSchemaRef #/components/schemas/ErrorResponse
+	 * @OpenApiResponseDescription A SearchUseCase list
+	 * @OpenApiExtraParameterRef #/components/parameters/Include
+	 * @OpenApiExtraParameterRef #/components/parameters/Search
+	 * @OpenApiExtraParameterRef #/components/parameters/PaginationPage
+	 * @OpenApiExtraParameterRef #/components/parameters/PaginationLimit
+	 * @OpenApiExtraParameterRef #/components/parameters/OrderBy
+	 *
 	 * @return \Dingo\Api\Http\Response
 	 */
 	public function index()
@@ -42,6 +53,12 @@ class SearchUseCaseController extends ApiController
 
 	/**
 	 * Get specified search use case
+	 *
+	 * @OpenApiOperationId get
+	 * @OpenApiResponseSchemaRef #/components/schemas/SearchUseCaseResponse
+	 * @OpenApiDefaultResponseSchemaRef #/components/schemas/ErrorResponse
+	 * @OpenApiResponseDescription A SearchUseCase
+	 * @OpenApiExtraParameterRef #/components/parameters/Include
 	 *
 	 * @param string $searchUseCaseId Search use case UUID
 	 * @return \Dingo\Api\Http\Response|void
@@ -62,6 +79,11 @@ class SearchUseCaseController extends ApiController
 	 * Create and store new search use case
 	 *
 	 * @ApiDocsNoCall
+	 *
+	 * @OpenApiOperationId create
+	 * @OpenApiResponseSchemaRef #/components/schemas/SearchUseCaseResponse
+	 * @OpenApiDefaultResponseSchemaRef #/components/schemas/ErrorResponse
+	 * @OpenApiResponseDescription The created SearchUseCase
 	 *
 	 * @param StoreSearchUseCaseRequest $request
 	 * @return \Dingo\Api\Http\Response|void
@@ -94,6 +116,12 @@ class SearchUseCaseController extends ApiController
 	 *
 	 * @ApiDocsNoCall
 	 *
+	 * @OpenApiOperationId update
+	 * @OpenApiOperationTag Resource:SearchUseCase
+	 * @OpenApiResponseSchemaRef #/components/schemas/SearchUseCaseResponse
+	 * @OpenApiDefaultResponseSchemaRef #/components/schemas/ErrorResponse
+	 * @OpenApiResponseDescription The updated SearchUseCase
+	 *
 	 * @param UpdateSearchUseCaseRequest $request
 	 * @param string $searchUseCaseId Search use case UUID
 	 * @return \Dingo\Api\Http\Response|void
@@ -117,6 +145,11 @@ class SearchUseCaseController extends ApiController
 	 *
 	 * @ApiDocsNoCall
 	 *
+	 * @OpenApiOperationId delete
+	 * @OpenApiOperationTag Resource:SearchUseCase
+	 * @OpenApiResponseDescription Empty response
+	 * @OpenApiDefaultResponseSchemaRef #/components/schemas/ErrorResponse
+	 *
 	 * @param string $searchUseCaseId Search use case UUID
 	 * @return \Dingo\Api\Http\Response|void
 	 */
@@ -135,6 +168,12 @@ class SearchUseCaseController extends ApiController
 
 	/**
 	 * Perform search with the specified search use case
+	 *
+	 * @OpenApiOperationId search
+	 * @OpenApiOperationTag Resource:SearchUseCase
+	 * @OpenApiResponseDescription Search response
+	 * @OpenApiResponseSchemaRef #/components/schemas/SearchUseCaseSearchResponse
+	 * @OpenApiDefaultResponseSchemaRef #/components/schemas/ErrorResponse
 	 *
 	 * @param SearchSearchUseCaseRequest $request
 	 * @param string $searchUseCaseId Search use case UUID

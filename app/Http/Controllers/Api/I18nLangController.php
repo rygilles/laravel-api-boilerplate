@@ -12,6 +12,7 @@ use Dingo\Api\Transformer\Factory;
 
 /**
  * @resource I18nLang
+ * @OpenApiOperationTag Manager:I18nLang
  *
  * @package App\Http\Controllers\Api
  */
@@ -31,6 +32,16 @@ class I18nLangController extends ApiController
 	/**
 	 * Show i18n lang list
 	 *
+	 * @OpenApiOperationId all
+	 * @OpenApiResponseSchemaRef #/components/schemas/I18nLangListResponse
+	 * @OpenApiDefaultResponseSchemaRef #/components/schemas/ErrorResponse
+	 * @OpenApiResponseDescription A I18nLang list
+	 * @OpenApiExtraParameterRef #/components/parameters/Include
+	 * @OpenApiExtraParameterRef #/components/parameters/Search
+	 * @OpenApiExtraParameterRef #/components/parameters/PaginationPage
+	 * @OpenApiExtraParameterRef #/components/parameters/PaginationLimit
+	 * @OpenApiExtraParameterRef #/components/parameters/OrderBy
+	 *
 	 * @return \Dingo\Api\Http\Response
 	 */
 	public function index()
@@ -42,6 +53,12 @@ class I18nLangController extends ApiController
 
 	/**
 	 * Get specified i18n lang
+	 *
+	 * @OpenApiOperationId get
+	 * @OpenApiResponseSchemaRef #/components/schemas/I18nLangResponse
+	 * @OpenApiDefaultResponseSchemaRef #/components/schemas/ErrorResponse
+	 * @OpenApiResponseDescription A I18nLang
+	 * @OpenApiExtraParameterRef #/components/parameters/Include
 	 *
 	 * @param string $i18nLangId I18n lang UUID
 	 * @return \Dingo\Api\Http\Response|void
@@ -60,6 +77,11 @@ class I18nLangController extends ApiController
 	 * Create and store new i18n lang
 	 *
 	 * @ApiDocsNoCall
+	 *
+	 * @OpenApiOperationId create
+	 * @OpenApiResponseSchemaRef #/components/schemas/I18nLangResponse
+	 * @OpenApiDefaultResponseSchemaRef #/components/schemas/ErrorResponse
+	 * @OpenApiResponseDescription A I18nLangResponse
 	 *
 	 * @param StoreI18nLangRequest $request
 	 * @return \Dingo\Api\Http\Response|void
@@ -92,6 +114,12 @@ class I18nLangController extends ApiController
 	 *
 	 * @ApiDocsNoCall
 	 *
+	 * @OpenApiOperationId update
+	 * @OpenApiOperationTag Resource:I18nLang
+	 * @OpenApiResponseSchemaRef #/components/schemas/I18nLangResponse
+	 * @OpenApiDefaultResponseSchemaRef #/components/schemas/ErrorResponse
+	 * @OpenApiResponseDescription The updated I18nLang
+	 *
 	 * @param UpdateI18nLangRequest $request
 	 * @param string $i18nLangId I18n lang UUID
 	 * @return \Dingo\Api\Http\Response|void
@@ -115,6 +143,11 @@ class I18nLangController extends ApiController
 	 * <aside class="warning">Avoid using this feature ! Check foreign keys constraints to remove dependent resources properly before.</aside>
 	 *
 	 * @ApiDocsNoCall
+	 *
+	 * @OpenApiOperationId delete
+	 * @OpenApiOperationTag Resource:I18nLang
+	 * @OpenApiResponseDescription Empty response
+	 * @OpenApiDefaultResponseSchemaRef #/components/schemas/ErrorResponse
 	 *
 	 * @param string $i18nLangId I18n lang UUID
 	 * @return \Dingo\Api\Http\Response|void

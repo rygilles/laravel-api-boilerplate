@@ -9,6 +9,7 @@ use App\Models\DataStreamDecoder;
 
 /**
  * @resource DataStreamDecoder
+ * @OpenApiOperationTag Manager:DataStreamDecoder
  *
  * @package App\Http\Controllers\Api
  */
@@ -28,6 +29,16 @@ class DataStreamDecoderController extends ApiController
 	/**
 	 * Show data stream decoder list
 	 *
+	 * @OpenApiOperationId all
+	 * @OpenApiResponseSchemaRef #/components/schemas/DataStreamDecoderListResponse
+	 * @OpenApiDefaultResponseSchemaRef #/components/schemas/ErrorResponse
+	 * @OpenApiResponseDescription A DataStreamDecoder list
+	 * @OpenApiExtraParameterRef #/components/parameters/Include
+	 * @OpenApiExtraParameterRef #/components/parameters/Search
+	 * @OpenApiExtraParameterRef #/components/parameters/PaginationPage
+	 * @OpenApiExtraParameterRef #/components/parameters/PaginationLimit
+	 * @OpenApiExtraParameterRef #/components/parameters/OrderBy
+	 *
 	 * @return \Dingo\Api\Http\Response
 	 */
 	public function index()
@@ -39,6 +50,12 @@ class DataStreamDecoderController extends ApiController
 
 	/**
 	 * Get specified data stream decoder
+	 *
+	 * @OpenApiOperationId get
+	 * @OpenApiResponseSchemaRef #/components/schemas/DataStreamDecoderResponse
+	 * @OpenApiDefaultResponseSchemaRef #/components/schemas/ErrorResponse
+	 * @OpenApiResponseDescription A DataStreamDecoder
+	 * @OpenApiExtraParameterRef #/components/parameters/Include
 	 *
 	 * @param string $dataStreamDecoderId Data stream decoder UUID
 	 * @return \Dingo\Api\Http\Response|void
@@ -57,6 +74,11 @@ class DataStreamDecoderController extends ApiController
 	 * Create and store new data stream decoder
 	 *
 	 * @ApiDocsNoCall
+	 *
+	 * @OpenApiOperationId create
+	 * @OpenApiResponseSchemaRef #/components/schemas/DataStreamDecoderResponse
+	 * @OpenApiDefaultResponseSchemaRef #/components/schemas/ErrorResponse
+	 * @OpenApiResponseDescription A DataStreamDecoderResponse
 	 *
 	 * @param StoreDataStreamDecoderRequest $request
 	 * @return \Dingo\Api\Http\Response|void
@@ -88,6 +110,12 @@ class DataStreamDecoderController extends ApiController
 	 *
 	 * @ApiDocsNoCall
 	 *
+	 * @OpenApiOperationId update
+	 * @OpenApiOperationTag Resource:DataStreamDecoder
+	 * @OpenApiResponseSchemaRef #/components/schemas/DataStreamDecoderResponse
+	 * @OpenApiDefaultResponseSchemaRef #/components/schemas/ErrorResponse
+	 * @OpenApiResponseDescription The updated DataStreamDecoder
+	 *
 	 * @param UpdateDataStreamDecoderRequest $request
 	 * @param string $dataStreamDecoderId Data stream decoder UUID
 	 * @return \Dingo\Api\Http\Response|void
@@ -109,6 +137,11 @@ class DataStreamDecoderController extends ApiController
 	 * Delete specified data stream decoder
 	 *
 	 * @ApiDocsNoCall
+	 *
+	 * @OpenApiOperationId delete
+	 * @OpenApiOperationTag Resource:DataStreamDecoder
+	 * @OpenApiResponseDescription Empty response
+	 * @OpenApiDefaultResponseSchemaRef #/components/schemas/ErrorResponse
 	 *
 	 * @param string $dataStreamDecoderId Data stream decoder UUID
 	 * @return \Dingo\Api\Http\Response|void

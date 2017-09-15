@@ -7,7 +7,8 @@ use App\Models\SearchUseCase;
 
 /**
  * @resource Widget
- * @todo Security ?
+ * @OpenApiOperationTag Resource:SearchUseCase
+ *
  * @package App\Http\Controllers\Api
  */
 class SearchUseCaseWidgetController extends ApiController
@@ -22,6 +23,15 @@ class SearchUseCaseWidgetController extends ApiController
 
 	/**
 	 * Search use case widget list
+	 *
+	 * @OpenApiOperationId getWidgets
+	 * @OpenApiResponseSchemaRef #/components/schemas/WidgetListResponse
+	 * @OpenApiDefaultResponseSchemaRef #/components/schemas/ErrorResponse
+	 * @OpenApiResponseDescription A Widget list
+	 * @OpenApiExtraParameterRef #/components/parameters/Search
+	 * @OpenApiExtraParameterRef #/components/parameters/PaginationPage
+	 * @OpenApiExtraParameterRef #/components/parameters/PaginationLimit
+	 * @OpenApiExtraParameterRef #/components/parameters/OrderBy
 	 *
 	 * @param string $searchUseCaseId Search use case UUID
 	 * @return \Dingo\Api\Http\Response

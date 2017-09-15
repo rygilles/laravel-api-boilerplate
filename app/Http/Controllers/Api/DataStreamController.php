@@ -9,6 +9,7 @@ use App\Models\DataStream;
 
 /**
  * @resource DataStream
+ * @OpenApiOperationTag Manager:DataStream
  *
  * @package App\Http\Controllers\Api
  */
@@ -28,9 +29,16 @@ class DataStreamController extends ApiController
 	/**
 	 * Show data stream list
 	 *
+	 * @OpenApiOperationId all
 	 * @OpenApiResponseSchemaRef #/components/schemas/DataStreamListResponse
+	 * @OpenApiDefaultResponseSchemaRef #/components/schemas/ErrorResponse
 	 * @OpenApiResponseDescription A DataStream list
-	 *
+	 * @OpenApiExtraParameterRef #/components/parameters/Include
+	 * @OpenApiExtraParameterRef #/components/parameters/Search
+	 * @OpenApiExtraParameterRef #/components/parameters/PaginationPage
+	 * @OpenApiExtraParameterRef #/components/parameters/PaginationLimit
+	 * @OpenApiExtraParameterRef #/components/parameters/OrderBy
+	 * 
 	 * @return \Dingo\Api\Http\Response
 	 */
 	public function index()
@@ -43,8 +51,11 @@ class DataStreamController extends ApiController
 	/**
 	 * Get specified data stream
 	 *
+	 * @OpenApiOperationId get
 	 * @OpenApiResponseSchemaRef #/components/schemas/DataStreamResponse
+	 * @OpenApiDefaultResponseSchemaRef #/components/schemas/ErrorResponse
 	 * @OpenApiResponseDescription A DataStream
+	 * @OpenApiExtraParameterRef #/components/parameters/Include
 	 *
 	 * @param string $dataStreamId Data stream UUID
 	 * @return \Dingo\Api\Http\Response|void
@@ -65,8 +76,11 @@ class DataStreamController extends ApiController
 	 * Only one data stream per project is allowed.
 	 *
 	 * @ApiDocsNoCall
+	 * 
+	 * @OpenApiOperationId create
 	 * @OpenApiResponseSchemaRef #/components/schemas/DataStreamResponse
-	 * @OpenApiResponseDescription A DataStreamResponse
+	 * @OpenApiDefaultResponseSchemaRef #/components/schemas/ErrorResponse
+	 * @OpenApiResponseDescription A DataStream
 	 *
 	 * @param StoreDataStreamRequest $request
 	 * @return \Dingo\Api\Http\Response|void
@@ -97,8 +111,12 @@ class DataStreamController extends ApiController
 	 * Update a data stream
 	 *
 	 * @ApiDocsNoCall
+	 *
+	 * @OpenApiOperationId update
+	 * @OpenApiOperationTag Resource:DataStream
 	 * @OpenApiResponseSchemaRef #/components/schemas/DataStreamResponse
-	 * @OpenApiResponseDescription A DataStreamResponse
+	 * @OpenApiDefaultResponseSchemaRef #/components/schemas/ErrorResponse
+	 * @OpenApiResponseDescription The updated DataStream
 	 *
 	 * @param UpdateDataStreamRequest $request
 	 * @param string $dataStreamId Data stream UUID
@@ -121,7 +139,11 @@ class DataStreamController extends ApiController
 	 * Delete specified data stream
 	 *
 	 * @ApiDocsNoCall
+	 *
+	 * @OpenApiOperationId delete
+	 * @OpenApiOperationTag Resource:DataStream
 	 * @OpenApiResponseDescription Empty response
+	 * @OpenApiDefaultResponseSchemaRef #/components/schemas/ErrorResponse
 	 *
 	 * @param string $dataStreamId Data stream UUID
 	 * @return \Dingo\Api\Http\Response|void

@@ -9,6 +9,7 @@ use App\Models\SearchUseCasePreset;
 
 /**
  * @resource SearchUseCasePreset
+ * @OpenApiOperationTag Manager:SearchUseCasePreset
  *
  * @package App\Http\Controllers\Api
  */
@@ -28,6 +29,16 @@ class SearchUseCasePresetController extends ApiController
 	/**
 	 * Show search use case preset list
 	 *
+	 * @OpenApiOperationId all
+	 * @OpenApiResponseSchemaRef #/components/schemas/SearchUseCasePresetListResponse
+	 * @OpenApiDefaultResponseSchemaRef #/components/schemas/ErrorResponse
+	 * @OpenApiResponseDescription A SearchUseCasePreset list
+	 * @OpenApiExtraParameterRef #/components/parameters/Include
+	 * @OpenApiExtraParameterRef #/components/parameters/Search
+	 * @OpenApiExtraParameterRef #/components/parameters/PaginationPage
+	 * @OpenApiExtraParameterRef #/components/parameters/PaginationLimit
+	 * @OpenApiExtraParameterRef #/components/parameters/OrderBy
+	 *
 	 * @return \Dingo\Api\Http\Response
 	 */
 	public function index()
@@ -41,6 +52,12 @@ class SearchUseCasePresetController extends ApiController
 
 	/**
 	 * Get specified search use case preset
+	 *
+	 * @OpenApiOperationId get
+	 * @OpenApiResponseSchemaRef #/components/schemas/SearchUseCasePresetResponse
+	 * @OpenApiDefaultResponseSchemaRef #/components/schemas/ErrorResponse
+	 * @OpenApiResponseDescription A SearchUseCasePreset
+	 * @OpenApiExtraParameterRef #/components/parameters/Include
 	 *
 	 * @param string $searchUseCasePresetId Search use case preset UUID
 	 * @return \Dingo\Api\Http\Response|void
@@ -60,6 +77,11 @@ class SearchUseCasePresetController extends ApiController
 	 * Create and store new search use case preset
 	 *
 	 * @ApiDocsNoCall
+	 *
+	 * @OpenApiOperationId create
+	 * @OpenApiResponseSchemaRef #/components/schemas/SearchUseCasePresetResponse
+	 * @OpenApiDefaultResponseSchemaRef #/components/schemas/ErrorResponse
+	 * @OpenApiResponseDescription The created SearchUseCasePreset
 	 *
 	 * @param StoreSearchUseCasePresetRequest $request
 	 * @return \Dingo\Api\Http\Response|void
@@ -91,6 +113,12 @@ class SearchUseCasePresetController extends ApiController
 	 *
 	 * @ApiDocsNoCall
 	 *
+	 * @OpenApiOperationId update
+	 * @OpenApiOperationTag Resource:SearchUseCasePreset
+	 * @OpenApiResponseSchemaRef #/components/schemas/SearchUseCasePresetResponse
+	 * @OpenApiDefaultResponseSchemaRef #/components/schemas/ErrorResponse
+	 * @OpenApiResponseDescription The updated SearchUseCasePreset
+	 *
 	 * @param UpdateSearchUseCasePresetRequest $request
 	 * @param string $searchUseCasePresetId Search use case preset UUID
 	 * @return \Dingo\Api\Http\Response|void
@@ -112,6 +140,11 @@ class SearchUseCasePresetController extends ApiController
 	 * Delete specified search use case preset
 	 *
 	 * @ApiDocsNoCall
+	 *
+	 * @OpenApiOperationId delete
+	 * @OpenApiOperationTag Resource:SearchUseCasePreset
+	 * @OpenApiResponseDescription Empty response
+	 * @OpenApiDefaultResponseSchemaRef #/components/schemas/ErrorResponse
 	 *
 	 * @param string $searchUseCasePresetId Search use case preset UUID
 	 * @return \Dingo\Api\Http\Response|void

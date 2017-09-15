@@ -49,7 +49,8 @@ class DataStreamTransformer extends ApiTransformer
 
 		// Nullable foreign key
 		if (is_null($project)) {
-			return $this->null();
+			 return null;
+			//return $this->null();
 		}
 
 		return $this->item($project, new ProjectTransformer);

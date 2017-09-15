@@ -8,7 +8,8 @@ use App\Models\Project;
 
 /**
  * @resource UserHasProject
- * @todo Security ?
+ * @OpenApiOperationTag Resource:Project
+ * 
  * @package App\Http\Controllers\Api
  */
 class ProjectUserHasProjectController extends ApiController
@@ -25,6 +26,15 @@ class ProjectUserHasProjectController extends ApiController
 	 * Project relationship between users and projects list
 	 *
 	 * You can specify a GET parameter `user_role_id` to filter results.
+	 *
+	 * @OpenApiOperationId getProjectHasUsers
+	 * @OpenApiResponseSchemaRef #/components/schemas/UserHasProjectListResponse
+	 * @OpenApiDefaultResponseSchemaRef #/components/schemas/ErrorResponse
+	 * @OpenApiResponseDescription A SyncTask list
+	 * @OpenApiExtraParameterRef #/components/parameters/Search
+	 * @OpenApiExtraParameterRef #/components/parameters/PaginationPage
+	 * @OpenApiExtraParameterRef #/components/parameters/PaginationLimit
+	 * @OpenApiExtraParameterRef #/components/parameters/OrderBy
 	 *
 	 * @param IndexProjectUserHasProjectRequest $request
 	 * @param string $projectId Project UUID

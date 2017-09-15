@@ -7,7 +7,8 @@ use App\Models\DataStream;
 
 /**
  * @resource DataStreamHasI18nLang
- * @todo Security ?
+ * @OpenApiOperationTag Resource:DataStream
+ * 
  * @package App\Http\Controllers\Api
  */
 class DataStreamDataStreamHasI18nLangController extends ApiController
@@ -23,6 +24,16 @@ class DataStreamDataStreamHasI18nLangController extends ApiController
 	/**
 	 * Data stream relationship between data stream and i18n langs list
 	 *
+	 * @OpenApiOperationId getDataStreamHasI18nLangs
+	 * @OpenApiResponseSchemaRef #/components/schemas/DataStreamHasI18nLangListResponse
+	 * @OpenApiDefaultResponseSchemaRef #/components/schemas/ErrorResponse
+	 * @OpenApiResponseDescription A DataStreamHasI18nLang list
+	 * @OpenApiExtraParameterRef #/components/parameters/Include
+	 * @OpenApiExtraParameterRef #/components/parameters/Search
+	 * @OpenApiExtraParameterRef #/components/parameters/PaginationPage
+	 * @OpenApiExtraParameterRef #/components/parameters/PaginationLimit
+	 * @OpenApiExtraParameterRef #/components/parameters/OrderBy
+	 * 
 	 * @param string $dataStreamId Data Stream UUID
 	 * @return \Dingo\Api\Http\Response
 	 */

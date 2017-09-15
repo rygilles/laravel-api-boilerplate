@@ -8,6 +8,7 @@ use App\Models\User;
 
 /**
  * @resource Project
+ * @OpenApiOperationTag Resource:User
  *
  * @package App\Http\Controllers\Api
  */
@@ -30,7 +31,13 @@ class UserProjectController extends ApiController
 	 * You can specify a GET parameter `user_role_id` to filter results.
 	 *
 	 * @OpenApiResponseSchemaRef #/components/schemas/ProjectListResponse
+	 * @OpenApiDefaultResponseSchemaRef #/components/schemas/ErrorResponse
 	 * @OpenApiResponseDescription A Project list
+	 * @OpenApiExtraParameterRef #/components/parameters/Include
+	 * @OpenApiExtraParameterRef #/components/parameters/Search
+	 * @OpenApiExtraParameterRef #/components/parameters/PaginationPage
+	 * @OpenApiExtraParameterRef #/components/parameters/PaginationLimit
+	 * @OpenApiExtraParameterRef #/components/parameters/OrderBy
 	 *
 	 * @param IndexUserProjectRequest $request
 	 * @param string $userId User UUID

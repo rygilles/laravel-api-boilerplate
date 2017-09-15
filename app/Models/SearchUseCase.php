@@ -3,7 +3,9 @@
 namespace App\Models;
 
 use Alsofronie\Uuid\UuidModelTrait;
+use Dingo\Api\Exception\ValidationHttpException;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\MessageBag;
 
 /**
  * Class SearchUseCase
@@ -171,7 +173,23 @@ class SearchUseCase extends ApiModel
 
 		/** @var Project $project */
 		$project = $this->project()->first();
-		
+
+		/** @var DataStream $dataStream */
+		$dataStream = $project->dataStream()->first();
+
+		// Check if i18nLang exists
+		if (!is_null($i18n_lang_id)) {
+			if (!$dataStream->i18nLangs()->where('id', $i18n_lang_id)->exists()) {
+				throw new ValidationHttpException(
+					new MessageBag([
+						'i18n_lang_id' => 'The related data stream does not handle the requested i18n lang "' . $i18n_lang_id . '"'
+					])
+				);
+			}
+			$i18nLang = I18nLang::find($i18n_lang_id);
+		} else {
+			$i18nLang = null;
+		}
 		// Get the project search engine model
 
 		/** @var SearchEngine $searchEngineModel */
@@ -187,8 +205,6 @@ class SearchUseCase extends ApiModel
 
 		/** @var \App\SearchEngines\SearchEngine $searchEngine */
 		$searchEngine = new $searchEngineClass($project);
-		
-		$i18nLang = I18nLang::find($i18n_lang_id);
 
 		$searchEngine->initClient();
 		$searchResultResponse = $searchEngine->performSearch($this, $query_string, $i18nLang, $page, $limit);

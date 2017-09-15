@@ -11,7 +11,8 @@ use Illuminate\Support\Facades\Lang;
 
 /**
  * @resource DataStreamHasI18nLang
- * @todo Security ?
+ * @OpenApiOperationTag Manager:DataStreamHasI18nLang
+ *
  * @package App\Http\Controllers\Api
  */
 class DataStreamHasI18nLangController extends ApiController
@@ -30,6 +31,16 @@ class DataStreamHasI18nLangController extends ApiController
 	/**
 	 * List of relationships between data streams and i18n langs
 	 *
+	 * @OpenApiOperationId all
+	 * @OpenApiResponseSchemaRef #/components/schemas/DataStreamHasI18nLangListResponse
+	 * @OpenApiDefaultResponseSchemaRef #/components/schemas/ErrorResponse
+	 * @OpenApiResponseDescription A DataStreamHasI18nLang list
+	 * @OpenApiExtraParameterRef #/components/parameters/Include
+	 * @OpenApiExtraParameterRef #/components/parameters/Search
+	 * @OpenApiExtraParameterRef #/components/parameters/PaginationPage
+	 * @OpenApiExtraParameterRef #/components/parameters/PaginationLimit
+	 * @OpenApiExtraParameterRef #/components/parameters/OrderBy
+	 *
 	 * @return \Dingo\Api\Http\Response
 	 */
 	public function index()
@@ -41,6 +52,12 @@ class DataStreamHasI18nLangController extends ApiController
 
 	/**
 	 * Get specified relationship between a data stream and a i18n lang
+	 *
+	 * @OpenApiOperationId get
+	 * @OpenApiResponseSchemaRef #/components/schemas/DataStreamHasI18nLangResponse
+	 * @OpenApiDefaultResponseSchemaRef #/components/schemas/ErrorResponse
+	 * @OpenApiResponseDescription A DataStreamHasI18nLang
+	 * @OpenApiExtraParameterRef #/components/parameters/Include
 	 *
 	 * @param string $dataStreamId Data Stream UUID
 	 * @param string $i18nLangId I18n Land Id
@@ -62,6 +79,11 @@ class DataStreamHasI18nLangController extends ApiController
 	 * <aside class="notice">Only one relationship per data stream/i18n lang is allowed.</aside>
 	 *
 	 * @ApiDocsNoCall
+	 *
+	 * @OpenApiOperationId create
+	 * @OpenApiResponseSchemaRef #/components/schemas/DataStreamHasI18nLangResponse
+	 * @OpenApiDefaultResponseSchemaRef #/components/schemas/ErrorResponse
+	 * @OpenApiResponseDescription A DataStreamHasI18nLangResponse
 	 *
 	 * @param StoreDataStreamHasI18nLangRequest $request
 	 * @return \Dingo\Api\Http\Response|void
@@ -101,6 +123,12 @@ class DataStreamHasI18nLangController extends ApiController
 	 *
 	 * @ApiDocsNoCall
 	 *
+	 * @OpenApiOperationId update
+	 * @OpenApiOperationTag Resource:DataStreamHasI18nLang
+	 * @OpenApiResponseSchemaRef #/components/schemas/DataStreamHasI18nLangResponse
+	 * @OpenApiDefaultResponseSchemaRef #/components/schemas/ErrorResponse
+	 * @OpenApiResponseDescription The updated DataStreamHasI18nLang
+	 *
 	 * @param UpdateDataStreamHasI18nLangRequest $request
 	 * @param string $dataStreamId Data Stream UUID
 	 * @param string $i18nLangId I18n Land Id
@@ -138,6 +166,11 @@ class DataStreamHasI18nLangController extends ApiController
 	 * Delete specified relationship between a data stream and a i18n lang
 	 *
 	 * @ApiDocsNoCall
+	 *
+	 * @OpenApiOperationId delete
+	 * @OpenApiOperationTag Resource:DataStreamHasI18nLang
+	 * @OpenApiResponseDescription Empty response
+	 * @OpenApiDefaultResponseSchemaRef #/components/schemas/ErrorResponse
 	 *
 	 * @param string $dataStreamId Data Stream UUID
 	 * @param string $i18nLangId I18n Land Id

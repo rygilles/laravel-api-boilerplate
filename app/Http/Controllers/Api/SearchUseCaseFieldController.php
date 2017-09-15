@@ -9,6 +9,7 @@ use App\Models\SearchUseCaseField;
 
 /**
  * @resource SearchUseCaseField
+ * @OpenApiOperationTag Manager:SearchUseCaseField
  *
  * @package App\Http\Controllers\Api
  */
@@ -28,6 +29,16 @@ class SearchUseCaseFieldController extends ApiController
 	/**
 	 * Show search use case field list
 	 *
+	 * @OpenApiOperationId all
+	 * @OpenApiResponseSchemaRef #/components/schemas/SearchUseCaseFieldListResponse
+	 * @OpenApiDefaultResponseSchemaRef #/components/schemas/ErrorResponse
+	 * @OpenApiResponseDescription A SearchUseCaseField list
+	 * @OpenApiExtraParameterRef #/components/parameters/Include
+	 * @OpenApiExtraParameterRef #/components/parameters/Search
+	 * @OpenApiExtraParameterRef #/components/parameters/PaginationPage
+	 * @OpenApiExtraParameterRef #/components/parameters/PaginationLimit
+	 * @OpenApiExtraParameterRef #/components/parameters/OrderBy
+	 *
 	 * @return \Dingo\Api\Http\Response
 	 */
 	public function index()
@@ -40,6 +51,12 @@ class SearchUseCaseFieldController extends ApiController
 
 	/**
 	 * Get specified search use case field
+	 *
+	 * @OpenApiOperationId get
+	 * @OpenApiResponseSchemaRef #/components/schemas/SearchUseCaseFieldResponse
+	 * @OpenApiDefaultResponseSchemaRef #/components/schemas/ErrorResponse
+	 * @OpenApiResponseDescription A SearchUseCaseField
+	 * @OpenApiExtraParameterRef #/components/parameters/Include
 	 *
 	 * @param string $searchUseCaseId Search use case UUID
 	 * @param string $dataStreamFieldId Data stream field UUID
@@ -61,6 +78,11 @@ class SearchUseCaseFieldController extends ApiController
 	 * Create and store new search use case field
 	 *
 	 * @ApiDocsNoCall
+	 *
+	 * @OpenApiOperationId create
+	 * @OpenApiResponseSchemaRef #/components/schemas/SearchUseCaseFieldResponse
+	 * @OpenApiDefaultResponseSchemaRef #/components/schemas/ErrorResponse
+	 * @OpenApiResponseDescription The created SearchUseCaseField
 	 *
 	 * @param StoreSearchUseCaseFieldRequest $request
 	 * @return \Dingo\Api\Http\Response|void
@@ -101,6 +123,12 @@ class SearchUseCaseFieldController extends ApiController
 	 * Update a specified search use case field
 	 *
 	 * @ApiDocsNoCall
+	 *
+	 * @OpenApiOperationId update
+	 * @OpenApiOperationTag Resource:SearchUseCaseField
+	 * @OpenApiResponseSchemaRef #/components/schemas/SearchUseCaseFieldResponse
+	 * @OpenApiDefaultResponseSchemaRef #/components/schemas/ErrorResponse
+	 * @OpenApiResponseDescription The updated SearchUseCaseField
 	 *
 	 * @param UpdateSearchUseCaseFieldRequest $request
 	 * @param string $searchUseCaseId Search use case UUID
@@ -150,6 +178,11 @@ class SearchUseCaseFieldController extends ApiController
 	 * Delete specified search use case field
 	 *
 	 * @ApiDocsNoCall
+	 *
+	 * @OpenApiOperationId delete
+	 * @OpenApiOperationTag Resource:SearchUseCaseField
+	 * @OpenApiResponseDescription Empty response
+	 * @OpenApiDefaultResponseSchemaRef #/components/schemas/ErrorResponse
 	 *
 	 * @param string $searchUseCaseId Search use case UUID
 	 * @param string $dataStreamFieldId Data stream field UUID

@@ -322,7 +322,7 @@ class AlgoliaSearchEngine implements SearchEngine
 
 			if ($dataStreamField->versioned) {
 				if (is_null($i18nLang)) {
-					throw new \Exception('Versionned search use case field requested without i18n lang specified');
+					throw new \Exception('Versioned search use case field requested without i18n lang specified');
 				}
 
 				$client_container_field_name = $this->getClientContainerFieldName($dataStreamField, $i18nLang->id);

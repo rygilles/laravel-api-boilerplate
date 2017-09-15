@@ -12,6 +12,7 @@ use Illuminate\Validation\Rule;
 
 /**
  * @resource User
+ * @OpenApiOperationTag Manager:User
  *
  * @package App\Http\Controllers\Api
  */
@@ -33,6 +34,15 @@ class UserController extends ApiController
 	/**
 	 * User list
 	 *
+	 * @OpenApiOperationId all
+	 * @OpenApiResponseSchemaRef #/components/schemas/UserListResponse
+	 * @OpenApiDefaultResponseSchemaRef #/components/schemas/ErrorResponse
+	 * @OpenApiResponseDescription A User list
+	 * @OpenApiExtraParameterRef #/components/parameters/Search
+	 * @OpenApiExtraParameterRef #/components/parameters/PaginationPage
+	 * @OpenApiExtraParameterRef #/components/parameters/PaginationLimit
+	 * @OpenApiExtraParameterRef #/components/parameters/OrderBy
+	 *
 	 * @return \Dingo\Api\Http\Response
 	 */
 	public function index()
@@ -43,6 +53,11 @@ class UserController extends ApiController
 
 	/**
 	 * Get specified user
+	 *
+	 * @OpenApiOperationId get
+	 * @OpenApiResponseSchemaRef #/components/schemas/UserResponse
+	 * @OpenApiDefaultResponseSchemaRef #/components/schemas/ErrorResponse
+	 * @OpenApiResponseDescription A User
 	 *
 	 * @param string $userId User UUID
 	 * @return \Dingo\Api\Http\Response|void
@@ -61,6 +76,11 @@ class UserController extends ApiController
 	 * Create and store new user
 	 *
 	 * @ApiDocsNoCall
+	 *
+	 * @OpenApiOperationId create
+	 * @OpenApiResponseSchemaRef #/components/schemas/UserResponse
+	 * @OpenApiDefaultResponseSchemaRef #/components/schemas/ErrorResponse
+	 * @OpenApiResponseDescription The created User
 	 *
 	 * @param StoreUserRequest $request
 	 * @return \Dingo\Api\Http\Response|void
@@ -92,6 +112,12 @@ class UserController extends ApiController
 	 * Update a specified user
 	 *
 	 * @ApiDocsNoCall
+	 *
+	 * @OpenApiOperationId update
+	 * @OpenApiOperationTag Resource:User
+	 * @OpenApiResponseSchemaRef #/components/schemas/UserResponse
+	 * @OpenApiDefaultResponseSchemaRef #/components/schemas/ErrorResponse
+	 * @OpenApiResponseDescription The updated User
 	 *
 	 * @param UpdateUserRequest $request
 	 * @param string $userId User UUID
@@ -127,6 +153,11 @@ class UserController extends ApiController
 	 * All projects owned by the user will be automatically deleted too.
 	 *
 	 * @ApiDocsNoCall
+	 *
+	 * @OpenApiOperationId delete
+	 * @OpenApiOperationTag Resource:User
+	 * @OpenApiResponseDescription Empty response
+	 * @OpenApiDefaultResponseSchemaRef #/components/schemas/ErrorResponse
 	 *
 	 * @param string $userId User UUID
 	 * @return \Dingo\Api\Http\Response|void

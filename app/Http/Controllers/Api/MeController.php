@@ -18,6 +18,8 @@ class MeController extends ApiController
 	 * Get current user
 	 *
 	 * @OpenApiOperationId getUser
+	 * @OpenApiResponseSchemaRef #/components/schemas/UserResponse
+	 * @OpenApiDefaultResponseSchemaRef #/components/schemas/ErrorResponse
 	 * @OpenApiResponseDescription A User
 	 *
 	 * @return \Dingo\Api\Http\Response|void

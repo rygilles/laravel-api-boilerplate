@@ -11,6 +11,7 @@ use Dingo\Api\Transformer\Factory;
 
 /**
  * @resource DataStreamField
+ * @OpenApiOperationTag Manager:DataStreamField
  *
  * @package App\Http\Controllers\Api
  */
@@ -30,6 +31,16 @@ class DataStreamFieldController extends ApiController
 	/**
 	 * Show data stream field list
 	 *
+	 * @OpenApiOperationId all
+	 * @OpenApiResponseSchemaRef #/components/schemas/DataStreamFieldListResponse
+	 * @OpenApiDefaultResponseSchemaRef #/components/schemas/ErrorResponse
+	 * @OpenApiResponseDescription A DataStreamField list
+	 * @OpenApiExtraParameterRef #/components/parameters/Include
+	 * @OpenApiExtraParameterRef #/components/parameters/Search
+	 * @OpenApiExtraParameterRef #/components/parameters/PaginationPage
+	 * @OpenApiExtraParameterRef #/components/parameters/PaginationLimit
+	 * @OpenApiExtraParameterRef #/components/parameters/OrderBy
+	 *
 	 * @return \Dingo\Api\Http\Response
 	 */
 	public function index()
@@ -41,6 +52,12 @@ class DataStreamFieldController extends ApiController
 
 	/**
 	 * Get specified data stream field
+	 *
+	 * @OpenApiOperationId get
+	 * @OpenApiResponseSchemaRef #/components/schemas/DataStreamFieldResponse
+	 * @OpenApiDefaultResponseSchemaRef #/components/schemas/ErrorResponse
+	 * @OpenApiResponseDescription A DataStreamField
+	 * @OpenApiExtraParameterRef #/components/parameters/Include
 	 *
 	 * @param string $dataStreamFieldId Data stream field UUID
 	 * @return \Dingo\Api\Http\Response|void
@@ -60,6 +77,11 @@ class DataStreamFieldController extends ApiController
 	 * Create and store new data stream field
 	 *
 	 * @ApiDocsNoCall
+	 *
+	 * @OpenApiOperationId create
+	 * @OpenApiResponseSchemaRef #/components/schemas/DataStreamFieldResponse
+	 * @OpenApiDefaultResponseSchemaRef #/components/schemas/ErrorResponse
+	 * @OpenApiResponseDescription A DataStreamFieldResponse
 	 *
 	 * @param StoreDataStreamFieldRequest $request
 	 * @return \Dingo\Api\Http\Response|void
@@ -93,6 +115,12 @@ class DataStreamFieldController extends ApiController
 	 *
 	 * @ApiDocsNoCall
 	 *
+	 * @OpenApiOperationId update
+	 * @OpenApiOperationTag Resource:DataStreamField
+	 * @OpenApiResponseSchemaRef #/components/schemas/DataStreamFieldResponse
+	 * @OpenApiDefaultResponseSchemaRef #/components/schemas/ErrorResponse
+	 * @OpenApiResponseDescription The updated DataStreamField
+	 *
 	 * @param UpdateDataStreamFieldRequest $request
 	 * @param string $dataStreamFieldId Data stream field UUID
 	 * @return \Dingo\Api\Http\Response|void
@@ -113,8 +141,13 @@ class DataStreamFieldController extends ApiController
 
 	/**
 	 * Delete specified data stream field
-	 **
+	 *
 	 * @ApiDocsNoCall
+	 *
+	 * @OpenApiOperationId delete
+	 * @OpenApiOperationTag Resource:DataStreamField
+	 * @OpenApiResponseDescription Empty response
+	 * @OpenApiDefaultResponseSchemaRef #/components/schemas/ErrorResponse
 	 *
 	 * @param string $dataStreamFieldId Data stream field UUID
 	 * @return \Dingo\Api\Http\Response|void

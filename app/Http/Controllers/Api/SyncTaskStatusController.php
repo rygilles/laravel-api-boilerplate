@@ -10,6 +10,7 @@ use Dingo\Api\Exception\ValidationHttpException;
 
 /**
  * @resource SyncTaskStatus
+ * @OpenApiOperationTag Manager:SyncTaskStatus
  *
  * @package App\Http\Controllers\Api
  */
@@ -29,6 +30,15 @@ class SyncTaskStatusController extends ApiController
 	/**
 	 * Show sync task status list
 	 *
+	 * @OpenApiOperationId all
+	 * @OpenApiResponseSchemaRef #/components/schemas/SyncTaskStatusListResponse
+	 * @OpenApiDefaultResponseSchemaRef #/components/schemas/ErrorResponse
+	 * @OpenApiResponseDescription A SyncTaskStatus list
+	 * @OpenApiExtraParameterRef #/components/parameters/Search
+	 * @OpenApiExtraParameterRef #/components/parameters/PaginationPage
+	 * @OpenApiExtraParameterRef #/components/parameters/PaginationLimit
+	 * @OpenApiExtraParameterRef #/components/parameters/OrderBy
+	 *
 	 * @return \Dingo\Api\Http\Response
 	 */
 	public function index()
@@ -44,6 +54,11 @@ class SyncTaskStatusController extends ApiController
 
 	/**
 	 * Get specified sync task status
+	 *
+	 * @OpenApiOperationId get
+	 * @OpenApiResponseSchemaRef #/components/schemas/SyncTaskStatusResponse
+	 * @OpenApiDefaultResponseSchemaRef #/components/schemas/ErrorResponse
+	 * @OpenApiResponseDescription A SyncTaskStatus
 	 *
 	 * @param string $syncTaskStatusId Sync task type ID
 	 * @return \Dingo\Api\Http\Response|void
@@ -65,6 +80,11 @@ class SyncTaskStatusController extends ApiController
 	 * Create and store new sync task status
 	 *
 	 * @ApiDocsNoCall
+	 *
+	 * @OpenApiOperationId create
+	 * @OpenApiResponseSchemaRef #/components/schemas/SyncTaskStatusResponse
+	 * @OpenApiDefaultResponseSchemaRef #/components/schemas/ErrorResponse
+	 * @OpenApiResponseDescription A SyncTaskStatus
 	 *
 	 * @param StoreSyncTaskStatusRequest $request
 	 * @return \Dingo\Api\Http\Response|void
@@ -97,6 +117,12 @@ class SyncTaskStatusController extends ApiController
 	 *
 	 * @ApiDocsNoCall
 	 *
+	 * @OpenApiOperationId update
+	 * @OpenApiOperationTag Resource:SyncTaskStatus
+	 * @OpenApiResponseSchemaRef #/components/schemas/SyncTaskStatusResponse
+	 * @OpenApiDefaultResponseSchemaRef #/components/schemas/ErrorResponse
+	 * @OpenApiResponseDescription The updated SyncTaskStatus
+	 *
 	 * @param UpdateSyncTaskStatusRequest $request
 	 * @param string $syncTaskStatusId Sync task status ID
 	 * @return \Dingo\Api\Http\Response|void
@@ -121,6 +147,11 @@ class SyncTaskStatusController extends ApiController
 	 * <aside class="warning">Avoid using this feature ! Check foreign keys constraints to remove dependent resources properly before.</aside>
 	 *
 	 * @ApiDocsNoCall
+	 *
+	 * @OpenApiOperationId delete
+	 * @OpenApiOperationTag Resource:SyncTaskStatus
+	 * @OpenApiResponseDescription Empty response
+	 * @OpenApiDefaultResponseSchemaRef #/components/schemas/ErrorResponse
 	 *
 	 * @param string $syncTaskStatusId Sync task status ID
 	 * @return \Dingo\Api\Http\Response|void

@@ -52,7 +52,8 @@ class SyncTaskTransformer extends ApiTransformer
 	{
 		// Nullable foreign key
 		if (is_null($syncTask->created_by_user_id)) {
-			return $this->null();
+			return null;
+			//return $this->null();
 		}
 
 		$createdByUser = $syncTask->createdByUser;

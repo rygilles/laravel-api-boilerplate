@@ -23,7 +23,13 @@ class MeProjectController extends ApiController
 	 *
 	 * @OpenApiOperationId getProjects
 	 * @OpenApiResponseSchemaRef #/components/schemas/ProjectListResponse
+	 * @OpenApiDefaultResponseSchemaRef #/components/schemas/ErrorResponse
 	 * @OpenApiResponseDescription A Project list
+	 * @OpenApiExtraParameterRef #/components/parameters/Include
+	 * @OpenApiExtraParameterRef #/components/parameters/Search
+	 * @OpenApiExtraParameterRef #/components/parameters/PaginationPage
+	 * @OpenApiExtraParameterRef #/components/parameters/PaginationLimit
+	 * @OpenApiExtraParameterRef #/components/parameters/OrderBy
 	 * 
 	 * @param IndexMeProjectRequest $request
 	 * @return \Dingo\Api\Http\Response

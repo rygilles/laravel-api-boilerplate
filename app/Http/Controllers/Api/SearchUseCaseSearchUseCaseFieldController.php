@@ -7,7 +7,8 @@ use App\Models\SearchUseCase;
 
 /**
  * @resource SearchUseCaseField
- * @todo Security ?
+ * @OpenApiOperationTag Resource:SearchUseCase
+ *
  * @package App\Http\Controllers\Api
  */
 class SearchUseCaseSearchUseCaseFieldController extends ApiController
@@ -22,6 +23,15 @@ class SearchUseCaseSearchUseCaseFieldController extends ApiController
 
 	/**
 	 * Search use case search use case fields list
+	 *
+	 * @OpenApiOperationId getFields
+	 * @OpenApiResponseSchemaRef #/components/schemas/SearchUseCaseFieldListResponse
+	 * @OpenApiDefaultResponseSchemaRef #/components/schemas/ErrorResponse
+	 * @OpenApiResponseDescription A SearchUseCaseField list
+	 * @OpenApiExtraParameterRef #/components/parameters/Search
+	 * @OpenApiExtraParameterRef #/components/parameters/PaginationPage
+	 * @OpenApiExtraParameterRef #/components/parameters/PaginationLimit
+	 * @OpenApiExtraParameterRef #/components/parameters/OrderBy
 	 *
 	 * @param string $searchUseCaseId Search use case UUID
 	 * @return \Dingo\Api\Http\Response

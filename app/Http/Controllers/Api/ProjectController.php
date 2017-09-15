@@ -32,7 +32,13 @@ class ProjectController extends ApiController
 	 *
 	 * @OpenApiOperationId all
 	 * @OpenApiResponseSchemaRef #/components/schemas/ProjectListResponse
+	 * @OpenApiDefaultResponseSchemaRef #/components/schemas/ErrorResponse
 	 * @OpenApiResponseDescription A Project list
+	 * @OpenApiExtraParameterRef #/components/parameters/Include
+	 * @OpenApiExtraParameterRef #/components/parameters/Search
+	 * @OpenApiExtraParameterRef #/components/parameters/PaginationPage
+	 * @OpenApiExtraParameterRef #/components/parameters/PaginationLimit
+	 * @OpenApiExtraParameterRef #/components/parameters/OrderBy
 	 *
 	 * @return \Dingo\Api\Http\Response
 	 */
@@ -48,7 +54,9 @@ class ProjectController extends ApiController
 	 *
 	 * @OpenApiOperationId get
 	 * @OpenApiResponseSchemaRef #/components/schemas/ProjectResponse
+	 * @OpenApiDefaultResponseSchemaRef #/components/schemas/ErrorResponse
 	 * @OpenApiResponseDescription A Project
+	 * @OpenApiExtraParameterRef #/components/parameters/Include
 	 *
 	 * @param string $projectId Project UUID
 	 * @return \Dingo\Api\Http\Response|void
@@ -70,6 +78,7 @@ class ProjectController extends ApiController
 	 *
 	 * @OpenApiOperationId create
 	 * @OpenApiResponseSchemaRef #/components/schemas/ProjectResponse
+	 * @OpenApiDefaultResponseSchemaRef #/components/schemas/ErrorResponse
 	 * @OpenApiResponseDescription The created Project
 	 *
 	 * @param StoreProjectRequest $request
@@ -106,6 +115,7 @@ class ProjectController extends ApiController
 	 * @OpenApiOperationId update
 	 * @OpenApiOperationTag Resource:Project
 	 * @OpenApiResponseSchemaRef #/components/schemas/ProjectResponse
+	 * @OpenApiDefaultResponseSchemaRef #/components/schemas/ErrorResponse
 	 * @OpenApiResponseDescription The updated Project
 	 *
 	 * @param UpdateProjectRequest $request
@@ -133,11 +143,12 @@ class ProjectController extends ApiController
 	 * The project data stream will be automatically deleted too, if exists.
 	 * <aside class="notice">Only <code>Owner</code> of project is allowed to delete it.</aside>
 	 *
+	 * @ApiDocsNoCall
+	 *
 	 * @OpenApiOperationId delete
 	 * @OpenApiOperationTag Resource:Project
-	 *
-	 * @ApiDocsNoCall
 	 * @OpenApiResponseDescription Empty response
+	 * @OpenApiDefaultResponseSchemaRef #/components/schemas/ErrorResponse
 	 *
 	 * @param string $projectId Project UUID
 	 * @return \Dingo\Api\Http\Response|void

@@ -48,8 +48,8 @@ return [
 				// Owner
 				'user_role_id' => 'Owner',
 
-				// en_US
-				'i18nLangId' => 'en_US',
+				// en
+				'i18nLangId' => 'en',
 
 				// Algolia
 				'searchEngineId' => 'ee87e3b2-1388-11e7-93ae-92361f002671',
@@ -349,8 +349,8 @@ return [
 				// Owner
 				'user_role_id' => 'Owner',
 
-				// en_US
-				'i18nLangId' => 'en_US',
+				// en
+				'i18nLangId' => 'en',
 
 				// Algolia
 				'searchEngineId' => 'ee87e3b2-1388-11e7-93ae-92361f002671',
@@ -624,8 +624,8 @@ return [
 				// Owner
 				'user_role_id' => 'Owner',
 
-				// en_US
-				'i18nLangId' => 'en_US',
+				// en
+				'i18nLangId' => 'en',
 
 				// First Sync Item of John Smith Sample Project 1
 				'syncItemId' => 'a37eda90-1f56-11e7-93ae-92361f002671',

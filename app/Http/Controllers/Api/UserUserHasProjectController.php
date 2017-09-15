@@ -8,7 +8,8 @@ use App\Models\User;
 
 /**
  * @resource UserHasProject
- * @todo Security ?
+ * @OpenApiOperationTag Resource:User
+ *
  * @package App\Http\Controllers\Api
  */
 class UserUserHasProjectController extends ApiController
@@ -28,6 +29,15 @@ class UserUserHasProjectController extends ApiController
 	 * User relationship between users and projects list
 	 *
 	 * You can specify a GET parameter `user_role_id` to filter results.
+	 *
+	 * @OpenApiResponseSchemaRef #/components/schemas/UserHasProjectListResponse
+	 * @OpenApiDefaultResponseSchemaRef #/components/schemas/ErrorResponse
+	 * @OpenApiResponseDescription A UserHasProject list
+	 * @OpenApiExtraParameterRef #/components/parameters/Include
+	 * @OpenApiExtraParameterRef #/components/parameters/Search
+	 * @OpenApiExtraParameterRef #/components/parameters/PaginationPage
+	 * @OpenApiExtraParameterRef #/components/parameters/PaginationLimit
+	 * @OpenApiExtraParameterRef #/components/parameters/OrderBy
 	 *
 	 * @param IndexUserUserHasProjectRequest $request
 	 * @param string $userId User UUID

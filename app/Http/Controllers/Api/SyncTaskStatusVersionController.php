@@ -11,6 +11,7 @@ use Dingo\Api\Exception\ValidationHttpException;
 
 /**
  * @resource SyncTaskStatusVersion
+ * @OpenApiOperationTag Manager:SyncTaskStatusVersion
  *
  * @package App\Http\Controllers\Api
  */
@@ -31,6 +32,15 @@ class SyncTaskStatusVersionController extends ApiController
 	/**
 	 * Sync task status version item list
 	 *
+	 * @OpenApiOperationId all
+	 * @OpenApiResponseSchemaRef #/components/schemas/SyncTaskStatusVersionListResponse
+	 * @OpenApiDefaultResponseSchemaRef #/components/schemas/ErrorResponse
+	 * @OpenApiResponseDescription A SyncTaskStatusVersion list
+	 * @OpenApiExtraParameterRef #/components/parameters/Search
+	 * @OpenApiExtraParameterRef #/components/parameters/PaginationPage
+	 * @OpenApiExtraParameterRef #/components/parameters/PaginationLimit
+	 * @OpenApiExtraParameterRef #/components/parameters/OrderBy
+	 *
 	 * @return \Dingo\Api\Http\Response
 	 */
 	public function index()
@@ -42,6 +52,11 @@ class SyncTaskStatusVersionController extends ApiController
 
 	/**
 	 * Get specified sync task status version
+	 *
+	 * @OpenApiOperationId get
+	 * @OpenApiResponseSchemaRef #/components/schemas/SyncTaskStatusVersionResponse
+	 * @OpenApiDefaultResponseSchemaRef #/components/schemas/ErrorResponse
+	 * @OpenApiResponseDescription A SyncTaskStatusVersion
 	 *
 	 * @param string $syncTaskStatusId Sync Task Status ID
 	 * @param string $i18nLangId I18n Lang Id
@@ -61,6 +76,11 @@ class SyncTaskStatusVersionController extends ApiController
 	 * Create and store new sync task status version
 	 *
 	 * @ApiDocsNoCall
+	 *
+	 * @OpenApiOperationId create
+	 * @OpenApiResponseSchemaRef #/components/schemas/SyncTaskStatusVersionResponse
+	 * @OpenApiDefaultResponseSchemaRef #/components/schemas/ErrorResponse
+	 * @OpenApiResponseDescription A SyncTaskStatusVersion
 	 *
 	 * @param StoreSyncTaskStatusVersionRequest $request
 	 * @return \Dingo\Api\Http\Response|void
@@ -92,6 +112,12 @@ class SyncTaskStatusVersionController extends ApiController
 	 * Update a specified sync task status version
 	 *
 	 * @ApiDocsNoCall
+	 *
+	 * @OpenApiOperationId update
+	 * @OpenApiOperationTag Resource:SyncTaskStatusVersion
+	 * @OpenApiResponseSchemaRef #/components/schemas/SyncTaskStatusVersionResponse
+	 * @OpenApiDefaultResponseSchemaRef #/components/schemas/ErrorResponse
+	 * @OpenApiResponseDescription The updated SyncTaskStatusVersion
 	 *
 	 * @param UpdateSyncTaskStatusVersionRequest $request
 	 * @param string $syncTaskStatusId Sync Task Status ID
@@ -125,6 +151,11 @@ class SyncTaskStatusVersionController extends ApiController
 	 * Delete specified sync task status version
 	 *
 	 * @ApiDocsNoCall
+	 *
+	 * @OpenApiOperationId delete
+	 * @OpenApiOperationTag Resource:SyncTaskStatusVersion
+	 * @OpenApiResponseDescription Empty response
+	 * @OpenApiDefaultResponseSchemaRef #/components/schemas/ErrorResponse
 	 *
 	 * @param string $syncTaskStatusId Sync Task Status ID
 	 * @param string $i18nLangId I18n Lang Id

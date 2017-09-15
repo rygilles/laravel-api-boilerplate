@@ -9,6 +9,7 @@ use App\Models\SearchUseCasePresetField;
 
 /**
  * @resource SearchUseCasePresetField
+ * @OpenApiOperationTag Manager:SearchUseCasePresetField
  *
  * @package App\Http\Controllers\Api
  */
@@ -28,6 +29,16 @@ class SearchUseCasePresetFieldController extends ApiController
 	/**
 	 * Show search use case preset field list
 	 *
+	 * @OpenApiOperationId all
+	 * @OpenApiResponseSchemaRef #/components/schemas/SearchUseCasePresetFieldListResponse
+	 * @OpenApiDefaultResponseSchemaRef #/components/schemas/ErrorResponse
+	 * @OpenApiResponseDescription A SearchUseCasePresetField list
+	 * @OpenApiExtraParameterRef #/components/parameters/Include
+	 * @OpenApiExtraParameterRef #/components/parameters/Search
+	 * @OpenApiExtraParameterRef #/components/parameters/PaginationPage
+	 * @OpenApiExtraParameterRef #/components/parameters/PaginationLimit
+	 * @OpenApiExtraParameterRef #/components/parameters/OrderBy
+	 *
 	 * @return \Dingo\Api\Http\Response
 	 */
 	public function index()
@@ -40,6 +51,12 @@ class SearchUseCasePresetFieldController extends ApiController
 
 	/**
 	 * Get specified search use case preset field
+	 *
+	 * @OpenApiOperationId get
+	 * @OpenApiResponseSchemaRef #/components/schemas/SearchUseCasePresetFieldResponse
+	 * @OpenApiDefaultResponseSchemaRef #/components/schemas/ErrorResponse
+	 * @OpenApiResponseDescription A SearchUseCasePresetField
+	 * @OpenApiExtraParameterRef #/components/parameters/Include
 	 *
 	 * @param string $searchUseCasePresetId Search use case preset UUID
 	 * @param string $dataStreamPresetFieldId Data stream preset field UUID
@@ -60,6 +77,11 @@ class SearchUseCasePresetFieldController extends ApiController
 	 * Create and store new search use case preset field
 	 *
 	 * @ApiDocsNoCall
+	 *
+	 * @OpenApiOperationId create
+	 * @OpenApiResponseSchemaRef #/components/schemas/SearchUseCasePresetFieldResponse
+	 * @OpenApiDefaultResponseSchemaRef #/components/schemas/ErrorResponse
+	 * @OpenApiResponseDescription The created SearchUseCasePresetField
 	 *
 	 * @param StoreSearchUseCasePresetFieldRequest $request
 	 * @return \Dingo\Api\Http\Response|void
@@ -98,6 +120,12 @@ class SearchUseCasePresetFieldController extends ApiController
 	 * Update a specified search use case preset field
 	 *
 	 * @ApiDocsNoCall
+	 *
+	 * @OpenApiOperationId update
+	 * @OpenApiOperationTag Resource:SearchUseCasePresetField
+	 * @OpenApiResponseSchemaRef #/components/schemas/SearchUseCasePresetFieldResponse
+	 * @OpenApiDefaultResponseSchemaRef #/components/schemas/ErrorResponse
+	 * @OpenApiResponseDescription The updated SearchUseCasePresetField
 	 *
 	 * @param UpdateSearchUseCasePresetFieldRequest $request
 	 * @param string $searchUseCasePresetId Search use case preset UUID
@@ -144,6 +172,11 @@ class SearchUseCasePresetFieldController extends ApiController
 	 * Delete specified search use case preset field
 	 *
 	 * @ApiDocsNoCall
+	 *
+	 * @OpenApiOperationId delete
+	 * @OpenApiOperationTag Resource:SearchUseCasePresetField
+	 * @OpenApiResponseDescription Empty response
+	 * @OpenApiDefaultResponseSchemaRef #/components/schemas/ErrorResponse
 	 *
 	 * @param string $searchUseCasePresetId Search use case preset UUID
 	 * @param string $dataStreamPresetFieldId Data stream preset field UUID

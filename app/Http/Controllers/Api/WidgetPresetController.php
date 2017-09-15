@@ -9,6 +9,7 @@ use App\Models\WidgetPreset;
 
 /**
  * @resource WidgetPreset
+ * @OpenApiOperationTag Manager:WidgetPreset
  *
  * @package App\Http\Controllers\Api
  */
@@ -28,6 +29,16 @@ class WidgetPresetController extends ApiController
 	/**
 	 * Show widget preset list
 	 *
+	 * @OpenApiOperationId all
+	 * @OpenApiResponseSchemaRef #/components/schemas/WidgetPresetListResponse
+	 * @OpenApiDefaultResponseSchemaRef #/components/schemas/ErrorResponse
+	 * @OpenApiResponseDescription A WidgetPreset list
+	 * @OpenApiExtraParameterRef #/components/parameters/Include
+	 * @OpenApiExtraParameterRef #/components/parameters/Search
+	 * @OpenApiExtraParameterRef #/components/parameters/PaginationPage
+	 * @OpenApiExtraParameterRef #/components/parameters/PaginationLimit
+	 * @OpenApiExtraParameterRef #/components/parameters/OrderBy
+	 *
 	 * @return \Dingo\Api\Http\Response
 	 */
 	public function index()
@@ -41,6 +52,12 @@ class WidgetPresetController extends ApiController
 
 	/**
 	 * Get specified widget preset
+	 *
+	 * @OpenApiOperationId get
+	 * @OpenApiResponseSchemaRef #/components/schemas/WidgetPresetResponse
+	 * @OpenApiDefaultResponseSchemaRef #/components/schemas/ErrorResponse
+	 * @OpenApiResponseDescription A WidgetPreset
+	 * @OpenApiExtraParameterRef #/components/parameters/Include
 	 *
 	 * @param string $widgetPresetId Widget preset UUID
 	 * @return \Dingo\Api\Http\Response|void
@@ -60,6 +77,11 @@ class WidgetPresetController extends ApiController
 	 * Create and store new widget preset
 	 *
 	 * @ApiDocsNoCall
+	 *
+	 * @OpenApiOperationId create
+	 * @OpenApiResponseSchemaRef #/components/schemas/WidgetPresetResponse
+	 * @OpenApiDefaultResponseSchemaRef #/components/schemas/ErrorResponse
+	 * @OpenApiResponseDescription A WidgetPreset
 	 *
 	 * @param StoreWidgetPresetRequest $request
 	 * @return \Dingo\Api\Http\Response|void
@@ -91,6 +113,12 @@ class WidgetPresetController extends ApiController
 	 *
 	 * @ApiDocsNoCall
 	 *
+	 * @OpenApiOperationId update
+	 * @OpenApiOperationTag Resource:WidgetPreset
+	 * @OpenApiResponseSchemaRef #/components/schemas/WidgetPresetResponse
+	 * @OpenApiDefaultResponseSchemaRef #/components/schemas/ErrorResponse
+	 * @OpenApiResponseDescription The updated WidgetPreset
+	 *
 	 * @param UpdateWidgetPresetRequest $request
 	 * @param string $widgetPresetId Widget preset UUID
 	 * @return \Dingo\Api\Http\Response|void
@@ -112,6 +140,11 @@ class WidgetPresetController extends ApiController
 	 * Delete specified widget preset
 	 *
 	 * @ApiDocsNoCall
+	 *
+	 * @OpenApiOperationId delete
+	 * @OpenApiOperationTag Resource:WidgetPreset
+	 * @OpenApiResponseDescription Empty response
+	 * @OpenApiDefaultResponseSchemaRef #/components/schemas/ErrorResponse
 	 *
 	 * @param string $widgetPresetId Widget preset UUID
 	 * @return \Dingo\Api\Http\Response|void

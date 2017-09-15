@@ -8,6 +8,7 @@ use Dingo\Api\Http\Response;
 
 /**
  * @resource User
+ * @OpenApiOperationTag Resource:UserGroup
  *
  * @package App\Http\Controllers\Api
  */
@@ -26,6 +27,15 @@ class UserGroupUserController extends ApiController
 
 	/**
 	 * User group user list
+	 *
+	 * @OpenApiOperationId getUsers
+	 * @OpenApiResponseSchemaRef #/components/schemas/UserListResponse
+	 * @OpenApiDefaultResponseSchemaRef #/components/schemas/ErrorResponse
+	 * @OpenApiResponseDescription A User list
+	 * @OpenApiExtraParameterRef #/components/parameters/Search
+	 * @OpenApiExtraParameterRef #/components/parameters/PaginationPage
+	 * @OpenApiExtraParameterRef #/components/parameters/PaginationLimit
+	 * @OpenApiExtraParameterRef #/components/parameters/OrderBy
 	 *
 	 * @param string $userGroupId User Group ID
 	 * @return \Dingo\Api\Http\Response

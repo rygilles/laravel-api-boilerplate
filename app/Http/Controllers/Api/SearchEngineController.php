@@ -10,6 +10,7 @@ use Dingo\Api\Exception\ValidationHttpException;
 
 /**
  * @resource SearchEngine
+ * @OpenApiOperationTag Manager:SearchEngine
  *
  * @package App\Http\Controllers\Api
  */
@@ -30,6 +31,16 @@ class SearchEngineController extends ApiController
 	/**
 	 * Show search engine list
 	 *
+	 * @OpenApiOperationId all
+	 * @OpenApiResponseSchemaRef #/components/schemas/SearchEngineListResponse
+	 * @OpenApiDefaultResponseSchemaRef #/components/schemas/ErrorResponse
+	 * @OpenApiResponseDescription A SearchEngine list
+	 * @OpenApiExtraParameterRef #/components/parameters/Include
+	 * @OpenApiExtraParameterRef #/components/parameters/Search
+	 * @OpenApiExtraParameterRef #/components/parameters/PaginationPage
+	 * @OpenApiExtraParameterRef #/components/parameters/PaginationLimit
+	 * @OpenApiExtraParameterRef #/components/parameters/OrderBy
+	 *
 	 * @return \Dingo\Api\Http\Response
 	 */
 	public function index()
@@ -43,6 +54,12 @@ class SearchEngineController extends ApiController
 
 	/**
 	 * Get specified search engine
+	 *
+	 * @OpenApiOperationId get
+	 * @OpenApiResponseSchemaRef #/components/schemas/SearchEngineResponse
+	 * @OpenApiDefaultResponseSchemaRef #/components/schemas/ErrorResponse
+	 * @OpenApiResponseDescription A SearchEngine
+	 * @OpenApiExtraParameterRef #/components/parameters/Include
 	 *
 	 * @param string $searchEngineId Search Engine UUID
 	 * @return \Dingo\Api\Http\Response|void
@@ -62,6 +79,11 @@ class SearchEngineController extends ApiController
 	 * Create and store new search engine
 	 *
 	 * @ApiDocsNoCall
+	 *
+	 * @OpenApiOperationId create
+	 * @OpenApiResponseSchemaRef #/components/schemas/SearchEngineResponse
+	 * @OpenApiDefaultResponseSchemaRef #/components/schemas/ErrorResponse
+	 * @OpenApiResponseDescription A SearchEngine
 	 *
 	 * @param StoreSearchEngineRequest $request
 	 * @return \Dingo\Api\Http\Response|void
@@ -94,6 +116,12 @@ class SearchEngineController extends ApiController
 	 *
 	 * @ApiDocsNoCall
 	 *
+	 * @OpenApiOperationId update
+	 * @OpenApiOperationTag Resource:SearchEngine
+	 * @OpenApiResponseSchemaRef #/components/schemas/SearchEngineResponse
+	 * @OpenApiDefaultResponseSchemaRef #/components/schemas/ErrorResponse
+	 * @OpenApiResponseDescription The updated SearchEngine
+	 *
 	 * @param UpdateSearchEngineRequest $request
 	 * @param string $searchEngineId User UUID
 	 * @return \Dingo\Api\Http\Response|void
@@ -117,6 +145,11 @@ class SearchEngineController extends ApiController
 	 * <aside class="warning">Avoid using this feature ! Check foreign keys constraints to remove dependent resources properly before.</aside>
 	 *
 	 * @ApiDocsNoCall
+	 *
+	 * @OpenApiOperationId delete
+	 * @OpenApiOperationTag Resource:SearchEngine
+	 * @OpenApiResponseDescription Empty response
+	 * @OpenApiDefaultResponseSchemaRef #/components/schemas/ErrorResponse
 	 *
 	 * @param string $searchEngineId Search Engine UUID
 	 * @return \Dingo\Api\Http\Response|void

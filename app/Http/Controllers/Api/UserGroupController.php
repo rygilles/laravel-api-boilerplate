@@ -7,6 +7,7 @@ use App\Models\UserGroup;
 
 /**
  * @resource UserGroup
+ * @OpenApiOperationTag Manager:UserGroup
  *
  * @package App\Http\Controllers\Api
  */
@@ -26,6 +27,15 @@ class UserGroupController extends ApiController
 	/**
 	 * Show User group list
 	 *
+	 * @OpenApiOperationId all
+	 * @OpenApiResponseSchemaRef #/components/schemas/UserGroupListResponse
+	 * @OpenApiDefaultResponseSchemaRef #/components/schemas/ErrorResponse
+	 * @OpenApiResponseDescription A UserGroup list
+	 * @OpenApiExtraParameterRef #/components/parameters/Search
+	 * @OpenApiExtraParameterRef #/components/parameters/PaginationPage
+	 * @OpenApiExtraParameterRef #/components/parameters/PaginationLimit
+	 * @OpenApiExtraParameterRef #/components/parameters/OrderBy
+	 *
 	 * @return \Dingo\Api\Http\Response
 	 */
 	public function index()
@@ -37,6 +47,11 @@ class UserGroupController extends ApiController
 
 	/**
 	 * Get specified User group
+	 *
+	 * @OpenApiOperationId get
+	 * @OpenApiResponseSchemaRef #/components/schemas/UserGroupResponse
+	 * @OpenApiDefaultResponseSchemaRef #/components/schemas/ErrorResponse
+	 * @OpenApiResponseDescription A UserGroup
 	 *
 	 * @param string $userGroupId User Group Id
 	 * @return \Dingo\Api\Http\Response|void

@@ -11,6 +11,7 @@ use Dingo\Api\Exception\ValidationHttpException;
 
 /**
  * @resource SyncTaskTypeVersion
+ * @OpenApiOperationTag Manager:SyncTaskTypeVersion
  *
  * @package App\Http\Controllers\Api
  */
@@ -31,6 +32,15 @@ class SyncTaskTypeVersionController extends ApiController
 	/**
 	 * Sync task type version item list
 	 *
+	 * @OpenApiOperationId all
+	 * @OpenApiResponseSchemaRef #/components/schemas/SyncTaskTypeVersionListResponse
+	 * @OpenApiDefaultResponseSchemaRef #/components/schemas/ErrorResponse
+	 * @OpenApiResponseDescription A SyncTaskTypeVersion list
+	 * @OpenApiExtraParameterRef #/components/parameters/Search
+	 * @OpenApiExtraParameterRef #/components/parameters/PaginationPage
+	 * @OpenApiExtraParameterRef #/components/parameters/PaginationLimit
+	 * @OpenApiExtraParameterRef #/components/parameters/OrderBy
+	 *
 	 * @return \Dingo\Api\Http\Response
 	 */
 	public function index()
@@ -42,6 +52,11 @@ class SyncTaskTypeVersionController extends ApiController
 
 	/**
 	 * Get specified sync task type version
+	 *
+	 * @OpenApiOperationId get
+	 * @OpenApiResponseSchemaRef #/components/schemas/SyncTaskTypeVersionResponse
+	 * @OpenApiDefaultResponseSchemaRef #/components/schemas/ErrorResponse
+	 * @OpenApiResponseDescription A SyncTaskTypeVersion
 	 *
 	 * @param string $syncTaskTypeId Sync Task Type ID
 	 * @param string $i18nLangId I18n Lang Id
@@ -61,6 +76,10 @@ class SyncTaskTypeVersionController extends ApiController
 	 * Create and store new sync task type version
 	 *
 	 * @ApiDocsNoCall
+	 *
+	 * @OpenApiOperationId create
+	 * @OpenApiResponseSchemaRef #/components/schemas/SyncTaskTypeVersionResponse
+	 * @OpenApiDefaultResponseSchemaRef #/components/schemas/ErrorResponse
 	 *
 	 * @param StoreSyncTaskTypeVersionRequest $request
 	 * @return \Dingo\Api\Http\Response|void
@@ -93,6 +112,12 @@ class SyncTaskTypeVersionController extends ApiController
 	 *
 	 * @ApiDocsNoCall
 	 *
+	 * @OpenApiOperationId update
+	 * @OpenApiOperationTag Resource:SyncTaskTypeVersion
+	 * @OpenApiResponseSchemaRef #/components/schemas/SyncTaskTypeVersionResponse
+	 * @OpenApiDefaultResponseSchemaRef #/components/schemas/ErrorResponse
+	 * @OpenApiResponseDescription The updated SyncTaskTypeVersion
+	 *
 	 * @param UpdateSyncTaskTypeVersionRequest $request
 	 * @param string $syncTaskTypeId Sync Task Type ID
 	 * @param string $i18nLangId I18n Lang Id
@@ -124,6 +149,11 @@ class SyncTaskTypeVersionController extends ApiController
 	 * Delete specified sync task type version
 	 *
 	 * @ApiDocsNoCall
+	 *
+	 * @OpenApiOperationId delete
+	 * @OpenApiOperationTag Resource:SyncTaskTypeVersion
+	 * @OpenApiResponseDescription Empty response
+	 * @OpenApiDefaultResponseSchemaRef #/components/schemas/ErrorResponse
 	 *
 	 * @param string $syncTaskTypeId Sync Task Type ID
 	 * @param string $i18nLangId I18n Lang Id

@@ -8,6 +8,7 @@ use App\Models\Project;
 
 /**
  * @resource SyncTask
+ * @OpenApiOperationTag Resource:Project
  *
  * @package App\Http\Controllers\Api
  */
@@ -16,7 +17,16 @@ class ProjectSyncTaskController extends ApiController
 	/**
 	 * Project sync task list
 	 *
-	 * You can specify a GET parameter `root` (return only root tasks if true, children only if false) to filter results.
+	 * You can specify a GET parameter `root` (return only root tasks if true, children only if false) to filter results
+	 *
+	 * @OpenApiOperationId getSyncTasks
+	 * @OpenApiResponseSchemaRef #/components/schemas/SyncTaskListResponse
+	 * @OpenApiDefaultResponseSchemaRef #/components/schemas/ErrorResponse
+	 * @OpenApiResponseDescription A SyncTask list
+	 * @OpenApiExtraParameterRef #/components/parameters/Search
+	 * @OpenApiExtraParameterRef #/components/parameters/PaginationPage
+	 * @OpenApiExtraParameterRef #/components/parameters/PaginationLimit
+	 * @OpenApiExtraParameterRef #/components/parameters/OrderBy
 	 *
 	 * @param IndexProjectSyncTaskRequest $request
 	 * @param string $projectId Project UUID

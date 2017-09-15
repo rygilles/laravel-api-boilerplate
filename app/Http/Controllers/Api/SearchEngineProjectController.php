@@ -7,6 +7,7 @@ use App\Models\SearchEngine;
 
 /**
  * @resource Project
+ * @OpenApiOperationTag Resource:SearchEngine
  *
  * @package App\Http\Controllers\Api
  */
@@ -26,8 +27,15 @@ class SearchEngineProjectController extends ApiController
 	/**
 	 * Search engine project list
 	 *
+	 * @OpenApiOperationId getProjects
 	 * @OpenApiResponseSchemaRef #/components/schemas/ProjectListResponse
+	 * @OpenApiDefaultResponseSchemaRef #/components/schemas/ErrorResponse
 	 * @OpenApiResponseDescription A Project list
+	 * @OpenApiExtraParameterRef #/components/parameters/Include
+	 * @OpenApiExtraParameterRef #/components/parameters/Search
+	 * @OpenApiExtraParameterRef #/components/parameters/PaginationPage
+	 * @OpenApiExtraParameterRef #/components/parameters/PaginationLimit
+	 * @OpenApiExtraParameterRef #/components/parameters/OrderBy
 	 * 
 	 * @param string $searchEngineId Search Engine UUID
 	 * @return \Dingo\Api\Http\Response

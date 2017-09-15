@@ -11,6 +11,8 @@ use Illuminate\Support\Facades\Lang;
 
 /**
  * @resource UserHasProject
+ * @OpenApiOperationTag Manager:UserHasProject
+ *
  * @todo Security on admin add ? Make invitation system !
  * @package App\Http\Controllers\Api
  */
@@ -30,6 +32,16 @@ class UserHasProjectController extends ApiController
 	/**
 	 * List of relationships between users and projects
 	 *
+	 * @OpenApiOperationId all
+	 * @OpenApiResponseSchemaRef #/components/schemas/UserHasProjectListResponse
+	 * @OpenApiDefaultResponseSchemaRef #/components/schemas/ErrorResponse
+	 * @OpenApiResponseDescription A UserHasProject list
+	 * @OpenApiExtraParameterRef #/components/parameters/Include
+	 * @OpenApiExtraParameterRef #/components/parameters/Search
+	 * @OpenApiExtraParameterRef #/components/parameters/PaginationPage
+	 * @OpenApiExtraParameterRef #/components/parameters/PaginationLimit
+	 * @OpenApiExtraParameterRef #/components/parameters/OrderBy
+	 *
 	 * @return \Dingo\Api\Http\Response
 	 */
 	public function index()
@@ -42,6 +54,12 @@ class UserHasProjectController extends ApiController
 
 	/**
 	 * Get specified relationship between a user and a project
+	 *
+	 * @OpenApiOperationId get
+	 * @OpenApiResponseSchemaRef #/components/schemas/UserHasProjectResponse
+	 * @OpenApiDefaultResponseSchemaRef #/components/schemas/ErrorResponse
+	 * @OpenApiResponseDescription A UserHasProject
+	 * @OpenApiExtraParameterRef #/components/parameters/Include
 	 *
 	 * @param string $userId User UUID
 	 * @param string $projectId Project UUID
@@ -65,6 +83,11 @@ class UserHasProjectController extends ApiController
 	 * <aside class="notice">Only one relationship per user/project is allowed and only one user can be <code>Owner</code>of a project.</aside>
 	 *
 	 * @ApiDocsNoCall
+	 *
+	 * @OpenApiOperationId create
+	 * @OpenApiResponseSchemaRef #/components/schemas/UserHasProjectResponse
+	 * @OpenApiDefaultResponseSchemaRef #/components/schemas/ErrorResponse
+	 * @OpenApiResponseDescription A UserHasProject
 	 *
 	 * @param StoreUserHasProjectRequest $request
 	 * @return \Dingo\Api\Http\Response|void
@@ -113,6 +136,12 @@ class UserHasProjectController extends ApiController
 	 * <aside class="notice">Only one relationship per user/project is allowed and only one user can be <code>Owner</code>of a project.</aside>
 	 *
 	 * @ApiDocsNoCall
+	 *
+	 * @OpenApiOperationId update
+	 * @OpenApiOperationTag Resource:UserHasProject
+	 * @OpenApiResponseSchemaRef #/components/schemas/UserHasProjectResponse
+	 * @OpenApiDefaultResponseSchemaRef #/components/schemas/ErrorResponse
+	 * @OpenApiResponseDescription The updated UserHasProject
 	 *
 	 * @param UpdateUserHasProjectRequest $request
 	 * @param string $userId User UUID
@@ -163,6 +192,11 @@ class UserHasProjectController extends ApiController
 	 * Delete specified relationship between a user and a project
 	 *
 	 * @ApiDocsNoCall
+	 *
+	 * @OpenApiOperationId delete
+	 * @OpenApiOperationTag Resource:UserHasProject
+	 * @OpenApiResponseDescription Empty response
+	 * @OpenApiDefaultResponseSchemaRef #/components/schemas/ErrorResponse
 	 *
 	 * @param string $userId User UUID
 	 * @param string $projectId Project UUID

@@ -60,6 +60,7 @@ class ProjectTransformer extends ApiTransformer
 	{
 		// Nullable foreign key
 		if (is_null($project->data_stream_id)) {
+			return null;
 			return $this->null();
 		}
 
