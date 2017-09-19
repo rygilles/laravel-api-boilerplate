@@ -48,11 +48,6 @@ return [
             'root' => storage_path('app'),
         ],
 
-	    'syncTasksTempFolder' => [
-		    'driver' => 'local',
-		    'root' => storage_path('app') . '/feed_temp',
-	    ],
-
 	    /*
         'public' => [
             'driver' => 'local',
@@ -61,18 +56,6 @@ return [
             'visibility' => 'public',
         ],
 		*/
-
-	    'widgets_public' => [
-		    'driver' => 'local',
-		    'root' => storage_path('/widgets/public'),
-		    'url' => env('APP_URL').'/widgets',
-		    'visibility' => 'public',
-	    ],
-
-	    'widgets_presets' => [
-		    'driver' => 'local',
-		    'root' => storage_path('app') . '/widgets/presets',
-	    ],
 
         's3' => [
             'driver' => 's3',

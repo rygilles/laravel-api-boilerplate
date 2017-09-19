@@ -3,10 +3,6 @@
 namespace App\Models;
 
 use Alsofronie\Uuid\UuidModelTrait;
-use App\Models\Project;
-use App\Models\SyncTasks;
-use App\Models\UserGroup;
-use App\Models\UserHasProject;
 use Illuminate\Notifications\Notifiable;
 
 use Illuminate\Notifications\RoutesNotifications;
@@ -147,45 +143,6 @@ class User extends ApiModel implements AuthenticatableContract,	AuthorizableCont
 	}
 
 	/**
-	 * Get the relationships between this user and his projects
-	 *
-	 * @param   string  $user_role_id   Pivot user role id
-	 * @return \Illuminate\Database\Eloquent\Relations\HasMany
-	 */
-	public function userHasProjects($user_role_id = null)
-	{
-		if (!is_null($user_role_id))
-			return $this->hasMany(UserHasProject::class)->where('user_role_id', $user_role_id);
-		else
-			return $this->hasMany(UserHasProject::class);
-	}
-
-	/**
-	 * Get the projects of this user using relationship table
-	 *
-	 * @param   string  $user_role_id   Pivot user role id
-	 * @return \Illuminate\Database\Eloquent\Relations\BelongsToMany
-	 */
-	public function projects($user_role_id = null)
-	{
-		if (!is_null($user_role_id))
-			return $this->belongsToMany(Project::class, 'user_has_project', 'user_id', 'project_id')->wherePivot('user_role_id', $user_role_id);
-		else
-			return $this->belongsToMany(Project::class, 'user_has_project', 'user_id', 'project_id');
-	}
-
-	/**
-	 * Get the project of this user using relationship table
-	 *
-	 * @param   string  $project_id Project ID
-	 * @return Project
-	 */
-	public function project($project_id)
-	{
-		return $this->belongsToMany(Project::class, 'user_has_project', 'user_id', 'project_id')->wherePivot('project_id', $project_id)->first();
-	}
-
-	/**
 	 * Get the user group of this user
 	 *
 	 * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
@@ -193,16 +150,6 @@ class User extends ApiModel implements AuthenticatableContract,	AuthorizableCont
 	public function userGroup()
 	{
 		return $this->belongsTo(UserGroup::class);
-	}
-
-	/**
-	 * Get the sync task created bu this user
-	 *
-	 * @return \Illuminate\Database\Eloquent\Relations\HasMany
-	 */
-	public function createdSyncTasks()
-	{
-		return $this->hasMany(SyncTask::class, 'created_by_user_id');
 	}
 
 	/**

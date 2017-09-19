@@ -28,7 +28,7 @@ window.oauthAxios = window.axios.create({
  * Api Axios
  */
 window.apiAxios = window.axios.create({
-    baseURL : 'https://emsearch.ryan.ems-dev.net/api',
+    baseURL : 'https://localhost/laravel-api-boilerplate/api',
     withCredentials : true,
     headers : {
         'X-CSRF-TOKEN': window.Laravel.csrfToken,
@@ -129,7 +129,7 @@ window.changeLang = function(lang) {
      * Recreate Api Axios
      */
     window.apiAxios = window.axios.create({
-        baseURL : 'https://emsearch.ryan.ems-dev.net/api',
+        baseURL : 'https://localhost/laravel-api-boilerplate/api',
         withCredentials : true,
         headers : {
             'X-CSRF-TOKEN': window.Laravel.csrfToken,

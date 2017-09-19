@@ -36,7 +36,7 @@ class GenerateApiDocs extends Command
      */
     public function handle()
     {
-        $this->info('EMSEARCH Tools : Generate Api Documentation (For DEV purpose only !)');
+        $this->info('LaravelApiBoilerplate Tools : Generate Api Documentation (For DEV purpose only !)');
         $this->info('(Ask to ryan@e-monsite.com for more information)');
         $this->info('');
 

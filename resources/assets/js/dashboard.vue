@@ -27,7 +27,7 @@
 
 			<!-- Main Footer -->
 			<footer class="main-footer">
-				<strong>Copyright &copy; 2017 <a href="javascript:;">emsearch</a>.</strong> All rights reserved.
+				<strong>Copyright &copy; 2017 <a href="javascript:;">LaravelApiBoilerplate</a>.</strong> All rights reserved.
 			</footer>
 		</div>
 		<!-- ./wrapper -->

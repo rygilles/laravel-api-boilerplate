@@ -147,13 +147,8 @@ return [
 		'size'                  => 'Taille',
 
 		'user_group_id'         => 'Groupe d\'utilisateurs',
-		'search_engine_id'      => 'Moteur de recherche',
 		'user_id'               => 'Nom de l\'utilisateur',
-		'project_id'            => 'Nom du projet',
-		'user_role_id'          => 'Rôle',
 	],
 
 	'unique_with' => 'Une relation entre :fields existe déjà.',
-	'search_engine_class_name' => 'Aucune classe avec le nom indiqué n\'existe dans le namespace App\\SearchEngines namespace.',
-	'data_stream_decoder_class_name' => 'Aucune classe avec le nom indiqué n\'existe dans le namespace App\\DataStreamDecoders.',
 ];

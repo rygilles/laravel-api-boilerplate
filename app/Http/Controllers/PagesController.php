@@ -37,6 +37,9 @@ class PagesController extends Controller
 		return view('dashboard');
 	}
 
+	/**
+	 * Show PHPInfo (for debug purpose... to remove)
+	 */
 	public function phpinfo()
 	{
 		phpinfo();

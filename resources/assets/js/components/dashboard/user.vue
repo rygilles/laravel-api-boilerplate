@@ -52,11 +52,6 @@
 				<div class="nav-tabs-custom">
 					<ul class="nav nav-tabs">
 						<li class="active">
-							<a href="#user-user-has-projects-tab-pane" data-toggle="tab">
-								<i class="fa fa-sticky-note-o fa-fw"></i> <span v-html="$t('projects.projects')"></span>
-							</a>
-						</li>
-						<li>
 							<a href="#user-notifications-tab-pane" data-toggle="tab">
 								<i class="fa fa-bell-o fa-fw"></i> <span v-html="'Notifications (TODO)'"></span>
 							</a>
@@ -68,23 +63,7 @@
 						</li>
 					</ul>
 					<div class="tab-content">
-						<div class="active tab-pane" id="user-user-has-projects-tab-pane">
-							<DataManager
-								:rights="{
-									allowEdit: false,
-								}"
-								i18nPath="user_has_projects.data_manager.user_user_has_projects"
-								:resource="userUserHasProjectDataManagerResource"
-								:defaultOrderBy="{column: 'user_role_id', direction: 'desc'}"
-								:pagination="{limiting: false, defaultLimit: 20}"
-								:searching="false"
-								:request="{include: 'user,project', extraParameters: {userId: userId}}"
-								:store="{stateName: 'userUserHasProjects', loadingStateName: 'userUserHasProjectsLoading', dispatchAction: 'getUserUserHasProjects'}"
-								:columns="userUserHasProjectsDataManagerColumns"
-								buttonsColumnClass="col-md-2"
-							></DataManager>
-						</div>
-						<div class="tab-pane" id="user-notifications-tab-pane">
+						<div class="active tab-pane" id="user-notifications-tab-pane">
 							TODO :
 							<ul>
 								<li>Notifications list</li>
@@ -206,150 +185,7 @@
 				}
 
 				return fields;
-			},
-
-			userUserHasProjectDataManagerResource() {
-				return {
-					name: 'userHasProject',
-					routePath: 'project',
-					routeParamsMap: {
-						'projectId': 'project_id',
-					},
-					create: {
-						postUri: '/userHasProject',
-					},
-					edit: {
-						putUriTemplate: '/userHasProject/<%- resourceRow.user_id %>,<%- resourceRow.project_id %>',
-					},
-					delete: {
-						deleteUriTemplate: '/userHasProject/<%- resourceRow.user_id %>,<%- resourceRow.project_id %>',
-					},
-					createDefaultResourceRow: {}
-				}
-			},
-
-			userUserHasProjectsDataManagerColumns() {
-
-				return [
-					{
-						name : 'project_name',
-						displayProp : 'project.data.name',
-						class : 'col-md-4',
-						orderable : false,
-						type: 'input',
-						routerLink: {
-							routeName: 'project',
-							paramsNames: {
-								'projectId': 'project_id'
-							}
-						},
-						create : {
-							fillable: false,
-						},
-						edit: {
-							fillable: false,
-						},
-					},
-					{
-						name : 'user_id',
-						type : 'select2',
-						select2 : {
-							labelProp : 'name',
-							valueProp : 'id',
-							feed : {
-								getUri : '/user',
-								params : {
-									limit: 10,
-									order_by: 'name,asc',
-								}
-							},
-						},
-						list: {
-							visible: false,
-						},
-						create : {
-							fillable: true,
-							defaultValue: this.user_id,
-						},
-						edit: {
-							fillable: false,
-						},
-					},
-					{
-						name : 'project_id',
-						type : 'select2',
-						select2 : {
-							labelProp : 'name',
-							valueProp : 'id',
-							feed : {
-								getUri : '/project',
-								params : {
-									limit: 10,
-									order_by: 'name,asc',
-								}
-							},
-						},
-						list: {
-							visible: false,
-						},
-						create : {
-							fillable: true,
-							defaultValue: '',
-						},
-						edit: {
-							fillable: false,
-						},
-					},
-					{
-						name : 'user_role_id',
-						displayProp : 'user_role_id',
-						class : 'col-md-2',
-						orderable : true,
-						order_by_field : 'user_role_id',
-						type : 'select2',
-						select2 : {
-							labelProp : 'label',
-							valueProp : 'id',
-							options : [
-								{
-									id : 'Owner',
-									label : this.$i18n.t('user_has_projects.user_role.Owner'),
-								},
-								{
-									id : 'Administrator',
-									label : this.$i18n.t('user_has_projects.user_role.Administrator'),
-								}
-							]
-						},
-						transformValue : (value) => {
-							return this.$i18n.t('user_has_projects.user_role.' + value);
-						},
-						create : {
-							fillable: true,
-						},
-						edit: {
-							fillable: false,
-						},
-					},
-					{
-						name : 'created_at',
-						class : 'col-md-2',
-						orderable : true,
-						order_by_field : 'created_at',
-						transformValue : (value) => {
-							return this.momentLocalDate(value);
-						},
-
-						create: {
-							fillable: false,
-						},
-
-						edit: {
-							fillable: false,
-						},
-					},
-				];
-			},
+			}
 		},
 		methods: {
 			fetchData() {

@@ -13,35 +13,16 @@
 				</div>
 			</div>
 		</div>
-		<ProjectCreateWizard></ProjectCreateWizard>
-		<div v-if="(['Developer', 'Support'].indexOf(this.$store.getters.me.user_group_id) != -1)" class="row">
-			<div class="col-xs-12">
-				<div class="box">
-					<div class="box-header with-border">
-						<h3 class="box-title">Sync. Tasks Logs Created Events in Real Time ! (WIP)</h3>
-					</div>
-					<div class="box-body">
-						<div class="form-group">
-							<textarea class="form-control" rows="15" readonly style="font-family: 'Courier New',Monospace; font-size: 12px" v-html="syncTaskLogCreatedEventsEntries"></textarea>
-						</div>
-					</div>
-				</div>
-			</div>
-		</div>
 	</section>
 </template>
 
 <script>
-	import ProjectCreateWizard from '../includes/project-create-wizard'
-
 	export default {
 		name: 'Home',
 
-		components: { ProjectCreateWizard },
-
 		data() {
 			return {
-				'syncTaskLogCreatedEvents': []
+				'userCreatedEvents': []
 			}
 		},
 
@@ -73,24 +54,10 @@
 
 			listenForAdminEvents() {
 				Echo.private('AdminChan')
-					.listen('SyncTaskLogCreatedEvent', (e) => {
-						this.syncTaskLogCreatedEvents.push(e);
+					.listen('userCreatedEvent', (e) => {
+						this.userCreatedEvents.push(e);
 					});
 			},
 		},
-
-		computed: {
-			syncTaskLogCreatedEventsEntries() {
-				var lines = '';
-				this.syncTaskLogCreatedEvents.forEach((e, index) => {
-					if (e.sync_task_type_id == 'Main') {
-						lines += '[Main Task "' + e.sync_task_id +  '"] : "' + e.sync_task_type_id + '" : ' + e.entry + "\n";
-					} else {
-						lines += '[Main Task "' + e.main_sync_task_id +  '" - Sub Task "' + e.sync_task_id + '"] : "' + e.sync_task_type_id + '" : ' + e.entry + "\n";
-					}
-				});
-				return lines;
-			}
-		}
 	}
 </script>

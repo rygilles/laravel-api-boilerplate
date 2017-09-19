@@ -126,39 +126,7 @@ class CustomValidator
 			throw new InvalidArgumentException("Validation rule $rule requires at least $count parameters.");
 		}
 	}
-
-	/**
-	 * Custom validation : Validate SearchEngine model class_name field
-	 *
-	 * The specified class name must exists in the App/SearchEngines namespace
-	 *
-	 * @param string $attribute
-	 * @param mixed $value
-	 * @param array $parameters
-	 * @param \Illuminate\Validation\Validator $validator
-	 * @return bool
-	 */
-	public function validateSearchEngineClassName($attribute, $value, $parameters, $validator)
-	{
-		return class_exists('App\\SearchEngines\\' . $value);
-	}
-
-	/**
-	 * Custom validation : Validate DataStreamDecoder model class_name field
-	 *
-	 * The specified class name must exists in the App/DataStreamDecoders namespace
-	 *
-	 * @param string $attribute
-	 * @param mixed $value
-	 * @param array $parameters
-	 * @param \Illuminate\Validation\Validator $validator
-	 * @return bool
-	 */
-	public function validateDataStreamDecoderClassName($attribute, $value, $parameters, $validator)
-	{
-		return class_exists('App\\DataStreamDecoders\\' . $value);
-	}
-
+	
 	/**
 	 * Custom validation : Hexadecimal
 	 *

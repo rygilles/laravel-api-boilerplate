@@ -3,11 +3,11 @@
 		<a href="/" class="logo">
 			<!-- mini logo for sidebar -->
 			<span class="logo-mini">
-				<img src="/img/dashboard-mini-logo.png" alt="emsearch" class="img-responsive center-block">
+				<img src="/img/dashboard-mini-logo.png" alt="" class="img-responsive center-block">
 			</span>
 			<!-- logo for regular state and mobile devices -->
 			<div class="logo-lg">
-				<img src="/img/dashboard-logo.png" alt="emsearch" class="img-responsive">
+				<img src="/img/dashboard-logo.png" alt="" class="img-responsive">
 			</div>
 		</a>
 

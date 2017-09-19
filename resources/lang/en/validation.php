@@ -119,14 +119,9 @@ return [
 
     'attributes' => [
 	    'user_group_id'         => 'User group',
-	    'search_engine_id'      => 'Search engine',
 	    'user_id'               => 'User name',
-	    'project_id'            => 'Project name',
-	    'user_role_id'          => 'Role',
     ],
 
 	'unique_with' => 'This combination of :fields already exists.',
-	'search_engine_class_name' => 'The class name does not exists in App\\SearchEngines namespace.',
-	'data_stream_decoder_class_name' => 'The class name does not exists in App\\DataStreamDecoders namespace.',
 
 ];

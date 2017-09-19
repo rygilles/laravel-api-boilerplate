@@ -15,7 +15,6 @@ class Kernel extends ConsoleKernel
     protected $commands = [
         Commands\MakeFreshApp::class,
         Commands\GenerateApiDocs::class,
-	    Commands\ManageSyncTasks::class
     ];
 
     /**
@@ -26,10 +25,7 @@ class Kernel extends ConsoleKernel
      */
     protected function schedule(Schedule $schedule)
     {
-	    /*
-	    $schedule->command('app:manageSyncTasks')
-		         ->everyMinute()
-		         ->emailOutputTo('ryan@e-monsite.com');*/
+	    //
     }
 
     /**

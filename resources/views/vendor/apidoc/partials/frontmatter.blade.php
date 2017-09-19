@@ -1,4 +1,4 @@
-title: emsearch API Reference
+title: LaravelApiBoilerplate
 
 language_tabs:
 - bash

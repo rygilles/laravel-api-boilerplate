@@ -1,1 +1,0 @@
-console.log('It\'s a widget preset test !');

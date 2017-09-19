@@ -14,21 +14,5 @@ class SamplesSeeder extends Seeder
         // Seed with samples data
 
 	    $this->call(UserTableSeeder::class);
-	    $this->call(DataStreamTableSeeder::class);
-	    $this->call(DataStreamFieldTableSeeder::class);
-        $this->call(ProjectTableSeeder::class);
-	    $this->call(UserHasProjectTableSeeder::class);
-	    $this->call(SyncItemTableSeeder::class);
-	    $this->call(SyncTaskTableSeeder::class);
-	    $this->call(SyncTaskLogTableSeeder::class);
-	    $this->call(DataStreamPresetTableSeeder::class);
-	    $this->call(DataStreamHasI18nLangTableSeeder::class);
-	    $this->call(DataStreamPresetFieldTableSeeder::class);
-	    $this->call(SearchUseCaseTableSeeder::class);
-	    $this->call(SearchUseCaseFieldTableSeeder::class);
-	    $this->call(SearchUseCasePresetTableSeeder::class);
-	    $this->call(SearchUseCasePresetFieldTableSeeder::class);
-	    $this->call(WidgetPresetTableSeeder::class);
-	    $this->call(WidgetTableSeeder::class);
     }
 }

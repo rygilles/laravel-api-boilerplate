@@ -40,7 +40,7 @@ class MakeFreshApp extends Command
      */
     public function handle()
     {
-	    $this->info('EMSEARCH Setup : Fresh App (For DEV purpose only !)');
+	    $this->info('LaravelApiBoilerplate Setup : Fresh App (For DEV purpose only !)');
         $this->info('(Ask to ryan@e-monsite.com for more information)');
 	    $this->warn('');
         $this->warn('This command will refresh migrations, ' . "\n" .

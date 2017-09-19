@@ -1,15 +1,48 @@
-#![logo.png](https://bitbucket.org/repo/KrMXBpk/images/1444268910-logo.png)#
+# Laravel API Boilerplate #
+
+This is a Laravel [Laravel 5.*](https://laravel.com/) based project.
+
+## Setup ##
+
+Run this command and make sure to chmod properly the storage and cache folders.
+
+```bash
+composer create-project --prefer-dist rygilles/laravel-api-boilerplate your-project-name
+```
+
+Or install this project manually by cloning with git.
+In this case, you must copy the [.env.example](./.env.example) file to .env and run this command :
+
+```bash
+php artisan key:generate
+```
+
+### .env file ###
+
+Check the [.env](./.env) and change the values according to you preferences.
 
 ## Libs ##
 
-*emsearch* is a [Laravel 5.*](https://laravel.com/) based web application.
-Check [composer.json](https://bitbucket.org/emonsite/emsearch/src/master/composer.json) file for more details.
+Check [composer.json](./composer.json) file for details.
 
 ## Database ##
 
 This application use InnoDB tables for foreign keys constraint support and utf8mb4_unicode_ci encoding for modern chars support (including emoji).
-
 It also use UUID (128 bits).
+
+### Initialize ###
+
+Run this command to create the database basics with default migrations (check [database/migrations](./database/migrations) directory).
+
+```bash
+php artisan app:makeFresh
+```
+
+This will install :
+
+*Laravel basic tables* : user, password_resets, notification, jobs
+*Passport bundle tables* : oauth_auth_codes, oauth_access_tokens, oauth_refresh_tokens, oauth_clients_table, oauth_personal_access_clients)
+*Boilerplate tables* : i18n_lang, user_group
 
 ### Samples Data ###
 
@@ -42,7 +75,7 @@ php artisan app:generateApiDocs
 ```
 Generate API documentation using current database resources.
 
-*Make sure you've configured all in [config/apidocs.php](https://bitbucket.org/emonsite/emsearch/src/master/config/apidocs.php) file.*
+*Make sure you've configured all in [config/apidocs.php](./config/apidocs.php) file.*
 
 ## Laravel Echo Server ##
 
@@ -55,14 +88,14 @@ The whole process is handled by [laravel-echo-server](https://github.com/tlaverd
 
 *[.env](https://bitbucket.org/emonsite/emsearch/src/master/.env) file.*
 
-*[laravel-echo-server.json](https://bitbucket.org/emonsite/emsearch/src/master/laravel-echo-server.json) file.*
+*[laravel-echo-server.json](./laravel-echo-server.json) file.*
 
 *And Redis & PM2 are installed properly*
 
 
 Use PM2 for auto-restart feature
 
-*Make sure you've configured all in [laravel-echo-server.ecosystem.config.json](https://bitbucket.org/emonsite/emsearch/src/master/laravel-echo-server.ecosystem.config.json) file.* :
+*Make sure you've configured all in [laravel-echo-server.ecosystem.config.json](./laravel-echo-server.ecosystem.config.json) file.* :
 ```bash
 pm2 start laravel-echo-server.ecosystem.config.json
 ```
@@ -71,14 +104,3 @@ Or use this command to manually start the server :
 ```bash
 laravel-echo-server start
 ```
-
-
-## emsearch.ryan.ems-dev.net VM ##
-
-- Front entry point : [https://emsearch.ryan.ems-dev.net](https://emsearch.ryan.ems-dev.net/)
-- API entry point : [https://emsearch.ryan.ems-dev.net/api](https://emsearch.ryan.ems-dev.net/api/)
-- API documentation entry point :
-    - Developer : [https://emsearch.ryan.ems-dev.net/docs/Developer/v1](https://emsearch.ryan.ems-dev.net/docs/Developer/v1)
-    - Support : [https://emsearch.ryan.ems-dev.net/docs/Support/v1](https://emsearch.ryan.ems-dev.net/docs/Support/v1)
-    - End-User : [https://emsearch.ryan.ems-dev.net/docs/End-User/v1](https://emsearch.ryan.ems-dev.net/docs/End-User/v1)
-- OAuth2 consumer application : [https://emsearch-api-consumer.ryan.ems-dev.net](https://emsearch-api-consumer.ryan.ems-dev.net/) (**DEV ONLY !**)

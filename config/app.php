@@ -12,7 +12,7 @@ return [
     | any other location as required by the application or its packages.
     */
 
-    'name' => env('APP_NAME', 'emsearch'),
+    'name' => env('APP_NAME'),
 
     /*
     |--------------------------------------------------------------------------
@@ -236,7 +236,7 @@ return [
 	    // Unique with rule validation
 	    Felixkiss\UniqueWithValidator\ServiceProvider::class,
 
-	    // WIP
+	    // OpenAPI schema generator
 	    Rygilles\OpenApiGenerator\OpenApiSchemaGeneratorServiceProvider::class,
 
     ],

@@ -1,19 +1,9 @@
 {
-    "name": "laravel/laravel",
-    "description": "The Laravel Framework.",
-    "keywords": ["framework", "laravel"],
+    "name": "rygilles/laravel-api-boilerplate",
+    "description": "Laravel API Boilerplate project.",
+    "keywords": ["framework", "laravel"," API", "boilerplate"],
     "license": "MIT",
     "type": "project",
-    "repositories": [
-        {
-            "type": "vcs",
-            "url": "/home/dev/rygilles/laravel-apidoc-generator"
-        },
-        {
-            "type": "vcs",
-            "url": "/home/dev/rygilles/laravel-openapi-schema-generator"
-        }
-    ],
     "require": {
         "php": ">=5.6.4",
         "algolia/algoliasearch-client-php": "^1.18",
