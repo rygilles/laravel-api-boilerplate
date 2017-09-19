@@ -48,7 +48,7 @@ This will install :
 
 An Artisan command (See below) can supply your database with samples data for users, projects, etc, for testing and documentation generation purpose.
 
-*Check [database/seeds/Samples](https://bitbucket.org/emonsite/emsearch/src/master/database/seeds/Samples) folder for more information.*
+*Check [database/seeds/Samples](./database/seeds/Samples) folder for more information.*
 
 
 | User ID                                | User Group ID | Name         | Email                   | Password    |
@@ -86,7 +86,7 @@ The whole process is handled by [laravel-echo-server](https://github.com/tlaverd
 *Make sure you've configured all in :*
 
 
-*[.env](https://bitbucket.org/emonsite/emsearch/src/master/.env) file.*
+*[.env](./.env) file.*
 
 *[laravel-echo-server.json](./laravel-echo-server.json) file.*
 
