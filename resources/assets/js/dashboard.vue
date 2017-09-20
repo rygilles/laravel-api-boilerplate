@@ -27,7 +27,7 @@
 
 			<!-- Main Footer -->
 			<footer class="main-footer">
-				<strong>Copyright &copy; 2017 <a href="javascript:;">LaravelApiBoilerplate</a>.</strong> All rights reserved.
+				<strong>Copyright &copy; 2017 <a href="javascript:;">{{ laravel.appName }}</a>.</strong> All rights reserved.
 			</footer>
 		</div>
 		<!-- ./wrapper -->
@@ -47,6 +47,7 @@
 			this.$store.commit('setState', {
 				stateName: 'laravel',
 				payload: {
+					appName: window.Laravel.appName,
 					csrfToken : window.Laravel.csrfToken,
 					apiDocBaseUrl : window.Laravel.apiDocBaseUrl,
 					apiDocVersionUri : window.Laravel.apiDocVersionUri,

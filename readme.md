@@ -72,13 +72,30 @@ An Artisan command (See below) can supply your database with samples data for us
 ### NodeJs ###
 
 
-Install NodeJs dependencies (check [./package.json](./package.json) file for more information).
+Install NodeJs dependencies (check [package.json](./package.json) file for more information).
 
 ```bash
 npm install
 ```
 
+
 ### Laravel Mix ###
+
+
+#### Assets ####
+
+
+Create your own back-office images by replacing :
+
+- [resources/assets/img/dashboard-logo.png](./resources/assets/img/dashboard-logo.png) (50 x 200)
+- [resources/assets/img/dashboard-mini-logo.png](./resources/assets/img/dashboard-mini-logo.png) (50 x 50)
+- resources/assets/img/favicon.jpg
+
+
+*Check the [webpack.mix.js](./webpack.mix.js) to enable favicon.jpg copy and manage you own assets.*
+
+
+#### Compilation ####
 
 
 Run this command to compile the assets

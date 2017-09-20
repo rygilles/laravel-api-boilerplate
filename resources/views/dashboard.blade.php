@@ -8,7 +8,7 @@
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
-    <title>{{ config('app.name', 'Laravel') }}</title>
+    <title>{{ config('app.name', 'LaravelApiBoilerplate') }}</title>
 
     <!-- Styles -->
     <link rel="shortcut icon" href="img/favicon.jpg">
@@ -19,6 +19,7 @@
     <script>
         window.Pace.options.ajax.trackWebSockets = false;
         window.Laravel = {!! json_encode([
+            'appName' => config('app.name', 'LaravelApiBoilerplate'),
             'csrfToken' => csrf_token(),
             'pusher' => [
                 'appKey' => config('broadcasting.connections.pusher.key'),

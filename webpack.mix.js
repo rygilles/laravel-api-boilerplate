@@ -11,6 +11,9 @@ const { mix } = require('laravel-mix');
  |
  */
 
+//mix.copy('resources/assets/img/favicon.jpg','public/img/favicon.jpg')
+mix.copy('resources/assets/img/dashboard-logo.png','public/img/dashboard-logo.png')
+mix.copy('resources/assets/img/dashboard-mini-logo.png','public/img/dashboard-mini-logo.png')
 mix.copy('resources/assets/img/languages.png','public/img/languages.png')
 
 mix.js('resources/assets/js/dashboard.js', 'public/js')

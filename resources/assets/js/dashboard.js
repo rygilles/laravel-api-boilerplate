@@ -28,7 +28,7 @@ window.oauthAxios = window.axios.create({
  * Api Axios
  */
 window.apiAxios = window.axios.create({
-    baseURL : 'https://localhost/laravel-api-boilerplate/api',
+    baseURL : process.env.MIX_AXIOS_API_URL,
     withCredentials : true,
     headers : {
         'X-CSRF-TOKEN': window.Laravel.csrfToken,
@@ -129,7 +129,7 @@ window.changeLang = function(lang) {
      * Recreate Api Axios
      */
     window.apiAxios = window.axios.create({
-        baseURL : 'https://localhost/laravel-api-boilerplate/api',
+        baseURL : process.env.MIX_AXIOS_API_URL,
         withCredentials : true,
         headers : {
             'X-CSRF-TOKEN': window.Laravel.csrfToken,
