@@ -4,6 +4,8 @@
     "keywords": ["framework", "laravel"," API", "boilerplate"],
     "license": "MIT",
     "type": "project",
+    "minimum-stability": "dev",
+    "prefer-stable": true,
     "require": {
         "php": ">=5.6.4",
         "algolia/algoliasearch-client-php": "^1.18",
