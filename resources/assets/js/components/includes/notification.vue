@@ -70,7 +70,7 @@
 				if (this.notification.read_at)
 					return;
 
-				apiAxios.post('/me/notification/' + this.notification.user_id + '/read')
+				apiAxios.post('/me/notification/' + this.notification.id + '/read')
 					.then(response => {
 						this.notification.read_at = response.data.data.read_at;
 					}).catch(error => {
