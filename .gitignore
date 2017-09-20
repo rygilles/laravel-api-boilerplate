@@ -9,3 +9,4 @@ Homestead.yaml
 .env
 composer.lock
 npm-debug.log
+laravel-echo-server.json

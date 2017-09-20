@@ -1,11 +1,10 @@
-<template v-if="notification.type == 'App\\Notifications\\AdministeredProject'">
+<template v-if="notification.type == 'App\\Notifications\\UserCreatedNotification'">
 	<a :data-notification-id="notification.id" href="javascript:;" @click="selectNotification()">
-		<v-gravatar :email="notification.data.assigned_by_user.email" default-img="mm" :size="48" class="user-image" alt="User Image" />
+		<v-gravatar :email="notification.data.user.email" default-img="mm" :size="48" class="user-image" alt="User Image" />
 		<div>
 			<div>
-				<span v-html="$t('notifications.types.AdministeredProject.message',
-				 			  {user_name : notification.data.assigned_by_user.name,
-				 			   project_name : notification.data.project.name})"></span>
+				<span v-html="$t('notifications.types.UserCreatedNotification.message',
+				 			  {user_name : notification.data.user.name})"></span>
 				<small>
 					<i class="fa fa-clock-o"></i> {{ momentFromNow(notification.created_at) }}
 				</small>
@@ -58,11 +57,11 @@
 			selectNotification() {
 				// Redirect to the resource route
 				switch (this.notification.type) {
-					case 'App\\Notifications\\AdministeredProject' :
+					case 'App\\Notifications\\UserCreatedNotification' :
 						this.$router.push({
-							name: 'project',
+							name: 'user',
 							params: {
-								'projectId': this.notification.data.project_id
+								'userId': this.notification.data.user_id
 							}
 						});
 						break;
@@ -71,7 +70,7 @@
 				if (this.notification.read_at)
 					return;
 
-				apiAxios.post('/me/notification/' + this.notification.id + '/read')
+				apiAxios.post('/me/notification/' + this.notification.user_id + '/read')
 					.then(response => {
 						this.notification.read_at = response.data.data.read_at;
 					}).catch(error => {

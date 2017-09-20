@@ -27,79 +27,10 @@
 			</li>
 			<li class="treeview">
 				<a href="javascript:;">
-					<i class="fa fa-sticky-note-o fa-fw"></i>
-					<span>{{ $t('routes.projects-folder.title ') }}</span> <i class="fa fa-angle-left pull-right"></i>
-				</a>
-				<ul class="treeview-menu">
-					<li v-on:click="toggleMenu">
-						<router-link :to="{ name: 'user-projects' }"><i class="fa fa-sticky-note fa-fw"></i>
-							<span class="page">{{ $t('routes.user-projects.title ') }}</span>
-						</router-link>
-					</li>
-					<li v-on:click="toggleMenu">
-						<router-link :to="{ name: 'all-projects' }"><i class="fa fa-sticky-note-o fa-fw"></i>
-							<span class="page">{{ $t('routes.all-projects.title ') }}</span>
-						</router-link>
-					</li>
-				</ul>
-			</li>
-			<li class="treeview">
-				<a href="javascript:;">
-					<i class="fa fa-database fa-fw"></i>
-					<span>{{ $t('routes.data-stream-folder.title ') }}</span> <i class="fa fa-angle-left pull-right"></i>
-				</a>
-				<ul class="treeview-menu">
-					<li v-on:click="toggleMenu">
-						<router-link :to="{ name: 'data-streams' }"><i class="fa fa-database fa-fw"></i>
-							<span class="page">{{ $t('routes.data-streams.title ') }}</span>
-						</router-link>
-					</li>
-					<li v-on:click="toggleMenu">
-						<router-link :to="{ name: 'data-stream-presets' }"><i class="fa fa-database fa-fw"></i>
-							<span class="page">{{ $t('routes.data-stream-presets.title ') }}</span>
-						</router-link>
-					</li>
-					<li v-on:click="toggleMenu">
-						<router-link :to="{ name: 'data-stream-decoders' }"><i class="fa fa-filter fa-fw"></i>
-							<span class="page">{{ $t('routes.data-stream-decoders.title ') }}</span>
-						</router-link>
-					</li>
-				</ul>
-			</li>
-			<li class="treeview">
-				<a href="javascript:;">
-					<i class="fa fa-tasks fa-fw"></i>
-					<span>{{ $t('routes.sync-tasks-folder.title ') }}</span> <i class="fa fa-angle-left pull-right"></i>
-				</a>
-				<ul class="treeview-menu">
-					<li v-on:click="toggleMenu">
-						<router-link :to="{ name: 'sync-tasks' }"><i class="fa fa-tasks fa-fw"></i>
-							<span class="page">{{ $t('routes.sync-tasks.title ') }}</span>
-						</router-link>
-					</li>
-					<li v-on:click="toggleMenu">
-						<router-link :to="{ name: 'sync-task-statuses' }"><i class="fa fa-tasks fa-fw"></i>
-							<span class="page">{{ $t('routes.sync-task-statuses.title ') }}</span>
-						</router-link>
-					</li>
-					<li v-on:click="toggleMenu">
-						<router-link :to="{ name: 'sync-task-types' }"><i class="fa fa-tasks fa-fw"></i>
-							<span class="page">{{ $t('routes.sync-task-types.title ') }}</span>
-						</router-link>
-					</li>
-				</ul>
-			</li>
-			<li class="treeview">
-				<a href="javascript:;">
 					<i class="fa fa-folder fa-fw"></i>
 					<span>{{ $t('routes.misc-folder.title ') }}</span> <i class="fa fa-angle-left pull-right"></i>
 				</a>
 				<ul class="treeview-menu">
-					<li v-on:click="toggleMenu">
-						<router-link :to="{ name: 'search-engines' }"><i class="fa fa-search fa-fw"></i>
-							<span class="page">{{ $t('routes.search-engines.title ') }}</span>
-						</router-link>
-					</li>
 					<li v-on:click="toggleMenu">
 						<router-link :to="{ name: 'i18n-langs' }"><i class="fa fa-language fa-fw"></i>
 							<span class="page">{{ $t('routes.i18n-langs.title ') }}</span>
@@ -135,84 +66,10 @@
 			</li>
 			<li class="treeview">
 				<a href="javascript:;">
-					<i class="fa fa-sticky-note-o fa-fw"></i>
-					<span>{{ $t('routes.projects-folder.title ') }}</span> <i class="fa fa-angle-left pull-right"></i>
-				</a>
-				<ul class="treeview-menu">
-					<li v-on:click="toggleMenu">
-						<router-link :to="{ name: 'sync-task-statuses' }"><i class="fa fa-tasks fa-fw"></i>
-							<span class="page">{{ $t('routes.sync-task-statuses.title ') }}</span>
-						</router-link>
-					</li>
-					<li v-on:click="toggleMenu">
-						<router-link :to="{ name: 'user-projects' }"><i class="fa fa-sticky-note fa-fw"></i>
-							<span class="page">{{ $t('routes.user-projects.title ') }}</span>
-						</router-link>
-					</li>
-					<li v-on:click="toggleMenu">
-						<router-link :to="{ name: 'all-projects' }"><i class="fa fa-sticky-note-o fa-fw"></i>
-							<span class="page">{{ $t('routes.all-projects.title ') }}</span>
-						</router-link>
-					</li>
-				</ul>
-			</li>
-			<li class="treeview">
-				<a href="javascript:;">
-					<i class="fa fa-database fa-fw"></i>
-					<span>{{ $t('routes.data-stream-folder.title ') }}</span> <i class="fa fa-angle-left pull-right"></i>
-				</a>
-				<ul class="treeview-menu">
-					<li v-on:click="toggleMenu">
-						<router-link :to="{ name: 'data-streams' }"><i class="fa fa-database fa-fw"></i>
-							<span class="page">{{ $t('routes.data-streams.title ') }}</span>
-						</router-link>
-					</li>
-					<li v-on:click="toggleMenu">
-						<router-link :to="{ name: 'data-stream-presets' }"><i class="fa fa-database fa-fw"></i>
-							<span class="page">{{ $t('routes.data-stream-presets.title ') }}</span>
-						</router-link>
-					</li>
-					<li v-on:click="toggleMenu">
-						<router-link :to="{ name: 'data-stream-decoders' }"><i class="fa fa-filter fa-fw"></i>
-							<span class="page">{{ $t('routes.data-stream-decoders.title ') }}</span>
-						</router-link>
-					</li>
-				</ul>
-			</li>
-			<li class="treeview">
-				<a href="javascript:;">
-					<i class="fa fa-tasks fa-fw"></i>
-					<span>{{ $t('routes.sync-tasks-folder.title ') }}</span> <i class="fa fa-angle-left pull-right"></i>
-				</a>
-				<ul class="treeview-menu">
-					<li v-on:click="toggleMenu">
-						<router-link :to="{ name: 'sync-tasks' }"><i class="fa fa-tasks fa-fw"></i>
-							<span class="page">{{ $t('routes.sync-tasks.title ') }}</span>
-						</router-link>
-					</li>
-					<li v-on:click="toggleMenu">
-						<router-link :to="{ name: 'sync-task-statuses' }"><i class="fa fa-tasks fa-fw"></i>
-							<span class="page">{{ $t('routes.sync-task-statuses.title ') }}</span>
-						</router-link>
-					</li>
-					<li v-on:click="toggleMenu">
-						<router-link :to="{ name: 'sync-task-types' }"><i class="fa fa-tasks fa-fw"></i>
-							<span class="page">{{ $t('routes.sync-task-types.title ') }}</span>
-						</router-link>
-					</li>
-				</ul>
-			</li>
-			<li class="treeview">
-				<a href="javascript:;">
 					<i class="fa fa-folder fa-fw"></i>
 					<span>{{ $t('routes.misc-folder.title ') }}</span> <i class="fa fa-angle-left pull-right"></i>
 				</a>
 				<ul class="treeview-menu">
-					<li v-on:click="toggleMenu">
-						<router-link :to="{ name: 'search-engines' }"><i class="fa fa-search fa-fw"></i>
-							<span class="page">{{ $t('routes.search-engines.title ') }}</span>
-						</router-link>
-					</li>
 					<li v-on:click="toggleMenu">
 						<router-link :to="{ name: 'i18n-langs' }"><i class="fa fa-language fa-fw"></i>
 							<span class="page">{{ $t('routes.i18n-langs.title ') }}</span>
@@ -226,11 +83,6 @@
 			<li class="pageLink" v-on:click="toggleMenu">
 				<router-link to="/"><i class="fa fa-home fa-fw"></i>
 					<span class="page">{{ $t('routes.home.title') }}</span>
-				</router-link>
-			</li>
-			<li class="pageLink" v-on:click="toggleMenu">
-				<router-link :to="{ name: 'user-projects' }"><i class="fa fa-table fa-fw"></i>
-					<span class="page">{{ $t('routes.user-projects.title ') }}</span>
 				</router-link>
 			</li>
 		</ul>
