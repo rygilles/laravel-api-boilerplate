@@ -146,9 +146,6 @@ return [
 				// Notification filter
 				'read_status' => 'unread',
 
-				// Notification
-				'notificationId' => '5b0decfd-6f95-4e76-be12-8cc7fef976b0',
-
 				// John Smith
 				'userId' => '605c7610-1389-11e7-93ae-92361f002671',
 
