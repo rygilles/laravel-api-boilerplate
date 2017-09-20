@@ -2,6 +2,7 @@
 
 This is a Laravel [Laravel 5.*](https://laravel.com/) based project.
 
+
 ## Setup ##
 
 Run this command and make sure to chmod properly the storage and cache folders.
@@ -17,18 +18,22 @@ In this case, you must copy the [.env.example](./.env.example) file to .env and 
 php artisan key:generate
 ```
 
+
 ### .env file ###
 
 Check the [.env](./.env) and change the values according to you preferences.
+
 
 ## Libs ##
 
 Check [composer.json](./composer.json) file for details.
 
+
 ## Database ##
 
 This application use InnoDB tables for foreign keys constraint support and utf8mb4_unicode_ci encoding for modern chars support (including emoji).
 It also use UUID (128 bits).
+
 
 ### Initialize ###
 
@@ -60,9 +65,12 @@ An Artisan command (See below) can supply your database with samples data for us
 | `605c7610-1389-11e7-93ae-92361f002671` | End-User      | John Smith   | john.smith@domain.tld   | johnsmith   |
 | `82b5da82-138c-11e7-93ae-92361f002671` | End-User      | Mickey Mouse | mickey.mouse@domain.tld | mickeymouse |
 
+
 ## Node, Laravel Mix and Laravel Echo Server ##
 
+
 ### NodeJs ###
+
 
 Install NodeJs dependencies (check [./package.json](./package.json) file for more information).
 
@@ -72,6 +80,7 @@ npm install
 
 ### Laravel Mix ###
 
+
 Run this command to compile the assets
 
 ```bash
@@ -80,6 +89,7 @@ npm run dev
 
 
 ### Laravel Echo Server ###
+
 
 Real-time notifications and events are send by a local Node.js server, using Redis and Socket.io.
 
@@ -93,7 +103,9 @@ Initialize Laravel Echo Server by creating [laravel-echo-server.json](./laravel-
 laravel-echo-server init
 ```
 
+
 #### Start and Auto-restart ####
+
 
 Use PM2 for auto-restart feature
 
