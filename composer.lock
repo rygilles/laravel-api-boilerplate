@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "content-hash": "4092854213ed5314e74b02511e1206b6",
+    "content-hash": "7bf1bba9ca1f9046c71efd9c9a17b2d2",
     "packages": [
         {
             "name": "algolia/algoliasearch-client-php",
@@ -201,16 +201,16 @@
         },
         {
             "name": "bugsnag/bugsnag",
-            "version": "v3.6.0",
+            "version": "v3.7.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/bugsnag/bugsnag-php.git",
-                "reference": "b074a15a2659fa32d9032a40f8be55824476997d"
+                "reference": "96c6dc265543d69d657df8f8ab7de4d73b40b71c"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/bugsnag/bugsnag-php/zipball/b074a15a2659fa32d9032a40f8be55824476997d",
-                "reference": "b074a15a2659fa32d9032a40f8be55824476997d",
+                "url": "https://api.github.com/repos/bugsnag/bugsnag-php/zipball/96c6dc265543d69d657df8f8ab7de4d73b40b71c",
+                "reference": "96c6dc265543d69d657df8f8ab7de4d73b40b71c",
                 "shasum": ""
             },
             "require": {
@@ -254,7 +254,7 @@
                 "logging",
                 "tracking"
             ],
-            "time": "2017-08-10T23:23:03+00:00"
+            "time": "2017-09-13T14:44:20+00:00"
         },
         {
             "name": "bugsnag/bugsnag-laravel",
@@ -501,12 +501,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/dingo/api.git",
-                "reference": "46cffad61942caa094dd876155e503b6819c5095"
+                "reference": "79c79e2d00abcad97e040b0f11d5285bf4488bf8"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/dingo/api/zipball/46cffad61942caa094dd876155e503b6819c5095",
-                "reference": "46cffad61942caa094dd876155e503b6819c5095",
+                "url": "https://api.github.com/repos/dingo/api/zipball/79c79e2d00abcad97e040b0f11d5285bf4488bf8",
+                "reference": "79c79e2d00abcad97e040b0f11d5285bf4488bf8",
                 "shasum": ""
             },
             "require": {
@@ -517,6 +517,7 @@
                 "php": "^5.5.9 || ^7.0"
             },
             "require-dev": {
+                "friendsofphp/php-cs-fixer": "~2",
                 "illuminate/auth": "^5.1",
                 "illuminate/cache": "^5.1",
                 "illuminate/console": "^5.1",
@@ -540,6 +541,15 @@
             "extra": {
                 "branch-alias": {
                     "dev-master": "1.0-dev"
+                },
+                "laravel": {
+                    "providers": [
+                        "Dingo\\Api\\Provider\\LaravelServiceProvider"
+                    ],
+                    "aliases": {
+                        "API": "Dingo\\Api\\Facade\\API",
+                        "Route": "Dingo\\Api\\Facade\\Route"
+                    }
                 }
             },
             "autoload": {
@@ -567,7 +577,7 @@
                 "laravel",
                 "restful"
             ],
-            "time": "2017-02-10T00:56:04+00:00"
+            "time": "2017-09-18T21:45:51+00:00"
         },
         {
             "name": "dingo/blueprint",
@@ -3477,11 +3487,17 @@
         },
         {
             "name": "rygilles/laravel-apidoc-generator",
-            "version": "dev-master",
+            "version": "v0.1",
             "source": {
                 "type": "git",
-                "url": "/home/dev/rygilles/laravel-apidoc-generator",
-                "reference": "99377729049aebdc6774060e607f4d81dc4e768f"
+                "url": "https://github.com/rygilles/laravel-apidoc-generator.git",
+                "reference": "e6b79aa57a3ef0b9a39d290f219a6e686f21fc57"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/rygilles/laravel-apidoc-generator/zipball/e6b79aa57a3ef0b9a39d290f219a6e686f21fc57",
+                "reference": "e6b79aa57a3ef0b9a39d290f219a6e686f21fc57",
+                "shasum": ""
             },
             "require": {
                 "mpociot/laravel-apidoc-generator": "2.0"
@@ -3492,6 +3508,7 @@
                     "Rygilles\\ApiDoc": "src/"
                 }
             },
+            "notification-url": "https://packagist.org/downloads/",
             "license": [
                 "MIT"
             ],
@@ -3502,15 +3519,21 @@
                 }
             ],
             "description": "Laravel API documentation generator, based on mpociot lib with Passport integration and user UUID",
-            "time": "2017-09-14 13:07:27"
+            "time": "2017-04-12T09:19:20+00:00"
         },
         {
             "name": "rygilles/laravel-openapi-schema-generator",
-            "version": "dev-master",
+            "version": "v0.1",
             "source": {
                 "type": "git",
-                "url": "/home/dev/rygilles/laravel-openapi-schema-generator",
+                "url": "https://github.com/rygilles/laravel-openapi-schema-generator.git",
                 "reference": "27084bccac24d2b3055eb68f0908dfb0761645b5"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/rygilles/laravel-openapi-schema-generator/zipball/27084bccac24d2b3055eb68f0908dfb0761645b5",
+                "reference": "27084bccac24d2b3055eb68f0908dfb0761645b5",
+                "shasum": ""
             },
             "require": {
                 "laravel/framework": "~5.4",
@@ -3526,11 +3549,7 @@
                     "Rygilles\\OpenApiGenerator": "src/"
                 }
             },
-            "autoload-dev": {
-                "psr-4": {
-                    "Rygilles\\OpenApiGenerator\\Tests\\": "tests/"
-                }
-            },
+            "notification-url": "https://packagist.org/downloads/",
             "license": [
                 "MIT"
             ],
@@ -3543,11 +3562,11 @@
             "description": "Generate OpenAPI schema from your Laravel Api project.",
             "homepage": "http://github.com/rygilles/laravel-openapi-schema-generator",
             "keywords": [
-                "Laravel",
-                "OpenAPI",
-                "Schema"
+                "laravel",
+                "openapi",
+                "schema"
             ],
-            "time": "2017-09-12 12:42:23"
+            "time": "2017-09-12T12:42:23+00:00"
         },
         {
             "name": "swiftmailer/swiftmailer",
@@ -6001,9 +6020,7 @@
     "aliases": [],
     "minimum-stability": "stable",
     "stability-flags": {
-        "dingo/api": 20,
-        "rygilles/laravel-apidoc-generator": 20,
-        "rygilles/laravel-openapi-schema-generator": 20
+        "dingo/api": 20
     },
     "prefer-stable": false,
     "prefer-lowest": false,
