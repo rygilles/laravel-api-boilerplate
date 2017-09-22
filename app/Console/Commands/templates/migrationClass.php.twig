@@ -1,0 +1,44 @@
+<?php
+
+use Illuminate\Support\Facades\Schema;
+use Illuminate\Database\Schema\Blueprint;
+use Illuminate\Database\Migrations\Migration;
+
+class Create{{ modelClassName }}Table extends Migration
+{
+	/**
+	 * Run the migrations.
+	 *
+	 * @return void
+	 */
+	public function up()
+	{
+		Schema::create('{{ tableName }}', function (Blueprint $table) {
+{% if usePrimaryKey %}
+{% if useUuidPrimaryKey %}
+			$table->uuid('id');
+{% elseif useStringPrimaryKey %}
+			$table->string('id', {{ primaryKeyStringLength }});
+{% elseif useAutoincrementPrimaryKey %}
+			$table->increments('id');
+{% endif %}
+{% endif %}
+{% if (timestamps is defined) and (timestamps == true) %}
+			$table->timestamps();
+{% endif %}
+{% if usePrimaryKey %}
+			$table->primary('id');
+{% endif %}
+		});
+	}
+
+	/**
+	 * Reverse the migrations.
+	 *
+	 * @return void
+	 */
+	public function down()
+	{
+		Schema::dropIfExists('{{ tableName }}');
+	}
+}

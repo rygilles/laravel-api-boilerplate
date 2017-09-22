@@ -1,0 +1,176 @@
+<?php
+
+namespace {{ modelsNamespace }};
+
+{% if useUuid %}
+use Alsofronie\Uuid\UuidModelTrait;
+
+{% endif %}
+/**
+ * Class {{ modelClassName }}
+ * @package {{ modelsNamespace }}
+ */
+class {{ modelClassName }} extends ApiModel
+{
+{% if useUuid %}
+	use UuidModelTrait;
+	
+{% endif %}
+	/**
+	 * The table associated with the model.
+	 *
+	 * @var string
+	 */
+	protected $table = '{{ tableName }}';
+
+	/**
+	 * The attributes that are mass assignable.
+	 *
+	 * @var array
+	 */
+{% if defaultFillableFields is empty %}
+	protected $fillable = [];
+{% else %}
+	protected $fillable = [
+{% for defaultFillableField in defaultFillableFields %}
+		'{{ defaultFillableField }}'{% if not loop.last %},{% endif %}
+{% endfor %}
+	];
+{% endif %}
+{% if timestamps is defined %}
+
+	/**
+	 * Indicates if the model should be timestamped.
+	 *
+	 * @var bool
+	 */
+	public $timestamps = {{ timestamps ? 'true' : 'false' }};
+{% endif %}
+
+	/**
+	 * Indicates if the IDs are auto-incrementing.
+	 *
+	 * @var bool
+	 */
+	public $incrementing = {{ useAutoincrement ? 'true' : 'false' }};
+{% if perPage is defined %}
+
+	/**
+	 * Default pagination limit
+	 * @var int
+	 */
+	protected $perPage = {{ perPage }};
+{% endif %}
+{% if perPageMin is defined %}
+
+	/**
+	 * Pagination limit inclusive min value
+	 * @var int
+	 */
+	protected $perPageMin = {{ perPageMin }};
+{% endif %}
+{% if perPageMax is defined %}
+
+	/**
+	 * Pagination limit inclusive max value
+	 * @var int
+	 */
+	protected $perPageMax = {{ perPageMax }};
+{% endif %}
+{% if storeFillableFields is defined %}
+
+	/**
+	 * Model fillable fields for new items
+	 * @var array
+	 */
+{% if storeFillableFields is empty %}
+	protected static $storeFillable = [];
+{% else %}
+	protected static $storeFillable = [
+{% for storeFillableField in storeFillableFields %}
+		'{{ storeFillableField }}'{% if not loop.last %},{% endif %}
+{% endfor %}
+	];
+{% endif %}
+{% endif %}
+{% if patchFillableFields is defined %}
+
+	/**
+	 * Model fillable fields for item patch
+	 * @var array
+	 */
+{% if patchFillableFields is empty %}
+	protected static $patchFillable = [];
+{% else %}
+	protected static $patchFillable = [
+{% for patchFillableField in patchFillableFields %}
+		'{{ patchFillableField }}'{% if not loop.last %},{% endif %}
+{% endfor %}
+	];
+{% endif %}
+{% endif %}
+{% if putFillableFields is defined %}
+
+	/**
+	 * Model fillable fields for item replacement
+	 * @var array
+	 */
+{% if putFillableFields is empty %}
+	protected static $putFillable = [];
+{% else %}
+	protected static $putFillable = [
+{% for putFillableField in putFillableFields %}
+		'{{ putFillableField }}'{% if not loop.last %},{% endif %}
+{% endfor %}
+	];
+{% endif %}
+{% endif %}
+{% if storeFieldsRules is defined %}
+
+	/**
+	 * Model validation rules for new items
+	 * @var array
+	 */
+{% if storeFieldsRules is empty %}
+	protected static $storeRules = [];
+{% else %}
+	protected static $storeRules = [
+{% for field, rules in storeFieldsRules %}
+		'{{ field }}' => '{{ rules }}'{% if not loop.last %},{% endif %}
+{% endfor %}
+	];
+{% endif %}
+{% endif %}
+{% if patchFieldsRules is defined %}
+
+	/**
+	 * Model validation rules for item patch
+	 * @var array
+	 */
+{% if patchFieldsRules is empty %}
+	protected static $patchRules = [];
+{% else %}
+	protected static $patchRules = [
+{% for field, rules in patchFieldsRules %}
+		'{{ field }}' => '{{ rules }}'{% if not loop.last %},{% endif %}
+{% endfor %}
+	];
+{% endif %}
+{% endif %}
+{% if putFieldsRules is defined %}
+
+	/**
+	 * Model validation rules for item replacement
+	 * @var array
+	 */
+{% if putFieldsRules is empty %}
+	protected static $putRules = [];
+{% else %}
+	protected static $putRules = [
+{% for field, rules in putFieldsRules %}
+		'{{ field }}' => '{{ rules }}'{% if not loop.last %},{% endif %}
+{% endfor %}
+	];
+{% endif %}
+{% endif %}
+}

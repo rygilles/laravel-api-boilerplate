@@ -1,0 +1,185 @@
+<?php
+
+namespace {{ controllersNamespace }};
+
+{% if ((uses is defined) and (uses is not empty)) %}
+{% for use in uses %}
+use {{ use }};
+{% endfor %}
+
+{% endif %}
+
+/**
+ * @resource {{ modelClassName }}
+ * @OpenApiOperationTag Manager:{{ modelClassName }}
+ *
+ * @package {{ controllersNamespace }}
+ */
+class {{ modelClassName }}Controller extends ApiController
+{
+	/**
+	 * {{ modelClassName }} constructor.
+	 */
+	public function __construct()
+	{
+		parent::__construct();
+
+		// User group restrictions
+		// @todo Remove or un-comment this line if you need user group access restrictions
+		// $this->middleware('verifyUserGroup:Developer,Support',  ['only' => ['store', 'update', 'destroy']]);
+	}
+{% if makeIndexMethod %}
+
+	/**
+	 * Show {{ modelSentenceClassName }} list
+	 *
+	 * @OpenApiOperationId all
+	 *
+	 * @todo Create the response schema in config/openapischemas.php file, inside the "components" section
+	 * @OpenApiResponseSchemaRef #/components/schemas/{{ modelClassName }}ListResponse
+	 * @OpenApiDefaultResponseSchemaRef #/components/schemas/ErrorResponse
+	 * @OpenApiResponseDescription A {{ modelClassName }} list
+	 *
+	 * @todo Remove unwanted lines below
+	 * @OpenApiExtraParameterRef #/components/parameters/Include
+	 * @OpenApiExtraParameterRef #/components/parameters/Search
+	 * @OpenApiExtraParameterRef #/components/parameters/PaginationPage
+	 * @OpenApiExtraParameterRef #/components/parameters/PaginationLimit
+	 * @OpenApiExtraParameterRef #/components/parameters/OrderBy
+	 *
+	 * @return \Dingo\Api\Http\Response
+	 */
+	public function index()
+	{
+		${{ camelCaseModelClassName }}List = {{ modelClassName }}::applyRequestQueryString()->paginate();
+
+		return $this->response->paginator(${{ camelCaseModelClassName }}List, new {{ modelClassName }}Transformer);
+	}
+{% endif %}
+{% if makeShowMethod %}
+
+	/**
+	 * Get specified {{ modelSentenceClassName }}
+	 *
+	 * @OpenApiOperationId get
+	 *
+	 * @todo Create the response schema in config/openapischemas.php file, inside the "components" section
+	 * @OpenApiResponseSchemaRef #/components/schemas/{{ modelClassName }}Response
+	 * @OpenApiDefaultResponseSchemaRef #/components/schemas/ErrorResponse
+	 * @OpenApiResponseDescription A {{ modelClassName }}
+	 *
+	 * @param string ${{ camelCaseModelClassName }}Id {{ modelTitleCaseClassName }} {% if useUuidPrimaryKey %}UUID{{ "\n" }}{% else %}ID{{ "\n" }}{% endif %}
+	 * @return \Dingo\Api\Http\Response|void
+	 */
+	public function show(${{ camelCaseModelClassName }}Id)
+	{
+		${{ camelCaseModelClassName }} = {{ modelClassName }}::find(${{ camelCaseModelClassName }}Id);
+
+		if (!${{ camelCaseModelClassName }}) {
+			return $this->response->errorNotFound();
+		}
+
+		return $this->response->item(${{ camelCaseModelClassName }}, new {{ modelClassName }}Transformer);
+	}
+{% endif %}
+{% if makeStoreMethod %}
+
+	/**
+	 * Create and store a new {{ modelSentenceClassName }}
+	 *
+	 * @ApiDocsNoCall
+	 *
+	 * @OpenApiOperationId create
+	 *
+	 * @todo Create the response schema in config/openapischemas.php file, inside the "components" section
+	 * @OpenApiResponseSchemaRef #/components/schemas/{{ modelClassName }}Response
+	 * @OpenApiDefaultResponseSchemaRef #/components/schemas/ErrorResponse
+	 * @OpenApiResponseDescription The created {{ modelClassName }}
+	 *
+	 * @param Store{{ modelClassName }}Request $request
+	 * @return \Dingo\Api\Http\Response|void
+	 */
+	public function store(Store{{ modelClassName }}Request $request)
+	{
+		${{ camelCaseModelClassName }} = {{ modelClassName }}::create($request->all(), $request->getRealMethod());
+
+		if (${{ camelCaseModelClassName }}) {
+			// Register model transformer for created/accepted responses
+			// @link https://github.com/dingo/api/issues/1218
+			app('Dingo\Api\Transformer\Factory')->register(
+				{{ modelClassName }}::class,
+				{{ modelClassName }}Transformer::class
+			);
+
+			return $this->response->created(
+				app('Dingo\Api\Routing\UrlGenerator')
+					->version('v1')
+					->route('{{ camelCaseModelClassName }}.show', ${{ camelCaseModelClassName }}->id),
+				${{ camelCaseModelClassName }});
+		}
+
+		return $this->response->errorBadRequest();
+	}
+{% endif %}
+{% if makeUpdateMethod %}
+
+	/**
+	 * Update a specified {{ modelSentenceClassName }}
+	 *
+	 * @ApiDocsNoCall
+	 *
+	 * @OpenApiOperationId update
+	 * @OpenApiOperationTag Resource:{{ modelClassName }}
+	 *
+	 * @todo Create the response schema in config/openapischemas.php file, inside the "components" section
+	 * @OpenApiResponseSchemaRef #/components/schemas/{{ modelClassName }}Response
+	 * @OpenApiDefaultResponseSchemaRef #/components/schemas/ErrorResponse
+	 * @OpenApiResponseDescription The updated {{ modelClassName }}
+	 *
+	 * @param Update{{ modelClassName }}Request $request
+	 * @param string ${{ camelCaseModelClassName }}Id {{ modelTitleCaseClassName }} {% if useUuidPrimaryKey %}UUID{{ "\n" }}{% else %}ID{{ "\n" }}{% endif %}
+	 * @return \Dingo\Api\Http\Response|void
+	 */
+	public function update(Update{{ modelClassName }}Request $request, ${{ camelCaseModelClassName }}Id)
+	{
+		${{ camelCaseModelClassName }} = {{ modelClassName }}::find(${{ camelCaseModelClassName }}Id);
+
+		if (!${{ camelCaseModelClassName }}) {
+			return $this->response->errorNotFound();
+		}
+
+		${{ camelCaseModelClassName }}->fill($request->all(), $request->getRealMethod());
+		${{ camelCaseModelClassName }}->save();
+
+		return $this->response->item(${{ camelCaseModelClassName }}, new {{ modelClassName }}Transformer);
+	}
+{% endif %}
+{% if makeDestroyMethod %}
+
+	/**
+	 * Delete specified {{ modelSentenceClassName }}
+	 *
+	 * @ApiDocsNoCall
+	 *
+	 * @OpenApiOperationId delete
+	 * @OpenApiOperationTag Resource:{{ modelClassName }}
+	 * @OpenApiResponseDescription Empty response
+	 * @OpenApiDefaultResponseSchemaRef #/components/schemas/ErrorResponse
+	 *
+	 * @param string ${{ camelCaseModelClassName }}Id {{ modelTitleCaseClassName }} {% if useUuidPrimaryKey %}UUID{{ "\n" }}{% else %}ID{{ "\n" }}{% endif %}
+	 * @return \Dingo\Api\Http\Response|void
+	 */
+	public function destroy(${{ camelCaseModelClassName }}Id)
+	{
+		${{ camelCaseModelClassName }} = {{ modelClassName }}::find(${{ camelCaseModelClassName }}Id);
+
+		if (!${{ camelCaseModelClassName }}) {
+			return $this->response->errorNotFound();
+		}
+
+		${{ camelCaseModelClassName }}->delete();
+
+		return $this->response->noContent();
+	}
+{% endif %}
+}

@@ -15,6 +15,7 @@ class Kernel extends ConsoleKernel
     protected $commands = [
         Commands\MakeFreshApp::class,
         Commands\GenerateApiDocs::class,
+        Commands\MakeApiModelResource::class,
     ];
 
     /**
