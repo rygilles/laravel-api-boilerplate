@@ -140,6 +140,9 @@ laravel-echo-server start
 ## Artisan commands ##
 
 
+### app:makeFresh ###
+
+
 ```bash
 php artisan app:makeFresh
 ```
@@ -147,6 +150,8 @@ This command will reset/refresh migrations,
 re-create required database data and (optionally)
 create a fresh app with samples data.
 
+
+### app:generateApiDocs ###
 
 
 ```bash
@@ -157,12 +162,14 @@ Generate API documentation using current database resources.
 *Make sure you've configured all in [config/apidocs.php](./config/apidocs.php) file.*
 
 
+### app:makeApiModelResource ###
+
 
 ```bash
 php artisan app:makeApiModelResource
 ```
 
-** Only in development environment ! **
+**Only in development environment !**
 
 Generate and **MODIFY** source files to add a new model with related files :
 
