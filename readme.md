@@ -168,9 +168,9 @@ Generate and **MODIFY** source files to add a new model with related files :
 
 - Model : Created in [app/Models](./app/models) folder.
 - Migration (Optional) : Created in [database/migrations](./database/migrations) folder.
-- Init seeder (Optional) : Created in [database/seeds](./database/seeds) folder. That will also **MODIFY** the [database/seeds/InitSeeder.php](./database/seeds/InitSeeder.php file !
-- Samples seeder (Optional) : Created in [database/seeds/Samples](./database/seeds/Samples) folder. That will also **MODIFY** the [database/seeds/Samples/SamplesSeeder.php](./database/seeds/Samples/SamplesSeeder.php file !
-- Controller (Optional) : Created in [app/Http/Controllers/Api](./app/Http/Controllers/Api) folder. That will also **MODIFY** the [routes/api.php](./routes/api.php file !
+- Init seeder (Optional) : Created in [database/seeds](./database/seeds) folder. That will also **MODIFY** the [database/seeds/InitSeeder.php](./database/seeds/InitSeeder.php) file !
+- Samples seeder (Optional) : Created in [database/seeds/Samples](./database/seeds/Samples) folder. That will also **MODIFY** the [database/seeds/Samples/SamplesSeeder.php](./database/seeds/Samples/SamplesSeeder.php) file !
+- Controller (Optional) : Created in [app/Http/Controllers/Api](./app/Http/Controllers/Api) folder. That will also **MODIFY** the [routes/api.php](./routes/api.php) file !
 - Requests : Will be generated if "store" method or "update" method making is wanted. In [app/Http/Requests](./app/Http/Requests) folder.
 - Transformer : Will be generated if needed. In [app/Http/Transformers/Api](./app/Http/Transformers/Api) folder.
 
