@@ -41,7 +41,13 @@ Check the [.env](./.env.example) file and change the values according to you pre
 
 This project uses the same libraries as Laravel common projects.
 
-But also :
+But also (Check [composer.json](./composer.json) and [package.json](./package.json) file for details) :
+
+
+### Production environment ###
+
+
+#### PHP, with composer ####
 
 - [alsofronie/eloquent-uuid](https://github.com/alsofronie/eloquent-uuid) for User, UserGroup and Notification models.
 - [bugsnag/bugsnag-laravel](https://github.com/bugsnag/bugsnag-laravel) for debug purpose (Set BUGSNAG_API_KEY in your [.env](./.env.example#L48) file).
@@ -52,16 +58,55 @@ But also :
 - [rygilles/laravel-apidoc-generator](https://github.com/rygilles/laravel-apidoc-generator) for generating Api documentation.
 - [rygilles/laravel-openapi-schema-generator](https://github.com/rygilles/laravel-openapi-schema-generator) for generating Open API json file.
 
-Dev only :
 
-- [nikic/php-parser](https://github.com/nikic/PHP-Parser) for PHP parsing (Used with the `php artisan app:makeApiModelResource` command).
-- [twig/twig](https://github.com/twigphp/Twig) for Twig template rendering (Used with the `php artisan app:makeApiModelResource` command).
+#### Back-office, Node.js dependencies ####
+
+- [laravel-echo](https://github.com/laravel/echo) :
 
 
-Check [composer.json](./composer.json) file for details.
+### Development environment ###
+
+
+- [nikic/php-parser](https://github.com/nikic/PHP-Parser) : PHP parsing (Used with the `php artisan app:makeApiModelResource` command).
+- [twig/twig](https://github.com/twigphp/Twig) : Twig template rendering (Used with the `php artisan app:makeApiModelResource` command).
+
+
+#### Back-office, Node.js dependencies ####
+
+Vue.js :
+
+- [vue](https://github.com/vuejs/vue) : Vue.js javascript framework for back-office UI.
+- [vuex](https://github.com/vuejs/vuex) : Centralized state management for Vue.js.
+- [vue-router](https://github.com/vuejs/vue-router) : Official router for Vue.js.
+- [vue-i18n](https://github.com/kazupon/vue-i18n) : Translations management in Vue.js.
+- [vue-gravatar](https://github.com/JiriChara/vue-gravatar) : A dead-simple gravatar component for Vue.js.
+
+Graphics :
+
+- [admin-lte](https://github.com/almasaeed2010/AdminLTE) : Back-office dashboard and control panel.
+- [bootstrap-less](https://github.com/distros/bootstrap-less) and [bootstrap-sass](https://github.com/twbs/bootstrap-sass) : Used with AdminLTE.
+- [node-sass](https://github.com/sass/node-sass) : Used with AdminLTE.
+- [font-awesome](https://github.com/FortAwesome/Font-Awesome) : Used with AdminLTE.
+- [ionicons](https://github.com/ionic-team/ionicons) : Used with AdminLTE.
+- [noty](https://github.com/needim/noty) : Live notifications UI.
+- [datatables.net-select-dt](https://github.com/DataTables/Dist-DataTables-Select-DataTables) : Used for custom data table component styles.
+
+Laravel :
+
+- [laravel-mix](https://github.com/JeffreyWay/laravel-mix) : An elegant wrapper around Webpack for the 80% use case.
+- [cross-env](https://github.com/kentcdodds/cross-env) : Cross platform setting of environment scripts.
+
+Miscellaneous :
+
+- [jquery](https://github.com/jquery/jquery) : Used with AdminLTE.
+- [axios](https://github.com/mzabriskie/axios) : Authentication and Api requesting.
+- [pace](https://github.com/HubSpot/pace) : Dynamic loading bar (Top of the screen).
+- [lodash](https://github.com/lodash/lodash) : JavaScript utility library used with Vue.js.
+- [moment](https://github.com/moment/moment) : Dates formatter.
 
 
 ## Database ##
+
 
 This application use InnoDB tables for foreign keys constraint support and utf8mb4_unicode_ci encoding for modern chars support (including emoji).
 It also use UUID (128 bits).
