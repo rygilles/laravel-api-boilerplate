@@ -213,7 +213,7 @@ Generate and **MODIFY** source files to add a new model with related files :
 - Requests : Will be generated if "store" method or "update" method making is wanted. In [app/Http/Requests](./app/Http/Requests) folder.
 - Transformer : Will be generated if needed. In [app/Http/Transformers/Api](./app/Http/Transformers/Api) folder.
 
-During this command execution, the Laravel application will be down ("php artisan down" then "php artisan up" at the end, called implicitly).
+During this command execution, the Laravel application will be down (`php artisan down` then `php artisan up` at the end, called implicitly).
 
 Composer dump autoloads will be called at the end.
 
