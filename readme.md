@@ -10,6 +10,7 @@ This is a Laravel [Laravel 5.*](https://laravel.com/) based project.
 - [Node.js 6.*+](https://nodejs.org)
 - [Redis 3+](https://redis.io/)
 - [Laravel Echo Server 1.3.*+](https://github.com/tlaverdure/laravel-echo-server) installed globally
+- [PM 2](http://pm2.keymetrics.io/) (Optional : Run Laravel Echo Server as a "daemon")
 
 
 ## Setup ##
