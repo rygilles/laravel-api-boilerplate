@@ -32,7 +32,8 @@ php artisan key:generate
 
 ### .env file ###
 
-Check the [.env](.env) file and change the values according to you preferences.
+
+Check the [.env](./.env.example) file and change the values according to you preferences.
 
 
 ## Libs ##
