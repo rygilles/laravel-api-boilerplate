@@ -178,40 +178,6 @@ export default {
                     'message_template' : 'Êtes-vous sûr de vouloir supprimer ces utilisateurs ?<br /><br /><ul><% _.forEach(resourceRows, function(row) {%><li><strong><%- row.name %></strong></li><% }); %></ul>',
                 }
             }
-        },
-        
-        'administrator_users' : {
-            'main_title' : 'Administrateurs du projet',
-            'empty_message' : 'Aucun administeur.',
-            'columns' : {
-                'user_name' : {
-                    'title' : 'Nom',
-                },
-                'user_email' : {
-                    'title' : 'Adresse E-mail',
-                },
-                'created_at' : {
-                    'title' : 'Ajouté le',
-                },
-            },
-            'modals' : {
-                'create' : {
-                    'show_modal_link' : 'Ajouter un administrateur',
-                    'title_template' : 'Ajouter un administrateur',
-                    'fields' : {
-                        'user_id' : {
-                            'title' : 'Nom d\'utilisateur',
-                        },
-                    },
-                },
-                'delete' : {
-                    'title_template' : 'Supprimer un administrateur',
-                    'message_template' : 'Êtes-vous sûr de vouloir supprimer l\'administrateur <strong><%- resourceRow.user.data.name %></strong> du projet ?',
-                },
-            },
-            'buttons_column' : {
-                'see': 'Voir Utilisateur',
-            }
         }
     }
 }

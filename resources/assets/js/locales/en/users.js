@@ -178,40 +178,6 @@ export default {
                     'message_template' : 'Are you sure you want to delete this list ?<br /><br /><ul><% _.forEach(resourceRows, function(row) {%><li><strong><%- row.name %></strong></li><% }); %></ul>',
                 }
             }
-        },
-
-        'administrator_users' : {
-            'main_title' : 'Project\'s administrators',
-            'empty_message' : 'No administered projects.',
-            'columns' : {
-                'user_name' : {
-                    'title' : 'Name',
-                },
-                'user_email' : {
-                    'title' : 'Email address',
-                },
-                'created_at' : {
-                    'title' : 'Added At',
-                },
-            },
-            'modals' : {
-                'create' : {
-                    'show_modal_link' : 'Add an administor',
-                    'title_template' : 'Add an administor',
-                    'fields' : {
-                        'user_id' : {
-                            'title' : 'User name',
-                        },
-                    },
-                },
-                'delete' : {
-                    'title_template' : 'Delete an administrator',
-                    'message_template' : 'Are you sure you want to delete the administrator <strong><%- resourceRow.name %></strong> from your project ?',
-                },
-            },
-            'buttons_column' : {
-                'see': 'See User',
-            }
         }
     }
 }

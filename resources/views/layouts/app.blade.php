@@ -61,8 +61,6 @@
                     <ul class="nav navbar-nav">
                         @if (Auth::guest())
                             &nbsp;
-                        @else
-                            <li><a href="{{ route('user-projects') }}">@lang('projects.projects')</a></li>
                         @endif
                     </ul>
 

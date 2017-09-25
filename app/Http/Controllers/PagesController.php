@@ -2,9 +2,6 @@
 
 namespace App\Http\Controllers;
 
-
-use App\Models\UserHasProject;
-use App\Notifications\AdministeredProject;
 use Illuminate\Support\Facades\Auth;
 
 class PagesController extends Controller

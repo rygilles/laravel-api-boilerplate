@@ -132,17 +132,34 @@ return [
 			'api_calls_bindings' => [
 
 				[
+					/*
+					|--------------------------------------------------------------------------
+					| Routes Aliases
+					|--------------------------------------------------------------------------
+					|
+					| Array of routes aliases concerned
+					|
+					*/
 					'routes_aliases' => [
-						'project.show',
+
 					],
 
+					/*
+					|--------------------------------------------------------------------------
+					| Bindings
+					|--------------------------------------------------------------------------
+					|
+					| Array of routes aliases concerned
+					|
+					*/
 					'bindings' => [
+						/*
 						[
-							// John Smith Sample Project 1
 							'in' => 'query-route',
-							'name' => 'projectId',
-							'value' => '1bcc7efc-138c-11e7-93ae-92361f002671'
+							'name' => 'myParameterName',
+							'value' => 'myValue'
 						]
+						*/
 					]
 
 				]
