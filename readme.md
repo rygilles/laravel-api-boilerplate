@@ -3,7 +3,17 @@
 This is a Laravel [Laravel 5.*](https://laravel.com/) based project.
 
 
+## Prerequisites ##
+
+
+- [PHP 7.*+](http://php.net/) (for Laravel 5.5+ framework)
+- [Node.js 6.*+](https://nodejs.org)
+- [Redis 3+](https://redis.io/)
+- [Laravel Echo Server 1.3.*+](https://github.com/tlaverdure/laravel-echo-server) installed globally
+
+
 ## Setup ##
+
 
 Run this command and make sure to chmod properly the storage and cache folders.
 
