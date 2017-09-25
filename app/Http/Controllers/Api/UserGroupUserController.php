@@ -15,7 +15,7 @@ use Dingo\Api\Http\Response;
 class UserGroupUserController extends ApiController
 {
 	/**
-	 * ProjectController constructor.
+	 * UserGroupUserController constructor.
 	 */
 	public function __construct()
 	{
