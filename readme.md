@@ -36,7 +36,7 @@ But also :
 - [dingo/api](https://github.com/dingo/api) for Api features.
 - [felixkiss/uniquewith-validator](https://github.com/felixkiss/uniquewith-validator) for advanced validation rule.
 - [filp/whoops](https://github.com/filp/whoops) for better error display in debug mode.
-- [predis/predis](https://github.com/nrk/predis) for interactions with redis server and (laravel-echo-server)[https://github.com/tlaverdure/laravel-echo-server]
+- [predis/predis](https://github.com/nrk/predis) for interactions with redis server and [laravel-echo-server](https://github.com/tlaverdure/laravel-echo-server).
 - [rygilles/laravel-apidoc-generator](https://github.com/rygilles/laravel-apidoc-generator) for generating Api documentation.
 - [rygilles/laravel-openapi-schema-generator](https://github.com/rygilles/laravel-openapi-schema-generator) for generating Open API json file.
 
