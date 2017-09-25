@@ -26,6 +26,26 @@ Check the [.env](./.env) and change the values according to you preferences.
 
 ## Libs ##
 
+
+This project uses the same libraries as Laravel common projects.
+
+But also :
+
+- [alsofronie/eloquent-uuid](https://github.com/alsofronie/eloquent-uuid) for User, UserGroup and Notification models.
+- [bugsnag/bugsnag-laravel](https://github.com/bugsnag/bugsnag-laravel) for debug purpose (Set BUGSNAG_API_KEY in your [.env](./.env.example#L48) file).
+- [dingo/api](https://github.com/dingo/api) for Api features.
+- [felixkiss/uniquewith-validator](https://github.com/felixkiss/uniquewith-validator) for advanced validation rule.
+- [filp/whoops](https://github.com/filp/whoops) for better error display in debug mode.
+- [predis/predis](https://github.com/nrk/predis) for interactions with redis server and (laravel-echo-server)[https://github.com/tlaverdure/laravel-echo-server]
+- [rygilles/laravel-apidoc-generator](https://github.com/rygilles/laravel-apidoc-generator) for generating Api documentation.
+- [rygilles/laravel-openapi-schema-generator](https://github.com/rygilles/laravel-openapi-schema-generator) for generating Open API json file.
+
+Dev only :
+
+- [nikic/php-parser](https://github.com/nikic/PHP-Parser) for PHP parsing (Used with the `php artisan app:makeApiModelResource` command).
+- [twig/twig](https://github.com/twigphp/Twig) for Twig template rendering (Used with the `php artisan app:makeApiModelResource` command).
+
+
 Check [composer.json](./composer.json) file for details.
 
 
