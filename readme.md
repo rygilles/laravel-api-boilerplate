@@ -184,3 +184,24 @@ Generate and **MODIFY** source files to add a new model with related files :
 During this command execution, the Laravel application will be down ("php artisan down" then "php artisan up" at the end, called implicitly).
 
 Composer dump autoloads will be called at the end.
+
+
+### openApiSchemas:generate ###
+
+
+```bash
+php artisan openApiSchemas:generate
+```
+
+
+This command is provided by the [rygilles/laravel-openapi-schema-generator](https://github.com/rygilles/laravel-openapi-schema-generator) package.
+
+It will analyze your laravel project files and generate a openapi json file, describing the capabilities of your Api.
+
+Check the [config/openapischemas.php](./config/openapischemas.php) configuration file before running this command.
+
+Some information can not be retrieve automatically by the script, you might update/add data in the ["openapi_bindings" configuration array](./config/openapischemas.php#L160#L531).
+
+
+
+
