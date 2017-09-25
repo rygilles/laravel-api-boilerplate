@@ -232,7 +232,7 @@ It will analyze your laravel project files and generate a openapi json file, des
 
 Check the [config/openapischemas.php](./config/openapischemas.php) configuration file before running this command.
 
-Some information can not be retrieve automatically by the script, you might update/add data in the ["openapi_bindings" configuration array](./config/openapischemas.php#L160#L531).
+Some information can not be retrieve automatically by the script, you might update/add data in the ["openapi_bindings" configuration array](./config/openapischemas.php#L177#L548).
 
 
 
