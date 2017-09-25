@@ -39,6 +39,8 @@ It also use UUID (128 bits).
 
 Run this command to create the database basics with default migrations (check [database/migrations](./database/migrations) directory).
 
+*Make sure Redis is installed properly.*
+
 ```bash
 php artisan app:makeFresh
 ```
@@ -111,8 +113,6 @@ npm run dev
 Real-time notifications and events are send by a local Node.js server, using Redis and Socket.io.
 
 The whole process is handled by [laravel-echo-server](https://github.com/tlaverdure/laravel-echo-server).
-
-*Before continuing : Make sure Redis*
 
 Initialize Laravel Echo Server by creating [laravel-echo-server.json](./laravel-echo-server.json) configuration file with this command :
 
