@@ -61,7 +61,7 @@ But also (Check [composer.json](./composer.json) and [package.json](./package.js
 
 #### Back-office, Node.js dependencies ####
 
-- [laravel-echo](https://github.com/laravel/echo) :
+- [laravel-echo](https://github.com/laravel/echo) : Laravel Echo is a JavaScript library that makes it painless to subscribe to channels and listen for events broadcast by Laravel.
 
 
 ### Development environment ###
