@@ -64,12 +64,12 @@ But also (Check [composer.json](./composer.json) and [package.json](./package.js
 - [laravel-echo](https://github.com/laravel/echo) : Laravel Echo is a JavaScript library that makes it painless to subscribe to channels and listen for events broadcast by Laravel.
 - [socket.io-client](https://github.com/socketio/socket.io-client) : Realtime application framework (client) used with Laravel Echo.
 
-
 ### Development environment ###
 
 
 - [nikic/php-parser](https://github.com/nikic/PHP-Parser) : PHP parsing (Used with the `php artisan app:makeApiModelResource` command).
 - [twig/twig](https://github.com/twigphp/Twig) : Twig template rendering (Used with the `php artisan app:makeApiModelResource` command).
+- [barryvdh/laravel-ide-helper package](https://github.com/barryvdh/laravel-ide-helper) : Tool for generating Laravel definitions (PhpDoc) php file. Adding auto-complete in your IDE.
 
 
 #### Back-office, Node.js dependencies ####
