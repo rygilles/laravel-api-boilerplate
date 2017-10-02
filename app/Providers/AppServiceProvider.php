@@ -38,6 +38,11 @@ class AppServiceProvider extends ServiceProvider
 
         // Models observers
 	    User::observe(UserObserver::class);
+
+	    // IDE Helper for PhpDoc on Laravel Facades
+	    if ($this->app->environment() !== 'production') {
+		    $this->app->register(\Barryvdh\LaravelIdeHelper\IdeHelperServiceProvider::class);
+	    }
     }
 
     /**

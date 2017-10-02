@@ -281,5 +281,18 @@ Check the [config/openapischemas.php](./config/openapischemas.php) configuration
 Some information can not be retrieve automatically by the script, you might update/add data in the ["openapi_bindings" configuration array](./config/openapischemas.php#L177#L548).
 
 
+### ide-helper:generate ###
 
 
+```bash
+php artisan ide-helper:generate
+```
+
+This command is provided by [barryvdh/laravel-ide-helper package](https://github.com/barryvdh/laravel-ide-helper).
+
+*Only for development environment*
+
+This package generates a file that your IDE understands, so it can provide accurate autocompletion.
+Generation is done based on the files in your project, so they are always up-to-date.
+If you don't want to generate it, you can add a pre-generated file to the root folder of your Laravel project
+(but this isn't as up-to-date as self generated files).
