@@ -65,16 +65,20 @@
 							}];
 						}
 
-						$(this.$el).select2().empty();
-						$(this.$el).select2('destroy');
+						if ($(this.$el).data('select2')) {
+							$(this.$el).select2().empty();
+							$(this.$el).select2('destroy');
+						}
 						$(this.$el).find('option').remove();
 
 						this.init();
 					}
 				} else {
 					if ((this.feed.getUri != null) || (('getSingleResourceUri' in this.feed) && (this.feed.getSingleResourceUri != null))) {
-						$(this.$el).select2().empty();
-						$(this.$el).select2('destroy');
+						if ($(this.$el).data('select2')) {
+							$(this.$el).select2().empty();
+							$(this.$el).select2('destroy');
+						}
 						$(this.$el).find('option').remove();
 
 						var baseUri = this.feed.getUri;
@@ -141,8 +145,10 @@
 					});
 				}
 
-				$(this.$el).select2().empty();
-				$(this.$el).select2('destroy');
+				if ($(this.$el).data('select2')) {
+					$(this.$el).select2().empty();
+					$(this.$el).select2('destroy');
+				}
 				$(this.$el).find('option').remove();
 
 				// Select first option in this case
@@ -169,7 +175,9 @@
 			this.init();
 		},
 		destroyed() {
-			$(this.$el).off().select2('destroy');
+			if ($(this.$el).data('select2')) {
+				$(this.$el).off().select2('destroy');
+			}
 		},
 		methods : {
 			initWithDefaultValueFromAjax() {
