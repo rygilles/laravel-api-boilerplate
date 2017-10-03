@@ -17,6 +17,7 @@ mix.copy('resources/assets/img/dashboard-mini-logo.png','public/img/dashboard-mi
 mix.copy('resources/assets/img/languages.png','public/img/languages.png')
 
 mix.js('resources/assets/js/dashboard.js', 'public/js')
+    .sourceMaps()
     .js('node_modules/admin-lte/plugins/pace/pace.min.js', 'public/js')
     .sass('resources/assets/sass/app.scss', 'public/css')
     .sass('resources/assets/sass/dashboard.scss', 'public/css');
