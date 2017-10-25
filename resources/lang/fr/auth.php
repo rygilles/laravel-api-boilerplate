@@ -124,5 +124,7 @@ return [
 		'authorize_btn' => 'Autoriser',
 		'cancel_btn' => 'Annuler'
 	],
+	
+	'register_disabled_message' => 'Les inscriptions à la plateforme sont fermées pour le moment. Réessayez plus tard.'
 
 ];

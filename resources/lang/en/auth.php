@@ -124,4 +124,7 @@ return [
 		'authorize_btn' => 'Authorize',
 		'cancel_btn' => 'Cancel'
 	],
+	
+	'register_disabled_message' => 'Please try again later, the registrations are disabled at the moment.'
+	
 ];

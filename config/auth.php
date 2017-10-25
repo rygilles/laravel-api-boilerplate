@@ -98,5 +98,16 @@ return [
             'expire' => 60,
         ],
     ],
+	
+	/*
+    |--------------------------------------------------------------------------
+    | Register Disabled
+    |--------------------------------------------------------------------------
+    |
+    | Disallow registering of new users.
+    |
+    */
+
+    'register_disabled' => env('AUTH_REGISTER_DISABLED', false),
 
 ];

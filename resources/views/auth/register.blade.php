@@ -7,6 +7,9 @@
             <div class="panel panel-default">
                 <div class="panel-heading">@lang('auth.register')</div>
                 <div class="panel-body">
+                    @if (config('auth.register_disabled'))
+                        @lang('auth.register_disabled_message')
+                    @else
                     <form class="form-horizontal" role="form" method="POST" action="{{ route('register') }}">
                         {{ csrf_field() }}
 
@@ -68,6 +71,7 @@
                             </div>
                         </div>
                     </form>
+                    @endif
                 </div>
             </div>
         </div>
