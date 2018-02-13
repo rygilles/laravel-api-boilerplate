@@ -20,7 +20,7 @@
         "laravel/tinker": "~1.0",
         "predis/predis": "^1.1",
         "rygilles/laravel-apidoc-generator": "0.1.1",
-        "rygilles/laravel-openapi-schema-generator": "0.1"
+        "rygilles/laravel-openapi-schema-generator": "^0.2"
     },
     "require-dev": {
         "barryvdh/laravel-ide-helper": "^2.4",
