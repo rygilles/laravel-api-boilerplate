@@ -29,6 +29,9 @@
 			<footer class="main-footer">
 				<strong>Copyright &copy; 2017 <a href="javascript:;">{{ laravel.appName }}</a>.</strong> All rights reserved.
 			</footer>
+			
+			<!-- Flash notifications -->
+			<Flashes></Flashes>
 		</div>
 		<!-- ./wrapper -->
 	</div>
@@ -38,9 +41,10 @@
 	import topbar from './components/includes/topbar.vue';
 	import sidebar from './components/includes/sidebar.vue';
 	import breadcrumb from './components/includes/breadcrumb.vue';
+    import Flashes from './components/includes/flashes.vue';
 
 	export default {
-		components: { topbar, sidebar, breadcrumb },
+		components: { topbar, sidebar, breadcrumb, Flashes },
 
 		created() {
 			// set laravel data in store
@@ -104,7 +108,6 @@
 				// listen to notifications events
 				Echo.private('App.Models.User.' + this.$store.getters.me.id)
 					.notification((notification) => {
-						// add 'pushed' property to trigger noty
 						notification.pushed = true;
 						this.$store.commit('addNotification', notification);
 					});

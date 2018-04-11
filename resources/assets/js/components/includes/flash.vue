@@ -17,8 +17,12 @@
 </template>
 <script>
 	export default {
-		name: 'Notification',
+		name: 'Flash',
 		props: ['notification'],
+
+        mounted() {
+            this.notify();
+        },
 		
         computed: {
             notificationType() {
@@ -27,6 +31,37 @@
         },
 		
 		methods: {
+		    /**
+			 * Notify
+			 */
+		    notify() {
+                // pushed property if just received
+                if (this.notification.pushed) {
+                    var notificationHtml = $('[data-notification-id="' + this.notification.id + '"]').html();
+                    var n = new Noty({
+                        theme: 'semanticui',
+                        type: 'alert',
+                        layout: 'bottomRight',
+                        text: notificationHtml,
+                        timeout: 5000,
+                        progressBar: true,
+                        closeWith: ['click', 'button'],
+                        animation: {
+                            open: 'noty_effects_open',
+                            close: 'noty_effects_close'
+                        },
+                        callbacks: {
+                            onShow: () => {
+                                $(n.barDom).bind('click', () => { this.selectNotification(); });
+                            }
+                        }
+                    });
+                    n.show();
+
+                    document.getElementById('noty_audio').play();
+                }
+			},
+			
 			/**
 			 * Mark notification as read and/or redirect
 			 */

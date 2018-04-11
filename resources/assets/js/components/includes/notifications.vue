@@ -24,40 +24,45 @@
 	</li>
 </template>
 <script>
-	import Notification from './notification'
+    import Notification from './notification'
 
-	export default {
-		name: 'Notifications',
-		props: ['displayName', 'pictureUrl'],
-		components: { Notification },
-		mounted() {
-			this.getNotifications();
-		},
-		methods : {
-			/**
-			 * Get the notifications of the current user
-			 */
-			getNotifications() {
-				apiAxios.get('/me/notification')
-					.then(response => {
-						response.data.data.forEach( (notification) => {
-							this.$store.commit('addNotification', notification);
-						})
-				}).catch(error => {
-						this.$root.axiosError(error);
-				});
-			},
-		},
-		computed : {
-			notifications() {
-				return _.orderBy(this.$store.getters.notifications, 'read_at', 'desc');
-			},
-			notificationsCount() {
-				return this.$store.getters.notificationsCount;
-			},
-			unreadNotificationsCount() {
-				return this.$store.state.notifications.filter(notification => (!notification.read_at)).length;
-			},
-		}
-	}
+    export default {
+        name: 'Notifications',
+        components: { Notification },
+        data() {
+            return {
+                notificationsStore: []
+            }
+        },
+        created() {
+            this.getNotifications();
+        },
+        methods : {
+            /**
+             * Get the notifications of the current user
+             */
+            getNotifications() {
+                apiAxios.get('/me/notification?order_by=created_at,desc')
+                    .then(response => {
+                        response.data.data.forEach((notification) => {
+                            notification.pushed = false;
+                            this.$store.commit('addNotification', notification);
+                        });
+                    }).catch(error => {
+                    this.$root.axiosError(error);
+                });
+            },
+        },
+        computed : {
+            notifications() {
+                return _.orderBy(this.$store.getters.notifications, 'created_at', 'desc');
+            },
+            notificationsCount() {
+                return this.$store.getters.notificationsCount;
+            },
+            unreadNotificationsCount() {
+                return this.$store.state.notifications.filter(notification => (!notification.read_at)).length;
+            },
+        }
+    }
 </script>
