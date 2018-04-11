@@ -30,6 +30,11 @@ $api->version('v1', ['middleware' => ['acceptLanguage', /*'cors',*/ 'auth:api']]
 		'me/notification',
 		'App\Http\Controllers\Api\MeNotificationController@index'
 	)->name('meNotification.index');
+	
+	$api->post(
+		'me/notification/all/read',
+		'App\Http\Controllers\Api\MeNotificationController@updateAllRead'
+	)->name('meNotification.updateAllRead');
 
 	$api->post(
 		'me/notification/{notificationId}/read',

@@ -57,6 +57,7 @@ return [
 				'me.index',
 
 				'meNotification.index',
+				'meNotification.updateAllRead',
 				'meNotification.updateRead',
 				'meNotification.updateUnread',
 
@@ -115,6 +116,7 @@ return [
 				'me.index',
 
 				'meNotification.index',
+				'meNotification.updateAllRead',
 				'meNotification.updateRead',
 				'meNotification.updateUnread',
 
@@ -167,6 +169,7 @@ return [
 				'me.index',
 
 				'meNotification.index',
+				'meNotification.updateAllRead',
 				'meNotification.updateRead',
 				'meNotification.updateUnread',
 				

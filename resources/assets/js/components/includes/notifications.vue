@@ -7,6 +7,9 @@
 		<ul class="dropdown-menu">
 			<li v-if="unreadNotificationsCount > 0" class="header">
 				{{ $tc('notifications.you_have_unread', unreadNotificationsCount, {'count' : unreadNotificationsCount}) }}
+				<span class="pull-right">
+					<a href="javascript:;" @click="markNotificationsAsRead()">{{ $t('notifications.mark_all_as_read') }}</a>
+				</span>
 			</li>
 			<li v-else class="header">
 				{{ $t('notifications.your_notifications') }}
@@ -52,6 +55,19 @@
                     this.$root.axiosError(error);
                 });
             },
+
+            /**
+             * Mark all notifications as read
+             */
+            markNotificationsAsRead() {
+                apiAxios.post('/me/notification/all/read')
+                    .then(response => {
+                        this.$store.commit('clearNotifications');
+                        this.getNotifications();
+                    }).catch(error => {
+                    this.$root.axiosError(error);
+                });
+            }
         },
         computed : {
             notifications() {

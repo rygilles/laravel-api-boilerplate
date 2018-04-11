@@ -512,6 +512,80 @@ return [
 							]),
 						]),
 						
+						'Notification' => new Schema([
+							'required' => [
+								'id',
+								'type',
+								'notifiable_id',
+								'notifiable_type',
+								'data',
+								'read_at',
+								'created_at',
+								'updated_at'
+							],
+							'properties' => [
+								'id' => new Schema([
+									'type' => 'string',
+									'format' => 'uuid'
+								]),
+								'type' => new Schema([
+									'type' => 'string'
+								]),
+								'notifiable_id' => new Schema([
+									'type' => 'string',
+								]),
+								'notifiable_type' => new Schema([
+									'type' => 'string',
+								]),
+								'data' => new Schema([
+									'type' => 'object',
+									'additionalProperties' => true
+								]),
+								'read_at' => new Schema([
+									'type' => 'string',
+									'format' => 'date-time'
+								]),
+								'created_at' => new Schema([
+									'type' => 'string',
+									'format' => 'date-time'
+								]),
+								'updated_at'=> new Schema([
+									'type' => 'string',
+									'format' => 'date-time'
+								]),
+							]
+						]),
+						'NotificationResponse' => new Schema([
+							'required' => [
+								'data'
+							],
+							'properties' => ([
+								'data' => new Reference([
+									'ref' => '#/components/schemas/Notification',
+								]),
+							])
+						]),
+						'NotificationListResponse' => new Schema([
+							'required' => [
+								'data',
+								'meta'
+							],
+							'properties' => ([
+								'data' => new Schema([
+									'type' => 'array',
+									'items' => new Reference([
+										'ref' => '#/components/schemas/Notification',
+									])
+								]),
+								'meta' => new Reference([
+									'ref' => '#/components/schemas/Meta',
+								])
+							]),
+						]),
+						
+						'NoContentResponse' => new Schema([
+							'description' => 'No Content'
+						]),
 					],
 					'securitySchemes' => [
 						'apiBearer' => new SecurityScheme([
