@@ -36,6 +36,25 @@ return [
 		'password_confirm' => 'Confirmation du mot de passe',
 		'register_btn' => 'S\'inscrire'
 	],
+	
+	'email_validation' => [
+		'page' => [
+			'title' => 'Confirmation de votre adresse email',
+			'message' => 'Afin de vérifier votre compte utilisateur, vous devez confirmer votre adresse email en suivant les instructions dans le mail de confirmation que vous devriez avoir reçu.',
+			'failed_message' => 'Ce ticket de validation n\'est pas ou plus valide.',
+			'new_token_message' => 'Cliquez sur le bouton suivant pour recevoir un nouveau mail de validation :',
+			'new_token_maybe_message' => 'Si besoin, vous pouvez demander à recevoir un nouveau mail de validation en cliquant sur le bouton suivant :',
+			'new_token_btn' => 'Renvoyer',
+			'new_token_sent_message' => 'Un nouveau mail de validation vient de vous être envoyé.'
+		],
+		'mail' => [
+			'subject' => ':appName: : Confirmation de votre adresse email',
+			'title' => 'Bienvenue,',
+			'line1' => 'Merci de bien vouloir confirmer votre email pour accéder à notre service en ligne.',
+			'button' => 'Confirmer',
+			'line2' => 'Si vous n\'avez pas demandé la création d\'un compte sur notre service, merci d\'ignorer ce message.'
+		]
+	],
 
 	'reset_password_form' => [
 		'email' => 'Addresse E-mail',

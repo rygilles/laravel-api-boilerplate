@@ -42,7 +42,8 @@ class User extends ApiModel implements AuthenticatableContract,	AuthorizableCont
 		'name',
 		'email',
 		'password',
-		'user_group_id'
+		'user_group_id',
+		'confirmation_token',
 	];
 
 	/**
@@ -51,7 +52,9 @@ class User extends ApiModel implements AuthenticatableContract,	AuthorizableCont
 	 * @var array
 	 */
 	protected $hidden = [
-		'password', 'remember_token',
+		'password',
+		'remember_token',
+		'confirmation_token',
 	];
 
 	/**
@@ -177,5 +180,15 @@ class User extends ApiModel implements AuthenticatableContract,	AuthorizableCont
 	{
 		return $this->notifications()
 			->whereNull('read_at');
+	}
+
+	/**
+	 * Check if this user is confirmed (email)
+	 *
+	 * @return bool
+	 */
+	public function isConfirmed()
+	{
+		return !is_null($this->confirmed_at);
 	}
 }

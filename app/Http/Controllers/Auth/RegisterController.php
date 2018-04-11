@@ -2,8 +2,11 @@
 
 namespace App\Http\Controllers\Auth;
 
+use App\Mails\UserEmailValidation;
 use App\Models\User;
 use App\Http\Controllers\Controller;
+use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Foundation\Auth\RegistersUsers;
 
@@ -27,7 +30,7 @@ class RegisterController extends Controller
      *
      * @var string
      */
-    protected $redirectTo = '/dashboard';
+    protected $redirectTo = '/login';
 
     /**
      * Create a new controller instance.
@@ -67,6 +70,28 @@ class RegisterController extends Controller
             'email' => $data['email'],
             'password' => $data['password'],
 	        'user_group_id' => 'End-User',
+	        'confirmation_token' => str_random(64),
         ]);
     }
+    
+	/**
+	 * The user has been registered.
+	 *
+	 * @param  \Illuminate\Http\Request  $request
+	 * @param  User  $user
+	 * @return mixed
+	 */
+	protected function registered(Request $request, $user)
+	{
+		// Ask for email confirm
+		$pendingMail = Mail::to($user->email);
+		
+		// Use user preferred language
+		if (!is_null($user->preferred_language)) {
+			$pendingMail->locale($user->preferred_language);
+		}
+		
+		// Queue email
+		$pendingMail->queue(new UserEmailValidation($user));
+	}
 }

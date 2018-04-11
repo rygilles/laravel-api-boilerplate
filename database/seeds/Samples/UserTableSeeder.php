@@ -1,6 +1,7 @@
 <?php
 
 use App\Models\User;
+use Carbon\Carbon;
 use Illuminate\Database\Seeder;
 
 class UserTableSeeder extends Seeder
@@ -17,7 +18,8 @@ class UserTableSeeder extends Seeder
 	        'user_group_id'     => 'Developer',
             'name'              => 'John Doe',
             'email'             => 'john.doe@domain.tld',
-            'password'          => 'johndoe' // Magic setter auto crypt
+            'password'          => 'johndoe', // Magic setter auto crypt
+	        'confirmed_at'      => Carbon::now()
         ]);
 
         User::create([
@@ -25,7 +27,8 @@ class UserTableSeeder extends Seeder
 	        'user_group_id'     => 'Support',
             'name'              => 'Alan Smithee',
             'email'             => 'alan.smithee@domain.tld',
-            'password'          => 'alansmithee' // Magic setter auto crypt
+            'password'          => 'alansmithee', // Magic setter auto crypt
+	        'confirmed_at'      => Carbon::now()
         ]);
 
         User::create([
@@ -33,7 +36,8 @@ class UserTableSeeder extends Seeder
 	        'user_group_id'     => 'End-User',
             'name'              => 'John Smith',
             'email'             => 'john.smith@domain.tld',
-            'password'          => 'johnsmith' // Magic setter auto crypt
+            'password'          => 'johnsmith', // Magic setter auto crypt
+	        'confirmed_at'      => Carbon::now()
         ]);
 
 	    User::create([
@@ -41,7 +45,8 @@ class UserTableSeeder extends Seeder
 		    'user_group_id'     => 'End-User',
 		    'name'              => 'Mickey Mouse',
 		    'email'             => 'mickey.mouse@domain.tld',
-		    'password'          => 'mickeymouse' // Magic setter auto crypt
+		    'password'          => 'mickeymouse', // Magic setter auto crypt
+		    'confirmed_at'      => Carbon::now()
 	    ]);
     }
 }

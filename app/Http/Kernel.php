@@ -62,5 +62,6 @@ class Kernel extends HttpKernel
         'throttle' => \Illuminate\Routing\Middleware\ThrottleRequests::class,
 	    'verifyUserGroup' => \App\Http\Middleware\VerifyUserGroup::class,
 	    'acceptLanguage' => \App\Http\Middleware\AcceptLanguage::class,
+	    'emailConfirm' => \App\Http\Middleware\VerifyUserEmailConfirm::class,
     ];
 }

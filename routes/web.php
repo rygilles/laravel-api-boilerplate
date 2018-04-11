@@ -18,6 +18,10 @@ Route::group(['domain' => env('APP_DOMAIN')], function () {
 	})->name('welcome');
 
 	Auth::routes();
+	
+	Route::get('/confirm/{token?}', 'Auth\EmailConfirmController@confirm')->name('confirm');
+	Route::get('/confirm-failed', 'Auth\EmailConfirmController@confirmFailed')->name('confirm_failed');
+	Route::get('/confirm-new-token', 'Auth\EmailConfirmController@sendNewToken')->name('confirm.new_token');
 
 	Route::get('/dashboard', 'PagesController@dashboard')->name('dashboard');
 

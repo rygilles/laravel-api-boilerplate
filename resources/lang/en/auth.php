@@ -36,6 +36,25 @@ return [
 		'password_confirm' => 'Confirm Password',
 		'register_btn' => 'Register'
 	],
+	
+	'email_validation' => [
+		'page' => [
+			'title' => 'Email Confirmation',
+			'message' => 'Please confirm your email address using the email you received.',
+			'failed_message' => 'This validation token is not valid (anymore).',
+			'new_token_message' => 'Click on this button to send a new validation email :',
+			'new_token_maybe_message' => 'If necessary, ask to receive a new confirmation email by clicking this button :',
+			'new_token_btn' => 'Resend',
+			'new_token_sent_message' => 'A new confirmation email has been sent.'
+		],
+		'mail' => [
+			'subject' => ':appName : Email Confirmation',
+			'title' => 'Welcome,',
+			'line1' => 'Please confirm your email to access to our website:',
+			'button' => 'Confirm',
+			'line2' => 'If you did not request a user creation on our website, ignore this message.'
+		]
+	],
 
 	'reset_password_form' => [
 		'email' => 'E-Mail Address',
