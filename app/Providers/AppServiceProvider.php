@@ -38,11 +38,6 @@ class AppServiceProvider extends ServiceProvider
 
         // Models observers
 	    User::observe(UserObserver::class);
-
-	    // IDE Helper for PhpDoc on Laravel Facades
-	    if ($this->app->environment() !== 'production') {
-		    $this->app->register(\Barryvdh\LaravelIdeHelper\IdeHelperServiceProvider::class);
-	    }
     }
 
     /**
@@ -52,8 +47,13 @@ class AppServiceProvider extends ServiceProvider
      */
     public function register()
     {
-	    // Bugsnag
-	    $this->app->alias('bugsnag.logger', \Illuminate\Contracts\Logging\Log::class);
-	    $this->app->alias('bugsnag.logger', \Psr\Log\LoggerInterface::class);
+	    // Passport : Disable default migrations
+	    Passport::ignoreMigrations();
+	
+	    // Laravel IDE Helper
+	
+	    if (!in_array($this->app->environment(), ['production', 'staging'])) {
+		    $this->app->register(\Barryvdh\LaravelIdeHelper\IdeHelperServiceProvider::class);
+	    }
     }
 }
