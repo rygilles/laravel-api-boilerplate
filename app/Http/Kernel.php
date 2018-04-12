@@ -14,8 +14,9 @@ class Kernel extends HttpKernel
      * @var array
      */
     protected $middleware = [
-	    \Barryvdh\Cors\HandleCors::class,
-	    \Barryvdh\Cors\HandlePreflight::class,
+	    // @fixme Disabled to install Laravel 5.5.* framework (not installable with this version)
+	    //\Barryvdh\Cors\HandleCors::class,
+	    //\Barryvdh\Cors\HandlePreflight::class,
         \Illuminate\Foundation\Http\Middleware\CheckForMaintenanceMode::class,
         \Illuminate\Foundation\Http\Middleware\ValidatePostSize::class,
         \App\Http\Middleware\TrimStrings::class,
