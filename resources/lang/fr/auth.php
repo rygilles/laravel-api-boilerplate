@@ -32,6 +32,7 @@ return [
 	'register_form' => [
 		'name' => 'Nom',
 		'email' => 'Addresse E-mail',
+		'preferred_language' => 'Langue préférée',
 		'password' => 'Mot de passe',
 		'password_confirm' => 'Confirmation du mot de passe',
 		'register_btn' => 'S\'inscrire'

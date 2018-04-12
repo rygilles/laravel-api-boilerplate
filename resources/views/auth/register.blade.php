@@ -41,6 +41,24 @@
                             </div>
                         </div>
 
+                        <div class="form-group{{ $errors->has('preferred_language') ? ' has-error' : '' }}">
+                            <label for="email" class="col-md-4 control-label">@lang('auth.register_form.preferred_language')</label>
+
+                            <div class="col-md-6">
+                                <select id="preferred_language" class="form-control" name="preferred_language" required>
+                                @foreach (config('app.locales') as $locale)
+                                    <option value="{{ $locale  }}"{{ $locale == old('preferred_language') ? ' selected' : '' }}>{{ $locale }}</option>
+                                @endforeach
+                                </select>
+
+                                @if ($errors->has('preferred_language'))
+                                    <span class="help-block">
+                                        <strong>{{ $errors->first('preferred_language') }}</strong>
+                                    </span>
+                                @endif
+                            </div>
+                        </div>
+
                         <div class="form-group{{ $errors->has('password') ? ' has-error' : '' }}">
                             <label for="password" class="col-md-4 control-label">@lang('auth.register_form.password')</label>
 

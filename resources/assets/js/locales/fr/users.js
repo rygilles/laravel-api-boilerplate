@@ -15,6 +15,10 @@ export default {
     'user_password': 'Mot de passe',
     'user_password_help': 'Au moins 8 caractères.<br /> Remplissez ce champ pour modifier le mot de passe.',
 
+    'preferred_language': 'Langue préférée',
+    'preferred_language_help': 'Pour les mails et autres notifications.',
+    'preferred_language_null_value_label': 'Langue de l\'application',
+
     'edit_user' : 'Modifier l\'utilisateur "{name}"',
 
     'data_manager' : {
@@ -36,6 +40,9 @@ export default {
                 },
                 'password': {
                     'title': 'Mot de passe',
+                },
+                'preferred_language' : {
+                    'title': 'Langue préférée'
                 },
                 'created_at' : {
                     'title' : 'Créé le',
@@ -65,6 +72,10 @@ export default {
                             'title' : 'Mot de passe',
                             'help' : 'Au moins 8 caractères.',
                         },
+                        'preferred_language' : {
+                            'title': 'Langue préférée',
+                            'help' : 'Pour les mails et autres notifications.',
+                        },
                     },
                 },
                 'edit' : {
@@ -85,6 +96,10 @@ export default {
                         'password': {
                             'title' : 'Mot de passe',
                             'help' : 'Au moins 8 caractères.<br /> Remplissez ce champ pour modifier le mot de passe.',
+                        },
+                        'preferred_language' : {
+                            'title': 'Langue préférée',
+                            'help' : 'Pour les mails et autres notifications.',
                         },
                     },
                 },

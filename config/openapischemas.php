@@ -412,6 +412,7 @@ return [
 								'user_group_id',
 								'name',
 								'email',
+								'preferred_language',
 								'created_at',
 								'updated_at'
 							],
@@ -430,6 +431,13 @@ return [
 								'email' => new Schema([
 									'type' => 'string',
 									'format' => 'email'
+								]),
+								'password' => new Schema([
+									'type' => 'string',
+									'format' => 'password'
+								]),
+								'preferred_language' => new Schema([
+									'type' => 'string',
 								]),
 								'created_at' => new Schema([
 									'type' => 'string',

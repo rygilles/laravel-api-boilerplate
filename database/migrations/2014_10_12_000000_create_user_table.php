@@ -18,6 +18,7 @@ class CreateUserTable extends Migration
             $table->string('name', 100);
             $table->string('email', 150)->unique();
             $table->string('password', 150);
+	        $table->string('preferred_language', 30)->nullable();
             $table->rememberToken();
 	        $table->timestamp('confirmed_at')->nullable();
 	        $table->string('confirmation_token', 64)->nullable();

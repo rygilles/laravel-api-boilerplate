@@ -102,29 +102,42 @@ return [
     */
 
 	'locales' => explode(',', env('APP_LOCALES', 'en')),
-
+	
 	/*
     |--------------------------------------------------------------------------
-    | Application Sync Task
+    | Application Debug Blacklist
     |--------------------------------------------------------------------------
     |
-    | Configuration of the cron/jobs of the projects synchronization tasks.
+    | List of variables to hide in debug context (whoops).
     |
     */
-
-	'syncTasksScheduling' => [
-
-		// Max count of tasks with "InProgress" status at the same time, per sync. type id.
-		'maxInProgress' => [
-			'Main'                  => 10,
-			'DataStreamDownload'    => 10,
-			'DataStreamCheck'       => 10,
-			'DataStreamPrepare'     => 10,
-			'ItemsInsertion'        => 10,
-			'ItemsUpdate'           => 10,
-			'ItemsDelete'           => 10
+	
+	'debug_blacklist' => [
+		'_ENV' => [
+			'APP_KEY',
+			'DB_PASSWORD',
+			'REDIS_PASSWORD',
+			'MAIL_PASSWORD',
+			'PUSHER_APP_KEY',
+			'PUSHER_APP_SECRET',
+			'MANDRILL_SECRET',
+			'BUGSNAG_API_KEY',
+			'MAIL_FROM_ADDRESS',
 		],
-
+		'_SERVER' => [
+			'APP_KEY',
+			'DB_PASSWORD',
+			'REDIS_PASSWORD',
+			'MAIL_PASSWORD',
+			'PUSHER_APP_KEY',
+			'PUSHER_APP_SECRET',
+			'MANDRILL_SECRET',
+			'BUGSNAG_API_KEY',
+			'MAIL_FROM_ADDRESS',
+		],
+		'_POST' => [
+			'password',
+		],
 	],
 
     /*

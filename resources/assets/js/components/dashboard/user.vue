@@ -34,6 +34,11 @@
 								<b v-html="$t('users.user_password')"></b> <span class="pull-right">-</span>
 							</li>
 							<li class="list-group-item">
+								<b v-html="$t('users.preferred_language')"></b>
+								<span class="pull-right"
+									  v-html="(user.preferred_language == null ? $t('users.preferred_language_null_value_label') : user.preferred_language)"></span>
+							</li>
+							<li class="list-group-item">
 								<b v-html="$t('common.created_at')"></b> <span class="pull-right" v-html="momentLocalDate(user.created_at)"></span>
 							</li>
 							<li class="list-group-item">
@@ -161,6 +166,31 @@
 						value : '',
 						type : 'password'
 					},
+					{
+                        name : 'preferred_language',
+                        title : this.$i18n.t('users.preferred_language'),
+                        help : this.$i18n.t('users.preferred_language_help'),
+                        value : this.userEditModalUser.preferred_language,
+                        type : 'select2',
+                        select2 : {
+                            labelProp : 'label',
+                            valueProp : 'id',
+                            options : [
+								{
+								  	id : '',
+									label : this.$i18n.t('users.preferred_language_null_value_label'),
+								},
+                                {
+                                    id : 'fr',
+                                    label : 'fr',
+                                },
+                                {
+                                    id : 'en',
+                                    label : 'en',
+                                }
+                            ]
+                        },
+					}
 				];
 
 				if (['Developer'].indexOf(this.$store.getters.me.user_group_id) != -1) {
@@ -210,7 +240,6 @@
 				this.fetchData();
 			},
 			userShowEditModal() {
-				console.log('allo');
 				this.userEditModalUser = this.user;
 				this.userEditModalPutUri = '/user/' + this.user.id;
 				$('#user-edit-modal').modal('show');

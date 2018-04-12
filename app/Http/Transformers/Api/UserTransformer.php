@@ -17,12 +17,13 @@ class UserTransformer extends ApiTransformer
 		return $this->filterWithModelConfiguration(
 			User::class,
 			[
-				'id'            => $user->id,
-				'user_group_id' => $user->user_group_id,
-				'name'          => $user->name,
-				'email'         => $user->email,
-				'created_at'    => $user->created_at->toDateTimeString(),
-				'updated_at'    => $user->updated_at->toDateTimeString()
+				'id'                    => $user->id,
+				'user_group_id'         => $user->user_group_id,
+				'name'                  => $user->name,
+				'email'                 => $user->email,
+				'preferred_language'    => $user->preferred_language,
+				'created_at'            => $user->created_at->toDateTimeString(),
+				'updated_at'            => $user->updated_at->toDateTimeString()
 			]
 		);
 	}

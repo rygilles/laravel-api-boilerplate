@@ -105,6 +105,7 @@ return [
         ],
     ],
     'strength'  => 'The :attribute muse have at least: 8 chars, 1 numeric, 1 uppercase and 1 lowercase.',
+	'app_locale' => 'The :attribute is not a valid authorized locale ("' . implode('" or "', config('app.locales')) . '")',
 
     /*
     |--------------------------------------------------------------------------

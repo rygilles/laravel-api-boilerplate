@@ -35,6 +35,7 @@ class AppServiceProvider extends ServiceProvider
         Validator::extend('lowercase_min', 'App\Http\CustomValidator@validateLowercaseMin');
         Validator::extend('numeric_min', 'App\Http\CustomValidator@validateNumericMin');
 	    Validator::extend('hex', 'App\Http\CustomValidator@validateHex');
+	    Validator::extend('app_locale', 'App\Http\CustomValidator@validateAppLocale');
 
         // Models observers
 	    User::observe(UserObserver::class);

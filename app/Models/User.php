@@ -42,6 +42,7 @@ class User extends ApiModel implements AuthenticatableContract,	AuthorizableCont
 		'name',
 		'email',
 		'password',
+		'preferred_language',
 		'user_group_id',
 		'confirmation_token',
 	];
@@ -66,6 +67,7 @@ class User extends ApiModel implements AuthenticatableContract,	AuthorizableCont
 		'name',
 		'email',
 		'password',
+		'preferred_language',
 		'user_group_id'
 	];
 
@@ -77,6 +79,7 @@ class User extends ApiModel implements AuthenticatableContract,	AuthorizableCont
 		'name',
 		'email',
 		'password',
+		'preferred_language',
 		'user_group_id'
 	];
 
@@ -88,6 +91,7 @@ class User extends ApiModel implements AuthenticatableContract,	AuthorizableCont
 		'name',
 		'email',
 		'password',
+		'preferred_language',
 		'user_group_id'
 	];
 
@@ -96,10 +100,11 @@ class User extends ApiModel implements AuthenticatableContract,	AuthorizableCont
 	 * @var string[]
 	 */
 	protected static $storeRules = [
-		'user_group_id' => 'required|exists:user_group,id|in:Developer,Support,End-User',
-		'name'          => 'required|string|max:100',
-		'email'         => 'required|email|max:150|unique:user',
-		'password'      => 'required|strength'
+		'user_group_id'         => 'required|exists:user_group,id|in:Developer,Support,End-User',
+		'name'                  => 'required|string|max:100',
+		'email'                 => 'required|email|max:150|unique:user',
+		'password'              => 'required|strength',
+		'preferred_language'    => 'nullable|string|app_locale|max:30'
 	];
 
 	/**
@@ -107,10 +112,11 @@ class User extends ApiModel implements AuthenticatableContract,	AuthorizableCont
 	 * @var string[]
 	 */
 	protected static $patchRules = [
-		'user_group_id' => 'exists:user_group,id|in:Developer,Support,End-User',
-		'name'          => 'string|max:100',
-		'email'         => 'email|max:150', // 'unique:user' in controller method to manage "ignore" parameter.
-		'password'      => 'strength'
+		'user_group_id'         => 'exists:user_group,id|in:Developer,Support,End-User',
+		'name'                  => 'string|max:100',
+		'email'                 => 'email|max:150', // 'unique:user' in controller method to manage "ignore" parameter.
+		'password'              => 'strength',
+		'preferred_language'    => 'nullable|string|app_locale|max:30'
 	];
 
 	/**
@@ -118,10 +124,11 @@ class User extends ApiModel implements AuthenticatableContract,	AuthorizableCont
 	 * @var string[]
 	 */
 	protected static $putRules = [
-		'user_group_id' => 'required|exists:user_group,id|in:Developer,Support,End-User',
-		'name'          => 'required|string|max:100',
-		'email'         => 'required|email|max:150', // 'unique:user' in controller method to manage "ignore" parameter.
-		'password'      => 'required|strength'
+		'user_group_id'         => 'required|exists:user_group,id|in:Developer,Support,End-User',
+		'name'                  => 'required|string|max:100',
+		'email'                 => 'required|email|max:150', // 'unique:user' in controller method to manage "ignore" parameter.
+		'password'              => 'required|strength',
+		'preferred_language'    => 'nullable|string|app_locale|max:30'
 	];
 
 	/**

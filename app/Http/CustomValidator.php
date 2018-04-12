@@ -140,4 +140,18 @@ class CustomValidator
 	{
 		return (preg_match('/^[0-9a-fA-F]+$/i', $value));
 	}
+	
+	/**
+	 * Custom validation : Validate authorized application locale (stored in config("app.locales"))
+	 *
+	 * @param string $attribute
+	 * @param mixed $value
+	 * @param array $parameters
+	 * @param \Illuminate\Validation\Validator $validator
+	 * @return bool
+	 */
+	public function validateAppLocale($attribute, $value, $parameters, $validator)
+	{
+		return (in_array($value, config('app.locales')));
+	}
 }

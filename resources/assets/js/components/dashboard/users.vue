@@ -154,6 +154,45 @@
 						}
 					},
 					{
+						name : 'preferred_language',
+                        help : this.$i18n.t('users.preferred_language_help'),
+						class : '',
+                        displayProp : 'preferred_language',
+						
+						type : 'select2',
+                        select2 : {
+							labelProp : 'label',
+							valueProp : 'id',
+							options : [
+								{
+									id : '',
+									label : this.$i18n.t('users.preferred_language_null_value_label'),
+								},
+								{
+									id : 'fr',
+									label : 'fr',
+								},
+								{
+									id : 'en',
+									label : 'en',
+								}
+							]
+						},
+
+						list: {
+							visible: false,
+						},
+
+						create : {
+							fillable: true,
+							defaultValue: null,
+						},
+
+						edit : {
+							fillable: true,
+						}
+					},
+					{
 						name : 'created_at',
 						class : '',
 						orderable : true,

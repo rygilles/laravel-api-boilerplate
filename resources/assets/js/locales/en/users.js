@@ -15,6 +15,10 @@ export default {
     'user_password': 'Password',
     'user_password_help': 'At least 8 chars.<br /> Fill this field to update the password.',
 
+    'preferred_language': 'Preferred Language',
+    'preferred_language_help': 'For mails and other notifications.',
+    'preferred_language_null_value_label': 'Application default lang',
+
     'edit_user' : 'Edit User "{name}"',
 
     'data_manager' : {
@@ -36,6 +40,9 @@ export default {
                 },
                 'password': {
                     'title': 'Password',
+                },
+                'preferred_language' : {
+                    'title': 'Preferred Language'
                 },
                 'created_at' : {
                     'title' : 'Created At',
@@ -65,6 +72,10 @@ export default {
                             'title' : 'Password',
                             'help' : 'At least 8 chars.',
                         },
+                        'preferred_language' : {
+                            'title': 'Preferred Language',
+                            'help' : 'For mails and other notifications.',
+                        },
                     },
                 },
                 'edit' : {
@@ -85,6 +96,10 @@ export default {
                         'password': {
                             'title' : 'Password',
                             'help' : 'At least 8 chars.<br /> Fill this field to update the password.',
+                        },
+                        'preferred_language' : {
+                            'title': 'Preferred Language',
+                            'help' : 'For mails and other notifications.',
                         },
                     },
                 },

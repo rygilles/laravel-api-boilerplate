@@ -104,6 +104,7 @@ return [
 		],
 	],
 	'strength'  => 'Le champ :attribute doit avoir au moins : 8 caractères dont 1 numérique, 1 en majuscule et 1 en minucsule.',
+	'app_locale' => 'Le champ :attribute doit être une valeur de locale autorisée par l\'application ("' . implode('" ou "', config('app.locales')) . '")',
 
 	/*
 	|--------------------------------------------------------------------------
