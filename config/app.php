@@ -221,7 +221,8 @@ return [
 	    Dingo\Api\Provider\LaravelServiceProvider::class,
 
 	    // CORS
-	    Barryvdh\Cors\ServiceProvider::class,
+	    // @fixme Disabled to install Laravel 5.5.* framework (not installable with this version)
+	    //Barryvdh\Cors\ServiceProvider::class,
 
 	    // Exceptions
 	    App\Providers\ExceptionsServiceProvider::class,
