@@ -210,6 +210,15 @@ return [
 								'type' => 'string',
 							])
 						]),
+						'Search' => new Parameter([
+							'name' => 'search',
+							'in' => 'query',
+							'description' => 'Search words',
+							'required' => false,
+							'schema' => new Schema([
+								'type' => 'string',
+							])
+						]),
 						'PaginationPage' => new Parameter([
 							'name' => 'page',
 							'in' => 'query',
