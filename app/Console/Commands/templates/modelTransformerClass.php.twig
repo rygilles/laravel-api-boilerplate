@@ -18,21 +18,21 @@ class {{ modelClassName }}Transformer extends ApiTransformer
 	/**
 	 * Turn this item object into a generic array
 	 *
-	 * @param {{ modelClassName }} ${{ snakeCaseModelClassName }}
+	 * @param {{ modelClassName }} ${{ camelCaseModelClassName }}
 	 * @return array
 	 */
-	public function transform({{ modelClassName }} ${{ snakeCaseModelClassName }})
+	public function transform({{ modelClassName }} ${{ camelCaseModelClassName }})
 	{
 		return $this->filterWithModelConfiguration(
 			{{ modelClassName }}::class,
 			[
 {% if usePrimaryId %}
-				'id'                        => ${{ snakeCaseModelClassName }}->id,
+				'id'                        => ${{ camelCaseModelClassName }}->id,
 {% endif %}
 				// @todo Add you model fields
 {% if modelHasTimestamps %}
-				'created_at'                => ${{ snakeCaseModelClassName }}->created_at->toDateTimeString(),
-				'updated_at'                => ${{ snakeCaseModelClassName }}->updated_at->toDateTimeString()
+				'created_at'                => ${{ camelCaseModelClassName }}->created_at->toDateTimeString(),
+				'updated_at'                => ${{ camelCaseModelClassName }}->updated_at->toDateTimeString()
 {% endif %}
 			]
 		);

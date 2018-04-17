@@ -477,7 +477,7 @@ class MakeApiModelResource extends Command
 		    $modelTransformerClassTemplateData = [
 			    'usePrimaryId' => $makePrimaryId,
 			    'modelClassName' => $capitalizedCamelCaseModelName,
-			    'snakeCaseModelClassName' => $snakeCaseModelName,
+			    'camelCaseModelClassName' => $camelCaseModelName,
 			    'modelHasTimestamps' => $timestamps
 		    ];
 
