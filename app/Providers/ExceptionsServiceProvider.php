@@ -31,7 +31,9 @@ class ExceptionsServiceProvider extends ServiceProvider
 		});
 
 		app('Dingo\Api\Exception\Handler')->register(function(AuthenticationException   $exception) {
-			throw new UnauthorizedHttpException(null, $exception->getMessage());
+			// @fixme Quick fix : first parameter changed from null value to empty string
+			// @link https://github.com/dingo/api/issues/1548
+			throw new UnauthorizedHttpException('', $exception->getMessage());
 		});
 	}
 }
