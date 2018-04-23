@@ -26,6 +26,7 @@
         "barryvdh/laravel-ide-helper": "^2.4",
         "fzaninotto/faker": "~1.4",
         "mockery/mockery": "0.9.*",
+        "nikic/php-parser": "^4.0",
         "twig/twig": "^2.4",
         "phpunit/phpunit": "~7.0"
     },
