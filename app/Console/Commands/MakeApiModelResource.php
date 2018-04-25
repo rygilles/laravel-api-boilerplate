@@ -661,19 +661,26 @@ class MakeApiModelResource extends Command
 				$linesToInsert[] ="\t\t" . '\'' . $camelCaseModelName . '\',' . "\n";
 				$linesToInsert[] = "\t\t" . '\'App\Http\Controllers\Api\\' . $capitalizedCamelCaseModelName . 'Controller@index\'' . "\n";
 				$linesToInsert[] = "\t" . ')->name(\'' . $camelCaseModelName . '.index\');' . "\n";
-
+				
 				// Locate the closure in PHP file insert the code line in file
-
+				
 				// Search $api->version method call
 				$endLine = null;
+				/** @var Node\Stmt\Expression $stmts */
 				foreach ($fileStmts as $stmts) {
-					if (($stmts->getType() == 'Expr_MethodCall') && ($stmts->name == 'version')) {
-						if ($stmts->var->name == 'api') {
-							$endLine = $stmts->getAttribute('endLine');
+					if ($stmts->getType() == 'Stmt_Expression') {
+						if (isset($stmts->expr)) {
+							if (($stmts->expr->getType() == "Expr_MethodCall") && ($stmts->expr->name->name == 'version')) {
+								/** @var Node\Expr\MethodCall $methodCall */
+								$methodCall = $stmts->expr;
+								if ($methodCall->var->name == 'api') {
+									$endLine = $methodCall->getAttribute('endLine');
+								}
+							}
 						}
 					}
 				}
-
+				
 				if (is_null($endLine)) {
 					$this->error('Can not find the $api->version method call in api routes files !');
 					return false;
@@ -703,19 +710,26 @@ class MakeApiModelResource extends Command
 				$linesToInsert[] ="\t\t" . '\'' . $camelCaseModelName . '/{' . $camelCaseModelName . 'Id}\',' . "\n";
 				$linesToInsert[] = "\t\t" . '\'App\Http\Controllers\Api\\' . $capitalizedCamelCaseModelName . 'Controller@show\'' . "\n";
 				$linesToInsert[] = "\t" . ')->name(\'' . $camelCaseModelName . '.show\');' . "\n";
-
+				
 				// Locate the closure in PHP file insert the code line in file
-
+				
 				// Search $api->version method call
 				$endLine = null;
+				/** @var Node\Stmt\Expression $stmts */
 				foreach ($fileStmts as $stmts) {
-					if (($stmts->getType() == 'Expr_MethodCall') && ($stmts->name == 'version')) {
-						if ($stmts->var->name == 'api') {
-							$endLine = $stmts->getAttribute('endLine');
+					if ($stmts->getType() == 'Stmt_Expression') {
+						if (isset($stmts->expr)) {
+							if (($stmts->expr->getType() == "Expr_MethodCall") && ($stmts->expr->name->name == 'version')) {
+								/** @var Node\Expr\MethodCall $methodCall */
+								$methodCall = $stmts->expr;
+								if ($methodCall->var->name == 'api') {
+									$endLine = $methodCall->getAttribute('endLine');
+								}
+							}
 						}
 					}
 				}
-
+				
 				if (is_null($endLine)) {
 					$this->error('Can not find the $api->version method call in api routes files !');
 					return false;
@@ -745,19 +759,26 @@ class MakeApiModelResource extends Command
 				$linesToInsert[] ="\t\t" . '\'' . $camelCaseModelName . '\',' . "\n";
 				$linesToInsert[] = "\t\t" . '\'App\Http\Controllers\Api\\' . $capitalizedCamelCaseModelName . 'Controller@store\'' . "\n";
 				$linesToInsert[] = "\t" . ')->name(\'' . $camelCaseModelName . '.store\');' . "\n";
-
+				
 				// Locate the closure in PHP file insert the code line in file
-
+				
 				// Search $api->version method call
 				$endLine = null;
+				/** @var Node\Stmt\Expression $stmts */
 				foreach ($fileStmts as $stmts) {
-					if (($stmts->getType() == 'Expr_MethodCall') && ($stmts->name == 'version')) {
-						if ($stmts->var->name == 'api') {
-							$endLine = $stmts->getAttribute('endLine');
+					if ($stmts->getType() == 'Stmt_Expression') {
+						if (isset($stmts->expr)) {
+							if (($stmts->expr->getType() == "Expr_MethodCall") && ($stmts->expr->name->name == 'version')) {
+								/** @var Node\Expr\MethodCall $methodCall */
+								$methodCall = $stmts->expr;
+								if ($methodCall->var->name == 'api') {
+									$endLine = $methodCall->getAttribute('endLine');
+								}
+							}
 						}
 					}
 				}
-
+				
 				if (is_null($endLine)) {
 					$this->error('Can not find the $api->version method call in api routes files !');
 					return false;
@@ -788,19 +809,26 @@ class MakeApiModelResource extends Command
 				$linesToInsert[] ="\t\t" . '\'' . $camelCaseModelName . '/{' . $camelCaseModelName . 'Id}\',' . "\n";
 				$linesToInsert[] = "\t\t" . '\'App\Http\Controllers\Api\\' . $capitalizedCamelCaseModelName . 'Controller@update\'' . "\n";
 				$linesToInsert[] = "\t" . ')->name(\'' . $camelCaseModelName . '.update\');' . "\n";
-
+				
 				// Locate the closure in PHP file insert the code line in file
-
+				
 				// Search $api->version method call
 				$endLine = null;
+				/** @var Node\Stmt\Expression $stmts */
 				foreach ($fileStmts as $stmts) {
-					if (($stmts->getType() == 'Expr_MethodCall') && ($stmts->name == 'version')) {
-						if ($stmts->var->name == 'api') {
-							$endLine = $stmts->getAttribute('endLine');
+					if ($stmts->getType() == 'Stmt_Expression') {
+						if (isset($stmts->expr)) {
+							if (($stmts->expr->getType() == "Expr_MethodCall") && ($stmts->expr->name->name == 'version')) {
+								/** @var Node\Expr\MethodCall $methodCall */
+								$methodCall = $stmts->expr;
+								if ($methodCall->var->name == 'api') {
+									$endLine = $methodCall->getAttribute('endLine');
+								}
+							}
 						}
 					}
 				}
-
+				
 				if (is_null($endLine)) {
 					$this->error('Can not find the $api->version method call in api routes files !');
 					return false;
@@ -830,19 +858,26 @@ class MakeApiModelResource extends Command
 				$linesToInsert[] ="\t\t" . '\'' . $camelCaseModelName . '/{' . $camelCaseModelName . 'Id}\',' . "\n";
 				$linesToInsert[] = "\t\t" . '\'App\Http\Controllers\Api\\' . $capitalizedCamelCaseModelName . 'Controller@destroy\'' . "\n";
 				$linesToInsert[] = "\t" . ')->name(\'' . $camelCaseModelName . '.destroy\');' . "\n";
-
+				
 				// Locate the closure in PHP file insert the code line in file
-
+				
 				// Search $api->version method call
 				$endLine = null;
+				/** @var Node\Stmt\Expression $stmts */
 				foreach ($fileStmts as $stmts) {
-					if (($stmts->getType() == 'Expr_MethodCall') && ($stmts->name == 'version')) {
-						if ($stmts->var->name == 'api') {
-							$endLine = $stmts->getAttribute('endLine');
+					if ($stmts->getType() == 'Stmt_Expression') {
+						if (isset($stmts->expr)) {
+							if (($stmts->expr->getType() == "Expr_MethodCall") && ($stmts->expr->name->name == 'version')) {
+								/** @var Node\Expr\MethodCall $methodCall */
+								$methodCall = $stmts->expr;
+								if ($methodCall->var->name == 'api') {
+									$endLine = $methodCall->getAttribute('endLine');
+								}
+							}
 						}
 					}
 				}
-
+				
 				if (is_null($endLine)) {
 					$this->error('Can not find the $api->version method call in api routes files !');
 					return false;
