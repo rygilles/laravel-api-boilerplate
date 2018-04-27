@@ -16,6 +16,7 @@ class Kernel extends ConsoleKernel
         Commands\MakeFreshApp::class,
         Commands\GenerateApiDocs::class,
         Commands\MakeApiModelResource::class,
+	    Commands\MakeApiModelResourceAssets::class,
     ];
 
     /**

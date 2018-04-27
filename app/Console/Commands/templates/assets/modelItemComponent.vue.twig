@@ -1,0 +1,63 @@
+<template>
+	<!-- Main content -->
+	<section class="content">
+		<div class="row">
+			<div class="col-xs-12">
+			
+			</div>
+		</div>
+	</section>
+</template>
+
+<script>
+	export default {
+
+		name: '{{ modelClassName }}',
+
+		components: { },
+
+		data() {
+			return {
+				{{ camelCaseModelClassName }} : null,
+			}
+		},
+
+		props : {
+			'{{ camelCaseModelClassName }}Id' : String
+		},
+
+		/**
+		 * Component created
+		 */
+		created() {
+			// fetch the data when the view is created and the data is
+			// already being observed
+			this.fetchData();
+		},
+
+		/**
+		 * Component watcher
+		 */
+		watch: {
+			// call again the method if the route changes
+			'$route' : 'fetchData'
+		},
+
+		computed: {
+		
+		},
+
+		methods: {
+			fetchData() {
+				this.{{ camelCaseModelClassName }} = null;
+
+				var propsData = this.$options.propsData;
+				this.{{ camelCaseModelClassName }} = {
+					id: propsData.{{ camelCaseModelClassName }}Id
+				}
+
+				this.$emit('routeTitleDataUpdate', this.{{ camelCaseModelClassName }});
+			},
+		}
+	}
+</script>
