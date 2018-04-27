@@ -264,6 +264,31 @@ During this command execution, the Laravel application will be down (`php artisa
 Composer dump autoloads will be called at the end.
 
 
+### app:makeApiModelResourceAssets ###
+
+
+```bash
+php artisan app:makeApiModelResourceAssets
+```
+
+**Only in development environment !**
+
+Generate and **MODIFY** basic assets source files for a new resource model in the dashboard :
+
+- Resource model list vue component : Created in [resources/assets/js/components/dashboard](./resources/assets/js/components/dashboard) folder.
+- Resource model item vue component : Created in [resources/assets/js/components/dashboard](./resources/assets/js/components/dashboard) folder.
+- Resource model locales js files : Created in [resources/assets/js/locales](./resources/assets/js/locales) folder (one file per locale).
+- Routes locales js files [resources/assets/js/locales/en/routes.js](./resources/assets/js/locales/en/routes.js) and other locales file : **MODIFY** to add resource model list and item routes.
+- Vuex store js file [resources/assets/js/store.js](./resources/assets/js/store.js) : **MODIFY** to add resource model state, getters, mutations and actions.
+- Routes js file [resources/assets/js/routes.js](./resources/assets/js/routes.js) : **MODIFY** to add resource model list and item routes.
+- Side-bar menu vue component file [resources/assets/js/components/includes/sidebar-menu.vue](./resources/assets/js/components/includes/sidebar-menu.vue) : **MODIFY** to add resource model links *(interactive)*.
+
+During this command execution, the Laravel application will be down (`php artisan down` then `php artisan up` at the end, called implicitly).
+
+Make sure to run `npm run dev` or `npm run watch` to check your assets compilation.
+
+*(Upcoming upgrades to do : Model resource analysis to complete new components fields and other stuff like this.)*
+
 ### openApiSchemas:generate ###
 
 
