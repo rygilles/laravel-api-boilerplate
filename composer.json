@@ -25,6 +25,7 @@
     "require-dev": {
         "barryvdh/laravel-ide-helper": "^2.4",
         "fzaninotto/faker": "~1.4",
+        "mck89/peast": "^1.7",
         "mockery/mockery": "0.9.*",
         "nikic/php-parser": "^4.0",
         "twig/twig": "^2.4",
