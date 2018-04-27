@@ -14,17 +14,17 @@ var langs = ['en' , 'fr'];
  * @type {string[]}
  */
 var files = [
-    'common',
-    'routes',
-    'auth',
-    'api',
-    'sidebar',
-    'topbar',
-    'notifications',
-    'home',
-    'i18n_langs',
-    'user_groups',
-    'users'
+	'common',
+	'routes',
+	'auth',
+	'api',
+	'sidebar',
+	'topbar',
+	'notifications',
+	'home',
+	'i18n_langs',
+	'user_groups',
+	'users'
 ];
 
 // Create locales from file hierarchy
@@ -33,14 +33,14 @@ var locales = {};
 
 for (var l in langs)
 {
-    var lang = langs[l];
-    locales[lang] = {};
+	var lang = langs[l];
+	locales[lang] = {};
 
-    for (var f in files)
-    {
-        var file = files[f];
-        locales[lang][file] = require('./locales/' + lang + '/' + file).default;
-    }
+	for (var f in files)
+	{
+		var file = files[f];
+		locales[lang][file] = require('./locales/' + lang + '/' + file).default;
+	}
 }
 
 export default locales;
