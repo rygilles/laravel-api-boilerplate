@@ -496,7 +496,7 @@ class MakeApiModelResourceAssets extends Command
 					"\t\t" . '\'description\': \'routes.' . $data['kebabCaseModelClassNamePlural'] . '.description\',' . "\n",
 					"\t},\n",
 					"\t" . '\'' . $data['kebabCaseModelClassName'] . '\': {' . "\n",
-					"\t\t" . '\'title\': \'routes./' . $data['kebabCaseModelClassName'] . '.title\',' . "\n",
+					"\t\t" . '\'title\': \'routes.' . $data['kebabCaseModelClassName'] . '.title\',' . "\n",
 					"\t\t" . '\'title_template\': \'routes.' . $data['kebabCaseModelClassName'] . '.title "<%- data.id %>"\',' . "\n",
 					"\t\t" . '\'description\': \'routes.' . $data['kebabCaseModelClassName'] . '.description\',' . "\n",
 					"\t},\n",
