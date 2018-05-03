@@ -133,7 +133,7 @@
 									:class="column.class"
 									style="vertical-align: middle;">
 									<router-link
-										v-if="'routerLink' in column"
+										v-if="'routerLink' in column && columnRouterIsResolvable(dataRow, column)"
 										:to="resolveColumnRouterTo(dataRow, column)">
 										<span v-html="resolveColumnDataValue(dataRow, column)"></span>
 									</router-link>
@@ -450,7 +450,28 @@
 						return column.transformValue(column.name.split('.').reduce((o,i)=>o[i], dataRow), dataRow);
 					}
 				}
-				return column.name.split('.').reduce((o,i)=>o[i], dataRow);
+				try {
+					return column.name.split('.').reduce((o,i)=>o[i], dataRow);
+				} catch (e) {
+					if (process.env.NODE_ENV !== 'production') {
+						typeof console !== 'undefined' && console.warn("[datatable.vue] resolving column data value (" + column.name + ") in datatable failed: " + (e.message));
+					}
+					return '';
+				}
+			},
+			columnRouterIsResolvable(dataRow, column) {
+				for (var paramName in column.routerLink.paramsNames) {
+					try {
+						column.routerLink.paramsNames[paramName].split('.').reduce((o, i) => o[i], dataRow);
+					} catch (e) {
+						if (process.env.NODE_ENV !== 'production') {
+							typeof console !== 'undefined' && console.warn("[datatable.vue] column data value router destination not resolvable (" + column.name + ") in datatable: " + (e.message));
+						}
+						return false;
+					}
+				}
+
+				return true;
 			},
 			resolveColumnRouterTo(dataRow, column) {
 				var to = {
@@ -459,9 +480,15 @@
 				};
 
 				for (var paramName in column.routerLink.paramsNames) {
-					to.params[paramName] = column.routerLink.paramsNames[paramName].split('.').reduce((o,i)=>o[i], dataRow);
+					try {
+						to.params[paramName] = column.routerLink.paramsNames[paramName].split('.').reduce((o, i) => o[i], dataRow);
+					} catch (e) {
+						if (process.env.NODE_ENV !== 'production') {
+							typeof console !== 'undefined' && console.warn("[datatable.vue] resolving column data value router destination (" + column.name + ") in datatable failed: " + (e.message));
+						}
+						return {};
+					}
 				}
-
 				return to;
 			}
 		},
