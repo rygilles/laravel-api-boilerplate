@@ -168,7 +168,7 @@
 									this.fields.forEach((field) => {
 										if (field.name == errFieldName) {
 											translatedErrors[errFieldName].forEach((errLine, index) => {
-												translatedErrors[errFieldName][index] = _.replace(errLine, new RegExp(_.replace(field.name, new RegExp('_', 'g'), ' '), 'g'), '"' + fieldTitle(field) + '"');
+												translatedErrors[errFieldName][index] = _.replace(errLine, new RegExp(_.replace(field.name, new RegExp('_', 'g'), ' '), 'g'), '"' + this.fieldTitle(field) + '"');
 											});
 										}
 									});
