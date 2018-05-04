@@ -860,7 +860,7 @@ class MakeApiModelResourceAssets extends Command
 										"\t\t\t" . 'state.' . $data['camelCaseModelClassNamePlural'] . ' = ' .$data['camelCaseModelClassNamePlural']. ';' . "\n",
 										"\t\t},\n",
 										"\t\t" . 'set' . $data['modelClassNamePlural'] . 'Loading(state, loading) {' . "\n",
-										"\t\t\t" . 'state.' . $data['camelCaseModelClassNamePlural'] . ' = loading;' . "\n",
+										"\t\t\t" . 'state.' . $data['camelCaseModelClassNamePlural'] . 'Loading = loading;' . "\n",
 										"\t\t},\n",
 									];
 
