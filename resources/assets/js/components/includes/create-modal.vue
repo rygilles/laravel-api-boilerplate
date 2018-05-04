@@ -140,8 +140,8 @@
 				var form = {};
 
 				this.fields.forEach((field) => {
-					if (field.type == 'password') {
-						if (field.value != '') {
+					if (('optional' in field) && field.optional) {
+						if (field.value !== null && field.value != '') {
 							form[field.name] = field.value;
 						}
 					} else {

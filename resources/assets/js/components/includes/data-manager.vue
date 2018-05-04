@@ -518,6 +518,7 @@
 							var field = {
 								name: column.name,
 								type: column.type,
+								optional: false,
 							};
 
 							if (this.i18nExist('modals.create.fields.' + column.name + '.title')) {
@@ -542,6 +543,10 @@
 
 							if ('select2' in column) {
 								field.select2 = column.select2;
+							}
+
+							if ('optional' in column.create) {
+								field.optional = column.create.optional;
 							}
 
 							fields.push(field);
@@ -574,6 +579,7 @@
 							var field = {
 								name: column.name,
 								type: column.type,
+								optional: false,
 							};
 
 							if (this.i18nExist('modals.edit.fields.' + column.name + '.title')) {
@@ -598,6 +604,10 @@
 
 							if ('select2' in column) {
 								field.select2 = column.select2;
+							}
+
+							if ('optional' in column.edit) {
+								field.optional = column.edit.optional;
 							}
 
 							fields.push(field);
