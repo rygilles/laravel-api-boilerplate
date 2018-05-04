@@ -51,7 +51,6 @@
 						</label>
 						<span v-if="fieldHelp(field) != ''" class="help-block" v-html="fieldHelp(field)"></span>
 					</div>
-					</div>
 				</div>
 			</div>
 		</form>
