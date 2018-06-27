@@ -10,3 +10,4 @@ Homestead.yaml
 composer.lock
 npm-debug.log
 laravel-echo-server.json
+.php_cs.cache
