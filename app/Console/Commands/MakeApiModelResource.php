@@ -16,21 +16,21 @@ use PhpParser\PrettyPrinter;
 
 class MakeApiModelResource extends Command
 {
-    /**
-     * The name and signature of the console command.
-     *
-     * @var string
-     */
-    protected $signature = 'app:makeApiModelResource
+	/**
+	 * The name and signature of the console command.
+	 *
+	 * @var string
+	 */
+	protected $signature = 'app:makeApiModelResource
                             {--testdump : Dump the files insteed of really creating/modifying them}';
 
-    /**
-     * The console command description.
-     *
-     * @var string
-     */
-    protected $description = 'This command create a new Api model resource, ' .
-                              'with classes : model, migration, seeder, controller, route, etc.';
+	/**
+	 * The console command description.
+	 *
+	 * @var string
+	 */
+	protected $description = 'This command create a new Api model resource, ' .
+							  'with classes : model, migration, seeder, controller, route, etc.';
 
 	/**
 	 * Twig templates environment
@@ -121,222 +121,222 @@ class MakeApiModelResource extends Command
 		$this->composer = $composer;
 	}
 
-    /**
-     * Execute the console command.
-     *
-     * @return mixed
-     */
-    public function handle()
-    {
-	    $this->info('LaravelApiBoilerplate Helpers : Make Api Model Resource (For DEV purpose only !)');
-        $this->info('(Ask to ryan@e-monsite.com for more information)');
-	    $this->warn('');
-        $this->warn('This command will create a new Api model resource, ' . "\n" .
-                    'with classes : model, migration, seeder, controller, route, etc.' . "\n");
+	/**
+	 * Execute the console command.
+	 *
+	 * @return mixed
+	 */
+	public function handle()
+	{
+		$this->info('LaravelApiBoilerplate Helpers : Make Api Model Resource (For DEV purpose only !)');
+		$this->info('(Ask to ryan@e-monsite.com for more information)');
+		$this->warn('');
+		$this->warn('This command will create a new Api model resource, ' . "\n" .
+					'with classes : model, migration, seeder, controller, route, etc.' . "\n");
 
-	    // Check configuration
+		// Check configuration
 
-	    $modelsNamespace = 'App\\Models';
-	    $modelsBasePath = base_path('app' . DIRECTORY_SEPARATOR . 'Models');
-	    $controllersNamespace = 'App\\Http\\Controllers\\Api';
-	    $apiRoutesFilePath = base_path('routes' . DIRECTORY_SEPARATOR . 'api.php');
+		$modelsNamespace = 'App\\Models';
+		$modelsBasePath = base_path('app' . DIRECTORY_SEPARATOR . 'Models');
+		$controllersNamespace = 'App\\Http\\Controllers\\Api';
+		$apiRoutesFilePath = base_path('routes' . DIRECTORY_SEPARATOR . 'api.php');
 
 		if (!file_exists($modelsBasePath)) {
 			$this->error('Models base path directory (' . $modelsBasePath . ') does not exists !');
 			return;
 		}
 
-	    if (!file_exists($modelsBasePath . DIRECTORY_SEPARATOR . 'ApiModel.php')) {
-		    $this->error('ApiModel.php file not found in models base path directory (' . $modelsBasePath . ') !');
-		    return;
-	    }
+		if (!file_exists($modelsBasePath . DIRECTORY_SEPARATOR . 'ApiModel.php')) {
+			$this->error('ApiModel.php file not found in models base path directory (' . $modelsBasePath . ') !');
+			return;
+		}
 
-	    $this->loadTemplates();
+		$this->loadTemplates();
 
-	    $capitalizedCamelCaseModelName = null;
-	    while(is_null($capitalizedCamelCaseModelName)) {
-		    $capitalizedCamelCaseModelName = $this->ask('Enter the model name (in CamelCase)');
-		    if ($capitalizedCamelCaseModelName != ucfirst(camel_case($capitalizedCamelCaseModelName))) {
-			    $this->warn('This is not a CamelCase value ! Try again...');
-			    $capitalizedCamelCaseModelName = null;
-		    }
-	    }
+		$capitalizedCamelCaseModelName = null;
+		while(is_null($capitalizedCamelCaseModelName)) {
+			$capitalizedCamelCaseModelName = $this->ask('Enter the model name (in CamelCase)');
+			if ($capitalizedCamelCaseModelName != ucfirst(camel_case($capitalizedCamelCaseModelName))) {
+				$this->warn('This is not a CamelCase value ! Try again...');
+				$capitalizedCamelCaseModelName = null;
+			}
+		}
 
-	    // Check if already exists
-	    if (file_exists($this->getModelClassFilePath($modelsBasePath, $capitalizedCamelCaseModelName))) {
-		    $this->error('The file "' . $this->getModelClassFilePath($modelsBasePath, $capitalizedCamelCaseModelName) . '" already exists ! Aborting');
-		    return;
-	    }
+		// Check if already exists
+		if (file_exists($this->getModelClassFilePath($modelsBasePath, $capitalizedCamelCaseModelName))) {
+			$this->error('The file "' . $this->getModelClassFilePath($modelsBasePath, $capitalizedCamelCaseModelName) . '" already exists ! Aborting');
+			return;
+		}
 
-	    $snakeCaseModelName = snake_case($capitalizedCamelCaseModelName);
-	    $camelCaseModelName = camel_case($snakeCaseModelName);
+		$snakeCaseModelName = snake_case($capitalizedCamelCaseModelName);
+		$camelCaseModelName = camel_case($snakeCaseModelName);
 
-	    $makePrimaryId = $this->confirm('Use primary key "id" field ?', true);
+		$makePrimaryId = $this->confirm('Use primary key "id" field ?', true);
 
-	    $usePrimaryKey = false;
-	    $primaryKeyType = null;
-	    $primaryKeyStringLength = null;
+		$usePrimaryKey = false;
+		$primaryKeyType = null;
+		$primaryKeyStringLength = null;
 
-	    if ($makePrimaryId) {
-		    $usePrimaryKey = true;
-		    $primaryKeyType = $this->choice('Which "id" type ?', ['uuid', 'string', 'autoincrement'], 0);
-		    if ($primaryKeyType == 'string') {
-			    $primaryKeyStringLength = null;
-			    while(is_null($primaryKeyStringLength)) {
-				    $primaryKeyStringLength = $this->ask('Enter the string length of your "id" field', 30);
-				    if (!is_integer($primaryKeyStringLength)) {
-					    $this->warn('This is not an integer value ! Try again...');
-					    $primaryKeyStringLength = null;
-				    }
-			    }
-		    }
-	    }
+		if ($makePrimaryId) {
+			$usePrimaryKey = true;
+			$primaryKeyType = $this->choice('Which "id" type ?', ['uuid', 'string', 'autoincrement'], 0);
+			if ($primaryKeyType == 'string') {
+				$primaryKeyStringLength = null;
+				while(is_null($primaryKeyStringLength)) {
+					$primaryKeyStringLength = $this->ask('Enter the string length of your "id" field', 30);
+					if (!is_integer($primaryKeyStringLength)) {
+						$this->warn('This is not an integer value ! Try again...');
+						$primaryKeyStringLength = null;
+					}
+				}
+			}
+		}
 
-	    $timestamps = $this->confirm('Use timestamps fields ? (created_at, updated_at)', true);
+		$timestamps = $this->confirm('Use timestamps fields ? (created_at, updated_at)', true);
 
-	    $makeMigration = $this->confirm('Do you want to generate a migration file for this model ?', true);
+		$makeMigration = $this->confirm('Do you want to generate a migration file for this model ?', true);
 
-	    if ($makeMigration) {
-		    if (file_exists($this->getMigrationClassFilePath($snakeCaseModelName))) {
-			    $this->warn('The file "' . $this->getMigrationClassFilePath($snakeCaseModelName) . '" already exists !');
-			    $makeMigration = $this->confirm('Do you want to replace it ?', true);
-		    }
-	    }
+		if ($makeMigration) {
+			if (file_exists($this->getMigrationClassFilePath($snakeCaseModelName))) {
+				$this->warn('The file "' . $this->getMigrationClassFilePath($snakeCaseModelName) . '" already exists !');
+				$makeMigration = $this->confirm('Do you want to replace it ?', true);
+			}
+		}
 
-	    $makeInitSeeder = $this->confirm('Do you want to generate a init seeder for this model ?', true);
+		$makeInitSeeder = $this->confirm('Do you want to generate a init seeder for this model ?', true);
 
-	    if ($makeInitSeeder) {
-		    if (!file_exists($this->getInitSeederClassFilePath())) {
-			    $this->error('Can not find the file "' . $this->getInitSeederClassFilePath() . '" ! Aborting.');
-			    return;
-		    }
+		if ($makeInitSeeder) {
+			if (!file_exists($this->getInitSeederClassFilePath())) {
+				$this->error('Can not find the file "' . $this->getInitSeederClassFilePath() . '" ! Aborting.');
+				return;
+			}
 
-		    if (file_exists($this->getModelInitSeederClassFilePath($capitalizedCamelCaseModelName))) {
-			    $this->warn('The file "' . $this->getModelInitSeederClassFilePath($capitalizedCamelCaseModelName) . '" already exists !');
-			    $makeInitSeeder = $this->confirm('Do you want to replace it ?', true);
-		    }
-	    }
+			if (file_exists($this->getModelInitSeederClassFilePath($capitalizedCamelCaseModelName))) {
+				$this->warn('The file "' . $this->getModelInitSeederClassFilePath($capitalizedCamelCaseModelName) . '" already exists !');
+				$makeInitSeeder = $this->confirm('Do you want to replace it ?', true);
+			}
+		}
 
-	    $makeSamplesSeeder = $this->confirm('Do you want to generate a samples seeder for this model ?', true);
+		$makeSamplesSeeder = $this->confirm('Do you want to generate a samples seeder for this model ?', true);
 
-	    if ($makeSamplesSeeder) {
-		    if (!file_exists($this->getSamplesSeederClassFilePath())) {
-			    $this->error('Can not find the file "' . $this->getSamplesSeederClassFilePath() . '" ! Aborting');
-			    return;
-		    }
+		if ($makeSamplesSeeder) {
+			if (!file_exists($this->getSamplesSeederClassFilePath())) {
+				$this->error('Can not find the file "' . $this->getSamplesSeederClassFilePath() . '" ! Aborting');
+				return;
+			}
 
-		    if (file_exists($this->getModelSamplesSeederClassFilePath($capitalizedCamelCaseModelName))) {
-			    $this->warn('The file "' . $this->getModelSamplesSeederClassFilePath($capitalizedCamelCaseModelName) . '" already exists !');
-			    $makeSamplesSeeder = $this->confirm('Do you want to replace it ?', true);
-		    }
-	    }
+			if (file_exists($this->getModelSamplesSeederClassFilePath($capitalizedCamelCaseModelName))) {
+				$this->warn('The file "' . $this->getModelSamplesSeederClassFilePath($capitalizedCamelCaseModelName) . '" already exists !');
+				$makeSamplesSeeder = $this->confirm('Do you want to replace it ?', true);
+			}
+		}
 
-	    $makeController = $this->confirm('Do you want to generate a controller for this model ?', true);
+		$makeController = $this->confirm('Do you want to generate a controller for this model ?', true);
 
-	    $makeControllerIndexMethod = false;
-	    $makeControllerShowMethod = false;
-	    $makeTransformer = false;
-	    $updateApiRoutesFile = false;
-	    $makeStoreRequest = false;
-	    $makeUpdateRequest = false;
+		$makeControllerIndexMethod = false;
+		$makeControllerShowMethod = false;
+		$makeTransformer = false;
+		$updateApiRoutesFile = false;
+		$makeStoreRequest = false;
+		$makeUpdateRequest = false;
 
-	    if ($makeController) {
-		    if (!file_exists($this->getModelControllersClassesFilesPath() . DIRECTORY_SEPARATOR . 'ApiController.php')) {
-			    $this->error('ApiController.php file not found in Api controllers base path directory (' . $this->getModelControllersClassesFilesPath() . ') !');
-			    return;
-		    }
+		if ($makeController) {
+			if (!file_exists($this->getModelControllersClassesFilesPath() . DIRECTORY_SEPARATOR . 'ApiController.php')) {
+				$this->error('ApiController.php file not found in Api controllers base path directory (' . $this->getModelControllersClassesFilesPath() . ') !');
+				return;
+			}
 
-		    if (file_exists($this->getModelControllerClassFilePath($capitalizedCamelCaseModelName))) {
-			    $this->warn('The file "' . $this->getModelControllerClassFilePath($capitalizedCamelCaseModelName) . '" already exists !');
-			    $makeController = $this->confirm('Do you want to replace it ?', true);
-		    }
+			if (file_exists($this->getModelControllerClassFilePath($capitalizedCamelCaseModelName))) {
+				$this->warn('The file "' . $this->getModelControllerClassFilePath($capitalizedCamelCaseModelName) . '" already exists !');
+				$makeController = $this->confirm('Do you want to replace it ?', true);
+			}
 
-		    $makeControllerIndexMethod = $this->confirm('Do you want to generate a "index" method for the controller ?', true);
+			$makeControllerIndexMethod = $this->confirm('Do you want to generate a "index" method for the controller ?', true);
 
-		    if ($makeControllerIndexMethod) {
-			    $makeTransformer = true;
-			    $updateApiRoutesFile = true;
-		    }
+			if ($makeControllerIndexMethod) {
+				$makeTransformer = true;
+				$updateApiRoutesFile = true;
+			}
 
-		    $makeControllerShowMethod = $this->confirm('Do you want to generate a "show" method for the controller ?', true);
+			$makeControllerShowMethod = $this->confirm('Do you want to generate a "show" method for the controller ?', true);
 
-		    if ($makeControllerShowMethod) {
-			    $makeTransformer = true;
-			    $updateApiRoutesFile = true;
-		    }
+			if ($makeControllerShowMethod) {
+				$makeTransformer = true;
+				$updateApiRoutesFile = true;
+			}
 
-		    $makeControllerStoreMethod = $this->confirm('Do you want to generate a "store" method for the controller ?', true);
+			$makeControllerStoreMethod = $this->confirm('Do you want to generate a "store" method for the controller ?', true);
 
-		    if ($makeControllerStoreMethod) {
-			    $makeTransformer = true;
-			    $updateApiRoutesFile = true;
-			    $makeStoreRequest = true;
-		    }
+			if ($makeControllerStoreMethod) {
+				$makeTransformer = true;
+				$updateApiRoutesFile = true;
+				$makeStoreRequest = true;
+			}
 
-		    $makeControllerUpdateMethod = $this->confirm('Do you want to generate a "update" method for the controller ?', true);
+			$makeControllerUpdateMethod = $this->confirm('Do you want to generate a "update" method for the controller ?', true);
 
-		    if ($makeControllerUpdateMethod) {
-			    $makeTransformer = true;
-			    $updateApiRoutesFile = true;
-			    $makeUpdateRequest = true;
-		    }
+			if ($makeControllerUpdateMethod) {
+				$makeTransformer = true;
+				$updateApiRoutesFile = true;
+				$makeUpdateRequest = true;
+			}
 
-		    $makeControllerDestroyMethod = $this->confirm('Do you want to generate a "destroy" method for the controller ?', true);
+			$makeControllerDestroyMethod = $this->confirm('Do you want to generate a "destroy" method for the controller ?', true);
 
-		    if ($makeControllerDestroyMethod) {
-			    $updateApiRoutesFile = true;
-		    }
-	    }
+			if ($makeControllerDestroyMethod) {
+				$updateApiRoutesFile = true;
+			}
+		}
 
-	    if ($updateApiRoutesFile) {
-		    if (!file_exists($apiRoutesFilePath)) {
-			    $this->error($apiRoutesFilePath . ' file not found !');
-			    return;
-		    }
-	    }
+		if ($updateApiRoutesFile) {
+			if (!file_exists($apiRoutesFilePath)) {
+				$this->error($apiRoutesFilePath . ' file not found !');
+				return;
+			}
+		}
 
-	    if ($makeTransformer) {
-		    if (!file_exists($this->getModelTransformersClassesFilesPath() . DIRECTORY_SEPARATOR . 'ApiTransformer.php')) {
-			    $this->error('ApiTransformer.php file not found in Api transformers base path directory (' . $this->getModelTransformersClassesFilesPath() . ') !');
-			    return;
-		    }
+		if ($makeTransformer) {
+			if (!file_exists($this->getModelTransformersClassesFilesPath() . DIRECTORY_SEPARATOR . 'ApiTransformer.php')) {
+				$this->error('ApiTransformer.php file not found in Api transformers base path directory (' . $this->getModelTransformersClassesFilesPath() . ') !');
+				return;
+			}
 
-		    if (file_exists($this->getModelTransformerClassFilePath($capitalizedCamelCaseModelName))) {
-			    $this->warn('The file "' . $this->getModelTransformerClassFilePath($capitalizedCamelCaseModelName) . '" already exists !');
-			    $makeTransformer = $this->confirm('Do you want to replace it ?', true);
-		    }
-	    }
+			if (file_exists($this->getModelTransformerClassFilePath($capitalizedCamelCaseModelName))) {
+				$this->warn('The file "' . $this->getModelTransformerClassFilePath($capitalizedCamelCaseModelName) . '" already exists !');
+				$makeTransformer = $this->confirm('Do you want to replace it ?', true);
+			}
+		}
 
-	    if ($makeStoreRequest) {
-		    if (!file_exists($this->getRequestsClassesFilesPath() . DIRECTORY_SEPARATOR . 'ApiRequest.php')) {
-			    $this->error('ApiRequest.php file not found in Api transformers base path directory (' . $this->getRequestsClassesFilesPath() . ') !');
-			    return;
-		    }
+		if ($makeStoreRequest) {
+			if (!file_exists($this->getRequestsClassesFilesPath() . DIRECTORY_SEPARATOR . 'ApiRequest.php')) {
+				$this->error('ApiRequest.php file not found in Api transformers base path directory (' . $this->getRequestsClassesFilesPath() . ') !');
+				return;
+			}
 
-		    if (file_exists($this->getRequestClassFilePath($capitalizedCamelCaseModelName, 'Store'))) {
-			    $this->warn('The file "' . $this->getRequestClassFilePath($capitalizedCamelCaseModelName, 'Store') . '" already exists !');
-			    $makeStoreRequest = $this->confirm('Do you want to replace it ?', true);
-		    }
-	    }
+			if (file_exists($this->getRequestClassFilePath($capitalizedCamelCaseModelName, 'Store'))) {
+				$this->warn('The file "' . $this->getRequestClassFilePath($capitalizedCamelCaseModelName, 'Store') . '" already exists !');
+				$makeStoreRequest = $this->confirm('Do you want to replace it ?', true);
+			}
+		}
 
-	    if ($makeUpdateRequest) {
-		    if (!file_exists($this->getRequestsClassesFilesPath() . DIRECTORY_SEPARATOR . 'ApiRequest.php')) {
-			    $this->error('ApiRequest.php file not found in Api transformers base path directory (' . $this->getRequestsClassesFilesPath() . ') !');
-			    return;
-		    }
+		if ($makeUpdateRequest) {
+			if (!file_exists($this->getRequestsClassesFilesPath() . DIRECTORY_SEPARATOR . 'ApiRequest.php')) {
+				$this->error('ApiRequest.php file not found in Api transformers base path directory (' . $this->getRequestsClassesFilesPath() . ') !');
+				return;
+			}
 
-		    if (file_exists($this->getRequestClassFilePath($capitalizedCamelCaseModelName, 'Update'))) {
-			    $this->warn('The file "' . $this->getRequestClassFilePath($capitalizedCamelCaseModelName, 'Update') . '" already exists !');
-			    $makeUpdateRequest = $this->confirm('Do you want to replace it ?', true);
-		    }
-	    }
+			if (file_exists($this->getRequestClassFilePath($capitalizedCamelCaseModelName, 'Update'))) {
+				$this->warn('The file "' . $this->getRequestClassFilePath($capitalizedCamelCaseModelName, 'Update') . '" already exists !');
+				$makeUpdateRequest = $this->confirm('Do you want to replace it ?', true);
+			}
+		}
 
-	    // Turn down the app (to prevent cron/jobs execution)
-	    Artisan::call('down', [], $this->getOutput());
+		// Turn down the app (to prevent cron/jobs execution)
+		Artisan::call('down', [], $this->getOutput());
 
-	    $this->phpParser = (new ParserFactory)->create(ParserFactory::PREFER_PHP5);
+		$this->phpParser = (new ParserFactory)->create(ParserFactory::PREFER_PHP5);
 
-	    // Write model class template
+		// Write model class template
 
 		$modelClassTemplateData = [
 			'modelsNamespace' => $modelsNamespace,
@@ -348,172 +348,172 @@ class MakeApiModelResource extends Command
 			'useAutoincrement' => ($usePrimaryKey && ($primaryKeyType == 'autoincrement'))
 		];
 
-	    // Configurable ?
+		// Configurable ?
 
 		$modelClassTemplateData['perPage'] = 20;
 		$modelClassTemplateData['perPageMin'] = 5;
 		$modelClassTemplateData['perPageMax'] = 50;
 
-	    $modelClassTemplateData['storeFillableFields'] = [];
-	    $modelClassTemplateData['patchFillableFields'] = [];
-	    $modelClassTemplateData['putFillableFields'] = [];
+		$modelClassTemplateData['storeFillableFields'] = [];
+		$modelClassTemplateData['patchFillableFields'] = [];
+		$modelClassTemplateData['putFillableFields'] = [];
 
-	    $modelClassTemplateData['storeFieldsRules'] = [];
-	    $modelClassTemplateData['patchFieldsRules'] = [];
-	    $modelClassTemplateData['putFieldsRules'] = [];
+		$modelClassTemplateData['storeFieldsRules'] = [];
+		$modelClassTemplateData['patchFieldsRules'] = [];
+		$modelClassTemplateData['putFieldsRules'] = [];
 
-	    $modelClassFilePath = $modelsBasePath . DIRECTORY_SEPARATOR . $capitalizedCamelCaseModelName . '.php';
-	    $this->writeModelClass($modelClassFilePath, $modelClassTemplateData);
+		$modelClassFilePath = $modelsBasePath . DIRECTORY_SEPARATOR . $capitalizedCamelCaseModelName . '.php';
+		$this->writeModelClass($modelClassFilePath, $modelClassTemplateData);
 
-	    // Write migration class template
+		// Write migration class template
 
-	    if ($makeMigration) {
-		    $migrationClassTemplateData = [
-			    'modelsNamespace' => $modelsNamespace,
-			    'modelClassName' => $capitalizedCamelCaseModelName,
-			    'tableName' => $snakeCaseModelName,
-			    'defaultFillableFields' => [],
-			    'timestamps' => $timestamps,
-			    'usePrimaryKey' => $usePrimaryKey,
-			    'useUuidPrimaryKey' => ($usePrimaryKey && ($primaryKeyType == 'uuid')),
-			    'useStringPrimaryKey' => ($usePrimaryKey && ($primaryKeyType == 'string')),
-			    'primaryKeyStringLength' => $primaryKeyStringLength,
-			    'useAutoincrementPrimaryKey' => ($usePrimaryKey && ($primaryKeyType == 'autoincrement')),
-		    ];
+		if ($makeMigration) {
+			$migrationClassTemplateData = [
+				'modelsNamespace' => $modelsNamespace,
+				'modelClassName' => $capitalizedCamelCaseModelName,
+				'tableName' => $snakeCaseModelName,
+				'defaultFillableFields' => [],
+				'timestamps' => $timestamps,
+				'usePrimaryKey' => $usePrimaryKey,
+				'useUuidPrimaryKey' => ($usePrimaryKey && ($primaryKeyType == 'uuid')),
+				'useStringPrimaryKey' => ($usePrimaryKey && ($primaryKeyType == 'string')),
+				'primaryKeyStringLength' => $primaryKeyStringLength,
+				'useAutoincrementPrimaryKey' => ($usePrimaryKey && ($primaryKeyType == 'autoincrement')),
+			];
 
-		    $this->writeMigrationClass($this->getMigrationClassFilePath($snakeCaseModelName), $migrationClassTemplateData);
-	    }
-
-	    // Create new model init seeder class and update database/InitSeeder.php file
-
-	    if ($makeInitSeeder) {
-		    // Write model init seeder class template
-		    $modelInitSeederClassTemplateData = [
-			    'modelsNamespace' => $modelsNamespace,
-			    'modelClassName' => $capitalizedCamelCaseModelName
-		    ];
-
-		    $this->writeModelInitSeederClass($this->getModelInitSeederClassFilePath($capitalizedCamelCaseModelName), $modelInitSeederClassTemplateData);
-
-		    // Update InitSeeder.php
-		    if (!$this->updateInitSeederClassFile($capitalizedCamelCaseModelName)) {
-			    $this->error('Can not update the InitSeeder.php file');
-		    }
-	    }
-
-	    // Create new model samples seeder class and Update database/Samples/SamplesSeeder.php file
-
-	    if ($makeSamplesSeeder) {
-		    // Write model samples seeder class template
-		    $modelSamplesSeederClassTemplateData = [
-			    'modelsNamespace' => $modelsNamespace,
-			    'modelClassName' => $capitalizedCamelCaseModelName
-		    ];
-
-		    $this->writeModelSamplesSeederClass($this->getModelSamplesSeederClassFilePath($capitalizedCamelCaseModelName), $modelSamplesSeederClassTemplateData);
-
-		    // Update SamplesSeeder.php file
-		    if (!$this->updateSamplesSeederClassFile($capitalizedCamelCaseModelName)) {
-			    $this->error('Can not update the SamplesSeeder.php file');
-		    }
-	    }
-
-	    // Create new model controller class
-
-	    if ($makeController) {
-		    // Write model controller class template
-
-		    $uses = [$modelsNamespace . '\\' . $capitalizedCamelCaseModelName];
-
-		    if ($makeTransformer) {
-			    $uses[] = 'App\\Http\\Transformers\\Api\\' . $capitalizedCamelCaseModelName . 'Transformer';
-		    }
-
-		    if ($makeStoreRequest) {
-			    $uses[] = 'App\\Http\\Requests\\Store' . $capitalizedCamelCaseModelName . 'Request';
-		    }
-
-		    if ($makeUpdateRequest) {
-			    $uses[] = 'App\\Http\\Requests\\Update' . $capitalizedCamelCaseModelName . 'Request';
-		    }
-
-		    $modelControllerClassTemplateData = [
-			    'uses' => $uses,
-			    'controllersNamespace' => $controllersNamespace,
-			    'modelClassName' => $capitalizedCamelCaseModelName,
-			    'modelSentenceClassName' => str_replace('_', ' ', $snakeCaseModelName),
-			    'modelTitleCaseClassName' => title_case(str_replace('_', ' ', $snakeCaseModelName)),
-			    'camelCaseModelClassName' => $camelCaseModelName,
-			    'useUuidPrimaryKey' => ($makePrimaryId && ($primaryKeyType == 'uuid')),
-			    'makeIndexMethod' => $makeControllerIndexMethod,
-			    'makeShowMethod' => $makeControllerShowMethod,
-			    'makeStoreMethod' => $makeControllerStoreMethod,
-			    'makeUpdateMethod' => $makeControllerUpdateMethod,
-			    'makeDestroyMethod' => $makeControllerDestroyMethod,
-		    ];
-
-		    $this->writeModelControllerClass($this->getModelControllerClassFilePath($capitalizedCamelCaseModelName), $modelControllerClassTemplateData);
-	    }
-
-	    // Update api routes
-
-	    if ($updateApiRoutesFile) {
-		    // Update routes/api.php
-		    if (!$this->updateRoutesApiFile(
-			        $capitalizedCamelCaseModelName, $camelCaseModelName, $apiRoutesFilePath,
-			        $makeControllerIndexMethod,
-			        $makeControllerShowMethod,
-			        $makeControllerStoreMethod,
-			        $makeControllerUpdateMethod,
-			        $makeControllerDestroyMethod)) {
-			    $this->error('Can not update the routes api.php file');
-		    }
+			$this->writeMigrationClass($this->getMigrationClassFilePath($snakeCaseModelName), $migrationClassTemplateData);
 		}
 
-	    // Create new model transformer class
+		// Create new model init seeder class and update database/InitSeeder.php file
 
-	    if ($makeTransformer) {
-		    // Write model transformer class template
-		    $modelTransformerClassTemplateData = [
-			    'usePrimaryId' => $makePrimaryId,
-			    'modelClassName' => $capitalizedCamelCaseModelName,
-			    'camelCaseModelClassName' => $camelCaseModelName,
-			    'modelHasTimestamps' => $timestamps
-		    ];
+		if ($makeInitSeeder) {
+			// Write model init seeder class template
+			$modelInitSeederClassTemplateData = [
+				'modelsNamespace' => $modelsNamespace,
+				'modelClassName' => $capitalizedCamelCaseModelName
+			];
 
-		    $this->writeModelTransformerClass($this->getModelTransformerClassFilePath($capitalizedCamelCaseModelName), $modelTransformerClassTemplateData);
-	    }
+			$this->writeModelInitSeederClass($this->getModelInitSeederClassFilePath($capitalizedCamelCaseModelName), $modelInitSeederClassTemplateData);
 
-	    // Create new model Store request class
+			// Update InitSeeder.php
+			if (!$this->updateInitSeederClassFile($capitalizedCamelCaseModelName)) {
+				$this->error('Can not update the InitSeeder.php file');
+			}
+		}
 
-	    if ($makeStoreRequest) {
-		    // Write model store request class template
-		    $modelStoreRequestClassTemplateData = [
-			    'modelClassName' => $capitalizedCamelCaseModelName,
-		    ];
+		// Create new model samples seeder class and Update database/Samples/SamplesSeeder.php file
 
-		    $this->writeModelStoreRequestClass($this->getRequestClassFilePath($capitalizedCamelCaseModelName, 'Store'), $modelStoreRequestClassTemplateData);
-	    }
+		if ($makeSamplesSeeder) {
+			// Write model samples seeder class template
+			$modelSamplesSeederClassTemplateData = [
+				'modelsNamespace' => $modelsNamespace,
+				'modelClassName' => $capitalizedCamelCaseModelName
+			];
 
-	    // Create new model Update request class
+			$this->writeModelSamplesSeederClass($this->getModelSamplesSeederClassFilePath($capitalizedCamelCaseModelName), $modelSamplesSeederClassTemplateData);
 
-	    if ($makeUpdateRequest) {
-		    // Write model update request class template
-		    $modelUpdateRequestClassTemplateData = [
-			    'modelClassName' => $capitalizedCamelCaseModelName,
-		    ];
+			// Update SamplesSeeder.php file
+			if (!$this->updateSamplesSeederClassFile($capitalizedCamelCaseModelName)) {
+				$this->error('Can not update the SamplesSeeder.php file');
+			}
+		}
 
-		    $this->writeModelUpdateRequestClass($this->getRequestClassFilePath($capitalizedCamelCaseModelName, 'Update'), $modelUpdateRequestClassTemplateData);
-	    }
+		// Create new model controller class
 
-	    // Turn up the app
-	    Artisan::call('up', [], $this->getOutput());
+		if ($makeController) {
+			// Write model controller class template
 
-	    $this->info('Composer dump autoloads');
-	    $this->composer->dumpAutoloads();
+			$uses = [$modelsNamespace . '\\' . $capitalizedCamelCaseModelName];
 
-	    return;
-    }
+			if ($makeTransformer) {
+				$uses[] = 'App\\Http\\Transformers\\Api\\' . $capitalizedCamelCaseModelName . 'Transformer';
+			}
+
+			if ($makeStoreRequest) {
+				$uses[] = 'App\\Http\\Requests\\Store' . $capitalizedCamelCaseModelName . 'Request';
+			}
+
+			if ($makeUpdateRequest) {
+				$uses[] = 'App\\Http\\Requests\\Update' . $capitalizedCamelCaseModelName . 'Request';
+			}
+
+			$modelControllerClassTemplateData = [
+				'uses' => $uses,
+				'controllersNamespace' => $controllersNamespace,
+				'modelClassName' => $capitalizedCamelCaseModelName,
+				'modelSentenceClassName' => str_replace('_', ' ', $snakeCaseModelName),
+				'modelTitleCaseClassName' => title_case(str_replace('_', ' ', $snakeCaseModelName)),
+				'camelCaseModelClassName' => $camelCaseModelName,
+				'useUuidPrimaryKey' => ($makePrimaryId && ($primaryKeyType == 'uuid')),
+				'makeIndexMethod' => $makeControllerIndexMethod,
+				'makeShowMethod' => $makeControllerShowMethod,
+				'makeStoreMethod' => $makeControllerStoreMethod,
+				'makeUpdateMethod' => $makeControllerUpdateMethod,
+				'makeDestroyMethod' => $makeControllerDestroyMethod,
+			];
+
+			$this->writeModelControllerClass($this->getModelControllerClassFilePath($capitalizedCamelCaseModelName), $modelControllerClassTemplateData);
+		}
+
+		// Update api routes
+
+		if ($updateApiRoutesFile) {
+			// Update routes/api.php
+			if (!$this->updateRoutesApiFile(
+					$capitalizedCamelCaseModelName, $camelCaseModelName, $apiRoutesFilePath,
+					$makeControllerIndexMethod,
+					$makeControllerShowMethod,
+					$makeControllerStoreMethod,
+					$makeControllerUpdateMethod,
+					$makeControllerDestroyMethod)) {
+				$this->error('Can not update the routes api.php file');
+			}
+		}
+
+		// Create new model transformer class
+
+		if ($makeTransformer) {
+			// Write model transformer class template
+			$modelTransformerClassTemplateData = [
+				'usePrimaryId' => $makePrimaryId,
+				'modelClassName' => $capitalizedCamelCaseModelName,
+				'camelCaseModelClassName' => $camelCaseModelName,
+				'modelHasTimestamps' => $timestamps
+			];
+
+			$this->writeModelTransformerClass($this->getModelTransformerClassFilePath($capitalizedCamelCaseModelName), $modelTransformerClassTemplateData);
+		}
+
+		// Create new model Store request class
+
+		if ($makeStoreRequest) {
+			// Write model store request class template
+			$modelStoreRequestClassTemplateData = [
+				'modelClassName' => $capitalizedCamelCaseModelName,
+			];
+
+			$this->writeModelStoreRequestClass($this->getRequestClassFilePath($capitalizedCamelCaseModelName, 'Store'), $modelStoreRequestClassTemplateData);
+		}
+
+		// Create new model Update request class
+
+		if ($makeUpdateRequest) {
+			// Write model update request class template
+			$modelUpdateRequestClassTemplateData = [
+				'modelClassName' => $capitalizedCamelCaseModelName,
+			];
+
+			$this->writeModelUpdateRequestClass($this->getRequestClassFilePath($capitalizedCamelCaseModelName, 'Update'), $modelUpdateRequestClassTemplateData);
+		}
+
+		// Turn up the app
+		Artisan::call('up', [], $this->getOutput());
+
+		$this->info('Composer dump autoloads');
+		$this->composer->dumpAutoloads();
+
+		return;
+	}
 
 	/**
 	 * Update the database/seeds/InitSeeder.php file, adding the new model class seeder
@@ -632,7 +632,7 @@ class MakeApiModelResource extends Command
 	 * @return boolean Return false if file not found or not editable
 	 */
 	protected function updateRoutesApiFile($capitalizedCamelCaseModelName, $camelCaseModelName, $apiRoutesFilePath,
-	                                       $makeIndexRoute, $makeShowRoute, $makeStoreRoute, $makeUpdateRoutes, $makeDestroyRoute)
+										   $makeIndexRoute, $makeShowRoute, $makeStoreRoute, $makeUpdateRoutes, $makeDestroyRoute)
 	{
 		$this->info('Update the routes api.php file');
 

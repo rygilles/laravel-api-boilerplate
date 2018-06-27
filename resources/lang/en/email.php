@@ -2,14 +2,14 @@
 
 return [
 
-    /*
-    |--------------------------------------------------------------------------
-    | Email Language Lines
-    |--------------------------------------------------------------------------
-    |
-    | The following language lines are used for common email templating
-    |
-    */
+	/*
+	|--------------------------------------------------------------------------
+	| Email Language Lines
+	|--------------------------------------------------------------------------
+	|
+	| The following language lines are used for common email templating
+	|
+	*/
 	
 	'hello' => 'Hello,',
 	'error' => 'Hello. An error occurred.',
