@@ -70,16 +70,15 @@ class MakeFreshApp extends Command
             }
 
             Artisan::call('migrate:refresh', [], $this->getOutput());
-	        if ($noInteraction) {
-		        Artisan::call('migrate:refresh', [
-				        '--no-interaction' => true,
-				        '--force' => true
-			        ], $this->getOutput()
-		        );
-		
-	        } else {
-		        Artisan::call('migrate:refresh', [], $this->getOutput());
-	        }
+            if ($noInteraction) {
+                Artisan::call('migrate:refresh', [
+                        '--no-interaction' => true,
+                        '--force' => true,
+                    ], $this->getOutput()
+                );
+            } else {
+                Artisan::call('migrate:refresh', [], $this->getOutput());
+            }
 
             // Initialize with required data
             $this->info('Initialize with required data seeder');
