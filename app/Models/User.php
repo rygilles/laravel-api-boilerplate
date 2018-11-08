@@ -104,7 +104,8 @@ class User extends ApiModel implements AuthenticatableContract,	AuthorizableCont
 		'name'                  => 'required|string|max:100',
 		'email'                 => 'required|email|max:150|unique:user',
 		'password'              => 'required|strength',
-		'preferred_language'    => 'nullable|string|app_locale|max:30'
+		'preferred_language'    => 'nullable|string|app_locale|max:30',
+		'double_optin'          => 'required|boolean'
 	];
 
 	/**

@@ -5,7 +5,9 @@ namespace App\Http\Controllers\Api;
 use App\Http\Requests\StoreUserRequest;
 use App\Http\Requests\UpdateUserRequest;
 use App\Http\Transformers\Api\UserTransformer;
+use App\Mails\UserEmailValidation;
 use App\Models\User;
+use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Facades\Validator;
 use Dingo\Api\Exception\ValidationHttpException;
 use Illuminate\Validation\Rule;
@@ -88,22 +90,39 @@ class UserController extends ApiController
 	public function store(StoreUserRequest $request)
 	{
 		$user = User::create($request->all(), $request->getRealMethod());
-
+		
 		if ($user) {
+			// Double opt-in handling
+			if ($request->get('double_optin')) {
+				// Ask for email confirm
+				$pendingMail = Mail::to($user->email);
+				
+				// Use user preferred language
+				if (!is_null($user->preferred_language)) {
+					$pendingMail->locale($user->preferred_language);
+				}
+				
+				// Queue email
+				$pendingMail->queue(new UserEmailValidation($user));
+			} else {
+				$user->confirmed_at = $user->created_at;
+				$user->save();
+			}
+			
 			// Register model transformer for created/accepted responses
 			// @link https://github.com/dingo/api/issues/1218
 			app('Dingo\Api\Transformer\Factory')->register(
 				User::class,
 				UserTransformer::class
 			);
-
+			
 			return $this->response->created(
 				app('Dingo\Api\Routing\UrlGenerator')
 					->version('v1')
 					->route('user.show', $user->id),
 				$user);
 		}
-
+		
 		return $this->response->errorBadRequest();
 	}
 
