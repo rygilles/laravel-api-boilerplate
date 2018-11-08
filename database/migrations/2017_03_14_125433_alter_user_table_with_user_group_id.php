@@ -14,8 +14,14 @@ class AlterUserTableWithUserGroupId extends Migration
 	public function up()
 	{
 		Schema::table('user', function (Blueprint $table) {
-			$table->string('user_group_id', 30)->after('id');
+			// Temporary nullable (sqlite fix for test purpose)
+			$table->string('user_group_id', 30)->nullable()->after('id');
 			$table->foreign('user_group_id')->references('id')->on('user_group');
+		});
+		
+		Schema::table('user', function (Blueprint $table) {
+			// Temporary nullable (sqlite fix for test purpose)
+			$table->string('user_group_id', 30)->nullable(false)->change();
 		});
 	}
 
