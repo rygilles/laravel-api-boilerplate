@@ -1,7 +1,7 @@
 preset: laravel
 
 finder:
-  exlude:
+  exclude:
     - "vendor"
     - "node_modules"
     - "public"
