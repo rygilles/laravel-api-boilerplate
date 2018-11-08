@@ -2,36 +2,36 @@
 
 namespace Tests\Feature\Api;
 
-use App\Models\User;
 use Carbon\Carbon;
-use Illuminate\Foundation\Testing\DatabaseMigrations;
-use Illuminate\Foundation\Testing\DatabaseTransactions;
-use Illuminate\Contracts\Console\Kernel;
-use Illuminate\Foundation\Testing\RefreshDatabaseState;
+use Tests\TestCase;
+use App\Models\User;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Config;
-use Tests\TestCase;
+use Illuminate\Contracts\Console\Kernel;
+use Illuminate\Foundation\Testing\DatabaseMigrations;
+use Illuminate\Foundation\Testing\DatabaseTransactions;
+use Illuminate\Foundation\Testing\RefreshDatabaseState;
 
 abstract class ApiCase extends TestCase
 {
     use DatabaseMigrations, DatabaseTransactions;
-    
+
     protected $connectionsToTransact = [];
-    
+
     /**
-     * User for testing purpose
+     * User for testing purpose.
      *
      * @var User
      */
     protected $user;
-    
+
     /**
-     * User Personal Access Token for testing purpose
+     * User Personal Access Token for testing purpose.
      *
      * @var string
      */
     protected $userToken;
-    
+
     /**
      * Define hooks to migrate the database before and after each test.
      *
@@ -43,19 +43,19 @@ abstract class ApiCase extends TestCase
             'migrate:fresh',
             [
                 '--database' => 'sqlite',
-                '--path' => 'database/migrations'
+                '--path' => 'database/migrations',
             ]
         );
-        
+
         $this->app[Kernel::class]->setArtisan(null);
-        
+
         $this->beforeApplicationDestroyed(function () {
             $this->artisan('migrate:rollback', ['--database' => 'sqlite']);
-            
+
             RefreshDatabaseState::$migrated = false;
         });
     }
-    
+
     /**
      * Setup the test environment.
      *
@@ -64,41 +64,41 @@ abstract class ApiCase extends TestCase
     public function setUp()
     {
         parent::setUp();
-        
+
         // Set default connection
         Config::set('database.default', 'sqlite');
-        
+
         $this->artisan('passport:install');
-        
+
         // Set default connection
         Config::set('database.default', 'sqlite');
-        
+
         $this->artisan(
             'db:seed',
             [
                 '--database' => 'sqlite',
-                '--class' => 'InitSeeder'
+                '--class' => 'InitSeeder',
             ]
         );
-        
+
         // Set default connection
         Config::set('database.default', 'sqlite');
-        
+
         // Use Env defined user group
         $TEST_USER_GROUP = getenv('TEST_USER_GROUP');
-        
+
         if ($TEST_USER_GROUP) {
             $this->createUser($TEST_USER_GROUP);
         } else {
             $this->createUser();
         }
-        
+
         // Auth user
         Auth::login($this->user);
-        
+
         $this->createUserPersonalAccessToken();
     }
-    
+
     /**
      * Create user for testing purpose.
      *
@@ -113,12 +113,12 @@ abstract class ApiCase extends TestCase
             'email'                 => 'phpunit@domain.tld',
             'password'              => 'phpunit', // Magic setter auto crypt
             'preferred_language'    => 'en',
-            'confirmed_at'          => Carbon::now()
+            'confirmed_at'          => Carbon::now(),
         ]);
-        
+
         return $this->user;
     }
-    
+
     /**
      * Create user Personal Access Token for testing purpose.
      *
@@ -127,10 +127,10 @@ abstract class ApiCase extends TestCase
     protected function createUserPersonalAccessToken()
     {
         $this->userToken = $this->user->createToken('testing')->accessToken;
-        
+
         return $this->userToken;
     }
-    
+
     /**
      * Return authorization headers for Api requests tests.
      *
@@ -139,12 +139,12 @@ abstract class ApiCase extends TestCase
     protected function getAuthorizationHeaders()
     {
         return [
-            'Authorization' => 'Bearer ' . $this->userToken
+            'Authorization' => 'Bearer '.$this->userToken,
         ];
     }
-    
+
     /**
-     * Return url of the matching Api route using Dingo UrlGenerator
+     * Return url of the matching Api route using Dingo UrlGenerator.
      *
      * @param string $name Route name to match
      * @param string[] $parameters Route parameters

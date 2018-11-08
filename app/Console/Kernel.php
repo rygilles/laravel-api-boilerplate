@@ -7,36 +7,36 @@ use Illuminate\Foundation\Console\Kernel as ConsoleKernel;
 
 class Kernel extends ConsoleKernel
 {
-	/**
-	 * The Artisan commands provided by your application.
-	 *
-	 * @var array
-	 */
-	protected $commands = [
-		Commands\MakeFreshApp::class,
-		Commands\GenerateApiDocs::class,
-		Commands\MakeApiModelResource::class,
-		Commands\MakeApiModelResourceAssets::class,
-	];
+    /**
+     * The Artisan commands provided by your application.
+     *
+     * @var array
+     */
+    protected $commands = [
+        Commands\MakeFreshApp::class,
+        Commands\GenerateApiDocs::class,
+        Commands\MakeApiModelResource::class,
+        Commands\MakeApiModelResourceAssets::class,
+    ];
 
-	/**
-	 * Define the application's command schedule.
-	 *
-	 * @param  \Illuminate\Console\Scheduling\Schedule  $schedule
-	 * @return void
-	 */
-	protected function schedule(Schedule $schedule)
-	{
-		//
-	}
+    /**
+     * Define the application's command schedule.
+     *
+     * @param  \Illuminate\Console\Scheduling\Schedule  $schedule
+     * @return void
+     */
+    protected function schedule(Schedule $schedule)
+    {
+        //
+    }
 
-	/**
-	 * Register the Closure based commands for the application.
-	 *
-	 * @return void
-	 */
-	protected function commands()
-	{
-		require base_path('routes/console.php');
-	}
+    /**
+     * Register the Closure based commands for the application.
+     *
+     * @return void
+     */
+    protected function commands()
+    {
+        require base_path('routes/console.php');
+    }
 }

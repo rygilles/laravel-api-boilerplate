@@ -2,21 +2,21 @@
 
 return [
 
-	/*
-	|--------------------------------------------------------------------------
-	| Email Language Lines
-	|--------------------------------------------------------------------------
-	|
-	| The following language lines are used for common email templating
-	|
-	*/
-	
-	'hello' => 'Hello,',
-	'error' => 'Hello. An error occurred.',
+    /*
+    |--------------------------------------------------------------------------
+    | Email Language Lines
+    |--------------------------------------------------------------------------
+    |
+    | The following language lines are used for common email templating
+    |
+    */
 
-	'regards' => 'Regards',
+    'hello' => 'Hello,',
+    'error' => 'Hello. An error occurred.',
 
-	'action_subtext' => 'If you’re having trouble clicking the ":actionText" button, copy and paste the URL below
+    'regards' => 'Regards',
+
+    'action_subtext' => 'If you’re having trouble clicking the ":actionText" button, copy and paste the URL below
 into your web browser: [:actionUrl](:actionUrl)',
 
 ];
