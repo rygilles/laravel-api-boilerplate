@@ -1,5 +1,9 @@
 # Laravel API Boilerplate #
 
+
+[![StyleCI](https://github.styleci.io/repos/104086961/shield?style=flat)](https://github.styleci.io/repos/104086961/shield?style=flat)
+[![Build Status](https://travis-ci.org/rygilles/laravel-api-boilerplate.svg?branch=master)](https://travis-ci.org/rygilles/laravel-api-boilerplate)
+
 This is a Laravel [Laravel 5.*](https://laravel.com/) based project.
 
 
