@@ -91,7 +91,7 @@ $api->version('v1', ['middleware' => ['acceptLanguage', /*'cors',*/ 'auth:api']]
 	$api->get(
 		'userGroup/{userGroupId}/user',
 		'App\Http\Controllers\Api\UserGroupUserController@index'
-	)->name('userGroup.index');
+	)->name('userGroupUser.index');
 
 	// I18n Lang
 
