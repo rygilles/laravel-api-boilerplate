@@ -121,9 +121,4 @@ $api->version('v1', ['middleware' => ['acceptLanguage', /*'cors',*/ 'auth:api']]
 		'App\Http\Controllers\Api\I18nLangController@destroy'
 	)->name('i18nLang.destroy');
 
-	$api->get(
-		'i18nLang/search/',
-		'App\Http\Controllers\Api\I18nLangController@index'
-	)->name('i18nLang.index');
-
 });
