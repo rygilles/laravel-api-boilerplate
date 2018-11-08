@@ -1,0 +1,7 @@
+preset: laravel
+
+finder:
+  exlude:
+    - "vendor"
+    - "node_modules"
+    - "public"
