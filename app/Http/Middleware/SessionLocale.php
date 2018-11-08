@@ -2,25 +2,26 @@
 
 namespace App\Http\Middleware;
 
-use Closure, Session, Auth;
+use Closure;
+use Session;
 
 class SessionLocale
 {
-	/**
-	 * Handle an incoming request.
-	 *
-	 * @param \Illuminate\Http\Request $request
-	 * @param \Closure $next
-	 * @return mixed
-	 */
-	public function handle($request, Closure $next)
-	{
-		if (!Session::has('locale')) {
-			Session::put('locale', $request->getPreferredLanguage(config('app.locales')));
-		}
+    /**
+     * Handle an incoming request.
+     *
+     * @param \Illuminate\Http\Request $request
+     * @param \Closure $next
+     * @return mixed
+     */
+    public function handle($request, Closure $next)
+    {
+        if (! Session::has('locale')) {
+            Session::put('locale', $request->getPreferredLanguage(config('app.locales')));
+        }
 
-		app()->setLocale(Session::get('locale'));
+        app()->setLocale(Session::get('locale'));
 
-		return $next($request);
-	}
+        return $next($request);
+    }
 }

@@ -7,13 +7,13 @@ use Illuminate\Routing\Controller;
 
 class ApiController extends Controller
 {
-	use Helpers;
+    use Helpers;
 
-	/**
-	 * ApiController constructor.
-	 */
-	public function __construct()
-	{
-		//
-	}
+    /**
+     * ApiController constructor.
+     */
+    public function __construct()
+    {
+        //
+    }
 }

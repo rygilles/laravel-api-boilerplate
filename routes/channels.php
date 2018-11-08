@@ -14,9 +14,9 @@
 use Illuminate\Support\Facades\Broadcast;
 
 Broadcast::channel('App.Models.User.{userId}', function ($user, $userId) {
-	return $user->id == $userId;
+    return $user->id == $userId;
 });
 
 Broadcast::channel('AdminChan', function ($user) {
-	return in_array($user->user_group_id, ['Developer', 'Support']);
+    return in_array($user->user_group_id, ['Developer', 'Support']);
 });
