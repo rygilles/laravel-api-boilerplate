@@ -23,6 +23,8 @@ class AppServiceProvider extends ServiceProvider
 
         // Disable vendor publish migrations / Use UUID for user_id in tables
         Passport::ignoreMigrations();
+        
+        Passport::withoutCookieSerialization();
 
         // Custom validators
         Validator::extend('uuid', 'App\Http\CustomValidator@validateUUID');
